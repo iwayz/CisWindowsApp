@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Cis.DataContract\Cis.DataContract.csproj" />
     <ProjectReference Include="..\Cis.Model\Cis.Model.csproj" />
   </ItemGroup>
 

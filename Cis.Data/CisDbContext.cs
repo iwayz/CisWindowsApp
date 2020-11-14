@@ -1,5 +1,4 @@
-﻿using Cis.Data.Configurations;
-using Cis.Model;
+﻿using Cis.Model;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

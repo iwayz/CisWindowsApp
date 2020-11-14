@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration;
 using System.Text;
 
-namespace Cis.Data.Configurations
+namespace Cis.Data
 {
     public class OutletTypeConfig : IEntityTypeConfiguration<OutletType>
     {

@@ -6,11 +6,11 @@ using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration;
 using System.Text;
 
-namespace Cis.Data.Configurations
+namespace Cis.Data
 {
-    public class LocationConfig : IEntityTypeConfiguration<Location>
+    public class ConsumerConfig: IEntityTypeConfiguration<Consumer>
     {
-        public void Configure(EntityTypeBuilder<Location> builder)
+        public void Configure(EntityTypeBuilder<Consumer> builder)
         {
             builder.HasKey(f => f.Id);
         }

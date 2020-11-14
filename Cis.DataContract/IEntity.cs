@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Cis.Model.Interfaces
+namespace Cis.DataContract
 {
-    public interface IAudit
+    public interface IEntity
     {
+        Guid Id { get; set; }
         string CreatedBy { get; set; }
         DateTime CreatedAt { get; set; }
         string ModifiedBy { get; set; }

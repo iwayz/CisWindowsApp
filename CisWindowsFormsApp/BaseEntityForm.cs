@@ -7,14 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Cis.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace CisWindowsFormsApp
 {
-    public partial class Form1 : Form
+    public partial class BaseEntityForm : Form
     {
-        public Form1()
+        public readonly DbContext dbContext;
+        public BaseEntityForm()
         {
             InitializeComponent();
+            dbContext = new CisDbContext();
         }
 
     }
