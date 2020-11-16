@@ -25,37 +25,73 @@ namespace CisWindowsFormsApp.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Server=myServerAddress;Database=myDataBase;Uid=myUsername;Pwd=myPassword;")]
-        public string ConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("PT. CAPUNG INDAH SEJAHTERA")]
+        public string CompName {
             get {
-                return ((string)(this["ConnectionString"]));
+                return ((string)(this["CompName"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string UserId {
+        [global::System.Configuration.DefaultSettingValueAttribute("Jl. Mayjend Bambang Sugeng Km. 5, Magelang 56172")]
+        public string CompAddress {
             get {
-                return ((string)(this["UserId"]));
+                return ((string)(this["CompAddress"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string UserName {
+        [global::System.Configuration.DefaultSettingValueAttribute("0293-325 333")]
+        public string CompPhone {
             get {
-                return ((string)(this["UserName"]));
+                return ((string)(this["CompPhone"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string ContextKey {
+        [global::System.Configuration.DefaultSettingValueAttribute("cise@sari-sehat.com")]
+        public string CompEmail {
             get {
-                return ((string)(this["ContextKey"]));
+                return ((string)(this["CompEmail"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("xxx")]
+        public string CompPbf {
+            get {
+                return ((string)(this["CompPbf"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("xxx")]
+        public string CompSiup {
+            get {
+                return ((string)(this["CompSiup"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("xxx")]
+        public string CompNpwp {
+            get {
+                return ((string)(this["CompNpwp"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("BCA 344.025.7070")]
+        public string CompBankAcc {
+            get {
+                return ((string)(this["CompBankAcc"]));
             }
         }
     }

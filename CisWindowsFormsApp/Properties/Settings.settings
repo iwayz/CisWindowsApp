@@ -2,17 +2,29 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="CisWindowsFormsApp.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="ConnectionString" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Server=myServerAddress;Database=myDataBase;Uid=myUsername;Pwd=myPassword;</Value>
+    <Setting Name="CompName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">PT. CAPUNG INDAH SEJAHTERA</Value>
     </Setting>
-    <Setting Name="UserId" Type="System.String" Scope="Application">
-      <Value Profile="(Default)" />
+    <Setting Name="CompAddress" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Jl. Mayjend Bambang Sugeng Km. 5, Magelang 56172</Value>
     </Setting>
-    <Setting Name="UserName" Type="System.String" Scope="Application">
-      <Value Profile="(Default)" />
+    <Setting Name="CompPhone" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">0293-325 333</Value>
     </Setting>
-    <Setting Name="ContextKey" Type="System.String" Scope="Application">
-      <Value Profile="(Default)" />
+    <Setting Name="CompEmail" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">cise@sari-sehat.com</Value>
+    </Setting>
+    <Setting Name="CompPbf" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">xxx</Value>
+    </Setting>
+    <Setting Name="CompSiup" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">xxx</Value>
+    </Setting>
+    <Setting Name="CompNpwp" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">xxx</Value>
+    </Setting>
+    <Setting Name="CompBankAcc" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">BCA 344.025.7070</Value>
     </Setting>
   </Settings>
 </SettingsFile>

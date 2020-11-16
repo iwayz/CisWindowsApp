@@ -6,6 +6,6 @@ namespace Cis.Model
 {
     public class OutletType : BaseEntity
     {
-        
+        public string Description { get; set; }
     }
 }

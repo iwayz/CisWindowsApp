@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Text;
 
-namespace Cis.Data.Repositories
+namespace Cis.Data
 {
     public class CisRepository<T> : IRepository<T> where T : class, IEntity
     {

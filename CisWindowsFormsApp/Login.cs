@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace CisWindowsFormsApp
 {
-    public partial class Login : BaseEntityForm
+    public partial class FrmLogin : Form
     {
-        public Login()
+        public FrmLogin()
         {
             InitializeComponent();
         }
