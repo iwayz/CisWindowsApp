@@ -12,7 +12,15 @@ namespace Cis.Data
     {
         public void Configure(EntityTypeBuilder<OutletType> builder)
         {
-            builder.HasKey(f => f.Id);
+            builder.ToTable("OUTLET_TYPE");
+
+            builder.Property(o => o.Description)
+                    .HasColumnName("DESC")
+                    .IsRequired();
+
+            new BaseEntityConfig<OutletType>().SetAuditFields(ref builder);
+            
+            builder.HasKey(o => o.Id);
         }
     }
 }

@@ -7,7 +7,6 @@ namespace Cis.Model
     public class Customer : BaseEntity
     {
         public string Name { get; set; }
-        public string OutletTypeId { get; set; }
         public string Address { get; set; }
         public string LocationId { get; set; }
         public string PostalCode { get; set; }
@@ -19,6 +18,8 @@ namespace Cis.Model
         public DateTime SipaExpiredDate { get; set; }
         public string SiaNo { get; set; }
 
+        public string OutletTypeId { get; set; }
+        public OutletType OutletType { get; set; }
         public string SalesAreaId { get; set; }
         public SalesArea SalesArea { get; set; }
     }

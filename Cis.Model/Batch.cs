@@ -6,13 +6,12 @@ namespace Cis.Model
 {
     public class Batch: BaseEntity
     {
-        public string BathCode { get; set; }
-        public string ProductId { get; set; }
-        public int EntryQty { get; set; }
+        public string BatchCode { get; set; }
+        public int Quantity { get; set; }
         public DateTime EntryDate { get; set; }
         public DateTime ExpiredDate { get; set; }
-        public int AvailableQty { get; set; }
 
+        public string ProductId { get; set; }
         public Product Product { get; set; }
     }
 }
