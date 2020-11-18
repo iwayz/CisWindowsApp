@@ -18,9 +18,9 @@ namespace Cis.Model
         public DateTime SipaExpiredDate { get; set; }
         public string SiaNo { get; set; }
 
-        public string OutletTypeId { get; set; }
+        public Guid OutletTypeId { get; set; }
         public OutletType OutletType { get; set; }
-        public string SalesAreaId { get; set; }
+        public Guid SalesAreaId { get; set; }
         public SalesArea SalesArea { get; set; }
     }
 }

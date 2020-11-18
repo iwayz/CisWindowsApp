@@ -25,16 +25,16 @@ namespace Cis.Data
 
             builder.Property(l => l.ParentId)
                     .HasColumnName("PARENT_LOC_ID")
-                    .IsRequired(false);
+                    .IsRequired();
 
             new BaseEntityConfig<Location>().SetAuditFields(ref builder);
 
 
             builder.HasKey(l => l.Id);
 
-            builder.HasOne(c => c.Parent)
-                .WithMany(p => p.Children)
-                .HasForeignKey(c => c.ParentId);
+            //builder.HasOne(c => c.Parent)
+            //    .WithMany(p => p.Children)
+            //    .HasForeignKey(c => c.ParentId);
         }
     }
 }

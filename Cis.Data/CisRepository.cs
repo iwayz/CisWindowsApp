@@ -25,13 +25,14 @@ namespace Cis.Data
 
         public IQueryable<T> GetAll() => Entity;
 
-        public T GetById(int id)
+        public T GetById(Guid id)
         {
-            throw new NotImplementedException();
+            return GetAll().Where(e => e.Id == id).FirstOrDefault();
         }
 
         public void Update(T entity) => Entity.Update(entity);
 
         public void Update(IEnumerable<T> entities) => Entity.UpdateRange(entities);
+        
     }
 }

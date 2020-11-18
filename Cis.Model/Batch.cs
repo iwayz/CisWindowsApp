@@ -11,7 +11,7 @@ namespace Cis.Model
         public DateTime EntryDate { get; set; }
         public DateTime ExpiredDate { get; set; }
 
-        public string ProductId { get; set; }
+        public Guid ProductId { get; set; }
         public Product Product { get; set; }
     }
 }

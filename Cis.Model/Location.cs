@@ -13,7 +13,7 @@ namespace Cis.Model
         public Constant.LocationType LocationType { get; set; }
 
         // self reference relation
-        public string ParentId { get; set; }
+        public Guid ParentId { get; set; }
         public Location Parent { get; set; }
         public virtual HashSet<Location> Children { get; set; }
     }

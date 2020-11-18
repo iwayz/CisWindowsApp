@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity.ModelConfiguration;
 using System.Text;
 
 namespace Cis.Data
@@ -33,7 +32,7 @@ namespace Cis.Data
 
             builder.Property(s => s.LocationId)
                    .HasColumnName("LOC_ID")
-                   .IsRequired(false);
+                   .IsRequired();
 
             builder.Property(s => s.PostalCode)
                    .HasColumnName("POSTAL_CODE")

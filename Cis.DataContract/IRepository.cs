@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
+using System;
 
 namespace Cis.DataContract
 {
@@ -7,7 +8,7 @@ namespace Cis.DataContract
     {
         IQueryable<T> GetAll();
 
-        T GetById(int id);
+        T GetById(Guid id);
 
         void Add(T entity);
 
