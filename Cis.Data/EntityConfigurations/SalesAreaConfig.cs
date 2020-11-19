@@ -21,10 +21,8 @@ namespace Cis.Data.EntityConfigurations
                    .HasColumnName("DESC")
                    .IsRequired(false);
 
-            new BaseEntityConfig<SalesArea>().SetAuditFields(ref builder);
+            new BaseEntityConfig<SalesArea>().Configure(ref builder);
 
-
-            builder.HasKey(s => s.Id);
         }
     }
 }

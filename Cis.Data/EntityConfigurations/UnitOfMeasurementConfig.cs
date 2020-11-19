@@ -21,12 +21,8 @@ namespace Cis.Data
                    .HasColumnName("DESC")
                    .IsRequired();
 
-            new BaseEntityConfig<UnitOfMeasurement>().SetAuditFields(ref builder);
+            new BaseEntityConfig<UnitOfMeasurement>().Configure(ref builder);
 
-
-            builder.HasKey(f => f.Id);
-
-            
         }
     }
 }

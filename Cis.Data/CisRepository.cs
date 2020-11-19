@@ -25,9 +25,9 @@ namespace Cis.Data
 
         public IQueryable<T> GetAll() => Entity;
 
-        public T GetById(Guid id)
+        public T GetById(string id)
         {
-            return GetAll().Where(e => e.Id == id).FirstOrDefault();
+            return GetAll().FirstOrDefault(e => e.Id == id);
         }
 
         public void Update(T entity) => Entity.Update(entity);

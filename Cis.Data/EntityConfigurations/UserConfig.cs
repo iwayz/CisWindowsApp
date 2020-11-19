@@ -25,10 +25,7 @@ namespace Cis.Data.EntityConfigurations
                        .HasColumnName("FULL_NAME")
                        .IsRequired();
 
-            new BaseEntityConfig<User>().SetAuditFields(ref builder);
-
-
-            builder.HasKey(u => u.Id);
+            new BaseEntityConfig<User>().Configure(ref builder);
 
         }
     }

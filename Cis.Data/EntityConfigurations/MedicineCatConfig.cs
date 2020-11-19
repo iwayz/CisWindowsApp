@@ -17,9 +17,8 @@ namespace Cis.Data.EntityConfigurations
                     .HasColumnName("DESC")
                     .IsRequired();
 
-            new BaseEntityConfig<MedicineCat>().SetAuditFields(ref builder);
+            new BaseEntityConfig<MedicineCat>().Configure(ref builder);
             
-            builder.HasKey(m => m.Id);
         }
     }
 }

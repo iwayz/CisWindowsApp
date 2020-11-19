@@ -10,5 +10,7 @@ namespace Cis.Model
         public string Password { get; set; }
         public string FullName { get; set; }
 
+        public ICollection<UserRole> UserRoles { get; set; }
+
     }
 }

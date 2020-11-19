@@ -15,6 +15,7 @@ namespace Cis.Data
 
             builder.Property(b => b.BatchCode)
                     .HasColumnName("BATCH_CODE")
+                    .HasMaxLength(100)
                     .IsRequired();
 
             builder.Property(b => b.Quantity)
@@ -29,15 +30,17 @@ namespace Cis.Data
                     .HasColumnName("EXPIRED_DATE")
                     .IsRequired();
 
-            new BaseEntityConfig<Batch>().SetAuditFields(ref builder);
+            builder.Property(b => b.ProductId)
+                    .HasColumnName("PRODUCT_ID")
+                    .IsRequired();
 
-            
-            builder.HasKey(b => b.Id);
+            new BaseEntityConfig<Batch>().Configure(ref builder);
+
 
             builder
                 .HasIndex(b => b.BatchCode)
                 .IsUnique()
-                .HasName("IDX_BATCH_CODE");
+                .HasName("IX_BATCH_CODE");
 
             builder
                 .HasOne(b => b.Product)

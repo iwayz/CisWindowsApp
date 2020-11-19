@@ -8,7 +8,7 @@ namespace Cis.DataContract
     {
         IQueryable<T> GetAll();
 
-        T GetById(Guid id);
+        T GetById(string id);
 
         void Add(T entity);
 

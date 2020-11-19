@@ -9,8 +9,14 @@ namespace Cis.Data
 {
     public class BaseEntityConfig<T> where T: class
     {
-        public void SetAuditFields(ref EntityTypeBuilder<T> builder)
+        public void Configure(ref EntityTypeBuilder<T> builder)
         {
+            builder.HasKey(nameof(BaseEntity.Id));
+
+            builder.Property(nameof(BaseEntity.Id))
+                .HasColumnName("ID")
+                .HasMaxLength(36);
+
             builder.Property(nameof(BaseEntity.CreatedBy))
                 .HasColumnName("CREATED_BY")
                 .IsRequired();

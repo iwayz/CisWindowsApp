@@ -12,10 +12,12 @@ namespace Cis.Data
 
             builder.Property(p => p.ProductCode)
                    .HasColumnName("PRODUCT_CODE")
+                   .HasMaxLength(50)
                    .IsRequired();
 
             builder.Property(p => p.ProductName)
                    .HasColumnName("PRODUCT_NAME")
+                   .HasMaxLength(100)
                    .IsRequired();
 
             builder.Property(p => p.Price)
@@ -50,14 +52,16 @@ namespace Cis.Data
                    .HasColumnName("PRINCIPAL_ID")
                    .IsRequired();
 
-            new BaseEntityConfig<Product>().SetAuditFields(ref builder);
+            new BaseEntityConfig<Product>().Configure(ref builder);
 
             
-            builder.HasKey(p => p.Id);
-
             builder.HasIndex(p => p.ProductCode)
                 .IsUnique()
-                .HasName("IDX_PRODUCT_CODE");
+                .HasName("IX_PRODUCT_CODE");
+
+            builder
+                .HasIndex(p => p.ProductName)
+                .HasName("IX_PRODUCT_NAME");
 
             builder.HasOne(p => p.Unit)
                 .WithMany(u => u.Products)

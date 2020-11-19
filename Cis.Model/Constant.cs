@@ -6,13 +6,13 @@ namespace Cis.Model
 {
     public class Constant
     {
-        public enum Gender: byte
+        public enum Gender
         {
             Female = 0,
             Male = 1
         }
 
-        public enum LocationType: byte
+        public enum LocationType
         {
             Province = 1,
             District = 2, // Kota/ Kecamatan

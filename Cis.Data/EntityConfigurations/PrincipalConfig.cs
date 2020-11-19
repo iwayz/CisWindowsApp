@@ -15,6 +15,7 @@ namespace Cis.Data.EntityConfigurations
             
             builder.Property(p => p.Name)
                     .HasColumnName("NAME")
+                    .HasMaxLength(100)
                     .IsRequired();
 
             builder.Property(p => p.Address)
@@ -33,11 +34,16 @@ namespace Cis.Data.EntityConfigurations
                     .HasColumnName("EMAIL")
                     .IsRequired(false);
 
-            new BaseEntityConfig<Principal>().SetAuditFields(ref builder);
-            
-            
-            builder.HasKey(p => p.Id);
+            new BaseEntityConfig<Principal>().Configure(ref builder);
 
+            builder
+                .HasIndex(p => p.Name)
+                .HasName("IX_PRINCIPAL_NAME");
+
+            builder.HasOne(p => p.Location)
+                .WithMany(l => l.Principals)
+                .HasForeignKey(p => p.LocationId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

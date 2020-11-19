@@ -23,7 +23,7 @@ namespace Cis.Data
 
             builder.Property(s => s.Gender)
                    .HasColumnName("GENDER")
-                   .HasConversion<int>()
+                   .HasConversion<byte>()
                    .IsRequired();
 
             builder.Property(s => s.Address)
@@ -46,11 +46,12 @@ namespace Cis.Data
                    .HasColumnName("EMAIL")
                    .IsRequired(false);
 
-            new BaseEntityConfig<Salesman>().SetAuditFields(ref builder);
-            
-            
-            builder.HasKey(f => f.Id);
-            
+            new BaseEntityConfig<Salesman>().Configure(ref builder);
+
+            builder.HasOne(s => s.Location)
+                .WithMany(l => l.Salesmen)
+                .HasForeignKey(s => s.LocationId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

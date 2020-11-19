@@ -4,7 +4,7 @@ namespace Cis.DataContract
 {
     public interface IEntity
     {
-        Guid Id { get; set; }
+        string Id { get; set; }
 
         // Audit fields.
         string CreatedBy { get; set; }

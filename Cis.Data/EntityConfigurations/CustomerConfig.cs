@@ -65,11 +65,18 @@ namespace Cis.Data
                 .HasColumnName("SALES_AREA_ID")
                 .IsRequired();
 
-            new BaseEntityConfig<Customer>().SetAuditFields(ref builder);
+            new BaseEntityConfig<Customer>().Configure(ref builder);
 
 
-            builder.HasKey(f => f.Id);
-            
+            builder
+                .HasIndex(c => c.Name)
+                .HasName("IX_CUST_NAME");
+
+            builder.HasOne(c => c.Location)
+                .WithMany(l => l.Customers)
+                .HasForeignKey(c => c.LocationId)
+                .OnDelete(DeleteBehavior.Restrict);
+
             builder.HasOne(c => c.SalesArea)
                 .WithMany(s => s.Customers)
                 .HasForeignKey(c => c.SalesAreaId)

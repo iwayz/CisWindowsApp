@@ -17,9 +17,7 @@ namespace Cis.Data
                     .HasColumnName("DESC")
                     .IsRequired();
 
-            new BaseEntityConfig<OutletType>().SetAuditFields(ref builder);
-            
-            builder.HasKey(o => o.Id);
+            new BaseEntityConfig<OutletType>().Configure(ref builder);
         }
     }
 }
