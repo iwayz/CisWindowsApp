@@ -22,18 +22,22 @@ namespace Cis.Data
 
             builder.Property(p => p.Price)
                    .HasColumnName("PRICE")
+                   .HasDefaultValue(0)
                    .IsRequired();
 
             builder.Property(p => p.PriceDecreeDate)
                    .HasColumnName("PRICE_DEC_DATE")
+                   .HasDefaultValue("1900-01-01")
                    .IsRequired();
 
             builder.Property(p => p.Discount)
                    .HasColumnName("DISC")
+                   .HasDefaultValue(0)
                    .IsRequired();
 
             builder.Property(p => p.RestockLevel)
                    .HasColumnName("RESTOCK_LVL")
+                   .HasDefaultValue(0)
                    .IsRequired();
 
             builder.Property(p => p.UnitId)

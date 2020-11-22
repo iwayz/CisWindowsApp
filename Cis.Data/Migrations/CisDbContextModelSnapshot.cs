@@ -151,8 +151,10 @@ namespace Cis.Data.Migrations
                         .HasColumnType("text");
 
                     b.Property<DateTime>("SipaExpiredDate")
+                        .ValueGeneratedOnAdd()
                         .HasColumnName("SIPA_EXP_DATE")
-                        .HasColumnType("datetime");
+                        .HasColumnType("datetime")
+                        .HasDefaultValue(new DateTime(1900, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
 
                     b.Property<string>("SipaNo")
                         .HasColumnName("SIPA_NO")
@@ -414,8 +416,10 @@ namespace Cis.Data.Migrations
                         .HasColumnType("text");
 
                     b.Property<float>("Discount")
+                        .ValueGeneratedOnAdd()
                         .HasColumnName("DISC")
-                        .HasColumnType("float");
+                        .HasColumnType("float")
+                        .HasDefaultValue(0f);
 
                     b.Property<string>("MedicineCatId")
                         .IsRequired()
@@ -432,12 +436,16 @@ namespace Cis.Data.Migrations
                         .HasColumnType("text");
 
                     b.Property<decimal>("Price")
+                        .ValueGeneratedOnAdd()
                         .HasColumnName("PRICE")
-                        .HasColumnType("decimal(18, 2)");
+                        .HasColumnType("decimal(18, 2)")
+                        .HasDefaultValue(0m);
 
                     b.Property<DateTime>("PriceDecreeDate")
+                        .ValueGeneratedOnAdd()
                         .HasColumnName("PRICE_DEC_DATE")
-                        .HasColumnType("datetime");
+                        .HasColumnType("datetime")
+                        .HasDefaultValue(new DateTime(1900, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
 
                     b.Property<string>("PrincipalId")
                         .IsRequired()
@@ -457,8 +465,10 @@ namespace Cis.Data.Migrations
                         .HasMaxLength(100);
 
                     b.Property<int>("RestockLevel")
+                        .ValueGeneratedOnAdd()
                         .HasColumnName("RESTOCK_LVL")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
 
                     b.Property<string>("UnitId")
                         .IsRequired()

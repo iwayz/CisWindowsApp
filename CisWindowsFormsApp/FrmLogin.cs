@@ -11,11 +11,12 @@ using System.Linq;
 
 namespace CisWindowsFormsApp
 {
-    public partial class Login : Form
+    public partial class FrmLogin : Form
     {
         CisDbContext dbContext;
+        FrmMain frmMain;
 
-        public Login()
+        public FrmLogin()
         {
             InitializeComponent();
             dbContext = new CisDbContext();
@@ -56,7 +57,15 @@ namespace CisWindowsFormsApp
                 txtPassword.Text = "Password";
                 txtPassword.PasswordChar = '\0';
                 lnkExit.Focus();
+                Properties.Settings.Default["CurrentUser"] = user.Username;
+                Properties.Settings.Default.Save();
                 this.Hide();
+
+
+                frmMain = new FrmMain();
+                frmMain.RefToLoginForm = this;
+                this.Visible = false;
+                frmMain.ShowDialog();
             }
             else
                 MessageBox.Show("Username or password invalid");

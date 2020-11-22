@@ -8,21 +8,25 @@ using System.Windows.Forms;
 
 namespace CisWindowsFormsApp
 {
-
-    public partial class MasterDataDashboard : Form
+    public partial class FrmTransactionDashboard : Form
     {
         private Form activeForm;
 
-        public MasterDataDashboard()
+        public FrmTransactionDashboard()
         {
             InitializeComponent();
         }
 
-        private void btnRoles_Click(object sender, EventArgs e)
+        private void btnSales_Click(object sender, EventArgs e)
         {
-            //var testFrm = new FormTest();
-            //testFrm.ShowDialog();
-            OpenChildForm(new FormTest(), sender);
+            OpenChildForm(new FrmLocation(), sender);
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FrmLocation(), sender);
+
         }
 
         private void OpenChildForm(Form childForm, object btnSender)
@@ -35,11 +39,11 @@ namespace CisWindowsFormsApp
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill;
-            this.pnlMasterDataChildren.Controls.Add(childForm);
-            this.pnlMasterDataChildren.Tag = childForm;
+            this.pnlTransactionChildren.Controls.Add(childForm);
+            this.pnlTransactionChildren.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
-            lblMasterDataChildHeader.Text = childForm.Text;
+            lblTransactionChildHeader.Text = childForm.Text;
         }
     }
 }

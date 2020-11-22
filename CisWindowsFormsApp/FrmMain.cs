@@ -8,40 +8,42 @@ using System.Windows.Forms;
 
 namespace CisWindowsFormsApp
 {
-    public partial class Main : Form
+    public partial class FrmMain : Form
     {
-        Login loginFrm;
+        public Form RefToLoginForm { get; set; }
+
         private Form activeForm;
-        public Main()
+        public FrmMain()
         {
             InitializeComponent();
         }
 
         private void Main_Load(object sender, EventArgs e)
         {
-            loginFrm = new Login();
-            loginFrm.ShowDialog();
             lblToday.Text = DateTime.Now.ToString("dddd, dd-MMM-yyyy");
+            lblCurrentUser.Text = Properties.Settings.Default.CurrentUser.ToUpper();
+            btnMasterData.PerformClick();
         }
 
         private void btnMasterData_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new MasterDataDashboard(), sender);
+            OpenChildForm(new FrmMasterDataDashboard(), sender);
         }
 
         private void btnTransaksi_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormTest(), sender);
+            OpenChildForm(new FrmTransactionDashboard(), sender);
         }
 
         private void btnReporting_Click(object sender, EventArgs e)
         {
-            lblHeader.Text = btnReporting.Text;
+            OpenChildForm(new FrmReportingDashboard(), sender);
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            loginFrm.ShowDialog();
+            this.RefToLoginForm.Show();
+            this.Hide();
         }
 
         private void OpenChildForm(Form childForm, object btnSender)
@@ -59,6 +61,11 @@ namespace CisWindowsFormsApp
             childForm.BringToFront();
             childForm.Show();
             lblHeader.Text = childForm.Text;
+        }
+
+        private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace CisWindowsFormsApp
 {
-    partial class Main
+    partial class FrmMain
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.pnlLeftPane = new System.Windows.Forms.Panel();
             this.btnLogout = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -47,7 +47,7 @@
             this.lblHeader = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.lblUser = new System.Windows.Forms.Label();
+            this.lblCurrentUser = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pnlChildren = new System.Windows.Forms.Panel();
             this.pnlLeftPane.SuspendLayout();
@@ -271,7 +271,7 @@
             // panel6
             // 
             this.panel6.Controls.Add(this.pictureBox2);
-            this.panel6.Controls.Add(this.lblUser);
+            this.panel6.Controls.Add(this.lblCurrentUser);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel6.Location = new System.Drawing.Point(565, 0);
             this.panel6.Name = "panel6";
@@ -288,17 +288,17 @@
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             // 
-            // lblUser
+            // lblCurrentUser
             // 
-            this.lblUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.lblUser.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.lblUser.ForeColor = System.Drawing.Color.White;
-            this.lblUser.Location = new System.Drawing.Point(32, 9);
-            this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(171, 36);
-            this.lblUser.TabIndex = 0;
-            this.lblUser.Text = "Georgeous";
-            this.lblUser.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblCurrentUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.lblCurrentUser.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblCurrentUser.ForeColor = System.Drawing.Color.White;
+            this.lblCurrentUser.Location = new System.Drawing.Point(32, 9);
+            this.lblCurrentUser.Name = "lblCurrentUser";
+            this.lblCurrentUser.Size = new System.Drawing.Size(171, 36);
+            this.lblCurrentUser.TabIndex = 0;
+            this.lblCurrentUser.Text = "Georgeous";
+            this.lblCurrentUser.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel4
             // 
@@ -317,7 +317,7 @@
             this.pnlChildren.Size = new System.Drawing.Size(835, 508);
             this.pnlChildren.TabIndex = 4;
             // 
-            // Main
+            // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -329,9 +329,11 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.pnlLeftPane);
             this.MinimumSize = new System.Drawing.Size(1024, 600);
-            this.Name = "Main";
+            this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "POS - Capung";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMain_FormClosed);
             this.Load += new System.EventHandler(this.Main_Load);
             this.pnlLeftPane.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -365,7 +367,7 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Label lblUser;
+        private System.Windows.Forms.Label lblCurrentUser;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label lblHeader;
         private System.Windows.Forms.Button btnLogout;

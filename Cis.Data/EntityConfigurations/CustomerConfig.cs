@@ -51,6 +51,7 @@ namespace Cis.Data
 
             builder.Property(c => c.SipaExpiredDate)
                 .HasColumnName("SIPA_EXP_DATE")
+                .HasDefaultValue("1900-01-01")
                 .IsRequired();
 
             builder.Property(c => c.SiaNo)

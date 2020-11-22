@@ -94,5 +94,14 @@ namespace CisWindowsFormsApp.Properties {
                 return ((string)(this["CompBankAcc"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Georgeous")]
+        public string CurrentUser {
+            get {
+                return ((string)(this["CurrentUser"]));
+            }
+        }
     }
 }

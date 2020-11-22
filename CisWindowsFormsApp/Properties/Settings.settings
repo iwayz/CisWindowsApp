@@ -26,5 +26,8 @@
     <Setting Name="CompBankAcc" Type="System.String" Scope="Application">
       <Value Profile="(Default)">BCA 344.025.7070</Value>
     </Setting>
+    <Setting Name="CurrentUser" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Georgeous</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

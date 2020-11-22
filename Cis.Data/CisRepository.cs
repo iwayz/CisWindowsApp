@@ -10,10 +10,11 @@ namespace Cis.Data
     public class CisRepository<T> : IRepository<T> where T : class, IEntity
     {
         DbSet<T> Entity { get; set; }
-
+        CisDbContext _dbCisDbContext;
         public CisRepository(CisDbContext cisDbContext)
         {
             Entity = cisDbContext.Set<T>();
+            _dbCisDbContext = cisDbContext;
         }
         public void Add(T entity) => Entity.Add(entity);
 
@@ -30,7 +31,11 @@ namespace Cis.Data
             return GetAll().FirstOrDefault(e => e.Id == id);
         }
 
-        public void Update(T entity) => Entity.Update(entity);
+        public void Update(T entity)
+        {
+            _dbCisDbContext.Entry(entity).State = EntityState.Modified; 
+            Entity.Update(entity);
+        }
 
         public void Update(IEnumerable<T> entities) => Entity.UpdateRange(entities);
         
