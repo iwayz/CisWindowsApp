@@ -28,20 +28,6 @@ namespace CisWindowsFormsApp
             lblTotalProvince.Text = total.ToString();
         }
 
-        private void lvProvince_MouseClick(object sender, MouseEventArgs e)
-        {
-            var total = BindDataListView(lvDistrict, Constant.LocationType.District, lvProvince.SelectedItems[0].Text);
-            lblTotalDistrict.Text = total.ToString();
-            lvSubDistrict.Items.Clear();
-            lblTotalSubDistrict.Text = "0";
-        }
-        
-        private void lvDistrict_MouseClick(object sender, MouseEventArgs e)
-        {
-            var total = BindDataListView(lvSubDistrict, Constant.LocationType.SubDistrict, lvDistrict.SelectedItems[0].Text);
-            lblTotalSubDistrict.Text = total.ToString();
-        }
-
         private int BindDataListView(ListView parentListView, Constant.LocationType locationType, string parentId = "")
         {
             var uow = new UnitOfWork<Location>(dbContext);
@@ -66,6 +52,26 @@ namespace CisWindowsFormsApp
                 parentListView.Items.Add(listViewItem);
             }
             return locations.Count();
+        }
+
+        private void lvDistrict_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lvDistrict.SelectedItems.Count < 1) return;
+
+            var total = BindDataListView(lvSubDistrict, Constant.LocationType.SubDistrict, lvDistrict.SelectedItems[0].Text);
+            lblTotalSubDistrict.Text = total.ToString();
+            lblDistrict.Text = lvDistrict.SelectedItems[0].SubItems[1].Text;
+        }
+
+        private void lvProvince_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lvProvince.SelectedItems.Count < 1) return;
+
+            var total = BindDataListView(lvDistrict, Constant.LocationType.District, lvProvince.SelectedItems[0].Text);
+            lblTotalDistrict.Text = total.ToString();
+            lvSubDistrict.Items.Clear();
+            lblTotalSubDistrict.Text = "0";
+            lblProvince.Text = lvProvince.SelectedItems[0].SubItems[1].Text;
         }
     }
 }

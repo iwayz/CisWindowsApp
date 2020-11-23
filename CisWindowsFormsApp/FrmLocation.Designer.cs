@@ -42,10 +42,19 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lblTotalProvince = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.lblTotalDistrict = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.lblTotalSubDistrict = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lblProvince = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.lblDistrict = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // lvProvince
@@ -61,10 +70,10 @@
             this.lvProvince.Location = new System.Drawing.Point(71, 71);
             this.lvProvince.Name = "lvProvince";
             this.lvProvince.Size = new System.Drawing.Size(222, 511);
-            this.lvProvince.TabIndex = 0;
+            this.lvProvince.TabIndex = 1;
             this.lvProvince.UseCompatibleStateImageBehavior = false;
             this.lvProvince.View = System.Windows.Forms.View.Details;
-            this.lvProvince.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lvProvince_MouseClick);
+            this.lvProvince.SelectedIndexChanged += new System.EventHandler(this.lvProvince_SelectedIndexChanged);
             // 
             // ID
             // 
@@ -88,10 +97,10 @@
             this.lvDistrict.Location = new System.Drawing.Point(340, 71);
             this.lvDistrict.Name = "lvDistrict";
             this.lvDistrict.Size = new System.Drawing.Size(222, 511);
-            this.lvDistrict.TabIndex = 0;
+            this.lvDistrict.TabIndex = 2;
             this.lvDistrict.UseCompatibleStateImageBehavior = false;
             this.lvDistrict.View = System.Windows.Forms.View.Details;
-            this.lvDistrict.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lvDistrict_MouseClick);
+            this.lvDistrict.SelectedIndexChanged += new System.EventHandler(this.lvDistrict_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
@@ -115,7 +124,7 @@
             this.lvSubDistrict.Location = new System.Drawing.Point(609, 71);
             this.lvSubDistrict.Name = "lvSubDistrict";
             this.lvSubDistrict.Size = new System.Drawing.Size(222, 511);
-            this.lvSubDistrict.TabIndex = 0;
+            this.lvSubDistrict.TabIndex = 3;
             this.lvSubDistrict.UseCompatibleStateImageBehavior = false;
             this.lvSubDistrict.View = System.Windows.Forms.View.Details;
             // 
@@ -163,84 +172,153 @@
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
-            this.label4.Location = new System.Drawing.Point(156, 593);
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(13, 4);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 19);
+            this.label4.Size = new System.Drawing.Size(194, 19);
             this.label4.TabIndex = 1;
-            this.label4.Text = "Total:";
+            this.label4.Text = "Total Provinsi di";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblTotalProvince
             // 
-            this.lblTotalProvince.Font = new System.Drawing.Font("Calibri", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTotalProvince.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
-            this.lblTotalProvince.Location = new System.Drawing.Point(209, 585);
+            this.lblTotalProvince.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblTotalProvince.ForeColor = System.Drawing.Color.White;
+            this.lblTotalProvince.Location = new System.Drawing.Point(13, 50);
             this.lblTotalProvince.Name = "lblTotalProvince";
-            this.lblTotalProvince.Size = new System.Drawing.Size(84, 60);
+            this.lblTotalProvince.Size = new System.Drawing.Size(194, 60);
             this.lblTotalProvince.TabIndex = 1;
             this.lblTotalProvince.Text = "0";
-            this.lblTotalProvince.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
-            this.label5.Location = new System.Drawing.Point(425, 593);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(47, 19);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Total:";
+            this.lblTotalProvince.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblTotalDistrict
             // 
-            this.lblTotalDistrict.Font = new System.Drawing.Font("Calibri", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTotalDistrict.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
-            this.lblTotalDistrict.Location = new System.Drawing.Point(478, 585);
+            this.lblTotalDistrict.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblTotalDistrict.ForeColor = System.Drawing.Color.White;
+            this.lblTotalDistrict.Location = new System.Drawing.Point(13, 54);
             this.lblTotalDistrict.Name = "lblTotalDistrict";
-            this.lblTotalDistrict.Size = new System.Drawing.Size(84, 60);
+            this.lblTotalDistrict.Size = new System.Drawing.Size(194, 60);
             this.lblTotalDistrict.TabIndex = 1;
             this.lblTotalDistrict.Text = "0";
-            this.lblTotalDistrict.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
-            this.label8.Location = new System.Drawing.Point(694, 593);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(47, 19);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "Total:";
+            this.lblTotalDistrict.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblTotalSubDistrict
             // 
-            this.lblTotalSubDistrict.Font = new System.Drawing.Font("Calibri", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTotalSubDistrict.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
-            this.lblTotalSubDistrict.Location = new System.Drawing.Point(747, 585);
+            this.lblTotalSubDistrict.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblTotalSubDistrict.ForeColor = System.Drawing.Color.White;
+            this.lblTotalSubDistrict.Location = new System.Drawing.Point(13, 50);
             this.lblTotalSubDistrict.Name = "lblTotalSubDistrict";
-            this.lblTotalSubDistrict.Size = new System.Drawing.Size(84, 60);
+            this.lblTotalSubDistrict.Size = new System.Drawing.Size(194, 60);
             this.lblTotalSubDistrict.TabIndex = 1;
             this.lblTotalSubDistrict.Text = "0";
-            this.lblTotalSubDistrict.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblTotalSubDistrict.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.lblTotalProvince);
+            this.panel1.Location = new System.Drawing.Point(72, 598);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(221, 133);
+            this.panel1.TabIndex = 4;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.panel2.Controls.Add(this.lblProvince);
+            this.panel2.Controls.Add(this.label7);
+            this.panel2.Controls.Add(this.lblTotalDistrict);
+            this.panel2.Location = new System.Drawing.Point(341, 598);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(221, 133);
+            this.panel2.TabIndex = 4;
+            // 
+            // lblProvince
+            // 
+            this.lblProvince.BackColor = System.Drawing.Color.Transparent;
+            this.lblProvince.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblProvince.ForeColor = System.Drawing.Color.White;
+            this.lblProvince.Location = new System.Drawing.Point(13, 23);
+            this.lblProvince.Name = "lblProvince";
+            this.lblProvince.Size = new System.Drawing.Size(194, 19);
+            this.lblProvince.TabIndex = 1;
+            this.lblProvince.Text = "Provinsi";
+            this.lblProvince.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label7
+            // 
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(13, 4);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(194, 19);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "Total Kab./Kota di";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.panel3.Controls.Add(this.lblDistrict);
+            this.panel3.Controls.Add(this.label6);
+            this.panel3.Controls.Add(this.lblTotalSubDistrict);
+            this.panel3.Location = new System.Drawing.Point(609, 602);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(221, 133);
+            this.panel3.TabIndex = 4;
+            // 
+            // lblDistrict
+            // 
+            this.lblDistrict.BackColor = System.Drawing.Color.Transparent;
+            this.lblDistrict.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblDistrict.ForeColor = System.Drawing.Color.White;
+            this.lblDistrict.Location = new System.Drawing.Point(13, 23);
+            this.lblDistrict.Name = "lblDistrict";
+            this.lblDistrict.Size = new System.Drawing.Size(194, 19);
+            this.lblDistrict.TabIndex = 1;
+            this.lblDistrict.Text = "Kabupaten";
+            this.lblDistrict.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label6
+            // 
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(13, 4);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(194, 19);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Total Kecamatan di";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label5
+            // 
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(13, 23);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(194, 19);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "INDONESIA";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FrmLocation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(900, 670);
+            this.ClientSize = new System.Drawing.Size(900, 808);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.lblTotalSubDistrict);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.lblTotalDistrict);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.lblTotalProvince);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lvSubDistrict);
             this.Controls.Add(this.lvDistrict);
@@ -248,6 +326,9 @@
             this.Name = "FrmLocation";
             this.Text = "Data Kota";
             this.Load += new System.EventHandler(this.FrmLocation_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -269,9 +350,15 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblTotalProvince;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblTotalDistrict;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblTotalSubDistrict;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label lblProvince;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label lblDistrict;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
     }
 }

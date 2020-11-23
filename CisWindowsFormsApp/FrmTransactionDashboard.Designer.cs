@@ -30,12 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTransactionDashboard));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnSales = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pnlTransactionChildren = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblTransactionChildHeader = new System.Windows.Forms.Label();
-            this.btnSales = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.pnlTransactionChildren = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -52,6 +52,40 @@
             this.panel1.Size = new System.Drawing.Size(800, 100);
             this.panel1.TabIndex = 0;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(74)))), ((int)(((byte)(156)))));
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Location = new System.Drawing.Point(171, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(141, 70);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Pembelian";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnSales
+            // 
+            this.btnSales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(56)))), ((int)(((byte)(89)))));
+            this.btnSales.FlatAppearance.BorderSize = 0;
+            this.btnSales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSales.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnSales.ForeColor = System.Drawing.Color.White;
+            this.btnSales.Image = ((System.Drawing.Image)(resources.GetObject("btnSales.Image")));
+            this.btnSales.Location = new System.Drawing.Point(24, 12);
+            this.btnSales.Name = "btnSales";
+            this.btnSales.Size = new System.Drawing.Size(141, 70);
+            this.btnSales.TabIndex = 0;
+            this.btnSales.Text = "Penjualan";
+            this.btnSales.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnSales.UseVisualStyleBackColor = false;
+            this.btnSales.Click += new System.EventHandler(this.btnSales_Click);
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.panel4);
@@ -60,14 +94,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(800, 40);
             this.panel2.TabIndex = 1;
-            // 
-            // pnlTransactionChildren
-            // 
-            this.pnlTransactionChildren.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlTransactionChildren.Location = new System.Drawing.Point(0, 140);
-            this.pnlTransactionChildren.Name = "pnlTransactionChildren";
-            this.pnlTransactionChildren.Size = new System.Drawing.Size(800, 310);
-            this.pnlTransactionChildren.TabIndex = 2;
             // 
             // panel4
             // 
@@ -89,39 +115,13 @@
             this.lblTransactionChildHeader.TabIndex = 0;
             this.lblTransactionChildHeader.Text = "Summary";
             // 
-            // btnSales
+            // pnlTransactionChildren
             // 
-            this.btnSales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(56)))), ((int)(((byte)(89)))));
-            this.btnSales.FlatAppearance.BorderSize = 0;
-            this.btnSales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSales.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnSales.ForeColor = System.Drawing.Color.White;
-            this.btnSales.Image = ((System.Drawing.Image)(resources.GetObject("btnSales.Image")));
-            this.btnSales.Location = new System.Drawing.Point(24, 12);
-            this.btnSales.Name = "btnSales";
-            this.btnSales.Size = new System.Drawing.Size(141, 70);
-            this.btnSales.TabIndex = 0;
-            this.btnSales.Text = "Sales";
-            this.btnSales.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnSales.UseVisualStyleBackColor = false;
-            this.btnSales.Click += new System.EventHandler(this.btnSales_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(74)))), ((int)(((byte)(156)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(171, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(141, 70);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Purchase";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.pnlTransactionChildren.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlTransactionChildren.Location = new System.Drawing.Point(0, 140);
+            this.pnlTransactionChildren.Name = "pnlTransactionChildren";
+            this.pnlTransactionChildren.Size = new System.Drawing.Size(800, 310);
+            this.pnlTransactionChildren.TabIndex = 2;
             // 
             // FrmTransactionDashboard
             // 

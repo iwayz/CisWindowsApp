@@ -41,6 +41,9 @@
             this.pnlSeparatorLeftPane = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.pnlLogo = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -54,6 +57,7 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlSeparatorLeftPane.SuspendLayout();
+            this.pnlLogo.SuspendLayout();
             this.pnlHeader.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -85,7 +89,7 @@
             this.btnLogout.ForeColor = System.Drawing.Color.White;
             this.btnLogout.Image = ((System.Drawing.Image)(resources.GetObject("btnLogout.Image")));
             this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogout.Location = new System.Drawing.Point(0, 236);
+            this.btnLogout.Location = new System.Drawing.Point(0, 385);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnLogout.Size = new System.Drawing.Size(171, 35);
@@ -148,7 +152,7 @@
             this.btnReporting.ForeColor = System.Drawing.Color.White;
             this.btnReporting.Image = ((System.Drawing.Image)(resources.GetObject("btnReporting.Image")));
             this.btnReporting.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReporting.Location = new System.Drawing.Point(0, 201);
+            this.btnReporting.Location = new System.Drawing.Point(0, 350);
             this.btnReporting.Name = "btnReporting";
             this.btnReporting.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnReporting.Size = new System.Drawing.Size(171, 35);
@@ -169,7 +173,7 @@
             this.btnTransaksi.ForeColor = System.Drawing.Color.White;
             this.btnTransaksi.Image = ((System.Drawing.Image)(resources.GetObject("btnTransaksi.Image")));
             this.btnTransaksi.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTransaksi.Location = new System.Drawing.Point(0, 166);
+            this.btnTransaksi.Location = new System.Drawing.Point(0, 315);
             this.btnTransaksi.Name = "btnTransaksi";
             this.btnTransaksi.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnTransaksi.Size = new System.Drawing.Size(171, 35);
@@ -190,7 +194,7 @@
             this.btnMasterData.ForeColor = System.Drawing.Color.White;
             this.btnMasterData.Image = ((System.Drawing.Image)(resources.GetObject("btnMasterData.Image")));
             this.btnMasterData.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMasterData.Location = new System.Drawing.Point(0, 131);
+            this.btnMasterData.Location = new System.Drawing.Point(0, 280);
             this.btnMasterData.Name = "btnMasterData";
             this.btnMasterData.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnMasterData.Size = new System.Drawing.Size(171, 35);
@@ -206,7 +210,7 @@
             this.pnlSeparatorLeftPane.BackColor = System.Drawing.Color.Transparent;
             this.pnlSeparatorLeftPane.Controls.Add(this.panel5);
             this.pnlSeparatorLeftPane.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlSeparatorLeftPane.Location = new System.Drawing.Point(0, 92);
+            this.pnlSeparatorLeftPane.Location = new System.Drawing.Point(0, 241);
             this.pnlSeparatorLeftPane.Name = "pnlSeparatorLeftPane";
             this.pnlSeparatorLeftPane.Size = new System.Drawing.Size(171, 39);
             this.pnlSeparatorLeftPane.TabIndex = 1;
@@ -221,11 +225,51 @@
             // 
             // pnlLogo
             // 
+            this.pnlLogo.BackColor = System.Drawing.Color.Transparent;
+            this.pnlLogo.Controls.Add(this.label1);
+            this.pnlLogo.Controls.Add(this.label2);
+            this.pnlLogo.Controls.Add(this.label3);
             this.pnlLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlLogo.Location = new System.Drawing.Point(0, 0);
             this.pnlLogo.Name = "pnlLogo";
-            this.pnlLogo.Size = new System.Drawing.Size(171, 92);
+            this.pnlLogo.Size = new System.Drawing.Size(171, 241);
             this.pnlLogo.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label1.Font = new System.Drawing.Font("Calibri", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(171, 81);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "P.O.S";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label2.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(-6, 81);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(179, 28);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "CAPUNG-MAGELANG";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(2, 109);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(171, 26);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "©2020 v1.0";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel2
             // 
@@ -340,6 +384,7 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlSeparatorLeftPane.ResumeLayout(false);
+            this.pnlLogo.ResumeLayout(false);
             this.pnlHeader.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
@@ -371,5 +416,8 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label lblHeader;
         private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -80,6 +80,7 @@ namespace CisWindowsFormsApp
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            if (!ValidateEmptyField()) return;
             var existingProduct = uowProduct.Repository.GetAll().Where(p => p.ProductCode == txtProductCode.Text.Trim()).FirstOrDefault();
             if (existingProduct != null)
             {
@@ -113,6 +114,7 @@ namespace CisWindowsFormsApp
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (!ValidateEmptyField()) return;
             var repoLastUpdated = DateTime.Parse(dgvProduct.CurrentRow.Cells[nameof(Product.ModifiedAt)].Value.ToString());
             var lastUpdated = DateTime.Parse(txtModifiedAt.Text.Trim());
             
@@ -315,6 +317,18 @@ namespace CisWindowsFormsApp
         private void dgvProduct_Click(object sender, EventArgs e)
         {
             SetUIbySelectedGridItem();
+        }
+
+        private bool ValidateEmptyField()
+        {
+            if (string.IsNullOrEmpty(txtProductCode.Text) || string.IsNullOrEmpty(txtProductName.Text))
+            {
+                MessageBox.Show("Data Kode Produk dan Nama Produk tidak boleh kosong."
+                      , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+
+            }
+            return true;
         }
     }
 }

@@ -408,7 +408,7 @@
             this.txtModifiedAt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtModifiedAt.Location = new System.Drawing.Point(188, 36);
             this.txtModifiedAt.Name = "txtModifiedAt";
-            this.txtModifiedAt.Size = new System.Drawing.Size(162, 31);
+            this.txtModifiedAt.Size = new System.Drawing.Size(188, 31);
             this.txtModifiedAt.TabIndex = 1;
             // 
             // txtProductId

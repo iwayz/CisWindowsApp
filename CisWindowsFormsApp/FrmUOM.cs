@@ -35,7 +35,7 @@ namespace CisWindowsFormsApp
             var existingUom = uowUom.Repository.GetAll().Where(u => u.UomCode == txtUomCode.Text.Trim()).FirstOrDefault();
             if (existingUom != null)
             {
-                MessageBox.Show("Data dengan Kode " + txtUomCode.Text.Trim() + " sudah ada. Silakan gunakan Kode Produk yang lain."
+                MessageBox.Show("Data dengan Kode " + txtUomCode.Text.Trim() + " sudah ada. Silakan gunakan Kode yang lain."
                     , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
@@ -180,7 +180,7 @@ namespace CisWindowsFormsApp
 
         private bool ValidateEmptyField()
         {
-            if (string.IsNullOrEmpty(txtUomCode.Text) || string.IsNullOrEmpty(txtUomCode.Text))
+            if (string.IsNullOrEmpty(txtUomCode.Text) || string.IsNullOrEmpty(txtUomDesc.Text))
             {
                 MessageBox.Show("Data Kode Unit dan Keterangan tidak boleh kosong."
                       , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);

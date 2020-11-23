@@ -35,7 +35,9 @@ namespace CisWindowsFormsApp
                 txtPassword.Text = "Password";
                 txtPassword.PasswordChar = '\0'; 
             }
-            txtUserName.Text = string.Empty;
+
+            if (txtUserName.Text == "Username")
+                txtUserName.Text = string.Empty;
         }
 
         private void txtPassword_Enter(object sender, EventArgs e)
@@ -43,14 +45,18 @@ namespace CisWindowsFormsApp
             if (txtUserName.Text == string.Empty)
                 txtUserName.Text = "Username";
 
-            txtPassword.Text = string.Empty;
-            txtPassword.PasswordChar = '*';
+            if (txtPassword.Text == "Password")
+            {
+                txtPassword.Text = string.Empty;
+                txtPassword.PasswordChar = '*';
+            }
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
             var uow = new UnitOfWork<User>(dbContext);
-            var user = uow.Repository.GetAll().Where(u => u.Username == txtUserName.Text.Trim() && u.Password == txtPassword.Text).FirstOrDefault();
+            var pwd = new UserHelper().HashPassword(txtPassword.Text.Trim());
+            var user = uow.Repository.GetAll().Where(u => u.Username == txtUserName.Text.Trim() && u.Password == pwd).FirstOrDefault();
             if (user != null)
             {
                 txtUserName.Text = "Username";

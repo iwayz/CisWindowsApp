@@ -59,9 +59,9 @@
             this.txtUserName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtUserName.Font = new System.Drawing.Font("Calibri", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtUserName.ForeColor = System.Drawing.Color.Silver;
-            this.txtUserName.Location = new System.Drawing.Point(69, 280);
+            this.txtUserName.Location = new System.Drawing.Point(78, 280);
             this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(273, 27);
+            this.txtUserName.Size = new System.Drawing.Size(264, 27);
             this.txtUserName.TabIndex = 2;
             this.txtUserName.Text = "Username";
             this.txtUserName.Enter += new System.EventHandler(this.txtUserName_Enter);
@@ -72,9 +72,9 @@
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPassword.Font = new System.Drawing.Font("Calibri", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtPassword.ForeColor = System.Drawing.Color.Silver;
-            this.txtPassword.Location = new System.Drawing.Point(69, 352);
+            this.txtPassword.Location = new System.Drawing.Point(78, 352);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(273, 27);
+            this.txtPassword.Size = new System.Drawing.Size(264, 27);
             this.txtPassword.TabIndex = 3;
             this.txtPassword.Text = "Password";
             this.txtPassword.Enter += new System.EventHandler(this.txtPassword_Enter);
@@ -155,7 +155,7 @@
             this.lnkExit.Text = "Exit";
             this.lnkExit.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkExit_LinkClicked);
             // 
-            // Login
+            // FrmLogin
             // 
             this.AcceptButton = this.btnLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -173,7 +173,7 @@
             this.Controls.Add(this.txtUserName);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Login";
+            this.Name = "FrmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
