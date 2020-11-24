@@ -5,22 +5,25 @@ using System.Collections.Generic;
 using System.Text;
 using System.Reflection;
 using MySql.Data.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using System.IO;
+using Newtonsoft.Json.Linq;
 
 namespace Cis.Data
 {
-    public partial class CisDbContext: DbContext
+    public partial class CisDbContext : DbContext
     {
-        public CisDbContext(): base()
+        public CisDbContext() : base()
         {
-            
+
         }
 
-        public CisDbContext(DbContextOptions options): base(options)
+        public CisDbContext(DbContextOptions options) : base(options)
         {
-            
+
         }
 
-        public DbSet<Batch> Batches{ get; set; }
+        public DbSet<Batch> Batches { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<MedicineCat> MedicineCategories { get; set; }
@@ -35,10 +38,11 @@ namespace Cis.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if(!optionsBuilder.IsConfigured)
+            if (!optionsBuilder.IsConfigured)
             {
-                //optionsBuilder.UseMySQL(System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
-                optionsBuilder.UseMySQL("Server = localhost; Database = CIS_POS; Uid = root; Pwd = admin;"); 
+                var currentDirectory = System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+                JObject appSettings = JObject.Parse(File.ReadAllText(Path.Combine(currentDirectory,"appsettings.json")));
+                optionsBuilder.UseMySQL(appSettings.SelectToken("ConnectionStrings.DefaultConnection").ToString());
             }
         }
 

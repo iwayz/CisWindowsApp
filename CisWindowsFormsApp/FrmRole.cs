@@ -142,12 +142,12 @@ namespace CisWindowsFormsApp
 
         private void btnDel_Click(object sender, EventArgs e)
         {
-            var uomToDel = uowRole.Repository.GetAll().Where(u => u.RoleCode == txtRoleCode.Text.Trim()).FirstOrDefault();
-            if (uomToDel != null)
+            var roleToDel = uowRole.Repository.GetAll().Where(u => u.RoleCode == txtRoleCode.Text.Trim()).FirstOrDefault();
+            if (roleToDel != null)
             {
                 if (DialogResult.Yes == MessageBox.Show("Yakin akan menghapus data ini?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
                 {
-                    uowRole.Repository.Delete(uomToDel);
+                    uowRole.Repository.Delete(roleToDel);
                     uowRole.Commit();
                     btnReload.PerformClick();
                 }
