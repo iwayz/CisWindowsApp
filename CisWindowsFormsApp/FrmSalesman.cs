@@ -38,31 +38,47 @@ namespace CisWindowsFormsApp
                 SetUIButtonGroup();
             }
 
-            txtShortName.Focus();
+            txtSalesmanCode.Focus();
         }
         
         private void btnClear_Click(object sender, EventArgs e)
         {
             isAdd = true;
             SetUIButtonGroup();
-            txtShortName.Text = string.Empty;
+            
+            txtSalesmanCode.Focus();
+            txtSalesmanCode.Text = string.Empty;
             txtFullName.Text = string.Empty;
+            rbFemale.Checked = true;
+            txtAddress.Text = string.Empty;
+
+            BindLocationComboBox(cbProvince, Constant.LocationType.Province);
+            BindLocationComboBox(cbDistrict, Constant.LocationType.District);
+            BindLocationComboBox(cbSubDistrict, Constant.LocationType.SubDistrict);
+
+            txtPostCode.Text = string.Empty;
+            txtPhone.Text = string.Empty;
+            txtEmail.Text = string.Empty;
+
+            txtSalesmanId.Text = string.Empty;
+            txtModifiedAt.Text = string.Empty;
+
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (!ValidateEmptyField()) return;
-            var existingRole = uowSalesman.Repository.GetAll().Where(r => r.SalesmanCode == txtShortName.Text.Trim()).FirstOrDefault();
+            var existingRole = uowSalesman.Repository.GetAll().Where(r => r.SalesmanCode == txtSalesmanCode.Text.Trim()).FirstOrDefault();
             if (existingRole != null)
             {
-                MessageBox.Show("Data dengan Kode " + txtShortName.Text.Trim() + " sudah ada. Silakan gunakan Kode yang lain."
+                MessageBox.Show("Data dengan Kode " + txtSalesmanCode.Text.Trim() + " sudah ada. Silakan gunakan Kode yang lain."
                     , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
                 var salesmanToAdd = new Salesman
                 {
-                    SalesmanCode = txtShortName.Text.Trim(),
+                    SalesmanCode = txtSalesmanCode.Text.Trim(),
                     FullName = txtFullName.Text.Trim(),
                     Gender = rbFemale.Checked ? Constant.Gender.Female : Constant.Gender.Male,
                     Address = txtAddress.Text.Trim(),
@@ -71,7 +87,7 @@ namespace CisWindowsFormsApp
                     Email = txtEmail.Text.Trim(),
                     ProvinceId = cbProvince.SelectedValue.ToString(),
                     DistrictId = cbDistrict.SelectedValue.ToString(),
-                    SubDistrictId = cbProvince.SelectedValue.ToString(),
+                    SubDistrictId = cbSubDistrict.SelectedValue.ToString(),
 
                     CreatedBy = Properties.Settings.Default.CurrentUser,
                     CreatedAt = DateTime.Now,
@@ -115,7 +131,7 @@ namespace CisWindowsFormsApp
 
         private void btnDel_Click(object sender, EventArgs e)
         {
-            var roleToDel = uowSalesman.Repository.GetAll().Where(u => u.SalesmanCode == txtShortName.Text.Trim()).FirstOrDefault();
+            var roleToDel = uowSalesman.Repository.GetAll().Where(u => u.SalesmanCode == txtSalesmanCode.Text.Trim()).FirstOrDefault();
             if (roleToDel != null)
             {
                 if (DialogResult.Yes == MessageBox.Show("Yakin akan menghapus data ini?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
@@ -127,7 +143,7 @@ namespace CisWindowsFormsApp
             }
             else
             {
-                MessageBox.Show("Data dengan Kode " + txtShortName.Text.Trim() + " tidak ditemukan. Silakan klik Reload dan hapus data yang diinginkan."
+                MessageBox.Show("Data dengan Kode " + txtSalesmanCode.Text.Trim() + " tidak ditemukan. Silakan klik Reload dan hapus data yang diinginkan."
                     , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -135,25 +151,19 @@ namespace CisWindowsFormsApp
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (!ValidateEmptyField()) return;
-            if (dgvSalesman.RowCount <=0)
-            {
-                MessageBox.Show("Tekan tombol Add untuk menyimpan data baru."
-                    , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
 
             var repoLastUpdated = DateTime.Parse(dgvSalesman.CurrentRow.Cells[nameof(Salesman.ModifiedAt)].Value.ToString());
             var lastUpdated = DateTime.Parse(txtModifiedAt.Text.Trim());
 
             if (lastUpdated != repoLastUpdated)
             {
-                MessageBox.Show("Data dengan Kode " + txtShortName.Text.Trim() + " telah diupdate sebelumnya. Silakan klik Reload untuk mendapatkan data terbaru dan ubah data yang diinginkan."
+                MessageBox.Show("Data dengan Kode " + txtSalesmanCode.Text.Trim() + " telah diupdate sebelumnya. Silakan klik Reload untuk mendapatkan data terbaru dan ubah data yang diinginkan."
                     , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
                 var salesmanToUpdate = uowSalesman.Repository.GetById(txtSalesmanId.Text.Trim());
-                salesmanToUpdate.SalesmanCode = txtShortName.Text.Trim();
+                salesmanToUpdate.SalesmanCode = txtSalesmanCode.Text.Trim();
                 salesmanToUpdate.FullName = txtFullName.Text.Trim();
                 salesmanToUpdate.Gender = rbFemale.Checked ? Constant.Gender.Female : Constant.Gender.Male;
                 salesmanToUpdate.Address = txtAddress.Text.Trim();
@@ -162,7 +172,7 @@ namespace CisWindowsFormsApp
                 salesmanToUpdate.Email = txtEmail.Text.Trim();
                 salesmanToUpdate.ProvinceId = cbProvince.SelectedValue.ToString();
                 salesmanToUpdate.DistrictId = cbDistrict.SelectedValue.ToString();
-                salesmanToUpdate.SubDistrictId = cbProvince.SelectedValue.ToString();
+                salesmanToUpdate.SubDistrictId = cbSubDistrict.SelectedValue.ToString();
 
                 salesmanToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUser;
                 salesmanToUpdate.ModifiedAt = DateTime.Now;
@@ -187,6 +197,12 @@ namespace CisWindowsFormsApp
                 salesman.Id,
                 salesman.SalesmanCode,
                 salesman.FullName,
+                salesman.Gender,
+                salesman.Address,
+                salesman.ProvinceId,
+                salesman.DistrictId,
+                salesman.SubDistrictId,
+                salesman.PostalCode,
                 salesman.Phone,
                 salesman.Email,
                 salesman.ModifiedAt
@@ -213,9 +229,18 @@ namespace CisWindowsFormsApp
         private void SetUIbySelectedGridItem()
         {
             var currentRow = dgvSalesman.CurrentRow;
-            txtShortName.Text = currentRow.Cells[nameof(Salesman.SalesmanCode)].Value.ToString();
+            txtSalesmanCode.Text = currentRow.Cells[nameof(Salesman.SalesmanCode)].Value.ToString();
             txtFullName.Text = currentRow.Cells[nameof(Salesman.FullName)].Value.ToString();
-
+            rbFemale.Checked = currentRow.Cells[nameof(Salesman.Gender)].Value.ToString() == Constant.Gender.Female.ToString() ? true : false;
+            rbMale.Checked = currentRow.Cells[nameof(Salesman.Gender)].Value.ToString() == Constant.Gender.Male.ToString() ? true : false;
+            txtAddress.Text = currentRow.Cells[nameof(Salesman.Address)].Value.ToString();
+            cbProvince.SelectedValue = currentRow.Cells[nameof(Salesman.ProvinceId)].Value.ToString();
+            cbDistrict.SelectedValue = currentRow.Cells[nameof(Salesman.DistrictId)].Value.ToString();
+            cbSubDistrict.SelectedValue = currentRow.Cells[nameof(Salesman.SubDistrictId)].Value.ToString();
+            txtPostCode.Text = currentRow.Cells[nameof(Salesman.PostalCode)].Value.ToString();
+            txtPhone.Text = currentRow.Cells[nameof(Salesman.Phone)].Value.ToString();
+            txtEmail.Text = currentRow.Cells[nameof(Salesman.Email)].Value.ToString();
+            
             // hidden fields
             txtSalesmanId.Text = currentRow.Cells[nameof(Salesman.Id)].Value.ToString();
             txtModifiedAt.Text = currentRow.Cells[nameof(Salesman.ModifiedAt)].Value.ToString();
@@ -224,7 +249,7 @@ namespace CisWindowsFormsApp
 
         private bool ValidateEmptyField()
         {
-            if (string.IsNullOrEmpty(txtShortName.Text) || string.IsNullOrEmpty(txtFullName.Text))
+            if (string.IsNullOrEmpty(txtSalesmanCode.Text) || string.IsNullOrEmpty(txtFullName.Text))
             {
                 MessageBox.Show("Data Kode Sales dan Nama Lengkap tidak boleh kosong."
                       , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);

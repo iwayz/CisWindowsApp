@@ -94,6 +94,7 @@ namespace CisWindowsFormsApp
             SetUIButtonGroup(); 
             txtRoleCode.Text = string.Empty;
             txtDescription.Text = string.Empty;
+            txtRoleCode.Focus();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

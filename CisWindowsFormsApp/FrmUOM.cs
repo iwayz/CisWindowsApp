@@ -30,6 +30,7 @@ namespace CisWindowsFormsApp
             SetUIButtonGroup(); 
             txtUomCode.Text = string.Empty;
             txtUomDesc.Text = string.Empty;
+            txtUomCode.Focus();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

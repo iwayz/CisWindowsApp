@@ -77,6 +77,8 @@ namespace CisWindowsFormsApp
             SetUIButtonGroup(); 
             txtProductCode.Text = string.Empty;
             txtProductName.Text = string.Empty;
+            txtProductCode.Focus();
+
             txtPrice.Text = "0";
             dtpDecreeDate.Value = DateTime.Now;
             txtDiscount.Text = "0";

@@ -51,6 +51,7 @@ namespace CisWindowsFormsApp
             txtFullName.Text = string.Empty;
             txtRetypePassword.Text = string.Empty;
             chkChangePassword.Checked = false;
+            txtUsername.Focus();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

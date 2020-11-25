@@ -47,6 +47,7 @@ namespace CisWindowsFormsApp
             SetUIButtonGroup(); 
             txtMedCatCode.Text = string.Empty;
             txtMedCat.Text = string.Empty;
+            txtMedCatCode.Focus();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

@@ -51,6 +51,7 @@ namespace CisWindowsFormsApp
             SetUIButtonGroup(); 
             txtAreaCode.Text = string.Empty;
             txtDescription.Text = string.Empty;
+            txtAreaCode.Focus();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

@@ -33,7 +33,7 @@
             this.txtSalesmanId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtShortName = new System.Windows.Forms.TextBox();
+            this.txtSalesmanCode = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtFullName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -108,15 +108,15 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Id";
             // 
-            // txtShortName
+            // txtSalesmanCode
             // 
-            this.txtShortName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtShortName.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtShortName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtShortName.Location = new System.Drawing.Point(36, 55);
-            this.txtShortName.Name = "txtShortName";
-            this.txtShortName.Size = new System.Drawing.Size(172, 31);
-            this.txtShortName.TabIndex = 1;
+            this.txtSalesmanCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSalesmanCode.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtSalesmanCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtSalesmanCode.Location = new System.Drawing.Point(36, 55);
+            this.txtSalesmanCode.Name = "txtSalesmanCode";
+            this.txtSalesmanCode.Size = new System.Drawing.Size(172, 31);
+            this.txtSalesmanCode.TabIndex = 1;
             // 
             // label3
             // 
@@ -322,6 +322,7 @@
             this.txtPostCode.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtPostCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtPostCode.Location = new System.Drawing.Point(36, 457);
+            this.txtPostCode.MaxLength = 5;
             this.txtPostCode.Name = "txtPostCode";
             this.txtPostCode.Size = new System.Drawing.Size(121, 31);
             this.txtPostCode.TabIndex = 8;
@@ -365,6 +366,7 @@
             this.txtPhone.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtPhone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtPhone.Location = new System.Drawing.Point(168, 457);
+            this.txtPhone.MaxLength = 20;
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(198, 31);
             this.txtPhone.TabIndex = 9;
@@ -482,7 +484,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtFullName);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtShortName);
+            this.Controls.Add(this.txtSalesmanCode);
             this.Name = "FrmSalesman";
             this.Text = "Salesman";
             this.Load += new System.EventHandler(this.FrmSalesman_Load);
@@ -502,7 +504,7 @@
         private System.Windows.Forms.TextBox txtSalesmanId;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtShortName;
+        private System.Windows.Forms.TextBox txtSalesmanCode;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtFullName;
         private System.Windows.Forms.Label label4;
