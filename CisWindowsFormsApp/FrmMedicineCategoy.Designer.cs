@@ -42,6 +42,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtMedCat = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtMedCatCode = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMedCat)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -191,7 +193,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(27, 26);
+            this.label3.Location = new System.Drawing.Point(31, 79);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 15);
             this.label3.TabIndex = 4;
@@ -202,10 +204,10 @@
             this.txtMedCat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMedCat.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtMedCat.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtMedCat.Location = new System.Drawing.Point(27, 44);
+            this.txtMedCat.Location = new System.Drawing.Point(31, 97);
             this.txtMedCat.Name = "txtMedCat";
             this.txtMedCat.Size = new System.Drawing.Size(257, 31);
-            this.txtMedCat.TabIndex = 1;
+            this.txtMedCat.TabIndex = 2;
             // 
             // panel1
             // 
@@ -219,6 +221,27 @@
             this.panel1.TabIndex = 8;
             this.panel1.Visible = false;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label4.Location = new System.Drawing.Point(30, 27);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(84, 15);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Kode Kategori";
+            // 
+            // txtMedCatCode
+            // 
+            this.txtMedCatCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtMedCatCode.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtMedCatCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtMedCatCode.Location = new System.Drawing.Point(30, 45);
+            this.txtMedCatCode.Name = "txtMedCatCode";
+            this.txtMedCatCode.Size = new System.Drawing.Size(182, 31);
+            this.txtMedCatCode.TabIndex = 1;
+            // 
             // FrmMedicineCategoy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -226,6 +249,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(690, 428);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.txtMedCatCode);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.txtMedCat);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnReload);
@@ -260,5 +285,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtMedCat;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtMedCatCode;
     }
 }

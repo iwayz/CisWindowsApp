@@ -15,8 +15,9 @@ namespace CisWindowsFormsApp
     {
         CisDbContext dbContext;
         int gvSelectedIndex = 0;
-        UnitOfWork<OutletType> uowOutlet; 
-        
+        UnitOfWork<OutletType> uowOutlet;
+        bool isAdd = false;
+
         public FrmOutletType()
         {
             InitializeComponent();
@@ -30,7 +31,13 @@ namespace CisWindowsFormsApp
             BindOutletTypeGridView();
             SetUIGridView();
 
-            txtOutlet.Focus();
+            if (dgvOutlet.RowCount <= 0)
+            {
+                isAdd = true;
+                SetUIButtonGroup();
+            }
+
+            txtOutletCode.Focus();
         }
 
         private void dgvOutlet_Click(object sender, EventArgs e)
@@ -40,7 +47,11 @@ namespace CisWindowsFormsApp
 
         private void btnClear_Click(object sender, EventArgs e)
         {
+            isAdd = true;
+            SetUIButtonGroup(); 
+            txtOutletCode.Text = string.Empty;
             txtOutlet.Text = string.Empty;
+            txtOutletCode.Focus();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -50,13 +61,14 @@ namespace CisWindowsFormsApp
             var existingOutlet = uowOutlet.Repository.GetAll().Where(u => u.Description == txtOutlet.Text.Trim()).FirstOrDefault();
             if (existingOutlet != null)
             {
-                MessageBox.Show("Data '" + txtOutlet.Text.Trim() + "' sudah ada. Silakan gunakan Jenis Outlet yang lain."
+                MessageBox.Show("Data '" + txtOutlet.Text.Trim() + "' sudah ada. Silakan gunakan kode yang lain."
                     , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
                 var outletToAdd = new OutletType
                 {
+                    OutletCode = txtOutletCode.Text.Trim(),
                     Description = txtOutlet.Text.Trim(),
                     CreatedBy = Properties.Settings.Default.CurrentUser,
                     CreatedAt = DateTime.Now,
@@ -71,7 +83,6 @@ namespace CisWindowsFormsApp
 
         private void btnReload_Click(object sender, EventArgs e)
         {
-            // TODO: apply this logic to all other forms
             var countOutlet = uowOutlet.Repository.GetAll().Count();
             if (countOutlet <= 0)
             {
@@ -95,6 +106,9 @@ namespace CisWindowsFormsApp
                 SetUIbySelectedGridItem();
                 txtModifiedAt.Text = dgvOutlet.CurrentRow.Cells[nameof(OutletType.ModifiedAt)].Value.ToString();
             }
+
+            isAdd = dgvOutlet.RowCount <= 0;
+            SetUIButtonGroup();
         }
 
         private void btnDel_Click(object sender, EventArgs e)
@@ -119,6 +133,7 @@ namespace CisWindowsFormsApp
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (!ValidateEmptyField()) return;
+            
             var repoLastUpdated = DateTime.Parse(dgvOutlet.CurrentRow.Cells[nameof(OutletType.ModifiedAt)].Value.ToString());
             var lastUpdated = DateTime.Parse(txtModifiedAt.Text.Trim());
 
@@ -130,6 +145,7 @@ namespace CisWindowsFormsApp
             else
             {
                 var outletToUpdate = uowOutlet.Repository.GetById(txtOutletId.Text.Trim());
+                outletToUpdate.OutletCode = txtOutletCode.Text.Trim();
                 outletToUpdate.Description = txtOutlet.Text.Trim();
                 outletToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUser;
                 outletToUpdate.ModifiedAt = DateTime.Now;
@@ -148,6 +164,7 @@ namespace CisWindowsFormsApp
             new
             {
                 outlet.Id,
+                outlet.OutletCode,
                 outlet.Description,
                 outlet.ModifiedAt
             });
@@ -157,6 +174,7 @@ namespace CisWindowsFormsApp
 
         private void SetUIGridView()
         {
+            dgvOutlet.Columns[nameof(OutletType.OutletCode)].HeaderText = "KODE OUTLET";
             dgvOutlet.Columns[nameof(OutletType.Description)].HeaderText = "JENIS OUTLET";
             dgvOutlet.Columns[nameof(OutletType.Description)].Width = 320;
 
@@ -167,24 +185,33 @@ namespace CisWindowsFormsApp
         private void SetUIbySelectedGridItem()
         {
             var currentRow = dgvOutlet.CurrentRow;
+            txtOutletCode.Text = currentRow.Cells[nameof(OutletType.OutletCode)].Value.ToString();
             txtOutlet.Text = currentRow.Cells[nameof(OutletType.Description)].Value.ToString();
 
             // hidden fields
             txtOutletId.Text = currentRow.Cells[nameof(OutletType.Id)].Value.ToString();
             txtModifiedAt.Text = currentRow.Cells[nameof(OutletType.ModifiedAt)].Value.ToString();
-
         }
 
         private bool ValidateEmptyField()
         {
-            if (string.IsNullOrEmpty(txtOutlet.Text))
+            if (string.IsNullOrEmpty(txtOutletCode.Text) || string.IsNullOrEmpty(txtOutlet.Text))
             {
-                MessageBox.Show("Data tidak boleh kosong."
+                MessageBox.Show("Data Kode Outlet dan Jenis Outlet tidak boleh kosong."
                       , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
 
             }
             return true;
+        }
+
+        private void SetUIButtonGroup()
+        {
+            btnSave.Enabled = !isAdd;
+            btnDel.Enabled = !isAdd;
+
+            btnSave.BackColor = !isAdd ? Color.FromArgb(36, 141, 193) : Color.Gray;
+            btnDel.BackColor = !isAdd ? Color.FromArgb(36, 141, 193) : Color.Gray;
         }
     }
 }

@@ -16,6 +16,7 @@ namespace CisWindowsFormsApp
         CisDbContext dbContext;
         int gvSelectedIndex = 0;
         UnitOfWork<SalesArea> uowArea;
+        bool isAdd = false;
 
         public FrmSalesArea()
         {
@@ -30,6 +31,12 @@ namespace CisWindowsFormsApp
             BindAreaGridView();
             SetUIGridView();
 
+            if (dgvSalesArea.RowCount <= 0)
+            {
+                isAdd = true;
+                SetUIButtonGroup();
+            }
+            
             txtAreaCode.Focus();
         }
 
@@ -40,6 +47,8 @@ namespace CisWindowsFormsApp
 
         private void btnClear_Click(object sender, EventArgs e)
         {
+            isAdd = true;
+            SetUIButtonGroup(); 
             txtAreaCode.Text = string.Empty;
             txtDescription.Text = string.Empty;
         }
@@ -95,6 +104,10 @@ namespace CisWindowsFormsApp
                 SetUIbySelectedGridItem();
                 txtModifiedAt.Text = dgvSalesArea.CurrentRow.Cells[nameof(SalesArea.ModifiedAt)].Value.ToString();
             }
+
+            isAdd = dgvSalesArea.RowCount <= 0;
+            SetUIButtonGroup();
+
         }
 
         private void btnDel_Click(object sender, EventArgs e)
@@ -119,6 +132,7 @@ namespace CisWindowsFormsApp
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (!ValidateEmptyField()) return;
+           
             var repoLastUpdated = DateTime.Parse(dgvSalesArea.CurrentRow.Cells[nameof(SalesArea.ModifiedAt)].Value.ToString());
             var lastUpdated = DateTime.Parse(txtModifiedAt.Text.Trim());
 
@@ -187,6 +201,15 @@ namespace CisWindowsFormsApp
 
             }
             return true;
+        }
+
+        private void SetUIButtonGroup()
+        {
+            btnSave.Enabled = !isAdd;
+            btnDel.Enabled = !isAdd;
+
+            btnSave.BackColor = !isAdd ? Color.FromArgb(36, 141, 193) : Color.Gray;
+            btnDel.BackColor = !isAdd ? Color.FromArgb(36, 141, 193) : Color.Gray;
         }
 
     }

@@ -129,7 +129,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(212, 31);
-            this.txtPassword.TabIndex = 2;
+            this.txtPassword.TabIndex = 3;
             // 
             // label4
             // 
@@ -154,7 +154,7 @@
             this.btnReload.Name = "btnReload";
             this.btnReload.Padding = new System.Windows.Forms.Padding(0, 20, 0, 0);
             this.btnReload.Size = new System.Drawing.Size(83, 126);
-            this.btnReload.TabIndex = 5;
+            this.btnReload.TabIndex = 13;
             this.btnReload.Text = "RELOAD";
             this.btnReload.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnReload.UseVisualStyleBackColor = false;
@@ -171,7 +171,7 @@
             this.btnDel.Location = new System.Drawing.Point(112, 77);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(83, 60);
-            this.btnDel.TabIndex = 6;
+            this.btnDel.TabIndex = 14;
             this.btnDel.Text = "DELETE";
             this.btnDel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnDel.UseVisualStyleBackColor = false;
@@ -188,7 +188,7 @@
             this.btnSave.Location = new System.Drawing.Point(23, 77);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(83, 60);
-            this.btnSave.TabIndex = 7;
+            this.btnSave.TabIndex = 15;
             this.btnSave.Text = "SAVE";
             this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnSave.UseVisualStyleBackColor = false;
@@ -205,7 +205,7 @@
             this.btnAdd.Location = new System.Drawing.Point(112, 11);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(83, 60);
-            this.btnAdd.TabIndex = 4;
+            this.btnAdd.TabIndex = 12;
             this.btnAdd.Text = "ADD";
             this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAdd.UseVisualStyleBackColor = false;
@@ -222,7 +222,7 @@
             this.btnClear.Location = new System.Drawing.Point(23, 11);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(83, 60);
-            this.btnClear.TabIndex = 3;
+            this.btnClear.TabIndex = 11;
             this.btnClear.Text = "CLEAR";
             this.btnClear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnClear.UseVisualStyleBackColor = false;
@@ -235,7 +235,7 @@
             this.dgvUser.Location = new System.Drawing.Point(361, 55);
             this.dgvUser.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
             this.dgvUser.Name = "dgvUser";
-            this.dgvUser.Size = new System.Drawing.Size(362, 286);
+            this.dgvUser.Size = new System.Drawing.Size(362, 416);
             this.dgvUser.TabIndex = 0;
             this.dgvUser.Text = "dataGridView1";
             this.dgvUser.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUser_CellClick);
@@ -281,7 +281,7 @@
             this.chkChangePassword.Location = new System.Drawing.Point(36, 208);
             this.chkChangePassword.Name = "chkChangePassword";
             this.chkChangePassword.Size = new System.Drawing.Size(110, 19);
-            this.chkChangePassword.TabIndex = 9;
+            this.chkChangePassword.TabIndex = 4;
             this.chkChangePassword.Text = "Ganti Password";
             this.chkChangePassword.UseVisualStyleBackColor = true;
             this.chkChangePassword.CheckedChanged += new System.EventHandler(this.chkChangePassword_CheckedChanged);
@@ -316,7 +316,7 @@
             this.txtRetypePassword.Name = "txtRetypePassword";
             this.txtRetypePassword.PasswordChar = '*';
             this.txtRetypePassword.Size = new System.Drawing.Size(212, 31);
-            this.txtRetypePassword.TabIndex = 2;
+            this.txtRetypePassword.TabIndex = 5;
             // 
             // pnlButtons
             // 
@@ -328,7 +328,7 @@
             this.pnlButtons.Location = new System.Drawing.Point(14, 320);
             this.pnlButtons.Name = "pnlButtons";
             this.pnlButtons.Size = new System.Drawing.Size(335, 153);
-            this.pnlButtons.TabIndex = 11;
+            this.pnlButtons.TabIndex = 6;
             // 
             // FrmUser
             // 

@@ -17,6 +17,7 @@ namespace CisWindowsFormsApp
         CisDbContext dbContext;
         int gvSelectedIndex = 0;
         UnitOfWork<User> uowUser;
+        bool isAdd = false;
 
         public FrmUser()
         {
@@ -32,14 +33,24 @@ namespace CisWindowsFormsApp
             SetUIGridView();
             SetUIButtonGroup();
 
+            if (dgvUser.RowCount <= 0)
+            {
+                isAdd = true;
+                SetUIButtonGroup();
+            }
+            
             txtUsername.Focus();
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
+            isAdd = true;
+            SetUIButtonGroup();
             txtUsername.Text = string.Empty;
             txtPassword.Text = string.Empty;
             txtFullName.Text = string.Empty;
+            txtRetypePassword.Text = string.Empty;
+            chkChangePassword.Checked = false;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -96,6 +107,9 @@ namespace CisWindowsFormsApp
             }
             chkChangePassword.Checked = false;
             txtRetypePassword.Text = string.Empty;
+
+            isAdd = dgvUser.RowCount <= 0;
+            SetUIButtonGroup();
         }
 
         private void btnDel_Click(object sender, EventArgs e)
@@ -120,7 +134,7 @@ namespace CisWindowsFormsApp
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (!ValidateEmptyField()) return;
-
+            
             if (chkChangePassword.Checked && !txtPassword.Text.Trim().Equals(txtRetypePassword.Text.Trim()))
             {
                 MessageBox.Show("Pastikan password yang anda masukkan sama."
@@ -229,7 +243,13 @@ namespace CisWindowsFormsApp
 
         private void SetUIButtonGroup()
         {
-            if(!chkChangePassword.Checked)
+            btnSave.Enabled = !isAdd;
+            btnDel.Enabled = !isAdd;
+            
+            btnSave.BackColor = !isAdd ? Color.FromArgb(36, 141, 193) : Color.Gray;
+            btnDel.BackColor = !isAdd ? Color.FromArgb(36, 141, 193) : Color.Gray;
+
+            if (!chkChangePassword.Checked)
             {
                 pnlButtons.Location = new Point(14, 233);
             }
@@ -238,5 +258,6 @@ namespace CisWindowsFormsApp
                 pnlButtons.Location = new Point(14, 320);
             }
         }
+        
     }
 }

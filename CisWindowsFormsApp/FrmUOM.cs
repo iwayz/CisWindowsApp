@@ -16,6 +16,7 @@ namespace CisWindowsFormsApp
         CisDbContext dbContext;
         int gvSelectedIndex = 0;
         UnitOfWork<UnitOfMeasurement> uowUom;
+        bool isAdd = false;
 
         public FrmUOM()
         {
@@ -25,6 +26,8 @@ namespace CisWindowsFormsApp
 
         private void btnClear_Click(object sender, EventArgs e)
         {
+            isAdd = true;
+            SetUIButtonGroup(); 
             txtUomCode.Text = string.Empty;
             txtUomDesc.Text = string.Empty;
         }
@@ -80,6 +83,9 @@ namespace CisWindowsFormsApp
                 SetUIbySelectedGridItem();
                 txtModifiedAt.Text = dgvUom.CurrentRow.Cells[nameof(UnitOfMeasurement.ModifiedAt)].Value.ToString();
             }
+
+            isAdd = dgvUom.RowCount <= 0;
+            SetUIButtonGroup();
         }
 
         private void btnDel_Click(object sender, EventArgs e)
@@ -103,7 +109,8 @@ namespace CisWindowsFormsApp
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (!ValidateEmptyField()) return; 
+            if (!ValidateEmptyField()) return;
+            
             var repoLastUpdated = DateTime.Parse(dgvUom.CurrentRow.Cells[nameof(UnitOfMeasurement.ModifiedAt)].Value.ToString());
             var lastUpdated = DateTime.Parse(txtModifiedAt.Text.Trim());
 
@@ -137,7 +144,13 @@ namespace CisWindowsFormsApp
             
             BindUomGridView();
             SetUIGridView();
-        
+
+            if (dgvUom.RowCount <= 0)
+            {
+                isAdd = true;
+                SetUIButtonGroup();
+            }
+            
             txtUomCode.Focus();
         }
 
@@ -188,6 +201,15 @@ namespace CisWindowsFormsApp
 
             }
             return true;
+        }
+
+        private void SetUIButtonGroup()
+        {
+            btnSave.Enabled = !isAdd;
+            btnDel.Enabled = !isAdd;
+
+            btnSave.BackColor = !isAdd ? Color.FromArgb(36, 141, 193) : Color.Gray;
+            btnDel.BackColor = !isAdd ? Color.FromArgb(36, 141, 193) : Color.Gray;
         }
     }
 }

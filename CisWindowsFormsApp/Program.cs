@@ -14,6 +14,8 @@ namespace CisWindowsFormsApp
         [STAThread]
         static void Main()
         {
+            //var s = new UserHelper().HashPassword("1");
+
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

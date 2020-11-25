@@ -161,7 +161,7 @@
             this.btnReload.Location = new System.Drawing.Point(410, 367);
             this.btnReload.Name = "btnReload";
             this.btnReload.Size = new System.Drawing.Size(83, 60);
-            this.btnReload.TabIndex = 5;
+            this.btnReload.TabIndex = 15;
             this.btnReload.Text = "RELOAD";
             this.btnReload.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnReload.UseVisualStyleBackColor = false;
@@ -178,7 +178,7 @@
             this.btnDel.Location = new System.Drawing.Point(410, 290);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(83, 60);
-            this.btnDel.TabIndex = 6;
+            this.btnDel.TabIndex = 14;
             this.btnDel.Text = "DELETE";
             this.btnDel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnDel.UseVisualStyleBackColor = false;
@@ -195,7 +195,7 @@
             this.btnSave.Location = new System.Drawing.Point(410, 212);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(83, 60);
-            this.btnSave.TabIndex = 7;
+            this.btnSave.TabIndex = 13;
             this.btnSave.Text = "SAVE";
             this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnSave.UseVisualStyleBackColor = false;
@@ -212,7 +212,7 @@
             this.btnAdd.Location = new System.Drawing.Point(410, 134);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(83, 60);
-            this.btnAdd.TabIndex = 4;
+            this.btnAdd.TabIndex = 12;
             this.btnAdd.Text = "ADD";
             this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAdd.UseVisualStyleBackColor = false;
@@ -229,7 +229,7 @@
             this.btnClear.Location = new System.Drawing.Point(410, 55);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(83, 60);
-            this.btnClear.TabIndex = 3;
+            this.btnClear.TabIndex = 11;
             this.btnClear.Text = "CLEAR";
             this.btnClear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnClear.UseVisualStyleBackColor = false;
@@ -280,7 +280,7 @@
             this.gbGender.Location = new System.Drawing.Point(36, 153);
             this.gbGender.Name = "gbGender";
             this.gbGender.Size = new System.Drawing.Size(215, 53);
-            this.gbGender.TabIndex = 10;
+            this.gbGender.TabIndex = 3;
             this.gbGender.TabStop = false;
             this.gbGender.Text = "Gender";
             // 
@@ -303,7 +303,7 @@
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(330, 56);
-            this.txtAddress.TabIndex = 2;
+            this.txtAddress.TabIndex = 4;
             // 
             // label5
             // 
@@ -324,7 +324,7 @@
             this.txtPostCode.Location = new System.Drawing.Point(36, 457);
             this.txtPostCode.Name = "txtPostCode";
             this.txtPostCode.Size = new System.Drawing.Size(121, 31);
-            this.txtPostCode.TabIndex = 2;
+            this.txtPostCode.TabIndex = 8;
             this.txtPostCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPostCode_KeyPress);
             // 
             // label6
@@ -346,7 +346,7 @@
             this.txtEmail.Location = new System.Drawing.Point(36, 509);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(330, 31);
-            this.txtEmail.TabIndex = 2;
+            this.txtEmail.TabIndex = 10;
             // 
             // label7
             // 
@@ -367,7 +367,7 @@
             this.txtPhone.Location = new System.Drawing.Point(168, 457);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(198, 31);
-            this.txtPhone.TabIndex = 2;
+            this.txtPhone.TabIndex = 9;
             // 
             // label8
             // 
@@ -401,7 +401,7 @@
             this.cbProvince.Location = new System.Drawing.Point(36, 304);
             this.cbProvince.Name = "cbProvince";
             this.cbProvince.Size = new System.Drawing.Size(274, 31);
-            this.cbProvince.TabIndex = 9;
+            this.cbProvince.TabIndex = 5;
             this.cbProvince.SelectedIndexChanged += new System.EventHandler(this.cbProvince_SelectedIndexChanged);
             // 
             // label10
@@ -425,7 +425,7 @@
             this.cbDistrict.Location = new System.Drawing.Point(36, 356);
             this.cbDistrict.Name = "cbDistrict";
             this.cbDistrict.Size = new System.Drawing.Size(274, 31);
-            this.cbDistrict.TabIndex = 9;
+            this.cbDistrict.TabIndex = 6;
             this.cbDistrict.SelectedIndexChanged += new System.EventHandler(this.cbDistrict_SelectedIndexChanged);
             // 
             // label11
@@ -449,7 +449,7 @@
             this.cbSubDistrict.Location = new System.Drawing.Point(36, 408);
             this.cbSubDistrict.Name = "cbSubDistrict";
             this.cbSubDistrict.Size = new System.Drawing.Size(274, 31);
-            this.cbSubDistrict.TabIndex = 9;
+            this.cbSubDistrict.TabIndex = 7;
             // 
             // FrmSalesman
             // 

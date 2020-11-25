@@ -16,6 +16,7 @@ namespace CisWindowsFormsApp
         CisDbContext dbContext;
         int gvSelectedIndex = 0;
         UnitOfWork<UsageType> uowUsage;
+        bool isAdd = false;
 
         public FrmUsageType()
         {
@@ -30,7 +31,13 @@ namespace CisWindowsFormsApp
             BindUsageTyperidView();
             SetUIGridView();
 
-            txtUsageDesc.Focus();
+            if (dgvUsageType.RowCount <= 0)
+            {
+                isAdd = true;
+                SetUIButtonGroup();
+            }
+            
+            txtUsageTypeCode.Focus();
         }
 
         private void BindUsageTyperidView()
@@ -41,6 +48,7 @@ namespace CisWindowsFormsApp
             new
             {
                 usage.Id,
+                usage.UsageTypeCode,
                 usage.Description,
                 usage.ModifiedAt
             });
@@ -50,6 +58,7 @@ namespace CisWindowsFormsApp
 
         private void SetUIGridView()
         {
+            dgvUsageType.Columns[nameof(UsageType.UsageTypeCode)].HeaderText = "KODE PEMAKAIAN";
             dgvUsageType.Columns[nameof(UsageType.Description)].HeaderText = "JENIS PEMAKAIAN";
             dgvUsageType.Columns[nameof(UsageType.Description)].Width = 320;
             
@@ -60,6 +69,7 @@ namespace CisWindowsFormsApp
         private void SetUIbySelectedGridItem()
         {
             var currentRow = dgvUsageType.CurrentRow;
+            txtUsageTypeCode.Text = currentRow.Cells[nameof(UsageType.UsageTypeCode)].Value.ToString();
             txtUsageDesc.Text = currentRow.Cells[nameof(UsageType.Description)].Value.ToString();
 
             // hidden fields
@@ -70,6 +80,9 @@ namespace CisWindowsFormsApp
 
         private void btnClear_Click(object sender, EventArgs e)
         {
+            isAdd = true;
+            SetUIButtonGroup();
+            txtUsageTypeCode.Text = string.Empty;
             txtUsageDesc.Text = string.Empty;
         }
 
@@ -86,6 +99,7 @@ namespace CisWindowsFormsApp
             {
                 var usageToAdd = new UsageType
                 {
+                    UsageTypeCode = txtUsageTypeCode.Text.Trim(),
                     Description = txtUsageDesc.Text.Trim(),
                     CreatedBy = Properties.Settings.Default.CurrentUser,
                     CreatedAt = DateTime.Now,
@@ -123,6 +137,10 @@ namespace CisWindowsFormsApp
                 SetUIbySelectedGridItem();
                 txtModifiedAt.Text = dgvUsageType.CurrentRow.Cells[nameof(UsageType.ModifiedAt)].Value.ToString();
             }
+
+            isAdd = dgvUsageType.RowCount <= 0;
+            SetUIButtonGroup();
+
         }
 
         private void btnDel_Click(object sender, EventArgs e)
@@ -147,6 +165,7 @@ namespace CisWindowsFormsApp
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (!ValidateEmptyField()) return;
+            
             var repoLastUpdated = DateTime.Parse(dgvUsageType.CurrentRow.Cells[nameof(UsageType.ModifiedAt)].Value.ToString());
             var lastUpdated = DateTime.Parse(txtModifiedAt.Text.Trim());
 
@@ -158,6 +177,7 @@ namespace CisWindowsFormsApp
             else
             {
                 var usageToUpdate = uowUsage.Repository.GetById(txtUsageId.Text.Trim());
+                usageToUpdate.UsageTypeCode = txtUsageTypeCode.Text.Trim();
                 usageToUpdate.Description = txtUsageDesc.Text.Trim();
                 usageToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUser;
                 usageToUpdate.ModifiedAt = DateTime.Now;
@@ -175,14 +195,23 @@ namespace CisWindowsFormsApp
 
         private bool ValidateEmptyField()
         {
-            if (string.IsNullOrEmpty(txtUsageDesc.Text))
+            if (string.IsNullOrEmpty(txtUsageTypeCode.Text) || string.IsNullOrEmpty(txtUsageDesc.Text))
             {
-                MessageBox.Show("Data tidak boleh kosong."
+                MessageBox.Show("Data Kode Pemakaian dan Jenis Pemakaian tidak boleh kosong."
                       , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
 
             }
             return true;
+        }
+
+        private void SetUIButtonGroup()
+        {
+            btnSave.Enabled = !isAdd;
+            btnDel.Enabled = !isAdd;
+        
+            btnSave.BackColor = !isAdd ? Color.FromArgb(36, 141, 193) : Color.Gray;
+            btnDel.BackColor = !isAdd ? Color.FromArgb(36, 141, 193) : Color.Gray;
         }
     }
 }

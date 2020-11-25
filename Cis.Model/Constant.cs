@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Cis.Model
 {
-    public class Constant
+    public static class Constant
     {
         public enum Gender
         {
@@ -17,6 +17,11 @@ namespace Cis.Model
             Province = 1,
             District = 2, // Kota/ Kecamatan
             SubDistrict = 3 // Kelurahan
+        }
+
+        public static DateTime DefaultDate()
+        {
+            return DateTime.Parse("1900-01-01");
         }
     }
 }

@@ -16,6 +16,7 @@ namespace CisWindowsFormsApp
         CisDbContext dbContext;
         int gvSelectedIndex = 0;
         UnitOfWork<Product> uowProduct;
+        bool isAdd = true;
 
         public FrmProduct()
         {
@@ -28,12 +29,18 @@ namespace CisWindowsFormsApp
         {
             uowProduct = new UnitOfWork<Product>(dbContext);
 
-            BindUom();
-            BindMedicineCategories();
-            BindUsageType();
-            BindPrincipal();
+            BindUomComboBox();
+            BindMedicineCategoriesComboBox();
+            BindUsageTypeComboBox();
+            BindPrincipalComboBox();
             BindProductGridView();
             SetUIGridView();
+
+            if (dgvProduct.RowCount <= 0)
+            {
+                isAdd = true;
+                SetUIButtonGroup();
+            }
 
             txtProductCode.Focus();
         }
@@ -66,16 +73,18 @@ namespace CisWindowsFormsApp
 
         private void btnClear_Click(object sender, EventArgs e)
         {
+            isAdd = true;
+            SetUIButtonGroup(); 
             txtProductCode.Text = string.Empty;
             txtProductName.Text = string.Empty;
             txtPrice.Text = "0";
             dtpDecreeDate.Value = DateTime.Now;
             txtDiscount.Text = "0";
             txtRestock.Text = "0";
-            BindUom();
-            BindMedicineCategories();
-            BindUsageType();
-            BindPrincipal();
+            BindUomComboBox();
+            BindMedicineCategoriesComboBox();
+            BindUsageTypeComboBox();
+            BindPrincipalComboBox();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -115,6 +124,7 @@ namespace CisWindowsFormsApp
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (!ValidateEmptyField()) return;
+            
             var repoLastUpdated = DateTime.Parse(dgvProduct.CurrentRow.Cells[nameof(Product.ModifiedAt)].Value.ToString());
             var lastUpdated = DateTime.Parse(txtModifiedAt.Text.Trim());
             
@@ -166,12 +176,33 @@ namespace CisWindowsFormsApp
 
         private void btnReload_Click(object sender, EventArgs e)
         {
-            gvSelectedIndex = dgvProduct.CurrentRow.Index;
-            BindProductGridView();
-            SetUIGridView();
-            dgvProduct.CurrentCell = this.dgvProduct[1, gvSelectedIndex];
-            SetUIbySelectedGridItem();
-            txtModifiedAt.Text = dgvProduct.CurrentRow.Cells[nameof(Product.ModifiedAt)].Value.ToString();
+            var countProduct = uowProduct.Repository.GetAll().Count();
+            if (countProduct <= 0)
+            {
+                gvSelectedIndex = 0;
+                BindProductGridView();
+                SetUIGridView();
+                btnClear.PerformClick();
+            }
+            else
+            {
+                if (countProduct == 1)
+                {
+                    BindProductGridView();
+                    SetUIGridView();
+                    dgvProduct.CurrentCell = this.dgvProduct[1, 0];
+                }
+                gvSelectedIndex = dgvProduct.CurrentRow.Index;
+                BindProductGridView();
+                SetUIGridView();
+                dgvProduct.CurrentCell = this.dgvProduct[1, gvSelectedIndex];
+                SetUIbySelectedGridItem();
+                txtModifiedAt.Text = dgvProduct.CurrentRow.Cells[nameof(Product.ModifiedAt)].Value.ToString();
+            }
+
+            isAdd = dgvProduct.RowCount <= 0;
+            SetUIButtonGroup();
+
         }
 
         private void SetUIbySelectedGridItem()
@@ -194,7 +225,7 @@ namespace CisWindowsFormsApp
 
         }
 
-        private void BindUom()
+        private void BindUomComboBox()
         {
             var uow = new UnitOfWork<UnitOfMeasurement>(dbContext);
             var uoms = uow.Repository.GetAll().OrderBy(m => m.Description);
@@ -213,7 +244,7 @@ namespace CisWindowsFormsApp
             cbUom.AutoCompleteCustomSource = autoCompleteCollection;
         }
 
-        private void BindMedicineCategories()
+        private void BindMedicineCategoriesComboBox()
         {
             var uow = new UnitOfWork<MedicineCat>(dbContext);
             var medCats = uow.Repository.GetAll().OrderBy(m => m.Description);
@@ -232,7 +263,7 @@ namespace CisWindowsFormsApp
             cbMedCat.AutoCompleteCustomSource = autoCompleteCollection;
         }
 
-        private void BindUsageType()
+        private void BindUsageTypeComboBox()
         {
             var uow = new UnitOfWork<UsageType>(dbContext);
             var usageTypes = uow.Repository.GetAll().OrderBy(u => u.Description);
@@ -251,7 +282,7 @@ namespace CisWindowsFormsApp
             cbUsageType.AutoCompleteCustomSource = autoCompleteCollection;
         }
 
-        private void BindPrincipal()
+        private void BindPrincipalComboBox()
         {
             var uow = new UnitOfWork<Principal>(dbContext);
             var principals = uow.Repository.GetAll().OrderBy(p => p.Name);
@@ -329,6 +360,16 @@ namespace CisWindowsFormsApp
 
             }
             return true;
+        }
+
+        private void SetUIButtonGroup()
+        {
+            btnSave.Enabled = !isAdd;
+            btnDel.Enabled = !isAdd;
+
+            btnSave.BackColor = !isAdd ? Color.FromArgb( 36, 141, 193) : Color.Gray;
+            btnDel.BackColor = !isAdd ? Color.FromArgb( 36, 141, 193) : Color.Gray;
+
         }
     }
 }

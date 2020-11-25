@@ -16,8 +16,9 @@ namespace CisWindowsFormsApp
     {
         CisDbContext dbContext;
         int gvSelectedIndex = 0;
-        UnitOfWork<MedicineCat> uowMedCat; 
-        
+        UnitOfWork<MedicineCat> uowMedCat;
+        bool isAdd = false;
+
         public FrmMedicineCategoy()
         {
             InitializeComponent();
@@ -31,11 +32,20 @@ namespace CisWindowsFormsApp
             BindMedCatGridView();
             SetUIGridView();
 
-            txtMedCat.Focus();
+            if (dgvMedCat.RowCount <= 0)
+            {
+                isAdd = true;
+                SetUIButtonGroup();
+            }
+
+            txtMedCatCode.Focus();
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
+            isAdd = true;
+            SetUIButtonGroup(); 
+            txtMedCatCode.Text = string.Empty;
             txtMedCat.Text = string.Empty;
         }
 
@@ -46,7 +56,7 @@ namespace CisWindowsFormsApp
             var existingMedCat = uowMedCat.Repository.GetAll().Where(u => u.Description == txtMedCat.Text.Trim()).FirstOrDefault();
             if (existingMedCat != null)
             {
-                MessageBox.Show("Data '" + txtMedCat.Text.Trim() + "' sudah ada. Silakan gunakan Jenis Outlet yang lain."
+                MessageBox.Show("Data dengan Kode '" + txtMedCat.Text.Trim() + "' sudah ada. Silakan gunakan kode yang lain."
                     , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
@@ -88,8 +98,11 @@ namespace CisWindowsFormsApp
                 SetUIGridView();
                 dgvMedCat.CurrentCell = this.dgvMedCat[1, gvSelectedIndex];
                 SetUIbySelectedGridItem();
-                txtModifiedAt.Text = dgvMedCat.CurrentRow.Cells[nameof(OutletType.ModifiedAt)].Value.ToString();
+                txtModifiedAt.Text = dgvMedCat.CurrentRow.Cells[nameof(MedicineCat.ModifiedAt)].Value.ToString();
             }
+
+            isAdd = dgvMedCat.RowCount <= 0;
+            SetUIButtonGroup();
         }
 
         private void btnDel_Click(object sender, EventArgs e)
@@ -114,6 +127,13 @@ namespace CisWindowsFormsApp
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (!ValidateEmptyField()) return;
+            if (dgvMedCat.RowCount <= 0)
+            {
+                MessageBox.Show("Tekan tombol Add untuk menyimpan data baru."
+                    , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            
             var repoLastUpdated = DateTime.Parse(dgvMedCat.CurrentRow.Cells[nameof(MedicineCat.ModifiedAt)].Value.ToString());
             var lastUpdated = DateTime.Parse(txtModifiedAt.Text.Trim());
 
@@ -124,7 +144,8 @@ namespace CisWindowsFormsApp
             }
             else
             {
-                var medCatToUpdate = uowMedCat.Repository.GetById(txtMedCat.Text.Trim());
+                var medCatToUpdate = uowMedCat.Repository.GetById(txtMedCatId.Text.Trim());
+                medCatToUpdate.MedicineCatCode= txtMedCatCode.Text.Trim();
                 medCatToUpdate.Description = txtMedCat.Text.Trim();
                 medCatToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUser;
                 medCatToUpdate.ModifiedAt = DateTime.Now;
@@ -144,19 +165,21 @@ namespace CisWindowsFormsApp
         {
             var mc = new UnitOfWork<MedicineCat>(dbContext).Repository.GetAll()
                 .OrderBy(u => u.Description);
-            var otDetail = mc.Select(outlet =>
+            var mcDetail = mc.Select(mcDet =>
             new
             {
-                outlet.Id,
-                outlet.Description,
-                outlet.ModifiedAt
+                mcDet.Id,
+                mcDet.MedicineCatCode,
+                mcDet.Description,
+                mcDet.ModifiedAt
             });
 
-            dgvMedCat.DataSource = otDetail.ToList();
+            dgvMedCat.DataSource = mcDetail.ToList();
         }
 
         private void SetUIGridView()
         {
+            dgvMedCat.Columns[nameof(MedicineCat.MedicineCatCode)].HeaderText = "KODE KATEGORI";
             dgvMedCat.Columns[nameof(MedicineCat.Description)].HeaderText = "KATEGORI OBAT";
             dgvMedCat.Columns[nameof(MedicineCat.Description)].Width = 320;
             
@@ -167,24 +190,34 @@ namespace CisWindowsFormsApp
         private void SetUIbySelectedGridItem()
         {
             var currentRow = dgvMedCat.CurrentRow;
-            txtMedCat.Text = currentRow.Cells[nameof(OutletType.Description)].Value.ToString();
+            txtMedCatCode.Text = currentRow.Cells[nameof(MedicineCat.MedicineCatCode)].Value.ToString();
+            txtMedCat.Text = currentRow.Cells[nameof(MedicineCat.Description)].Value.ToString();
 
             // hidden fields
-            txtMedCatId.Text = currentRow.Cells[nameof(OutletType.Id)].Value.ToString();
-            txtModifiedAt.Text = currentRow.Cells[nameof(OutletType.ModifiedAt)].Value.ToString();
+            txtMedCatId.Text = currentRow.Cells[nameof(MedicineCat.Id)].Value.ToString();
+            txtModifiedAt.Text = currentRow.Cells[nameof(MedicineCat.ModifiedAt)].Value.ToString();
 
         }
 
         private bool ValidateEmptyField()
         {
-            if (string.IsNullOrEmpty(txtMedCat.Text))
+            if (string.IsNullOrEmpty(txtMedCatCode.Text) || string.IsNullOrEmpty(txtMedCat.Text))
             {
-                MessageBox.Show("Data tidak boleh kosong."
+                MessageBox.Show("Data Kode Kategori dan Kategori Obat tidak boleh kosong."
                       , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
 
             }
             return true;
+        }
+
+        private void SetUIButtonGroup()
+        {
+            btnSave.Enabled = !isAdd;
+            btnDel.Enabled = !isAdd;
+
+            btnSave.BackColor = !isAdd ? Color.FromArgb(36, 141, 193) : Color.Gray;
+            btnDel.BackColor = !isAdd ? Color.FromArgb(36, 141, 193) : Color.Gray;
         }
     }
 }

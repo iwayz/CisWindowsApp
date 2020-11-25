@@ -16,6 +16,7 @@ namespace CisWindowsFormsApp
         CisDbContext dbContext;
         int gvSelectedIndex = 0;
         UnitOfWork<Salesman> uowSalesman;
+        bool isAdd = false;
 
         public FrmSalesman()
         {
@@ -31,11 +32,19 @@ namespace CisWindowsFormsApp
             SetUIGridView();
             BindLocationComboBox(cbProvince, Constant.LocationType.Province);
 
+            if (dgvSalesman.RowCount <= 0)
+            {
+                isAdd = true;
+                SetUIButtonGroup();
+            }
+
             txtShortName.Focus();
         }
         
         private void btnClear_Click(object sender, EventArgs e)
         {
+            isAdd = true;
+            SetUIButtonGroup();
             txtShortName.Text = string.Empty;
             txtFullName.Text = string.Empty;
         }
@@ -60,8 +69,9 @@ namespace CisWindowsFormsApp
                     PostalCode = txtPostCode.Text.Trim(),
                     Phone = txtPhone.Text.Trim(),
                     Email = txtEmail.Text.Trim(),
-
-                    // TODO: add province, district and subdistrict once database updated.
+                    ProvinceId = cbProvince.SelectedValue.ToString(),
+                    DistrictId = cbDistrict.SelectedValue.ToString(),
+                    SubDistrictId = cbProvince.SelectedValue.ToString(),
 
                     CreatedBy = Properties.Settings.Default.CurrentUser,
                     CreatedAt = DateTime.Now,
@@ -99,6 +109,8 @@ namespace CisWindowsFormsApp
                 SetUIbySelectedGridItem();
                 txtModifiedAt.Text = dgvSalesman.CurrentRow.Cells[nameof(Salesman.ModifiedAt)].Value.ToString();
             }
+            isAdd = dgvSalesman.RowCount <= 0;
+            SetUIButtonGroup();
         }
 
         private void btnDel_Click(object sender, EventArgs e)
@@ -123,6 +135,13 @@ namespace CisWindowsFormsApp
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (!ValidateEmptyField()) return;
+            if (dgvSalesman.RowCount <=0)
+            {
+                MessageBox.Show("Tekan tombol Add untuk menyimpan data baru."
+                    , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             var repoLastUpdated = DateTime.Parse(dgvSalesman.CurrentRow.Cells[nameof(Salesman.ModifiedAt)].Value.ToString());
             var lastUpdated = DateTime.Parse(txtModifiedAt.Text.Trim());
 
@@ -141,7 +160,9 @@ namespace CisWindowsFormsApp
                 salesmanToUpdate.PostalCode = txtPostCode.Text.Trim();
                 salesmanToUpdate.Phone = txtPhone.Text.Trim();
                 salesmanToUpdate.Email = txtEmail.Text.Trim();
-                // TODO: add province, district and subdistrict once database updated.
+                salesmanToUpdate.ProvinceId = cbProvince.SelectedValue.ToString();
+                salesmanToUpdate.DistrictId = cbDistrict.SelectedValue.ToString();
+                salesmanToUpdate.SubDistrictId = cbProvince.SelectedValue.ToString();
 
                 salesmanToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUser;
                 salesmanToUpdate.ModifiedAt = DateTime.Now;
@@ -256,6 +277,15 @@ namespace CisWindowsFormsApp
         private void txtPostCode_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void SetUIButtonGroup()
+        {
+            btnSave.Enabled = !isAdd;
+            btnDel.Enabled = !isAdd;
+
+            btnSave.BackColor = !isAdd ? Color.FromArgb(36, 141, 193) : Color.Gray;
+            btnDel.BackColor = !isAdd ? Color.FromArgb(36, 141, 193) : Color.Gray;
         }
 
     }

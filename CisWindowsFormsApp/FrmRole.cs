@@ -16,6 +16,7 @@ namespace CisWindowsFormsApp
         CisDbContext dbContext;
         int gvSelectedIndex = 0;
         UnitOfWork<Role> uowRole;
+        bool isAdd = false;
 
         public FrmRole()
         {
@@ -31,6 +32,12 @@ namespace CisWindowsFormsApp
             BindRoleGridView();
             SetUIGridView();
 
+            if (dgvRole.RowCount <= 0)
+            {
+                isAdd = true;
+                SetUIButtonGroup();
+            }
+            
             txtRoleCode.Focus();
         }
         private void BindRoleGridView()
@@ -83,6 +90,8 @@ namespace CisWindowsFormsApp
 
         private void btnClear_Click(object sender, EventArgs e)
         {
+            isAdd = true;
+            SetUIButtonGroup(); 
             txtRoleCode.Text = string.Empty;
             txtDescription.Text = string.Empty;
         }
@@ -138,6 +147,9 @@ namespace CisWindowsFormsApp
                 SetUIbySelectedGridItem();
                 txtModifiedAt.Text = dgvRole.CurrentRow.Cells[nameof(Role.ModifiedAt)].Value.ToString();
             }
+
+            isAdd = dgvRole.RowCount <= 0;
+            SetUIButtonGroup();
         }
 
         private void btnDel_Click(object sender, EventArgs e)
@@ -162,6 +174,7 @@ namespace CisWindowsFormsApp
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (!ValidateEmptyField()) return;
+            
             var repoLastUpdated = DateTime.Parse(dgvRole.CurrentRow.Cells[nameof(Role.ModifiedAt)].Value.ToString());
             var lastUpdated = DateTime.Parse(txtModifiedAt.Text.Trim());
 
@@ -187,6 +200,15 @@ namespace CisWindowsFormsApp
         private void dgvRole_Click(object sender, EventArgs e)
         {
             SetUIbySelectedGridItem();
+        }
+
+        private void SetUIButtonGroup()
+        {
+            btnSave.Enabled = !isAdd;
+            btnDel.Enabled = !isAdd;
+
+            btnSave.BackColor = !isAdd ? Color.FromArgb(36, 141, 193) : Color.Gray;
+            btnDel.BackColor = !isAdd ? Color.FromArgb(36, 141, 193) : Color.Gray;
         }
     }
 }

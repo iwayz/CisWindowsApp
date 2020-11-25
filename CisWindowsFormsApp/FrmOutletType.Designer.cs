@@ -42,6 +42,8 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.dgvOutlet = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtOutletCode = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOutlet)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -93,7 +95,7 @@
             this.txtOutlet.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtOutlet.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtOutlet.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtOutlet.Location = new System.Drawing.Point(27, 44);
+            this.txtOutlet.Location = new System.Drawing.Point(27, 103);
             this.txtOutlet.Name = "txtOutlet";
             this.txtOutlet.Size = new System.Drawing.Size(257, 31);
             this.txtOutlet.TabIndex = 1;
@@ -103,7 +105,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(27, 26);
+            this.label3.Location = new System.Drawing.Point(27, 85);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(72, 15);
             this.label3.TabIndex = 4;
@@ -219,6 +221,27 @@
             this.panel1.TabIndex = 8;
             this.panel1.Visible = false;
             // 
+            // txtOutletCode
+            // 
+            this.txtOutletCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtOutletCode.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtOutletCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtOutletCode.Location = new System.Drawing.Point(27, 44);
+            this.txtOutletCode.Name = "txtOutletCode";
+            this.txtOutletCode.Size = new System.Drawing.Size(257, 31);
+            this.txtOutletCode.TabIndex = 1;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label4.Location = new System.Drawing.Point(27, 26);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(74, 15);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Kode Outlet";
+            // 
             // FrmOutletType
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -232,6 +255,8 @@
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnDel);
             this.Controls.Add(this.btnReload);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtOutletCode);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtOutlet);
             this.Name = "FrmOutletType";
@@ -260,5 +285,7 @@
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.DataGridView dgvOutlet;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox txtOutletCode;
+        private System.Windows.Forms.Label label4;
     }
 }
