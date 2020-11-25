@@ -21,12 +21,20 @@ namespace Cis.Data
                 .HasColumnName("ADDRESS")
                 .IsRequired();
 
-            builder.Property(c => c.LocationId)
-                .HasColumnName("LOC_ID")
+            builder.Property(c => c.ProvinceId)
+                .HasColumnName("PROVINCE_ID")
+                .IsRequired();
+
+            builder.Property(c => c.DistrictId)
+                .HasColumnName("DISTRICT_ID")
+                .IsRequired();
+
+            builder.Property(c => c.SubDistrictId)
+                .HasColumnName("SUBDISTRICT_ID")
                 .IsRequired();
 
             builder.Property(c => c.PostalCode)
-                .HasColumnName("POSTAL_CD")
+                .HasColumnName("POSTAL_CODE")
                 .IsRequired(false);
 
             builder.Property(c => c.Phone)
@@ -72,11 +80,6 @@ namespace Cis.Data
             builder
                 .HasIndex(c => c.Name)
                 .HasName("IX_CUST_NAME");
-
-            builder.HasOne(c => c.Location)
-                .WithMany(l => l.Customers)
-                .HasForeignKey(c => c.LocationId)
-                .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(c => c.SalesArea)
                 .WithMany(s => s.Customers)

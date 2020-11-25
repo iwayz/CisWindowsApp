@@ -14,14 +14,14 @@ namespace Cis.Data.EntityConfigurations
             builder.ToTable("PERMISSION_ROLE");
 
             builder.Property(p => p.RoleId)
-                    .HasColumnName("ROLE_ID")
-                    .HasMaxLength(36)
-                    .IsRequired();
+                .HasColumnName("ROLE_ID")
+                .HasMaxLength(36)
+                .IsRequired();
 
             builder.Property(p => p.AccessUnit)
-                    .HasColumnName("ACCESS_UNIT")
-                    .HasMaxLength(100)
-                    .IsRequired();
+                .HasColumnName("ACCESS_UNIT")
+                .HasMaxLength(100)
+                .IsRequired();
 
             new BaseEntityConfig<PermissionRole>().Configure(ref builder);
 

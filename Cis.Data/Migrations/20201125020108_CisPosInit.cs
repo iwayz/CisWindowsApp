@@ -40,7 +40,8 @@ namespace Cis.Data.Migrations
                     CREATED_AT = table.Column<DateTime>(nullable: false),
                     MODIFIED_BY = table.Column<string>(nullable: false),
                     MODIFIED_AT = table.Column<DateTime>(nullable: false),
-                    DESC = table.Column<string>(nullable: false)
+                    MED_CAT_CODE = table.Column<string>(nullable: false),
+                    DESCRIPTION = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -56,11 +57,35 @@ namespace Cis.Data.Migrations
                     CREATED_AT = table.Column<DateTime>(nullable: false),
                     MODIFIED_BY = table.Column<string>(nullable: false),
                     MODIFIED_AT = table.Column<DateTime>(nullable: false),
-                    DESC = table.Column<string>(nullable: false)
+                    OUTLET_CODE = table.Column<string>(nullable: false),
+                    DESCRIPTION = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_OUTLET_TYPE", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PRINCIPAL",
+                columns: table => new
+                {
+                    ID = table.Column<string>(maxLength: 36, nullable: false),
+                    CREATED_BY = table.Column<string>(nullable: false),
+                    CREATED_AT = table.Column<DateTime>(nullable: false),
+                    MODIFIED_BY = table.Column<string>(nullable: false),
+                    MODIFIED_AT = table.Column<DateTime>(nullable: false),
+                    NAME = table.Column<string>(maxLength: 100, nullable: false),
+                    ADDRESS = table.Column<string>(nullable: false),
+                    PROVINCE_ID = table.Column<string>(nullable: false),
+                    DISTRICT_ID = table.Column<string>(nullable: false),
+                    SUBDISTRICT_ID = table.Column<string>(nullable: false),
+                    PostalCode = table.Column<string>(nullable: true),
+                    PHONE = table.Column<string>(nullable: true),
+                    EMAIL = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PRINCIPAL", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -73,7 +98,7 @@ namespace Cis.Data.Migrations
                     MODIFIED_BY = table.Column<string>(nullable: false),
                     MODIFIED_AT = table.Column<DateTime>(nullable: false),
                     ROLE_CODE = table.Column<string>(maxLength: 50, nullable: false),
-                    DESC = table.Column<string>(nullable: false)
+                    DESCRIPTION = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -89,12 +114,37 @@ namespace Cis.Data.Migrations
                     CREATED_AT = table.Column<DateTime>(nullable: false),
                     MODIFIED_BY = table.Column<string>(nullable: false),
                     MODIFIED_AT = table.Column<DateTime>(nullable: false),
-                    AREA_NAME = table.Column<string>(nullable: false),
-                    DESC = table.Column<string>(nullable: true)
+                    AREA_CODE = table.Column<string>(nullable: false),
+                    DESCRIPTION = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_SALES_AREA", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SALESMAN",
+                columns: table => new
+                {
+                    ID = table.Column<string>(maxLength: 36, nullable: false),
+                    CREATED_BY = table.Column<string>(nullable: false),
+                    CREATED_AT = table.Column<DateTime>(nullable: false),
+                    MODIFIED_BY = table.Column<string>(nullable: false),
+                    MODIFIED_AT = table.Column<DateTime>(nullable: false),
+                    SALESMAN_CODE = table.Column<string>(nullable: false),
+                    FULL_NAME = table.Column<string>(nullable: false),
+                    GENDER = table.Column<byte>(nullable: false),
+                    ADDRESS = table.Column<string>(nullable: true),
+                    PROVINCE_ID = table.Column<string>(nullable: false),
+                    DISTRICT_ID = table.Column<string>(nullable: false),
+                    SUBDISTRICT_ID = table.Column<string>(nullable: false),
+                    POSTAL_CODE = table.Column<string>(nullable: true),
+                    PHONE = table.Column<string>(nullable: true),
+                    EMAIL = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SALESMAN", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -107,7 +157,7 @@ namespace Cis.Data.Migrations
                     MODIFIED_BY = table.Column<string>(nullable: false),
                     MODIFIED_AT = table.Column<DateTime>(nullable: false),
                     UOM_CODE = table.Column<string>(nullable: false),
-                    DESC = table.Column<string>(nullable: false)
+                    DESCRIPTION = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -123,7 +173,8 @@ namespace Cis.Data.Migrations
                     CREATED_AT = table.Column<DateTime>(nullable: false),
                     MODIFIED_BY = table.Column<string>(nullable: false),
                     MODIFIED_AT = table.Column<DateTime>(nullable: false),
-                    DESC = table.Column<string>(nullable: false)
+                    USAGE_TYPE_CODE = table.Column<string>(nullable: false),
+                    DESCRIPTION = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -146,61 +197,6 @@ namespace Cis.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_USER", x => x.ID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "PRINCIPAL",
-                columns: table => new
-                {
-                    ID = table.Column<string>(maxLength: 36, nullable: false),
-                    CREATED_BY = table.Column<string>(nullable: false),
-                    CREATED_AT = table.Column<DateTime>(nullable: false),
-                    MODIFIED_BY = table.Column<string>(nullable: false),
-                    MODIFIED_AT = table.Column<DateTime>(nullable: false),
-                    NAME = table.Column<string>(maxLength: 100, nullable: false),
-                    ADDRESS = table.Column<string>(nullable: false),
-                    PHONE = table.Column<string>(nullable: true),
-                    EMAIL = table.Column<string>(nullable: true),
-                    LOC_ID = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PRINCIPAL", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_PRINCIPAL_LOCATION_LOC_ID",
-                        column: x => x.LOC_ID,
-                        principalTable: "LOCATION",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "SALESMAN",
-                columns: table => new
-                {
-                    ID = table.Column<string>(maxLength: 36, nullable: false),
-                    CREATED_BY = table.Column<string>(nullable: false),
-                    CREATED_AT = table.Column<DateTime>(nullable: false),
-                    MODIFIED_BY = table.Column<string>(nullable: false),
-                    MODIFIED_AT = table.Column<DateTime>(nullable: false),
-                    SHORT_NAME = table.Column<string>(nullable: false),
-                    FULL_NAME = table.Column<string>(nullable: false),
-                    GENDER = table.Column<byte>(nullable: false),
-                    ADDRESS = table.Column<string>(nullable: true),
-                    POSTAL_CODE = table.Column<string>(nullable: true),
-                    PHONE = table.Column<string>(nullable: true),
-                    EMAIL = table.Column<string>(nullable: true),
-                    LOC_ID = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_SALESMAN", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_SALESMAN_LOCATION_LOC_ID",
-                        column: x => x.LOC_ID,
-                        principalTable: "LOCATION",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -237,7 +233,10 @@ namespace Cis.Data.Migrations
                     MODIFIED_AT = table.Column<DateTime>(nullable: false),
                     NAME = table.Column<string>(nullable: false),
                     ADDRESS = table.Column<string>(nullable: false),
-                    POSTAL_CD = table.Column<string>(nullable: true),
+                    PROVINCE_ID = table.Column<string>(nullable: false),
+                    DISTRICT_ID = table.Column<string>(nullable: false),
+                    SUBDISTRICT_ID = table.Column<string>(nullable: false),
+                    POSTAL_CODE = table.Column<string>(nullable: true),
                     PHONE = table.Column<string>(nullable: true),
                     EMAIL = table.Column<string>(nullable: true),
                     NPWP = table.Column<string>(nullable: true),
@@ -245,19 +244,12 @@ namespace Cis.Data.Migrations
                     SIPA_NO = table.Column<string>(nullable: true),
                     SIPA_EXP_DATE = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(1900, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)),
                     SIA_NO = table.Column<string>(nullable: true),
-                    LOC_ID = table.Column<string>(nullable: false),
                     OUTLET_TYPE_ID = table.Column<string>(nullable: false),
                     SALES_AREA_ID = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_CUSTOMER", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_CUSTOMER_LOCATION_LOC_ID",
-                        column: x => x.LOC_ID,
-                        principalTable: "LOCATION",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_CUSTOMER_OUTLET_TYPE_OUTLET_TYPE_ID",
                         column: x => x.OUTLET_TYPE_ID,
@@ -268,35 +260,6 @@ namespace Cis.Data.Migrations
                         name: "FK_CUSTOMER_SALES_AREA_SALES_AREA_ID",
                         column: x => x.SALES_AREA_ID,
                         principalTable: "SALES_AREA",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "USER_ROLE",
-                columns: table => new
-                {
-                    ID = table.Column<string>(maxLength: 36, nullable: false),
-                    CREATED_BY = table.Column<string>(nullable: false),
-                    CREATED_AT = table.Column<DateTime>(nullable: false),
-                    MODIFIED_BY = table.Column<string>(nullable: false),
-                    MODIFIED_AT = table.Column<DateTime>(nullable: false),
-                    USER_ID = table.Column<string>(maxLength: 36, nullable: false),
-                    ROLE_ID = table.Column<string>(maxLength: 36, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_USER_ROLE", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_USER_ROLE_ROLE_ROLE_ID",
-                        column: x => x.ROLE_ID,
-                        principalTable: "ROLE",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_USER_ROLE_USER_USER_ID",
-                        column: x => x.USER_ID,
-                        principalTable: "USER",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -314,8 +277,8 @@ namespace Cis.Data.Migrations
                     PRODUCT_NAME = table.Column<string>(maxLength: 100, nullable: false),
                     PRICE = table.Column<decimal>(nullable: false, defaultValue: 0m),
                     PRICE_DEC_DATE = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(1900, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)),
-                    DISC = table.Column<float>(nullable: false, defaultValue: 0f),
-                    RESTOCK_LVL = table.Column<int>(nullable: false, defaultValue: 0),
+                    DISCOUNT = table.Column<float>(nullable: false, defaultValue: 0f),
+                    RESTOCK_LEVEL = table.Column<int>(nullable: false, defaultValue: 0),
                     UNIT_ID = table.Column<string>(nullable: false),
                     MED_CAT_ID = table.Column<string>(nullable: false),
                     USAGE_TYPE_ID = table.Column<string>(nullable: false),
@@ -346,6 +309,35 @@ namespace Cis.Data.Migrations
                         name: "FK_PRODUCT_USAGE_TYPE_USAGE_TYPE_ID",
                         column: x => x.USAGE_TYPE_ID,
                         principalTable: "USAGE_TYPE",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "USER_ROLE",
+                columns: table => new
+                {
+                    ID = table.Column<string>(maxLength: 36, nullable: false),
+                    CREATED_BY = table.Column<string>(nullable: false),
+                    CREATED_AT = table.Column<DateTime>(nullable: false),
+                    MODIFIED_BY = table.Column<string>(nullable: false),
+                    MODIFIED_AT = table.Column<DateTime>(nullable: false),
+                    USER_ID = table.Column<string>(maxLength: 36, nullable: false),
+                    ROLE_ID = table.Column<string>(maxLength: 36, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_USER_ROLE", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_USER_ROLE_ROLE_ROLE_ID",
+                        column: x => x.ROLE_ID,
+                        principalTable: "ROLE",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_USER_ROLE_USER_USER_ID",
+                        column: x => x.USER_ID,
+                        principalTable: "USER",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -388,11 +380,6 @@ namespace Cis.Data.Migrations
                 column: "PRODUCT_ID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CUSTOMER_LOC_ID",
-                table: "CUSTOMER",
-                column: "LOC_ID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_CUST_NAME",
                 table: "CUSTOMER",
                 column: "NAME");
@@ -422,11 +409,6 @@ namespace Cis.Data.Migrations
                 table: "PERMISSION_ROLE",
                 columns: new[] { "ROLE_ID", "ACCESS_UNIT" },
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_PRINCIPAL_LOC_ID",
-                table: "PRINCIPAL",
-                column: "LOC_ID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PRINCIPAL_NAME",
@@ -471,11 +453,6 @@ namespace Cis.Data.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_SALESMAN_LOC_ID",
-                table: "SALESMAN",
-                column: "LOC_ID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_USER_ROLE_USER_ID",
                 table: "USER_ROLE",
                 column: "USER_ID");
@@ -494,6 +471,9 @@ namespace Cis.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "CUSTOMER");
+
+            migrationBuilder.DropTable(
+                name: "LOCATION");
 
             migrationBuilder.DropTable(
                 name: "PERMISSION_ROLE");
@@ -530,9 +510,6 @@ namespace Cis.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "USAGE_TYPE");
-
-            migrationBuilder.DropTable(
-                name: "LOCATION");
         }
     }
 }

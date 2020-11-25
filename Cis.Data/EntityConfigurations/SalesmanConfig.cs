@@ -13,45 +13,48 @@ namespace Cis.Data
         {
             builder.ToTable("SALESMAN");
 
-            builder.Property(s => s.ShortName)
-                   .HasColumnName("SHORT_NAME")
-                   .IsRequired();
+            builder.Property(s => s.SalesmanCode)
+                .HasColumnName("SALESMAN_CODE")
+                .IsRequired();
 
             builder.Property(s => s.FullName)
-                   .HasColumnName("FULL_NAME")
-                   .IsRequired();
+                .HasColumnName("FULL_NAME")
+                .IsRequired();
 
             builder.Property(s => s.Gender)
-                   .HasColumnName("GENDER")
-                   .HasConversion<byte>()
-                   .IsRequired();
+                .HasColumnName("GENDER")
+                .HasConversion<byte>()
+                .IsRequired();
 
             builder.Property(s => s.Address)
-                   .HasColumnName("ADDRESS")
-                   .IsRequired(false);
+                .HasColumnName("ADDRESS")
+                .IsRequired(false);
 
-            builder.Property(s => s.LocationId)
-                   .HasColumnName("LOC_ID")
-                   .IsRequired();
+            builder.Property(p => p.ProvinceId)
+                .HasColumnName("PROVINCE_ID")
+                .IsRequired();
+
+            builder.Property(p => p.DistrictId)
+                .HasColumnName("DISTRICT_ID")
+                .IsRequired();
+
+            builder.Property(p => p.SubDistrictId)
+                .HasColumnName("SUBDISTRICT_ID")
+                .IsRequired();
 
             builder.Property(s => s.PostalCode)
-                   .HasColumnName("POSTAL_CODE")
-                   .IsRequired(false);
+                .HasColumnName("POSTAL_CODE")
+                .IsRequired(false);
 
             builder.Property(s => s.Phone)
-                   .HasColumnName("PHONE")
-                   .IsRequired(false);
+                .HasColumnName("PHONE")
+                .IsRequired(false);
 
             builder.Property(s => s.Email)
-                   .HasColumnName("EMAIL")
-                   .IsRequired(false);
+                .HasColumnName("EMAIL")
+                .IsRequired(false);
 
             new BaseEntityConfig<Salesman>().Configure(ref builder);
-
-            builder.HasOne(s => s.Location)
-                .WithMany(l => l.Salesmen)
-                .HasForeignKey(s => s.LocationId)
-                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

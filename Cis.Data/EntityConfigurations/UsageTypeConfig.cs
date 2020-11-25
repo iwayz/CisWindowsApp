@@ -13,9 +13,13 @@ namespace Cis.Data.EntityConfigurations
         {
             builder.ToTable("USAGE_TYPE");
 
+            builder.Property(s => s.UsageTypeCode)
+                .HasColumnName("USAGE_TYPE_CODE")
+                .IsRequired(); 
+            
             builder.Property(s => s.Description)
-                   .HasColumnName("DESC")
-                   .IsRequired();
+                .HasColumnName("DESCRIPTION")
+                .IsRequired();
 
             new BaseEntityConfig<UsageType>().Configure(ref builder);
 

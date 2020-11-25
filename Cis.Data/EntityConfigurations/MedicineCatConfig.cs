@@ -13,9 +13,13 @@ namespace Cis.Data.EntityConfigurations
         {
             builder.ToTable("MED_CAT");
 
+            builder.Property(m => m.MedicineCatCode)
+                .HasColumnName("MED_CAT_CODE")
+                .IsRequired();
+
             builder.Property(m => m.Description)
-                    .HasColumnName("DESC")
-                    .IsRequired();
+                .HasColumnName("DESCRIPTION")
+                .IsRequired();
 
             new BaseEntityConfig<MedicineCat>().Configure(ref builder);
             

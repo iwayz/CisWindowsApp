@@ -47,7 +47,7 @@ namespace CisWindowsFormsApp
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (!ValidateEmptyField()) return;
-            var existingRole = uowArea.Repository.GetAll().Where(r => r.AreaName == txtAreaCode.Text.Trim()).FirstOrDefault();
+            var existingRole = uowArea.Repository.GetAll().Where(r => r.AreaCode == txtAreaCode.Text.Trim()).FirstOrDefault();
             if (existingRole != null)
             {
                 MessageBox.Show("Data dengan Kode " + txtAreaCode.Text.Trim() + " sudah ada. Silakan gunakan Kode yang lain."
@@ -57,7 +57,7 @@ namespace CisWindowsFormsApp
             {
                 var areaToAdd = new SalesArea
                 {
-                    AreaName = txtAreaCode.Text.Trim(),
+                    AreaCode = txtAreaCode.Text.Trim(),
                     Description = txtDescription.Text.Trim(),
                     CreatedBy = Properties.Settings.Default.CurrentUser,
                     CreatedAt = DateTime.Now,
@@ -99,7 +99,7 @@ namespace CisWindowsFormsApp
 
         private void btnDel_Click(object sender, EventArgs e)
         {
-            var uomToDel = uowArea.Repository.GetAll().Where(u => u.AreaName == txtAreaCode.Text.Trim()).FirstOrDefault();
+            var uomToDel = uowArea.Repository.GetAll().Where(u => u.AreaCode == txtAreaCode.Text.Trim()).FirstOrDefault();
             if (uomToDel != null)
             {
                 if (DialogResult.Yes == MessageBox.Show("Yakin akan menghapus data ini?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
@@ -130,7 +130,7 @@ namespace CisWindowsFormsApp
             else
             {
                 var areaToUpdate = uowArea.Repository.GetById(txtAreaId.Text.Trim());
-                areaToUpdate.AreaName = txtAreaCode.Text.Trim();
+                areaToUpdate.AreaCode = txtAreaCode.Text.Trim();
                 areaToUpdate.Description = txtDescription.Text.Trim();
                 areaToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUser;
                 areaToUpdate.ModifiedAt = DateTime.Now;
@@ -143,12 +143,12 @@ namespace CisWindowsFormsApp
 
         private void BindAreaGridView()
         {
-            var areas = new UnitOfWork<SalesArea>(dbContext).Repository.GetAll().OrderBy(u => u.AreaName);
+            var areas = new UnitOfWork<SalesArea>(dbContext).Repository.GetAll().OrderBy(u => u.AreaCode);
             var areaDetail = areas.Select(area =>
             new
             {
                 area.Id,
-                area.AreaName,
+                area.AreaCode,
                 area.Description,
                 area.ModifiedAt
             });
@@ -158,7 +158,7 @@ namespace CisWindowsFormsApp
 
         private void SetUIGridView()
         {
-            dgvSalesArea.Columns[nameof(SalesArea.AreaName)].HeaderText = "KODE AREA";
+            dgvSalesArea.Columns[nameof(SalesArea.AreaCode)].HeaderText = "KODE AREA";
             dgvSalesArea.Columns[nameof(SalesArea.Description)].HeaderText = "KETERANGAN";
             dgvSalesArea.Columns[nameof(SalesArea.Description)].Width = 220;
             dgvSalesArea.Columns[nameof(SalesArea.Id)].Visible = false;
@@ -168,7 +168,7 @@ namespace CisWindowsFormsApp
         private void SetUIbySelectedGridItem()
         {
             var currentRow = dgvSalesArea.CurrentRow;
-            txtAreaCode.Text = currentRow.Cells[nameof(SalesArea.AreaName)].Value.ToString();
+            txtAreaCode.Text = currentRow.Cells[nameof(SalesArea.AreaCode)].Value.ToString();
             txtDescription.Text = currentRow.Cells[nameof(SalesArea.Description)].Value.ToString();
 
             // hidden fields

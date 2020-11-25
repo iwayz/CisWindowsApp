@@ -40,9 +40,10 @@ namespace Cis.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                var currentDirectory = System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
-                JObject appSettings = JObject.Parse(File.ReadAllText(Path.Combine(currentDirectory,"appsettings.json")));
-                optionsBuilder.UseMySQL(appSettings.SelectToken("ConnectionStrings.DefaultConnection").ToString());
+                //var currentDirectory = System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+                //JObject appSettings = JObject.Parse(File.ReadAllText(Path.Combine(currentDirectory,"appsettings.json")));
+                //optionsBuilder.UseMySQL(appSettings.SelectToken("ConnectionStrings.DefaultConnection").ToString());
+                optionsBuilder.UseMySQL("Server = localhost; Database = CIS_POS; Uid = root; Pwd = admin;");
             }
         }
 

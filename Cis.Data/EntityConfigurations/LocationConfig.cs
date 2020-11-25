@@ -11,9 +11,9 @@ namespace Cis.Data
             builder.ToTable("LOCATION");
 
             builder.Property(l => l.Name)
-                    .HasColumnName("NAME")
-                    .HasMaxLength(100)
-                    .IsRequired();
+                .HasColumnName("NAME")
+                .HasMaxLength(100)
+                .IsRequired();
 
             builder.Property(l => l.LocationType)
                 .HasColumnName("LOC_TYPE")
@@ -21,8 +21,8 @@ namespace Cis.Data
                 .IsRequired();
 
             builder.Property(l => l.ParentId)
-                    .HasColumnName("PARENT_LOC_ID")
-                    .IsRequired();
+                .HasColumnName("PARENT_LOC_ID")
+                .IsRequired();
 
             new BaseEntityConfig<Location>().Configure(ref builder);
 

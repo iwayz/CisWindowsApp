@@ -14,13 +14,13 @@ namespace Cis.Data.EntityConfigurations
             builder.ToTable("ROLE");
 
             builder.Property(r => r.RoleCode)
-                    .HasColumnName("ROLE_CODE")
-                    .HasMaxLength(50)
-                    .IsRequired();
+                .HasColumnName("ROLE_CODE")
+                .HasMaxLength(50)
+                .IsRequired();
 
             builder.Property(r => r.Description)
-                    .HasColumnName("DESC")
-                    .IsRequired();
+                .HasColumnName("DESCRIPTION")
+                .IsRequired();
 
             new BaseEntityConfig<Role>().Configure(ref builder);
 

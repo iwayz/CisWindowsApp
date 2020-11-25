@@ -14,16 +14,16 @@ namespace Cis.Data.EntityConfigurations
             builder.ToTable("USER");
 
             builder.Property(s => s.Username)
-                       .HasColumnName("USER_NAME")
-                       .IsRequired();
+                .HasColumnName("USER_NAME")
+                .IsRequired();
 
             builder.Property(s => s.Password)
-                       .HasColumnName("PASSWORD")
-                       .IsRequired();
+                .HasColumnName("PASSWORD")
+                .IsRequired();
 
             builder.Property(s => s.FullName)
-                       .HasColumnName("FULL_NAME")
-                       .IsRequired();
+                .HasColumnName("FULL_NAME")
+                .IsRequired();
 
             new BaseEntityConfig<User>().Configure(ref builder);
 

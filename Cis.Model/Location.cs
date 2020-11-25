@@ -15,9 +15,5 @@ namespace Cis.Model
         public string ParentId { get; set; }
         public Location Parent { get; set; }
         public virtual HashSet<Location> Children { get; set; }
-
-        public ICollection<Customer> Customers { get; set; }
-        public ICollection<Principal> Principals { get; set; }
-        public ICollection<Salesman> Salesmen { get; set; }
     }
 }

@@ -8,6 +8,9 @@ namespace Cis.Model
     {
         public string Name { get; set; }
         public string Address { get; set; }
+        public string ProvinceId { get; set; }
+        public string DistrictId { get; set; }
+        public string SubDistrictId { get; set; }
         public string PostalCode { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
@@ -17,8 +20,6 @@ namespace Cis.Model
         public DateTime SipaExpiredDate { get; set; }
         public string SiaNo { get; set; }
 
-        public string LocationId { get; set; }
-        public Location Location { get; set; }
         public string OutletTypeId { get; set; }
         public OutletType OutletType { get; set; }
         public string SalesAreaId { get; set; }

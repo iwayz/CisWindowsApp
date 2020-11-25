@@ -97,14 +97,14 @@ namespace Cis.Data.Migrations
                         .HasColumnName("CREATED_BY")
                         .HasColumnType("text");
 
+                    b.Property<string>("DistrictId")
+                        .IsRequired()
+                        .HasColumnName("DISTRICT_ID")
+                        .HasColumnType("text");
+
                     b.Property<string>("Email")
                         .HasColumnName("EMAIL")
                         .HasColumnType("text");
-
-                    b.Property<string>("LocationId")
-                        .IsRequired()
-                        .HasColumnName("LOC_ID")
-                        .HasColumnType("varchar(36)");
 
                     b.Property<DateTime>("ModifiedAt")
                         .HasColumnName("MODIFIED_AT")
@@ -138,7 +138,12 @@ namespace Cis.Data.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("PostalCode")
-                        .HasColumnName("POSTAL_CD")
+                        .HasColumnName("POSTAL_CODE")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ProvinceId")
+                        .IsRequired()
+                        .HasColumnName("PROVINCE_ID")
                         .HasColumnType("text");
 
                     b.Property<string>("SalesAreaId")
@@ -160,9 +165,12 @@ namespace Cis.Data.Migrations
                         .HasColumnName("SIPA_NO")
                         .HasColumnType("text");
 
-                    b.HasKey("Id");
+                    b.Property<string>("SubDistrictId")
+                        .IsRequired()
+                        .HasColumnName("SUBDISTRICT_ID")
+                        .HasColumnType("text");
 
-                    b.HasIndex("LocationId");
+                    b.HasKey("Id");
 
                     b.HasIndex("Name")
                         .HasName("IX_CUST_NAME");
@@ -242,7 +250,12 @@ namespace Cis.Data.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnName("DESC")
+                        .HasColumnName("DESCRIPTION")
+                        .HasColumnType("text");
+
+                    b.Property<string>("MedicineCatCode")
+                        .IsRequired()
+                        .HasColumnName("MED_CAT_CODE")
                         .HasColumnType("text");
 
                     b.Property<DateTime>("ModifiedAt")
@@ -277,7 +290,7 @@ namespace Cis.Data.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnName("DESC")
+                        .HasColumnName("DESCRIPTION")
                         .HasColumnType("text");
 
                     b.Property<DateTime>("ModifiedAt")
@@ -287,6 +300,11 @@ namespace Cis.Data.Migrations
                     b.Property<string>("ModifiedBy")
                         .IsRequired()
                         .HasColumnName("MODIFIED_BY")
+                        .HasColumnType("text");
+
+                    b.Property<string>("OutletCode")
+                        .IsRequired()
+                        .HasColumnName("OUTLET_CODE")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -361,14 +379,14 @@ namespace Cis.Data.Migrations
                         .HasColumnName("CREATED_BY")
                         .HasColumnType("text");
 
+                    b.Property<string>("DistrictId")
+                        .IsRequired()
+                        .HasColumnName("DISTRICT_ID")
+                        .HasColumnType("text");
+
                     b.Property<string>("Email")
                         .HasColumnName("EMAIL")
                         .HasColumnType("text");
-
-                    b.Property<string>("LocationId")
-                        .IsRequired()
-                        .HasColumnName("LOC_ID")
-                        .HasColumnType("varchar(36)");
 
                     b.Property<DateTime>("ModifiedAt")
                         .HasColumnName("MODIFIED_AT")
@@ -389,9 +407,20 @@ namespace Cis.Data.Migrations
                         .HasColumnName("PHONE")
                         .HasColumnType("text");
 
-                    b.HasKey("Id");
+                    b.Property<string>("PostalCode")
+                        .HasColumnType("text");
 
-                    b.HasIndex("LocationId");
+                    b.Property<string>("ProvinceId")
+                        .IsRequired()
+                        .HasColumnName("PROVINCE_ID")
+                        .HasColumnType("text");
+
+                    b.Property<string>("SubDistrictId")
+                        .IsRequired()
+                        .HasColumnName("SUBDISTRICT_ID")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("Name")
                         .HasName("IX_PRINCIPAL_NAME");
@@ -417,7 +446,7 @@ namespace Cis.Data.Migrations
 
                     b.Property<float>("Discount")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("DISC")
+                        .HasColumnName("DISCOUNT")
                         .HasColumnType("float")
                         .HasDefaultValue(0f);
 
@@ -466,7 +495,7 @@ namespace Cis.Data.Migrations
 
                     b.Property<int>("RestockLevel")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("RESTOCK_LVL")
+                        .HasColumnName("RESTOCK_LEVEL")
                         .HasColumnType("int")
                         .HasDefaultValue(0);
 
@@ -518,7 +547,7 @@ namespace Cis.Data.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnName("DESC")
+                        .HasColumnName("DESCRIPTION")
                         .HasColumnType("text");
 
                     b.Property<DateTime>("ModifiedAt")
@@ -552,9 +581,9 @@ namespace Cis.Data.Migrations
                         .HasColumnType("varchar(36)")
                         .HasMaxLength(36);
 
-                    b.Property<string>("AreaName")
+                    b.Property<string>("AreaCode")
                         .IsRequired()
-                        .HasColumnName("AREA_NAME")
+                        .HasColumnName("AREA_CODE")
                         .HasColumnType("text");
 
                     b.Property<DateTime>("CreatedAt")
@@ -567,7 +596,7 @@ namespace Cis.Data.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Description")
-                        .HasColumnName("DESC")
+                        .HasColumnName("DESCRIPTION")
                         .HasColumnType("text");
 
                     b.Property<DateTime>("ModifiedAt")
@@ -604,6 +633,11 @@ namespace Cis.Data.Migrations
                         .HasColumnName("CREATED_BY")
                         .HasColumnType("text");
 
+                    b.Property<string>("DistrictId")
+                        .IsRequired()
+                        .HasColumnName("DISTRICT_ID")
+                        .HasColumnType("text");
+
                     b.Property<string>("Email")
                         .HasColumnName("EMAIL")
                         .HasColumnType("text");
@@ -616,11 +650,6 @@ namespace Cis.Data.Migrations
                     b.Property<byte>("Gender")
                         .HasColumnName("GENDER")
                         .HasColumnType("tinyint");
-
-                    b.Property<string>("LocationId")
-                        .IsRequired()
-                        .HasColumnName("LOC_ID")
-                        .HasColumnType("varchar(36)");
 
                     b.Property<DateTime>("ModifiedAt")
                         .HasColumnName("MODIFIED_AT")
@@ -639,14 +668,22 @@ namespace Cis.Data.Migrations
                         .HasColumnName("POSTAL_CODE")
                         .HasColumnType("text");
 
-                    b.Property<string>("ShortName")
+                    b.Property<string>("ProvinceId")
                         .IsRequired()
-                        .HasColumnName("SHORT_NAME")
+                        .HasColumnName("PROVINCE_ID")
+                        .HasColumnType("text");
+
+                    b.Property<string>("SalesmanCode")
+                        .IsRequired()
+                        .HasColumnName("SALESMAN_CODE")
+                        .HasColumnType("text");
+
+                    b.Property<string>("SubDistrictId")
+                        .IsRequired()
+                        .HasColumnName("SUBDISTRICT_ID")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("LocationId");
 
                     b.ToTable("SALESMAN");
                 });
@@ -669,7 +706,7 @@ namespace Cis.Data.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnName("DESC")
+                        .HasColumnName("DESCRIPTION")
                         .HasColumnType("text");
 
                     b.Property<DateTime>("ModifiedAt")
@@ -709,7 +746,7 @@ namespace Cis.Data.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnName("DESC")
+                        .HasColumnName("DESCRIPTION")
                         .HasColumnType("text");
 
                     b.Property<DateTime>("ModifiedAt")
@@ -719,6 +756,11 @@ namespace Cis.Data.Migrations
                     b.Property<string>("ModifiedBy")
                         .IsRequired()
                         .HasColumnName("MODIFIED_BY")
+                        .HasColumnType("text");
+
+                    b.Property<string>("UsageTypeCode")
+                        .IsRequired()
+                        .HasColumnName("USAGE_TYPE_CODE")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -830,12 +872,6 @@ namespace Cis.Data.Migrations
 
             modelBuilder.Entity("Cis.Model.Customer", b =>
                 {
-                    b.HasOne("Cis.Model.Location", "Location")
-                        .WithMany("Customers")
-                        .HasForeignKey("LocationId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("Cis.Model.OutletType", "OutletType")
                         .WithMany("Customers")
                         .HasForeignKey("OutletTypeId")
@@ -867,15 +903,6 @@ namespace Cis.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Cis.Model.Principal", b =>
-                {
-                    b.HasOne("Cis.Model.Location", "Location")
-                        .WithMany("Principals")
-                        .HasForeignKey("LocationId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Cis.Model.Product", b =>
                 {
                     b.HasOne("Cis.Model.MedicineCat", "MedicineCat")
@@ -899,15 +926,6 @@ namespace Cis.Data.Migrations
                     b.HasOne("Cis.Model.UsageType", "UsageType")
                         .WithMany("Products")
                         .HasForeignKey("UsageTypeId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Cis.Model.Salesman", b =>
-                {
-                    b.HasOne("Cis.Model.Location", "Location")
-                        .WithMany("Salesmen")
-                        .HasForeignKey("LocationId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });

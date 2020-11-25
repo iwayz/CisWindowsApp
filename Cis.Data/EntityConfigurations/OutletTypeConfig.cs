@@ -13,9 +13,13 @@ namespace Cis.Data
         {
             builder.ToTable("OUTLET_TYPE");
 
+            builder.Property(o => o.OutletCode)
+                .HasColumnName("OUTLET_CODE")
+                .IsRequired();
+
             builder.Property(o => o.Description)
-                    .HasColumnName("DESC")
-                    .IsRequired();
+                .HasColumnName("DESCRIPTION")
+                .IsRequired();
 
             new BaseEntityConfig<OutletType>().Configure(ref builder);
         }

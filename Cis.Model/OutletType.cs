@@ -6,6 +6,7 @@ namespace Cis.Model
 {
     public class OutletType : BaseEntity
     {
+        public string OutletCode { get; set; }
         public string Description { get; set; }
 
         public ICollection<Customer> Customers { get; set; }

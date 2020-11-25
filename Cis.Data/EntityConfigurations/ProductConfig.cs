@@ -11,50 +11,50 @@ namespace Cis.Data
             builder.ToTable("PRODUCT");
 
             builder.Property(p => p.ProductCode)
-                   .HasColumnName("PRODUCT_CODE")
-                   .HasMaxLength(50)
-                   .IsRequired();
+                .HasColumnName("PRODUCT_CODE")
+                .HasMaxLength(50)
+                .IsRequired();
 
             builder.Property(p => p.ProductName)
-                   .HasColumnName("PRODUCT_NAME")
-                   .HasMaxLength(100)
-                   .IsRequired();
+                .HasColumnName("PRODUCT_NAME")
+                .HasMaxLength(100)
+                .IsRequired();
 
             builder.Property(p => p.Price)
-                   .HasColumnName("PRICE")
-                   .HasDefaultValue(0)
-                   .IsRequired();
+                .HasColumnName("PRICE")
+                .HasDefaultValue(0)
+                .IsRequired();
 
             builder.Property(p => p.PriceDecreeDate)
-                   .HasColumnName("PRICE_DEC_DATE")
-                   .HasDefaultValue("1900-01-01")
-                   .IsRequired();
+                .HasColumnName("PRICE_DEC_DATE")
+                .HasDefaultValue("1900-01-01")
+                .IsRequired();
 
             builder.Property(p => p.Discount)
-                   .HasColumnName("DISC")
-                   .HasDefaultValue(0)
-                   .IsRequired();
+                .HasColumnName("DISCOUNT")
+                .HasDefaultValue(0)
+                .IsRequired();
 
             builder.Property(p => p.RestockLevel)
-                   .HasColumnName("RESTOCK_LVL")
-                   .HasDefaultValue(0)
-                   .IsRequired();
+                .HasColumnName("RESTOCK_LEVEL")
+                .HasDefaultValue(0)
+                .IsRequired();
 
             builder.Property(p => p.UnitId)
-                   .HasColumnName("UNIT_ID")
-                   .IsRequired();
+                .HasColumnName("UNIT_ID")
+                .IsRequired();
 
             builder.Property(p => p.MedicineCatId)
-                   .HasColumnName("MED_CAT_ID")
-                   .IsRequired();
+                .HasColumnName("MED_CAT_ID")
+                .IsRequired();
 
             builder.Property(p => p.UsageTypeId)
-                   .HasColumnName("USAGE_TYPE_ID")
-                   .IsRequired();
+                .HasColumnName("USAGE_TYPE_ID")
+                .IsRequired();
 
             builder.Property(p => p.PrincipalId)
-                   .HasColumnName("PRINCIPAL_ID")
-                   .IsRequired();
+                .HasColumnName("PRINCIPAL_ID")
+                .IsRequired();
 
             new BaseEntityConfig<Product>().Configure(ref builder);
 

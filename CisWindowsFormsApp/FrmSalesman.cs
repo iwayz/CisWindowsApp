@@ -43,7 +43,7 @@ namespace CisWindowsFormsApp
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (!ValidateEmptyField()) return;
-            var existingRole = uowSalesman.Repository.GetAll().Where(r => r.ShortName == txtShortName.Text.Trim()).FirstOrDefault();
+            var existingRole = uowSalesman.Repository.GetAll().Where(r => r.SalesmanCode == txtShortName.Text.Trim()).FirstOrDefault();
             if (existingRole != null)
             {
                 MessageBox.Show("Data dengan Kode " + txtShortName.Text.Trim() + " sudah ada. Silakan gunakan Kode yang lain."
@@ -53,7 +53,7 @@ namespace CisWindowsFormsApp
             {
                 var salesmanToAdd = new Salesman
                 {
-                    ShortName = txtShortName.Text.Trim(),
+                    SalesmanCode = txtShortName.Text.Trim(),
                     FullName = txtFullName.Text.Trim(),
                     Gender = rbFemale.Checked ? Constant.Gender.Female : Constant.Gender.Male,
                     Address = txtAddress.Text.Trim(),
@@ -103,7 +103,7 @@ namespace CisWindowsFormsApp
 
         private void btnDel_Click(object sender, EventArgs e)
         {
-            var roleToDel = uowSalesman.Repository.GetAll().Where(u => u.ShortName == txtShortName.Text.Trim()).FirstOrDefault();
+            var roleToDel = uowSalesman.Repository.GetAll().Where(u => u.SalesmanCode == txtShortName.Text.Trim()).FirstOrDefault();
             if (roleToDel != null)
             {
                 if (DialogResult.Yes == MessageBox.Show("Yakin akan menghapus data ini?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
@@ -134,7 +134,7 @@ namespace CisWindowsFormsApp
             else
             {
                 var salesmanToUpdate = uowSalesman.Repository.GetById(txtSalesmanId.Text.Trim());
-                salesmanToUpdate.ShortName = txtShortName.Text.Trim();
+                salesmanToUpdate.SalesmanCode = txtShortName.Text.Trim();
                 salesmanToUpdate.FullName = txtFullName.Text.Trim();
                 salesmanToUpdate.Gender = rbFemale.Checked ? Constant.Gender.Female : Constant.Gender.Male;
                 salesmanToUpdate.Address = txtAddress.Text.Trim();
@@ -159,12 +159,12 @@ namespace CisWindowsFormsApp
 
         private void BindRoleGridView()
         {
-            var salesmen = new UnitOfWork<Salesman>(dbContext).Repository.GetAll().OrderBy(s => s.ShortName);
+            var salesmen = new UnitOfWork<Salesman>(dbContext).Repository.GetAll().OrderBy(s => s.SalesmanCode);
             var uomDetail = salesmen.Select(salesman =>
             new
             {
                 salesman.Id,
-                salesman.ShortName,
+                salesman.SalesmanCode,
                 salesman.FullName,
                 salesman.Phone,
                 salesman.Email,
@@ -176,8 +176,8 @@ namespace CisWindowsFormsApp
 
         private void SetUIGridView()
         {
-            dgvSalesman.Columns[nameof(Salesman.ShortName)].HeaderText = "KODE SALESMAN";
-            dgvSalesman.Columns[nameof(Salesman.ShortName)].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgvSalesman.Columns[nameof(Salesman.SalesmanCode)].HeaderText = "KODE SALESMAN";
+            dgvSalesman.Columns[nameof(Salesman.SalesmanCode)].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgvSalesman.Columns[nameof(Salesman.FullName)].HeaderText = "NAMA LENGKAP";
             dgvSalesman.Columns[nameof(Salesman.FullName)].Width = 300;
             dgvSalesman.Columns[nameof(Salesman.Phone)].HeaderText = "TELEPON";
@@ -192,7 +192,7 @@ namespace CisWindowsFormsApp
         private void SetUIbySelectedGridItem()
         {
             var currentRow = dgvSalesman.CurrentRow;
-            txtShortName.Text = currentRow.Cells[nameof(Salesman.ShortName)].Value.ToString();
+            txtShortName.Text = currentRow.Cells[nameof(Salesman.SalesmanCode)].Value.ToString();
             txtFullName.Text = currentRow.Cells[nameof(Salesman.FullName)].Value.ToString();
 
             // hidden fields

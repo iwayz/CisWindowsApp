@@ -14,12 +14,12 @@ namespace Cis.Data
             builder.ToTable("UOM");
 
             builder.Property(u => u.UomCode)
-                   .HasColumnName("UOM_CODE")
-                   .IsRequired();
+                .HasColumnName("UOM_CODE")
+                .IsRequired();
 
             builder.Property(s => s.Description)
-                   .HasColumnName("DESC")
-                   .IsRequired();
+                .HasColumnName("DESCRIPTION")
+                .IsRequired();
 
             new BaseEntityConfig<UnitOfMeasurement>().Configure(ref builder);
 

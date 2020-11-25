@@ -13,13 +13,13 @@ namespace Cis.Data.EntityConfigurations
         {
             builder.ToTable("SALES_AREA");
 
-            builder.Property(s => s.AreaName)
-                   .HasColumnName("AREA_NAME")
-                   .IsRequired();
+            builder.Property(s => s.AreaCode)
+                .HasColumnName("AREA_CODE")
+                .IsRequired();
 
             builder.Property(s => s.Description)
-                   .HasColumnName("DESC")
-                   .IsRequired(false);
+                .HasColumnName("DESCRIPTION")
+                .IsRequired(false);
 
             new BaseEntityConfig<SalesArea>().Configure(ref builder);
 
