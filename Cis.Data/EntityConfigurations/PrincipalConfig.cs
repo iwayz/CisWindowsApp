@@ -1,51 +1,48 @@
 ﻿using Cis.Model;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Data.Entity.ModelConfiguration;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Cis.Data.EntityConfigurations
 {
-    public class PrincipalConfig : IEntityTypeConfiguration<Principal>
+    public class PrincipalConfig : EntityTypeConfiguration<Principal>
     {
-        public void Configure(EntityTypeBuilder<Principal> builder)
+        public PrincipalConfig()
         {
-            builder.ToTable("PRINCIPAL");
-
-            builder.Property(p => p.Name)
+            ToTable("CIS_PRINCIPAL");
+            
+            Property(e => e.Name)
                 .HasColumnName("NAME")
                 .HasMaxLength(100)
                 .IsRequired();
 
-            builder.Property(p => p.Address)
+            Property(e => e.Address)
                 .HasColumnName("ADDRESS")
                 .IsRequired();
 
-            builder.Property(p => p.ProvinceId)
+            Property(e => e.ProvinceId)
                 .HasColumnName("PROVINCE_ID")
                 .IsRequired();
 
-            builder.Property(p => p.DistrictId)
+            Property(e => e.DistrictId)
                 .HasColumnName("DISTRICT_ID")
                 .IsRequired();
 
-            builder.Property(p => p.SubDistrictId)
+            Property(e => e.SubDistrictId)
                 .HasColumnName("SUBDISTRICT_ID")
                 .IsRequired();
 
-            builder.Property(p => p.Phone)
+            Property(e => e.Phone)
                 .HasColumnName("PHONE")
-                .IsRequired(false);
+                .IsOptional();
 
-            builder.Property(p => p.Email)
+            Property(e => e.Email)
                 .HasColumnName("EMAIL")
-                .IsRequired(false);
+                .IsOptional();
 
-            new BaseEntityConfig<Principal>().Configure(ref builder);
 
-            builder
-                .HasIndex(p => p.Name)
+            HasIndex(e => e.Name)
                 .HasName("IX_PRINCIPAL_NAME");
 
         }

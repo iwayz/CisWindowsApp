@@ -1,7 +1,8 @@
 ﻿using Cis.DataContract;
 using System;
 using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
+using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Text;
 
@@ -11,6 +12,7 @@ namespace Cis.Data
     {
         DbSet<T> Entity { get; set; }
         CisDbContext _dbCisDbContext;
+
         public CisRepository(CisDbContext cisDbContext)
         {
             Entity = cisDbContext.Set<T>();
@@ -34,10 +36,7 @@ namespace Cis.Data
         public void Update(T entity)
         {
             _dbCisDbContext.Entry(entity).State = EntityState.Modified; 
-            Entity.Update(entity);
         }
 
-        public void Update(IEnumerable<T> entities) => Entity.UpdateRange(entities);
-        
     }
 }

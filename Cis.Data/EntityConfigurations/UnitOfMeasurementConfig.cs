@@ -1,27 +1,25 @@
 ﻿using Cis.Model;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Data.Entity.ModelConfiguration;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Cis.Data
 {
-    public class UnitOfMeasurementConfig : IEntityTypeConfiguration<UnitOfMeasurement>
+    public class UnitOfMeasurementConfig : EntityTypeConfiguration<UnitOfMeasurement>
     {
-        public void Configure(EntityTypeBuilder<UnitOfMeasurement> builder)
+        public UnitOfMeasurementConfig()
         {
-            builder.ToTable("UOM");
+            ToTable("CIS_UOM");
 
-            builder.Property(u => u.UomCode)
+            Property(e => e.UomCode)
                 .HasColumnName("UOM_CODE")
                 .IsRequired();
 
-            builder.Property(s => s.Description)
+            Property(e => e.Description)
                 .HasColumnName("DESCRIPTION")
                 .IsRequired();
 
-            new BaseEntityConfig<UnitOfMeasurement>().Configure(ref builder);
 
         }
     }

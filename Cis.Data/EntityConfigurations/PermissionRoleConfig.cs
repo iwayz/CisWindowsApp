@@ -1,41 +1,36 @@
 ﻿using Cis.Model;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Data.Entity.ModelConfiguration;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Cis.Data.EntityConfigurations
 {
-    class PermissionRoleConfig : IEntityTypeConfiguration<PermissionRole>
+    public class PermissionRoleConfig : EntityTypeConfiguration<PermissionRole>
     {
-        public void Configure(EntityTypeBuilder<PermissionRole> builder)
+        public PermissionRoleConfig()
         {
-            builder.ToTable("PERMISSION_ROLE");
+            ToTable("CIS_PERMISSION_ROLE");
 
-            builder.Property(p => p.RoleId)
+            Property(e => e.RoleId)
                 .HasColumnName("ROLE_ID")
                 .HasMaxLength(36)
                 .IsRequired();
 
-            builder.Property(p => p.AccessUnit)
+            Property(e => e.AccessUnit)
                 .HasColumnName("ACCESS_UNIT")
                 .HasMaxLength(100)
                 .IsRequired();
 
-            new BaseEntityConfig<PermissionRole>().Configure(ref builder);
-
-
-            builder
-                .HasIndex(p => new { p.RoleId, p.AccessUnit})
+            HasIndex(e => new { e.RoleId, e.AccessUnit})
                 .IsUnique()
                 .HasName("IX_ROLE_ID_ACCESS_UNIT");
 
-            builder
-                .HasOne(p => p.Role)
-                .WithMany(p => p.PermissionRoles)
-                .HasForeignKey(p => p.RoleId)
-                .OnDelete(DeleteBehavior.Restrict);
+            //builder
+            //    .HasOne(e => e.Role)
+            //    .WithMany(e => e.PermissionRoles)
+            //    .HasForeignKey(e => e.RoleId)
+            //    .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

@@ -1,32 +1,28 @@
 ﻿using Cis.Model;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Data.Entity.ModelConfiguration;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Cis.Data.EntityConfigurations
 {
-    public class RoleConfig : IEntityTypeConfiguration<Role>
+    public class RoleConfig : EntityTypeConfiguration<Role>
     {
-        public void Configure(EntityTypeBuilder<Role> builder)
+        public RoleConfig()
         {
-            builder.ToTable("ROLE");
+            ToTable("CIS_ROLE");
 
-            builder.Property(r => r.RoleCode)
+            Property(e => e.RoleCode)
                 .HasColumnName("ROLE_CODE")
-                .HasMaxLength(50)
+                .HasMaxLength(20)
                 .IsRequired();
 
-            builder.Property(r => r.Description)
+            Property(e => e.Description)
                 .HasColumnName("DESCRIPTION")
                 .IsRequired();
 
-            new BaseEntityConfig<Role>().Configure(ref builder);
 
-
-            builder
-                .HasIndex(r => r.RoleCode)
+            HasIndex(e => e.RoleCode)
                 .IsUnique()
                 .HasName("IX_ROLE_CODE");
         }

@@ -1,52 +1,49 @@
 ﻿using Cis.Model;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.ModelConfiguration;
 using System.Text;
 
 namespace Cis.Data
 {
-    public class BatchConfig : IEntityTypeConfiguration<Batch>
+    public class BatchConfig : EntityTypeConfiguration<Batch>
     {
-        public void Configure(EntityTypeBuilder<Batch> builder)
+        public BatchConfig()
         {
-            builder.ToTable("BATCH");
+            ToTable("CIS_BATCH");
 
-            builder.Property(b => b.BatchCode)
-                    .HasColumnName("BATCH_CODE")
-                    .HasMaxLength(100)
-                    .IsRequired();
+            //new BaseEntityConfig<Batch>().SetCommonProperties();
 
-            builder.Property(b => b.Quantity)
-                    .HasColumnName("QTY")
-                    .IsRequired();
+            Property(e => e.BatchCode)
+                .HasColumnName("BATCH_CODE")
+                .HasMaxLength(100)
+                .IsRequired();
 
-            builder.Property(b => b.EntryDate)
-                    .HasColumnName("ENTRY_DATE")
-                    .IsRequired();
+            Property(e => e.Quantity)
+                .HasColumnName("QTY")
+                .IsRequired();
 
-            builder.Property(b => b.ExpiredDate)
-                    .HasColumnName("EXPIRED_DATE")
-                    .IsRequired();
+            Property(e => e.EntryDate)
+                .HasColumnName("ENTRY_DATE")
+                .IsRequired();
 
-            builder.Property(b => b.ProductId)
-                    .HasColumnName("PRODUCT_ID")
-                    .IsRequired();
+            Property(e => e.ExpiredDate)
+                .HasColumnName("EXPIRED_DATE")
+                .IsRequired();
 
-            new BaseEntityConfig<Batch>().Configure(ref builder);
+            Property(e => e.ProductId)
+                .HasColumnName("PRODUCT_ID")
+                .IsRequired();
 
-
-            builder
-                .HasIndex(b => b.BatchCode)
+            HasIndex(b => b.BatchCode)
                 .IsUnique()
                 .HasName("IX_BATCH_CODE");
 
-            builder
-                .HasOne(b => b.Product)
-                .WithMany(p => p.Batches)
-                .HasForeignKey(b => b.ProductId)
-                .OnDelete(DeleteBehavior.Restrict);
+            //builder
+            //    .HasOne(b => b.Product)
+            //    .WithMany(p => p.Batches)
+            //    .HasForeignKey(b => b.ProductId)
+            //    .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

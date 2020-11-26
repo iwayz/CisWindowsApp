@@ -1,91 +1,97 @@
 ﻿using Cis.Model;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Data.Entity.ModelConfiguration;
+
 
 namespace Cis.Data
 {
-    public class ProductConfig : IEntityTypeConfiguration<Product>
+    public class ProductConfig : EntityTypeConfiguration<Product>
     {
-        public void Configure(EntityTypeBuilder<Product> builder)
+        public ProductConfig()
         {
-            builder.ToTable("PRODUCT");
+            ToTable("CIS_PRODUCT");
 
-            builder.Property(p => p.ProductCode)
+            Property(e => e.ProductCode)
                 .HasColumnName("PRODUCT_CODE")
-                .HasMaxLength(50)
+                .HasMaxLength(20)
                 .IsRequired();
 
-            builder.Property(p => p.ProductName)
+            Property(e => e.ProductName)
                 .HasColumnName("PRODUCT_NAME")
                 .HasMaxLength(100)
                 .IsRequired();
 
-            builder.Property(p => p.Price)
+            Property(e => e.Price)
                 .HasColumnName("PRICE")
-                .HasDefaultValue(0)
                 .IsRequired();
 
-            builder.Property(p => p.PriceDecreeDate)
+            Property(e => e.PriceDecreeDate)
                 .HasColumnName("PRICE_DEC_DATE")
-                .HasDefaultValue("1900-01-01")
                 .IsRequired();
 
-            builder.Property(p => p.Discount)
+            Property(e => e.Discount)
                 .HasColumnName("DISCOUNT")
-                .HasDefaultValue(0)
                 .IsRequired();
 
-            builder.Property(p => p.RestockLevel)
+            Property(e => e.RestockLevel)
                 .HasColumnName("RESTOCK_LEVEL")
-                .HasDefaultValue(0)
                 .IsRequired();
 
-            builder.Property(p => p.UnitId)
+            Property(e => e.UnitId)
                 .HasColumnName("UNIT_ID")
                 .IsRequired();
 
-            builder.Property(p => p.MedicineCatId)
+            Property(e => e.MedicineCatId)
                 .HasColumnName("MED_CAT_ID")
                 .IsRequired();
 
-            builder.Property(p => p.UsageTypeId)
+            Property(e => e.UsageTypeId)
                 .HasColumnName("USAGE_TYPE_ID")
                 .IsRequired();
 
-            builder.Property(p => p.PrincipalId)
+            Property(e => e.PrincipalId)
                 .HasColumnName("PRINCIPAL_ID")
                 .IsRequired();
 
-            new BaseEntityConfig<Product>().Configure(ref builder);
-
             
-            builder.HasIndex(p => p.ProductCode)
+            HasIndex(e => e.ProductCode)
                 .IsUnique()
                 .HasName("IX_PRODUCT_CODE");
 
-            builder
-                .HasIndex(p => p.ProductName)
+            HasIndex(e => e.ProductName)
                 .HasName("IX_PRODUCT_NAME");
 
-            builder.HasOne(p => p.Unit)
-                .WithMany(u => u.Products)
-                .HasForeignKey(p => p.UnitId)
-                .OnDelete(DeleteBehavior.Restrict);
+                //.HasColumnName("PRICE")
+                //.HasDefaultValue(0)
 
-            builder.HasOne(p => p.MedicineCat)
-                .WithMany(m => m.Products)
-                .HasForeignKey(p => p.MedicineCatId)
-                .OnDelete(DeleteBehavior.Restrict);
+                //.HasColumnName("PRICE_DEC_DATE")
+                //.HasDefaultValue("1900-01-01")
 
-            builder.HasOne(p => p.UsageType)
-                .WithMany(u => u.Products)
-                .HasForeignKey(p => p.UsageTypeId)
-                .OnDelete(DeleteBehavior.Restrict);
+                //.HasColumnName("DISCOUNT")
+                //.HasDefaultValue(0)
 
-            builder.HasOne(p => p.Principal)
-                .WithMany(p => p.Products)
-                .HasForeignKey(p => p.PrincipalId)
-                .OnDelete(DeleteBehavior.Restrict);
+                //.HasColumnName("RESTOCK_LEVEL")
+                //.HasDefaultValue(0)
+
+
+            //builder.HasOne(e => e.Unit)
+            //    .WithMany(e => e.Products)
+            //    .HasForeignKey(e => e.UnitId)
+            //    .OnDelete(DeleteBehavior.Restrict);
+
+            //builder.HasOne(e => e.MedicineCat)
+            //    .WithMany(m => m.Products)
+            //    .HasForeignKey(e => e.MedicineCatId)
+            //    .OnDelete(DeleteBehavior.Restrict);
+
+            //builder.HasOne(e => e.UsageType)
+            //    .WithMany(e => e.Products)
+            //    .HasForeignKey(e => e.UsageTypeId)
+            //    .OnDelete(DeleteBehavior.Restrict);
+
+            //builder.HasOne(e => e.Principal)
+            //    .WithMany(e => e.Products)
+            //    .HasForeignKey(e => e.PrincipalId)
+            //    .OnDelete(DeleteBehavior.Restrict);
 
         }
     }

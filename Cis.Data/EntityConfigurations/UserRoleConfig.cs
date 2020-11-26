@@ -1,47 +1,43 @@
 ﻿using Cis.Model;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Data.Entity.ModelConfiguration;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Cis.Data.EntityConfigurations
 {
-    class UserRoleConfig : IEntityTypeConfiguration<UserRole>
+    public class UserRoleConfig : EntityTypeConfiguration<UserRole>
     {
-        public void Configure(EntityTypeBuilder<UserRole> builder)
+        public UserRoleConfig()
         {
-            builder.ToTable("USER_ROLE");
+            ToTable("CIS_USER_ROLE");
 
-            builder.Property(u => u.RoleId)
+            Property(e => e.RoleId)
                 .HasColumnName("ROLE_ID")
                 .HasMaxLength(36)
                 .IsRequired();
 
-            builder.Property(u => u.UserId)
+            Property(e => e.UserId)
                 .HasColumnName("USER_ID")
                 .HasMaxLength(36)
                 .IsRequired();
 
-            new BaseEntityConfig<UserRole>().Configure(ref builder);
 
-
-            builder
-                .HasIndex(u => new { u.RoleId, u.UserId})
+            HasIndex(u => new { u.RoleId, u.UserId})
                 .IsUnique()
                 .HasName("IX_USER_ROLE_ROLE_ID_USER_ID");
+            
+            //builder
+            //    .HasOne(e => e.Role)
+            //    .WithMany(e => e.UserRoles)
+            //    .HasForeignKey(e => e.RoleId)
+            //    .OnDelete(DeleteBehavior.Restrict);
 
-            builder
-                .HasOne(u => u.Role)
-                .WithMany(u => u.UserRoles)
-                .HasForeignKey(u => u.RoleId)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            builder
-                .HasOne(u => u.User)
-                .WithMany(u => u.UserRoles)
-                .HasForeignKey(u => u.UserId)
-                .OnDelete(DeleteBehavior.Restrict);
+            //builder
+            //    .HasOne(e => e.User)
+            //    .WithMany(e => e.UserRoles)
+            //    .HasForeignKey(e => e.UserId)
+            //    .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

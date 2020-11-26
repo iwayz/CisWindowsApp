@@ -1,31 +1,29 @@
 ﻿using Cis.Model;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Data.Entity.ModelConfiguration;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Cis.Data.EntityConfigurations
 {
-    public class UserConfig : IEntityTypeConfiguration<User>
+    public class UserConfig : EntityTypeConfiguration<User>
     {
-        public void Configure(EntityTypeBuilder<User> builder)
+        public UserConfig()
         {
-            builder.ToTable("USER");
+            ToTable("CIS_USER");
 
-            builder.Property(s => s.Username)
+            Property(e => e.Username)
                 .HasColumnName("USER_NAME")
                 .IsRequired();
 
-            builder.Property(s => s.Password)
+            Property(e => e.Password)
                 .HasColumnName("PASSWORD")
                 .IsRequired();
 
-            builder.Property(s => s.FullName)
+            Property(e => e.FullName)
                 .HasColumnName("FULL_NAME")
                 .IsRequired();
 
-            new BaseEntityConfig<User>().Configure(ref builder);
 
         }
     }

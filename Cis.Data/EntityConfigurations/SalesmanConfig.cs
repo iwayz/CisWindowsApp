@@ -1,60 +1,57 @@
 ﻿using Cis.Model;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Data.Entity.ModelConfiguration;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Cis.Data
 {
-    public class SalesmanConfig : IEntityTypeConfiguration<Salesman>
+    public class SalesmanConfig : EntityTypeConfiguration<Salesman>
     {
-        public void Configure(EntityTypeBuilder<Salesman> builder)
+        public SalesmanConfig()
         {
-            builder.ToTable("SALESMAN");
+            ToTable("CIS_SALESMAN");
 
-            builder.Property(s => s.SalesmanCode)
+            Property(e => e.SalesmanCode)
                 .HasColumnName("SALESMAN_CODE")
                 .IsRequired();
 
-            builder.Property(s => s.FullName)
+            Property(e => e.FullName)
                 .HasColumnName("FULL_NAME")
                 .IsRequired();
 
-            builder.Property(s => s.Gender)
+            Property(e => e.Gender)
                 .HasColumnName("GENDER")
-                .HasConversion<byte>()
                 .IsRequired();
 
-            builder.Property(s => s.Address)
+            Property(e => e.Address)
                 .HasColumnName("ADDRESS")
-                .IsRequired(false);
+                .IsOptional();
 
-            builder.Property(p => p.ProvinceId)
+            Property(p => p.ProvinceId)
                 .HasColumnName("PROVINCE_ID")
                 .IsRequired();
 
-            builder.Property(p => p.DistrictId)
+            Property(p => p.DistrictId)
                 .HasColumnName("DISTRICT_ID")
                 .IsRequired();
 
-            builder.Property(p => p.SubDistrictId)
+            Property(p => p.SubDistrictId)
                 .HasColumnName("SUBDISTRICT_ID")
                 .IsRequired();
 
-            builder.Property(s => s.PostalCode)
+            Property(e => e.PostalCode)
                 .HasColumnName("POSTAL_CODE")
-                .IsRequired(false);
+                .IsOptional();
 
-            builder.Property(s => s.Phone)
+            Property(e => e.Phone)
                 .HasColumnName("PHONE")
-                .IsRequired(false);
+                .IsOptional();
 
-            builder.Property(s => s.Email)
+            Property(e => e.Email)
                 .HasColumnName("EMAIL")
-                .IsRequired(false);
+                .IsOptional();
 
-            new BaseEntityConfig<Salesman>().Configure(ref builder);
         }
     }
 }

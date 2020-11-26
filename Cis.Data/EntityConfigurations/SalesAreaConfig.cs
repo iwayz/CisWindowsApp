@@ -1,27 +1,25 @@
 ﻿using Cis.Model;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Data.Entity.ModelConfiguration;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Cis.Data.EntityConfigurations
 {
-    public class SalesAreaConfig : IEntityTypeConfiguration<SalesArea>
+    public class SalesAreaConfig : EntityTypeConfiguration<SalesArea>
     {
-        public void Configure(EntityTypeBuilder<SalesArea> builder)
+        public SalesAreaConfig()
         {
-            builder.ToTable("SALES_AREA");
+            ToTable("CIS_SALES_AREA");
 
-            builder.Property(s => s.AreaCode)
+            Property(e => e.AreaCode)
                 .HasColumnName("AREA_CODE")
                 .IsRequired();
 
-            builder.Property(s => s.Description)
+            Property(e => e.Description)
                 .HasColumnName("DESCRIPTION")
-                .IsRequired(false);
+                .IsOptional();
 
-            new BaseEntityConfig<SalesArea>().Configure(ref builder);
 
         }
     }

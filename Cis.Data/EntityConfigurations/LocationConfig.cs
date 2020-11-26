@@ -1,34 +1,29 @@
 ﻿using Cis.Model;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Data.Entity.ModelConfiguration;
 
 namespace Cis.Data
 {
-    public class LocationConfig : IEntityTypeConfiguration<Location>
+    public class LocationConfig : EntityTypeConfiguration<Location>
     {
-        public void Configure(EntityTypeBuilder<Location> builder)
+        public LocationConfig()
         {
-            builder.ToTable("LOCATION");
+            ToTable("CIS_LOCATION");
 
-            builder.Property(l => l.Name)
+            Property(e => e.Name)
                 .HasColumnName("NAME")
                 .HasMaxLength(100)
                 .IsRequired();
 
-            builder.Property(l => l.LocationType)
+            Property(e => e.LocationType)
                 .HasColumnName("LOC_TYPE")
-                .HasConversion<byte>()
                 .IsRequired();
 
-            builder.Property(l => l.ParentId)
+            Property(e => e.ParentId)
                 .HasColumnName("PARENT_LOC_ID")
                 .IsRequired();
 
-            new BaseEntityConfig<Location>().Configure(ref builder);
-
-
-            builder
-                .HasIndex(l => l.Name)
+           
+           HasIndex(e => e.Name)
                 .HasName("IX_LOC_NAME");
         }
     }

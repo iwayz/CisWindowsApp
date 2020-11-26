@@ -1,27 +1,25 @@
 ﻿using Cis.Model;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Data.Entity.ModelConfiguration;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Cis.Data
 {
-    public class OutletTypeConfig : IEntityTypeConfiguration<OutletType>
+    public class OutletTypeConfig : EntityTypeConfiguration<OutletType>
     {
-        public void Configure(EntityTypeBuilder<OutletType> builder)
+        public OutletTypeConfig()
         {
-            builder.ToTable("OUTLET_TYPE");
+            ToTable("CIS_OUTLET_TYPE");
 
-            builder.Property(o => o.OutletCode)
+            Property(e => e.OutletCode)
                 .HasColumnName("OUTLET_CODE")
                 .IsRequired();
 
-            builder.Property(o => o.Description)
+            Property(e => e.Description)
                 .HasColumnName("DESCRIPTION")
                 .IsRequired();
 
-            new BaseEntityConfig<OutletType>().Configure(ref builder);
         }
     }
 }

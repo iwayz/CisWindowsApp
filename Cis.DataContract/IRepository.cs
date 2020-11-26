@@ -16,8 +16,6 @@ namespace Cis.DataContract
 
         void Update(T entity);
 
-        void Update(IEnumerable<T> entities);
-
         void Delete(T entity);
 
         void Delete(IEnumerable<T> entities);

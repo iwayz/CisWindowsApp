@@ -1,27 +1,25 @@
 ﻿using Cis.Model;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Data.Entity.ModelConfiguration;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Cis.Data.EntityConfigurations
 {
-    public class UsageTypeConfig : IEntityTypeConfiguration<UsageType>
+    public class UsageTypeConfig : EntityTypeConfiguration<UsageType>
     {
-        public void Configure(EntityTypeBuilder<UsageType> builder)
+        public UsageTypeConfig()
         {
-            builder.ToTable("USAGE_TYPE");
+            ToTable("CIS_USAGE_TYPE");
 
-            builder.Property(s => s.UsageTypeCode)
+            Property(e => e.UsageTypeCode)
                 .HasColumnName("USAGE_TYPE_CODE")
                 .IsRequired(); 
             
-            builder.Property(s => s.Description)
+            Property(e => e.Description)
                 .HasColumnName("DESCRIPTION")
                 .IsRequired();
 
-            new BaseEntityConfig<UsageType>().Configure(ref builder);
 
         }
     }

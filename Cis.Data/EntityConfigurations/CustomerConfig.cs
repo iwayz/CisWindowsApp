@@ -1,95 +1,94 @@
 ﻿using Cis.Model;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.ModelConfiguration;
 using System.Text;
 
 namespace Cis.Data
 {
-    public class CustomerConfig: IEntityTypeConfiguration<Customer>
+    public class CustomerConfig: EntityTypeConfiguration<Customer>
     {
-        public void Configure(EntityTypeBuilder<Customer> builder)
+        public CustomerConfig()
         {
-            builder.ToTable("CUSTOMER");
+            ToTable("CIS_CUSTOMER");
 
-            builder.Property(c => c.Name)
+            Property(e => e.Name)
                 .HasColumnName("NAME")
                 .IsRequired();
 
-            builder.Property(c => c.Address)
+            Property(e => e.Address)
                 .HasColumnName("ADDRESS")
                 .IsRequired();
 
-            builder.Property(c => c.ProvinceId)
+            Property(e => e.ProvinceId)
                 .HasColumnName("PROVINCE_ID")
                 .IsRequired();
 
-            builder.Property(c => c.DistrictId)
+            Property(e => e.DistrictId)
                 .HasColumnName("DISTRICT_ID")
                 .IsRequired();
 
-            builder.Property(c => c.SubDistrictId)
+            Property(e => e.SubDistrictId)
                 .HasColumnName("SUBDISTRICT_ID")
                 .IsRequired();
 
-            builder.Property(c => c.PostalCode)
+            Property(e => e.PostalCode)
                 .HasColumnName("POSTAL_CODE")
-                .IsRequired(false);
+                .IsOptional();
 
-            builder.Property(c => c.Phone)
+            Property(e => e.Phone)
                 .HasColumnName("PHONE")
-                .IsRequired(false);
+                .IsOptional();
 
-            builder.Property(c => c.Email)
+            Property(e => e.Email)
                 .HasColumnName("EMAIL")
-                .IsRequired(false);
+                .IsOptional();
 
-            builder.Property(c => c.Npwp)
+            Property(e => e.Npwp)
                 .HasColumnName("NPWP")
-                .IsRequired(false);
+                .IsOptional();
 
-            builder.Property(c => c.PharmacistName)
+            Property(e => e.PharmacistName)
                 .HasColumnName("PHARMACIST_NAME")
-                .IsRequired(false);
+                .IsOptional();
 
-            builder.Property(c => c.SipaNo)
+            Property(e => e.SipaNo)
                 .HasColumnName("SIPA_NO")
-                .IsRequired(false);
+                .IsOptional();
 
-            builder.Property(c => c.SipaExpiredDate)
+            Property(e => e.SipaExpiredDate)
                 .HasColumnName("SIPA_EXP_DATE")
-                .HasDefaultValue("1900-01-01")
                 .IsRequired();
 
-            builder.Property(c => c.SiaNo)
+            Property(e => e.SiaNo)
                 .HasColumnName("SIA_NO")
-                .IsRequired(false);
+                .IsOptional();
 
-            builder.Property(c => c.OutletTypeId)
+            Property(e => e.OutletTypeId)
                 .HasColumnName("OUTLET_TYPE_ID")
                 .IsRequired();
 
-            builder.Property(c => c.SalesAreaId)
+            Property(e => e.SalesAreaId)
                 .HasColumnName("SALES_AREA_ID")
                 .IsRequired();
 
-            new BaseEntityConfig<Customer>().Configure(ref builder);
 
-
-            builder
-                .HasIndex(c => c.Name)
+            HasIndex(e => e.Name)
                 .HasName("IX_CUST_NAME");
 
-            builder.HasOne(c => c.SalesArea)
-                .WithMany(s => s.Customers)
-                .HasForeignKey(c => c.SalesAreaId)
-                .OnDelete(DeleteBehavior.Restrict);
+            //builder.HasOne(e => e.SalesArea)
+            //    .WithMany(e => e.Customers)
+            //    .HasForeignKey(e => e.SalesAreaId)
+            //    .OnDelete(DeleteBehavior.Restrict);
 
-            builder.HasOne(c => c.OutletType)
-                .WithMany(o => o.Customers)
-                .HasForeignKey(c => c.OutletTypeId)
-                .OnDelete(DeleteBehavior.Restrict);
+            //builder.HasOne(e => e.OutletType)
+            //    .WithMany(o => o.Customers)
+            //    .HasForeignKey(e => e.OutletTypeId)
+            //    .OnDelete(DeleteBehavior.Restrict);
+
+
+            // .HasColumnName("SIPA_EXP_DATE")
+            //    .HasDefaultValue("1900-01-01")
         }
     }
 }
