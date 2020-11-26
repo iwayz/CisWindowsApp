@@ -359,6 +359,7 @@
             // 
             // pnlMasterDataChildren
             // 
+            this.pnlMasterDataChildren.AutoScroll = true;
             this.pnlMasterDataChildren.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMasterDataChildren.Location = new System.Drawing.Point(0, 191);
             this.pnlMasterDataChildren.Name = "pnlMasterDataChildren";

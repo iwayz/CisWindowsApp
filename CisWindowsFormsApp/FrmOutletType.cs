@@ -31,18 +31,15 @@ namespace CisWindowsFormsApp
             BindOutletTypeGridView();
             SetUIGridView();
 
-            if (dgvOutlet.RowCount <= 0)
-            {
-                isAdd = true;
-                SetUIButtonGroup();
-            }
+            isAdd = true;
+            SetUIButtonGroup();
 
             txtOutletCode.Focus();
         }
 
         private void dgvOutlet_Click(object sender, EventArgs e)
         {
-            SetUIbySelectedGridItem();
+            btnReload.PerformClick();
         }
 
         private void btnClear_Click(object sender, EventArgs e)

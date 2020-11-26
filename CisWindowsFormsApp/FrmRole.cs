@@ -32,12 +32,9 @@ namespace CisWindowsFormsApp
             BindRoleGridView();
             SetUIGridView();
 
-            if (dgvRole.RowCount <= 0)
-            {
-                isAdd = true;
-                SetUIButtonGroup();
-            }
-            
+            isAdd = true;
+            SetUIButtonGroup();
+
             txtRoleCode.Focus();
         }
         private void BindRoleGridView()
@@ -200,7 +197,7 @@ namespace CisWindowsFormsApp
 
         private void dgvRole_Click(object sender, EventArgs e)
         {
-            SetUIbySelectedGridItem();
+            btnReload.PerformClick();
         }
 
         private void SetUIButtonGroup()

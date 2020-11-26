@@ -32,11 +32,8 @@ namespace CisWindowsFormsApp
             BindMedCatGridView();
             SetUIGridView();
 
-            if (dgvMedCat.RowCount <= 0)
-            {
-                isAdd = true;
-                SetUIButtonGroup();
-            }
+            isAdd = true;
+            SetUIButtonGroup();
 
             txtMedCatCode.Focus();
         }
@@ -159,7 +156,7 @@ namespace CisWindowsFormsApp
 
         private void dgvMedCat_Click(object sender, EventArgs e)
         {
-            SetUIbySelectedGridItem();
+            btnReload.PerformClick();
         }
 
         private void BindMedCatGridView()

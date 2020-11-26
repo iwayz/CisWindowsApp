@@ -32,11 +32,8 @@ namespace CisWindowsFormsApp
             SetUIGridView();
             BindLocationComboBox(cbProvince, Constant.LocationType.Province);
 
-            if (dgvSalesman.RowCount <= 0)
-            {
-                isAdd = true;
-                SetUIButtonGroup();
-            }
+            isAdd = true;
+            SetUIButtonGroup();
 
             txtSalesmanCode.Focus();
         }
@@ -68,8 +65,8 @@ namespace CisWindowsFormsApp
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (!ValidateEmptyField()) return;
-            var existingRole = uowSalesman.Repository.GetAll().Where(r => r.SalesmanCode == txtSalesmanCode.Text.Trim()).FirstOrDefault();
-            if (existingRole != null)
+            var existingSalesman = uowSalesman.Repository.GetAll().Where(r => r.SalesmanCode == txtSalesmanCode.Text.Trim()).FirstOrDefault();
+            if (existingSalesman != null)
             {
                 MessageBox.Show("Data dengan Kode " + txtSalesmanCode.Text.Trim() + " sudah ada. Silakan gunakan Kode yang lain."
                     , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -185,7 +182,7 @@ namespace CisWindowsFormsApp
 
         private void dgvSalesman_Click(object sender, EventArgs e)
         {
-            SetUIbySelectedGridItem();
+            btnReload.PerformClick();
         }
 
         private void BindRoleGridView()

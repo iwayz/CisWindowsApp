@@ -31,12 +31,9 @@ namespace CisWindowsFormsApp
             BindUsageTyperidView();
             SetUIGridView();
 
-            if (dgvUsageType.RowCount <= 0)
-            {
-                isAdd = true;
-                SetUIButtonGroup();
-            }
-            
+            isAdd = true;
+            SetUIButtonGroup();
+
             txtUsageTypeCode.Focus();
         }
 
@@ -191,7 +188,7 @@ namespace CisWindowsFormsApp
 
         private void dgvUsageType_Click(object sender, EventArgs e)
         {
-            SetUIbySelectedGridItem();
+            btnReload.PerformClick();
         }
 
         private bool ValidateEmptyField()

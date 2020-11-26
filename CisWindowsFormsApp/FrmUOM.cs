@@ -136,7 +136,7 @@ namespace CisWindowsFormsApp
 
         private void dgvUom_Click(object sender, EventArgs e)
         {
-            SetUIbySelectedGridItem();
+            btnReload.PerformClick();
         }
 
         private void FrmUOM_Load(object sender, EventArgs e)

@@ -31,18 +31,15 @@ namespace CisWindowsFormsApp
             BindAreaGridView();
             SetUIGridView();
 
-            if (dgvSalesArea.RowCount <= 0)
-            {
-                isAdd = true;
-                SetUIButtonGroup();
-            }
-            
+            isAdd = true;
+            SetUIButtonGroup();
+
             txtAreaCode.Focus();
         }
 
         private void dgvSalesArea_Click(object sender, EventArgs e)
         {
-            SetUIbySelectedGridItem();
+            btnReload.PerformClick();
         }
 
         private void btnClear_Click(object sender, EventArgs e)

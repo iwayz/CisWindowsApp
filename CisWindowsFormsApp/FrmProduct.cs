@@ -36,11 +36,8 @@ namespace CisWindowsFormsApp
             BindProductGridView();
             SetUIGridView();
 
-            if (dgvProduct.RowCount <= 0)
-            {
-                isAdd = true;
-                SetUIButtonGroup();
-            }
+            isAdd = true;
+            SetUIButtonGroup();
 
             txtProductCode.Focus();
         }
@@ -141,7 +138,7 @@ namespace CisWindowsFormsApp
                 prodToUpdate.ProductCode = txtProductCode.Text.Trim();
                 prodToUpdate.ProductName = txtProductName.Text.Trim();
                 prodToUpdate.Price = Convert.ToDecimal(txtPrice.Text.Trim());
-                prodToUpdate.PriceDecreeDate = DateTime.Parse(dtpDecreeDate.Value.ToString());
+                prodToUpdate.PriceDecreeDate = DateTime.Parse(dtpDecreeDate.Value.ToString("yyyy-MM-dd"));
                 prodToUpdate.Discount = float.Parse(txtDiscount.Text.Trim());
                 prodToUpdate.RestockLevel = Convert.ToInt32(txtRestock.Text.Trim());
                 prodToUpdate.UnitId = cbUom.SelectedValue.ToString();
@@ -213,7 +210,7 @@ namespace CisWindowsFormsApp
             txtProductCode.Text = currentRow.Cells[nameof(Product.ProductCode)].Value.ToString();
             txtProductName.Text = currentRow.Cells[nameof(Product.ProductName)].Value.ToString();
             txtPrice.Text = currentRow.Cells[nameof(Product.Price)].Value.ToString();
-            dtpDecreeDate.Text = currentRow.Cells[nameof(Product.PriceDecreeDate)].Value.ToString();
+            dtpDecreeDate.Value = DateTime.Parse(currentRow.Cells[nameof(Product.PriceDecreeDate)].Value.ToString());
             txtDiscount.Text = currentRow.Cells[nameof(Product.Discount)].Value.ToString();
             txtRestock.Text = currentRow.Cells[nameof(Product.RestockLevel)].Value.ToString();
             cbUom.SelectedValue = currentRow.Cells[nameof(Product.UnitId)].Value.ToString();
@@ -349,7 +346,7 @@ namespace CisWindowsFormsApp
 
         private void dgvProduct_Click(object sender, EventArgs e)
         {
-            SetUIbySelectedGridItem();
+            btnReload.PerformClick();
         }
 
         private bool ValidateEmptyField()

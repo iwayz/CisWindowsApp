@@ -33,12 +33,9 @@ namespace CisWindowsFormsApp
             SetUIGridView();
             SetUIButtonGroup();
 
-            if (dgvUser.RowCount <= 0)
-            {
-                isAdd = true;
-                SetUIButtonGroup();
-            }
-            
+            isAdd = true;
+            SetUIButtonGroup();
+
             txtUsername.Focus();
         }
 
@@ -171,7 +168,7 @@ namespace CisWindowsFormsApp
 
         private void dgvUser_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            SetUIbySelectedGridItem();
+            btnReload.PerformClick();
         }
 
         private void BindUserGridView()
