@@ -12,7 +12,7 @@ namespace Cis.Data
 
             Property(e => e.ProductCode)
                 .HasColumnName("PRODUCT_CODE")
-                .HasMaxLength(20)
+                .HasMaxLength(50)
                 .IsRequired();
 
             Property(e => e.ProductName)
@@ -42,14 +42,17 @@ namespace Cis.Data
 
             Property(e => e.MedicineCatId)
                 .HasColumnName("MED_CAT_ID")
+                .HasMaxLength(36)
                 .IsRequired();
 
             Property(e => e.UsageTypeId)
                 .HasColumnName("USAGE_TYPE_ID")
+                .HasMaxLength(36)
                 .IsRequired();
 
             Property(e => e.PrincipalId)
                 .HasColumnName("PRINCIPAL_ID")
+                .HasMaxLength(36)
                 .IsRequired();
 
             
@@ -71,27 +74,6 @@ namespace Cis.Data
 
                 //.HasColumnName("RESTOCK_LEVEL")
                 //.HasDefaultValue(0)
-
-
-            //builder.HasOne(e => e.Unit)
-            //    .WithMany(e => e.Products)
-            //    .HasForeignKey(e => e.UnitId)
-            //    .OnDelete(DeleteBehavior.Restrict);
-
-            //builder.HasOne(e => e.MedicineCat)
-            //    .WithMany(m => m.Products)
-            //    .HasForeignKey(e => e.MedicineCatId)
-            //    .OnDelete(DeleteBehavior.Restrict);
-
-            //builder.HasOne(e => e.UsageType)
-            //    .WithMany(e => e.Products)
-            //    .HasForeignKey(e => e.UsageTypeId)
-            //    .OnDelete(DeleteBehavior.Restrict);
-
-            //builder.HasOne(e => e.Principal)
-            //    .WithMany(e => e.Products)
-            //    .HasForeignKey(e => e.PrincipalId)
-            //    .OnDelete(DeleteBehavior.Restrict);
 
         }
     }

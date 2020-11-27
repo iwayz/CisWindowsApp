@@ -1,8 +1,5 @@
 ﻿using Cis.Model;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration;
-using System.Text;
 
 namespace Cis.Data
 {
@@ -12,11 +9,9 @@ namespace Cis.Data
         {
             ToTable("CIS_BATCH");
 
-            //new BaseEntityConfig<Batch>().SetCommonProperties();
-
             Property(e => e.BatchCode)
                 .HasColumnName("BATCH_CODE")
-                .HasMaxLength(100)
+                .HasMaxLength(50)
                 .IsRequired();
 
             Property(e => e.Quantity)
@@ -33,17 +28,13 @@ namespace Cis.Data
 
             Property(e => e.ProductId)
                 .HasColumnName("PRODUCT_ID")
+                .HasMaxLength(36)
                 .IsRequired();
 
             HasIndex(b => b.BatchCode)
                 .IsUnique()
                 .HasName("IX_BATCH_CODE");
 
-            //builder
-            //    .HasOne(b => b.Product)
-            //    .WithMany(p => p.Batches)
-            //    .HasForeignKey(b => b.ProductId)
-            //    .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

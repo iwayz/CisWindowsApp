@@ -26,11 +26,6 @@ namespace Cis.Data.EntityConfigurations
                 .IsUnique()
                 .HasName("IX_ROLE_ID_ACCESS_UNIT");
 
-            //builder
-            //    .HasOne(e => e.Role)
-            //    .WithMany(e => e.PermissionRoles)
-            //    .HasForeignKey(e => e.RoleId)
-            //    .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

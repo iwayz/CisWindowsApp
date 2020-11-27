@@ -14,6 +14,7 @@ namespace Cis.Data
 
             Property(e => e.OutletCode)
                 .HasColumnName("OUTLET_CODE")
+                .HasMaxLength(50)
                 .IsRequired();
 
             Property(e => e.Description)

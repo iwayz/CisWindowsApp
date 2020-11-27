@@ -1,8 +1,5 @@
 ﻿using Cis.Model;
 using System.Data.Entity.ModelConfiguration;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Cis.Data.EntityConfigurations
 {
@@ -14,7 +11,7 @@ namespace Cis.Data.EntityConfigurations
 
             Property(e => e.RoleCode)
                 .HasColumnName("ROLE_CODE")
-                .HasMaxLength(20)
+                .HasMaxLength(50)
                 .IsRequired();
 
             Property(e => e.Description)

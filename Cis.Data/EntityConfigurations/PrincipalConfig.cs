@@ -23,14 +23,17 @@ namespace Cis.Data.EntityConfigurations
 
             Property(e => e.ProvinceId)
                 .HasColumnName("PROVINCE_ID")
+                .HasMaxLength(36)
                 .IsRequired();
 
             Property(e => e.DistrictId)
                 .HasColumnName("DISTRICT_ID")
+                .HasMaxLength(36)
                 .IsRequired();
 
             Property(e => e.SubDistrictId)
                 .HasColumnName("SUBDISTRICT_ID")
+                .HasMaxLength(36)
                 .IsRequired();
 
             Property(e => e.Phone)

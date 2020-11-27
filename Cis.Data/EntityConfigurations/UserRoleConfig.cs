@@ -1,8 +1,5 @@
 ﻿using Cis.Model;
 using System.Data.Entity.ModelConfiguration;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Cis.Data.EntityConfigurations
 {
@@ -27,17 +24,6 @@ namespace Cis.Data.EntityConfigurations
                 .IsUnique()
                 .HasName("IX_USER_ROLE_ROLE_ID_USER_ID");
             
-            //builder
-            //    .HasOne(e => e.Role)
-            //    .WithMany(e => e.UserRoles)
-            //    .HasForeignKey(e => e.RoleId)
-            //    .OnDelete(DeleteBehavior.Restrict);
-
-            //builder
-            //    .HasOne(e => e.User)
-            //    .WithMany(e => e.UserRoles)
-            //    .HasForeignKey(e => e.UserId)
-            //    .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

@@ -14,6 +14,7 @@ namespace Cis.Data.EntityConfigurations
 
             Property(e => e.MedicineCatCode)
                 .HasColumnName("MED_CAT_CODE")
+                .HasMaxLength(50)
                 .IsRequired();
 
             Property(e => e.Description)

@@ -14,5 +14,11 @@ namespace CisWindowsFormsApp
         {
             InitializeComponent();
         }
+
+        private void FormTest_Load(object sender, EventArgs e)
+        {
+
+            this.reportViewer1.RefreshReport();
+        }
     }
 }

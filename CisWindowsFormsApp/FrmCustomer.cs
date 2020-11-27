@@ -73,7 +73,7 @@ namespace CisWindowsFormsApp
         {
             if (!ValidateEmptyField()) return;
             var existingCust = uowCust.Repository.GetAll()
-                .Where(r => r.Name == txtCustomerName.Text.Trim()
+                .Where(r => r.CustomerName == txtCustomerName.Text.Trim()
                 && r.Address == txtAddress.Text.Trim())
                 .FirstOrDefault();
 
@@ -86,7 +86,7 @@ namespace CisWindowsFormsApp
             {
                 var custToAdd = new Customer
                 {
-                    Name = txtCustomerName.Text.Trim(),
+                    CustomerName = txtCustomerName.Text.Trim(),
                     Address = txtAddress.Text.Trim(),
                     ProvinceId = cbProvince.SelectedValue.ToString(),
                     DistrictId = cbDistrict.SelectedValue.ToString(),
@@ -128,7 +128,7 @@ namespace CisWindowsFormsApp
             else
             {
                 var custToUpdate = uowCust.Repository.GetById(txtCustomerId.Text.Trim());
-                custToUpdate.Name = txtCustomerName.Text.Trim();
+                custToUpdate.CustomerName = txtCustomerName.Text.Trim();
                 custToUpdate.Address = txtAddress.Text.Trim();
                 custToUpdate.ProvinceId = cbProvince.SelectedValue.ToString();
                 custToUpdate.DistrictId = cbDistrict.SelectedValue.ToString();
@@ -156,7 +156,7 @@ namespace CisWindowsFormsApp
         private void btnDel_Click(object sender, EventArgs e)
         {
             var roleToDel = uowCust.Repository.GetAll()
-                .Where(r => r.Name == txtCustomerName.Text.Trim()
+                .Where(r => r.CustomerName == txtCustomerName.Text.Trim()
                 && r.Address == txtAddress.Text.Trim())
                 .FirstOrDefault();
 
@@ -224,12 +224,12 @@ namespace CisWindowsFormsApp
 
         private void BindCustomerGridView()
         {
-            var salesmen = new UnitOfWork<Customer>(dbContext).Repository.GetAll().OrderBy(s => s.Name);
+            var salesmen = new UnitOfWork<Customer>(dbContext).Repository.GetAll().OrderBy(s => s.CustomerName);
             var uomDetail = salesmen.Select(salesman =>
             new
             {
                 salesman.Id,
-                salesman.Name,
+                salesman.CustomerName,
                 salesman.Address,
                 salesman.ProvinceId,
                 salesman.DistrictId,
@@ -252,8 +252,8 @@ namespace CisWindowsFormsApp
 
         private void SetUIGridView()
         {
-            dgvCustomer.Columns[nameof(Customer.Name)].HeaderText = "NAMA PELANGGAN";
-            dgvCustomer.Columns[nameof(Customer.Name)].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgvCustomer.Columns[nameof(Customer.CustomerName)].HeaderText = "NAMA PELANGGAN";
+            dgvCustomer.Columns[nameof(Customer.CustomerName)].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgvCustomer.Columns[nameof(Customer.Address)].HeaderText = "NAMA LENGKAP";
             dgvCustomer.Columns[nameof(Customer.Address)].Width = 300;
             dgvCustomer.Columns[nameof(Customer.Phone)].HeaderText = "TELEPON";
@@ -281,7 +281,7 @@ namespace CisWindowsFormsApp
         private void SetUIbySelectedGridItem()
         {
             var currentRow = dgvCustomer.CurrentRow;
-            txtCustomerName.Text = currentRow.Cells[nameof(Customer.Name)].Value.ToString();
+            txtCustomerName.Text = currentRow.Cells[nameof(Customer.CustomerName)].Value.ToString();
             txtAddress.Text = currentRow.Cells[nameof(Customer.Address)].Value.ToString();
             cbProvince.SelectedValue = currentRow.Cells[nameof(Customer.ProvinceId)].Value.ToString();
             cbDistrict.SelectedValue = currentRow.Cells[nameof(Customer.DistrictId)].Value.ToString();

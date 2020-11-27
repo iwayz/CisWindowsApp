@@ -1,8 +1,5 @@
 ﻿using Cis.Model;
 using System.Data.Entity.ModelConfiguration;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Cis.Data.EntityConfigurations
 {
@@ -14,6 +11,7 @@ namespace Cis.Data.EntityConfigurations
 
             Property(e => e.Username)
                 .HasColumnName("USER_NAME")
+                .HasMaxLength(50)
                 .IsRequired();
 
             Property(e => e.Password)

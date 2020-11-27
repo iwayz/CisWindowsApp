@@ -1,8 +1,5 @@
 ﻿using Cis.Model;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration;
-using System.Text;
 
 namespace Cis.Data
 {
@@ -12,8 +9,9 @@ namespace Cis.Data
         {
             ToTable("CIS_CUSTOMER");
 
-            Property(e => e.Name)
-                .HasColumnName("NAME")
+            Property(e => e.CustomerName)
+                .HasColumnName("CUSTOMER_NAME")
+                .HasMaxLength(100)
                 .IsRequired();
 
             Property(e => e.Address)
@@ -22,18 +20,22 @@ namespace Cis.Data
 
             Property(e => e.ProvinceId)
                 .HasColumnName("PROVINCE_ID")
+                .HasMaxLength(10)
                 .IsRequired();
 
             Property(e => e.DistrictId)
                 .HasColumnName("DISTRICT_ID")
+                .HasMaxLength(10)
                 .IsRequired();
 
             Property(e => e.SubDistrictId)
                 .HasColumnName("SUBDISTRICT_ID")
+                .HasMaxLength(10)
                 .IsRequired();
 
             Property(e => e.PostalCode)
                 .HasColumnName("POSTAL_CODE")
+                .HasMaxLength(5)
                 .IsOptional();
 
             Property(e => e.Phone)
@@ -66,6 +68,7 @@ namespace Cis.Data
 
             Property(e => e.OutletTypeId)
                 .HasColumnName("OUTLET_TYPE_ID")
+                .HasMaxLength(36)
                 .IsRequired();
 
             Property(e => e.SalesAreaId)
@@ -73,19 +76,8 @@ namespace Cis.Data
                 .IsRequired();
 
 
-            HasIndex(e => e.Name)
+            HasIndex(e => e.CustomerName)
                 .HasName("IX_CUST_NAME");
-
-            //builder.HasOne(e => e.SalesArea)
-            //    .WithMany(e => e.Customers)
-            //    .HasForeignKey(e => e.SalesAreaId)
-            //    .OnDelete(DeleteBehavior.Restrict);
-
-            //builder.HasOne(e => e.OutletType)
-            //    .WithMany(o => o.Customers)
-            //    .HasForeignKey(e => e.OutletTypeId)
-            //    .OnDelete(DeleteBehavior.Restrict);
-
 
             // .HasColumnName("SIPA_EXP_DATE")
             //    .HasDefaultValue("1900-01-01")
