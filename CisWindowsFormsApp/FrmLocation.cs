@@ -67,11 +67,15 @@ namespace CisWindowsFormsApp
         {
             if (lvProvince.SelectedItems.Count < 1) return;
 
+            lblProvince.Text = lvProvince.SelectedItems[0].SubItems[1].Text;
+
             var total = BindDataListView(lvDistrict, Constant.LocationType.District, lvProvince.SelectedItems[0].Text);
             lblTotalDistrict.Text = total.ToString();
+            
             lvSubDistrict.Items.Clear();
             lblTotalSubDistrict.Text = "0";
-            lblProvince.Text = lvProvince.SelectedItems[0].SubItems[1].Text;
+            lblDistrict.Text = "Kabupaten";
+
         }
     }
 }

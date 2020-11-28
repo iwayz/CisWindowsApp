@@ -73,12 +73,11 @@ namespace CisWindowsFormsApp
 
         }
 
-        private bool ValidateEmptyField()
+        private bool ValidateMandatoryFields()
         {
             if (string.IsNullOrEmpty(txtRoleCode.Text) || string.IsNullOrEmpty(txtDescription.Text))
             {
-                MessageBox.Show("Data Kode Role dan Keterangan tidak boleh kosong."
-                      , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CommonHelper.DataCannotBeEmptyMessage("Kode Role dan Keterangan");
                 return false;
 
             }
@@ -96,12 +95,11 @@ namespace CisWindowsFormsApp
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (!ValidateEmptyField()) return;
+            if (!ValidateMandatoryFields()) return;
             var existingRole = uowRole.Repository.GetAll().Where(r => r.RoleCode == txtRoleCode.Text.Trim()).FirstOrDefault();
             if (existingRole != null)
             {
-                MessageBox.Show("Data dengan Kode " + txtRoleCode.Text.Trim() + " sudah ada. Silakan gunakan Kode yang lain."
-                    , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CommonHelper.DataAlreadyExistMessage(txtRoleCode.Text.Trim());
             }
             else
             {
@@ -155,31 +153,38 @@ namespace CisWindowsFormsApp
             var roleToDel = uowRole.Repository.GetAll().Where(u => u.RoleCode == txtRoleCode.Text.Trim()).FirstOrDefault();
             if (roleToDel != null)
             {
-                if (DialogResult.Yes == MessageBox.Show("Yakin akan menghapus data ini?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                if (DialogResult.Yes == CommonHelper.ConfirmDeleteMessage())
                 {
                     uowRole.Repository.Delete(roleToDel);
-                    uowRole.Commit();
+                    var res = uowRole.Commit();
+                    if (!res.Item1 && res.Item2 == "Expected")
+                    {
+                        CommonHelper.ReferredDataCannotBeDeletedMessage();
+                    }
+
+                    if (!res.Item1 && res.Item2 == "Unexpected")
+                    {
+                        CommonHelper.ContactAdminErrorMessage();
+                    }
                     btnReload.PerformClick();
                 }
             }
             else
             {
-                MessageBox.Show("Data dengan Kode " + txtRoleCode.Text.Trim() + " tidak ditemukan. Silakan klik Reload dan hapus data yang diinginkan."
-                    , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CommonHelper.DataNotFoundMessage(txtRoleCode.Text.Trim());
             }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (!ValidateEmptyField()) return;
+            if (!ValidateMandatoryFields()) return;
             
             var repoLastUpdated = DateTime.Parse(dgvRole.CurrentRow.Cells[nameof(Role.ModifiedAt)].Value.ToString());
             var lastUpdated = DateTime.Parse(txtModifiedAt.Text.Trim());
 
             if (lastUpdated != repoLastUpdated)
             {
-                MessageBox.Show("Data dengan Kode " + txtRoleCode.Text.Trim() + " telah diupdate sebelumnya. Silakan klik Reload untuk mendapatkan data terbaru dan ubah data yang diinginkan."
-                    , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CommonHelper.DataHasBeenUpdatedMessage(txtRoleCode.Text.Trim());
             }
             else
             {

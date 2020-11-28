@@ -86,12 +86,11 @@ namespace CisWindowsFormsApp
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (!ValidateEmptyField()) return; 
+            if (!ValidateMandatoryFields()) return; 
             var existingUsage = uowUsage.Repository.GetAll().Where(u => u.Description == txtUsageDesc.Text.Trim()).FirstOrDefault();
             if (existingUsage != null)
             {
-                MessageBox.Show("Data '" + txtUsageDesc.Text.Trim() + "' sudah ada. Silakan gunakan Jenis Pemakaian yang lain."
-                    , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CommonHelper.DataAlreadyExistMessage(txtUsageDesc.Text.Trim());
             }
             else
             {
@@ -146,31 +145,38 @@ namespace CisWindowsFormsApp
             var usageToDel = uowUsage.Repository.GetAll().Where(u => u.Description == txtUsageDesc.Text.Trim()).FirstOrDefault();
             if (usageToDel != null)
             {
-                if (DialogResult.Yes == MessageBox.Show("Yakin akan menghapus data ini?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                if (DialogResult.Yes == CommonHelper.ConfirmDeleteMessage())
                 {
                     uowUsage.Repository.Delete(usageToDel);
-                    uowUsage.Commit();
+                    var res = uowUsage.Commit();
+                    if (!res.Item1 && res.Item2 == "Expected")
+                    {
+                        CommonHelper.ReferredDataCannotBeDeletedMessage();
+                    }
+
+                    if (!res.Item1 && res.Item2 == "Unexpected")
+                    {
+                        CommonHelper.ContactAdminErrorMessage();
+                    }
                     btnReload.PerformClick();
                 }
             }
             else
             {
-                MessageBox.Show("Data '" + txtUsageDesc.Text.Trim() + "' tidak ditemukan. Silakan klik Reload dan hapus data yang diinginkan."
-                    , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CommonHelper.DataNotFoundMessage(txtUsageTypeCode.Text.Trim());
             }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (!ValidateEmptyField()) return;
+            if (!ValidateMandatoryFields()) return;
             
             var repoLastUpdated = DateTime.Parse(dgvUsageType.CurrentRow.Cells[nameof(UsageType.ModifiedAt)].Value.ToString());
             var lastUpdated = DateTime.Parse(txtModifiedAt.Text.Trim());
 
             if (lastUpdated != repoLastUpdated)
             {
-                MessageBox.Show("Data '" + txtUsageDesc.Text.Trim() + "' telah diupdate sebelumnya. Silakan klik Reload untuk mendapatkan data terbaru dan ubah data yang diinginkan."
-                    , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CommonHelper.DataHasBeenUpdatedMessage(txtUsageTypeCode.Text.Trim());
             }
             else
             {
@@ -191,12 +197,11 @@ namespace CisWindowsFormsApp
             btnReload.PerformClick();
         }
 
-        private bool ValidateEmptyField()
+        private bool ValidateMandatoryFields()
         {
             if (string.IsNullOrEmpty(txtUsageTypeCode.Text) || string.IsNullOrEmpty(txtUsageDesc.Text))
             {
-                MessageBox.Show("Data Kode Pemakaian dan Jenis Pemakaian tidak boleh kosong."
-                      , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CommonHelper.DataCannotBeEmptyMessage("Kode Pemakaian dan Jenis Pemakaian");
                 return false;
 
             }

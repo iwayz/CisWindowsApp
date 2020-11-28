@@ -1,4 +1,7 @@
 ﻿using Cis.DataContract;
+using NLog;
+using System;
+using System.Data.Entity.Infrastructure;
 
 namespace Cis.Data
 {
@@ -13,9 +16,28 @@ namespace Cis.Data
 
         public IRepository<T> Repository { get; }
 
-        public void Commit()
+        public (bool, string) Commit()
         {
-            dbContext.SaveChanges();
+            Logger logger = LogManager.GetCurrentClassLogger();
+            try
+            {
+                dbContext.SaveChanges();
+                return(true, string.Empty);
+            }
+            catch (DbUpdateException dbEx)
+            {
+                logger.Error(dbEx, "Expected");
+                return (false, "Expected");
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Unexpected");
+                return (false, "Unexpected");
+            }
+            finally
+            {
+                LogManager.Shutdown();
+            }
         }
 
         public void Dispose()

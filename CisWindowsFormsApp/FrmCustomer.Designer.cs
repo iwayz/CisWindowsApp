@@ -64,7 +64,6 @@
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.txtPostCode = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
             this.textBox13 = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
@@ -114,7 +113,7 @@
             // 
             this.comboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.comboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.comboBox1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.comboBox1.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.comboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(36, 408);
@@ -126,7 +125,7 @@
             // 
             this.comboBox2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.comboBox2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.comboBox2.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.comboBox2.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.comboBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(36, 356);
@@ -137,7 +136,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label1.Location = new System.Drawing.Point(36, 338);
             this.label1.Name = "label1";
@@ -149,7 +148,7 @@
             // 
             this.comboBox3.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.comboBox3.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.comboBox3.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.comboBox3.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.comboBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Location = new System.Drawing.Point(36, 304);
@@ -160,7 +159,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label2.Location = new System.Drawing.Point(36, 286);
             this.label2.Name = "label2";
@@ -171,7 +170,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label3.Location = new System.Drawing.Point(168, 439);
             this.label3.Name = "label3";
@@ -182,7 +181,7 @@
             // textBox1
             // 
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox1.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.textBox1.Location = new System.Drawing.Point(168, 457);
             this.textBox1.MaxLength = 20;
@@ -193,7 +192,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label4.Location = new System.Drawing.Point(36, 491);
             this.label4.Name = "label4";
@@ -204,7 +203,7 @@
             // textBox2
             // 
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox2.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.textBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.textBox2.Location = new System.Drawing.Point(36, 509);
             this.textBox2.Name = "textBox2";
@@ -214,7 +213,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label5.Location = new System.Drawing.Point(36, 439);
             this.label5.Name = "label5";
@@ -225,7 +224,7 @@
             // textBox3
             // 
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox3.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox3.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.textBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.textBox3.Location = new System.Drawing.Point(36, 457);
             this.textBox3.MaxLength = 5;
@@ -236,7 +235,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label6.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label6.Location = new System.Drawing.Point(36, 209);
             this.label6.Name = "label6";
@@ -247,7 +246,7 @@
             // textBox4
             // 
             this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox4.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox4.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.textBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.textBox4.Location = new System.Drawing.Point(36, 227);
             this.textBox4.Multiline = true;
@@ -276,7 +275,7 @@
             // 
             this.comboBox4.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.comboBox4.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.comboBox4.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.comboBox4.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.comboBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.comboBox4.FormattingEnabled = true;
             this.comboBox4.Location = new System.Drawing.Point(36, 408);
@@ -288,7 +287,7 @@
             // 
             this.comboBox5.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.comboBox5.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.comboBox5.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.comboBox5.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.comboBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.comboBox5.FormattingEnabled = true;
             this.comboBox5.Location = new System.Drawing.Point(36, 356);
@@ -299,7 +298,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label7.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label7.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label7.Location = new System.Drawing.Point(36, 338);
             this.label7.Name = "label7";
@@ -311,7 +310,7 @@
             // 
             this.comboBox6.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.comboBox6.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.comboBox6.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.comboBox6.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.comboBox6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.comboBox6.FormattingEnabled = true;
             this.comboBox6.Location = new System.Drawing.Point(36, 304);
@@ -322,7 +321,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label8.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label8.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label8.Location = new System.Drawing.Point(36, 286);
             this.label8.Name = "label8";
@@ -333,7 +332,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label9.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label9.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label9.Location = new System.Drawing.Point(168, 439);
             this.label9.Name = "label9";
@@ -344,7 +343,7 @@
             // textBox5
             // 
             this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox5.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox5.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.textBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.textBox5.Location = new System.Drawing.Point(168, 457);
             this.textBox5.MaxLength = 20;
@@ -355,7 +354,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label10.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label10.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label10.Location = new System.Drawing.Point(36, 491);
             this.label10.Name = "label10";
@@ -366,7 +365,7 @@
             // textBox6
             // 
             this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox6.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox6.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.textBox6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.textBox6.Location = new System.Drawing.Point(36, 509);
             this.textBox6.Name = "textBox6";
@@ -376,7 +375,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label11.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label11.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label11.Location = new System.Drawing.Point(36, 439);
             this.label11.Name = "label11";
@@ -387,7 +386,7 @@
             // textBox7
             // 
             this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox7.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox7.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.textBox7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.textBox7.Location = new System.Drawing.Point(36, 457);
             this.textBox7.MaxLength = 5;
@@ -398,7 +397,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label12.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label12.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label12.Location = new System.Drawing.Point(36, 209);
             this.label12.Name = "label12";
@@ -409,7 +408,7 @@
             // textBox8
             // 
             this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox8.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox8.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.textBox8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.textBox8.Location = new System.Drawing.Point(36, 227);
             this.textBox8.Multiline = true;
@@ -437,19 +436,19 @@
             // txtCustomerName
             // 
             this.txtCustomerName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCustomerName.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtCustomerName.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtCustomerName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtCustomerName.Location = new System.Drawing.Point(12, 37);
+            this.txtCustomerName.Location = new System.Drawing.Point(10, 32);
             this.txtCustomerName.Name = "txtCustomerName";
-            this.txtCustomerName.Size = new System.Drawing.Size(330, 31);
+            this.txtCustomerName.Size = new System.Drawing.Size(283, 31);
             this.txtCustomerName.TabIndex = 1;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label13.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label13.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label13.Location = new System.Drawing.Point(12, 19);
+            this.label13.Location = new System.Drawing.Point(10, 16);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(97, 15);
             this.label13.TabIndex = 4;
@@ -458,20 +457,20 @@
             // txtAddress
             // 
             this.txtAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtAddress.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtAddress.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtAddress.Location = new System.Drawing.Point(12, 90);
+            this.txtAddress.Location = new System.Drawing.Point(10, 78);
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(330, 56);
+            this.txtAddress.Size = new System.Drawing.Size(283, 49);
             this.txtAddress.TabIndex = 2;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label14.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label14.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label14.Location = new System.Drawing.Point(12, 72);
+            this.label14.Location = new System.Drawing.Point(10, 62);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(46, 15);
             this.label14.TabIndex = 4;
@@ -480,43 +479,32 @@
             // txtPostCode
             // 
             this.txtPostCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPostCode.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtPostCode.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtPostCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtPostCode.Location = new System.Drawing.Point(12, 320);
+            this.txtPostCode.Location = new System.Drawing.Point(10, 294);
             this.txtPostCode.MaxLength = 5;
             this.txtPostCode.Name = "txtPostCode";
-            this.txtPostCode.Size = new System.Drawing.Size(121, 31);
+            this.txtPostCode.Size = new System.Drawing.Size(104, 31);
             this.txtPostCode.TabIndex = 6;
             this.txtPostCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPostCode_KeyPress);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label15.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label15.Location = new System.Drawing.Point(12, 302);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(57, 15);
-            this.label15.TabIndex = 4;
-            this.label15.Text = "Kode Pos";
             // 
             // textBox13
             // 
             this.textBox13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox13.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox13.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.textBox13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.textBox13.Location = new System.Drawing.Point(628, 487);
+            this.textBox13.Location = new System.Drawing.Point(584, 422);
             this.textBox13.MaxLength = 20;
             this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(198, 31);
+            this.textBox13.Size = new System.Drawing.Size(170, 31);
             this.textBox13.TabIndex = 9;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label16.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label16.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label16.Location = new System.Drawing.Point(628, 469);
+            this.label16.Location = new System.Drawing.Point(584, 406);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(50, 15);
             this.label16.TabIndex = 4;
@@ -525,19 +513,19 @@
             // txtEmail
             // 
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtEmail.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtEmail.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtEmail.Location = new System.Drawing.Point(12, 372);
+            this.txtEmail.Location = new System.Drawing.Point(10, 343);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(330, 31);
+            this.txtEmail.Size = new System.Drawing.Size(283, 31);
             this.txtEmail.TabIndex = 8;
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label17.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label17.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label17.Location = new System.Drawing.Point(12, 354);
+            this.label17.Location = new System.Drawing.Point(10, 328);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(36, 15);
             this.label17.TabIndex = 4;
@@ -548,12 +536,12 @@
             this.btnReload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
             this.btnReload.FlatAppearance.BorderSize = 0;
             this.btnReload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReload.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnReload.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnReload.ForeColor = System.Drawing.Color.White;
             this.btnReload.Image = ((System.Drawing.Image)(resources.GetObject("btnReload.Image")));
-            this.btnReload.Location = new System.Drawing.Point(11, 325);
+            this.btnReload.Location = new System.Drawing.Point(9, 282);
             this.btnReload.Name = "btnReload";
-            this.btnReload.Size = new System.Drawing.Size(83, 60);
+            this.btnReload.Size = new System.Drawing.Size(71, 52);
             this.btnReload.TabIndex = 15;
             this.btnReload.Text = "RELOAD";
             this.btnReload.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -565,12 +553,12 @@
             this.btnDel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
             this.btnDel.FlatAppearance.BorderSize = 0;
             this.btnDel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDel.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnDel.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnDel.ForeColor = System.Drawing.Color.White;
             this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
-            this.btnDel.Location = new System.Drawing.Point(11, 248);
+            this.btnDel.Location = new System.Drawing.Point(9, 215);
             this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(83, 60);
+            this.btnDel.Size = new System.Drawing.Size(71, 52);
             this.btnDel.TabIndex = 14;
             this.btnDel.Text = "DELETE";
             this.btnDel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -582,12 +570,12 @@
             this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnSave.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(11, 170);
+            this.btnSave.Location = new System.Drawing.Point(9, 147);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(83, 60);
+            this.btnSave.Size = new System.Drawing.Size(71, 52);
             this.btnSave.TabIndex = 13;
             this.btnSave.Text = "SAVE";
             this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -599,12 +587,12 @@
             this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
             this.btnAdd.FlatAppearance.BorderSize = 0;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAdd.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnAdd.ForeColor = System.Drawing.Color.White;
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(11, 92);
+            this.btnAdd.Location = new System.Drawing.Point(9, 80);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(83, 60);
+            this.btnAdd.Size = new System.Drawing.Size(71, 52);
             this.btnAdd.TabIndex = 12;
             this.btnAdd.Text = "ADD";
             this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -616,12 +604,12 @@
             this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
             this.btnClear.FlatAppearance.BorderSize = 0;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClear.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnClear.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnClear.ForeColor = System.Drawing.Color.White;
             this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
-            this.btnClear.Location = new System.Drawing.Point(11, 13);
+            this.btnClear.Location = new System.Drawing.Point(9, 11);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(83, 60);
+            this.btnClear.Size = new System.Drawing.Size(71, 52);
             this.btnClear.TabIndex = 11;
             this.btnClear.Text = "CLEAR";
             this.btnClear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -632,10 +620,10 @@
             // 
             this.dgvCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCustomer.GridColor = System.Drawing.Color.White;
-            this.dgvCustomer.Location = new System.Drawing.Point(516, 35);
-            this.dgvCustomer.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
+            this.dgvCustomer.Location = new System.Drawing.Point(456, 30);
+            this.dgvCustomer.Margin = new System.Windows.Forms.Padding(9, 3, 3, 3);
             this.dgvCustomer.Name = "dgvCustomer";
-            this.dgvCustomer.Size = new System.Drawing.Size(594, 503);
+            this.dgvCustomer.Size = new System.Drawing.Size(541, 436);
             this.dgvCustomer.TabIndex = 0;
             this.dgvCustomer.Text = "dataGridView1";
             this.dgvCustomer.Click += new System.EventHandler(this.dgvCustomer_Click);
@@ -643,29 +631,29 @@
             // txtModifiedAt
             // 
             this.txtModifiedAt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtModifiedAt.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtModifiedAt.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtModifiedAt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtModifiedAt.Location = new System.Drawing.Point(188, 36);
+            this.txtModifiedAt.Location = new System.Drawing.Point(161, 31);
             this.txtModifiedAt.Name = "txtModifiedAt";
-            this.txtModifiedAt.Size = new System.Drawing.Size(204, 31);
+            this.txtModifiedAt.Size = new System.Drawing.Size(175, 31);
             this.txtModifiedAt.TabIndex = 1;
             // 
             // txtCustomerId
             // 
             this.txtCustomerId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCustomerId.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtCustomerId.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtCustomerId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtCustomerId.Location = new System.Drawing.Point(10, 36);
+            this.txtCustomerId.Location = new System.Drawing.Point(9, 31);
             this.txtCustomerId.Name = "txtCustomerId";
-            this.txtCustomerId.Size = new System.Drawing.Size(162, 31);
+            this.txtCustomerId.Size = new System.Drawing.Size(139, 31);
             this.txtCustomerId.TabIndex = 1;
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label18.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label18.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label18.Location = new System.Drawing.Point(188, 18);
+            this.label18.Location = new System.Drawing.Point(161, 16);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(72, 15);
             this.label18.TabIndex = 4;
@@ -674,9 +662,9 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label19.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label19.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label19.Location = new System.Drawing.Point(10, 18);
+            this.label19.Location = new System.Drawing.Point(9, 16);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(17, 15);
             this.label19.TabIndex = 4;
@@ -685,9 +673,9 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label20.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label20.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label20.Location = new System.Drawing.Point(12, 149);
+            this.label20.Location = new System.Drawing.Point(10, 129);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(50, 15);
             this.label20.TabIndex = 4;
@@ -696,9 +684,9 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label21.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label21.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label21.Location = new System.Drawing.Point(12, 201);
+            this.label21.Location = new System.Drawing.Point(10, 179);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(100, 15);
             this.label21.TabIndex = 4;
@@ -707,9 +695,9 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label22.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label22.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label22.Location = new System.Drawing.Point(12, 253);
+            this.label22.Location = new System.Drawing.Point(10, 229);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(67, 15);
             this.label22.TabIndex = 4;
@@ -719,12 +707,12 @@
             // 
             this.cbProvince.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cbProvince.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.cbProvince.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbProvince.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.cbProvince.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.cbProvince.FormattingEnabled = true;
-            this.cbProvince.Location = new System.Drawing.Point(12, 167);
+            this.cbProvince.Location = new System.Drawing.Point(10, 145);
             this.cbProvince.Name = "cbProvince";
-            this.cbProvince.Size = new System.Drawing.Size(274, 31);
+            this.cbProvince.Size = new System.Drawing.Size(235, 31);
             this.cbProvince.TabIndex = 3;
             this.cbProvince.SelectedIndexChanged += new System.EventHandler(this.cbProvince_SelectedIndexChanged);
             // 
@@ -732,12 +720,12 @@
             // 
             this.cbDistrict.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cbDistrict.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.cbDistrict.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbDistrict.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.cbDistrict.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.cbDistrict.FormattingEnabled = true;
-            this.cbDistrict.Location = new System.Drawing.Point(12, 219);
+            this.cbDistrict.Location = new System.Drawing.Point(10, 195);
             this.cbDistrict.Name = "cbDistrict";
-            this.cbDistrict.Size = new System.Drawing.Size(274, 31);
+            this.cbDistrict.Size = new System.Drawing.Size(235, 31);
             this.cbDistrict.TabIndex = 4;
             this.cbDistrict.SelectedIndexChanged += new System.EventHandler(this.cbDistrict_SelectedIndexChanged);
             // 
@@ -745,12 +733,12 @@
             // 
             this.cbSubDistrict.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cbSubDistrict.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.cbSubDistrict.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbSubDistrict.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.cbSubDistrict.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.cbSubDistrict.FormattingEnabled = true;
-            this.cbSubDistrict.Location = new System.Drawing.Point(12, 271);
+            this.cbSubDistrict.Location = new System.Drawing.Point(10, 245);
             this.cbSubDistrict.Name = "cbSubDistrict";
-            this.cbSubDistrict.Size = new System.Drawing.Size(274, 31);
+            this.cbSubDistrict.Size = new System.Drawing.Size(235, 31);
             this.cbSubDistrict.TabIndex = 5;
             // 
             // pnlHiddenFields
@@ -759,28 +747,28 @@
             this.pnlHiddenFields.Controls.Add(this.txtCustomerId);
             this.pnlHiddenFields.Controls.Add(this.label18);
             this.pnlHiddenFields.Controls.Add(this.label19);
-            this.pnlHiddenFields.Location = new System.Drawing.Point(605, 560);
+            this.pnlHiddenFields.Location = new System.Drawing.Point(565, 485);
             this.pnlHiddenFields.Name = "pnlHiddenFields";
-            this.pnlHiddenFields.Size = new System.Drawing.Size(412, 83);
+            this.pnlHiddenFields.Size = new System.Drawing.Size(353, 72);
             this.pnlHiddenFields.TabIndex = 8;
             this.pnlHiddenFields.Visible = false;
             // 
             // txtNpwp
             // 
             this.txtNpwp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtNpwp.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtNpwp.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtNpwp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtNpwp.Location = new System.Drawing.Point(12, 425);
+            this.txtNpwp.Location = new System.Drawing.Point(10, 392);
             this.txtNpwp.Name = "txtNpwp";
-            this.txtNpwp.Size = new System.Drawing.Size(330, 31);
+            this.txtNpwp.Size = new System.Drawing.Size(283, 31);
             this.txtNpwp.TabIndex = 9;
             // 
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label23.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label23.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label23.Location = new System.Drawing.Point(12, 407);
+            this.label23.Location = new System.Drawing.Point(10, 377);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(42, 15);
             this.label23.TabIndex = 4;
@@ -789,19 +777,19 @@
             // txtPharmacistName
             // 
             this.txtPharmacistName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPharmacistName.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtPharmacistName.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtPharmacistName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtPharmacistName.Location = new System.Drawing.Point(12, 478);
+            this.txtPharmacistName.Location = new System.Drawing.Point(10, 441);
             this.txtPharmacistName.Name = "txtPharmacistName";
-            this.txtPharmacistName.Size = new System.Drawing.Size(330, 31);
+            this.txtPharmacistName.Size = new System.Drawing.Size(283, 31);
             this.txtPharmacistName.TabIndex = 10;
             // 
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label24.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label24.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label24.Location = new System.Drawing.Point(12, 460);
+            this.label24.Location = new System.Drawing.Point(10, 423);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(94, 15);
             this.label24.TabIndex = 4;
@@ -810,19 +798,19 @@
             // txtSipaNo
             // 
             this.txtSipaNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSipaNo.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtSipaNo.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtSipaNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtSipaNo.Location = new System.Drawing.Point(12, 530);
+            this.txtSipaNo.Location = new System.Drawing.Point(10, 490);
             this.txtSipaNo.Name = "txtSipaNo";
-            this.txtSipaNo.Size = new System.Drawing.Size(330, 31);
+            this.txtSipaNo.Size = new System.Drawing.Size(283, 31);
             this.txtSipaNo.TabIndex = 11;
             // 
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label25.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label25.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label25.Location = new System.Drawing.Point(12, 512);
+            this.label25.Location = new System.Drawing.Point(10, 475);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(52, 15);
             this.label25.TabIndex = 4;
@@ -831,19 +819,19 @@
             // txtSiaNo
             // 
             this.txtSiaNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSiaNo.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtSiaNo.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtSiaNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtSiaNo.Location = new System.Drawing.Point(12, 634);
+            this.txtSiaNo.Location = new System.Drawing.Point(10, 591);
             this.txtSiaNo.Name = "txtSiaNo";
-            this.txtSiaNo.Size = new System.Drawing.Size(330, 31);
+            this.txtSiaNo.Size = new System.Drawing.Size(283, 31);
             this.txtSiaNo.TabIndex = 13;
             // 
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label26.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label26.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label26.Location = new System.Drawing.Point(12, 616);
+            this.label26.Location = new System.Drawing.Point(10, 576);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(46, 15);
             this.label26.TabIndex = 4;
@@ -852,18 +840,18 @@
             // dtpSipaExpiredDate
             // 
             this.dtpSipaExpiredDate.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dtpSipaExpiredDate.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dtpSipaExpiredDate.Location = new System.Drawing.Point(12, 582);
+            this.dtpSipaExpiredDate.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.dtpSipaExpiredDate.Location = new System.Drawing.Point(10, 542);
             this.dtpSipaExpiredDate.Name = "dtpSipaExpiredDate";
-            this.dtpSipaExpiredDate.Size = new System.Drawing.Size(182, 31);
+            this.dtpSipaExpiredDate.Size = new System.Drawing.Size(188, 31);
             this.dtpSipaExpiredDate.TabIndex = 12;
             // 
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label27.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label27.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label27.Location = new System.Drawing.Point(12, 564);
+            this.label27.Location = new System.Drawing.Point(10, 524);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(94, 15);
             this.label27.TabIndex = 4;
@@ -885,7 +873,6 @@
             this.panel2.Controls.Add(this.cbDistrict);
             this.panel2.Controls.Add(this.txtPostCode);
             this.panel2.Controls.Add(this.cbProvince);
-            this.panel2.Controls.Add(this.label15);
             this.panel2.Controls.Add(this.label29);
             this.panel2.Controls.Add(this.label28);
             this.panel2.Controls.Add(this.label22);
@@ -902,17 +889,17 @@
             this.panel2.Controls.Add(this.label25);
             this.panel2.Controls.Add(this.label27);
             this.panel2.Controls.Add(this.label26);
-            this.panel2.Location = new System.Drawing.Point(12, 12);
+            this.panel2.Location = new System.Drawing.Point(12, 10);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(380, 526);
+            this.panel2.Size = new System.Drawing.Size(326, 456);
             this.panel2.TabIndex = 0;
             // 
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label30.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label30.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label30.Location = new System.Drawing.Point(144, 302);
+            this.label30.Location = new System.Drawing.Point(12, 279);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(50, 15);
             this.label30.TabIndex = 4;
@@ -921,44 +908,44 @@
             // txtPhone
             // 
             this.txtPhone.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPhone.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtPhone.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtPhone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtPhone.Location = new System.Drawing.Point(144, 320);
+            this.txtPhone.Location = new System.Drawing.Point(10, 294);
             this.txtPhone.MaxLength = 20;
             this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(198, 31);
+            this.txtPhone.Size = new System.Drawing.Size(170, 31);
             this.txtPhone.TabIndex = 7;
             // 
             // cbSalesArea
             // 
             this.cbSalesArea.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cbSalesArea.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.cbSalesArea.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbSalesArea.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.cbSalesArea.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.cbSalesArea.FormattingEnabled = true;
-            this.cbSalesArea.Location = new System.Drawing.Point(12, 738);
+            this.cbSalesArea.Location = new System.Drawing.Point(10, 691);
             this.cbSalesArea.Name = "cbSalesArea";
-            this.cbSalesArea.Size = new System.Drawing.Size(274, 31);
+            this.cbSalesArea.Size = new System.Drawing.Size(235, 31);
             this.cbSalesArea.TabIndex = 15;
             // 
             // cbOutletType
             // 
             this.cbOutletType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cbOutletType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.cbOutletType.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbOutletType.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.cbOutletType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.cbOutletType.FormattingEnabled = true;
-            this.cbOutletType.Location = new System.Drawing.Point(12, 686);
+            this.cbOutletType.Location = new System.Drawing.Point(10, 641);
             this.cbOutletType.Name = "cbOutletType";
-            this.cbOutletType.Size = new System.Drawing.Size(274, 31);
+            this.cbOutletType.Size = new System.Drawing.Size(235, 31);
             this.cbOutletType.TabIndex = 14;
             // 
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label29.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label29.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label29.Location = new System.Drawing.Point(12, 720);
+            this.label29.Location = new System.Drawing.Point(10, 675);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(63, 15);
             this.label29.TabIndex = 4;
@@ -967,9 +954,9 @@
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label28.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label28.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label28.Location = new System.Drawing.Point(12, 668);
+            this.label28.Location = new System.Drawing.Point(10, 625);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(72, 15);
             this.label28.TabIndex = 4;
@@ -982,17 +969,17 @@
             this.pnlButtonGroup.Controls.Add(this.btnDel);
             this.pnlButtonGroup.Controls.Add(this.btnSave);
             this.pnlButtonGroup.Controls.Add(this.btnClear);
-            this.pnlButtonGroup.Location = new System.Drawing.Point(398, 35);
+            this.pnlButtonGroup.Location = new System.Drawing.Point(354, 26);
             this.pnlButtonGroup.Name = "pnlButtonGroup";
-            this.pnlButtonGroup.Size = new System.Drawing.Size(105, 399);
+            this.pnlButtonGroup.Size = new System.Drawing.Size(90, 346);
             this.pnlButtonGroup.TabIndex = 0;
             // 
             // FrmCustomer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1134, 928);
+            this.ClientSize = new System.Drawing.Size(1154, 804);
             this.Controls.Add(this.pnlButtonGroup);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.pnlHiddenFields);
@@ -1050,7 +1037,6 @@
         private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtPostCode;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox textBox13;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtEmail;

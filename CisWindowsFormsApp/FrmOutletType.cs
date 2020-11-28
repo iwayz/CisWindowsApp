@@ -53,13 +53,12 @@ namespace CisWindowsFormsApp
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (!ValidateEmptyField()) return;
+            if (!ValidateMandatoryFields()) return;
 
             var existingOutlet = uowOutlet.Repository.GetAll().Where(u => u.Description == txtOutlet.Text.Trim()).FirstOrDefault();
             if (existingOutlet != null)
             {
-                MessageBox.Show("Data '" + txtOutlet.Text.Trim() + "' sudah ada. Silakan gunakan kode yang lain."
-                    , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CommonHelper.DataAlreadyExistMessage(txtOutletCode.Text.Trim());
             }
             else
             {
@@ -113,31 +112,38 @@ namespace CisWindowsFormsApp
             var outletToDel = uowOutlet.Repository.GetAll().Where(u => u.Description == txtOutlet.Text.Trim()).FirstOrDefault();
             if (outletToDel != null)
             {
-                if (DialogResult.Yes == MessageBox.Show("Yakin akan menghapus data ini?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                if (DialogResult.Yes == CommonHelper.ConfirmDeleteMessage())
                 {
                     uowOutlet.Repository.Delete(outletToDel);
-                    uowOutlet.Commit();
+                    var res = uowOutlet.Commit();
+                    if (!res.Item1 && res.Item2 == "Expected")
+                    {
+                        CommonHelper.ReferredDataCannotBeDeletedMessage();
+                    }
+
+                    if (!res.Item1 && res.Item2 == "Unexpected")
+                    {
+                        CommonHelper.ContactAdminErrorMessage();
+                    }
                     btnReload.PerformClick();
                 }
             }
             else
             {
-                MessageBox.Show("Data '" + txtOutlet.Text.Trim() + "' tidak ditemukan. Silakan klik Reload dan hapus data yang diinginkan."
-                    , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CommonHelper.DataNotFoundMessage(txtOutletCode.Text.Trim());
             }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (!ValidateEmptyField()) return;
+            if (!ValidateMandatoryFields()) return;
             
             var repoLastUpdated = DateTime.Parse(dgvOutlet.CurrentRow.Cells[nameof(OutletType.ModifiedAt)].Value.ToString());
             var lastUpdated = DateTime.Parse(txtModifiedAt.Text.Trim());
 
             if (lastUpdated != repoLastUpdated)
             {
-                MessageBox.Show("Data '" + txtOutlet.Text.Trim() + "' telah diupdate sebelumnya. Silakan klik Reload untuk mendapatkan data terbaru dan ubah data yang diinginkan."
-                    , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CommonHelper.DataHasBeenUpdatedMessage(txtOutletCode.Text.Trim());
             }
             else
             {
@@ -190,12 +196,11 @@ namespace CisWindowsFormsApp
             txtModifiedAt.Text = currentRow.Cells[nameof(OutletType.ModifiedAt)].Value.ToString();
         }
 
-        private bool ValidateEmptyField()
+        private bool ValidateMandatoryFields()
         {
             if (string.IsNullOrEmpty(txtOutletCode.Text) || string.IsNullOrEmpty(txtOutlet.Text))
             {
-                MessageBox.Show("Data Kode Outlet dan Jenis Outlet tidak boleh kosong."
-                      , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CommonHelper.DataCannotBeEmptyMessage("Kode Outlet dan Jenis Outlet");
                 return false;
 
             }

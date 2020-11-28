@@ -8,6 +8,6 @@ namespace Cis.DataContract
     {
         IRepository<T> Repository { get; }
 
-        void Commit();
+        (bool, string) Commit();
     }
 }

@@ -51,29 +51,29 @@
             // txtModifiedAt
             // 
             this.txtModifiedAt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtModifiedAt.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtModifiedAt.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtModifiedAt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtModifiedAt.Location = new System.Drawing.Point(188, 36);
+            this.txtModifiedAt.Location = new System.Drawing.Point(161, 31);
             this.txtModifiedAt.Name = "txtModifiedAt";
-            this.txtModifiedAt.Size = new System.Drawing.Size(195, 31);
+            this.txtModifiedAt.Size = new System.Drawing.Size(167, 31);
             this.txtModifiedAt.TabIndex = 1;
             // 
             // txtMedCatId
             // 
             this.txtMedCatId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtMedCatId.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtMedCatId.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtMedCatId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtMedCatId.Location = new System.Drawing.Point(10, 36);
+            this.txtMedCatId.Location = new System.Drawing.Point(9, 31);
             this.txtMedCatId.Name = "txtMedCatId";
-            this.txtMedCatId.Size = new System.Drawing.Size(162, 31);
+            this.txtMedCatId.Size = new System.Drawing.Size(139, 31);
             this.txtMedCatId.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(188, 18);
+            this.label1.Location = new System.Drawing.Point(161, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 15);
             this.label1.TabIndex = 4;
@@ -82,9 +82,9 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(10, 18);
+            this.label2.Location = new System.Drawing.Point(9, 16);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(17, 15);
             this.label2.TabIndex = 4;
@@ -94,10 +94,10 @@
             // 
             this.dgvMedCat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMedCat.GridColor = System.Drawing.Color.White;
-            this.dgvMedCat.Location = new System.Drawing.Point(301, 26);
-            this.dgvMedCat.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
+            this.dgvMedCat.Location = new System.Drawing.Point(299, 23);
+            this.dgvMedCat.Margin = new System.Windows.Forms.Padding(9, 3, 3, 3);
             this.dgvMedCat.Name = "dgvMedCat";
-            this.dgvMedCat.Size = new System.Drawing.Size(362, 264);
+            this.dgvMedCat.Size = new System.Drawing.Size(373, 229);
             this.dgvMedCat.TabIndex = 0;
             this.dgvMedCat.Text = "dataGridView1";
             this.dgvMedCat.Click += new System.EventHandler(this.dgvMedCat_Click);
@@ -107,12 +107,12 @@
             this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
             this.btnClear.FlatAppearance.BorderSize = 0;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClear.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnClear.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnClear.ForeColor = System.Drawing.Color.White;
             this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
-            this.btnClear.Location = new System.Drawing.Point(27, 164);
+            this.btnClear.Location = new System.Drawing.Point(23, 142);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(83, 60);
+            this.btnClear.Size = new System.Drawing.Size(71, 52);
             this.btnClear.TabIndex = 11;
             this.btnClear.Text = "CLEAR";
             this.btnClear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -124,12 +124,12 @@
             this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
             this.btnAdd.FlatAppearance.BorderSize = 0;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAdd.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnAdd.ForeColor = System.Drawing.Color.White;
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(116, 164);
+            this.btnAdd.Location = new System.Drawing.Point(99, 142);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(83, 60);
+            this.btnAdd.Size = new System.Drawing.Size(71, 52);
             this.btnAdd.TabIndex = 12;
             this.btnAdd.Text = "ADD";
             this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -141,12 +141,12 @@
             this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnSave.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(27, 230);
+            this.btnSave.Location = new System.Drawing.Point(23, 199);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(83, 60);
+            this.btnSave.Size = new System.Drawing.Size(71, 52);
             this.btnSave.TabIndex = 13;
             this.btnSave.Text = "SAVE";
             this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -158,12 +158,12 @@
             this.btnDel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
             this.btnDel.FlatAppearance.BorderSize = 0;
             this.btnDel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDel.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnDel.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnDel.ForeColor = System.Drawing.Color.White;
             this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
-            this.btnDel.Location = new System.Drawing.Point(116, 230);
+            this.btnDel.Location = new System.Drawing.Point(99, 199);
             this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(83, 60);
+            this.btnDel.Size = new System.Drawing.Size(71, 52);
             this.btnDel.TabIndex = 14;
             this.btnDel.Text = "DELETE";
             this.btnDel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -175,13 +175,13 @@
             this.btnReload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
             this.btnReload.FlatAppearance.BorderSize = 0;
             this.btnReload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReload.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnReload.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnReload.ForeColor = System.Drawing.Color.White;
             this.btnReload.Image = ((System.Drawing.Image)(resources.GetObject("btnReload.Image")));
-            this.btnReload.Location = new System.Drawing.Point(205, 164);
+            this.btnReload.Location = new System.Drawing.Point(176, 142);
             this.btnReload.Name = "btnReload";
-            this.btnReload.Padding = new System.Windows.Forms.Padding(0, 20, 0, 0);
-            this.btnReload.Size = new System.Drawing.Size(83, 126);
+            this.btnReload.Padding = new System.Windows.Forms.Padding(0, 17, 0, 0);
+            this.btnReload.Size = new System.Drawing.Size(71, 109);
             this.btnReload.TabIndex = 15;
             this.btnReload.Text = "RELOAD";
             this.btnReload.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -191,9 +191,9 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(31, 79);
+            this.label3.Location = new System.Drawing.Point(26, 73);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 15);
             this.label3.TabIndex = 4;
@@ -202,11 +202,11 @@
             // txtMedCat
             // 
             this.txtMedCat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtMedCat.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtMedCat.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtMedCat.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtMedCat.Location = new System.Drawing.Point(31, 97);
+            this.txtMedCat.Location = new System.Drawing.Point(26, 89);
             this.txtMedCat.Name = "txtMedCat";
-            this.txtMedCat.Size = new System.Drawing.Size(257, 31);
+            this.txtMedCat.Size = new System.Drawing.Size(261, 31);
             this.txtMedCat.TabIndex = 2;
             // 
             // panel1
@@ -215,18 +215,18 @@
             this.panel1.Controls.Add(this.txtMedCatId);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(27, 320);
+            this.panel1.Location = new System.Drawing.Point(23, 277);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(412, 83);
+            this.panel1.Size = new System.Drawing.Size(353, 72);
             this.panel1.TabIndex = 8;
             this.panel1.Visible = false;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label4.Location = new System.Drawing.Point(30, 27);
+            this.label4.Location = new System.Drawing.Point(26, 23);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(84, 15);
             this.label4.TabIndex = 4;
@@ -235,19 +235,19 @@
             // txtMedCatCode
             // 
             this.txtMedCatCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtMedCatCode.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtMedCatCode.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtMedCatCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtMedCatCode.Location = new System.Drawing.Point(30, 45);
+            this.txtMedCatCode.Location = new System.Drawing.Point(26, 39);
             this.txtMedCatCode.Name = "txtMedCatCode";
-            this.txtMedCatCode.Size = new System.Drawing.Size(182, 31);
+            this.txtMedCatCode.Size = new System.Drawing.Size(156, 31);
             this.txtMedCatCode.TabIndex = 1;
             // 
             // FrmMedicineCategoy
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(690, 428);
+            this.ClientSize = new System.Drawing.Size(684, 371);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.txtMedCatCode);
             this.Controls.Add(this.label4);

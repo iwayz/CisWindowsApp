@@ -88,12 +88,12 @@ namespace CisWindowsFormsApp
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (!ValidateEmptyField()) return;
+            if (!ValidateMandatoryFields()) return;
+
             var existingProduct = uowProduct.Repository.GetAll().Where(p => p.ProductCode == txtProductCode.Text.Trim()).FirstOrDefault();
             if (existingProduct != null)
             {
-                MessageBox.Show("Data dengan Kode " + txtProductCode.Text.Trim() + " sudah ada. Silakan gunakan Kode Produk yang lain."
-                    , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CommonHelper.DataAlreadyExistMessage(txtProductCode.Text.Trim());
             }
             else
             {
@@ -122,15 +122,14 @@ namespace CisWindowsFormsApp
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (!ValidateEmptyField()) return;
+            if (!ValidateMandatoryFields()) return;
             
             var repoLastUpdated = DateTime.Parse(dgvProduct.CurrentRow.Cells[nameof(Product.ModifiedAt)].Value.ToString());
             var lastUpdated = DateTime.Parse(txtModifiedAt.Text.Trim());
             
             if (lastUpdated != repoLastUpdated)
             {
-                MessageBox.Show("Data dengan Kode " + txtProductCode.Text.Trim() + " telah diupdate sebelumnya. Silakan klik Reload untuk mendapatkan data terbaru dan ubah data yang diinginkan."
-                    , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CommonHelper.DataHasBeenUpdatedMessage(txtProductCode.Text.Trim());
             }
             else
             {
@@ -159,17 +158,25 @@ namespace CisWindowsFormsApp
             var prodToDel = uowProduct.Repository.GetAll().Where(p => p.ProductCode == txtProductCode.Text.Trim()).FirstOrDefault();
             if (prodToDel != null)
             {
-                if (DialogResult.Yes == MessageBox.Show("Yakin akan menghapus data ini?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                if (DialogResult.Yes == CommonHelper.ConfirmDeleteMessage())
                 {
                     uowProduct.Repository.Delete(prodToDel);
-                    uowProduct.Commit();
+                    var res = uowProduct.Commit();
+                    if (!res.Item1 && res.Item2 == "Expected")
+                    {
+                        CommonHelper.ReferredDataCannotBeDeletedMessage();
+                    }
+
+                    if (!res.Item1 && res.Item2 == "Unexpected")
+                    {
+                        CommonHelper.ContactAdminErrorMessage();
+                    }
                     btnReload.PerformClick();
                 }
             }
             else
             {
-                MessageBox.Show("Data dengan Kode " + txtProductCode.Text.Trim() + " tidak ditemukan. Silakan klik Reload dan hapus data yang diinginkan."
-                    , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CommonHelper.DataNotFoundMessage(txtProductCode.Text.Trim());
             }
         }
 
@@ -250,6 +257,7 @@ namespace CisWindowsFormsApp
 
             AutoCompleteStringCollection autoCompleteCollection = new AutoCompleteStringCollection();
             Dictionary<string, string> dsMedCats = new Dictionary<string, string>();
+            dsMedCats.Add("0", "--Pilih--");
             foreach (var medicineCat in medCats)
             {
                 dsMedCats.Add(medicineCat.Id, medicineCat.Description);
@@ -260,6 +268,7 @@ namespace CisWindowsFormsApp
             cbMedCat.DisplayMember = "Value";
             cbMedCat.ValueMember = "Key";
             cbMedCat.AutoCompleteCustomSource = autoCompleteCollection;
+
         }
 
         private void BindUsageTypeComboBox()
@@ -269,6 +278,7 @@ namespace CisWindowsFormsApp
 
             AutoCompleteStringCollection autoCompleteCollection = new AutoCompleteStringCollection();
             Dictionary<string, string> dsUsageTypes = new Dictionary<string, string>();
+            dsUsageTypes.Add("0", "--Pilih--");
             foreach (var usageType in usageTypes)
             {
                 dsUsageTypes.Add(usageType.Id, usageType.Description);
@@ -279,6 +289,7 @@ namespace CisWindowsFormsApp
             cbUsageType.DisplayMember = "Value";
             cbUsageType.ValueMember = "Key";
             cbUsageType.AutoCompleteCustomSource = autoCompleteCollection;
+
         }
 
         private void BindPrincipalComboBox()
@@ -288,6 +299,7 @@ namespace CisWindowsFormsApp
 
             AutoCompleteStringCollection autoCompleteCollection = new AutoCompleteStringCollection();
             Dictionary<string, string> dsPrincipals = new Dictionary<string, string>();
+            dsPrincipals.Add("0", "--Pilih--");
             foreach (var principal in principals)
             {
                 dsPrincipals.Add(principal.Id, principal.PrincipalName);
@@ -298,6 +310,7 @@ namespace CisWindowsFormsApp
             cbPrincipal.DisplayMember = "Value";
             cbPrincipal.ValueMember = "Key";
             cbPrincipal.AutoCompleteCustomSource = autoCompleteCollection;
+            
         }
 
         private void BindProductGridView()
@@ -349,15 +362,29 @@ namespace CisWindowsFormsApp
             btnReload.PerformClick();
         }
 
-        private bool ValidateEmptyField()
+        private bool ValidateMandatoryFields()
         {
             if (string.IsNullOrEmpty(txtProductCode.Text) || string.IsNullOrEmpty(txtProductName.Text))
             {
-                MessageBox.Show("Data Kode Produk dan Nama Produk tidak boleh kosong."
-                      , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CommonHelper.DataCannotBeEmptyMessage("Kode Produk dan Nama Produk");
                 return false;
 
             }
+
+            if (cbMedCat.Items.Count <= 1 || cbUsageType.Items.Count <= 1 || cbPrincipal.Items.Count <= 1)
+            {
+                var emptyRefData = cbMedCat.Items.Count <= 1 ? "Kategori Obat" : (cbUsageType.Items.Count <= 1 ? "Jenis Pemakaian" : "Principal");
+                CommonHelper.ReferredDataNotSetMessage(emptyRefData);
+                return false;
+            }
+
+            if (cbMedCat.SelectedValue.ToString() == "0" || cbUsageType.SelectedValue.ToString() == "0" || cbPrincipal.SelectedValue.ToString() == "0")
+            {
+                CommonHelper.DataCannotBeEmptyMessage("Kategori Obat, Jenis Pemakaian dan Principal");
+                return false;
+            }
+
+            
             return true;
         }
 

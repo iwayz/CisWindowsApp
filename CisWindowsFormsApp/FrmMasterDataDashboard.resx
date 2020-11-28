@@ -1,4 +1,64 @@
-﻿<root>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -57,8 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing.Common" name="System.Drawing.Common, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" />
-  <data name="btnProducts.Image" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnProducts.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAABGdBTUEAALGPC/xhBQAAAbFJREFUWEft
         lqFLQ2EUxRcMIhhEDIaBlgUNCgZBDAMNMjT4H2ixCc5kXBI0+C8YhSliMBgEMVgMggiCFoMIBovBYHGe
@@ -71,7 +131,7 @@
         //xFCoVP8vkrhUv4pbkAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="btnCustomers.Image" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnCustomers.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAABGdBTUEAALGPC/xhBQAAAaJJREFUWEft
         li9IQ1EUh1dsmlcNpoUFk5gUi7OJDCyCGmxaLMYlk9UgChZRWDSIbckli7CmsCRYBF0Sy/zOPeeqT/ee
@@ -84,7 +144,7 @@
         AAAASUVORK5CYII=
 </value>
   </data>
-  <data name="btnUsers.Image" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnUsers.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAABGdBTUEAALGPC/xhBQAAAfRJREFUWEft
         ljtLA0EUhdMJinYqaX0VqZRgn0b9BYKNEEQsrAw+6nQ2VoqFIAimSyNYqGBhJfgD0ohFipDGRvwF8Zy5
@@ -98,7 +158,7 @@
         QTFfJANJU4wZIwqFP4Snvs8bi9apAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="btnPrincipals.Image" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnPrincipals.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAABGdBTUEAALGPC/xhBQAAANxJREFUWEft
         lzsKwkAURVO6CwsbSxcg4gK0cRsWrkFwD2JhZS9YWFto5SLsdQOmG8+8DPgJ84lJSJE5cBnehzkpAiFJ
@@ -107,7 +167,7 @@
         EXkoV3N6CZXXQpQ3QpQ3QpQ3Qrvlvj+WutjoT28bSZIXJs7wFXMCR2cAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="btnSalesAreas.Image" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnSalesAreas.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAABGdBTUEAALGPC/xhBQAAAe9JREFUWEft
         lj9IAnEUx8WpoDaFaLOxoqGoRQcRokVoiqYmoSGCghqKhlycosWhMFqDaIkioSYJjNxCiCCysT36A0HD
@@ -121,7 +181,7 @@
         cZITf5NQ6AswILrFzvRPtwAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="btnSalesmen.Image" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnSalesmen.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAABGdBTUEAALGPC/xhBQAAAl1JREFUWEft
         lr1LHFEUxfcPSBOwkTQBOzGVKGISI6QKWKS1SxOIiUXsLO1iqthaBE0TIYWBFBEry9SBgAGLEMFGSCME
@@ -137,7 +197,10 @@
         MVzRRcFCAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="btnUsageTypes.Image" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <metadata name="toolTipButton.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="btnUsageTypes.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAABGdBTUEAALGPC/xhBQAAATNJREFUWEft
         1zFOw0AQhWEfhZoL0HIJem5CrkGBOAISFV0ukT5VakSalGZm919mNtnE3tjeJnzSFHnj9ZOwEuGupO/7
@@ -148,7 +211,7 @@
         RBj0PrfHg8cAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="btnUOM.Image" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnUOM.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAABGdBTUEAALGPC/xhBQAAAJlJREFUWEft
         lcENgCAMRRmEYVzCeXQejyzAEt4dBfspNZUY48FANH3Jj+lXfBcCzjCM/5NS8pSRMpcMpZc554VuUB18
@@ -156,7 +219,7 @@
         w+RdMHkXIK/P9lbks72+1VqEbzXDMH6OczuFJqWEH52NDAAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="btnMedCats.Image" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnMedCats.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAABGdBTUEAALGPC/xhBQAAAgFJREFUWEft
         lj9LA0EUxNNZ+AVsJMFKFGyCnYWNhWIl2KmIfxutLAQrG0EQBMtooWAn2KngBxBEAoqoYKOCiNjZWsV5
@@ -170,7 +233,7 @@
         B4gcja2MgsC6dmgAWoJmoSGohXGTvyKX+wTKLZw5xbUJ0gAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="btnOutletTypes.Image" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnOutletTypes.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAABGdBTUEAALGPC/xhBQAAAURJREFUWEft
         lT1OAmEURWcBuAASCvZgQTAUFiYKsZCCypLKEBONG6CyYQWwDworChoXQEMs1UCw0OgCxnvfe5OZyUzJ
@@ -181,7 +244,7 @@
         ISg+XgkXkHfAy7ZFHTVR9A9NcVVeUoriWgAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="btnBatches.Image" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnBatches.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAABGdBTUEAALGPC/xhBQAAAM1JREFUWEft
         jaESwjAQBWNQGBQGg8KgMBhEwVRhMCgMCoNBYZjpp/XTyl5JUM+AeIhyM5ltbzPZ9J/hTfeairPltHkd
@@ -190,7 +253,7 @@
         HLTEH8rBr+Lvh53zq+7gJ6Un9JrIZZ/o9ZgAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="btnLocations.Image" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnLocations.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAABGdBTUEAALGPC/xhBQAAAVRJREFUWEe1
         1i1uQlEQBeCnqhAYPGvA4VgAwbEJgkJVIJAIVsAyugGS0kCCqKwBV88WHmfuHAN5l/s390smTemZM6kg
@@ -201,7 +264,7 @@
         A763fN4bPRWPPeGf6sOt16+fzdcqFg7O9W4750eJmuYBuUIBJeQ3JXEAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="btnUserRoles.Image" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnUserRoles.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAABGdBTUEAALGPC/xhBQAAATRJREFUWEft
         l7FtwzAURLWNAU+RJguksofIDhkgC7hK4yncaAOnSZM6SZkycCnf+V9Dg/9LFCUDsf2AA0H++zzIMgiq
@@ -212,7 +275,7 @@
         R6aApRNgt2ALAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="btnRoles.Image" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnRoles.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAABGdBTUEAALGPC/xhBQAAAdZJREFUWEft
         li9IA2EYh5dMIiiC2MxGcUUMguBcNAwsghaxKILF5qo61hQEwSKGFRmIzrSmBotgFExGEVbENJ/3e98b
@@ -226,4 +289,7 @@
         QmCC
 </value>
   </data>
+  <metadata name="toolTipButton.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>

@@ -68,10 +68,10 @@
             // 
             this.dgvProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProduct.GridColor = System.Drawing.Color.White;
-            this.dgvProduct.Location = new System.Drawing.Point(549, 18);
-            this.dgvProduct.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
+            this.dgvProduct.Location = new System.Drawing.Point(485, 16);
+            this.dgvProduct.Margin = new System.Windows.Forms.Padding(9, 3, 3, 3);
             this.dgvProduct.Name = "dgvProduct";
-            this.dgvProduct.Size = new System.Drawing.Size(573, 454);
+            this.dgvProduct.Size = new System.Drawing.Size(511, 393);
             this.dgvProduct.TabIndex = 0;
             this.dgvProduct.Text = "dataGridView1";
             this.dgvProduct.Click += new System.EventHandler(this.dgvProduct_Click);
@@ -79,31 +79,31 @@
             // txtProductCode
             // 
             this.txtProductCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtProductCode.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtProductCode.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtProductCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtProductCode.Location = new System.Drawing.Point(45, 36);
+            this.txtProductCode.Location = new System.Drawing.Point(24, 31);
             this.txtProductCode.Name = "txtProductCode";
-            this.txtProductCode.Size = new System.Drawing.Size(162, 31);
+            this.txtProductCode.Size = new System.Drawing.Size(139, 31);
             this.txtProductCode.TabIndex = 1;
             // 
             // txtProductName
             // 
             this.txtProductName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtProductName.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtProductName.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtProductName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtProductName.Location = new System.Drawing.Point(45, 88);
+            this.txtProductName.Location = new System.Drawing.Point(24, 83);
             this.txtProductName.Name = "txtProductName";
-            this.txtProductName.Size = new System.Drawing.Size(392, 31);
+            this.txtProductName.Size = new System.Drawing.Size(342, 31);
             this.txtProductName.TabIndex = 2;
             // 
             // txtPrice
             // 
             this.txtPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPrice.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtPrice.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtPrice.Location = new System.Drawing.Point(45, 140);
+            this.txtPrice.Location = new System.Drawing.Point(24, 132);
             this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(162, 31);
+            this.txtPrice.Size = new System.Drawing.Size(139, 31);
             this.txtPrice.TabIndex = 3;
             this.txtPrice.Text = "0";
             this.txtPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -112,22 +112,22 @@
             // dtpDecreeDate
             // 
             this.dtpDecreeDate.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dtpDecreeDate.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dtpDecreeDate.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.dtpDecreeDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDecreeDate.Location = new System.Drawing.Point(213, 140);
+            this.dtpDecreeDate.Location = new System.Drawing.Point(168, 132);
             this.dtpDecreeDate.Name = "dtpDecreeDate";
-            this.dtpDecreeDate.Size = new System.Drawing.Size(130, 31);
+            this.dtpDecreeDate.Size = new System.Drawing.Size(148, 31);
             this.dtpDecreeDate.TabIndex = 4;
             // 
             // txtDiscount
             // 
             this.txtDiscount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDiscount.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtDiscount.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtDiscount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtDiscount.Location = new System.Drawing.Point(45, 192);
+            this.txtDiscount.Location = new System.Drawing.Point(24, 181);
             this.txtDiscount.MaxLength = 3;
             this.txtDiscount.Name = "txtDiscount";
-            this.txtDiscount.Size = new System.Drawing.Size(91, 31);
+            this.txtDiscount.Size = new System.Drawing.Size(78, 31);
             this.txtDiscount.TabIndex = 5;
             this.txtDiscount.Text = "0";
             this.txtDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -137,11 +137,11 @@
             // txtRestock
             // 
             this.txtRestock.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtRestock.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtRestock.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtRestock.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtRestock.Location = new System.Drawing.Point(142, 192);
+            this.txtRestock.Location = new System.Drawing.Point(107, 181);
             this.txtRestock.Name = "txtRestock";
-            this.txtRestock.Size = new System.Drawing.Size(91, 31);
+            this.txtRestock.Size = new System.Drawing.Size(78, 31);
             this.txtRestock.TabIndex = 6;
             this.txtRestock.Text = "0";
             this.txtRestock.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -151,55 +151,55 @@
             // 
             this.cbUom.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cbUom.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.cbUom.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbUom.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.cbUom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.cbUom.FormattingEnabled = true;
-            this.cbUom.Location = new System.Drawing.Point(239, 191);
+            this.cbUom.Location = new System.Drawing.Point(190, 181);
             this.cbUom.Name = "cbUom";
-            this.cbUom.Size = new System.Drawing.Size(104, 31);
+            this.cbUom.Size = new System.Drawing.Size(117, 31);
             this.cbUom.TabIndex = 7;
             // 
             // cbMedCat
             // 
             this.cbMedCat.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cbMedCat.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.cbMedCat.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbMedCat.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.cbMedCat.FormattingEnabled = true;
-            this.cbMedCat.Location = new System.Drawing.Point(45, 244);
+            this.cbMedCat.Location = new System.Drawing.Point(24, 230);
             this.cbMedCat.Name = "cbMedCat";
-            this.cbMedCat.Size = new System.Drawing.Size(330, 31);
+            this.cbMedCat.Size = new System.Drawing.Size(283, 31);
             this.cbMedCat.TabIndex = 8;
             // 
             // cbUsageType
             // 
             this.cbUsageType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cbUsageType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.cbUsageType.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbUsageType.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.cbUsageType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.cbUsageType.FormattingEnabled = true;
-            this.cbUsageType.Location = new System.Drawing.Point(45, 296);
+            this.cbUsageType.Location = new System.Drawing.Point(24, 280);
             this.cbUsageType.Name = "cbUsageType";
-            this.cbUsageType.Size = new System.Drawing.Size(224, 31);
+            this.cbUsageType.Size = new System.Drawing.Size(193, 31);
             this.cbUsageType.TabIndex = 9;
             // 
             // cbPrincipal
             // 
             this.cbPrincipal.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cbPrincipal.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.cbPrincipal.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbPrincipal.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.cbPrincipal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.cbPrincipal.FormattingEnabled = true;
-            this.cbPrincipal.Location = new System.Drawing.Point(45, 348);
+            this.cbPrincipal.Location = new System.Drawing.Point(24, 330);
             this.cbPrincipal.Name = "cbPrincipal";
-            this.cbPrincipal.Size = new System.Drawing.Size(330, 31);
+            this.cbPrincipal.Size = new System.Drawing.Size(283, 31);
             this.cbPrincipal.TabIndex = 10;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(45, 18);
+            this.label1.Location = new System.Drawing.Point(24, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 15);
             this.label1.TabIndex = 4;
@@ -208,9 +208,9 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(45, 70);
+            this.label2.Location = new System.Drawing.Point(24, 68);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(81, 15);
             this.label2.TabIndex = 4;
@@ -219,9 +219,9 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(45, 122);
+            this.label3.Location = new System.Drawing.Point(24, 117);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 15);
             this.label3.TabIndex = 4;
@@ -230,9 +230,9 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label4.Location = new System.Drawing.Point(213, 122);
+            this.label4.Location = new System.Drawing.Point(168, 117);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(74, 15);
             this.label4.TabIndex = 4;
@@ -241,9 +241,9 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label5.Location = new System.Drawing.Point(45, 174);
+            this.label5.Location = new System.Drawing.Point(24, 166);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(74, 15);
             this.label5.TabIndex = 4;
@@ -252,9 +252,9 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label6.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label6.Location = new System.Drawing.Point(142, 174);
+            this.label6.Location = new System.Drawing.Point(107, 166);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(49, 15);
             this.label6.TabIndex = 4;
@@ -263,9 +263,9 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label7.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label7.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label7.Location = new System.Drawing.Point(239, 173);
+            this.label7.Location = new System.Drawing.Point(190, 165);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(44, 15);
             this.label7.TabIndex = 4;
@@ -274,9 +274,9 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label8.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label8.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label8.Location = new System.Drawing.Point(45, 278);
+            this.label8.Location = new System.Drawing.Point(24, 264);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(95, 15);
             this.label8.TabIndex = 4;
@@ -285,9 +285,9 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label9.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label9.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label9.Location = new System.Drawing.Point(45, 330);
+            this.label9.Location = new System.Drawing.Point(24, 314);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(53, 15);
             this.label9.TabIndex = 4;
@@ -296,9 +296,9 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label10.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label10.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label10.Location = new System.Drawing.Point(45, 226);
+            this.label10.Location = new System.Drawing.Point(24, 215);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(83, 15);
             this.label10.TabIndex = 4;
@@ -309,12 +309,12 @@
             this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
             this.btnClear.FlatAppearance.BorderSize = 0;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClear.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnClear.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnClear.ForeColor = System.Drawing.Color.White;
             this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
-            this.btnClear.Location = new System.Drawing.Point(453, 36);
+            this.btnClear.Location = new System.Drawing.Point(388, 30);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(83, 60);
+            this.btnClear.Size = new System.Drawing.Size(71, 52);
             this.btnClear.TabIndex = 11;
             this.btnClear.Text = "CLEAR";
             this.btnClear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -326,12 +326,12 @@
             this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
             this.btnAdd.FlatAppearance.BorderSize = 0;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAdd.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnAdd.ForeColor = System.Drawing.Color.White;
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(453, 111);
+            this.btnAdd.Location = new System.Drawing.Point(388, 95);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(83, 60);
+            this.btnAdd.Size = new System.Drawing.Size(71, 52);
             this.btnAdd.TabIndex = 12;
             this.btnAdd.Text = "ADD";
             this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -343,12 +343,12 @@
             this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnSave.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(453, 189);
+            this.btnSave.Location = new System.Drawing.Point(388, 163);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(83, 60);
+            this.btnSave.Size = new System.Drawing.Size(71, 52);
             this.btnSave.TabIndex = 13;
             this.btnSave.Text = "SAVE";
             this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -360,12 +360,12 @@
             this.btnDel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
             this.btnDel.FlatAppearance.BorderSize = 0;
             this.btnDel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDel.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnDel.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnDel.ForeColor = System.Drawing.Color.White;
             this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
-            this.btnDel.Location = new System.Drawing.Point(453, 267);
+            this.btnDel.Location = new System.Drawing.Point(388, 230);
             this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(83, 60);
+            this.btnDel.Size = new System.Drawing.Size(71, 52);
             this.btnDel.TabIndex = 14;
             this.btnDel.Text = "DELETE";
             this.btnDel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -377,12 +377,12 @@
             this.btnReload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
             this.btnReload.FlatAppearance.BorderSize = 0;
             this.btnReload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReload.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnReload.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnReload.ForeColor = System.Drawing.Color.White;
             this.btnReload.Image = ((System.Drawing.Image)(resources.GetObject("btnReload.Image")));
-            this.btnReload.Location = new System.Drawing.Point(453, 348);
+            this.btnReload.Location = new System.Drawing.Point(388, 301);
             this.btnReload.Name = "btnReload";
-            this.btnReload.Size = new System.Drawing.Size(83, 60);
+            this.btnReload.Size = new System.Drawing.Size(71, 52);
             this.btnReload.TabIndex = 15;
             this.btnReload.Text = "RELOAD";
             this.btnReload.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -395,38 +395,38 @@
             this.pnlHiddenField.Controls.Add(this.txtProductId);
             this.pnlHiddenField.Controls.Add(this.label12);
             this.pnlHiddenField.Controls.Add(this.label11);
-            this.pnlHiddenField.Location = new System.Drawing.Point(25, 418);
+            this.pnlHiddenField.Location = new System.Drawing.Point(537, 461);
             this.pnlHiddenField.Name = "pnlHiddenField";
-            this.pnlHiddenField.Size = new System.Drawing.Size(412, 83);
+            this.pnlHiddenField.Size = new System.Drawing.Size(353, 72);
             this.pnlHiddenField.TabIndex = 8;
             this.pnlHiddenField.Visible = false;
             // 
             // txtModifiedAt
             // 
             this.txtModifiedAt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtModifiedAt.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtModifiedAt.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtModifiedAt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtModifiedAt.Location = new System.Drawing.Point(188, 36);
+            this.txtModifiedAt.Location = new System.Drawing.Point(161, 31);
             this.txtModifiedAt.Name = "txtModifiedAt";
-            this.txtModifiedAt.Size = new System.Drawing.Size(188, 31);
+            this.txtModifiedAt.Size = new System.Drawing.Size(161, 31);
             this.txtModifiedAt.TabIndex = 1;
             // 
             // txtProductId
             // 
             this.txtProductId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtProductId.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtProductId.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtProductId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtProductId.Location = new System.Drawing.Point(10, 36);
+            this.txtProductId.Location = new System.Drawing.Point(9, 31);
             this.txtProductId.Name = "txtProductId";
-            this.txtProductId.Size = new System.Drawing.Size(162, 31);
+            this.txtProductId.Size = new System.Drawing.Size(139, 31);
             this.txtProductId.TabIndex = 1;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label12.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label12.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label12.Location = new System.Drawing.Point(188, 18);
+            this.label12.Location = new System.Drawing.Point(161, 16);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(72, 15);
             this.label12.TabIndex = 4;
@@ -435,9 +435,9 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label11.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label11.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label11.Location = new System.Drawing.Point(10, 18);
+            this.label11.Location = new System.Drawing.Point(9, 16);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(17, 15);
             this.label11.TabIndex = 4;
@@ -445,10 +445,10 @@
             // 
             // FrmProduct
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1134, 513);
+            this.ClientSize = new System.Drawing.Size(1118, 700);
             this.Controls.Add(this.pnlHiddenField);
             this.Controls.Add(this.btnReload);
             this.Controls.Add(this.btnDel);

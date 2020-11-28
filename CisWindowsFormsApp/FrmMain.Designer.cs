@@ -108,9 +108,9 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.lblToday);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 507);
+            this.panel1.Location = new System.Drawing.Point(0, 463);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(176, 68);
+            this.panel1.Size = new System.Drawing.Size(176, 112);
             this.panel1.TabIndex = 3;
             // 
             // panel3
@@ -138,7 +138,7 @@
             this.lblToday.ForeColor = System.Drawing.Color.White;
             this.lblToday.Location = new System.Drawing.Point(0, 32);
             this.lblToday.Name = "lblToday";
-            this.lblToday.Size = new System.Drawing.Size(178, 16);
+            this.lblToday.Size = new System.Drawing.Size(178, 29);
             this.lblToday.TabIndex = 0;
             this.lblToday.Text = "Beautiful Day";
             this.lblToday.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

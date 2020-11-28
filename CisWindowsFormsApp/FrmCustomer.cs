@@ -38,6 +38,8 @@ namespace CisWindowsFormsApp
             SetUIButtonGroup();
 
             txtCustomerName.Focus();
+            if (string.IsNullOrEmpty(txtSipaNo.Text))
+                dtpSipaExpiredDate.Value = DateTime.Parse("1900-01-01");
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -71,7 +73,7 @@ namespace CisWindowsFormsApp
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (!ValidateEmptyField()) return;
+            if (!ValidateMandatoryFields()) return;
             var existingCust = uowCust.Repository.GetAll()
                 .Where(r => r.CustomerName == txtCustomerName.Text.Trim()
                 && r.Address == txtAddress.Text.Trim())
@@ -79,8 +81,7 @@ namespace CisWindowsFormsApp
 
             if (existingCust != null)
             {
-                MessageBox.Show("Data dengan Nama " + txtCustomerName.Text.Trim() + " dengan alamat " + txtAddress.Text.Trim() +" sudah ada. Silakan gunakan detail yang lain."
-                    , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CommonHelper.DataAlreadyExistMessage(txtCustomerName.Text.Trim() + " dengan alamat " + txtAddress.Text.Trim());
             }
             else
             {
@@ -115,15 +116,14 @@ namespace CisWindowsFormsApp
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (!ValidateEmptyField()) return;
+            if (!ValidateMandatoryFields()) return;
 
             var repoLastUpdated = DateTime.Parse(dgvCustomer.CurrentRow.Cells[nameof(Customer.ModifiedAt)].Value.ToString());
             var lastUpdated = DateTime.Parse(txtModifiedAt.Text.Trim());
 
             if (lastUpdated != repoLastUpdated)
             {
-                MessageBox.Show("Data dengan Nama " + txtCustomerName.Text.Trim() + " telah diupdate sebelumnya. Silakan klik Reload untuk mendapatkan data terbaru dan ubah data yang diinginkan."
-                    , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CommonHelper.DataHasBeenUpdatedMessage(txtCustomerName.Text.Trim());
             }
             else
             {
@@ -162,17 +162,25 @@ namespace CisWindowsFormsApp
 
             if (roleToDel != null)
             {
-                if (DialogResult.Yes == MessageBox.Show("Yakin akan menghapus data ini?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                if (DialogResult.Yes == CommonHelper.ConfirmDeleteMessage())
                 {
                     uowCust.Repository.Delete(roleToDel);
-                    uowCust.Commit();
+                    var res = uowCust.Commit();
+                    if (!res.Item1 && res.Item2 == "Expected")
+                    {
+                        CommonHelper.ReferredDataCannotBeDeletedMessage();
+                    }
+
+                    if (!res.Item1 && res.Item2 == "Unexpected")
+                    {
+                        CommonHelper.ContactAdminErrorMessage();
+                    }
                     btnReload.PerformClick();
                 }
             }
             else
             {
-                MessageBox.Show("Data dengan Nama " + txtCustomerName.Text.Trim() + " tidak ditemukan. Silakan klik Reload dan hapus data yang diinginkan."
-                    , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CommonHelper.DataNotFoundMessage(txtCustomerName.Text.Trim());
             }
         }
 
@@ -254,7 +262,7 @@ namespace CisWindowsFormsApp
         {
             dgvCustomer.Columns[nameof(Customer.CustomerName)].HeaderText = "NAMA PELANGGAN";
             dgvCustomer.Columns[nameof(Customer.CustomerName)].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgvCustomer.Columns[nameof(Customer.Address)].HeaderText = "NAMA LENGKAP";
+            dgvCustomer.Columns[nameof(Customer.Address)].HeaderText = "ALAMAT";
             dgvCustomer.Columns[nameof(Customer.Address)].Width = 300;
             dgvCustomer.Columns[nameof(Customer.Phone)].HeaderText = "TELEPON";
             dgvCustomer.Columns[nameof(Customer.Phone)].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
@@ -303,15 +311,22 @@ namespace CisWindowsFormsApp
 
         }
 
-        private bool ValidateEmptyField()
+        private bool ValidateMandatoryFields()
         {
             if (string.IsNullOrEmpty(txtCustomerName.Text) || string.IsNullOrEmpty(txtAddress.Text))
             {
-                MessageBox.Show("Data Nama Pelanggan dan Alamat tidak boleh kosong."
-                      , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CommonHelper.DataCannotBeEmptyMessage("Nama Pelanggan dan Alamat");
                 return false;
 
             }
+
+            if (cbOutletType.Items.Count <= 1 || cbSalesArea.Items.Count <= 1)
+            {
+                var emptyRefData = cbOutletType.Items.Count <= 1 ? "Jenis Outlet" : "Sales Area";
+                CommonHelper.ReferredDataNotSetMessage(emptyRefData);
+                return false;
+            }
+
             return true;
         }
 
