@@ -65,12 +65,12 @@ namespace CisWindowsFormsApp
             {
                 var outletToAdd = new OutletType
                 {
-                    OutletCode = txtOutletCode.Text.Trim(),
+                    OutletTypeCode = txtOutletCode.Text.Trim(),
                     Description = txtOutlet.Text.Trim(),
                     CreatedBy = Properties.Settings.Default.CurrentUser,
-                    CreatedAt = DateTime.Now,
+                    CreatedAt = DateTime.UtcNow,
                     ModifiedBy = Properties.Settings.Default.CurrentUser,
-                    ModifiedAt = DateTime.Now
+                    ModifiedAt = DateTime.UtcNow
                 };
                 uowOutlet.Repository.Add(outletToAdd);
                 uowOutlet.Commit();
@@ -142,7 +142,7 @@ namespace CisWindowsFormsApp
             else
             {
                 var outletToUpdate = uowOutlet.Repository.GetById(txtOutletId.Text.Trim());
-                outletToUpdate.OutletCode = txtOutletCode.Text.Trim();
+                outletToUpdate.OutletTypeCode = txtOutletCode.Text.Trim();
                 outletToUpdate.Description = txtOutlet.Text.Trim();
                 outletToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUser;
                 outletToUpdate.ModifiedAt = DateTime.Now;
@@ -161,7 +161,7 @@ namespace CisWindowsFormsApp
             new
             {
                 outlet.Id,
-                outlet.OutletCode,
+                outlet.OutletTypeCode,
                 outlet.Description,
                 outlet.ModifiedAt
             });
@@ -171,7 +171,7 @@ namespace CisWindowsFormsApp
 
         private void SetUIGridView()
         {
-            dgvOutlet.Columns[nameof(OutletType.OutletCode)].HeaderText = "KODE OUTLET";
+            dgvOutlet.Columns[nameof(OutletType.OutletTypeCode)].HeaderText = "KODE OUTLET";
             dgvOutlet.Columns[nameof(OutletType.Description)].HeaderText = "JENIS OUTLET";
             dgvOutlet.Columns[nameof(OutletType.Description)].Width = 320;
 
@@ -182,7 +182,7 @@ namespace CisWindowsFormsApp
         private void SetUIbySelectedGridItem()
         {
             var currentRow = dgvOutlet.CurrentRow;
-            txtOutletCode.Text = currentRow.Cells[nameof(OutletType.OutletCode)].Value.ToString();
+            txtOutletCode.Text = currentRow.Cells[nameof(OutletType.OutletTypeCode)].Value.ToString();
             txtOutlet.Text = currentRow.Cells[nameof(OutletType.Description)].Value.ToString();
 
             // hidden fields

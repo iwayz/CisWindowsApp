@@ -14,19 +14,19 @@ namespace Cis.Model
         }
 
         [Key]
-        [Column("ID"), MaxLength(36)]
+        [MaxLength(36)]
         public string Id { get; set; }
 
-        [Column("CREATED_BY"), Required, MaxLength(36)]
+        [Required, MaxLength(36)]
         public string CreatedBy { get; set; }
         
-        [Column("CREATED_AT"), Required, DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        [Required, DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime CreatedAt { get; set; }
         
-        [Column("MODIFIED_BY"), Required, MaxLength(36)]
+        [Required, MaxLength(36)]
         public string ModifiedBy { get; set; }
         
-        [Column("MODIFIED_AT"), Required, DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        [Required, DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime ModifiedAt { get; set; }
     }
 }

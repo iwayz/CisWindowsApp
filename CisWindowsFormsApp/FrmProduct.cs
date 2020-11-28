@@ -284,14 +284,14 @@ namespace CisWindowsFormsApp
         private void BindPrincipalComboBox()
         {
             var uow = new UnitOfWork<Principal>(dbContext);
-            var principals = uow.Repository.GetAll().OrderBy(p => p.Name);
+            var principals = uow.Repository.GetAll().OrderBy(p => p.PrincipalName);
 
             AutoCompleteStringCollection autoCompleteCollection = new AutoCompleteStringCollection();
             Dictionary<string, string> dsPrincipals = new Dictionary<string, string>();
             foreach (var principal in principals)
             {
-                dsPrincipals.Add(principal.Id, principal.Name);
-                autoCompleteCollection.Add(principal.Name);
+                dsPrincipals.Add(principal.Id, principal.PrincipalName);
+                autoCompleteCollection.Add(principal.PrincipalName);
             }
 
             cbPrincipal.DataSource = new BindingSource(dsPrincipals, null);

@@ -7,23 +7,17 @@ namespace Cis.Data.EntityConfigurations
     {
         public UserRoleConfig()
         {
-            ToTable("CIS_USER_ROLE");
-
             Property(e => e.RoleId)
-                .HasColumnName("ROLE_ID")
                 .HasMaxLength(36)
                 .IsRequired();
 
             Property(e => e.UserId)
-                .HasColumnName("USER_ID")
                 .HasMaxLength(36)
                 .IsRequired();
 
 
-            HasIndex(u => new { u.RoleId, u.UserId})
-                .IsUnique()
-                .HasName("IX_USER_ROLE_ROLE_ID_USER_ID");
-            
+            HasIndex(u => new { u.RoleId, u.UserId })
+                .IsUnique();
         }
     }
 }

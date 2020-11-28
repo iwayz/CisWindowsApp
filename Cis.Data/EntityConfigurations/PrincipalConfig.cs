@@ -10,44 +10,32 @@ namespace Cis.Data.EntityConfigurations
     {
         public PrincipalConfig()
         {
-            ToTable("CIS_PRINCIPAL");
-            
-            Property(e => e.Name)
-                .HasColumnName("NAME")
+            Property(e => e.PrincipalName)
                 .HasMaxLength(100)
                 .IsRequired();
 
             Property(e => e.Address)
-                .HasColumnName("ADDRESS")
                 .IsRequired();
 
             Property(e => e.ProvinceId)
-                .HasColumnName("PROVINCE_ID")
                 .HasMaxLength(36)
                 .IsRequired();
 
             Property(e => e.DistrictId)
-                .HasColumnName("DISTRICT_ID")
                 .HasMaxLength(36)
                 .IsRequired();
 
             Property(e => e.SubDistrictId)
-                .HasColumnName("SUBDISTRICT_ID")
                 .HasMaxLength(36)
                 .IsRequired();
 
             Property(e => e.Phone)
-                .HasColumnName("PHONE")
                 .IsOptional();
 
             Property(e => e.Email)
-                .HasColumnName("EMAIL")
                 .IsOptional();
 
-
-            HasIndex(e => e.Name)
-                .HasName("IX_PRINCIPAL_NAME");
-
+            HasIndex(e => e.PrincipalName);
         }
     }
 }

@@ -354,8 +354,8 @@ namespace CisWindowsFormsApp
             Dictionary<string, string> dsOutlet = new Dictionary<string, string>();
             foreach (var outlet in outletTypes)
             {
-                dsOutlet.Add(outlet.Id, outlet.OutletCode + " - " + outlet.Description);
-                autoCompleteCollection.Add(outlet.OutletCode + " - " + outlet.Description);
+                dsOutlet.Add(outlet.Id, outlet.OutletTypeCode + " - " + outlet.Description);
+                autoCompleteCollection.Add(outlet.OutletTypeCode + " - " + outlet.Description);
             }
 
             cbOutletType.DataSource = new BindingSource(dsOutlet, null);

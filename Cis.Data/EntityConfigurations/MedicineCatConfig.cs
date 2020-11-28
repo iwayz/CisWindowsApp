@@ -1,8 +1,5 @@
 ﻿using Cis.Model;
 using System.Data.Entity.ModelConfiguration;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Cis.Data.EntityConfigurations
 {
@@ -10,18 +7,13 @@ namespace Cis.Data.EntityConfigurations
     {
         public MedicineCatConfig()
         {
-            ToTable("CIS_MED_CAT");
-
             Property(e => e.MedicineCatCode)
-                .HasColumnName("MED_CAT_CODE")
                 .HasMaxLength(50)
                 .IsRequired();
 
             Property(e => e.Description)
-                .HasColumnName("DESCRIPTION")
                 .IsRequired();
 
-            
         }
     }
 }

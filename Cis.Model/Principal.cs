@@ -6,7 +6,7 @@ namespace Cis.Model
 {
     public class Principal: BaseEntity
     {
-        public string Name { get; set; }
+        public string PrincipalName { get; set; }
         public string Address { get; set; }
         public string ProvinceId { get; set; }
         public string DistrictId { get; set; }

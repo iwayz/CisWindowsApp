@@ -7,15 +7,11 @@ namespace Cis.Data
     {
         public UnitOfMeasurementConfig()
         {
-            ToTable("CIS_UOM");
-
             Property(e => e.UomCode)
-                .HasColumnName("UOM_CODE")
                 .HasMaxLength(50)
                 .IsRequired();
 
             Property(e => e.Description)
-                .HasColumnName("DESCRIPTION")
                 .IsRequired();
 
         }

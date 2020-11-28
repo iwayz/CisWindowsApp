@@ -29,7 +29,8 @@ namespace Cis.Data
         {
 
             // Properties configurations
-            modelmodelBuilder.Configurations.AddFromAssembly(Assembly.GetExecutingAssembly());
+            //modelmodelBuilder.Configurations.AddFromAssembly(Assembly.GetExecutingAssembly());
+            modelmodelBuilder.Configurations.Add(new OutletTypeConfig());
             modelmodelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
             // Entities configurations

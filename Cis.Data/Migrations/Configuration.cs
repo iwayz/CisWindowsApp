@@ -1,6 +1,7 @@
 ﻿namespace Cis.Data.Migrations
 {
     using Cis.Model;
+    using System;
     using System.Collections.Generic;
     using System.Data.Entity.Migrations;
     using System.Data.Entity.Migrations.Model;
@@ -54,7 +55,7 @@
                 || column.Name.Equals(nameof(BaseEntity.ModifiedAt))
                 || column.Name.Contains("DATE"))
             {
-                column.DefaultValue = "GETDATE()";
+                column.DefaultValue = DateTime.Parse("1900-01-01");
             }
         }
     }
