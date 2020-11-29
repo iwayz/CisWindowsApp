@@ -49,7 +49,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 100);
+            this.panel1.Size = new System.Drawing.Size(686, 87);
             this.panel1.TabIndex = 0;
             // 
             // button1
@@ -57,12 +57,12 @@
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(74)))), ((int)(((byte)(156)))));
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(171, 12);
+            this.button1.Location = new System.Drawing.Point(147, 10);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(141, 70);
+            this.button1.Size = new System.Drawing.Size(121, 61);
             this.button1.TabIndex = 0;
             this.button1.Text = "Pembelian";
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -74,12 +74,12 @@
             this.btnSales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(56)))), ((int)(((byte)(89)))));
             this.btnSales.FlatAppearance.BorderSize = 0;
             this.btnSales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSales.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnSales.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.btnSales.ForeColor = System.Drawing.Color.White;
             this.btnSales.Image = ((System.Drawing.Image)(resources.GetObject("btnSales.Image")));
-            this.btnSales.Location = new System.Drawing.Point(24, 12);
+            this.btnSales.Location = new System.Drawing.Point(21, 10);
             this.btnSales.Name = "btnSales";
-            this.btnSales.Size = new System.Drawing.Size(141, 70);
+            this.btnSales.Size = new System.Drawing.Size(121, 61);
             this.btnSales.TabIndex = 0;
             this.btnSales.Text = "Penjualan";
             this.btnSales.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -90,9 +90,9 @@
             // 
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 100);
+            this.panel2.Location = new System.Drawing.Point(0, 87);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(800, 40);
+            this.panel2.Size = new System.Drawing.Size(686, 35);
             this.panel2.TabIndex = 1;
             // 
             // panel4
@@ -101,15 +101,15 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(341, 40);
+            this.panel4.Size = new System.Drawing.Size(292, 35);
             this.panel4.TabIndex = 0;
             // 
             // lblTransactionChildHeader
             // 
             this.lblTransactionChildHeader.AutoSize = true;
-            this.lblTransactionChildHeader.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblTransactionChildHeader.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold);
             this.lblTransactionChildHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
-            this.lblTransactionChildHeader.Location = new System.Drawing.Point(24, 3);
+            this.lblTransactionChildHeader.Location = new System.Drawing.Point(21, 3);
             this.lblTransactionChildHeader.Name = "lblTransactionChildHeader";
             this.lblTransactionChildHeader.Size = new System.Drawing.Size(84, 23);
             this.lblTransactionChildHeader.TabIndex = 0;
@@ -118,22 +118,22 @@
             // pnlTransactionChildren
             // 
             this.pnlTransactionChildren.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlTransactionChildren.Location = new System.Drawing.Point(0, 140);
+            this.pnlTransactionChildren.Location = new System.Drawing.Point(0, 122);
             this.pnlTransactionChildren.Name = "pnlTransactionChildren";
-            this.pnlTransactionChildren.Size = new System.Drawing.Size(800, 310);
+            this.pnlTransactionChildren.Size = new System.Drawing.Size(686, 268);
             this.pnlTransactionChildren.TabIndex = 2;
             // 
             // FrmTransactionDashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(686, 390);
             this.Controls.Add(this.pnlTransactionChildren);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "FrmTransactionDashboard";
-            this.Text = "Transaction Dashboard";
+            this.Text = "TRANSAKSI";
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);

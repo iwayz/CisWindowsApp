@@ -335,7 +335,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(684, 519);
+            this.ClientSize = new System.Drawing.Size(684, 562);
             this.Controls.Add(this.pnlButtons);
             this.Controls.Add(this.pnlRetypePassword);
             this.Controls.Add(this.chkChangePassword);
@@ -348,7 +348,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtUsername);
             this.Name = "FrmUser";
-            this.Text = "User";
+            this.Text = "USER";
             this.Load += new System.EventHandler(this.FrmUser_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUser)).EndInit();
             this.panel1.ResumeLayout(false);

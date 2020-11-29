@@ -40,6 +40,7 @@ namespace CisWindowsFormsApp
             SetUIButtonGroup();
 
             txtProductCode.Focus();
+            CheckSourceRefData();
         }
         
         private void txtPrice_KeyPress(object sender, KeyPressEventArgs e)
@@ -396,6 +397,17 @@ namespace CisWindowsFormsApp
             btnSave.BackColor = !isAdd ? Color.FromArgb( 36, 141, 193) : Color.Gray;
             btnDel.BackColor = !isAdd ? Color.FromArgb( 36, 141, 193) : Color.Gray;
 
+        }
+
+        private void CheckSourceRefData()
+        {
+            List<string> refData = new List<string>();
+            if (cbMedCat.Items.Count <= 1) refData.Add("Kategori Obat");
+            if (cbUsageType.Items.Count <= 1) refData.Add("Jenis Pemakaian");
+            if (cbPrincipal.Items.Count <= 1) refData.Add("Principal");
+
+            lblNoteDetail.Text = "Data referensi " + string.Join(",", refData) + " belum tersedia. ";
+            if (refData.Count > 0) pnlNote.Visible = true;
         }
     }
 }

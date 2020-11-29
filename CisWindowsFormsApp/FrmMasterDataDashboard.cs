@@ -106,6 +106,9 @@ namespace CisWindowsFormsApp
             lblMasterDataChildHeader.Text = childForm.Text;
         }
 
-        
+        private void FrmMasterDataDashboard_Load(object sender, EventArgs e)
+        {
+            btnProducts.PerformClick();
+        }
     }
 }

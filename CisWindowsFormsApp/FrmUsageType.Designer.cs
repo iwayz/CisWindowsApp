@@ -260,7 +260,7 @@
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.dgvUsageType);
             this.Name = "FrmUsageType";
-            this.Text = "Jenis Pemakaian";
+            this.Text = "JENIS PEMAKAIAN";
             this.Load += new System.EventHandler(this.FrmUsageType_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsageType)).EndInit();
             this.panel1.ResumeLayout(false);

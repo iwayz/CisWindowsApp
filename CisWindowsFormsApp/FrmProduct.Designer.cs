@@ -60,8 +60,12 @@
             this.txtProductId = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.lblNoteDetail = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.pnlNote = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).BeginInit();
             this.pnlHiddenField.SuspendLayout();
+            this.pnlNote.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvProduct
@@ -71,7 +75,7 @@
             this.dgvProduct.Location = new System.Drawing.Point(485, 16);
             this.dgvProduct.Margin = new System.Windows.Forms.Padding(9, 3, 3, 3);
             this.dgvProduct.Name = "dgvProduct";
-            this.dgvProduct.Size = new System.Drawing.Size(511, 393);
+            this.dgvProduct.Size = new System.Drawing.Size(511, 345);
             this.dgvProduct.TabIndex = 0;
             this.dgvProduct.Text = "dataGridView1";
             this.dgvProduct.Click += new System.EventHandler(this.dgvProduct_Click);
@@ -395,7 +399,7 @@
             this.pnlHiddenField.Controls.Add(this.txtProductId);
             this.pnlHiddenField.Controls.Add(this.label12);
             this.pnlHiddenField.Controls.Add(this.label11);
-            this.pnlHiddenField.Location = new System.Drawing.Point(537, 461);
+            this.pnlHiddenField.Location = new System.Drawing.Point(12, 498);
             this.pnlHiddenField.Name = "pnlHiddenField";
             this.pnlHiddenField.Size = new System.Drawing.Size(353, 72);
             this.pnlHiddenField.TabIndex = 8;
@@ -443,12 +447,47 @@
             this.label11.TabIndex = 4;
             this.label11.Text = "Id";
             // 
+            // lblNoteDetail
+            // 
+            this.lblNoteDetail.AutoSize = true;
+            this.lblNoteDetail.BackColor = System.Drawing.Color.Gold;
+            this.lblNoteDetail.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.lblNoteDetail.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblNoteDetail.Location = new System.Drawing.Point(9, 28);
+            this.lblNoteDetail.Name = "lblNoteDetail";
+            this.lblNoteDetail.Padding = new System.Windows.Forms.Padding(3);
+            this.lblNoteDetail.Size = new System.Drawing.Size(76, 21);
+            this.lblNoteDetail.TabIndex = 4;
+            this.lblNoteDetail.Text = "Note Detail";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label13.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label13.Location = new System.Drawing.Point(9, 9);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(41, 15);
+            this.label13.TabIndex = 4;
+            this.label13.Text = "NOTE:";
+            // 
+            // pnlNote
+            // 
+            this.pnlNote.Controls.Add(this.lblNoteDetail);
+            this.pnlNote.Controls.Add(this.label13);
+            this.pnlNote.Location = new System.Drawing.Point(12, 381);
+            this.pnlNote.Name = "pnlNote";
+            this.pnlNote.Size = new System.Drawing.Size(984, 100);
+            this.pnlNote.TabIndex = 16;
+            this.pnlNote.Visible = false;
+            // 
             // FrmProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1118, 700);
+            this.Controls.Add(this.pnlNote);
             this.Controls.Add(this.pnlHiddenField);
             this.Controls.Add(this.btnReload);
             this.Controls.Add(this.btnDel);
@@ -477,11 +516,13 @@
             this.Controls.Add(this.txtProductCode);
             this.Controls.Add(this.dgvProduct);
             this.Name = "FrmProduct";
-            this.Text = "Product";
+            this.Text = "PRODUK";
             this.Load += new System.EventHandler(this.FrmProduct_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).EndInit();
             this.pnlHiddenField.ResumeLayout(false);
             this.pnlHiddenField.PerformLayout();
+            this.pnlNote.ResumeLayout(false);
+            this.pnlNote.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -520,5 +561,8 @@
         private System.Windows.Forms.TextBox txtModifiedAt;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lblNoteDetail;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Panel pnlNote;
     }
 }

@@ -40,6 +40,8 @@ namespace CisWindowsFormsApp
             txtCustomerName.Focus();
             if (string.IsNullOrEmpty(txtSipaNo.Text))
                 dtpSipaExpiredDate.Value = DateTime.Parse("1900-01-01");
+            CheckSourceRefData();
+
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -230,6 +232,11 @@ namespace CisWindowsFormsApp
 
         }
 
+        private void txtPostCode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
         private void BindCustomerGridView()
         {
             var salesmen = new UnitOfWork<Customer>(dbContext).Repository.GetAll().OrderBy(s => s.CustomerName);
@@ -406,10 +413,15 @@ namespace CisWindowsFormsApp
             btnSave.BackColor = !isAdd ? Color.FromArgb(36, 141, 193) : Color.Gray;
             btnDel.BackColor = !isAdd ? Color.FromArgb(36, 141, 193) : Color.Gray;
         }
-
-        private void txtPostCode_KeyPress(object sender, KeyPressEventArgs e)
+       
+        private void CheckSourceRefData()
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            List<string> refData = new List<string>();
+            if (cbOutletType.Items.Count <= 1) refData.Add("Jenit Outlet");
+            if (cbSalesArea.Items.Count <= 1) refData.Add("Sales Area");
+
+            lblNoteDetail.Text = "Data referensi " + string.Join(",", refData) + " belum tersedia. ";
+            if (refData.Count > 0) pnlNote.Visible = true;
         }
     }
 }

@@ -178,7 +178,7 @@ namespace CisWindowsFormsApp
         {
             dgvSalesArea.Columns[nameof(SalesArea.AreaCode)].HeaderText = "KODE AREA";
             dgvSalesArea.Columns[nameof(SalesArea.Description)].HeaderText = "KETERANGAN";
-            dgvSalesArea.Columns[nameof(SalesArea.Description)].Width = 220;
+            dgvSalesArea.Columns[nameof(SalesArea.Description)].Width = 250;
             dgvSalesArea.Columns[nameof(SalesArea.Id)].Visible = false;
             dgvSalesArea.Columns[nameof(SalesArea.ModifiedAt)].Visible = false;
         }

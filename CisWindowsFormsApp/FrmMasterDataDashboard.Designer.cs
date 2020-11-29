@@ -68,7 +68,7 @@
             this.btnProducts.Name = "btnProducts";
             this.btnProducts.Size = new System.Drawing.Size(129, 56);
             this.btnProducts.TabIndex = 0;
-            this.btnProducts.Text = "Products";
+            this.btnProducts.Text = "Produk";
             this.btnProducts.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnProducts.UseVisualStyleBackColor = false;
             this.btnProducts.Click += new System.EventHandler(this.btnProducts_Click);
@@ -85,7 +85,7 @@
             this.btnCustomers.Name = "btnCustomers";
             this.btnCustomers.Size = new System.Drawing.Size(129, 56);
             this.btnCustomers.TabIndex = 0;
-            this.btnCustomers.Text = "Customers";
+            this.btnCustomers.Text = "Pelanggan";
             this.btnCustomers.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCustomers.UseVisualStyleBackColor = false;
             this.btnCustomers.Click += new System.EventHandler(this.btnCustomers_Click);
@@ -119,7 +119,7 @@
             this.btnPrincipals.Name = "btnPrincipals";
             this.btnPrincipals.Size = new System.Drawing.Size(129, 56);
             this.btnPrincipals.TabIndex = 0;
-            this.btnPrincipals.Text = "Principals";
+            this.btnPrincipals.Text = "Principal";
             this.btnPrincipals.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnPrincipals.UseVisualStyleBackColor = false;
             this.btnPrincipals.Click += new System.EventHandler(this.btnPrincipals_Click);
@@ -136,7 +136,7 @@
             this.btnSalesAreas.Name = "btnSalesAreas";
             this.btnSalesAreas.Size = new System.Drawing.Size(129, 56);
             this.btnSalesAreas.TabIndex = 0;
-            this.btnSalesAreas.Text = "Sales Areas";
+            this.btnSalesAreas.Text = "Sales Area";
             this.btnSalesAreas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnSalesAreas.UseVisualStyleBackColor = false;
             this.btnSalesAreas.Click += new System.EventHandler(this.btnSalesAreas_Click);
@@ -263,7 +263,7 @@
             this.btnBatches.Name = "btnBatches";
             this.btnBatches.Size = new System.Drawing.Size(129, 56);
             this.btnBatches.TabIndex = 0;
-            this.btnBatches.Text = "Batches";
+            this.btnBatches.Text = "Batch";
             this.btnBatches.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnBatches.UseVisualStyleBackColor = false;
             this.btnBatches.Click += new System.EventHandler(this.btnBatches_Click);
@@ -342,7 +342,7 @@
             this.lblMasterDataChildHeader.AutoSize = true;
             this.lblMasterDataChildHeader.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold);
             this.lblMasterDataChildHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
-            this.lblMasterDataChildHeader.Location = new System.Drawing.Point(22, 3);
+            this.lblMasterDataChildHeader.Location = new System.Drawing.Point(18, 9);
             this.lblMasterDataChildHeader.Name = "lblMasterDataChildHeader";
             this.lblMasterDataChildHeader.Size = new System.Drawing.Size(84, 23);
             this.lblMasterDataChildHeader.TabIndex = 0;
@@ -377,7 +377,8 @@
             this.Controls.Add(this.pnlChildHeader);
             this.Controls.Add(this.panel1);
             this.Name = "FrmMasterDataDashboard";
-            this.Text = "Master Data Dashboard";
+            this.Text = "MASTER DATA";
+            this.Load += new System.EventHandler(this.FrmMasterDataDashboard_Load);
             this.panel1.ResumeLayout(false);
             this.pnlChildHeader.ResumeLayout(false);
             this.panel3.ResumeLayout(false);

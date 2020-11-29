@@ -183,7 +183,7 @@
             this.dgvUom.Location = new System.Drawing.Point(261, 23);
             this.dgvUom.Margin = new System.Windows.Forms.Padding(9, 3, 3, 3);
             this.dgvUom.Name = "dgvUom";
-            this.dgvUom.Size = new System.Drawing.Size(411, 234);
+            this.dgvUom.Size = new System.Drawing.Size(344, 234);
             this.dgvUom.TabIndex = 0;
             this.dgvUom.Text = "dataGridView1";
             this.dgvUom.Click += new System.EventHandler(this.dgvUom_Click);
@@ -247,7 +247,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(684, 371);
+            this.ClientSize = new System.Drawing.Size(619, 371);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dgvUom);
             this.Controls.Add(this.btnClear);
@@ -260,7 +260,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtUomCode);
             this.Name = "FrmUOM";
-            this.Text = "Satuan Unit";
+            this.Text = "SATUAN UNIT";
             this.Load += new System.EventHandler(this.FrmUOM_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUom)).EndInit();
             this.panel1.ResumeLayout(false);

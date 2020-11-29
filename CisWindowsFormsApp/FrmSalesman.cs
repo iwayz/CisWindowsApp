@@ -191,6 +191,21 @@ namespace CisWindowsFormsApp
             btnReload.PerformClick();
         }
 
+        private void cbProvince_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            BindLocationComboBox(cbDistrict, Constant.LocationType.District, cbProvince.SelectedValue.ToString());
+        }
+
+        private void cbDistrict_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            BindLocationComboBox(cbSubDistrict, Constant.LocationType.SubDistrict, cbDistrict.SelectedValue.ToString());
+        }
+
+        private void txtPostCode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
         private void BindRoleGridView()
         {
             var salesmen = new UnitOfWork<Salesman>(dbContext).Repository.GetAll().OrderBy(s => s.SalesmanCode);
@@ -219,13 +234,21 @@ namespace CisWindowsFormsApp
             dgvSalesman.Columns[nameof(Salesman.SalesmanCode)].HeaderText = "KODE SALESMAN";
             dgvSalesman.Columns[nameof(Salesman.SalesmanCode)].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgvSalesman.Columns[nameof(Salesman.FullName)].HeaderText = "NAMA LENGKAP";
-            dgvSalesman.Columns[nameof(Salesman.FullName)].Width = 300;
+            dgvSalesman.Columns[nameof(Salesman.FullName)].Width = 200;
+            dgvSalesman.Columns[nameof(Salesman.Gender)].HeaderText = "GENDER";
+            dgvSalesman.Columns[nameof(Salesman.Gender)].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgvSalesman.Columns[nameof(Salesman.Address)].HeaderText = "ALAMAT";
+            dgvSalesman.Columns[nameof(Salesman.Address)].Width = 300;
             dgvSalesman.Columns[nameof(Salesman.Phone)].HeaderText = "TELEPON";
             dgvSalesman.Columns[nameof(Salesman.Phone)].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgvSalesman.Columns[nameof(Salesman.Email)].HeaderText = "EMAIL";
             dgvSalesman.Columns[nameof(Salesman.Email)].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             dgvSalesman.Columns[nameof(Salesman.Id)].Visible = false;
+            dgvSalesman.Columns[nameof(Salesman.ProvinceId)].Visible = false;
+            dgvSalesman.Columns[nameof(Salesman.DistrictId)].Visible = false;
+            dgvSalesman.Columns[nameof(Salesman.SubDistrictId)].Visible = false;
+            dgvSalesman.Columns[nameof(Salesman.PostalCode)].Visible = false;
             dgvSalesman.Columns[nameof(Salesman.ModifiedAt)].Visible = false;
         }
 
@@ -243,7 +266,7 @@ namespace CisWindowsFormsApp
             txtPostCode.Text = currentRow.Cells[nameof(Salesman.PostalCode)].Value.ToString();
             txtPhone.Text = currentRow.Cells[nameof(Salesman.Phone)].Value.ToString();
             txtEmail.Text = currentRow.Cells[nameof(Salesman.Email)].Value.ToString();
-            
+
             // hidden fields
             txtSalesmanId.Text = currentRow.Cells[nameof(Salesman.Id)].Value.ToString();
             txtModifiedAt.Text = currentRow.Cells[nameof(Salesman.ModifiedAt)].Value.ToString();
@@ -289,21 +312,6 @@ namespace CisWindowsFormsApp
             cbLocation.DisplayMember = "Value";
             cbLocation.ValueMember = "Key";
             cbLocation.AutoCompleteCustomSource = autoCompleteCollection;
-        }
-
-        private void cbProvince_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            BindLocationComboBox(cbDistrict, Constant.LocationType.District, cbProvince.SelectedValue.ToString());
-        }
-
-        private void cbDistrict_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            BindLocationComboBox(cbSubDistrict, Constant.LocationType.SubDistrict, cbDistrict.SelectedValue.ToString());
-        }
-
-        private void txtPostCode_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
         private void SetUIButtonGroup()

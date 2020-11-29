@@ -260,7 +260,7 @@
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.dgvRole);
             this.Name = "FrmRole";
-            this.Text = "Role";
+            this.Text = "ROLE";
             this.Load += new System.EventHandler(this.FrmRole_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRole)).EndInit();
             this.panel1.ResumeLayout(false);

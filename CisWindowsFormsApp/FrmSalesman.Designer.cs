@@ -486,7 +486,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtSalesmanCode);
             this.Name = "FrmSalesman";
-            this.Text = "Salesman";
+            this.Text = "SALESMAN";
             this.Load += new System.EventHandler(this.FrmSalesman_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesman)).EndInit();
             this.panel1.ResumeLayout(false);

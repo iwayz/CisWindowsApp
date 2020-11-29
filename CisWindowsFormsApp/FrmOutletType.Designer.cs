@@ -260,7 +260,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtOutlet);
             this.Name = "FrmOutletType";
-            this.Text = "Jenis Outlet";
+            this.Text = "JENIS OUTLET";
             this.Load += new System.EventHandler(this.FrmOutletType_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvOutlet)).EndInit();
             this.panel1.ResumeLayout(false);

@@ -260,7 +260,7 @@
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.dgvMedCat);
             this.Name = "FrmMedicineCategoy";
-            this.Text = "Kategori Obat";
+            this.Text = "KATEGORI OBAT";
             this.Load += new System.EventHandler(this.FrmMedicineCategoy_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMedCat)).EndInit();
             this.panel1.ResumeLayout(false);

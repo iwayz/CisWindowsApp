@@ -45,6 +45,7 @@ namespace CisWindowsFormsApp
 
             parentListView.Items.Clear();
             parentListView.Columns[0].Width = 0;
+            parentListView.Columns[1].Width = parentListView.Width;
             foreach (var loc in locations)
             {
                 var listViewItem = new ListViewItem(loc.Id);

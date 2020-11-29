@@ -16,7 +16,7 @@ namespace CisWindowsFormsApp
         CisDbContext dbContext;
         int gvSelectedIndex = 0;
         UnitOfWork<UnitOfMeasurement> uowUom;
-        bool isAdd = false;
+        bool isAdd = true;
 
         public FrmUOM()
         {
@@ -148,16 +148,13 @@ namespace CisWindowsFormsApp
         private void FrmUOM_Load(object sender, EventArgs e)
         {
             uowUom = new UnitOfWork<UnitOfMeasurement>(dbContext);
-            
+
             BindUomGridView();
             SetUIGridView();
 
-            if (dgvUom.RowCount <= 0)
-            {
-                isAdd = true;
-                SetUIButtonGroup();
-            }
-            
+            isAdd = true;
+            SetUIButtonGroup();
+
             txtUomCode.Focus();
         }
 

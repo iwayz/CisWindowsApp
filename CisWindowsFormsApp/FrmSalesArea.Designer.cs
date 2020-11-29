@@ -261,7 +261,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtAreaCode);
             this.Name = "FrmSalesArea";
-            this.Text = "Sales Area";
+            this.Text = "SALES AREA";
             this.Load += new System.EventHandler(this.FrmSalesArea_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesArea)).EndInit();
             this.panel1.ResumeLayout(false);

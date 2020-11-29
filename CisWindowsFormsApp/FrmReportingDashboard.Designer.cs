@@ -112,7 +112,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "FrmReportingDashboard";
-            this.Text = "Reporting Dashboard";
+            this.Text = "REPORTING";
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);

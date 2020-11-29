@@ -53,6 +53,8 @@
             this.lblCurrentUser = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pnlChildren = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.lblCompanyName = new System.Windows.Forms.Label();
             this.pnlLeftPane.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -62,6 +64,7 @@
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlLeftPane
@@ -77,7 +80,7 @@
             this.pnlLeftPane.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlLeftPane.Location = new System.Drawing.Point(0, 0);
             this.pnlLeftPane.Name = "pnlLeftPane";
-            this.pnlLeftPane.Size = new System.Drawing.Size(176, 575);
+            this.pnlLeftPane.Size = new System.Drawing.Size(176, 661);
             this.pnlLeftPane.TabIndex = 0;
             // 
             // btnLogout
@@ -108,7 +111,7 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.lblToday);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 463);
+            this.panel1.Location = new System.Drawing.Point(0, 549);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(176, 112);
             this.panel1.TabIndex = 3;
@@ -278,7 +281,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(176, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(2, 575);
+            this.panel2.Size = new System.Drawing.Size(2, 661);
             this.panel2.TabIndex = 1;
             // 
             // pnlHeader
@@ -289,7 +292,7 @@
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHeader.Location = new System.Drawing.Point(178, 0);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(686, 43);
+            this.pnlHeader.Size = new System.Drawing.Size(830, 43);
             this.pnlHeader.TabIndex = 2;
             // 
             // panel7
@@ -318,7 +321,7 @@
             this.panel6.Controls.Add(this.pictureBox2);
             this.panel6.Controls.Add(this.lblCurrentUser);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel6.Location = new System.Drawing.Point(455, 0);
+            this.panel6.Location = new System.Drawing.Point(599, 0);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(231, 43);
             this.panel6.TabIndex = 0;
@@ -351,7 +354,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(178, 43);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(686, 3);
+            this.panel4.Size = new System.Drawing.Size(830, 3);
             this.panel4.TabIndex = 3;
             // 
             // pnlChildren
@@ -359,22 +362,43 @@
             this.pnlChildren.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlChildren.Location = new System.Drawing.Point(178, 46);
             this.pnlChildren.Name = "pnlChildren";
-            this.pnlChildren.Size = new System.Drawing.Size(686, 529);
+            this.pnlChildren.Size = new System.Drawing.Size(830, 615);
             this.pnlChildren.TabIndex = 4;
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.lblCompanyName);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel8.Location = new System.Drawing.Point(178, 613);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(830, 48);
+            this.panel8.TabIndex = 5;
+            // 
+            // lblCompanyName
+            // 
+            this.lblCompanyName.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblCompanyName.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCompanyName.Location = new System.Drawing.Point(0, 0);
+            this.lblCompanyName.Name = "lblCompanyName";
+            this.lblCompanyName.Size = new System.Drawing.Size(830, 39);
+            this.lblCompanyName.TabIndex = 0;
+            this.lblCompanyName.Text = "Company Name";
+            this.lblCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(864, 575);
+            this.ClientSize = new System.Drawing.Size(1008, 661);
+            this.Controls.Add(this.panel8);
             this.Controls.Add(this.pnlChildren);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.pnlHeader);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.pnlLeftPane);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(880, 525);
+            this.MinimumSize = new System.Drawing.Size(1024, 700);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "POS - Capung";
@@ -391,6 +415,7 @@
             this.panel7.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.panel8.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -421,5 +446,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Label lblCompanyName;
     }
 }

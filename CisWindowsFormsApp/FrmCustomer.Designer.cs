@@ -103,10 +103,14 @@
             this.label29 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.pnlButtonGroup = new System.Windows.Forms.Panel();
+            this.pnlNote = new System.Windows.Forms.Panel();
+            this.lblNoteDetail = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
             this.pnlHiddenFields.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnlButtonGroup.SuspendLayout();
+            this.pnlNote.SuspendLayout();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -623,7 +627,7 @@
             this.dgvCustomer.Location = new System.Drawing.Point(456, 30);
             this.dgvCustomer.Margin = new System.Windows.Forms.Padding(9, 3, 3, 3);
             this.dgvCustomer.Name = "dgvCustomer";
-            this.dgvCustomer.Size = new System.Drawing.Size(541, 436);
+            this.dgvCustomer.Size = new System.Drawing.Size(541, 461);
             this.dgvCustomer.TabIndex = 0;
             this.dgvCustomer.Text = "dataGridView1";
             this.dgvCustomer.Click += new System.EventHandler(this.dgvCustomer_Click);
@@ -747,7 +751,7 @@
             this.pnlHiddenFields.Controls.Add(this.txtCustomerId);
             this.pnlHiddenFields.Controls.Add(this.label18);
             this.pnlHiddenFields.Controls.Add(this.label19);
-            this.pnlHiddenFields.Location = new System.Drawing.Point(565, 485);
+            this.pnlHiddenFields.Location = new System.Drawing.Point(456, 651);
             this.pnlHiddenFields.Name = "pnlHiddenFields";
             this.pnlHiddenFields.Size = new System.Drawing.Size(353, 72);
             this.pnlHiddenFields.TabIndex = 8;
@@ -891,7 +895,7 @@
             this.panel2.Controls.Add(this.label26);
             this.panel2.Location = new System.Drawing.Point(12, 10);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(326, 456);
+            this.panel2.Size = new System.Drawing.Size(326, 481);
             this.panel2.TabIndex = 0;
             // 
             // label30
@@ -974,12 +978,47 @@
             this.pnlButtonGroup.Size = new System.Drawing.Size(90, 346);
             this.pnlButtonGroup.TabIndex = 0;
             // 
+            // pnlNote
+            // 
+            this.pnlNote.Controls.Add(this.lblNoteDetail);
+            this.pnlNote.Controls.Add(this.label15);
+            this.pnlNote.Location = new System.Drawing.Point(12, 518);
+            this.pnlNote.Name = "pnlNote";
+            this.pnlNote.Size = new System.Drawing.Size(984, 100);
+            this.pnlNote.TabIndex = 17;
+            this.pnlNote.Visible = false;
+            // 
+            // lblNoteDetail
+            // 
+            this.lblNoteDetail.AutoSize = true;
+            this.lblNoteDetail.BackColor = System.Drawing.Color.Gold;
+            this.lblNoteDetail.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.lblNoteDetail.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblNoteDetail.Location = new System.Drawing.Point(9, 28);
+            this.lblNoteDetail.Name = "lblNoteDetail";
+            this.lblNoteDetail.Padding = new System.Windows.Forms.Padding(3);
+            this.lblNoteDetail.Size = new System.Drawing.Size(76, 21);
+            this.lblNoteDetail.TabIndex = 4;
+            this.lblNoteDetail.Text = "Note Detail";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label15.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label15.Location = new System.Drawing.Point(9, 9);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(41, 15);
+            this.label15.TabIndex = 4;
+            this.label15.Text = "NOTE:";
+            // 
             // FrmCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1154, 804);
+            this.Controls.Add(this.pnlNote);
             this.Controls.Add(this.pnlButtonGroup);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.pnlHiddenFields);
@@ -987,7 +1026,7 @@
             this.Controls.Add(this.label16);
             this.Controls.Add(this.textBox13);
             this.Name = "FrmCustomer";
-            this.Text = "Customer";
+            this.Text = "PELANGGAN";
             this.Load += new System.EventHandler(this.FrmCustomer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).EndInit();
             this.pnlHiddenFields.ResumeLayout(false);
@@ -995,6 +1034,8 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.pnlButtonGroup.ResumeLayout(false);
+            this.pnlNote.ResumeLayout(false);
+            this.pnlNote.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1076,5 +1117,8 @@
         private System.Windows.Forms.Panel pnlButtonGroup;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.TextBox txtPhone;
+        private System.Windows.Forms.Panel pnlNote;
+        private System.Windows.Forms.Label lblNoteDetail;
+        private System.Windows.Forms.Label label15;
     }
 }
