@@ -45,5 +45,8 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=MTPC746\IWMSSQLSERVER;Initial Catalog=POSCIS;Integrated Security=True</Value>
     </Setting>
+    <Setting Name="CompWebsite" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">www.sari-sehat.com</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

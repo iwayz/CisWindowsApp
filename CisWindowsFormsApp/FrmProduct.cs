@@ -17,6 +17,7 @@ namespace CisWindowsFormsApp
         int gvSelectedIndex = 0;
         UnitOfWork<Product> uowProduct;
         bool isAdd = true;
+        List<int> foundIndices = new List<int>();
 
         public FrmProduct()
         {
@@ -94,7 +95,7 @@ namespace CisWindowsFormsApp
             var existingProduct = uowProduct.Repository.GetAll().Where(p => p.ProductCode == txtProductCode.Text.Trim()).FirstOrDefault();
             if (existingProduct != null)
             {
-                CommonHelper.DataAlreadyExistMessage(txtProductCode.Text.Trim());
+                CommonMessageHelper.DataAlreadyExist(txtProductCode.Text.Trim());
             }
             else
             {
@@ -130,7 +131,7 @@ namespace CisWindowsFormsApp
             
             if (lastUpdated != repoLastUpdated)
             {
-                CommonHelper.DataHasBeenUpdatedMessage(txtProductCode.Text.Trim());
+                CommonMessageHelper.DataHasBeenUpdated(txtProductCode.Text.Trim());
             }
             else
             {
@@ -159,25 +160,25 @@ namespace CisWindowsFormsApp
             var prodToDel = uowProduct.Repository.GetAll().Where(p => p.ProductCode == txtProductCode.Text.Trim()).FirstOrDefault();
             if (prodToDel != null)
             {
-                if (DialogResult.Yes == CommonHelper.ConfirmDeleteMessage())
+                if (DialogResult.Yes == CommonMessageHelper.ConfirmDelete())
                 {
                     uowProduct.Repository.Delete(prodToDel);
                     var res = uowProduct.Commit();
                     if (!res.Item1 && res.Item2 == "Expected")
                     {
-                        CommonHelper.ReferredDataCannotBeDeletedMessage();
+                        CommonMessageHelper.ReferredDataCannotBeDeleted();
                     }
 
                     if (!res.Item1 && res.Item2 == "Unexpected")
                     {
-                        CommonHelper.ContactAdminErrorMessage();
+                        CommonMessageHelper.ContactAdminError();
                     }
                     btnReload.PerformClick();
                 }
             }
             else
             {
-                CommonHelper.DataNotFoundMessage(txtProductCode.Text.Trim());
+                CommonMessageHelper.DataNotFound(txtProductCode.Text.Trim());
             }
         }
 
@@ -367,7 +368,7 @@ namespace CisWindowsFormsApp
         {
             if (string.IsNullOrEmpty(txtProductCode.Text) || string.IsNullOrEmpty(txtProductName.Text))
             {
-                CommonHelper.DataCannotBeEmptyMessage("Kode Produk dan Nama Produk");
+                CommonMessageHelper.DataCannotBeEmpty("Kode Produk dan Nama Produk");
                 return false;
 
             }
@@ -375,13 +376,13 @@ namespace CisWindowsFormsApp
             if (cbMedCat.Items.Count <= 1 || cbUsageType.Items.Count <= 1 || cbPrincipal.Items.Count <= 1)
             {
                 var emptyRefData = cbMedCat.Items.Count <= 1 ? "Kategori Obat" : (cbUsageType.Items.Count <= 1 ? "Jenis Pemakaian" : "Principal");
-                CommonHelper.ReferredDataNotSetMessage(emptyRefData);
+                CommonMessageHelper.ReferredDataNotSet(emptyRefData);
                 return false;
             }
 
             if (cbMedCat.SelectedValue.ToString() == "0" || cbUsageType.SelectedValue.ToString() == "0" || cbPrincipal.SelectedValue.ToString() == "0")
             {
-                CommonHelper.DataCannotBeEmptyMessage("Kategori Obat, Jenis Pemakaian dan Principal");
+                CommonMessageHelper.DataCannotBeEmpty("Kategori Obat, Jenis Pemakaian dan Principal");
                 return false;
             }
 
@@ -408,6 +409,23 @@ namespace CisWindowsFormsApp
 
             lblNoteDetail.Text = "Data referensi " + string.Join(",", refData) + " belum tersedia. ";
             if (refData.Count > 0) pnlNote.Visible = true;
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            var searchVal = txtSearch.Text.Trim();
+            var idx = new CommonFunctionHelper().SearchGridViewFirstTwoColumn(searchVal, ref dgvProduct, ref foundIndices);
+            dgvProduct.CurrentCell = dgvProduct[1, idx];
+            SetUIbySelectedGridItem();
+        }
+
+        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (Char)Keys.Enter)
+            {
+                e.Handled = true;
+                btnSearch.PerformClick();
+            }
         }
     }
 }

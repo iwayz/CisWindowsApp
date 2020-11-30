@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
@@ -41,6 +42,22 @@ namespace CisWindowsFormsApp
 
             this.reportViewer1.RefreshReport();
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            List<string> formList = new List<string>();
+            Type formType = typeof(Form);
+            foreach (Type type in Assembly.GetExecutingAssembly().GetTypes())
+            {
+                if (formType.IsAssignableFrom(type))
+                {
+                    // type is a Form
+                    Form a = (Form)Activator.CreateInstance(type);
+                    formList.Add(a.Text);
+                }
+            }
+            MessageBox.Show(string.Join(", ", formList));
         }
     }
 }

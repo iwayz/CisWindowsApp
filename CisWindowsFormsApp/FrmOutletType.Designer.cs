@@ -44,6 +44,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtOutletCode = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOutlet)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -119,7 +121,7 @@
             this.btnReload.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnReload.ForeColor = System.Drawing.Color.White;
             this.btnReload.Image = ((System.Drawing.Image)(resources.GetObject("btnReload.Image")));
-            this.btnReload.Location = new System.Drawing.Point(176, 142);
+            this.btnReload.Location = new System.Drawing.Point(176, 177);
             this.btnReload.Name = "btnReload";
             this.btnReload.Padding = new System.Windows.Forms.Padding(0, 17, 0, 0);
             this.btnReload.Size = new System.Drawing.Size(71, 109);
@@ -137,7 +139,7 @@
             this.btnDel.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnDel.ForeColor = System.Drawing.Color.White;
             this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
-            this.btnDel.Location = new System.Drawing.Point(99, 199);
+            this.btnDel.Location = new System.Drawing.Point(99, 234);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(71, 52);
             this.btnDel.TabIndex = 14;
@@ -154,7 +156,7 @@
             this.btnSave.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(23, 199);
+            this.btnSave.Location = new System.Drawing.Point(23, 234);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(71, 52);
             this.btnSave.TabIndex = 13;
@@ -171,7 +173,7 @@
             this.btnAdd.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnAdd.ForeColor = System.Drawing.Color.White;
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(99, 142);
+            this.btnAdd.Location = new System.Drawing.Point(99, 177);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(71, 52);
             this.btnAdd.TabIndex = 12;
@@ -188,7 +190,7 @@
             this.btnClear.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnClear.ForeColor = System.Drawing.Color.White;
             this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
-            this.btnClear.Location = new System.Drawing.Point(23, 142);
+            this.btnClear.Location = new System.Drawing.Point(23, 177);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(71, 52);
             this.btnClear.TabIndex = 11;
@@ -201,10 +203,10 @@
             // 
             this.dgvOutlet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOutlet.GridColor = System.Drawing.Color.White;
-            this.dgvOutlet.Location = new System.Drawing.Point(296, 22);
+            this.dgvOutlet.Location = new System.Drawing.Point(299, 75);
             this.dgvOutlet.Margin = new System.Windows.Forms.Padding(9, 3, 3, 3);
             this.dgvOutlet.Name = "dgvOutlet";
-            this.dgvOutlet.Size = new System.Drawing.Size(373, 229);
+            this.dgvOutlet.Size = new System.Drawing.Size(373, 211);
             this.dgvOutlet.TabIndex = 0;
             this.dgvOutlet.Text = "dataGridView1";
             this.dgvOutlet.Click += new System.EventHandler(this.dgvOutlet_Click);
@@ -215,7 +217,7 @@
             this.panel1.Controls.Add(this.txtOutletId);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(23, 277);
+            this.panel1.Location = new System.Drawing.Point(23, 348);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(353, 72);
             this.panel1.TabIndex = 8;
@@ -242,12 +244,41 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "Kode Outlet";
             // 
+            // btnSearch
+            // 
+            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
+            this.btnSearch.FlatAppearance.BorderSize = 0;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnSearch.ForeColor = System.Drawing.Color.White;
+            this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
+            this.btnSearch.Location = new System.Drawing.Point(640, 38);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(31, 31);
+            this.btnSearch.TabIndex = 39;
+            this.btnSearch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSearch.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.txtSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtSearch.Location = new System.Drawing.Point(299, 38);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(335, 31);
+            this.txtSearch.TabIndex = 38;
+            this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
+            // 
             // FrmOutletType
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(684, 371);
+            this.ClientSize = new System.Drawing.Size(684, 511);
+            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dgvOutlet);
             this.Controls.Add(this.btnClear);
@@ -287,5 +318,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox txtOutletCode;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.TextBox txtSearch;
     }
 }

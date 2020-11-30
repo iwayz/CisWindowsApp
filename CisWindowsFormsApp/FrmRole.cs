@@ -17,6 +17,7 @@ namespace CisWindowsFormsApp
         int gvSelectedIndex = 0;
         UnitOfWork<Role> uowRole;
         bool isAdd = false;
+        List<int> foundIndices = new List<int>();
 
         public FrmRole()
         {
@@ -77,7 +78,7 @@ namespace CisWindowsFormsApp
         {
             if (string.IsNullOrEmpty(txtRoleCode.Text) || string.IsNullOrEmpty(txtDescription.Text))
             {
-                CommonHelper.DataCannotBeEmptyMessage("Kode Role dan Keterangan");
+                CommonMessageHelper.DataCannotBeEmpty("Kode Role dan Keterangan");
                 return false;
 
             }
@@ -99,7 +100,7 @@ namespace CisWindowsFormsApp
             var existingRole = uowRole.Repository.GetAll().Where(r => r.RoleCode == txtRoleCode.Text.Trim()).FirstOrDefault();
             if (existingRole != null)
             {
-                CommonHelper.DataAlreadyExistMessage(txtRoleCode.Text.Trim());
+                CommonMessageHelper.DataAlreadyExist(txtRoleCode.Text.Trim());
             }
             else
             {
@@ -153,25 +154,25 @@ namespace CisWindowsFormsApp
             var roleToDel = uowRole.Repository.GetAll().Where(u => u.RoleCode == txtRoleCode.Text.Trim()).FirstOrDefault();
             if (roleToDel != null)
             {
-                if (DialogResult.Yes == CommonHelper.ConfirmDeleteMessage())
+                if (DialogResult.Yes == CommonMessageHelper.ConfirmDelete())
                 {
                     uowRole.Repository.Delete(roleToDel);
                     var res = uowRole.Commit();
                     if (!res.Item1 && res.Item2 == "Expected")
                     {
-                        CommonHelper.ReferredDataCannotBeDeletedMessage();
+                        CommonMessageHelper.ReferredDataCannotBeDeleted();
                     }
 
                     if (!res.Item1 && res.Item2 == "Unexpected")
                     {
-                        CommonHelper.ContactAdminErrorMessage();
+                        CommonMessageHelper.ContactAdminError();
                     }
                     btnReload.PerformClick();
                 }
             }
             else
             {
-                CommonHelper.DataNotFoundMessage(txtRoleCode.Text.Trim());
+                CommonMessageHelper.DataNotFound(txtRoleCode.Text.Trim());
             }
         }
 
@@ -184,7 +185,7 @@ namespace CisWindowsFormsApp
 
             if (lastUpdated != repoLastUpdated)
             {
-                CommonHelper.DataHasBeenUpdatedMessage(txtRoleCode.Text.Trim());
+                CommonMessageHelper.DataHasBeenUpdated(txtRoleCode.Text.Trim());
             }
             else
             {
@@ -212,6 +213,23 @@ namespace CisWindowsFormsApp
 
             btnSave.BackColor = !isAdd ? Color.FromArgb(36, 141, 193) : Color.Gray;
             btnDel.BackColor = !isAdd ? Color.FromArgb(36, 141, 193) : Color.Gray;
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            var searchVal = txtSearch.Text.Trim();
+            var idx = new CommonFunctionHelper().SearchGridViewFirstTwoColumn(searchVal, ref dgvRole, ref foundIndices);
+            dgvRole.CurrentCell = dgvRole[1, idx];
+            SetUIbySelectedGridItem();
+        }
+
+        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (Char)Keys.Enter)
+            {
+                e.Handled = true;
+                btnSearch.PerformClick();
+            }
         }
     }
 }

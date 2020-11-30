@@ -17,6 +17,7 @@ namespace CisWindowsFormsApp
         int gvSelectedIndex = 0;
         UnitOfWork<Customer> uowCust;
         bool isAdd = false;
+        List<int> foundIndices = new List<int>();
 
         public FrmCustomer()
         {
@@ -83,7 +84,7 @@ namespace CisWindowsFormsApp
 
             if (existingCust != null)
             {
-                CommonHelper.DataAlreadyExistMessage(txtCustomerName.Text.Trim() + " dengan alamat " + txtAddress.Text.Trim());
+                CommonMessageHelper.DataAlreadyExist(txtCustomerName.Text.Trim() + " dengan alamat " + txtAddress.Text.Trim());
             }
             else
             {
@@ -125,7 +126,7 @@ namespace CisWindowsFormsApp
 
             if (lastUpdated != repoLastUpdated)
             {
-                CommonHelper.DataHasBeenUpdatedMessage(txtCustomerName.Text.Trim());
+                CommonMessageHelper.DataHasBeenUpdated(txtCustomerName.Text.Trim());
             }
             else
             {
@@ -164,25 +165,25 @@ namespace CisWindowsFormsApp
 
             if (roleToDel != null)
             {
-                if (DialogResult.Yes == CommonHelper.ConfirmDeleteMessage())
+                if (DialogResult.Yes == CommonMessageHelper.ConfirmDelete())
                 {
                     uowCust.Repository.Delete(roleToDel);
                     var res = uowCust.Commit();
                     if (!res.Item1 && res.Item2 == "Expected")
                     {
-                        CommonHelper.ReferredDataCannotBeDeletedMessage();
+                        CommonMessageHelper.ReferredDataCannotBeDeleted();
                     }
 
                     if (!res.Item1 && res.Item2 == "Unexpected")
                     {
-                        CommonHelper.ContactAdminErrorMessage();
+                        CommonMessageHelper.ContactAdminError();
                     }
                     btnReload.PerformClick();
                 }
             }
             else
             {
-                CommonHelper.DataNotFoundMessage(txtCustomerName.Text.Trim());
+                CommonMessageHelper.DataNotFound(txtCustomerName.Text.Trim());
             }
         }
 
@@ -322,7 +323,7 @@ namespace CisWindowsFormsApp
         {
             if (string.IsNullOrEmpty(txtCustomerName.Text) || string.IsNullOrEmpty(txtAddress.Text))
             {
-                CommonHelper.DataCannotBeEmptyMessage("Nama Pelanggan dan Alamat");
+                CommonMessageHelper.DataCannotBeEmpty("Nama Pelanggan dan Alamat");
                 return false;
 
             }
@@ -330,7 +331,7 @@ namespace CisWindowsFormsApp
             if (cbOutletType.Items.Count <= 1 || cbSalesArea.Items.Count <= 1)
             {
                 var emptyRefData = cbOutletType.Items.Count <= 1 ? "Jenis Outlet" : "Sales Area";
-                CommonHelper.ReferredDataNotSetMessage(emptyRefData);
+                CommonMessageHelper.ReferredDataNotSet(emptyRefData);
                 return false;
             }
 
@@ -422,6 +423,23 @@ namespace CisWindowsFormsApp
 
             lblNoteDetail.Text = "Data referensi " + string.Join(",", refData) + " belum tersedia. ";
             if (refData.Count > 0) pnlNote.Visible = true;
+        }
+
+        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (Char)Keys.Enter)
+            {
+                e.Handled = true;
+                btnSearch.PerformClick();
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            var searchVal = txtSearch.Text.Trim();
+            var idx = new CommonFunctionHelper().SearchGridViewFirstTwoColumn(searchVal, ref dgvCustomer, ref foundIndices);
+            dgvCustomer.CurrentCell = dgvCustomer[1, idx];
+            SetUIbySelectedGridItem();
         }
     }
 }

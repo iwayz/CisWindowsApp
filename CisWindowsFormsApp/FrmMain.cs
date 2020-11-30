@@ -23,6 +23,7 @@ namespace CisWindowsFormsApp
             lblToday.Text = DateTime.Now.ToString("dddd, dd-MMM-yyyy");
             lblCurrentUser.Text = Properties.Settings.Default.CurrentUser.ToUpper();
             lblCompanyName.Text = Properties.Settings.Default.CompName.ToUpper();
+            lblCompanyWeb.Text = Properties.Settings.Default.CompWebsite;
             btnMasterData.PerformClick();
         }
 

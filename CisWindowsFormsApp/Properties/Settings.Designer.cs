@@ -125,5 +125,14 @@ namespace CisWindowsFormsApp.Properties {
                 return ((string)(this["POSCISConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("www.sari-sehat.com")]
+        public string CompWebsite {
+            get {
+                return ((string)(this["CompWebsite"]));
+            }
+        }
     }
 }

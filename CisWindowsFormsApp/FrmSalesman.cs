@@ -17,6 +17,7 @@ namespace CisWindowsFormsApp
         int gvSelectedIndex = 0;
         UnitOfWork<Salesman> uowSalesman;
         bool isAdd = false;
+        List<int> foundIndices = new List<int>();
 
         public FrmSalesman()
         {
@@ -68,7 +69,7 @@ namespace CisWindowsFormsApp
             var existingSalesman = uowSalesman.Repository.GetAll().Where(r => r.SalesmanCode == txtSalesmanCode.Text.Trim()).FirstOrDefault();
             if (existingSalesman != null)
             {
-                CommonHelper.DataAlreadyExistMessage(txtSalesmanCode.Text.Trim());
+                CommonMessageHelper.DataAlreadyExist(txtSalesmanCode.Text.Trim());
             }
             else
             {
@@ -130,25 +131,25 @@ namespace CisWindowsFormsApp
             var roleToDel = uowSalesman.Repository.GetAll().Where(u => u.SalesmanCode == txtSalesmanCode.Text.Trim()).FirstOrDefault();
             if (roleToDel != null)
             {
-                if (DialogResult.Yes == CommonHelper.ConfirmDeleteMessage())
+                if (DialogResult.Yes == CommonMessageHelper.ConfirmDelete())
                 {
                     uowSalesman.Repository.Delete(roleToDel);
                     var res = uowSalesman.Commit();
                     if (!res.Item1 && res.Item2 == "Expected")
                     {
-                        CommonHelper.ReferredDataCannotBeDeletedMessage();
+                        CommonMessageHelper.ReferredDataCannotBeDeleted();
                     }
 
                     if (!res.Item1 && res.Item2 == "Unexpected")
                     {
-                        CommonHelper.ContactAdminErrorMessage();
+                        CommonMessageHelper.ContactAdminError();
                     }
                     btnReload.PerformClick();
                 }
             }
             else
             {
-                CommonHelper.DataNotFoundMessage(txtSalesmanCode.Text.Trim());
+                CommonMessageHelper.DataNotFound(txtSalesmanCode.Text.Trim());
             }
         }
 
@@ -161,7 +162,7 @@ namespace CisWindowsFormsApp
 
             if (lastUpdated != repoLastUpdated)
             {
-                CommonHelper.DataHasBeenUpdatedMessage(txtSalesmanCode.Text.Trim());
+                CommonMessageHelper.DataHasBeenUpdated(txtSalesmanCode.Text.Trim());
             }
             else
             {
@@ -277,7 +278,7 @@ namespace CisWindowsFormsApp
         {
             if (string.IsNullOrEmpty(txtSalesmanCode.Text) || string.IsNullOrEmpty(txtFullName.Text))
             {
-                CommonHelper.DataCannotBeEmptyMessage("Kode Sales dan Nama Lengkap");
+                CommonMessageHelper.DataCannotBeEmpty("Kode Sales dan Nama Lengkap");
                 return false;
 
             }
@@ -323,5 +324,21 @@ namespace CisWindowsFormsApp
             btnDel.BackColor = !isAdd ? Color.FromArgb(36, 141, 193) : Color.Gray;
         }
 
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            var searchVal = txtSearch.Text.Trim();
+            var idx = new CommonFunctionHelper().SearchGridViewFirstTwoColumn(searchVal, ref dgvSalesman, ref foundIndices);
+            dgvSalesman.CurrentCell = dgvSalesman[1, idx];
+            SetUIbySelectedGridItem();
+        }
+
+        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (Char)Keys.Enter)
+            {
+                e.Handled = true;
+                btnSearch.PerformClick();
+            }
+        }
     }
 }

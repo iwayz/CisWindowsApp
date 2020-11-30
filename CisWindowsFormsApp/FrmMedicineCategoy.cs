@@ -18,6 +18,7 @@ namespace CisWindowsFormsApp
         int gvSelectedIndex = 0;
         UnitOfWork<MedicineCat> uowMedCat;
         bool isAdd = false;
+        List<int> foundIndices = new List<int>();
 
         public FrmMedicineCategoy()
         {
@@ -54,7 +55,7 @@ namespace CisWindowsFormsApp
             var existingMedCat = uowMedCat.Repository.GetAll().Where(u => u.Description == txtMedCat.Text.Trim()).FirstOrDefault();
             if (existingMedCat != null)
             {
-                CommonHelper.DataAlreadyExistMessage(txtMedCatCode.Text.Trim());
+                CommonMessageHelper.DataAlreadyExist(txtMedCatCode.Text.Trim());
             }
             else
             {
@@ -107,25 +108,25 @@ namespace CisWindowsFormsApp
             var medCatToDel = uowMedCat.Repository.GetAll().Where(u => u.Description == txtMedCat.Text.Trim()).FirstOrDefault();
             if (medCatToDel != null)
             {
-                if (DialogResult.Yes == CommonHelper.ConfirmDeleteMessage())
+                if (DialogResult.Yes == CommonMessageHelper.ConfirmDelete())
                 {
                     uowMedCat.Repository.Delete(medCatToDel);
                     var res = uowMedCat.Commit();
                     if (!res.Item1 && res.Item2 == "Expected")
                     {
-                        CommonHelper.ReferredDataCannotBeDeletedMessage();
+                        CommonMessageHelper.ReferredDataCannotBeDeleted();
                     }
 
                     if (!res.Item1 && res.Item2 == "Unexpected")
                     {
-                        CommonHelper.ContactAdminErrorMessage();
+                        CommonMessageHelper.ContactAdminError();
                     }
                     btnReload.PerformClick();
                 }
             }
             else
             {
-                CommonHelper.DataNotFoundMessage(txtMedCatCode.Text.Trim());
+                CommonMessageHelper.DataNotFound(txtMedCatCode.Text.Trim());
             }
         }
 
@@ -138,7 +139,7 @@ namespace CisWindowsFormsApp
 
             if (lastUpdated != repoLastUpdated)
             {
-                CommonHelper.DataHasBeenUpdatedMessage(txtMedCatCode.Text.Trim());
+                CommonMessageHelper.DataHasBeenUpdated(txtMedCatCode.Text.Trim());
             }
             else
             {
@@ -201,7 +202,7 @@ namespace CisWindowsFormsApp
         {
             if (string.IsNullOrEmpty(txtMedCatCode.Text) || string.IsNullOrEmpty(txtMedCat.Text))
             {
-                CommonHelper.DataCannotBeEmptyMessage("Kode Kategori dan Kategori Obat");
+                CommonMessageHelper.DataCannotBeEmpty("Kode Kategori dan Kategori Obat");
                 return false;
 
             }
@@ -215,6 +216,23 @@ namespace CisWindowsFormsApp
 
             btnSave.BackColor = !isAdd ? Color.FromArgb(36, 141, 193) : Color.Gray;
             btnDel.BackColor = !isAdd ? Color.FromArgb(36, 141, 193) : Color.Gray;
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            var searchVal = txtSearch.Text.Trim();
+            var idx = new CommonFunctionHelper().SearchGridViewFirstTwoColumn(searchVal, ref dgvMedCat, ref foundIndices);
+            dgvMedCat.CurrentCell = dgvMedCat[1, idx];
+            SetUIbySelectedGridItem();
+        }
+
+        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (Char)Keys.Enter)
+            {
+                e.Handled = true;
+                btnSearch.PerformClick();
+            }
         }
     }
 }

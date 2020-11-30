@@ -35,6 +35,7 @@
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.outletTypeTableAdapter = new CisWindowsFormsApp.Reports.DataSet1TableAdapters.OutletTypeTableAdapter();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.outletTypeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             this.SuspendLayout();
@@ -59,7 +60,7 @@
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(686, 390);
+            this.reportViewer1.Size = new System.Drawing.Size(768, 489);
             this.reportViewer1.TabIndex = 0;
             // 
             // outletTypeTableAdapter
@@ -68,18 +69,28 @@
             // 
             // webBrowser1
             // 
-            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.webBrowser1.Location = new System.Drawing.Point(0, 0);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(686, 390);
+            this.webBrowser1.Size = new System.Drawing.Size(686, 197);
             this.webBrowser1.TabIndex = 1;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(47, 312);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(155, 25);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FormTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(686, 390);
+            this.ClientSize = new System.Drawing.Size(768, 489);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.reportViewer1);
             this.Name = "FormTest";
@@ -100,5 +111,6 @@
         private System.Windows.Forms.BindingSource outletTypeBindingSource;
         private Reports.DataSet1TableAdapters.OutletTypeTableAdapter outletTypeTableAdapter;
         private System.Windows.Forms.WebBrowser webBrowser1;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -17,6 +17,7 @@ namespace CisWindowsFormsApp
         int gvSelectedIndex = 0;
         UnitOfWork<Principal> uowPrincipal;
         bool isAdd = false;
+        List<int> foundIndices = new List<int>();
 
         public FrmPrincipal()
         {
@@ -65,7 +66,7 @@ namespace CisWindowsFormsApp
             var existingPrincipal = uowPrincipal.Repository.GetAll().Where(r => r.PrincipalName == txtPrincipalName.Text.Trim()).FirstOrDefault();
             if (existingPrincipal != null)
             {
-                CommonHelper.DataAlreadyExistMessage(txtPrincipalName.Text.Trim());
+                CommonMessageHelper.DataAlreadyExist(txtPrincipalName.Text.Trim());
             }
             else
             {
@@ -100,7 +101,7 @@ namespace CisWindowsFormsApp
 
             if (lastUpdated != repoLastUpdated)
             {
-                CommonHelper.DataHasBeenUpdatedMessage(txtPrincipalName.Text.Trim());
+                CommonMessageHelper.DataHasBeenUpdated(txtPrincipalName.Text.Trim());
             }
             else
             {
@@ -128,25 +129,25 @@ namespace CisWindowsFormsApp
             var roleToDel = uowPrincipal.Repository.GetAll().Where(u => u.PrincipalName == txtPrincipalName.Text.Trim()).FirstOrDefault();
             if (roleToDel != null)
             {
-                if (DialogResult.Yes == CommonHelper.ConfirmDeleteMessage())
+                if (DialogResult.Yes == CommonMessageHelper.ConfirmDelete())
                 {
                     uowPrincipal.Repository.Delete(roleToDel);
                     var res = uowPrincipal.Commit();
                     if (!res.Item1 && res.Item2 == "Expected")
                     {
-                        CommonHelper.ReferredDataCannotBeDeletedMessage();
+                        CommonMessageHelper.ReferredDataCannotBeDeleted();
                     }
 
                     if (!res.Item1 && res.Item2 == "Unexpected")
                     {
-                        CommonHelper.ContactAdminErrorMessage();
+                        CommonMessageHelper.ContactAdminError();
                     }
                     btnReload.PerformClick();
                 }
             }
             else
             {
-                CommonHelper.DataNotFoundMessage(txtPrincipalName.Text.Trim());
+                CommonMessageHelper.DataNotFound(txtPrincipalName.Text.Trim());
             }
         }
 
@@ -202,8 +203,8 @@ namespace CisWindowsFormsApp
 
         private void BindPrincipalGridView()
         {
-            var salesmen = new UnitOfWork<Principal>(dbContext).Repository.GetAll().OrderBy(s => s.PrincipalName);
-            var uomDetail = salesmen.Select(Principal =>
+            var principal = new UnitOfWork<Principal>(dbContext).Repository.GetAll().OrderBy(s => s.PrincipalName);
+            var principalDetail = principal.Select(Principal =>
             new
             {
                 Principal.Id,
@@ -218,7 +219,7 @@ namespace CisWindowsFormsApp
                 Principal.ModifiedAt
             });
 
-            dgvPrincipal.DataSource = uomDetail.ToList();
+            dgvPrincipal.DataSource = principalDetail.ToList();
         }
 
         private void SetUIGridView()
@@ -262,7 +263,7 @@ namespace CisWindowsFormsApp
         {
             if (string.IsNullOrEmpty(txtPrincipalName.Text))
             {
-                CommonHelper.DataCannotBeEmptyMessage("Kode Sales dan Nama Lengkap");
+                CommonMessageHelper.DataCannotBeEmpty("Kode Sales dan Nama Lengkap");
                 return false;
 
             }
@@ -306,6 +307,23 @@ namespace CisWindowsFormsApp
 
             btnSave.BackColor = !isAdd ? Color.FromArgb(36, 141, 193) : Color.Gray;
             btnDel.BackColor = !isAdd ? Color.FromArgb(36, 141, 193) : Color.Gray;
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            var searchVal = txtSearch.Text.Trim();
+            var idx = new CommonFunctionHelper().SearchGridViewFirstTwoColumn(searchVal, ref dgvPrincipal, ref foundIndices);
+            dgvPrincipal.CurrentCell = dgvPrincipal[1, idx];
+            SetUIbySelectedGridItem();
+        }
+
+        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (Char)Keys.Enter)
+            {
+                e.Handled = true;
+                btnSearch.PerformClick();
+            }
         }
     }
 }
