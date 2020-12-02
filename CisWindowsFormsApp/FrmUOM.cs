@@ -48,9 +48,9 @@ namespace CisWindowsFormsApp
                 {
                     UomCode = txtUomCode.Text.Trim(),
                     Description = txtUomDesc.Text.Trim(),
-                    CreatedBy = Properties.Settings.Default.CurrentUser,
+                     					 // Audit Fields 					CreatedBy = Guid.NewGuid().ToString().ToUpper(),
                     CreatedAt = DateTime.Now,
-                    ModifiedBy = Properties.Settings.Default.CurrentUser,
+                    ModifiedBy = Guid.NewGuid().ToString().ToUpper(),
                     ModifiedAt = DateTime.Now
                 };
                 uowUom.Repository.Add(uomToAdd);
@@ -80,7 +80,7 @@ namespace CisWindowsFormsApp
                 gvSelectedIndex = dgvUom.CurrentRow.Index;
                 BindUomGridView();
                 SetUIGridView();
-                dgvUom.CurrentCell = this.dgvUom[1, gvSelectedIndex];
+                dgvUom.CurrentCell = this.dgvUom[1, gvSelectedIndex < dgvUom.RowCount ? gvSelectedIndex : gvSelectedIndex - 1];
                 SetUIbySelectedGridItem();
                 txtModifiedAt.Text = dgvUom.CurrentRow.Cells[nameof(UnitOfMeasurement.ModifiedAt)].Value.ToString();
             }
@@ -132,7 +132,7 @@ namespace CisWindowsFormsApp
                 var uomToUpdate = uowUom.Repository.GetById(txtUomId.Text.Trim());
                 uomToUpdate.UomCode = txtUomCode.Text.Trim();
                 uomToUpdate.Description = txtUomDesc.Text.Trim();
-                uomToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUser;
+                uomToUpdate.ModifiedBy = Guid.NewGuid().ToString().ToUpper();
                 uomToUpdate.ModifiedAt = DateTime.Now;
 
                 uowUom.Repository.Update(uomToUpdate);

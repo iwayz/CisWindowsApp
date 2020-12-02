@@ -64,6 +64,7 @@ namespace CisWindowsFormsApp
                 txtPassword.PasswordChar = '\0';
                 lnkExit.Focus();
                 Properties.Settings.Default["CurrentUser"] = user.Username;
+                Properties.Settings.Default["CurrentUserId"] = user.Id.ToString().ToUpper();
                 Properties.Settings.Default.Save();
                 this.Hide();
 

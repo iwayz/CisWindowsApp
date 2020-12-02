@@ -10,7 +10,7 @@ namespace Cis.Model
     {
         public BaseEntity()
         {
-            Id = Guid.NewGuid().ToString();
+            Id = Guid.NewGuid().ToString().ToUpper();
         }
 
         [Key]
@@ -20,13 +20,13 @@ namespace Cis.Model
         [Required, MaxLength(36)]
         public string CreatedBy { get; set; }
         
-        [Required, DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        [Required, Column(TypeName = "datetime2")]
         public DateTime CreatedAt { get; set; }
         
         [Required, MaxLength(36)]
         public string ModifiedBy { get; set; }
         
-        [Required, DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        [Required, Column(TypeName ="datetime2")]
         public DateTime ModifiedAt { get; set; }
     }
 }

@@ -61,10 +61,13 @@ namespace CisWindowsFormsApp
             {
                 var medCatToAdd = new MedicineCat
                 {
+                    MedicineCatCode = txtMedCatCode.Text.Trim(),
                     Description = txtMedCat.Text.Trim(),
-                    CreatedBy = Properties.Settings.Default.CurrentUser,
+                    
+ 					 // Audit Fields 
+					CreatedBy = Guid.NewGuid().ToString().ToUpper(),
                     CreatedAt = DateTime.Now,
-                    ModifiedBy = Properties.Settings.Default.CurrentUser,
+                    ModifiedBy = Guid.NewGuid().ToString().ToUpper(),
                     ModifiedAt = DateTime.Now
                 };
                 uowMedCat.Repository.Add(medCatToAdd);
@@ -94,7 +97,8 @@ namespace CisWindowsFormsApp
                 gvSelectedIndex = dgvMedCat.CurrentRow.Index;
                 BindMedCatGridView();
                 SetUIGridView();
-                dgvMedCat.CurrentCell = this.dgvMedCat[1, gvSelectedIndex];
+                // TODO: apply this logic to other forms
+                dgvMedCat.CurrentCell = this.dgvMedCat[1, gvSelectedIndex < dgvMedCat.RowCount ? gvSelectedIndex : gvSelectedIndex - 1];
                 SetUIbySelectedGridItem();
                 txtModifiedAt.Text = dgvMedCat.CurrentRow.Cells[nameof(MedicineCat.ModifiedAt)].Value.ToString();
             }
@@ -146,7 +150,7 @@ namespace CisWindowsFormsApp
                 var medCatToUpdate = uowMedCat.Repository.GetById(txtMedCatId.Text.Trim());
                 medCatToUpdate.MedicineCatCode= txtMedCatCode.Text.Trim();
                 medCatToUpdate.Description = txtMedCat.Text.Trim();
-                medCatToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUser;
+                medCatToUpdate.ModifiedBy = Guid.NewGuid().ToString().ToUpper();
                 medCatToUpdate.ModifiedAt = DateTime.Now;
 
                 uowMedCat.Repository.Update(medCatToUpdate);
@@ -163,7 +167,7 @@ namespace CisWindowsFormsApp
         private void BindMedCatGridView()
         {
             var mc = new UnitOfWork<MedicineCat>(dbContext).Repository.GetAll()
-                .OrderBy(u => u.Description);
+                .OrderBy(u => u.MedicineCatCode);
             var mcDetail = mc.Select(mcDet =>
             new
             {

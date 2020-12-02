@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmUser));
-            this.txtModifiedAt = new System.Windows.Forms.TextBox();
+            this.txtUserModifiedAt = new System.Windows.Forms.TextBox();
             this.txtUserId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -53,21 +53,29 @@
             this.pnlButtons = new System.Windows.Forms.Panel();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
+            this.cbRole = new System.Windows.Forms.ComboBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtUserRoleId = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtRoleId = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtUserRoleModifiedAt = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUser)).BeginInit();
             this.panel1.SuspendLayout();
             this.pnlRetypePassword.SuspendLayout();
             this.pnlButtons.SuspendLayout();
             this.SuspendLayout();
             // 
-            // txtModifiedAt
+            // txtUserModifiedAt
             // 
-            this.txtModifiedAt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtModifiedAt.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.txtModifiedAt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtModifiedAt.Location = new System.Drawing.Point(161, 31);
-            this.txtModifiedAt.Name = "txtModifiedAt";
-            this.txtModifiedAt.Size = new System.Drawing.Size(175, 31);
-            this.txtModifiedAt.TabIndex = 1;
+            this.txtUserModifiedAt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtUserModifiedAt.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.txtUserModifiedAt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtUserModifiedAt.Location = new System.Drawing.Point(9, 80);
+            this.txtUserModifiedAt.Name = "txtUserModifiedAt";
+            this.txtUserModifiedAt.Size = new System.Drawing.Size(175, 31);
+            this.txtUserModifiedAt.TabIndex = 1;
             // 
             // txtUserId
             // 
@@ -76,7 +84,7 @@
             this.txtUserId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtUserId.Location = new System.Drawing.Point(9, 31);
             this.txtUserId.Name = "txtUserId";
-            this.txtUserId.Size = new System.Drawing.Size(139, 31);
+            this.txtUserId.Size = new System.Drawing.Size(175, 31);
             this.txtUserId.TabIndex = 1;
             // 
             // label1
@@ -84,11 +92,11 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(161, 16);
+            this.label1.Location = new System.Drawing.Point(9, 65);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 15);
+            this.label1.Size = new System.Drawing.Size(100, 15);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Modified At";
+            this.label1.Text = "User Modified At";
             // 
             // label2
             // 
@@ -127,10 +135,10 @@
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPassword.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtPassword.Location = new System.Drawing.Point(31, 148);
+            this.txtPassword.Location = new System.Drawing.Point(28, 196);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(249, 31);
+            this.txtPassword.Size = new System.Drawing.Size(238, 31);
             this.txtPassword.TabIndex = 3;
             // 
             // label4
@@ -138,7 +146,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label4.Location = new System.Drawing.Point(31, 133);
+            this.label4.Location = new System.Drawing.Point(28, 181);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(59, 15);
             this.label4.TabIndex = 4;
@@ -244,24 +252,29 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.txtModifiedAt);
+            this.panel1.Controls.Add(this.txtUserRoleId);
+            this.panel1.Controls.Add(this.txtRoleId);
+            this.panel1.Controls.Add(this.txtUserRoleModifiedAt);
+            this.panel1.Controls.Add(this.txtUserModifiedAt);
             this.panel1.Controls.Add(this.txtUserId);
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(31, 413);
+            this.panel1.Location = new System.Drawing.Point(319, 430);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(353, 72);
+            this.panel1.Size = new System.Drawing.Size(451, 246);
             this.panel1.TabIndex = 8;
-            this.panel1.Visible = false;
             // 
             // txtFullName
             // 
             this.txtFullName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtFullName.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtFullName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtFullName.Location = new System.Drawing.Point(31, 101);
+            this.txtFullName.Location = new System.Drawing.Point(28, 149);
             this.txtFullName.Name = "txtFullName";
-            this.txtFullName.Size = new System.Drawing.Size(249, 31);
+            this.txtFullName.Size = new System.Drawing.Size(274, 31);
             this.txtFullName.TabIndex = 2;
             // 
             // label5
@@ -269,7 +282,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label5.Location = new System.Drawing.Point(31, 85);
+            this.label5.Location = new System.Drawing.Point(28, 133);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(87, 15);
             this.label5.TabIndex = 4;
@@ -280,7 +293,7 @@
             this.chkChangePassword.AutoSize = true;
             this.chkChangePassword.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.chkChangePassword.ForeColor = System.Drawing.Color.Gray;
-            this.chkChangePassword.Location = new System.Drawing.Point(31, 180);
+            this.chkChangePassword.Location = new System.Drawing.Point(28, 228);
             this.chkChangePassword.Name = "chkChangePassword";
             this.chkChangePassword.Size = new System.Drawing.Size(110, 19);
             this.chkChangePassword.TabIndex = 4;
@@ -292,9 +305,9 @@
             // 
             this.pnlRetypePassword.Controls.Add(this.label6);
             this.pnlRetypePassword.Controls.Add(this.txtRetypePassword);
-            this.pnlRetypePassword.Location = new System.Drawing.Point(12, 203);
+            this.pnlRetypePassword.Location = new System.Drawing.Point(12, 253);
             this.pnlRetypePassword.Name = "pnlRetypePassword";
-            this.pnlRetypePassword.Size = new System.Drawing.Size(287, 68);
+            this.pnlRetypePassword.Size = new System.Drawing.Size(287, 56);
             this.pnlRetypePassword.TabIndex = 10;
             this.pnlRetypePassword.Visible = false;
             // 
@@ -303,7 +316,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label6.Location = new System.Drawing.Point(20, 0);
+            this.label6.Location = new System.Drawing.Point(16, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(101, 15);
             this.label6.TabIndex = 4;
@@ -314,10 +327,10 @@
             this.txtRetypePassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtRetypePassword.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtRetypePassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtRetypePassword.Location = new System.Drawing.Point(20, 16);
+            this.txtRetypePassword.Location = new System.Drawing.Point(14, 18);
             this.txtRetypePassword.Name = "txtRetypePassword";
             this.txtRetypePassword.PasswordChar = '*';
-            this.txtRetypePassword.Size = new System.Drawing.Size(248, 31);
+            this.txtRetypePassword.Size = new System.Drawing.Size(243, 31);
             this.txtRetypePassword.TabIndex = 5;
             // 
             // pnlButtons
@@ -327,9 +340,9 @@
             this.pnlButtons.Controls.Add(this.btnDel);
             this.pnlButtons.Controls.Add(this.btnSave);
             this.pnlButtons.Controls.Add(this.btnAdd);
-            this.pnlButtons.Location = new System.Drawing.Point(12, 277);
+            this.pnlButtons.Location = new System.Drawing.Point(12, 315);
             this.pnlButtons.Name = "pnlButtons";
-            this.pnlButtons.Size = new System.Drawing.Size(287, 133);
+            this.pnlButtons.Size = new System.Drawing.Size(273, 133);
             this.pnlButtons.TabIndex = 6;
             // 
             // btnSearch
@@ -359,12 +372,100 @@
             this.txtSearch.TabIndex = 38;
             this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
             // 
+            // cbRole
+            // 
+            this.cbRole.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbRole.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cbRole.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.cbRole.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.cbRole.FormattingEnabled = true;
+            this.cbRole.Location = new System.Drawing.Point(31, 99);
+            this.cbRole.Name = "cbRole";
+            this.cbRole.Size = new System.Drawing.Size(235, 31);
+            this.cbRole.TabIndex = 41;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label28.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label28.Location = new System.Drawing.Point(31, 83);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(59, 15);
+            this.label28.TabIndex = 40;
+            this.label28.Text = "User Role";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label7.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label7.Location = new System.Drawing.Point(198, 114);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(66, 15);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "UserRoleId";
+            // 
+            // txtUserRoleId
+            // 
+            this.txtUserRoleId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtUserRoleId.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.txtUserRoleId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtUserRoleId.Location = new System.Drawing.Point(198, 129);
+            this.txtUserRoleId.Name = "txtUserRoleId";
+            this.txtUserRoleId.Size = new System.Drawing.Size(175, 31);
+            this.txtUserRoleId.TabIndex = 1;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label8.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label8.Location = new System.Drawing.Point(198, 65);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(41, 15);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "RoleId";
+            // 
+            // txtRoleId
+            // 
+            this.txtRoleId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtRoleId.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.txtRoleId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtRoleId.Location = new System.Drawing.Point(198, 80);
+            this.txtRoleId.Name = "txtRoleId";
+            this.txtRoleId.Size = new System.Drawing.Size(175, 31);
+            this.txtRoleId.TabIndex = 1;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label9.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label9.Location = new System.Drawing.Point(9, 114);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(127, 15);
+            this.label9.TabIndex = 4;
+            this.label9.Text = "User Role Modified At";
+            // 
+            // txtUserRoleModifiedAt
+            // 
+            this.txtUserRoleModifiedAt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtUserRoleModifiedAt.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.txtUserRoleModifiedAt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtUserRoleModifiedAt.Location = new System.Drawing.Point(9, 129);
+            this.txtUserRoleModifiedAt.Name = "txtUserRoleModifiedAt";
+            this.txtUserRoleModifiedAt.Size = new System.Drawing.Size(175, 31);
+            this.txtUserRoleModifiedAt.TabIndex = 1;
+            // 
             // FrmUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(684, 562);
+            this.ClientSize = new System.Drawing.Size(782, 704);
+            this.Controls.Add(this.cbRole);
+            this.Controls.Add(this.label28);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.pnlButtons);
@@ -394,7 +495,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtModifiedAt;
+        private System.Windows.Forms.TextBox txtUserModifiedAt;
         private System.Windows.Forms.TextBox txtUserId;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -418,5 +519,13 @@
         private System.Windows.Forms.Panel pnlButtons;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.ComboBox cbRole;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.TextBox txtUserRoleId;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtRoleId;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtUserRoleModifiedAt;
+        private System.Windows.Forms.Label label9;
     }
 }

@@ -111,9 +111,9 @@ namespace CisWindowsFormsApp
                     MedicineCatId = cbMedCat.SelectedValue.ToString(),
                     UsageTypeId = cbUsageType.SelectedValue.ToString(),
                     PrincipalId = cbPrincipal.SelectedValue.ToString(),
-                    CreatedBy = Properties.Settings.Default.CurrentUser,
+                     					 // Audit Fields 					CreatedBy = Guid.NewGuid().ToString().ToUpper(),
                     CreatedAt = DateTime.Now,
-                    ModifiedBy = Properties.Settings.Default.CurrentUser,
+                    ModifiedBy = Guid.NewGuid().ToString().ToUpper(),
                     ModifiedAt = DateTime.Now
                 };
                 uowProduct.Repository.Add(prodToAdd);
@@ -146,7 +146,7 @@ namespace CisWindowsFormsApp
                 prodToUpdate.MedicineCatId = cbMedCat.SelectedValue.ToString();
                 prodToUpdate.UsageTypeId = cbUsageType.SelectedValue.ToString();
                 prodToUpdate.PrincipalId = cbPrincipal.SelectedValue.ToString();
-                prodToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUser;
+                prodToUpdate.ModifiedBy = Guid.NewGuid().ToString().ToUpper();
                 prodToUpdate.ModifiedAt = DateTime.Now;
 
                 uowProduct.Repository.Update(prodToUpdate);
@@ -203,7 +203,7 @@ namespace CisWindowsFormsApp
                 gvSelectedIndex = dgvProduct.CurrentRow.Index;
                 BindProductGridView();
                 SetUIGridView();
-                dgvProduct.CurrentCell = this.dgvProduct[1, gvSelectedIndex];
+                dgvProduct.CurrentCell = this.dgvProduct[1, gvSelectedIndex < dgvProduct.RowCount ? gvSelectedIndex : gvSelectedIndex - 1];
                 SetUIbySelectedGridItem();
                 txtModifiedAt.Text = dgvProduct.CurrentRow.Cells[nameof(Product.ModifiedAt)].Value.ToString();
             }
@@ -240,6 +240,7 @@ namespace CisWindowsFormsApp
 
             AutoCompleteStringCollection autoCompleteCollection = new AutoCompleteStringCollection();
             Dictionary<string, string> dsUoms = new Dictionary<string, string>();
+            dsUoms.Add("0", "--Pilih--");
             foreach (var uom in uoms)
             {
                 dsUoms.Add(uom.Id, uom.Description);
@@ -375,14 +376,15 @@ namespace CisWindowsFormsApp
 
             if (cbMedCat.Items.Count <= 1 || cbUsageType.Items.Count <= 1 || cbPrincipal.Items.Count <= 1)
             {
-                var emptyRefData = cbMedCat.Items.Count <= 1 ? "Kategori Obat" : (cbUsageType.Items.Count <= 1 ? "Jenis Pemakaian" : "Principal");
+                var emptyRefData = cbMedCat.Items.Count <= 1 ? "Kategori Obat" : (cbUsageType.Items.Count <= 1 ? "Jenis Pemakaian" : (cbPrincipal.Items.Count <=1 ? "Principal" : "Satuan Unit"));
                 CommonMessageHelper.ReferredDataNotSet(emptyRefData);
                 return false;
             }
 
-            if (cbMedCat.SelectedValue.ToString() == "0" || cbUsageType.SelectedValue.ToString() == "0" || cbPrincipal.SelectedValue.ToString() == "0")
+            if (cbMedCat.SelectedValue.ToString() == "0" || cbUsageType.SelectedValue.ToString() == "0" 
+                || cbPrincipal.SelectedValue.ToString() == "0" || cbUom.SelectedValue.ToString() == "0")
             {
-                CommonMessageHelper.DataCannotBeEmpty("Kategori Obat, Jenis Pemakaian dan Principal");
+                CommonMessageHelper.DataCannotBeEmpty("Satuan Unit, Kategori Obat, Jenis Pemakaian dan Principal");
                 return false;
             }
 
@@ -407,7 +409,7 @@ namespace CisWindowsFormsApp
             if (cbUsageType.Items.Count <= 1) refData.Add("Jenis Pemakaian");
             if (cbPrincipal.Items.Count <= 1) refData.Add("Principal");
 
-            lblNoteDetail.Text = "Data referensi " + string.Join(",", refData) + " belum tersedia. ";
+            lblNoteDetail.Text = "Data referensi (" + string.Join(", ", refData) + ") belum tersedia. ";
             if (refData.Count > 0) pnlNote.Visible = true;
         }
 

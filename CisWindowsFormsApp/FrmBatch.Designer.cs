@@ -351,9 +351,9 @@
             this.label13.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label13.Location = new System.Drawing.Point(11, 12);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(41, 15);
+            this.label13.Size = new System.Drawing.Size(72, 15);
             this.label13.TabIndex = 4;
-            this.label13.Text = "NOTE:";
+            this.label13.Text = "PERHATIAN!";
             // 
             // btnSearch
             // 

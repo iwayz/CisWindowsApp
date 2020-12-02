@@ -67,10 +67,10 @@ namespace CisWindowsFormsApp
                 {
                     OutletTypeCode = txtOutletCode.Text.Trim(),
                     Description = txtOutlet.Text.Trim(),
-                    CreatedBy = Properties.Settings.Default.CurrentUser,
-                    CreatedAt = DateTime.UtcNow,
-                    ModifiedBy = Properties.Settings.Default.CurrentUser,
-                    ModifiedAt = DateTime.UtcNow
+                     					 // Audit Fields 					CreatedBy = Guid.NewGuid().ToString().ToUpper(),
+                    CreatedAt = DateTime.Now,
+                    ModifiedBy = Guid.NewGuid().ToString().ToUpper(),
+                    ModifiedAt = DateTime.Now
                 };
                 uowOutlet.Repository.Add(outletToAdd);
                 uowOutlet.Commit();
@@ -99,7 +99,7 @@ namespace CisWindowsFormsApp
                 gvSelectedIndex = dgvOutlet.CurrentRow.Index;
                 BindOutletTypeGridView();
                 SetUIGridView();
-                dgvOutlet.CurrentCell = this.dgvOutlet[1, gvSelectedIndex];
+                dgvOutlet.CurrentCell = this.dgvOutlet[1, gvSelectedIndex < dgvOutlet.RowCount ? gvSelectedIndex : gvSelectedIndex - 1];
                 SetUIbySelectedGridItem();
                 txtModifiedAt.Text = dgvOutlet.CurrentRow.Cells[nameof(OutletType.ModifiedAt)].Value.ToString();
             }
@@ -151,7 +151,7 @@ namespace CisWindowsFormsApp
                 var outletToUpdate = uowOutlet.Repository.GetById(txtOutletId.Text.Trim());
                 outletToUpdate.OutletTypeCode = txtOutletCode.Text.Trim();
                 outletToUpdate.Description = txtOutlet.Text.Trim();
-                outletToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUser;
+                outletToUpdate.ModifiedBy = Guid.NewGuid().ToString().ToUpper();
                 outletToUpdate.ModifiedAt = DateTime.Now;
 
                 uowOutlet.Repository.Update(outletToUpdate);

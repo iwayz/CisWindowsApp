@@ -32,7 +32,7 @@ namespace CisWindowsFormsApp
 
             BindUserGridView();
             SetUIGridView();
-            SetUIButtonGroup();
+            BindRoleComboBox();
 
             isAdd = true;
             SetUIButtonGroup();
@@ -50,6 +50,8 @@ namespace CisWindowsFormsApp
             txtRetypePassword.Text = string.Empty;
             chkChangePassword.Checked = false;
             txtUsername.Focus();
+
+            BindRoleComboBox();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -67,9 +69,9 @@ namespace CisWindowsFormsApp
                     Username = txtUsername.Text.Trim(),
                     Password = new UserHelper().HashPassword(txtPassword.Text.Trim()),
                     FullName = txtFullName.Text.Trim(),
-                    CreatedBy = Properties.Settings.Default.CurrentUser,
+                     					 // Audit Fields 					CreatedBy = Guid.NewGuid().ToString().ToUpper(),
                     CreatedAt = DateTime.Now,
-                    ModifiedBy = Properties.Settings.Default.CurrentUser,
+                    ModifiedBy = Guid.NewGuid().ToString().ToUpper(),
                     ModifiedAt = DateTime.Now
                 };
                 uowUser.Repository.Add(userToAdd);
@@ -99,9 +101,9 @@ namespace CisWindowsFormsApp
                 gvSelectedIndex = dgvUser.CurrentRow.Index;
                 BindUserGridView();
                 SetUIGridView();
-                dgvUser.CurrentCell = this.dgvUser[1, gvSelectedIndex];
+                dgvUser.CurrentCell = this.dgvUser[1, gvSelectedIndex < dgvUser.RowCount ? gvSelectedIndex : gvSelectedIndex - 1];
                 SetUIbySelectedGridItem();
-                txtModifiedAt.Text = dgvUser.CurrentRow.Cells[nameof(User.ModifiedAt)].Value.ToString();
+                txtUserModifiedAt.Text = dgvUser.CurrentRow.Cells["UModifiedAt"].Value.ToString();
             }
             chkChangePassword.Checked = false;
             txtRetypePassword.Text = string.Empty;
@@ -148,8 +150,8 @@ namespace CisWindowsFormsApp
                 return;
             }
 
-            var repoLastUpdated = DateTime.Parse(dgvUser.CurrentRow.Cells[nameof(User.ModifiedAt)].Value.ToString());
-            var lastUpdated = DateTime.Parse(txtModifiedAt.Text.Trim());
+            var repoLastUpdated = DateTime.Parse(dgvUser.CurrentRow.Cells["UModifiedAt"].Value.ToString());
+            var lastUpdated = DateTime.Parse(txtUserModifiedAt.Text.Trim());
 
             if (lastUpdated != repoLastUpdated)
             {
@@ -157,18 +159,49 @@ namespace CisWindowsFormsApp
             }
             else
             {
-                var userToUpdate = uowUser.Repository.GetById(txtUserId.Text.Trim());
-                userToUpdate.Username = txtUsername.Text.Trim();
+                using (var context = new CisDbContext())
+                {
+                    using (var dbContextTransaction = context.Database.BeginTransaction())
+                    {
+                        var now = DateTime.Now;
+                        var uowUsr = new UnitOfWork<User>(context);
+                        var userToUpdate = uowUsr.Repository.GetById(txtUserId.Text.Trim());
+                        userToUpdate.Username = txtUsername.Text.Trim();
 
-                if (chkChangePassword.Checked)
-                    userToUpdate.Password = new UserHelper().HashPassword(txtPassword.Text.Trim());
+                        if (chkChangePassword.Checked)
+                            userToUpdate.Password = new UserHelper().HashPassword(txtPassword.Text.Trim());
+
+                        userToUpdate.FullName = txtFullName.Text.Trim();
+                        userToUpdate.ModifiedBy = Guid.NewGuid().ToString().ToUpper();
+                        userToUpdate.ModifiedAt = new DateTime(now.Year, now.Month, now.Day, now.Hour, now.Minute, now.Second);
+                        uowUsr.Repository.Update(userToUpdate);
+                        uowUsr.Commit();
+
+                        var uowUsrRole = new UnitOfWork<UserRole>(context);
+                        var userRoleToUpdate = uowUsrRole.Repository.GetById(txtUserRoleId.Text.ToString().Trim());
+                        userRoleToUpdate.UserId = txtUserId.Text.Trim();
+                        userRoleToUpdate.RoleId = cbRole.SelectedValue.ToString().Trim();
+                        userRoleToUpdate.ModifiedBy = Guid.NewGuid().ToString().ToUpper();
+                        userRoleToUpdate.ModifiedAt = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                        uowUsrRole.Repository.Update(userRoleToUpdate);
+                        uowUsrRole.Commit();
+
+                        dbContextTransaction.Commit();
+                    }
+                }
+
+                //var userToUpdate = uowUser.Repository.GetById(txtUserId.Text.Trim());
+                //userToUpdate.Username = txtUsername.Text.Trim();
+
+                //if (chkChangePassword.Checked)
+                //    userToUpdate.Password = new UserHelper().HashPassword(txtPassword.Text.Trim());
                 
-                userToUpdate.FullName = txtFullName.Text.Trim();
-                userToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUser;
-                userToUpdate.ModifiedAt = DateTime.Now;
+                //userToUpdate.FullName = txtFullName.Text.Trim();
+                //userToUpdate.ModifiedBy = Guid.NewGuid().ToString().ToUpper();
+                //userToUpdate.ModifiedAt = DateTime.Now;
 
-                uowUser.Repository.Update(userToUpdate);
-                uowUser.Commit();
+                //uowUser.Repository.Update(userToUpdate);
+                //uowUser.Commit();
                 btnReload.PerformClick();
             }
         }
@@ -176,58 +209,6 @@ namespace CisWindowsFormsApp
         private void dgvUser_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             btnReload.PerformClick();
-        }
-
-        private void BindUserGridView()
-        {
-            var users = new UnitOfWork<User>(dbContext).Repository.GetAll().OrderBy(u => u.Username);
-            var uomDetail = users.Select(user =>
-            new
-            {
-                user.Id,
-                user.Username,
-                user.Password,
-                user.FullName,
-                user.ModifiedAt
-            });
-
-            dgvUser.DataSource = uomDetail.ToList();
-        }
-
-        private void SetUIGridView()
-        {
-            dgvUser.Columns[nameof(User.Username)].HeaderText = "USERNAME";
-            dgvUser.Columns[nameof(User.FullName)].HeaderText = "NAMA LENGKAP";
-            dgvUser.Columns[nameof(User.FullName)].Width = 220;
-            dgvUser.Columns[nameof(User.Id)].Visible = false;
-            dgvUser.Columns[nameof(User.Password)].Visible = false;
-            dgvUser.Columns[nameof(User.ModifiedAt)].Visible = false;
-        }
-
-        private void SetUIbySelectedGridItem()
-        {
-            var currentRow = dgvUser.CurrentRow;
-            txtUsername.Text = currentRow.Cells[nameof(User.Username)].Value.ToString();
-            txtPassword.Text = currentRow.Cells[nameof(User.Password)].Value.ToString();
-            txtFullName.Text = currentRow.Cells[nameof(User.FullName)].Value.ToString();
-
-            // hidden fields
-            txtUserId.Text = currentRow.Cells[nameof(User.Id)].Value.ToString();
-            txtModifiedAt.Text = currentRow.Cells[nameof(User.ModifiedAt)].Value.ToString();
-
-        }
-
-        private bool ValidateMandatoryFields()
-        {
-            if (string.IsNullOrEmpty(txtUsername.Text) 
-                || string.IsNullOrEmpty(txtPassword.Text)
-                || string.IsNullOrEmpty(txtFullName.Text))
-            {
-                CommonMessageHelper.DataCannotBeEmpty("Username, Password dan Nama Lengkap");
-                return false;
-
-            }
-            return true;
         }
 
         private void chkChangePassword_CheckedChanged(object sender, EventArgs e)
@@ -245,24 +226,6 @@ namespace CisWindowsFormsApp
             SetUIButtonGroup();
         }
 
-        private void SetUIButtonGroup()
-        {
-            btnSave.Enabled = !isAdd;
-            btnDel.Enabled = !isAdd;
-            
-            btnSave.BackColor = !isAdd ? Color.FromArgb(36, 141, 193) : Color.Gray;
-            btnDel.BackColor = !isAdd ? Color.FromArgb(36, 141, 193) : Color.Gray;
-
-            if (!chkChangePassword.Checked)
-            {
-                pnlButtons.Location = new Point(14, 233);
-            }
-            else
-            {
-                pnlButtons.Location = new Point(14, 320);
-            }
-        }
-
         private void btnSearch_Click(object sender, EventArgs e)
         {
             var searchVal = txtSearch.Text.Trim();
@@ -278,6 +241,129 @@ namespace CisWindowsFormsApp
                 e.Handled = true;
                 btnSearch.PerformClick();
             }
+        }
+
+
+        private void SetUIButtonGroup()
+        {
+            btnSave.Enabled = !isAdd;
+            btnDel.Enabled = !isAdd;
+
+            btnSave.BackColor = !isAdd ? Color.FromArgb(36, 141, 193) : Color.Gray;
+            btnDel.BackColor = !isAdd ? Color.FromArgb(36, 141, 193) : Color.Gray;
+
+            if (!chkChangePassword.Checked)
+            {
+                pnlButtons.Location = new Point(14, 254);
+            }
+            else
+            {
+                pnlButtons.Location = new Point(14, 315);
+            }
+        }
+
+        private void BindRoleComboBox()
+        {
+            var uow = new UnitOfWork<Role>(dbContext);
+            var Roles = uow.Repository.GetAll().OrderBy(m => m.Description);
+
+            AutoCompleteStringCollection autoCompleteCollection = new AutoCompleteStringCollection();
+            Dictionary<string, string> dsRole = new Dictionary<string, string>();
+            dsRole.Add("0", "--Pilih--");
+            foreach (var role in Roles)
+            {
+                dsRole.Add(role.Id, role.RoleCode + " - " + role.Description);
+                autoCompleteCollection.Add(role.RoleCode + " - " + role.Description);
+            }
+
+            cbRole.DataSource = new BindingSource(dsRole, null);
+            cbRole.DisplayMember = "Value";
+            cbRole.ValueMember = "Key";
+            cbRole.AutoCompleteCustomSource = autoCompleteCollection;
+        }
+
+        private void BindUserGridView()
+        {
+            var users = new UnitOfWork<User>(dbContext).Repository.GetAll();
+            var userRoles = new UnitOfWork<UserRole>(dbContext).Repository.GetAll();
+            var roles = new UnitOfWork<Role>(dbContext).Repository.GetAll();
+
+            var userRoleDetail = users
+                .Join(userRoles, u => u.Id, ur => ur.UserId, (u, ur) => new { u, ur })
+                .Join(roles, uUr => uUr.ur.RoleId, r => r.Id, (uUr, r) => new { uUr, r })
+                .Select(res => new
+                {
+                    UserId      = res.uUr.u.Id,
+                    Username    = res.uUr.u.Username,
+                    Password    = res.uUr.u.Password,
+                    Fullname    = res.uUr.u.FullName,
+                    UserRoleId  = res.uUr.ur.Id,
+                    RoleId      = res.r.Id,
+                    RoleCode    = res.r.RoleCode,
+                    Description = res.r.Description,
+                    UModifiedAt = res.uUr.u.ModifiedAt,
+                    URModifiedAt= res.uUr.ur.ModifiedAt,
+                });
+
+
+            dgvUser.DataSource = userRoleDetail.OrderBy(e => e.Username).ToList();
+        }
+
+        private void SetUIGridView()
+        {
+            dgvUser.Columns[nameof(User.Username)].HeaderText = "USERNAME";
+            dgvUser.Columns[nameof(User.FullName)].HeaderText = "NAMA LENGKAP";
+            dgvUser.Columns[nameof(User.FullName)].Width = 220;
+            dgvUser.Columns[nameof(Role.Description)].HeaderText = "ROLE";
+            dgvUser.Columns[nameof(Role.Description)].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            // hidden fields
+            //dgvUser.Columns["UserId"].Visible = false;
+            //dgvUser.Columns[nameof(User.Password)].Visible = false;
+            //dgvUser.Columns["UserRoleId"].Visible = false;
+            //dgvUser.Columns[nameof(UserRole.RoleId)].Visible = false;
+            //dgvUser.Columns[nameof(Role.RoleCode)].Visible = false;
+            //dgvUser.Columns["UModifiedAt"].Visible = false;
+            //dgvUser.Columns["URModifiedAt"].Visible = false;
+        }
+
+        private void SetUIbySelectedGridItem()
+        {
+            var currentRow = dgvUser.CurrentRow;
+            txtUsername.Text = currentRow.Cells[nameof(User.Username)].Value.ToString();
+            txtPassword.Text = currentRow.Cells[nameof(User.Password)].Value.ToString();
+            txtFullName.Text = currentRow.Cells[nameof(User.FullName)].Value.ToString();
+
+            cbRole.SelectedValue = currentRow.Cells[nameof(UserRole.RoleId)].Value.ToString();
+
+
+            // hidden fields
+            txtUserId.Text = currentRow.Cells["UserId"].Value.ToString();
+            txtUserRoleId.Text = currentRow.Cells["UserRoleId"].Value.ToString();
+            txtRoleId.Text = currentRow.Cells[nameof(UserRole.RoleId)].Value.ToString();
+            txtUserModifiedAt.Text = currentRow.Cells["UModifiedAt"].Value.ToString();
+            txtUserRoleModifiedAt.Text = currentRow.Cells["URModifiedAt"].Value.ToString();
+
+        }
+
+        private bool ValidateMandatoryFields()
+        {
+            if (string.IsNullOrEmpty(txtUsername.Text)
+                || string.IsNullOrEmpty(txtPassword.Text)
+                || string.IsNullOrEmpty(txtFullName.Text))
+            {
+                CommonMessageHelper.DataCannotBeEmpty("Username, Password dan Nama Lengkap");
+                return false;
+
+            }
+
+            if (cbRole.Items.Count <= 1)
+            {
+                var emptyRefData = "User Role";
+                CommonMessageHelper.ReferredDataNotSet(emptyRefData);
+                return false;
+            }
+            return true;
         }
     }
 }

@@ -108,9 +108,9 @@ namespace CisWindowsFormsApp
                 {
                     RoleCode = txtRoleCode.Text.Trim(),
                     Description = txtDescription.Text.Trim(),
-                    CreatedBy = Properties.Settings.Default.CurrentUser,
+                     					 // Audit Fields 					CreatedBy = Guid.NewGuid().ToString().ToUpper(),
                     CreatedAt = DateTime.Now,
-                    ModifiedBy = Properties.Settings.Default.CurrentUser,
+                    ModifiedBy = Guid.NewGuid().ToString().ToUpper(),
                     ModifiedAt = DateTime.Now
                 };
                 uowRole.Repository.Add(roleToAdd);
@@ -140,7 +140,7 @@ namespace CisWindowsFormsApp
                 gvSelectedIndex = dgvRole.CurrentRow.Index;
                 BindRoleGridView();
                 SetUIGridView();
-                dgvRole.CurrentCell = this.dgvRole[1, gvSelectedIndex];
+                dgvRole.CurrentCell = this.dgvRole[1, gvSelectedIndex < dgvRole.RowCount ? gvSelectedIndex : gvSelectedIndex - 1];
                 SetUIbySelectedGridItem();
                 txtModifiedAt.Text = dgvRole.CurrentRow.Cells[nameof(Role.ModifiedAt)].Value.ToString();
             }
@@ -192,7 +192,7 @@ namespace CisWindowsFormsApp
                 var roleToUpdate = uowRole.Repository.GetById(txtRoleId.Text.Trim());
                 roleToUpdate.RoleCode = txtRoleCode.Text.Trim();
                 roleToUpdate.Description = txtDescription.Text.Trim();
-                roleToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUser;
+                roleToUpdate.ModifiedBy = Guid.NewGuid().ToString().ToUpper();
                 roleToUpdate.ModifiedAt = DateTime.Now;
 
                 uowRole.Repository.Update(roleToUpdate);

@@ -134,5 +134,14 @@ namespace CisWindowsFormsApp.Properties {
                 return ((string)(this["CompWebsite"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Guid")]
+        public string CurrentUserId {
+            get {
+                return ((string)(this["CurrentUserId"]));
+            }
+        }
     }
 }

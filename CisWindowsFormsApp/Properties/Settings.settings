@@ -48,5 +48,8 @@
     <Setting Name="CompWebsite" Type="System.String" Scope="Application">
       <Value Profile="(Default)">www.sari-sehat.com</Value>
     </Setting>
+    <Setting Name="CurrentUserId" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Guid</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

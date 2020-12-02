@@ -66,9 +66,9 @@ namespace CisWindowsFormsApp
                 {
                     AreaCode = txtAreaCode.Text.Trim(),
                     Description = txtDescription.Text.Trim(),
-                    CreatedBy = Properties.Settings.Default.CurrentUser,
+                     					 // Audit Fields 					CreatedBy = Guid.NewGuid().ToString().ToUpper(),
                     CreatedAt = DateTime.Now,
-                    ModifiedBy = Properties.Settings.Default.CurrentUser,
+                    ModifiedBy = Guid.NewGuid().ToString().ToUpper(),
                     ModifiedAt = DateTime.Now
                 };
                 uowArea.Repository.Add(areaToAdd);
@@ -98,7 +98,7 @@ namespace CisWindowsFormsApp
                 gvSelectedIndex = dgvSalesArea.CurrentRow.Index;
                 BindAreaGridView();
                 SetUIGridView();
-                dgvSalesArea.CurrentCell = this.dgvSalesArea[1, gvSelectedIndex];
+                dgvSalesArea.CurrentCell = this.dgvSalesArea[1, gvSelectedIndex < dgvSalesArea.RowCount ? gvSelectedIndex : gvSelectedIndex - 1];
                 SetUIbySelectedGridItem();
                 txtModifiedAt.Text = dgvSalesArea.CurrentRow.Cells[nameof(SalesArea.ModifiedAt)].Value.ToString();
             }
@@ -151,7 +151,7 @@ namespace CisWindowsFormsApp
                 var areaToUpdate = uowArea.Repository.GetById(txtAreaId.Text.Trim());
                 areaToUpdate.AreaCode = txtAreaCode.Text.Trim();
                 areaToUpdate.Description = txtDescription.Text.Trim();
-                areaToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUser;
+                areaToUpdate.ModifiedBy = Guid.NewGuid().ToString().ToUpper();
                 areaToUpdate.ModifiedAt = DateTime.Now;
 
                 uowArea.Repository.Update(areaToUpdate);

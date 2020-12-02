@@ -70,9 +70,11 @@ namespace CisWindowsFormsApp
                     Quantity = Convert.ToInt32(txtQuantity.Text.Trim()),
                     EntryDate = DateTime.Parse(dtpEntryDate.Value.ToString("yyyy-MM-dd")),
                     ExpiredDate= DateTime.Parse(dtpExpiredDate.Value.ToString("yyyy-MM-dd")),
-                    CreatedBy = Properties.Settings.Default.CurrentUser,
+                    
+ 					 // Audit Fields 
+					CreatedBy = Guid.NewGuid().ToString().ToUpper(),
                     CreatedAt = DateTime.Now,
-                    ModifiedBy = Properties.Settings.Default.CurrentUser,
+                    ModifiedBy = Guid.NewGuid().ToString().ToUpper(),
                     ModifiedAt = DateTime.Now
                 };
                 uowBatch.Repository.Add(batchToAdd);
@@ -102,7 +104,7 @@ namespace CisWindowsFormsApp
                 gvSelectedIndex = dgvBatch.CurrentRow.Index;
                 BindBatchtGridView();
                 SetUIGridView();
-                dgvBatch.CurrentCell = this.dgvBatch[1, gvSelectedIndex];
+                dgvBatch.CurrentCell = this.dgvBatch[1, gvSelectedIndex < dgvBatch.RowCount ? gvSelectedIndex : gvSelectedIndex - 1];
                 SetUIbySelectedGridItem();
                 txtModifiedAt.Text = dgvBatch.CurrentRow.Cells[nameof(Batch.ModifiedAt)].Value.ToString();
             }
@@ -157,7 +159,7 @@ namespace CisWindowsFormsApp
                 batchToUpdate.Quantity = Convert.ToInt32(txtQuantity.Text.Trim());
                 batchToUpdate.EntryDate = DateTime.Parse(dtpEntryDate.Value.ToString("yyyy-MM-dd"));
                 batchToUpdate.ExpiredDate = DateTime.Parse(dtpExpiredDate.Value.ToString("yyyy-MM-dd"));
-                batchToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUser;
+                batchToUpdate.ModifiedBy = Guid.NewGuid().ToString().ToUpper();
                 batchToUpdate.ModifiedAt = DateTime.Now;
 
                 uowBatch.Repository.Update(batchToUpdate);
@@ -283,7 +285,7 @@ namespace CisWindowsFormsApp
             List<string> refData = new List<string>();
             if (cbProductCode.Items.Count <= 1) refData.Add("Produk");
 
-            lblNoteDetail.Text = "Data referensi "+ string.Join(",", refData) + " belum tersedia. ";
+            lblNoteDetail.Text = "Data referensi ("+ string.Join(", ", refData) + ") belum tersedia.";
             if (refData.Count > 0) pnlNote.Visible = true;
         }
 

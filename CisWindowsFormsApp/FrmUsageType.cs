@@ -99,9 +99,9 @@ namespace CisWindowsFormsApp
                 {
                     UsageTypeCode = txtUsageTypeCode.Text.Trim(),
                     Description = txtUsageDesc.Text.Trim(),
-                    CreatedBy = Properties.Settings.Default.CurrentUser,
+                     					 // Audit Fields 					CreatedBy = Guid.NewGuid().ToString().ToUpper(),
                     CreatedAt = DateTime.Now,
-                    ModifiedBy = Properties.Settings.Default.CurrentUser,
+                    ModifiedBy = Guid.NewGuid().ToString().ToUpper(),
                     ModifiedAt = DateTime.Now
                 };
                 uowUsage.Repository.Add(usageToAdd);
@@ -131,7 +131,7 @@ namespace CisWindowsFormsApp
                 gvSelectedIndex = dgvUsageType.CurrentRow.Index;
                 BindUsageTyperidView();
                 SetUIGridView();
-                dgvUsageType.CurrentCell = this.dgvUsageType[1, gvSelectedIndex];
+                dgvUsageType.CurrentCell = this.dgvUsageType[1, gvSelectedIndex < dgvUsageType.RowCount ? gvSelectedIndex : gvSelectedIndex - 1];
                 SetUIbySelectedGridItem();
                 txtModifiedAt.Text = dgvUsageType.CurrentRow.Cells[nameof(UsageType.ModifiedAt)].Value.ToString();
             }
@@ -184,7 +184,7 @@ namespace CisWindowsFormsApp
                 var usageToUpdate = uowUsage.Repository.GetById(txtUsageId.Text.Trim());
                 usageToUpdate.UsageTypeCode = txtUsageTypeCode.Text.Trim();
                 usageToUpdate.Description = txtUsageDesc.Text.Trim();
-                usageToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUser;
+                usageToUpdate.ModifiedBy = Guid.NewGuid().ToString().ToUpper();
                 usageToUpdate.ModifiedAt = DateTime.Now;
 
                 uowUsage.Repository.Update(usageToUpdate);

@@ -81,9 +81,9 @@ namespace CisWindowsFormsApp
                     DistrictId = cbDistrict.SelectedValue.ToString(),
                     SubDistrictId = cbSubDistrict.SelectedValue.ToString(),
 
-                    CreatedBy = Properties.Settings.Default.CurrentUser,
+                     					 // Audit Fields 					CreatedBy = Guid.NewGuid().ToString().ToUpper(),
                     CreatedAt = DateTime.Now,
-                    ModifiedBy = Properties.Settings.Default.CurrentUser,
+                    ModifiedBy = Guid.NewGuid().ToString().ToUpper(),
                     ModifiedAt = DateTime.Now
                 };
                 uowPrincipal.Repository.Add(PrincipalToAdd);
@@ -115,7 +115,7 @@ namespace CisWindowsFormsApp
                 PrincipalToUpdate.DistrictId = cbDistrict.SelectedValue.ToString();
                 PrincipalToUpdate.SubDistrictId = cbSubDistrict.SelectedValue.ToString();
 
-                PrincipalToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUser;
+                PrincipalToUpdate.ModifiedBy = Guid.NewGuid().ToString().ToUpper();
                 PrincipalToUpdate.ModifiedAt = DateTime.Now;
 
                 uowPrincipal.Repository.Update(PrincipalToUpdate);
@@ -172,7 +172,7 @@ namespace CisWindowsFormsApp
                 gvSelectedIndex = dgvPrincipal.CurrentRow.Index;
                 BindPrincipalGridView();
                 SetUIGridView();
-                dgvPrincipal.CurrentCell = this.dgvPrincipal[1, gvSelectedIndex];
+                dgvPrincipal.CurrentCell = this.dgvPrincipal[1, gvSelectedIndex < dgvPrincipal.RowCount ? gvSelectedIndex : gvSelectedIndex - 1];
                 SetUIbySelectedGridItem();
                 txtModifiedAt.Text = dgvPrincipal.CurrentRow.Cells[nameof(Principal.ModifiedAt)].Value.ToString();
             }

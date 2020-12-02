@@ -27,10 +27,8 @@ namespace Cis.Data
 
         protected override void OnModelCreating(DbModelBuilder modelmodelBuilder)
         {
-
             // Properties configurations
-            //modelmodelBuilder.Configurations.AddFromAssembly(Assembly.GetExecutingAssembly());
-            modelmodelBuilder.Configurations.Add(new OutletTypeConfig());
+            modelmodelBuilder.Configurations.AddFromAssembly(Assembly.GetExecutingAssembly());
             modelmodelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
             // Entities configurations

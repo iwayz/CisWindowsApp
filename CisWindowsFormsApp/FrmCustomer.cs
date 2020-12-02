@@ -106,9 +106,11 @@ namespace CisWindowsFormsApp
                     OutletTypeId = cbOutletType.SelectedValue.ToString(),
                     SalesAreaId = cbSalesArea.SelectedValue.ToString(),
 
-                    CreatedBy = Properties.Settings.Default.CurrentUser,
+                    
+ 					 // Audit Fields 
+					CreatedBy = Guid.NewGuid().ToString().ToUpper(),
                     CreatedAt = DateTime.Now,
-                    ModifiedBy = Properties.Settings.Default.CurrentUser,
+                    ModifiedBy = Guid.NewGuid().ToString().ToUpper(),
                     ModifiedAt = DateTime.Now
                 };
                 uowCust.Repository.Add(custToAdd);
@@ -147,7 +149,7 @@ namespace CisWindowsFormsApp
                 custToUpdate.OutletTypeId = cbOutletType.SelectedValue.ToString();
                 custToUpdate.SalesAreaId = cbSalesArea.SelectedValue.ToString();
 
-                custToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUser;
+                custToUpdate.ModifiedBy = Guid.NewGuid().ToString().ToUpper();
                 custToUpdate.ModifiedAt = DateTime.Now;
 
                 uowCust.Repository.Update(custToUpdate);
@@ -208,7 +210,7 @@ namespace CisWindowsFormsApp
                 gvSelectedIndex = dgvCustomer.CurrentRow.Index;
                 BindCustomerGridView();
                 SetUIGridView();
-                dgvCustomer.CurrentCell = this.dgvCustomer[1, gvSelectedIndex];
+                dgvCustomer.CurrentCell = this.dgvCustomer[1, gvSelectedIndex < dgvCustomer.RowCount ? gvSelectedIndex : gvSelectedIndex - 1];
                 SetUIbySelectedGridItem();
                 txtModifiedAt.Text = dgvCustomer.CurrentRow.Cells[nameof(Customer.ModifiedAt)].Value.ToString();
             }
@@ -375,6 +377,7 @@ namespace CisWindowsFormsApp
 
             AutoCompleteStringCollection autoCompleteCollection = new AutoCompleteStringCollection();
             Dictionary<string, string> dsOutlet = new Dictionary<string, string>();
+            dsOutlet.Add("0", "--Pilih--");
             foreach (var outlet in outletTypes)
             {
                 dsOutlet.Add(outlet.Id, outlet.OutletTypeCode + " - " + outlet.Description);
@@ -394,6 +397,7 @@ namespace CisWindowsFormsApp
 
             AutoCompleteStringCollection autoCompleteCollection = new AutoCompleteStringCollection();
             Dictionary<string, string> dsArea = new Dictionary<string, string>();
+            dsArea.Add("0", "--Pilih--");
             foreach (var area in salesAreas)
             {
                 dsArea.Add(area.Id, area.AreaCode);
@@ -421,7 +425,7 @@ namespace CisWindowsFormsApp
             if (cbOutletType.Items.Count <= 1) refData.Add("Jenit Outlet");
             if (cbSalesArea.Items.Count <= 1) refData.Add("Sales Area");
 
-            lblNoteDetail.Text = "Data referensi " + string.Join(",", refData) + " belum tersedia. ";
+            lblNoteDetail.Text = "Data referensi (" + string.Join(", ", refData) + ") belum tersedia. ";
             if (refData.Count > 0) pnlNote.Visible = true;
         }
 

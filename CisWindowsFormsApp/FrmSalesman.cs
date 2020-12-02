@@ -86,9 +86,9 @@ namespace CisWindowsFormsApp
                     DistrictId = cbDistrict.SelectedValue.ToString(),
                     SubDistrictId = cbSubDistrict.SelectedValue.ToString(),
 
-                    CreatedBy = Properties.Settings.Default.CurrentUser,
+                     					 // Audit Fields 					CreatedBy = Guid.NewGuid().ToString().ToUpper(),
                     CreatedAt = DateTime.Now,
-                    ModifiedBy = Properties.Settings.Default.CurrentUser,
+                    ModifiedBy = Guid.NewGuid().ToString().ToUpper(),
                     ModifiedAt = DateTime.Now
                 };
                 uowSalesman.Repository.Add(salesmanToAdd);
@@ -118,7 +118,7 @@ namespace CisWindowsFormsApp
                 gvSelectedIndex = dgvSalesman.CurrentRow.Index;
                 BindRoleGridView();
                 SetUIGridView();
-                dgvSalesman.CurrentCell = this.dgvSalesman[1, gvSelectedIndex];
+                dgvSalesman.CurrentCell = this.dgvSalesman[1, gvSelectedIndex < dgvSalesman.RowCount ? gvSelectedIndex : gvSelectedIndex - 1];
                 SetUIbySelectedGridItem();
                 txtModifiedAt.Text = dgvSalesman.CurrentRow.Cells[nameof(Salesman.ModifiedAt)].Value.ToString();
             }
@@ -178,7 +178,7 @@ namespace CisWindowsFormsApp
                 salesmanToUpdate.DistrictId = cbDistrict.SelectedValue.ToString();
                 salesmanToUpdate.SubDistrictId = cbSubDistrict.SelectedValue.ToString();
 
-                salesmanToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUser;
+                salesmanToUpdate.ModifiedBy = Guid.NewGuid().ToString().ToUpper();
                 salesmanToUpdate.ModifiedAt = DateTime.Now;
 
                 uowSalesman.Repository.Update(salesmanToUpdate);

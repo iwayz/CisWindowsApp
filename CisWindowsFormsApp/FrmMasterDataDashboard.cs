@@ -108,7 +108,7 @@ namespace CisWindowsFormsApp
 
         private void FrmMasterDataDashboard_Load(object sender, EventArgs e)
         {
-            btnProducts.PerformClick();
+            //btnProducts.PerformClick();
         }
     }
 }
