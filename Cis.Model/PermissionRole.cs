@@ -8,6 +8,7 @@ namespace Cis.Model
     {
         public string RoleId { get; set; }
         public Role Role { get; set; }
-        public string AccessUnit { get; set; } // unit refers to forms in the application
+        public string PermisionId { get; set; }
+        public Permission Permission { get; set; }
     }
 }

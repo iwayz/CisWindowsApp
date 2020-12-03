@@ -19,9 +19,36 @@ namespace Cis.Model
             SubDistrict = 3 // Kelurahan
         }
 
-        public static DateTime DefaultDate()
+
+        public static class Permission
         {
-            return DateTime.Parse("1900-01-01");
+            public enum PermissionType
+            {
+                Master,
+                Transaction,
+                Reporting
+            }
+
+            public enum MasterData
+            {
+                Product,
+                Customer // TODO: add other master form
+            }
+
+            public enum Trasnsaction
+            {
+                Sales,
+                Order,
+                Return // TODO: add other transaction form
+            }
+
+            public enum Reporting
+            {
+                Sales,
+                Order // TODO: add other reporting form
+            }
         }
+
+
     }
 }

@@ -43,7 +43,6 @@
             this.btnOutletTypes = new System.Windows.Forms.Button();
             this.btnBatches = new System.Windows.Forms.Button();
             this.btnLocations = new System.Windows.Forms.Button();
-            this.btnUserRoles = new System.Windows.Forms.Button();
             this.btnRoles = new System.Windows.Forms.Button();
             this.pnlChildHeader = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -169,7 +168,6 @@
             this.panel1.Controls.Add(this.btnBatches);
             this.panel1.Controls.Add(this.btnLocations);
             this.panel1.Controls.Add(this.btnSalesmen);
-            this.panel1.Controls.Add(this.btnUserRoles);
             this.panel1.Controls.Add(this.btnPrincipals);
             this.panel1.Controls.Add(this.btnRoles);
             this.panel1.Controls.Add(this.btnCustomers);
@@ -206,7 +204,7 @@
             this.btnUOM.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.btnUOM.ForeColor = System.Drawing.Color.White;
             this.btnUOM.Image = ((System.Drawing.Image)(resources.GetObject("btnUOM.Image")));
-            this.btnUOM.Location = new System.Drawing.Point(691, 77);
+            this.btnUOM.Location = new System.Drawing.Point(557, 77);
             this.btnUOM.Name = "btnUOM";
             this.btnUOM.Size = new System.Drawing.Size(129, 56);
             this.btnUOM.TabIndex = 0;
@@ -276,7 +274,7 @@
             this.btnLocations.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.btnLocations.ForeColor = System.Drawing.Color.White;
             this.btnLocations.Image = ((System.Drawing.Image)(resources.GetObject("btnLocations.Image")));
-            this.btnLocations.Location = new System.Drawing.Point(825, 77);
+            this.btnLocations.Location = new System.Drawing.Point(691, 77);
             this.btnLocations.Name = "btnLocations";
             this.btnLocations.Size = new System.Drawing.Size(129, 56);
             this.btnLocations.TabIndex = 0;
@@ -284,23 +282,6 @@
             this.btnLocations.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnLocations.UseVisualStyleBackColor = false;
             this.btnLocations.Click += new System.EventHandler(this.btnLocations_Click);
-            // 
-            // btnUserRoles
-            // 
-            this.btnUserRoles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(74)))), ((int)(((byte)(156)))));
-            this.btnUserRoles.FlatAppearance.BorderSize = 0;
-            this.btnUserRoles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUserRoles.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
-            this.btnUserRoles.ForeColor = System.Drawing.Color.White;
-            this.btnUserRoles.Image = ((System.Drawing.Image)(resources.GetObject("btnUserRoles.Image")));
-            this.btnUserRoles.Location = new System.Drawing.Point(423, 77);
-            this.btnUserRoles.Name = "btnUserRoles";
-            this.btnUserRoles.Size = new System.Drawing.Size(129, 56);
-            this.btnUserRoles.TabIndex = 0;
-            this.btnUserRoles.Text = "User Roles";
-            this.btnUserRoles.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnUserRoles.UseVisualStyleBackColor = false;
-            this.btnUserRoles.Click += new System.EventHandler(this.btnUserRoles_Click);
             // 
             // btnRoles
             // 
@@ -310,7 +291,7 @@
             this.btnRoles.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.btnRoles.ForeColor = System.Drawing.Color.White;
             this.btnRoles.Image = ((System.Drawing.Image)(resources.GetObject("btnRoles.Image")));
-            this.btnRoles.Location = new System.Drawing.Point(557, 77);
+            this.btnRoles.Location = new System.Drawing.Point(423, 77);
             this.btnRoles.Name = "btnRoles";
             this.btnRoles.Size = new System.Drawing.Size(129, 56);
             this.btnRoles.TabIndex = 0;
@@ -406,7 +387,6 @@
         private System.Windows.Forms.Button btnOutletTypes;
         private System.Windows.Forms.Button btnBatches;
         private System.Windows.Forms.Button btnLocations;
-        private System.Windows.Forms.Button btnUserRoles;
         private System.Windows.Forms.Button btnRoles;
         private System.Windows.Forms.ToolTip toolTipButton;
         private System.Windows.Forms.Panel pnlMasterDataChildren;

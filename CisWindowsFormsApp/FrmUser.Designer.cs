@@ -44,6 +44,12 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.dgvUser = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtUserRoleId = new System.Windows.Forms.TextBox();
+            this.txtRoleId = new System.Windows.Forms.TextBox();
+            this.txtUserRoleModifiedAt = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.txtFullName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.chkChangePassword = new System.Windows.Forms.CheckBox();
@@ -55,12 +61,6 @@
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.cbRole = new System.Windows.Forms.ComboBox();
             this.label28 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtUserRoleId = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtRoleId = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtUserRoleModifiedAt = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUser)).BeginInit();
             this.panel1.SuspendLayout();
             this.pnlRetypePassword.SuspendLayout();
@@ -266,6 +266,70 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(451, 246);
             this.panel1.TabIndex = 8;
+            this.panel1.Visible = false;
+            // 
+            // txtUserRoleId
+            // 
+            this.txtUserRoleId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtUserRoleId.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.txtUserRoleId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtUserRoleId.Location = new System.Drawing.Point(198, 129);
+            this.txtUserRoleId.Name = "txtUserRoleId";
+            this.txtUserRoleId.Size = new System.Drawing.Size(175, 31);
+            this.txtUserRoleId.TabIndex = 1;
+            // 
+            // txtRoleId
+            // 
+            this.txtRoleId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtRoleId.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.txtRoleId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtRoleId.Location = new System.Drawing.Point(198, 80);
+            this.txtRoleId.Name = "txtRoleId";
+            this.txtRoleId.Size = new System.Drawing.Size(175, 31);
+            this.txtRoleId.TabIndex = 1;
+            // 
+            // txtUserRoleModifiedAt
+            // 
+            this.txtUserRoleModifiedAt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtUserRoleModifiedAt.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.txtUserRoleModifiedAt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtUserRoleModifiedAt.Location = new System.Drawing.Point(9, 129);
+            this.txtUserRoleModifiedAt.Name = "txtUserRoleModifiedAt";
+            this.txtUserRoleModifiedAt.Size = new System.Drawing.Size(175, 31);
+            this.txtUserRoleModifiedAt.TabIndex = 1;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label7.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label7.Location = new System.Drawing.Point(198, 114);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(66, 15);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "UserRoleId";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label8.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label8.Location = new System.Drawing.Point(198, 65);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(41, 15);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "RoleId";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label9.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label9.Location = new System.Drawing.Point(9, 114);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(127, 15);
+            this.label9.TabIndex = 4;
+            this.label9.Text = "User Role Modified At";
             // 
             // txtFullName
             // 
@@ -394,69 +458,6 @@
             this.label28.Size = new System.Drawing.Size(59, 15);
             this.label28.TabIndex = 40;
             this.label28.Text = "User Role";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label7.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label7.Location = new System.Drawing.Point(198, 114);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(66, 15);
-            this.label7.TabIndex = 4;
-            this.label7.Text = "UserRoleId";
-            // 
-            // txtUserRoleId
-            // 
-            this.txtUserRoleId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtUserRoleId.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.txtUserRoleId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtUserRoleId.Location = new System.Drawing.Point(198, 129);
-            this.txtUserRoleId.Name = "txtUserRoleId";
-            this.txtUserRoleId.Size = new System.Drawing.Size(175, 31);
-            this.txtUserRoleId.TabIndex = 1;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label8.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label8.Location = new System.Drawing.Point(198, 65);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(41, 15);
-            this.label8.TabIndex = 4;
-            this.label8.Text = "RoleId";
-            // 
-            // txtRoleId
-            // 
-            this.txtRoleId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtRoleId.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.txtRoleId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtRoleId.Location = new System.Drawing.Point(198, 80);
-            this.txtRoleId.Name = "txtRoleId";
-            this.txtRoleId.Size = new System.Drawing.Size(175, 31);
-            this.txtRoleId.TabIndex = 1;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label9.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label9.Location = new System.Drawing.Point(9, 114);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(127, 15);
-            this.label9.TabIndex = 4;
-            this.label9.Text = "User Role Modified At";
-            // 
-            // txtUserRoleModifiedAt
-            // 
-            this.txtUserRoleModifiedAt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtUserRoleModifiedAt.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.txtUserRoleModifiedAt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtUserRoleModifiedAt.Location = new System.Drawing.Point(9, 129);
-            this.txtUserRoleModifiedAt.Name = "txtUserRoleModifiedAt";
-            this.txtUserRoleModifiedAt.Size = new System.Drawing.Size(175, 31);
-            this.txtUserRoleModifiedAt.TabIndex = 1;
             // 
             // FrmUser
             // 

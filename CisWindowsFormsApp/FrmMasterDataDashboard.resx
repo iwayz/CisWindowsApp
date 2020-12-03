@@ -197,9 +197,6 @@
         MVzRRcFCAAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="toolTipButton.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <data name="btnUsageTypes.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAABGdBTUEAALGPC/xhBQAAATNJREFUWEft
@@ -211,6 +208,9 @@
         RBj0PrfHg8cAAAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="toolTipButton.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <data name="btnUOM.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAABGdBTUEAALGPC/xhBQAAAJlJREFUWEft
@@ -264,17 +264,6 @@
         A763fN4bPRWPPeGf6sOt16+fzdcqFg7O9W4750eJmuYBuUIBJeQ3JXEAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="btnUserRoles.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAABGdBTUEAALGPC/xhBQAAATRJREFUWEft
-        l7FtwzAURLWNAU+RJguksofIDhkgC7hK4yncaAOnSZM6SZkycCnf+V9Dg/9LFCUDsf2AA0H++zzIMgiq
-        OafrugW0gX6hKeA+3G+hCB+YWnbMQKsIHxk9vmTLgvrObC7x08vkwZ9wKWsC16EPmgIeZM8j01zcw/PI
-        NBfXEf4N8UzgOJRJwp9lP8G5LfdSHZ7dgOtWDqkK/5EtC+rvZnOpCg/PZ9RfzObyf5+crGRN4LqVQ6rD
-        P6FkE8613kd1ODlAW4jvmCPnQ5gkfCxV4W/QE7SGXiGecBw55zrrEaPCeUl4lCWEPvlzFIf/Qdnbiwf9
-        6junOHyvUhHss/aE4vD+W2cG9ll7QnF4eGP1YJ+1J4z6wxE+yVB5jA6fgtsN7/1iid5ZDYO+1S70ldo0
-        R6aApRNgt2ALAAAAAElFTkSuQmCC
-</value>
-  </data>
   <data name="btnRoles.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAABGdBTUEAALGPC/xhBQAAAdZJREFUWEft
@@ -289,7 +278,4 @@
         QmCC
 </value>
   </data>
-  <metadata name="toolTipButton.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
 </root>

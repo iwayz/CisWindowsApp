@@ -64,19 +64,48 @@ namespace CisWindowsFormsApp
             }
             else
             {
-                var userToAdd = new User
+                using (var context = new CisDbContext())
                 {
-                    Username = txtUsername.Text.Trim(),
-                    Password = new UserHelper().HashPassword(txtPassword.Text.Trim()),
-                    FullName = txtFullName.Text.Trim(),
-                     					 // Audit Fields 					CreatedBy = Guid.NewGuid().ToString().ToUpper(),
-                    CreatedAt = DateTime.Now,
-                    ModifiedBy = Guid.NewGuid().ToString().ToUpper(),
-                    ModifiedAt = DateTime.Now
-                };
-                uowUser.Repository.Add(userToAdd);
-                uowUser.Commit();
+                    using (var dbContextTransaction = context.Database.BeginTransaction())
+                    {
+                        var userToAdd = new User
+                        {
+                            Username = txtUsername.Text.Trim(),
+                            Password = new UserHelper().HashPassword(txtPassword.Text.Trim()),
+                            FullName = txtFullName.Text.Trim(),
+
+                            // Audit Fields 
+                            CreatedBy = Guid.NewGuid().ToString().ToUpper(),
+                            CreatedAt = DateTime.Now,
+                            ModifiedBy = Guid.NewGuid().ToString().ToUpper(),
+                            ModifiedAt = DateTime.Now
+                        };
+                        var uowUsr = new UnitOfWork<User>(context);
+
+                        uowUsr.Repository.Add(userToAdd);
+                        uowUsr.Commit();
+
+                        var uowUsrRole = new UnitOfWork<UserRole>(context);
+                        var userRoleToAdd = new UserRole
+                        {
+                            UserId = userToAdd.Id.ToString().ToUpper(),
+                            RoleId = cbRole.SelectedValue.ToString().ToUpper(),
+
+                            // Audit Fields 
+                            CreatedBy = Guid.NewGuid().ToString().ToUpper(),
+                            CreatedAt = DateTime.Now,
+                            ModifiedBy = Guid.NewGuid().ToString().ToUpper(),
+                            ModifiedAt = DateTime.Now
+                        };
+                        uowUsrRole.Repository.Add(userRoleToAdd);
+                        uowUsrRole.Commit();
+
+                        dbContextTransaction.Commit();
+                    }
+                }
+
                 btnReload.PerformClick();
+
             }
         }
 
@@ -114,23 +143,67 @@ namespace CisWindowsFormsApp
 
         private void btnDel_Click(object sender, EventArgs e)
         {
-            var uomToDel = uowUser.Repository.GetAll().Where(u => u.Username == txtUsername.Text.Trim()).FirstOrDefault();
-            if (uomToDel != null)
+            var checkUser = uowUser.Repository.GetAll().Where(u => u.Username == txtUsername.Text.Trim()).FirstOrDefault();
+            
+            if (checkUser != null)
             {
                 if (DialogResult.Yes == CommonMessageHelper.ConfirmDelete())
                 {
-                    uowUser.Repository.Delete(uomToDel);
-                    var res = uowUser.Commit();
-                    if (!res.Item1 && res.Item2 == "Expected")
-                    {
-                        CommonMessageHelper.ReferredDataCannotBeDeleted();
-                    }
 
-                    if (!res.Item1 && res.Item2 == "Unexpected")
+                    using (var context = new CisDbContext())
                     {
-                        CommonMessageHelper.ContactAdminError();
+                        using (var dbContextTransaction = context.Database.BeginTransaction())
+                        {
+                            bool expectedError = false;
+                            bool unexpectedError = false;
+                            var uowUsrRole = new UnitOfWork<UserRole>(context);
+                            var usrRoleToDel = uowUsrRole.Repository.GetAll().Where(u => u.Id == txtUserRoleId.Text.Trim()).FirstOrDefault();
+                            uowUsrRole.Repository.Delete(usrRoleToDel);
+                            var uRoleRes = uowUsrRole.Commit();
+                            if (!uRoleRes.Item1 && uRoleRes.Item2 == "Expected")
+                            {
+                                expectedError = true;
+                            }
+
+                            if (!uRoleRes.Item1 && uRoleRes.Item2 == "Unexpected")
+                            {
+                                unexpectedError = true;
+                            }
+
+                            var uowUsr = new UnitOfWork<User>(context);
+                            var usrToDel = uowUsr.Repository.GetAll().Where(u => u.Username == txtUsername.Text.Trim()).FirstOrDefault();
+                            uowUsr.Repository.Delete(usrToDel);
+                            var userRes = uowUsr.Commit();
+                            if (!userRes.Item1 && userRes.Item2 == "Expected")
+                            {
+                                expectedError = true;
+                            }
+
+                            if (!userRes.Item1 && userRes.Item2 == "Unexpected")
+                            {
+                                unexpectedError = true;
+                            }
+
+                            if (expectedError) CommonMessageHelper.ReferredDataCannotBeDeleted();
+                            if (unexpectedError) CommonMessageHelper.ContactAdminError();
+
+                            dbContextTransaction.Commit();
+                        }
                     }
                     btnReload.PerformClick();
+
+                    //uowUser.Repository.Delete(uomToDel);
+                    //var res = uowUser.Commit();
+                    //if (!res.Item1 && res.Item2 == "Expected")
+                    //{
+                    //    CommonMessageHelper.ReferredDataCannotBeDeleted();
+                    //}
+
+                    //if (!res.Item1 && res.Item2 == "Unexpected")
+                    //{
+                    //    CommonMessageHelper.ContactAdminError();
+                    //}
+                    //btnReload.PerformClick();
                 }
             }
             else
@@ -163,7 +236,6 @@ namespace CisWindowsFormsApp
                 {
                     using (var dbContextTransaction = context.Database.BeginTransaction())
                     {
-                        var now = DateTime.Now;
                         var uowUsr = new UnitOfWork<User>(context);
                         var userToUpdate = uowUsr.Repository.GetById(txtUserId.Text.Trim());
                         userToUpdate.Username = txtUsername.Text.Trim();
@@ -173,7 +245,7 @@ namespace CisWindowsFormsApp
 
                         userToUpdate.FullName = txtFullName.Text.Trim();
                         userToUpdate.ModifiedBy = Guid.NewGuid().ToString().ToUpper();
-                        userToUpdate.ModifiedAt = new DateTime(now.Year, now.Month, now.Day, now.Hour, now.Minute, now.Second);
+                        userToUpdate.ModifiedAt = DateTime.Now;
                         uowUsr.Repository.Update(userToUpdate);
                         uowUsr.Commit();
 
@@ -182,7 +254,7 @@ namespace CisWindowsFormsApp
                         userRoleToUpdate.UserId = txtUserId.Text.Trim();
                         userRoleToUpdate.RoleId = cbRole.SelectedValue.ToString().Trim();
                         userRoleToUpdate.ModifiedBy = Guid.NewGuid().ToString().ToUpper();
-                        userRoleToUpdate.ModifiedAt = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                        userRoleToUpdate.ModifiedAt = DateTime.Now;
                         uowUsrRole.Repository.Update(userRoleToUpdate);
                         uowUsrRole.Commit();
 
@@ -318,13 +390,13 @@ namespace CisWindowsFormsApp
             dgvUser.Columns[nameof(Role.Description)].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             // hidden fields
-            //dgvUser.Columns["UserId"].Visible = false;
-            //dgvUser.Columns[nameof(User.Password)].Visible = false;
-            //dgvUser.Columns["UserRoleId"].Visible = false;
-            //dgvUser.Columns[nameof(UserRole.RoleId)].Visible = false;
-            //dgvUser.Columns[nameof(Role.RoleCode)].Visible = false;
-            //dgvUser.Columns["UModifiedAt"].Visible = false;
-            //dgvUser.Columns["URModifiedAt"].Visible = false;
+            dgvUser.Columns["UserId"].Visible = false;
+            dgvUser.Columns[nameof(User.Password)].Visible = false;
+            dgvUser.Columns["UserRoleId"].Visible = false;
+            dgvUser.Columns[nameof(UserRole.RoleId)].Visible = false;
+            dgvUser.Columns[nameof(Role.RoleCode)].Visible = false;
+            dgvUser.Columns["UModifiedAt"].Visible = false;
+            dgvUser.Columns["URModifiedAt"].Visible = false;
         }
 
         private void SetUIbySelectedGridItem()
