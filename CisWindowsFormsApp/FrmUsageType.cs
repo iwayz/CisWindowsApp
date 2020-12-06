@@ -99,9 +99,9 @@ namespace CisWindowsFormsApp
                 {
                     UsageTypeCode = txtUsageTypeCode.Text.Trim(),
                     Description = txtUsageDesc.Text.Trim(),
-                     					 // Audit Fields 					CreatedBy = Guid.NewGuid().ToString().ToUpper(),
+                     					 // Audit Fields 					CreatedBy = Properties.Settings.Default.CurrentUserId,
                     CreatedAt = DateTime.Now,
-                    ModifiedBy = Guid.NewGuid().ToString().ToUpper(),
+                    ModifiedBy = Properties.Settings.Default.CurrentUserId,
                     ModifiedAt = DateTime.Now
                 };
                 uowUsage.Repository.Add(usageToAdd);
@@ -184,7 +184,7 @@ namespace CisWindowsFormsApp
                 var usageToUpdate = uowUsage.Repository.GetById(txtUsageId.Text.Trim());
                 usageToUpdate.UsageTypeCode = txtUsageTypeCode.Text.Trim();
                 usageToUpdate.Description = txtUsageDesc.Text.Trim();
-                usageToUpdate.ModifiedBy = Guid.NewGuid().ToString().ToUpper();
+                usageToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUserId;
                 usageToUpdate.ModifiedAt = DateTime.Now;
 
                 uowUsage.Repository.Update(usageToUpdate);

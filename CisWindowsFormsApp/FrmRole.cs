@@ -36,53 +36,11 @@ namespace CisWindowsFormsApp
             isAdd = true;
             SetUIButtonGroup();
 
+
+            BindCheckBoxList(cblMasterData, Constant.Permission.PermissionType.Master);
+            BindCheckBoxList(cblTransaksi, Constant.Permission.PermissionType.Transaction);
+
             txtRoleCode.Focus();
-        }
-        private void BindRoleGridView()
-        {
-            var roles = new UnitOfWork<Role>(dbContext).Repository.GetAll().OrderBy(u => u.RoleCode);
-            var uomDetail = roles.Select(role =>
-            new
-            {
-                role.Id,
-                role.RoleCode,
-                role.Description,
-                role.ModifiedAt
-            });
-
-            dgvRole.DataSource = uomDetail.ToList();
-        }
-
-        private void SetUIGridView()
-        {
-            dgvRole.Columns[nameof(Role.RoleCode)].HeaderText = "KODE";
-            dgvRole.Columns[nameof(Role.Description)].HeaderText = "NAMA ROLE";
-            dgvRole.Columns[nameof(Role.Description)].Width = 220;
-            dgvRole.Columns[nameof(Role.Id)].Visible = false;
-            dgvRole.Columns[nameof(Role.ModifiedAt)].Visible = false;
-        }
-
-        private void SetUIbySelectedGridItem()
-        {
-            var currentRow = dgvRole.CurrentRow;
-            txtRoleCode.Text = currentRow.Cells[nameof(Role.RoleCode)].Value.ToString();
-            txtDescription.Text = currentRow.Cells[nameof(Role.Description)].Value.ToString();
-
-            // hidden fields
-            txtRoleId.Text = currentRow.Cells[nameof(Role.Id)].Value.ToString();
-            txtModifiedAt.Text = currentRow.Cells[nameof(Role.ModifiedAt)].Value.ToString();
-
-        }
-
-        private bool ValidateMandatoryFields()
-        {
-            if (string.IsNullOrEmpty(txtRoleCode.Text) || string.IsNullOrEmpty(txtDescription.Text))
-            {
-                CommonMessageHelper.DataCannotBeEmpty("Kode Role dan Keterangan");
-                return false;
-
-            }
-            return true;
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -91,6 +49,11 @@ namespace CisWindowsFormsApp
             SetUIButtonGroup(); 
             txtRoleCode.Text = string.Empty;
             txtDescription.Text = string.Empty;
+
+            ClearCheckedItems(cblMasterData);
+            ClearCheckedItems(cblTransaksi);
+            ClearCheckedItems(cblReporting);
+
             txtRoleCode.Focus();
         }
 
@@ -104,17 +67,34 @@ namespace CisWindowsFormsApp
             }
             else
             {
-                var roleToAdd = new Role
+                using (var context = new CisDbContext())
                 {
-                    RoleCode = txtRoleCode.Text.Trim(),
-                    Description = txtDescription.Text.Trim(),
-                     					 // Audit Fields 					CreatedBy = Guid.NewGuid().ToString().ToUpper(),
-                    CreatedAt = DateTime.Now,
-                    ModifiedBy = Guid.NewGuid().ToString().ToUpper(),
-                    ModifiedAt = DateTime.Now
-                };
-                uowRole.Repository.Add(roleToAdd);
-                uowRole.Commit();
+                    using (var dbContextTransaction = context.Database.BeginTransaction())
+                    {
+                        var roleToAdd = new Role
+                        {
+                            RoleCode = txtRoleCode.Text.Trim(),
+                            Description = txtDescription.Text.Trim(),
+
+                            // Audit Fields 
+                            CreatedBy = Properties.Settings.Default.CurrentUserId,
+                            CreatedAt = DateTime.Now,
+                            ModifiedBy = Properties.Settings.Default.CurrentUserId,
+                            ModifiedAt = DateTime.Now
+                        };
+                        var uwRole = new UnitOfWork<Role>(context);
+                        uwRole.Repository.Add(roleToAdd);
+                        uwRole.Commit();
+
+                        var permRolesToAdd = GetSelectedRolePermisions(roleToAdd.Id);
+                        var uwPermRole = new UnitOfWork<PermissionRole>(context);
+                        uwPermRole.Repository.Add(permRolesToAdd);
+                        uwPermRole.Commit();
+
+                        dbContextTransaction.Commit();
+                    }
+                }
+
                 btnReload.PerformClick();
             }
         }
@@ -189,14 +169,118 @@ namespace CisWindowsFormsApp
             }
             else
             {
-                var roleToUpdate = uowRole.Repository.GetById(txtRoleId.Text.Trim());
-                roleToUpdate.RoleCode = txtRoleCode.Text.Trim();
-                roleToUpdate.Description = txtDescription.Text.Trim();
-                roleToUpdate.ModifiedBy = Guid.NewGuid().ToString().ToUpper();
-                roleToUpdate.ModifiedAt = DateTime.Now;
+                using (var context = new CisDbContext())
+                {
+                    using (var dbContextTransaction = context.Database.BeginTransaction())
+                    {
 
-                uowRole.Repository.Update(roleToUpdate);
-                uowRole.Commit();
+                        var roleToUpdate = uowRole.Repository.GetById(txtRoleId.Text.Trim());
+                        roleToUpdate.RoleCode = txtRoleCode.Text.Trim();
+                        roleToUpdate.Description = txtDescription.Text.Trim();
+                        roleToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUserId;
+                        roleToUpdate.ModifiedAt = DateTime.Now;
+
+                        var uwRole = new UnitOfWork<Role>(context);
+                        uwRole.Repository.Update(roleToUpdate);
+                        uwRole.Commit();
+
+
+                        var uwPermRole = new UnitOfWork<PermissionRole>(context);
+                        var existingAccessCodes = GetExistngAccessCodes();
+                        for (int i = 0; i < cblMasterData.Items.Count; i++)
+                        {
+                            var permissionCode = existingAccessCodes.Where(a => cblMasterData.Items[i].ToString().Contains(a.ToString())).FirstOrDefault().ToString();
+                            var permission = new UnitOfWork<Permission>(dbContext).Repository.GetAll()
+                                .Where(perm => perm.PermissionCode == permissionCode).FirstOrDefault();
+                            var permRole = uwPermRole.Repository.GetAll().Where(pr => pr.PermisionId == permission.Id && pr.RoleId == roleToUpdate.Id).FirstOrDefault();
+
+                            if (cblMasterData.GetItemCheckState(i) == CheckState.Unchecked && permRole != null)
+                            {
+                                uwPermRole.Repository.Delete(permRole);
+                            }
+                            else if (cblMasterData.GetItemCheckState(i) == CheckState.Checked && permRole == null)
+                            {
+                                var permRoleToAdd = new PermissionRole
+                                {
+                                    RoleId = roleToUpdate.Id,
+                                    PermisionId = permission.Id,
+
+                                    // Audit Fields 
+                                    CreatedBy = Properties.Settings.Default.CurrentUserId,
+                                    CreatedAt = DateTime.Now,
+                                    ModifiedBy = Properties.Settings.Default.CurrentUserId,
+                                    ModifiedAt = DateTime.Now
+                                };
+                                uwPermRole.Repository.Add(permRoleToAdd);
+                            }
+
+                            uwPermRole.Commit();
+                        }
+
+                        for (int i = 0; i < cblTransaksi.Items.Count; i++)
+                        {
+                            var permissionCode = existingAccessCodes.Where(a => cblTransaksi.Items[i].ToString().Contains(a.ToString())).FirstOrDefault().ToString();
+                            var permission = new UnitOfWork<Permission>(dbContext).Repository.GetAll()
+                                .Where(perm => perm.PermissionCode == permissionCode).FirstOrDefault();
+                            var permRole = uwPermRole.Repository.GetAll().Where(pr => pr.PermisionId == permission.Id && pr.RoleId == roleToUpdate.Id).FirstOrDefault();
+
+                            if (cblTransaksi.GetItemCheckState(i) == CheckState.Unchecked && permRole != null)
+                            {
+                                uwPermRole.Repository.Delete(permRole);
+                            }
+                            else if (cblTransaksi.GetItemCheckState(i) == CheckState.Checked && permRole == null)
+                            {
+                                var permRoleToAdd = new PermissionRole
+                                {
+                                    RoleId = roleToUpdate.Id,
+                                    PermisionId = permission.Id,
+
+                                    // Audit Fields 
+                                    CreatedBy = Properties.Settings.Default.CurrentUserId,
+                                    CreatedAt = DateTime.Now,
+                                    ModifiedBy = Properties.Settings.Default.CurrentUserId,
+                                    ModifiedAt = DateTime.Now
+                                };
+                                uwPermRole.Repository.Add(permRoleToAdd);
+                            }
+
+                            uwPermRole.Commit();
+                        }
+
+                        for (int i = 0; i < cblReporting.Items.Count; i++)
+                        {
+                            var permissionCode = existingAccessCodes.Where(a => cblReporting.Items[i].ToString().Contains(a.ToString())).FirstOrDefault().ToString();
+                            var permission = new UnitOfWork<Permission>(dbContext).Repository.GetAll()
+                                .Where(perm => perm.PermissionCode == permissionCode).FirstOrDefault();
+                            var permRole = uwPermRole.Repository.GetAll().Where(pr => pr.PermisionId == permission.Id && pr.RoleId == roleToUpdate.Id).FirstOrDefault();
+
+                            if (cblReporting.GetItemCheckState(i) == CheckState.Unchecked && permRole != null)
+                            {
+                                uwPermRole.Repository.Delete(permRole);
+                            }
+                            else if (cblReporting.GetItemCheckState(i) == CheckState.Checked && permRole == null)
+                            {
+                                var permRoleToAdd = new PermissionRole
+                                {
+                                    RoleId = roleToUpdate.Id,
+                                    PermisionId = permission.Id,
+
+                                    // Audit Fields 
+                                    CreatedBy = Properties.Settings.Default.CurrentUserId,
+                                    CreatedAt = DateTime.Now,
+                                    ModifiedBy = Properties.Settings.Default.CurrentUserId,
+                                    ModifiedAt = DateTime.Now
+                                };
+                                uwPermRole.Repository.Add(permRoleToAdd);
+                            }
+
+                            uwPermRole.Commit();
+                        }
+
+                        dbContextTransaction.Commit();
+                    }
+                }
+
                 btnReload.PerformClick();
             }
         }
@@ -204,6 +288,7 @@ namespace CisWindowsFormsApp
         private void dgvRole_Click(object sender, EventArgs e)
         {
             btnReload.PerformClick();
+            LoadRolePermision();
         }
 
         private void SetUIButtonGroup()
@@ -230,6 +315,145 @@ namespace CisWindowsFormsApp
                 e.Handled = true;
                 btnSearch.PerformClick();
             }
+        }
+
+        private void BindRoleGridView()
+        {
+            var roles = new UnitOfWork<Role>(dbContext).Repository.GetAll().OrderBy(u => u.RoleCode);
+            var uomDetail = roles.Select(role =>
+            new
+            {
+                role.Id,
+                role.RoleCode,
+                role.Description,
+                role.ModifiedAt
+            });
+
+            dgvRole.DataSource = uomDetail.ToList();
+        }
+
+        private void SetUIGridView()
+        {
+            dgvRole.Columns[nameof(Role.RoleCode)].HeaderText = "KODE";
+            dgvRole.Columns[nameof(Role.Description)].HeaderText = "NAMA ROLE";
+            dgvRole.Columns[nameof(Role.Description)].Width = 300;
+            dgvRole.Columns[nameof(Role.Id)].Visible = false;
+            dgvRole.Columns[nameof(Role.ModifiedAt)].Visible = false;
+        }
+
+        private void SetUIbySelectedGridItem()
+        {
+            var currentRow = dgvRole.CurrentRow;
+            txtRoleCode.Text = currentRow.Cells[nameof(Role.RoleCode)].Value.ToString();
+            txtDescription.Text = currentRow.Cells[nameof(Role.Description)].Value.ToString();
+
+
+            // hidden fields
+            txtRoleId.Text = currentRow.Cells[nameof(Role.Id)].Value.ToString();
+            txtModifiedAt.Text = currentRow.Cells[nameof(Role.ModifiedAt)].Value.ToString();
+            
+        }
+
+        private bool ValidateMandatoryFields()
+        {
+            if (string.IsNullOrEmpty(txtRoleCode.Text) || string.IsNullOrEmpty(txtDescription.Text))
+            {
+                CommonMessageHelper.DataCannotBeEmpty("Kode Role dan Keterangan");
+                return false;
+            }
+            return true;
+        }
+
+        private void BindCheckBoxList(CheckedListBox checkBoxList, Constant.Permission.PermissionType permissionType)
+        {
+            var permissions = new UnitOfWork<Permission>(dbContext).Repository.GetAll()
+                .Where(e => e.PermisionType == permissionType)
+                .OrderBy(e => e.PermissionCode);
+
+            foreach (var item in permissions)
+            {
+                checkBoxList.Items.Add(item.PermissionCode + " - " + item.Description);
+            }
+        }
+
+        private List<PermissionRole> GetSelectedRolePermisions(string roleId)
+        {
+            List<PermissionRole> permissionRoles = new List<PermissionRole>();
+            var existingAccessCodes = GetExistngAccessCodes();
+            var checkedItems = cblMasterData.CheckedItems.OfType<object>().ToList();
+            checkedItems.AddRange(cblTransaksi.CheckedItems.OfType<object>().ToList());
+            checkedItems.AddRange(cblReporting.CheckedItems.OfType<object>().ToList());
+
+            foreach (var checkedItem in checkedItems)
+            {
+                var permissionCode = existingAccessCodes.Where(a => checkedItem.ToString().Contains(a.ToString())).FirstOrDefault().ToString();
+                var permission = new UnitOfWork<Permission>(dbContext).Repository.GetAll()
+                    .Where(e => e.PermissionCode == permissionCode).FirstOrDefault();
+
+                var permRole = new PermissionRole
+                {
+                    RoleId = roleId.ToUpper(),
+                    PermisionId = permission.Id,
+
+                    // Audit Fields 
+                    CreatedBy = Properties.Settings.Default.CurrentUserId,
+                    CreatedAt = DateTime.Now,
+                    ModifiedBy = Properties.Settings.Default.CurrentUserId,
+                    ModifiedAt = DateTime.Now
+                };
+                permissionRoles.Add(permRole);
+            }
+            return permissionRoles;
+        }
+
+        private List<int> GetExistngAccessCodes()
+        {
+            var existingAccessCodes = Enum.GetValues(typeof(Constant.Permission.MasterData)).Cast<int>().ToList();
+            existingAccessCodes.AddRange(Enum.GetValues(typeof(Constant.Permission.Transaction)).Cast<int>().ToList());
+            // TODO: ACTIVATE this when the reporting is ready
+            //existingAccessCodes.AddRange(Enum.GetValues(typeof(Constant.Permission.Reporting)).Cast<int>().ToList());
+            
+            return existingAccessCodes;
+        }
+
+        private void LoadRolePermision()
+        {
+            var uowPermission = new UnitOfWork<Permission>(dbContext);
+            var uowPermissionRole = new UnitOfWork<PermissionRole>(dbContext);
+            var permissions = uowPermission.Repository.GetAll();
+            var permissionCodes = uowPermissionRole.Repository.GetAll()
+                .Where(p => p.RoleId == txtRoleId.Text.ToString().Trim())
+                .Join(permissions, pr => pr.PermisionId, p => p.Id, (pr, p) => new { pr, p })
+                .Select(res => res.p.PermissionCode)
+                .ToList();
+
+            SetItemChecked(cblMasterData, permissionCodes);
+            SetItemChecked(cblTransaksi, permissionCodes);
+            SetItemChecked(cblReporting, permissionCodes);
+        }
+
+        private void SetItemChecked(CheckedListBox checkedListBox, List<string> permissionCodes)
+        {
+            ClearCheckedItems(checkedListBox);
+            for (int i = 0; i < checkedListBox.Items.Count; i++)
+            {
+                if (permissionCodes.Any(p => checkedListBox.Items[i].ToString().Contains(p)))
+                {
+                    checkedListBox.SetItemChecked(i, true);
+                }
+            }
+           
+            checkedListBox.Refresh();
+        }
+
+        private void ClearCheckedItems(CheckedListBox checkedListBox)
+        {
+            for (int i = 0; i < checkedListBox.Items.Count; i++)
+            {
+                checkedListBox.SetItemChecked(i, false);
+            }
+
+            checkedListBox.Refresh();
         }
     }
 }

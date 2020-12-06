@@ -24,22 +24,32 @@ namespace Cis.Model
         {
             public enum PermissionType
             {
-                Master,
-                Transaction,
-                Reporting
+                Master = 1,
+                Transaction = 2,
+                Reporting =3
             }
 
             public enum MasterData
             {
-                Product,
-                Customer // TODO: add other master form
+                Role = 100,
+                User = 101,
+                Location = 102,
+                Uom = 103,
+                OutletType = 104,
+                MedicineType = 105,
+                UsageType = 106,
+                Principal = 107,
+                Product = 108,
+                Batch = 109,
+                Customer = 110,
+                SalesArea = 111,
+                Salesman = 112
             }
 
-            public enum Trasnsaction
+            public enum Transaction
             {
-                Sales,
-                Order,
-                Return // TODO: add other transaction form
+                Sales = 200,
+                Order = 201
             }
 
             public enum Reporting

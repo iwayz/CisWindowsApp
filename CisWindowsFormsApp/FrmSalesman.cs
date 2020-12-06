@@ -86,9 +86,9 @@ namespace CisWindowsFormsApp
                     DistrictId = cbDistrict.SelectedValue.ToString(),
                     SubDistrictId = cbSubDistrict.SelectedValue.ToString(),
 
-                     					 // Audit Fields 					CreatedBy = Guid.NewGuid().ToString().ToUpper(),
+                     					 // Audit Fields 					CreatedBy = Properties.Settings.Default.CurrentUserId,
                     CreatedAt = DateTime.Now,
-                    ModifiedBy = Guid.NewGuid().ToString().ToUpper(),
+                    ModifiedBy = Properties.Settings.Default.CurrentUserId,
                     ModifiedAt = DateTime.Now
                 };
                 uowSalesman.Repository.Add(salesmanToAdd);
@@ -178,7 +178,7 @@ namespace CisWindowsFormsApp
                 salesmanToUpdate.DistrictId = cbDistrict.SelectedValue.ToString();
                 salesmanToUpdate.SubDistrictId = cbSubDistrict.SelectedValue.ToString();
 
-                salesmanToUpdate.ModifiedBy = Guid.NewGuid().ToString().ToUpper();
+                salesmanToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUserId;
                 salesmanToUpdate.ModifiedAt = DateTime.Now;
 
                 uowSalesman.Repository.Update(salesmanToUpdate);

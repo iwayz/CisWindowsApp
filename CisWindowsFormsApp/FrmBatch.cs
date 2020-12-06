@@ -72,9 +72,9 @@ namespace CisWindowsFormsApp
                     ExpiredDate= DateTime.Parse(dtpExpiredDate.Value.ToString("yyyy-MM-dd")),
                     
  					 // Audit Fields 
-					CreatedBy = Guid.NewGuid().ToString().ToUpper(),
+					CreatedBy = Properties.Settings.Default.CurrentUserId,
                     CreatedAt = DateTime.Now,
-                    ModifiedBy = Guid.NewGuid().ToString().ToUpper(),
+                    ModifiedBy = Properties.Settings.Default.CurrentUserId,
                     ModifiedAt = DateTime.Now
                 };
                 uowBatch.Repository.Add(batchToAdd);
@@ -159,7 +159,7 @@ namespace CisWindowsFormsApp
                 batchToUpdate.Quantity = Convert.ToInt32(txtQuantity.Text.Trim());
                 batchToUpdate.EntryDate = DateTime.Parse(dtpEntryDate.Value.ToString("yyyy-MM-dd"));
                 batchToUpdate.ExpiredDate = DateTime.Parse(dtpExpiredDate.Value.ToString("yyyy-MM-dd"));
-                batchToUpdate.ModifiedBy = Guid.NewGuid().ToString().ToUpper();
+                batchToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUserId;
                 batchToUpdate.ModifiedAt = DateTime.Now;
 
                 uowBatch.Repository.Update(batchToUpdate);

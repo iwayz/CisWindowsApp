@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Cis.Data;
+using Cis.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,6 +34,25 @@ namespace CisWindowsFormsApp
             }
 
             return index;
+        }
+
+        public bool ValidateAccess(int permissionCode)
+        {
+            using (var context = new CisDbContext())
+            {
+                var userRole = new UnitOfWork<UserRole>(context).Repository.GetAll()
+                    .Where(u => u.Id == Properties.Settings.Default.CurrentUserId);
+                var permission = new UnitOfWork<Permission>(context).Repository.GetAll()
+                    .Where(p => p.PermissionCode == permissionCode.ToString());
+                var permissionRole = new UnitOfWork<PermissionRole>(context).Repository.GetAll();
+
+                var userDetail = userRole.Join(permissionRole, ur => ur.RoleId, pr => pr.Id, (ur, pr) => new { ur, pr })
+                    .Join(permission, urpr => urpr.pr.PermisionId, p => p.Id, (urpr, p) => new { urpr, p })
+                    .Select(res => res).ToList();
+
+                if (userDetail.Count > 0) return true;
+            }
+            return false;
         }
     }
 }

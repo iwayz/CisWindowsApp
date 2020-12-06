@@ -65,9 +65,9 @@ namespace CisWindowsFormsApp
                     Description = txtMedCat.Text.Trim(),
                     
  					 // Audit Fields 
-					CreatedBy = Guid.NewGuid().ToString().ToUpper(),
+					CreatedBy = Properties.Settings.Default.CurrentUserId,
                     CreatedAt = DateTime.Now,
-                    ModifiedBy = Guid.NewGuid().ToString().ToUpper(),
+                    ModifiedBy = Properties.Settings.Default.CurrentUserId,
                     ModifiedAt = DateTime.Now
                 };
                 uowMedCat.Repository.Add(medCatToAdd);
@@ -150,7 +150,7 @@ namespace CisWindowsFormsApp
                 var medCatToUpdate = uowMedCat.Repository.GetById(txtMedCatId.Text.Trim());
                 medCatToUpdate.MedicineCatCode= txtMedCatCode.Text.Trim();
                 medCatToUpdate.Description = txtMedCat.Text.Trim();
-                medCatToUpdate.ModifiedBy = Guid.NewGuid().ToString().ToUpper();
+                medCatToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUserId;
                 medCatToUpdate.ModifiedAt = DateTime.Now;
 
                 uowMedCat.Repository.Update(medCatToUpdate);

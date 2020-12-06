@@ -48,9 +48,9 @@ namespace CisWindowsFormsApp
                 {
                     UomCode = txtUomCode.Text.Trim(),
                     Description = txtUomDesc.Text.Trim(),
-                     					 // Audit Fields 					CreatedBy = Guid.NewGuid().ToString().ToUpper(),
+                     					 // Audit Fields 					CreatedBy = Properties.Settings.Default.CurrentUserId,
                     CreatedAt = DateTime.Now,
-                    ModifiedBy = Guid.NewGuid().ToString().ToUpper(),
+                    ModifiedBy = Properties.Settings.Default.CurrentUserId,
                     ModifiedAt = DateTime.Now
                 };
                 uowUom.Repository.Add(uomToAdd);
@@ -132,7 +132,7 @@ namespace CisWindowsFormsApp
                 var uomToUpdate = uowUom.Repository.GetById(txtUomId.Text.Trim());
                 uomToUpdate.UomCode = txtUomCode.Text.Trim();
                 uomToUpdate.Description = txtUomDesc.Text.Trim();
-                uomToUpdate.ModifiedBy = Guid.NewGuid().ToString().ToUpper();
+                uomToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUserId;
                 uomToUpdate.ModifiedAt = DateTime.Now;
 
                 uowUom.Repository.Update(uomToUpdate);

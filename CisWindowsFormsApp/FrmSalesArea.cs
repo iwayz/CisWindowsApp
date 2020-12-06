@@ -66,9 +66,9 @@ namespace CisWindowsFormsApp
                 {
                     AreaCode = txtAreaCode.Text.Trim(),
                     Description = txtDescription.Text.Trim(),
-                     					 // Audit Fields 					CreatedBy = Guid.NewGuid().ToString().ToUpper(),
+                     					 // Audit Fields 					CreatedBy = Properties.Settings.Default.CurrentUserId,
                     CreatedAt = DateTime.Now,
-                    ModifiedBy = Guid.NewGuid().ToString().ToUpper(),
+                    ModifiedBy = Properties.Settings.Default.CurrentUserId,
                     ModifiedAt = DateTime.Now
                 };
                 uowArea.Repository.Add(areaToAdd);
@@ -151,7 +151,7 @@ namespace CisWindowsFormsApp
                 var areaToUpdate = uowArea.Repository.GetById(txtAreaId.Text.Trim());
                 areaToUpdate.AreaCode = txtAreaCode.Text.Trim();
                 areaToUpdate.Description = txtDescription.Text.Trim();
-                areaToUpdate.ModifiedBy = Guid.NewGuid().ToString().ToUpper();
+                areaToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUserId;
                 areaToUpdate.ModifiedAt = DateTime.Now;
 
                 uowArea.Repository.Update(areaToUpdate);

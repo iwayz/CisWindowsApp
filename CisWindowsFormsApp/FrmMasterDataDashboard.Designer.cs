@@ -208,7 +208,7 @@
             this.btnUOM.Name = "btnUOM";
             this.btnUOM.Size = new System.Drawing.Size(129, 56);
             this.btnUOM.TabIndex = 0;
-            this.btnUOM.Text = "UoM";
+            this.btnUOM.Text = "Satuan Unit";
             this.btnUOM.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolTipButton.SetToolTip(this.btnUOM, "Unit of Measurement (Unit)");
             this.btnUOM.UseVisualStyleBackColor = false;

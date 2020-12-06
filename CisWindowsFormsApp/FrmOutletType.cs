@@ -67,9 +67,9 @@ namespace CisWindowsFormsApp
                 {
                     OutletTypeCode = txtOutletCode.Text.Trim(),
                     Description = txtOutlet.Text.Trim(),
-                     					 // Audit Fields 					CreatedBy = Guid.NewGuid().ToString().ToUpper(),
+                     					 // Audit Fields 					CreatedBy = Properties.Settings.Default.CurrentUserId,
                     CreatedAt = DateTime.Now,
-                    ModifiedBy = Guid.NewGuid().ToString().ToUpper(),
+                    ModifiedBy = Properties.Settings.Default.CurrentUserId,
                     ModifiedAt = DateTime.Now
                 };
                 uowOutlet.Repository.Add(outletToAdd);
@@ -151,7 +151,7 @@ namespace CisWindowsFormsApp
                 var outletToUpdate = uowOutlet.Repository.GetById(txtOutletId.Text.Trim());
                 outletToUpdate.OutletTypeCode = txtOutletCode.Text.Trim();
                 outletToUpdate.Description = txtOutlet.Text.Trim();
-                outletToUpdate.ModifiedBy = Guid.NewGuid().ToString().ToUpper();
+                outletToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUserId;
                 outletToUpdate.ModifiedAt = DateTime.Now;
 
                 uowOutlet.Repository.Update(outletToUpdate);

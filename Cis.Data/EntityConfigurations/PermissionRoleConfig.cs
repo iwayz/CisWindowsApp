@@ -11,10 +11,6 @@ namespace Cis.Data.EntityConfigurations
                 .HasMaxLength(36)
                 .IsRequired();
 
-            Property(e => e.RoleId)
-                .HasMaxLength(36)
-                .IsRequired();
-
             Property(e => e.PermisionId)
                 .HasMaxLength(36)
                 .IsRequired();

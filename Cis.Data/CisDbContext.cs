@@ -52,11 +52,17 @@ namespace Cis.Data
                 .HasForeignKey(c => c.OutletTypeId)
                 .WillCascadeOnDelete(false);
 
-            // Permission Role to Role
+            // Permission Role to Role and Permission
             modelmodelBuilder.Entity<PermissionRole>()
                 .HasRequired(p => p.Role)
                 .WithMany(r => r.PermissionRoles)
                 .HasForeignKey(p => p.RoleId)
+                .WillCascadeOnDelete(false);
+
+            modelmodelBuilder.Entity<PermissionRole>()
+                .HasRequired(pr => pr.Permission)
+                .WithMany(p => p.PermissionRoles)
+                .HasForeignKey(pr => pr.PermisionId)
                 .WillCascadeOnDelete(false);
 
             // Product to Unit, MedicineCat, Usage Type and Principal
@@ -84,7 +90,7 @@ namespace Cis.Data
                 .HasForeignKey(pd => pd.PrincipalId)
                 .WillCascadeOnDelete(false);
 
-            // User Role to Role and User Role
+            // User Role to Role and User
             modelmodelBuilder.Entity<UserRole>()
                 .HasRequired(u => u.Role)
                 .WithMany(r => r.UserRoles)

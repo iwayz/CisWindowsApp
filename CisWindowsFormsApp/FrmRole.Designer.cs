@@ -47,10 +47,18 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.gbMaster = new System.Windows.Forms.GroupBox();
+            this.cblMasterData = new System.Windows.Forms.CheckedListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cblTransaksi = new System.Windows.Forms.CheckedListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cblReporting = new System.Windows.Forms.CheckedListBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtPermissionId = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRole)).BeginInit();
             this.panel1.SuspendLayout();
+            this.gbMaster.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtModifiedAt
@@ -237,12 +245,14 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.txtModifiedAt);
+            this.panel1.Controls.Add(this.txtPermissionId);
             this.panel1.Controls.Add(this.txtRoleId);
+            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(27, 480);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(353, 147);
+            this.panel1.Size = new System.Drawing.Size(1077, 147);
             this.panel1.TabIndex = 8;
             this.panel1.Visible = false;
             // 
@@ -275,6 +285,7 @@
             // 
             // gbMaster
             // 
+            this.gbMaster.Controls.Add(this.cblMasterData);
             this.gbMaster.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.gbMaster.Location = new System.Drawing.Point(492, 36);
             this.gbMaster.Name = "gbMaster";
@@ -283,8 +294,20 @@
             this.gbMaster.TabStop = false;
             this.gbMaster.Text = "Master Data";
             // 
+            // cblMasterData
+            // 
+            this.cblMasterData.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.cblMasterData.CheckOnClick = true;
+            this.cblMasterData.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cblMasterData.FormattingEnabled = true;
+            this.cblMasterData.Location = new System.Drawing.Point(12, 22);
+            this.cblMasterData.Name = "cblMasterData";
+            this.cblMasterData.Size = new System.Drawing.Size(182, 357);
+            this.cblMasterData.TabIndex = 41;
+            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cblTransaksi);
             this.groupBox1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.groupBox1.Location = new System.Drawing.Point(698, 36);
             this.groupBox1.Name = "groupBox1";
@@ -293,8 +316,20 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Transaksi";
             // 
+            // cblTransaksi
+            // 
+            this.cblTransaksi.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.cblTransaksi.CheckOnClick = true;
+            this.cblTransaksi.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cblTransaksi.FormattingEnabled = true;
+            this.cblTransaksi.Location = new System.Drawing.Point(12, 22);
+            this.cblTransaksi.Name = "cblTransaksi";
+            this.cblTransaksi.Size = new System.Drawing.Size(182, 357);
+            this.cblTransaksi.TabIndex = 41;
+            // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.cblReporting);
             this.groupBox2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.groupBox2.Location = new System.Drawing.Point(904, 36);
             this.groupBox2.Name = "groupBox2";
@@ -303,12 +338,44 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Pelaporan";
             // 
+            // cblReporting
+            // 
+            this.cblReporting.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.cblReporting.CheckOnClick = true;
+            this.cblReporting.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cblReporting.FormattingEnabled = true;
+            this.cblReporting.Location = new System.Drawing.Point(12, 22);
+            this.cblReporting.Name = "cblReporting";
+            this.cblReporting.Size = new System.Drawing.Size(182, 357);
+            this.cblReporting.TabIndex = 41;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label5.Location = new System.Drawing.Point(210, 16);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(80, 15);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Permission Id";
+            // 
+            // txtPermissionId
+            // 
+            this.txtPermissionId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPermissionId.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.txtPermissionId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtPermissionId.Location = new System.Drawing.Point(210, 31);
+            this.txtPermissionId.Name = "txtPermissionId";
+            this.txtPermissionId.Size = new System.Drawing.Size(195, 31);
+            this.txtPermissionId.TabIndex = 1;
+            // 
             // FrmRole
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1157, 715);
+            this.ClientSize = new System.Drawing.Size(1157, 678);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbMaster);
@@ -331,6 +398,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvRole)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.gbMaster.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -358,5 +428,10 @@
         private System.Windows.Forms.GroupBox gbMaster;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.CheckedListBox cblMasterData;
+        private System.Windows.Forms.CheckedListBox cblTransaksi;
+        private System.Windows.Forms.CheckedListBox cblReporting;
+        private System.Windows.Forms.TextBox txtPermissionId;
+        private System.Windows.Forms.Label label5;
     }
 }

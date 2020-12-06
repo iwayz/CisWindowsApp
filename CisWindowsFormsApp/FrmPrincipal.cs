@@ -81,9 +81,9 @@ namespace CisWindowsFormsApp
                     DistrictId = cbDistrict.SelectedValue.ToString(),
                     SubDistrictId = cbSubDistrict.SelectedValue.ToString(),
 
-                     					 // Audit Fields 					CreatedBy = Guid.NewGuid().ToString().ToUpper(),
+                     					 // Audit Fields 					CreatedBy = Properties.Settings.Default.CurrentUserId,
                     CreatedAt = DateTime.Now,
-                    ModifiedBy = Guid.NewGuid().ToString().ToUpper(),
+                    ModifiedBy = Properties.Settings.Default.CurrentUserId,
                     ModifiedAt = DateTime.Now
                 };
                 uowPrincipal.Repository.Add(PrincipalToAdd);
@@ -115,7 +115,7 @@ namespace CisWindowsFormsApp
                 PrincipalToUpdate.DistrictId = cbDistrict.SelectedValue.ToString();
                 PrincipalToUpdate.SubDistrictId = cbSubDistrict.SelectedValue.ToString();
 
-                PrincipalToUpdate.ModifiedBy = Guid.NewGuid().ToString().ToUpper();
+                PrincipalToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUserId;
                 PrincipalToUpdate.ModifiedAt = DateTime.Now;
 
                 uowPrincipal.Repository.Update(PrincipalToUpdate);

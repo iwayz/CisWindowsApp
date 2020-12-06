@@ -75,9 +75,9 @@ namespace CisWindowsFormsApp
                             FullName = txtFullName.Text.Trim(),
 
                             // Audit Fields 
-                            CreatedBy = Guid.NewGuid().ToString().ToUpper(),
+                            CreatedBy = Properties.Settings.Default.CurrentUserId,
                             CreatedAt = DateTime.Now,
-                            ModifiedBy = Guid.NewGuid().ToString().ToUpper(),
+                            ModifiedBy = Properties.Settings.Default.CurrentUserId,
                             ModifiedAt = DateTime.Now
                         };
                         var uowUsr = new UnitOfWork<User>(context);
@@ -86,15 +86,23 @@ namespace CisWindowsFormsApp
                         uowUsr.Commit();
 
                         var uowUsrRole = new UnitOfWork<UserRole>(context);
+                        var existingUsrRole = uowUsrRole.Repository.GetAll().
+                            Where(u => u.UserId == txtUserId.Text.Trim() && u.RoleId == txtRoleId.Text.Trim()).FirstOrDefault();
+                        if (existingUsrRole != null)
+                        {
+                            CommonMessageHelper.DataAlreadyExist(txtUsername.Text.Trim() + " dan " + cbRole.SelectedText);
+                            return;
+                        }
+
                         var userRoleToAdd = new UserRole
                         {
                             UserId = userToAdd.Id.ToString().ToUpper(),
                             RoleId = cbRole.SelectedValue.ToString().ToUpper(),
 
                             // Audit Fields 
-                            CreatedBy = Guid.NewGuid().ToString().ToUpper(),
+                            CreatedBy = Properties.Settings.Default.CurrentUserId,
                             CreatedAt = DateTime.Now,
-                            ModifiedBy = Guid.NewGuid().ToString().ToUpper(),
+                            ModifiedBy = Properties.Settings.Default.CurrentUserId,
                             ModifiedAt = DateTime.Now
                         };
                         uowUsrRole.Repository.Add(userRoleToAdd);
@@ -244,7 +252,7 @@ namespace CisWindowsFormsApp
                             userToUpdate.Password = new UserHelper().HashPassword(txtPassword.Text.Trim());
 
                         userToUpdate.FullName = txtFullName.Text.Trim();
-                        userToUpdate.ModifiedBy = Guid.NewGuid().ToString().ToUpper();
+                        userToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUserId;
                         userToUpdate.ModifiedAt = DateTime.Now;
                         uowUsr.Repository.Update(userToUpdate);
                         uowUsr.Commit();
@@ -253,7 +261,7 @@ namespace CisWindowsFormsApp
                         var userRoleToUpdate = uowUsrRole.Repository.GetById(txtUserRoleId.Text.ToString().Trim());
                         userRoleToUpdate.UserId = txtUserId.Text.Trim();
                         userRoleToUpdate.RoleId = cbRole.SelectedValue.ToString().Trim();
-                        userRoleToUpdate.ModifiedBy = Guid.NewGuid().ToString().ToUpper();
+                        userRoleToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUserId;
                         userRoleToUpdate.ModifiedAt = DateTime.Now;
                         uowUsrRole.Repository.Update(userRoleToUpdate);
                         uowUsrRole.Commit();
@@ -269,7 +277,7 @@ namespace CisWindowsFormsApp
                 //    userToUpdate.Password = new UserHelper().HashPassword(txtPassword.Text.Trim());
                 
                 //userToUpdate.FullName = txtFullName.Text.Trim();
-                //userToUpdate.ModifiedBy = Guid.NewGuid().ToString().ToUpper();
+                //userToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUserId;
                 //userToUpdate.ModifiedAt = DateTime.Now;
 
                 //uowUser.Repository.Update(userToUpdate);

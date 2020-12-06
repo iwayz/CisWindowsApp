@@ -24,6 +24,7 @@ namespace CisWindowsFormsApp
             InitializeComponent();
             dbContext = new CisDbContext();
 
+            new CommonFunctionHelper().ValidateAccess((int)Constant.Permission.MasterData.Product);
         }
 
         private void FrmProduct_Load(object sender, EventArgs e)
@@ -111,9 +112,9 @@ namespace CisWindowsFormsApp
                     MedicineCatId = cbMedCat.SelectedValue.ToString(),
                     UsageTypeId = cbUsageType.SelectedValue.ToString(),
                     PrincipalId = cbPrincipal.SelectedValue.ToString(),
-                     					 // Audit Fields 					CreatedBy = Guid.NewGuid().ToString().ToUpper(),
+                     					 // Audit Fields 					CreatedBy = Properties.Settings.Default.CurrentUserId,
                     CreatedAt = DateTime.Now,
-                    ModifiedBy = Guid.NewGuid().ToString().ToUpper(),
+                    ModifiedBy = Properties.Settings.Default.CurrentUserId,
                     ModifiedAt = DateTime.Now
                 };
                 uowProduct.Repository.Add(prodToAdd);
@@ -146,7 +147,7 @@ namespace CisWindowsFormsApp
                 prodToUpdate.MedicineCatId = cbMedCat.SelectedValue.ToString();
                 prodToUpdate.UsageTypeId = cbUsageType.SelectedValue.ToString();
                 prodToUpdate.PrincipalId = cbPrincipal.SelectedValue.ToString();
-                prodToUpdate.ModifiedBy = Guid.NewGuid().ToString().ToUpper();
+                prodToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUserId;
                 prodToUpdate.ModifiedAt = DateTime.Now;
 
                 uowProduct.Repository.Update(prodToUpdate);

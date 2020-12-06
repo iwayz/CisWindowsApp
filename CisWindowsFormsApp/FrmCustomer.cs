@@ -108,9 +108,9 @@ namespace CisWindowsFormsApp
 
                     
  					 // Audit Fields 
-					CreatedBy = Guid.NewGuid().ToString().ToUpper(),
+					CreatedBy = Properties.Settings.Default.CurrentUserId,
                     CreatedAt = DateTime.Now,
-                    ModifiedBy = Guid.NewGuid().ToString().ToUpper(),
+                    ModifiedBy = Properties.Settings.Default.CurrentUserId,
                     ModifiedAt = DateTime.Now
                 };
                 uowCust.Repository.Add(custToAdd);
@@ -149,7 +149,7 @@ namespace CisWindowsFormsApp
                 custToUpdate.OutletTypeId = cbOutletType.SelectedValue.ToString();
                 custToUpdate.SalesAreaId = cbSalesArea.SelectedValue.ToString();
 
-                custToUpdate.ModifiedBy = Guid.NewGuid().ToString().ToUpper();
+                custToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUserId;
                 custToUpdate.ModifiedAt = DateTime.Now;
 
                 uowCust.Repository.Update(custToUpdate);
