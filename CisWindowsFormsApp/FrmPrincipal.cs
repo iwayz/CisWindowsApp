@@ -89,6 +89,7 @@ namespace CisWindowsFormsApp
                 uowPrincipal.Repository.Add(PrincipalToAdd);
                 uowPrincipal.Commit();
                 btnReload.PerformClick();
+                CommonMessageHelper.DataSavedSuccessfully();
             }
         }
 
@@ -101,7 +102,7 @@ namespace CisWindowsFormsApp
 
             if (lastUpdated != repoLastUpdated)
             {
-                CommonMessageHelper.DataHasBeenUpdated(txtPrincipalName.Text.Trim());
+                CommonMessageHelper.DataHasBeenUpdatedPriorToSave(txtPrincipalName.Text.Trim());
             }
             else
             {
@@ -121,6 +122,7 @@ namespace CisWindowsFormsApp
                 uowPrincipal.Repository.Update(PrincipalToUpdate);
                 uowPrincipal.Commit();
                 btnReload.PerformClick();
+                CommonMessageHelper.DataSavedSuccessfully();
             }
         }
 
@@ -324,6 +326,11 @@ namespace CisWindowsFormsApp
                 e.Handled = true;
                 btnSearch.PerformClick();
             }
+        }
+
+        private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
     }
 }

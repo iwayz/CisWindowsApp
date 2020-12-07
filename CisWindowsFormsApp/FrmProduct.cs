@@ -24,7 +24,7 @@ namespace CisWindowsFormsApp
             InitializeComponent();
             dbContext = new CisDbContext();
 
-            new CommonFunctionHelper().ValidateAccess((int)Constant.Permission.MasterData.Product);
+            
         }
 
         private void FrmProduct_Load(object sender, EventArgs e)
@@ -120,6 +120,7 @@ namespace CisWindowsFormsApp
                 uowProduct.Repository.Add(prodToAdd);
                 uowProduct.Commit();
                 btnReload.PerformClick();
+                CommonMessageHelper.DataSavedSuccessfully();
             }
         }
 
@@ -132,7 +133,7 @@ namespace CisWindowsFormsApp
             
             if (lastUpdated != repoLastUpdated)
             {
-                CommonMessageHelper.DataHasBeenUpdated(txtProductCode.Text.Trim());
+                CommonMessageHelper.DataHasBeenUpdatedPriorToSave(txtProductCode.Text.Trim());
             }
             else
             {
@@ -153,6 +154,7 @@ namespace CisWindowsFormsApp
                 uowProduct.Repository.Update(prodToUpdate);
                 uowProduct.Commit();
                 btnReload.PerformClick();
+                CommonMessageHelper.DataSavedSuccessfully();
             }
         }
 

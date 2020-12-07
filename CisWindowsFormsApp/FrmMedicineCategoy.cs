@@ -73,6 +73,7 @@ namespace CisWindowsFormsApp
                 uowMedCat.Repository.Add(medCatToAdd);
                 uowMedCat.Commit();
                 btnReload.PerformClick();
+                CommonMessageHelper.DataSavedSuccessfully();
             }
         }
 
@@ -143,7 +144,7 @@ namespace CisWindowsFormsApp
 
             if (lastUpdated != repoLastUpdated)
             {
-                CommonMessageHelper.DataHasBeenUpdated(txtMedCatCode.Text.Trim());
+                CommonMessageHelper.DataHasBeenUpdatedPriorToSave(txtMedCatCode.Text.Trim());
             }
             else
             {
@@ -156,6 +157,7 @@ namespace CisWindowsFormsApp
                 uowMedCat.Repository.Update(medCatToUpdate);
                 uowMedCat.Commit();
                 btnReload.PerformClick();
+                CommonMessageHelper.DataSavedSuccessfully();
             }
         }
 

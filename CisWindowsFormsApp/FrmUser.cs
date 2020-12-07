@@ -113,7 +113,7 @@ namespace CisWindowsFormsApp
                 }
 
                 btnReload.PerformClick();
-
+                CommonMessageHelper.DataSavedSuccessfully();
             }
         }
 
@@ -236,7 +236,7 @@ namespace CisWindowsFormsApp
 
             if (lastUpdated != repoLastUpdated)
             {
-                CommonMessageHelper.DataHasBeenUpdated(txtUsername.Text.Trim());
+                CommonMessageHelper.DataHasBeenUpdatedPriorToSave(txtUsername.Text.Trim());
             }
             else
             {
@@ -270,19 +270,8 @@ namespace CisWindowsFormsApp
                     }
                 }
 
-                //var userToUpdate = uowUser.Repository.GetById(txtUserId.Text.Trim());
-                //userToUpdate.Username = txtUsername.Text.Trim();
-
-                //if (chkChangePassword.Checked)
-                //    userToUpdate.Password = new UserHelper().HashPassword(txtPassword.Text.Trim());
-                
-                //userToUpdate.FullName = txtFullName.Text.Trim();
-                //userToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUserId;
-                //userToUpdate.ModifiedAt = DateTime.Now;
-
-                //uowUser.Repository.Update(userToUpdate);
-                //uowUser.Commit();
                 btnReload.PerformClick();
+                CommonMessageHelper.DataSavedSuccessfully();
             }
         }
 

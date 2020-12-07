@@ -281,7 +281,7 @@
             this.gbGender.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.gbGender.Location = new System.Drawing.Point(31, 138);
             this.gbGender.Name = "gbGender";
-            this.gbGender.Size = new System.Drawing.Size(184, 46);
+            this.gbGender.Size = new System.Drawing.Size(218, 46);
             this.gbGender.TabIndex = 3;
             this.gbGender.TabStop = false;
             this.gbGender.Text = "Gender";
@@ -289,7 +289,7 @@
             // rbMale
             // 
             this.rbMale.AutoSize = true;
-            this.rbMale.Location = new System.Drawing.Point(94, 19);
+            this.rbMale.Location = new System.Drawing.Point(113, 19);
             this.rbMale.Name = "rbMale";
             this.rbMale.Size = new System.Drawing.Size(68, 19);
             this.rbMale.TabIndex = 9;
@@ -372,6 +372,7 @@
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(170, 31);
             this.txtPhone.TabIndex = 9;
+            this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
             // 
             // label8
             // 

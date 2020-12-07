@@ -27,7 +27,7 @@ namespace CisWindowsFormsApp
                    , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        public static void DataHasBeenUpdated(string updatedData)
+        public static void DataHasBeenUpdatedPriorToSave(string updatedData)
         {
             MessageBox.Show("Data " + updatedData + " telah diupdate sebelumnya. Silakan klik Reload dan ulangi langkah tadi."
                    , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -66,6 +66,12 @@ namespace CisWindowsFormsApp
         public static void NoAccess()
         {
             MessageBox.Show("Anda tidak memiliki izin untuk mengakses data ini."
+                            , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        public static void DataSavedSuccessfully()
+        {
+            MessageBox.Show("Data telah berhasil disimpan."
                             , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 

@@ -41,12 +41,12 @@ namespace CisWindowsFormsApp
             using (var context = new CisDbContext())
             {
                 var userRole = new UnitOfWork<UserRole>(context).Repository.GetAll()
-                    .Where(u => u.Id == Properties.Settings.Default.CurrentUserId);
+                    .Where(u => u.UserId == Properties.Settings.Default.CurrentUserId);
                 var permission = new UnitOfWork<Permission>(context).Repository.GetAll()
                     .Where(p => p.PermissionCode == permissionCode.ToString());
-                var permissionRole = new UnitOfWork<PermissionRole>(context).Repository.GetAll();
+                var permissionRole = new UnitOfWork<PermissionRole>(context).Repository.GetAll().Select(pr => pr);
 
-                var userDetail = userRole.Join(permissionRole, ur => ur.RoleId, pr => pr.Id, (ur, pr) => new { ur, pr })
+                var userDetail = userRole.Join(permissionRole, ur => ur.RoleId, pr => pr.RoleId, (ur, pr) => new { ur, pr })
                     .Join(permission, urpr => urpr.pr.PermisionId, p => p.Id, (urpr, p) => new { urpr, p })
                     .Select(res => res).ToList();
 

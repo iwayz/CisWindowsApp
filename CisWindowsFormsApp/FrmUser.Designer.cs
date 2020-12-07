@@ -139,7 +139,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(238, 31);
-            this.txtPassword.TabIndex = 3;
+            this.txtPassword.TabIndex = 4;
             // 
             // label4
             // 
@@ -245,7 +245,7 @@
             this.dgvUser.Location = new System.Drawing.Point(331, 85);
             this.dgvUser.Margin = new System.Windows.Forms.Padding(9, 3, 3, 3);
             this.dgvUser.Name = "dgvUser";
-            this.dgvUser.Size = new System.Drawing.Size(341, 324);
+            this.dgvUser.Size = new System.Drawing.Size(425, 324);
             this.dgvUser.TabIndex = 0;
             this.dgvUser.Text = "dataGridView1";
             this.dgvUser.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUser_CellClick);
@@ -339,7 +339,7 @@
             this.txtFullName.Location = new System.Drawing.Point(28, 149);
             this.txtFullName.Name = "txtFullName";
             this.txtFullName.Size = new System.Drawing.Size(274, 31);
-            this.txtFullName.TabIndex = 2;
+            this.txtFullName.TabIndex = 3;
             // 
             // label5
             // 
@@ -360,7 +360,7 @@
             this.chkChangePassword.Location = new System.Drawing.Point(28, 228);
             this.chkChangePassword.Name = "chkChangePassword";
             this.chkChangePassword.Size = new System.Drawing.Size(110, 19);
-            this.chkChangePassword.TabIndex = 4;
+            this.chkChangePassword.TabIndex = 5;
             this.chkChangePassword.Text = "Ganti Password";
             this.chkChangePassword.UseVisualStyleBackColor = true;
             this.chkChangePassword.CheckedChanged += new System.EventHandler(this.chkChangePassword_CheckedChanged);
@@ -395,7 +395,7 @@
             this.txtRetypePassword.Name = "txtRetypePassword";
             this.txtRetypePassword.PasswordChar = '*';
             this.txtRetypePassword.Size = new System.Drawing.Size(243, 31);
-            this.txtRetypePassword.TabIndex = 5;
+            this.txtRetypePassword.TabIndex = 6;
             // 
             // pnlButtons
             // 
@@ -417,7 +417,7 @@
             this.btnSearch.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnSearch.ForeColor = System.Drawing.Color.White;
             this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
-            this.btnSearch.Location = new System.Drawing.Point(637, 48);
+            this.btnSearch.Location = new System.Drawing.Point(725, 48);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(31, 31);
             this.btnSearch.TabIndex = 39;
@@ -432,7 +432,7 @@
             this.txtSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtSearch.Location = new System.Drawing.Point(331, 48);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(300, 31);
+            this.txtSearch.Size = new System.Drawing.Size(388, 31);
             this.txtSearch.TabIndex = 38;
             this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
             // 
@@ -446,7 +446,7 @@
             this.cbRole.Location = new System.Drawing.Point(31, 99);
             this.cbRole.Name = "cbRole";
             this.cbRole.Size = new System.Drawing.Size(235, 31);
-            this.cbRole.TabIndex = 41;
+            this.cbRole.TabIndex = 2;
             // 
             // label28
             // 

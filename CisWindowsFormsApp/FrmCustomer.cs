@@ -116,6 +116,7 @@ namespace CisWindowsFormsApp
                 uowCust.Repository.Add(custToAdd);
                 uowCust.Commit();
                 btnReload.PerformClick();
+                CommonMessageHelper.DataSavedSuccessfully();
             }
         }
 
@@ -128,7 +129,7 @@ namespace CisWindowsFormsApp
 
             if (lastUpdated != repoLastUpdated)
             {
-                CommonMessageHelper.DataHasBeenUpdated(txtCustomerName.Text.Trim());
+                CommonMessageHelper.DataHasBeenUpdatedPriorToSave(txtCustomerName.Text.Trim());
             }
             else
             {
@@ -155,6 +156,7 @@ namespace CisWindowsFormsApp
                 uowCust.Repository.Update(custToUpdate);
                 uowCust.Commit();
                 btnReload.PerformClick();
+                CommonMessageHelper.DataSavedSuccessfully();
             }
         }
 
@@ -444,6 +446,11 @@ namespace CisWindowsFormsApp
             var idx = new CommonFunctionHelper().SearchGridViewFirstTwoColumn(searchVal, ref dgvCustomer, ref foundIndices);
             dgvCustomer.CurrentCell = dgvCustomer[1, idx];
             SetUIbySelectedGridItem();
+        }
+
+        private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
     }
 }

@@ -96,6 +96,7 @@ namespace CisWindowsFormsApp
                 }
 
                 btnReload.PerformClick();
+                CommonMessageHelper.DataSavedSuccessfully();
             }
         }
 
@@ -165,7 +166,7 @@ namespace CisWindowsFormsApp
 
             if (lastUpdated != repoLastUpdated)
             {
-                CommonMessageHelper.DataHasBeenUpdated(txtRoleCode.Text.Trim());
+                CommonMessageHelper.DataHasBeenUpdatedPriorToSave(txtRoleCode.Text.Trim());
             }
             else
             {
@@ -282,6 +283,7 @@ namespace CisWindowsFormsApp
                 }
 
                 btnReload.PerformClick();
+                CommonMessageHelper.DataSavedSuccessfully();
             }
         }
 

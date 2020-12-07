@@ -74,6 +74,7 @@ namespace CisWindowsFormsApp
                 uowArea.Repository.Add(areaToAdd);
                 uowArea.Commit();
                 btnReload.PerformClick();
+                CommonMessageHelper.DataSavedSuccessfully();
             }
         }
 
@@ -144,7 +145,7 @@ namespace CisWindowsFormsApp
 
             if (lastUpdated != repoLastUpdated)
             {
-                CommonMessageHelper.DataHasBeenUpdated(txtAreaCode.Text.Trim());
+                CommonMessageHelper.DataHasBeenUpdatedPriorToSave(txtAreaCode.Text.Trim());
             }
             else
             {
@@ -157,6 +158,7 @@ namespace CisWindowsFormsApp
                 uowArea.Repository.Update(areaToUpdate);
                 uowArea.Commit();
                 btnReload.PerformClick();
+                CommonMessageHelper.DataSavedSuccessfully();
             }
         }
 
