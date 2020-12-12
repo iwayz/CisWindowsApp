@@ -52,7 +52,7 @@ namespace CisWindowsFormsApp
         {
             if (!ValidateMandatoryFields()) return;
 
-            var existingMedCat = uowMedCat.Repository.GetAll().Where(u => u.Description == txtMedCat.Text.Trim()).FirstOrDefault();
+            var existingMedCat = uowMedCat.Repository.GetAll().Where(u => u.MedicineCatCode == txtMedCatCode.Text.Trim()).FirstOrDefault();
             if (existingMedCat != null)
             {
                 CommonMessageHelper.DataAlreadyExist(txtMedCatCode.Text.Trim());
@@ -110,7 +110,7 @@ namespace CisWindowsFormsApp
 
         private void btnDel_Click(object sender, EventArgs e)
         {
-            var medCatToDel = uowMedCat.Repository.GetAll().Where(u => u.Description == txtMedCat.Text.Trim()).FirstOrDefault();
+            var medCatToDel = uowMedCat.Repository.GetAll().Where(u => u.MedicineCatCode == txtMedCatCode.Text.Trim()).FirstOrDefault();
             if (medCatToDel != null)
             {
                 if (DialogResult.Yes == CommonMessageHelper.ConfirmDelete())
@@ -138,11 +138,12 @@ namespace CisWindowsFormsApp
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (!ValidateMandatoryFields()) return;
-            
-            var repoLastUpdated = DateTime.Parse(dgvMedCat.CurrentRow.Cells[nameof(MedicineCat.ModifiedAt)].Value.ToString());
+
+            var repoLastUpdated = uowMedCat.Repository.GetById(txtMedCatId.Text.Trim()).ModifiedAt;
             var lastUpdated = DateTime.Parse(txtModifiedAt.Text.Trim());
 
-            if (lastUpdated != repoLastUpdated)
+            var commonHelper = new CommonFunctionHelper();
+            if (commonHelper.StandardizeDateTime(lastUpdated) != commonHelper.StandardizeDateTime(repoLastUpdated))
             {
                 CommonMessageHelper.DataHasBeenUpdatedPriorToSave(txtMedCatCode.Text.Trim());
             }

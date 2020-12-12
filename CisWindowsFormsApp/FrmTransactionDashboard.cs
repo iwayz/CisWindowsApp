@@ -19,13 +19,13 @@ namespace CisWindowsFormsApp
 
         private void btnSales_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FrmLocation(), sender);
+            OpenChildForm(new FrmUserRole(), sender);
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FrmLocation(), sender);
+            OpenChildForm(new FrmUserRole(), sender);
 
         }
 

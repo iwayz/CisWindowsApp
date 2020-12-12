@@ -231,10 +231,11 @@ namespace CisWindowsFormsApp
                 return;
             }
 
-            var repoLastUpdated = DateTime.Parse(dgvUser.CurrentRow.Cells["UModifiedAt"].Value.ToString());
+            var repoLastUpdated = uowUser.Repository.GetById(txtUserId.Text.Trim()).ModifiedAt;
             var lastUpdated = DateTime.Parse(txtUserModifiedAt.Text.Trim());
 
-            if (lastUpdated != repoLastUpdated)
+            var commonHelper = new CommonFunctionHelper();
+            if (commonHelper.StandardizeDateTime(lastUpdated) != commonHelper.StandardizeDateTime(repoLastUpdated))
             {
                 CommonMessageHelper.DataHasBeenUpdatedPriorToSave(txtUsername.Text.Trim());
             }

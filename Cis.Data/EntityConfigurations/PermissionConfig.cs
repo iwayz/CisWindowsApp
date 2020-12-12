@@ -3,18 +3,22 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace Cis.Data.EntityConfigurations
 {
-    public class MedicineCatConfig : EntityTypeConfiguration<MedicineCat>
+    public class PermissionConfig: EntityTypeConfiguration<Permission>
     {
-        public MedicineCatConfig()
+        public PermissionConfig()
         {
-            Property(e => e.MedicineCatCode)
+            Property(e => e.PermissionCode)
                 .HasMaxLength(50)
                 .IsRequired();
 
             Property(e => e.Description)
+                .HasMaxLength(50)
                 .IsRequired();
 
-            HasIndex(e => e.MedicineCatCode)
+            Property(e => e.PermisionType)
+                .IsRequired();
+
+            HasIndex(e => e.PermissionCode)
                .IsUnique();
         }
     }

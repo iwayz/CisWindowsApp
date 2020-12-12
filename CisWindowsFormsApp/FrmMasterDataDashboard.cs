@@ -189,5 +189,17 @@ namespace CisWindowsFormsApp
         {
             //btnProducts.PerformClick();
         }
+
+        private void btnTermOfPayment_Click(object sender, EventArgs e)
+        {
+            if (!(new CommonFunctionHelper().ValidateAccess((int)Constant.Permission.MasterData.TermOfPayment)))
+            {
+                CommonMessageHelper.NoAccess();
+                return;
+
+            }
+
+            OpenChildForm(new FrmTermOfPayment(), sender);
+        }
     }
 }

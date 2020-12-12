@@ -50,6 +50,7 @@
             this.pnlHeaderSeparator = new System.Windows.Forms.Panel();
             this.toolTipButton = new System.Windows.Forms.ToolTip(this.components);
             this.pnlMasterDataChildren = new System.Windows.Forms.Panel();
+            this.btnTermOfPayment = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.pnlChildHeader.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -159,6 +160,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnTermOfPayment);
             this.panel1.Controls.Add(this.btnUsageTypes);
             this.panel1.Controls.Add(this.btnUOM);
             this.panel1.Controls.Add(this.btnProducts);
@@ -347,6 +349,23 @@
             this.pnlMasterDataChildren.Size = new System.Drawing.Size(972, 382);
             this.pnlMasterDataChildren.TabIndex = 4;
             // 
+            // btnTermOfPayment
+            // 
+            this.btnTermOfPayment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(74)))), ((int)(((byte)(156)))));
+            this.btnTermOfPayment.FlatAppearance.BorderSize = 0;
+            this.btnTermOfPayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTermOfPayment.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTermOfPayment.ForeColor = System.Drawing.Color.White;
+            this.btnTermOfPayment.Image = ((System.Drawing.Image)(resources.GetObject("btnTermOfPayment.Image")));
+            this.btnTermOfPayment.Location = new System.Drawing.Point(825, 77);
+            this.btnTermOfPayment.Name = "btnTermOfPayment";
+            this.btnTermOfPayment.Size = new System.Drawing.Size(129, 56);
+            this.btnTermOfPayment.TabIndex = 1;
+            this.btnTermOfPayment.Text = "Term of Payment";
+            this.btnTermOfPayment.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnTermOfPayment.UseVisualStyleBackColor = false;
+            this.btnTermOfPayment.Click += new System.EventHandler(this.btnTermOfPayment_Click);
+            // 
             // FrmMasterDataDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -390,5 +409,6 @@
         private System.Windows.Forms.Button btnRoles;
         private System.Windows.Forms.ToolTip toolTipButton;
         private System.Windows.Forms.Panel pnlMasterDataChildren;
+        private System.Windows.Forms.Button btnTermOfPayment;
     }
 }

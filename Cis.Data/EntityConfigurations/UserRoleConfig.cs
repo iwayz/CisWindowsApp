@@ -16,7 +16,7 @@ namespace Cis.Data.EntityConfigurations
                 .IsRequired();
 
 
-            HasIndex(u => new { u.RoleId, u.UserId })
+            HasIndex(e => new { e.RoleId, e.UserId })
                 .IsUnique();
         }
     }

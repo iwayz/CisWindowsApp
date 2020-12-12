@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Cis.Model
 {
-    public class SalesArea: BaseEntity
+    public class TermOfPayment: BaseEntity
     {
-        public string AreaCode { get; set; }
+        public string TermCode { get; set; }
         public string Description { get; set; }
 
-        public ICollection<Customer> Customers { get; set; }
         public ICollection<SalesOrder> SalesOrders { get; set; }
 
     }

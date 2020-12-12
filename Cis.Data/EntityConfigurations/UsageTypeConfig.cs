@@ -14,7 +14,8 @@ namespace Cis.Data.EntityConfigurations
             Property(e => e.Description)
                 .IsRequired();
 
-
+            HasIndex(e => e.UsageTypeCode)
+               .IsUnique();
         }
     }
 }

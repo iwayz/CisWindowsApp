@@ -197,6 +197,22 @@
         MVzRRcFCAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="btnTermOfPayment.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAGMSURBVFhH7Za9SgNRFIT3DSz1GSwEy3TaBC0jCFYKYiVa5QVS2AVBMI2tZQoLXyBY+FNYiiAI
+        FoKCEAstLNc558zi/tzdu3dLsx8M5J4zcweWsGzUkiaO4zloBzqBrqBv6APaoKUW8PegAXQBPUPChOsi
+        WK5D92orUh5MAd88dK4JB7RlwfzS1qV4y+HZNms5tP6B2aOtKqksx16emhfaDZyPbOzljBEn2L+ZrZIp
+        7RpYhn507OYTkv/AmBEn2I/EXILc/wRNoC1GNLQHlTGgzQu8crmLB2iRtixYHKulyCktXuBdsEiB8mIB
+        S3kUed65rgX8qxYrcECLGxi+zJfhlutawN+3WIE1WtzQlKfWyyQBfnmLuVihxQ1NeWa4HJIL8+oxloE7
+        F/m8aBfqJMFgNJgCI7k0lG6jcrDJXgXnJuU3Tcszbz452ziMtjyUtlyRs43DmO1y+R4Ppc9eBed9Gwcx
+        leDYfgexxF4F546Ngxgm4SH0qqNqrqFDDeXAvAvdicnDC1T5MfrfiaJfYBT8Ng0smDkAAAAASUVORK5C
+        YII=
+</value>
+  </data>
+  <metadata name="toolTipButton.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <data name="btnUsageTypes.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAABGdBTUEAALGPC/xhBQAAATNJREFUWEft
@@ -208,9 +224,6 @@
         RBj0PrfHg8cAAAAASUVORK5CYII=
 </value>
   </data>
-  <metadata name="toolTipButton.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <data name="btnUOM.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAABGdBTUEAALGPC/xhBQAAAJlJREFUWEft
@@ -278,4 +291,7 @@
         QmCC
 </value>
   </data>
+  <metadata name="toolTipButton.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>

@@ -9,6 +9,7 @@ namespace Cis.Model
         public string FullName { get; set; }
 
         public ICollection<UserRole> UserRoles { get; set; }
+        public ICollection<SalesOrder> SalesOrders { get; set; }
 
     }
 }

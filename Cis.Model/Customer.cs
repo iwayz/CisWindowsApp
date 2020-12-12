@@ -24,5 +24,8 @@ namespace Cis.Model
         public OutletType OutletType { get; set; }
         public string SalesAreaId { get; set; }
         public SalesArea SalesArea { get; set; }
+
+        public ICollection<SalesOrder> SalesOrders { get; set; }
+
     }
 }

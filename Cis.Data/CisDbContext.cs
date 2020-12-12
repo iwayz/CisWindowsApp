@@ -11,19 +11,26 @@ namespace Cis.Data
         {
 
         }
-       
+
         public DbSet<Batch> Batches { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<MedicineCat> MedicineCategories { get; set; }
         public DbSet<OutletType> OutletTypes { get; set; }
+        public DbSet<Permission> Permissions { get; set; }
+        public DbSet<PermissionRole> PermissionRoles { get; set; }
         public DbSet<Principal> Principals { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Role> Roles { get; set; }
         public DbSet<SalesArea> SalesAreas { get; set; }
         public DbSet<Salesman> Salesmen { get; set; }
+        public DbSet<SalesOrder> SalesOrders { get; set; }
+        public DbSet<SalesOrderItem> SalesOrderItems { get; set; }
+        public DbSet<TermOfPayment> TermOfPayments { get; set; }
         public DbSet<UnitOfMeasurement> UnitOfMeasurements { get; set; }
         public DbSet<UsageType> UsageTypes { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<UserRole> UserRoles { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelmodelBuilder)
         {
@@ -102,6 +109,39 @@ namespace Cis.Data
                 .WithMany(us => us.UserRoles)
                 .HasForeignKey(ur => ur.UserId)
                 .WillCascadeOnDelete(false);
+
+            // Sales Order to Customer, Sales Area, User, and Term of Payment
+            modelmodelBuilder.Entity<SalesOrder>()
+                .HasRequired(so => so.Customer)
+                .WithMany(c => c.SalesOrders)
+                .HasForeignKey(so => so.CustomerId)
+                .WillCascadeOnDelete(false);
+
+            modelmodelBuilder.Entity<SalesOrder>()
+                .HasRequired(so => so.SalesArea)
+                .WithMany(sa => sa.SalesOrders)
+                .HasForeignKey(so => so.SalesAreaId)
+                .WillCascadeOnDelete(false);
+
+            modelmodelBuilder.Entity<SalesOrder>()
+                .HasRequired(so => so.User)
+                .WithMany(u => u.SalesOrders)
+                .HasForeignKey(so => so.UserId)
+                .WillCascadeOnDelete(false);
+
+            modelmodelBuilder.Entity<SalesOrder>()
+                .HasRequired(so => so.TermOfPayment)
+                .WithMany(t => t.SalesOrders)
+                .HasForeignKey(so => so.TermOfPaymentId)
+                .WillCascadeOnDelete(false);
+            
+            // Sales Order Item to Sales Order
+            modelmodelBuilder.Entity<SalesOrderItem>()
+                .HasRequired(oi => oi.SalesOrder)
+                .WithMany(so => so.SalesOrderItems)
+                .HasForeignKey(oi => oi.SalesOrderId)
+                .WillCascadeOnDelete(false);
+
         }
     }
 }

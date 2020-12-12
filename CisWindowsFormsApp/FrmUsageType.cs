@@ -41,7 +41,7 @@ namespace CisWindowsFormsApp
         private void BindUsageTyperidView()
         {
             var ut = new UnitOfWork<UsageType>(dbContext).Repository.GetAll()
-                .OrderBy(u => u.Description);
+                .OrderBy(u => u.UsageTypeCode);
             var utDetail = ut.Select(usage =>
             new
             {
@@ -88,7 +88,7 @@ namespace CisWindowsFormsApp
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (!ValidateMandatoryFields()) return; 
-            var existingUsage = uowUsage.Repository.GetAll().Where(u => u.Description == txtUsageDesc.Text.Trim()).FirstOrDefault();
+            var existingUsage = uowUsage.Repository.GetAll().Where(u => u.UsageTypeCode == txtUsageTypeCode.Text.Trim()).FirstOrDefault();
             if (existingUsage != null)
             {
                 CommonMessageHelper.DataAlreadyExist(txtUsageDesc.Text.Trim());
@@ -144,7 +144,7 @@ namespace CisWindowsFormsApp
 
         private void btnDel_Click(object sender, EventArgs e)
         {
-            var usageToDel = uowUsage.Repository.GetAll().Where(u => u.Description == txtUsageDesc.Text.Trim()).FirstOrDefault();
+            var usageToDel = uowUsage.Repository.GetAll().Where(u => u.UsageTypeCode == txtUsageTypeCode.Text.Trim()).FirstOrDefault();
             if (usageToDel != null)
             {
                 if (DialogResult.Yes == CommonMessageHelper.ConfirmDelete())
@@ -173,10 +173,11 @@ namespace CisWindowsFormsApp
         {
             if (!ValidateMandatoryFields()) return;
             
-            var repoLastUpdated = DateTime.Parse(dgvUsageType.CurrentRow.Cells[nameof(UsageType.ModifiedAt)].Value.ToString());
+            var repoLastUpdated = uowUsage.Repository.GetById(txtUsageId.Text.Trim()).ModifiedAt;
             var lastUpdated = DateTime.Parse(txtModifiedAt.Text.Trim());
 
-            if (lastUpdated != repoLastUpdated)
+            var commonHelper = new CommonFunctionHelper();
+            if (commonHelper.StandardizeDateTime(lastUpdated) != commonHelper.StandardizeDateTime(repoLastUpdated))
             {
                 CommonMessageHelper.DataHasBeenUpdatedPriorToSave(txtUsageTypeCode.Text.Trim());
             }

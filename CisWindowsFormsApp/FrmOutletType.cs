@@ -56,7 +56,7 @@ namespace CisWindowsFormsApp
         {
             if (!ValidateMandatoryFields()) return;
 
-            var existingOutlet = uowOutlet.Repository.GetAll().Where(u => u.Description == txtOutlet.Text.Trim()).FirstOrDefault();
+            var existingOutlet = uowOutlet.Repository.GetAll().Where(u => u.OutletTypeCode == txtOutletCode.Text.Trim()).FirstOrDefault();
             if (existingOutlet != null)
             {
                 CommonMessageHelper.DataAlreadyExist(txtOutletCode.Text.Trim());
@@ -111,7 +111,7 @@ namespace CisWindowsFormsApp
 
         private void btnDel_Click(object sender, EventArgs e)
         {
-            var outletToDel = uowOutlet.Repository.GetAll().Where(u => u.Description == txtOutlet.Text.Trim()).FirstOrDefault();
+            var outletToDel = uowOutlet.Repository.GetAll().Where(u => u.OutletTypeCode == txtOutletCode.Text.Trim()).FirstOrDefault();
             if (outletToDel != null)
             {
                 if (DialogResult.Yes == CommonMessageHelper.ConfirmDelete())
@@ -139,11 +139,12 @@ namespace CisWindowsFormsApp
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (!ValidateMandatoryFields()) return;
-            
-            var repoLastUpdated = DateTime.Parse(dgvOutlet.CurrentRow.Cells[nameof(OutletType.ModifiedAt)].Value.ToString());
+
+            var repoLastUpdated = uowOutlet.Repository.GetById(txtOutletId.Text.Trim()).ModifiedAt;
             var lastUpdated = DateTime.Parse(txtModifiedAt.Text.Trim());
 
-            if (lastUpdated != repoLastUpdated)
+            var commonHelper = new CommonFunctionHelper();
+            if (commonHelper.StandardizeDateTime(lastUpdated) != commonHelper.StandardizeDateTime(repoLastUpdated))
             {
                 CommonMessageHelper.DataHasBeenUpdatedPriorToSave(txtOutletCode.Text.Trim());
             }
@@ -165,7 +166,7 @@ namespace CisWindowsFormsApp
         private void BindOutletTypeGridView()
         {
             var ot = new UnitOfWork<OutletType>(dbContext).Repository.GetAll()
-                .OrderBy(u => u.Description);
+                .OrderBy(u => u.OutletTypeCode);
             var otDetail = ot.Select(outlet =>
             new
             {

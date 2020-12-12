@@ -43,7 +43,8 @@ namespace Cis.Model
                 Batch = 109,
                 Customer = 110,
                 SalesArea = 111,
-                Salesman = 112
+                Salesman = 112,
+                TermOfPayment = 113
             }
 
             public enum Transaction

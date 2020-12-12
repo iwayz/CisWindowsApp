@@ -120,11 +120,12 @@ namespace CisWindowsFormsApp
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (!ValidateMandatoryFields()) return;
-            
-            var repoLastUpdated = DateTime.Parse(dgvUom.CurrentRow.Cells[nameof(UnitOfMeasurement.ModifiedAt)].Value.ToString());
+
+            var repoLastUpdated = uowUom.Repository.GetById(txtUomId.Text.Trim()).ModifiedAt;
             var lastUpdated = DateTime.Parse(txtModifiedAt.Text.Trim());
 
-            if (lastUpdated != repoLastUpdated)
+            var commonHelper = new CommonFunctionHelper();
+            if (commonHelper.StandardizeDateTime(lastUpdated) != commonHelper.StandardizeDateTime(repoLastUpdated))
             {
                 CommonMessageHelper.DataHasBeenUpdatedPriorToSave(txtUomCode.Text.Trim());
             }

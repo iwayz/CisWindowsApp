@@ -20,16 +20,16 @@ namespace Cis.Data
             Property(e => e.Address)
                 .IsOptional();
 
-            Property(p => p.ProvinceId)
-                .HasMaxLength(36)
+            Property(e => e.ProvinceId)
+                .HasMaxLength(10)
                 .IsRequired();
 
-            Property(p => p.DistrictId)
-                .HasMaxLength(36)
+            Property(e => e.DistrictId)
+                .HasMaxLength(10)
                 .IsRequired();
 
-            Property(p => p.SubDistrictId)
-                .HasMaxLength(36)
+            Property(e => e.SubDistrictId)
+                .HasMaxLength(10)
                 .IsRequired();
 
             Property(e => e.PostalCode)
@@ -42,6 +42,8 @@ namespace Cis.Data
             Property(e => e.Email)
                 .IsOptional();
 
+            HasIndex(e => e.SalesmanCode)
+               .IsUnique();
         }
     }
 }

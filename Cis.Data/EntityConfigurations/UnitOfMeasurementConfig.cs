@@ -14,6 +14,8 @@ namespace Cis.Data
             Property(e => e.Description)
                 .IsRequired();
 
+            HasIndex(e => e.UomCode)
+               .IsUnique();
         }
     }
 }

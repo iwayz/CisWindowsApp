@@ -24,7 +24,7 @@ namespace Cis.Data
                 .HasMaxLength(36)
                 .IsRequired();
 
-            HasIndex(b => b.BatchCode)
+            HasIndex(e => e.BatchCode)
                 .IsUnique();
         }
     }

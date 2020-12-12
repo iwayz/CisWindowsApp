@@ -145,10 +145,11 @@ namespace CisWindowsFormsApp
         {
             if (!ValidateMandatoryFields()) return;
 
-            var repoLastUpdated = DateTime.Parse(dgvBatch.CurrentRow.Cells[nameof(Batch.ModifiedAt)].Value.ToString());
+            var repoLastUpdated = uowBatch.Repository.GetById(txtBatchId.Text.Trim()).ModifiedAt;
             var lastUpdated = DateTime.Parse(txtModifiedAt.Text.Trim());
 
-            if (lastUpdated != repoLastUpdated)
+            var commonHelper = new CommonFunctionHelper();
+            if (commonHelper.StandardizeDateTime(lastUpdated) != commonHelper.StandardizeDateTime(repoLastUpdated))
             {
                 CommonMessageHelper.DataHasBeenUpdatedPriorToSave(txtBatchCode.Text.Trim());
             }
