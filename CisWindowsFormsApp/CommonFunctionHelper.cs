@@ -59,5 +59,36 @@ namespace CisWindowsFormsApp
         {
             return new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, dateTime.Hour, dateTime.Minute, dateTime.Second);
         }
+
+        public void BindLocationComboBox(CisDbContext dbContext, ComboBox cbLocation, Constant.LocationType locationType, string parentId = "")
+        {
+            var uow = new UnitOfWork<Location>(dbContext);
+            var locations = uow.Repository.GetAll();
+            if (string.IsNullOrEmpty(parentId))
+            {
+                locations = locations
+                    .Where(l => l.LocationType == locationType)
+                    .OrderBy(l => l.Name);
+            }
+            else
+            {
+                locations = locations
+                    .Where(l => l.LocationType == locationType && l.ParentId == parentId)
+                    .OrderBy(l => l.Name);
+            }
+            AutoCompleteStringCollection autoCompleteCollection = new AutoCompleteStringCollection();
+            Dictionary<string, string> dsLocations = new Dictionary<string, string>();
+            dsLocations.Add("0", "--Pilih--");
+            foreach (var loc in locations)
+            {
+                dsLocations.Add(loc.Id, loc.Name);
+                autoCompleteCollection.Add(loc.Name);
+            }
+            cbLocation.DataSource = new BindingSource(dsLocations, null);
+            cbLocation.DisplayMember = "Value";
+            cbLocation.ValueMember = "Key";
+            cbLocation.AutoCompleteCustomSource = autoCompleteCollection;
+        }
+        
     }
 }

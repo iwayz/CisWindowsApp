@@ -143,5 +143,23 @@ namespace CisWindowsFormsApp.Properties {
                 return ((string)(this["CurrentUserId"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("PharmacistName")]
+        public string SalesPicName {
+            get {
+                return ((string)(this["SalesPicName"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("PharmacistSipaNo")]
+        public string SalesPicSipaNo {
+            get {
+                return ((string)(this["SalesPicSipaNo"]));
+            }
+        }
     }
 }

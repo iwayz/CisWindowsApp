@@ -36,6 +36,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblTransactionChildHeader = new System.Windows.Forms.Label();
             this.pnlTransactionChildren = new System.Windows.Forms.Panel();
+            this.pnlSeparator = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -49,7 +50,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(686, 87);
+            this.panel1.Size = new System.Drawing.Size(1064, 87);
             this.panel1.TabIndex = 0;
             // 
             // button1
@@ -92,7 +93,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 87);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(686, 35);
+            this.panel2.Size = new System.Drawing.Size(1064, 35);
             this.panel2.TabIndex = 1;
             // 
             // panel4
@@ -120,15 +121,25 @@
             this.pnlTransactionChildren.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlTransactionChildren.Location = new System.Drawing.Point(0, 122);
             this.pnlTransactionChildren.Name = "pnlTransactionChildren";
-            this.pnlTransactionChildren.Size = new System.Drawing.Size(686, 268);
+            this.pnlTransactionChildren.Size = new System.Drawing.Size(1064, 480);
             this.pnlTransactionChildren.TabIndex = 2;
+            // 
+            // pnlSeparator
+            // 
+            this.pnlSeparator.BackColor = System.Drawing.Color.Silver;
+            this.pnlSeparator.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlSeparator.Location = new System.Drawing.Point(0, 122);
+            this.pnlSeparator.Name = "pnlSeparator";
+            this.pnlSeparator.Size = new System.Drawing.Size(1064, 2);
+            this.pnlSeparator.TabIndex = 2;
             // 
             // FrmTransactionDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(686, 390);
+            this.ClientSize = new System.Drawing.Size(1064, 602);
+            this.Controls.Add(this.pnlSeparator);
             this.Controls.Add(this.pnlTransactionChildren);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -151,5 +162,6 @@
         private System.Windows.Forms.Label lblTransactionChildHeader;
         private System.Windows.Forms.Button btnSales;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel pnlSeparator;
     }
 }

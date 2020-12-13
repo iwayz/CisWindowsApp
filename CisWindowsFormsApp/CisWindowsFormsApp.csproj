@@ -10,10 +10,14 @@
   <ItemGroup>
     <None Remove="C:\Users\Sudik_S419\.nuget\packages\nlog.config\4.7.5\contentFiles\any\any\NLog.config" />
     <None Remove="Reports\Report1.rdlc" />
+    <None Remove="Resources\CisPosManual.pdf" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Reports\Report1.rdlc" />
+    <EmbeddedResource Include="Resources\CisPosManual.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>

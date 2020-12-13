@@ -1,8 +1,10 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
 
@@ -68,6 +70,26 @@ namespace CisWindowsFormsApp
         private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void manualBookToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Logger logger = LogManager.GetCurrentClassLogger();
+            try
+            {
+                var path = Directory.GetCurrentDirectory();
+                System.Diagnostics.Process.Start(Path.Combine(path, @"Resources\CisPosManual.pdf"));
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Unexpected");
+                CommonMessageHelper.ContactAdminError();
+            }
+            finally
+            {
+                LogManager.Shutdown();
+            }
+
         }
     }
 }

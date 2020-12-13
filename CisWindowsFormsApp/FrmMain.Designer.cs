@@ -56,6 +56,12 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.lblCompanyWeb = new System.Windows.Forms.Label();
             this.lblCompanyName = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.manualBookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlLeftPane.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -66,6 +72,7 @@
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel8.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlLeftPane
@@ -79,9 +86,9 @@
             this.pnlLeftPane.Controls.Add(this.pnlSeparatorLeftPane);
             this.pnlLeftPane.Controls.Add(this.pnlLogo);
             this.pnlLeftPane.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlLeftPane.Location = new System.Drawing.Point(0, 0);
+            this.pnlLeftPane.Location = new System.Drawing.Point(0, 24);
             this.pnlLeftPane.Name = "pnlLeftPane";
-            this.pnlLeftPane.Size = new System.Drawing.Size(176, 681);
+            this.pnlLeftPane.Size = new System.Drawing.Size(176, 657);
             this.pnlLeftPane.TabIndex = 0;
             // 
             // btnLogout
@@ -112,7 +119,7 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.lblToday);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 569);
+            this.panel1.Location = new System.Drawing.Point(0, 545);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(176, 112);
             this.panel1.TabIndex = 3;
@@ -280,9 +287,9 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.Silver;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(176, 0);
+            this.panel2.Location = new System.Drawing.Point(176, 24);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(2, 681);
+            this.panel2.Size = new System.Drawing.Size(2, 657);
             this.panel2.TabIndex = 1;
             // 
             // pnlHeader
@@ -291,7 +298,7 @@
             this.pnlHeader.Controls.Add(this.panel7);
             this.pnlHeader.Controls.Add(this.panel6);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlHeader.Location = new System.Drawing.Point(178, 0);
+            this.pnlHeader.Location = new System.Drawing.Point(178, 24);
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.Size = new System.Drawing.Size(1086, 43);
             this.pnlHeader.TabIndex = 2;
@@ -353,7 +360,7 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.LightGray;
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(178, 43);
+            this.panel4.Location = new System.Drawing.Point(178, 67);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1086, 3);
             this.panel4.TabIndex = 3;
@@ -361,9 +368,9 @@
             // pnlChildren
             // 
             this.pnlChildren.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlChildren.Location = new System.Drawing.Point(178, 46);
+            this.pnlChildren.Location = new System.Drawing.Point(178, 70);
             this.pnlChildren.Name = "pnlChildren";
-            this.pnlChildren.Size = new System.Drawing.Size(1086, 635);
+            this.pnlChildren.Size = new System.Drawing.Size(1086, 611);
             this.pnlChildren.TabIndex = 4;
             // 
             // panel8
@@ -399,6 +406,53 @@
             this.lblCompanyName.Text = "Company Name";
             this.lblCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.helpToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1264, 24);
+            this.menuStrip1.TabIndex = 6;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.settingToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // settingToolStripMenuItem
+            // 
+            this.settingToolStripMenuItem.Name = "settingToolStripMenuItem";
+            this.settingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.settingToolStripMenuItem.Text = "Setting";
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.manualBookToolStripMenuItem,
+            this.aboutToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // manualBookToolStripMenuItem
+            // 
+            this.manualBookToolStripMenuItem.Name = "manualBookToolStripMenuItem";
+            this.manualBookToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.manualBookToolStripMenuItem.Text = "Manual Book";
+            this.manualBookToolStripMenuItem.Click += new System.EventHandler(this.manualBookToolStripMenuItem_Click);
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Text = "About";
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -411,7 +465,9 @@
             this.Controls.Add(this.pnlHeader);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.pnlLeftPane);
+            this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(1280, 720);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -430,7 +486,10 @@
             this.panel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel8.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -463,5 +522,11 @@
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Label lblCompanyName;
         private System.Windows.Forms.Label lblCompanyWeb;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem settingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem manualBookToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
     }
 }

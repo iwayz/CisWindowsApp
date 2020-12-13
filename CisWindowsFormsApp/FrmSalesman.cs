@@ -18,6 +18,7 @@ namespace CisWindowsFormsApp
         UnitOfWork<Salesman> uowSalesman;
         bool isAdd = false;
         List<int> foundIndices = new List<int>();
+        CommonFunctionHelper commonHelper = new CommonFunctionHelper();
 
         public FrmSalesman()
         {
@@ -31,7 +32,7 @@ namespace CisWindowsFormsApp
 
             BindRoleGridView();
             SetUIGridView();
-            BindLocationComboBox(cbProvince, Constant.LocationType.Province);
+            commonHelper.BindLocationComboBox(dbContext, cbProvince, Constant.LocationType.Province);
 
             isAdd = true;
             SetUIButtonGroup();
@@ -50,9 +51,9 @@ namespace CisWindowsFormsApp
             rbFemale.Checked = true;
             txtAddress.Text = string.Empty;
 
-            BindLocationComboBox(cbProvince, Constant.LocationType.Province);
-            BindLocationComboBox(cbDistrict, Constant.LocationType.District);
-            BindLocationComboBox(cbSubDistrict, Constant.LocationType.SubDistrict);
+            commonHelper.BindLocationComboBox(dbContext, cbProvince, Constant.LocationType.Province);
+            commonHelper.BindLocationComboBox(dbContext, cbDistrict, Constant.LocationType.Province);
+            commonHelper.BindLocationComboBox(dbContext, cbSubDistrict, Constant.LocationType.Province);
 
             txtPostCode.Text = string.Empty;
             txtPhone.Text = string.Empty;
@@ -197,12 +198,12 @@ namespace CisWindowsFormsApp
 
         private void cbProvince_SelectedIndexChanged(object sender, EventArgs e)
         {
-            BindLocationComboBox(cbDistrict, Constant.LocationType.District, cbProvince.SelectedValue.ToString());
+            commonHelper.BindLocationComboBox(dbContext, cbDistrict, Constant.LocationType.District, cbProvince.SelectedValue.ToString());
         }
 
         private void cbDistrict_SelectedIndexChanged(object sender, EventArgs e)
         {
-            BindLocationComboBox(cbSubDistrict, Constant.LocationType.SubDistrict, cbDistrict.SelectedValue.ToString());
+            commonHelper.BindLocationComboBox(dbContext, cbSubDistrict, Constant.LocationType.SubDistrict, cbDistrict.SelectedValue.ToString());
         }
 
         private void txtPostCode_KeyPress(object sender, KeyPressEventArgs e)
@@ -286,36 +287,6 @@ namespace CisWindowsFormsApp
 
             }
             return true;
-        }
-
-        private void BindLocationComboBox(ComboBox cbLocation, Constant.LocationType locationType, string parentId = "")
-        {
-            var uow = new UnitOfWork<Location>(dbContext);
-            var locations = uow.Repository.GetAll();
-            if (string.IsNullOrEmpty(parentId))
-            {
-                locations = locations
-                    .Where(l => l.LocationType == locationType)
-                    .OrderBy(l => l.Name);
-            }
-            else
-            {
-                locations = locations
-                    .Where(l => l.LocationType == locationType && l.ParentId == parentId)
-                    .OrderBy(l => l.Name);
-            }
-            AutoCompleteStringCollection autoCompleteCollection = new AutoCompleteStringCollection();
-            Dictionary<string, string> dsLocations = new Dictionary<string, string>();
-            dsLocations.Add("0", "--Pilih--");
-            foreach (var loc in locations)
-            {
-                dsLocations.Add(loc.Id, loc.Name);
-                autoCompleteCollection.Add(loc.Name);
-            }
-            cbLocation.DataSource = new BindingSource(dsLocations, null);
-            cbLocation.DisplayMember = "Value";
-            cbLocation.ValueMember = "Key";
-            cbLocation.AutoCompleteCustomSource = autoCompleteCollection;
         }
 
         private void SetUIButtonGroup()

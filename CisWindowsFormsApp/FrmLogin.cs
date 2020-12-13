@@ -8,6 +8,8 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Linq;
+using System.Configuration;
+using System.IO;
 
 namespace CisWindowsFormsApp
 {
@@ -66,8 +68,8 @@ namespace CisWindowsFormsApp
                 Properties.Settings.Default["CurrentUser"] = user.Username;
                 Properties.Settings.Default["CurrentUserId"] = user.Id.ToString().ToUpper();
                 Properties.Settings.Default.Save();
+                
                 this.Hide();
-
 
                 frmMain = new FrmMain();
                 frmMain.RefToLoginForm = this;
