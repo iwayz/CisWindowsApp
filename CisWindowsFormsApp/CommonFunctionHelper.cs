@@ -89,6 +89,6 @@ namespace CisWindowsFormsApp
             cbLocation.ValueMember = "Key";
             cbLocation.AutoCompleteCustomSource = autoCompleteCollection;
         }
-        
+       
     }
 }

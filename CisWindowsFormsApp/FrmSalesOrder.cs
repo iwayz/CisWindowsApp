@@ -205,5 +205,12 @@ namespace CisWindowsFormsApp
             row.Cells["batchCode"].Value = "Value2";
 
         }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            var num = Convert.ToInt32(txtPrice.Text);
+            MessageBox.Show(SpellNumber.Spell(num));
+            
+        }
     }
 }

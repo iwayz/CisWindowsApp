@@ -52,6 +52,18 @@
             this.label3 = new System.Windows.Forms.Label();
             this.dtpSalesOrderDate = new System.Windows.Forms.DateTimePicker();
             this.dgvSalesOrderItem = new System.Windows.Forms.DataGridView();
+            this.productId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.batchId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.batchCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.expDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uomId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uomCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.discPercent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cbProduct = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -94,18 +106,6 @@
             this.btnNext = new System.Windows.Forms.Button();
             this.btnFirst = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
-            this.productId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.batchId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.batchCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.expDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uomId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uomCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.discPercent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbShippingAddress.SuspendLayout();
             this.gbCustomerDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesOrderItem)).BeginInit();
@@ -402,6 +402,87 @@
             this.dgvSalesOrderItem.ReadOnly = true;
             this.dgvSalesOrderItem.Size = new System.Drawing.Size(1069, 250);
             this.dgvSalesOrderItem.TabIndex = 29;
+            // 
+            // productId
+            // 
+            this.productId.HeaderText = "PRODUCT ID";
+            this.productId.Name = "productId";
+            this.productId.ReadOnly = true;
+            this.productId.Visible = false;
+            // 
+            // productCode
+            // 
+            this.productCode.HeaderText = "KODE BRG";
+            this.productCode.Name = "productCode";
+            this.productCode.ReadOnly = true;
+            // 
+            // productName
+            // 
+            this.productName.HeaderText = "NAMA BARANG";
+            this.productName.Name = "productName";
+            this.productName.ReadOnly = true;
+            this.productName.Width = 300;
+            // 
+            // batchId
+            // 
+            this.batchId.HeaderText = "BATCH ID";
+            this.batchId.Name = "batchId";
+            this.batchId.ReadOnly = true;
+            this.batchId.Visible = false;
+            // 
+            // batchCode
+            // 
+            this.batchCode.HeaderText = "BATCH";
+            this.batchCode.Name = "batchCode";
+            this.batchCode.ReadOnly = true;
+            this.batchCode.Width = 75;
+            // 
+            // expDate
+            // 
+            this.expDate.HeaderText = "EXP. DATE";
+            this.expDate.Name = "expDate";
+            this.expDate.ReadOnly = true;
+            // 
+            // qty
+            // 
+            this.qty.HeaderText = "QTY";
+            this.qty.Name = "qty";
+            this.qty.ReadOnly = true;
+            this.qty.Width = 75;
+            // 
+            // uomId
+            // 
+            this.uomId.HeaderText = "UOM ID";
+            this.uomId.Name = "uomId";
+            this.uomId.ReadOnly = true;
+            this.uomId.Visible = false;
+            // 
+            // uomCode
+            // 
+            this.uomCode.HeaderText = "SAT";
+            this.uomCode.Name = "uomCode";
+            this.uomCode.ReadOnly = true;
+            this.uomCode.Width = 75;
+            // 
+            // price
+            // 
+            this.price.HeaderText = "HARGA";
+            this.price.Name = "price";
+            this.price.ReadOnly = true;
+            // 
+            // discPercent
+            // 
+            this.discPercent.HeaderText = "DISKON";
+            this.discPercent.Name = "discPercent";
+            this.discPercent.ReadOnly = true;
+            this.discPercent.Width = 75;
+            // 
+            // subTotal
+            // 
+            this.subTotal.HeaderText = "JML. HARGA";
+            this.subTotal.Name = "subTotal";
+            this.subTotal.ReadOnly = true;
+            this.subTotal.Width = 126;
             // 
             // cbProduct
             // 
@@ -956,87 +1037,7 @@
             this.btnPrint.Text = "PRINT";
             this.btnPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnPrint.UseVisualStyleBackColor = false;
-            // 
-            // productId
-            // 
-            this.productId.HeaderText = "PRODUCT ID";
-            this.productId.Name = "productId";
-            this.productId.ReadOnly = true;
-            this.productId.Visible = false;
-            // 
-            // productCode
-            // 
-            this.productCode.HeaderText = "KODE BRG";
-            this.productCode.Name = "productCode";
-            this.productCode.ReadOnly = true;
-            // 
-            // productName
-            // 
-            this.productName.HeaderText = "NAMA BARANG";
-            this.productName.Name = "productName";
-            this.productName.ReadOnly = true;
-            this.productName.Width = 300;
-            // 
-            // batchId
-            // 
-            this.batchId.HeaderText = "BATCH ID";
-            this.batchId.Name = "batchId";
-            this.batchId.ReadOnly = true;
-            this.batchId.Visible = false;
-            // 
-            // batchCode
-            // 
-            this.batchCode.HeaderText = "BATCH";
-            this.batchCode.Name = "batchCode";
-            this.batchCode.ReadOnly = true;
-            this.batchCode.Width = 75;
-            // 
-            // expDate
-            // 
-            this.expDate.HeaderText = "EXP. DATE";
-            this.expDate.Name = "expDate";
-            this.expDate.ReadOnly = true;
-            // 
-            // qty
-            // 
-            this.qty.HeaderText = "QTY";
-            this.qty.Name = "qty";
-            this.qty.ReadOnly = true;
-            this.qty.Width = 75;
-            // 
-            // uomId
-            // 
-            this.uomId.HeaderText = "UOM ID";
-            this.uomId.Name = "uomId";
-            this.uomId.ReadOnly = true;
-            this.uomId.Visible = false;
-            // 
-            // uomCode
-            // 
-            this.uomCode.HeaderText = "SAT";
-            this.uomCode.Name = "uomCode";
-            this.uomCode.ReadOnly = true;
-            this.uomCode.Width = 75;
-            // 
-            // price
-            // 
-            this.price.HeaderText = "HARGA";
-            this.price.Name = "price";
-            this.price.ReadOnly = true;
-            // 
-            // discPercent
-            // 
-            this.discPercent.HeaderText = "DISKON";
-            this.discPercent.Name = "discPercent";
-            this.discPercent.ReadOnly = true;
-            this.discPercent.Width = 75;
-            // 
-            // subTotal
-            // 
-            this.subTotal.HeaderText = "JML. HARGA";
-            this.subTotal.Name = "subTotal";
-            this.subTotal.ReadOnly = true;
-            this.subTotal.Width = 126;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // FrmSalesOrder
             // 
