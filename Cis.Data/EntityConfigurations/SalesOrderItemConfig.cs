@@ -15,6 +15,10 @@ namespace Cis.Data
                 .HasMaxLength(36)
                 .IsRequired();
 
+            Property(e => e.ProductCode)
+                .HasMaxLength(50)
+                .IsRequired();
+
             Property(e => e.ProductName)
                 .IsRequired();
 

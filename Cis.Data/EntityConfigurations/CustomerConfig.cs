@@ -7,6 +7,10 @@ namespace Cis.Data
     {
         public CustomerConfig()
         {
+            Property(e => e.CustomerCode)
+                .HasMaxLength(50)
+                .IsRequired(); 
+            
             Property(e => e.CustomerName)
                 .HasMaxLength(100)
                 .IsRequired();
@@ -58,6 +62,8 @@ namespace Cis.Data
             Property(e => e.SalesAreaId)
                 .IsRequired();
 
+            HasIndex(e => e.CustomerCode)
+                .IsUnique();
         }
     }
 }

@@ -66,6 +66,14 @@ namespace Cis.Data
                 .HasMaxLength(5)
                 .IsOptional();
 
+            Property(e => e.SalesmanId)
+                 .HasMaxLength(36)
+                 .IsRequired();
+
+            Property(e => e.SalesmanCode)
+                .HasMaxLength(50)
+                .IsRequired();
+
             Property(e => e.SalesAreaId)
                  .HasMaxLength(36)
                  .IsRequired();

@@ -30,6 +30,8 @@ namespace Cis.Model
         public string DeliverySubDistrictId { get; set; }
         public string DeliverySubDistrict { get; set; }
         public string DeliveryPostalCode { get; set; }
+        public string SalesmanId { get; set; }
+        public string SalesmanCode { get; set; }
         public string SalesAreaId { get; set; }
         public string SalesAreaCode { get; set; }
         public DateTime SalesDate { get; set; }
@@ -47,6 +49,7 @@ namespace Cis.Model
         public string Username { get; set; }
 
         public Customer Customer { get; set; }
+        public Salesman Salesman { get; set; }
         public SalesArea SalesArea { get; set; }
         public User User { get; set; }
         public TermOfPayment TermOfPayment { get; set; }

@@ -12,7 +12,7 @@ namespace CisWindowsFormsApp
         public static string Spell(int number)
         {
             if (number > 999999999)
-                return "Nominal terlalu besar. Maksimal nominal adalah 999.999.999";
+                return "### Nominal terlalu besar. Maksimal nominal adalah 999.999.999 ###";
 
             int n, m;
             string result = string.Empty;

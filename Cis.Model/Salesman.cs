@@ -16,5 +16,7 @@ namespace Cis.Model
         public string PostalCode { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
+
+        public ICollection<SalesOrder> SalesOrders { get; set; }
     }
 }

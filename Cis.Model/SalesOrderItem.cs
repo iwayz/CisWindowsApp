@@ -10,6 +10,7 @@ namespace Cis.Model
     {
         public string SalesOrderId { get; set; }
         public string ProductId { get; set; }
+        public string ProductCode { get; set; }
         public string ProductName { get; set; }
         public string BatchId { get; set; }
         public string BatchCode { get; set; }

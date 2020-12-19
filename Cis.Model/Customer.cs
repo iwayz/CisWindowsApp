@@ -6,6 +6,7 @@ namespace Cis.Model
 {
     public class Customer : BaseEntity
     {
+        public string CustomerCode{ get; set; }
         public string CustomerName { get; set; }
         public string Address { get; set; }
         public string ProvinceId { get; set; }

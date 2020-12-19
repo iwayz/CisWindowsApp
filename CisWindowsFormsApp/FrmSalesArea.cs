@@ -73,6 +73,7 @@ namespace CisWindowsFormsApp
                 };
                 uowArea.Repository.Add(areaToAdd);
                 uowArea.Commit();
+                isAdd = true;
                 btnReload.PerformClick();
                 CommonMessageHelper.DataSavedSuccessfully();
             }
@@ -99,6 +100,7 @@ namespace CisWindowsFormsApp
                 gvSelectedIndex = dgvSalesArea.CurrentRow.Index;
                 BindAreaGridView();
                 SetUIGridView();
+                if (isAdd) gvSelectedIndex = dgvSalesArea.RowCount;
                 dgvSalesArea.CurrentCell = this.dgvSalesArea[1, gvSelectedIndex < dgvSalesArea.RowCount ? gvSelectedIndex : gvSelectedIndex - 1];
                 SetUIbySelectedGridItem();
                 txtModifiedAt.Text = dgvSalesArea.CurrentRow.Cells[nameof(SalesArea.ModifiedAt)].Value.ToString();

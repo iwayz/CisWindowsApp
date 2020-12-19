@@ -110,7 +110,7 @@ namespace Cis.Data
                 .HasForeignKey(ur => ur.UserId)
                 .WillCascadeOnDelete(false);
 
-            // Sales Order to Customer, Sales Area, User, and Term of Payment
+            // Sales Order to Customer, Sales Area, User, Term of Payment, and Salesman
             modelmodelBuilder.Entity<SalesOrder>()
                 .HasRequired(so => so.Customer)
                 .WithMany(c => c.SalesOrders)
@@ -134,7 +134,13 @@ namespace Cis.Data
                 .WithMany(t => t.SalesOrders)
                 .HasForeignKey(so => so.TermOfPaymentId)
                 .WillCascadeOnDelete(false);
-            
+
+            modelmodelBuilder.Entity<SalesOrder>()
+                .HasRequired(so => so.Salesman)
+                .WithMany(s => s.SalesOrders)
+                .HasForeignKey(so => so.SalesmanId)
+                .WillCascadeOnDelete(false);
+
             // Sales Order Item to Sales Order
             modelmodelBuilder.Entity<SalesOrderItem>()
                 .HasRequired(oi => oi.SalesOrder)

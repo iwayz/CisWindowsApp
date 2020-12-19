@@ -33,7 +33,7 @@ namespace CisWindowsFormsApp
             SetUIGridView();
             BindLocationComboBox(cbProvince, Constant.LocationType.Province);
             BindOutletTypeComboBox();
-            BindSalesAreaComboBox();
+            BindComboBoxSalesArea();
 
             isAdd = true;
             SetUIButtonGroup();
@@ -68,7 +68,7 @@ namespace CisWindowsFormsApp
             txtSiaNo.Text = string.Empty;
 
             BindOutletTypeComboBox();
-            BindSalesAreaComboBox();
+            BindComboBoxSalesArea();
 
             txtCustomerId.Text = string.Empty;
             txtModifiedAt.Text = string.Empty;
@@ -376,7 +376,7 @@ namespace CisWindowsFormsApp
         private void BindOutletTypeComboBox()
         {
             var uow = new UnitOfWork<OutletType>(dbContext);
-            var outletTypes = uow.Repository.GetAll().OrderBy(m => m.Description);
+            var outletTypes = uow.Repository.GetAll().OrderBy(m => m.OutletTypeCode);
 
             AutoCompleteStringCollection autoCompleteCollection = new AutoCompleteStringCollection();
             Dictionary<string, string> dsOutlet = new Dictionary<string, string>();
@@ -393,18 +393,18 @@ namespace CisWindowsFormsApp
             cbOutletType.AutoCompleteCustomSource = autoCompleteCollection;
         }
 
-        private void BindSalesAreaComboBox()
+        private void BindComboBoxSalesArea()
         {
             var uow = new UnitOfWork<SalesArea>(dbContext);
-            var salesAreas = uow.Repository.GetAll().OrderBy(m => m.Description);
+            var salesAreas = uow.Repository.GetAll().OrderBy(m => m.AreaCode);
 
             AutoCompleteStringCollection autoCompleteCollection = new AutoCompleteStringCollection();
             Dictionary<string, string> dsArea = new Dictionary<string, string>();
             dsArea.Add("0", "--Pilih--");
             foreach (var area in salesAreas)
             {
-                dsArea.Add(area.Id, area.AreaCode);
-                autoCompleteCollection.Add(area.AreaCode);
+                dsArea.Add(area.Id, area.AreaCode +" - " + area.Description);
+                autoCompleteCollection.Add(area.AreaCode + " - " + area.Description);
             }
 
             cbSalesArea.DataSource = new BindingSource(dsArea, null);

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSalesOrder));
-            this.txtShippingAddress = new System.Windows.Forms.TextBox();
+            this.txtDeliveryAddress = new System.Windows.Forms.TextBox();
             this.cbSubDistrict = new System.Windows.Forms.ComboBox();
             this.cbDistrict = new System.Windows.Forms.ComboBox();
             this.cbProvince = new System.Windows.Forms.ComboBox();
@@ -97,7 +97,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.pnlHiddenFields = new System.Windows.Forms.Panel();
             this.txtModifiedAt = new System.Windows.Forms.TextBox();
-            this.txtCustomerId = new System.Windows.Forms.TextBox();
+            this.txtSalesOrderId = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.pnlNavigation = new System.Windows.Forms.Panel();
@@ -106,6 +106,12 @@
             this.btnNext = new System.Windows.Forms.Button();
             this.btnFirst = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtSubTotal = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtTaxBaseAmount = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.txtValueAddedTaxAmount = new System.Windows.Forms.TextBox();
             this.gbShippingAddress.SuspendLayout();
             this.gbCustomerDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesOrderItem)).BeginInit();
@@ -116,16 +122,16 @@
             this.pnlNavigation.SuspendLayout();
             this.SuspendLayout();
             // 
-            // txtShippingAddress
+            // txtDeliveryAddress
             // 
-            this.txtShippingAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtShippingAddress.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.txtShippingAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtShippingAddress.Location = new System.Drawing.Point(15, 37);
-            this.txtShippingAddress.Multiline = true;
-            this.txtShippingAddress.Name = "txtShippingAddress";
-            this.txtShippingAddress.Size = new System.Drawing.Size(283, 81);
-            this.txtShippingAddress.TabIndex = 20;
+            this.txtDeliveryAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDeliveryAddress.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.txtDeliveryAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtDeliveryAddress.Location = new System.Drawing.Point(15, 37);
+            this.txtDeliveryAddress.Multiline = true;
+            this.txtDeliveryAddress.Name = "txtDeliveryAddress";
+            this.txtDeliveryAddress.Size = new System.Drawing.Size(283, 81);
+            this.txtDeliveryAddress.TabIndex = 20;
             // 
             // cbSubDistrict
             // 
@@ -220,11 +226,12 @@
             this.cbCustomer.Name = "cbCustomer";
             this.cbCustomer.Size = new System.Drawing.Size(283, 31);
             this.cbCustomer.TabIndex = 11;
+            this.cbCustomer.SelectedIndexChanged += new System.EventHandler(this.cbCustomer_SelectedIndexChanged);
             // 
             // gbShippingAddress
             // 
             this.gbShippingAddress.Controls.Add(this.cbSalesArea);
-            this.gbShippingAddress.Controls.Add(this.txtShippingAddress);
+            this.gbShippingAddress.Controls.Add(this.txtDeliveryAddress);
             this.gbShippingAddress.Controls.Add(this.label29);
             this.gbShippingAddress.Controls.Add(this.cbProvince);
             this.gbShippingAddress.Controls.Add(this.label2);
@@ -329,6 +336,7 @@
             this.cbTermOfPayment.Name = "cbTermOfPayment";
             this.cbTermOfPayment.Size = new System.Drawing.Size(283, 31);
             this.cbTermOfPayment.TabIndex = 14;
+            this.cbTermOfPayment.SelectedIndexChanged += new System.EventHandler(this.cbTermOfPayment_SelectedIndexChanged);
             // 
             // label27
             // 
@@ -400,8 +408,9 @@
             this.dgvSalesOrderItem.Location = new System.Drawing.Point(16, 81);
             this.dgvSalesOrderItem.Name = "dgvSalesOrderItem";
             this.dgvSalesOrderItem.ReadOnly = true;
-            this.dgvSalesOrderItem.Size = new System.Drawing.Size(1069, 250);
+            this.dgvSalesOrderItem.Size = new System.Drawing.Size(1069, 220);
             this.dgvSalesOrderItem.TabIndex = 29;
+            this.dgvSalesOrderItem.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgvSalesOrderItem_UserDeletedRow);
             // 
             // productId
             // 
@@ -495,6 +504,7 @@
             this.cbProduct.Name = "cbProduct";
             this.cbProduct.Size = new System.Drawing.Size(330, 31);
             this.cbProduct.TabIndex = 30;
+            this.cbProduct.SelectedIndexChanged += new System.EventHandler(this.cbProduct_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -564,6 +574,7 @@
             this.cbBatch.Name = "cbBatch";
             this.cbBatch.Size = new System.Drawing.Size(173, 31);
             this.cbBatch.TabIndex = 31;
+            this.cbBatch.SelectedIndexChanged += new System.EventHandler(this.cbBatch_SelectedIndexChanged);
             // 
             // label10
             // 
@@ -651,11 +662,19 @@
             this.groupBox1.Controls.Add(this.cbProduct);
             this.groupBox1.Controls.Add(this.txtDiscount);
             this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.txtSubTotal);
+            this.groupBox1.Controls.Add(this.lblTotal);
+            this.groupBox1.Controls.Add(this.txtValueAddedTaxAmount);
+            this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Controls.Add(this.txtTaxBaseAmount);
             this.groupBox1.Controls.Add(this.txtExtraDiscount);
             this.groupBox1.Controls.Add(this.txtPrice);
             this.groupBox1.Controls.Add(this.cbBatch);
             this.groupBox1.Controls.Add(this.txtQty);
             this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.label14);
+            this.groupBox1.Controls.Add(this.label23);
+            this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Controls.Add(this.label16);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label6);
@@ -674,24 +693,26 @@
             this.txtExtraDiscount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtExtraDiscount.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtExtraDiscount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtExtraDiscount.Location = new System.Drawing.Point(914, 337);
+            this.txtExtraDiscount.Location = new System.Drawing.Point(179, 335);
             this.txtExtraDiscount.Name = "txtExtraDiscount";
-            this.txtExtraDiscount.Size = new System.Drawing.Size(168, 31);
+            this.txtExtraDiscount.Size = new System.Drawing.Size(113, 31);
             this.txtExtraDiscount.TabIndex = 37;
             this.txtExtraDiscount.Text = "0";
             this.txtExtraDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtExtraDiscount.Enter += new System.EventHandler(this.txtExtraDiscount_Enter);
             this.txtExtraDiscount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtExtraDiscount_KeyPress);
+            this.txtExtraDiscount.Leave += new System.EventHandler(this.txtExtraDiscount_Leave);
             // 
             // label16
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label16.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label16.Location = new System.Drawing.Point(823, 337);
+            this.label16.Location = new System.Drawing.Point(176, 317);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(85, 15);
+            this.label16.Size = new System.Drawing.Size(79, 15);
             this.label16.TabIndex = 17;
-            this.label16.Text = "EXTRA DISKON";
+            this.label16.Text = "Ekstra Diskon";
             // 
             // label12
             // 
@@ -728,6 +749,7 @@
             this.btnSearch.TabIndex = 2;
             this.btnSearch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnSearchCriteria
             // 
@@ -749,7 +771,7 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label13.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label13.Location = new System.Drawing.Point(923, 9);
+            this.label13.Location = new System.Drawing.Point(900, 309);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(97, 15);
             this.label13.TabIndex = 30;
@@ -760,7 +782,7 @@
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Calibri", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblTotal.Location = new System.Drawing.Point(919, 24);
+            this.lblTotal.Location = new System.Drawing.Point(896, 324);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(36, 42);
             this.lblTotal.TabIndex = 30;
@@ -794,6 +816,7 @@
             this.btnAdd.Text = "ADD";
             this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnReload
             // 
@@ -810,6 +833,7 @@
             this.btnReload.Text = "RELOAD";
             this.btnReload.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnReload.UseVisualStyleBackColor = false;
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
             // btnDel
             // 
@@ -826,6 +850,7 @@
             this.btnDel.Text = "DELETE";
             this.btnDel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnDel.UseVisualStyleBackColor = false;
+            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
             // 
             // btnSave
             // 
@@ -842,6 +867,7 @@
             this.btnSave.Text = "SAVE";
             this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnClear
             // 
@@ -858,6 +884,7 @@
             this.btnClear.Text = "CLEAR";
             this.btnClear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // pnlNote
             // 
@@ -896,7 +923,7 @@
             // pnlHiddenFields
             // 
             this.pnlHiddenFields.Controls.Add(this.txtModifiedAt);
-            this.pnlHiddenFields.Controls.Add(this.txtCustomerId);
+            this.pnlHiddenFields.Controls.Add(this.txtSalesOrderId);
             this.pnlHiddenFields.Controls.Add(this.label18);
             this.pnlHiddenFields.Controls.Add(this.label19);
             this.pnlHiddenFields.Location = new System.Drawing.Point(23, 906);
@@ -908,22 +935,22 @@
             // txtModifiedAt
             // 
             this.txtModifiedAt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtModifiedAt.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.txtModifiedAt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtModifiedAt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtModifiedAt.Location = new System.Drawing.Point(161, 31);
             this.txtModifiedAt.Name = "txtModifiedAt";
-            this.txtModifiedAt.Size = new System.Drawing.Size(175, 31);
+            this.txtModifiedAt.Size = new System.Drawing.Size(175, 27);
             this.txtModifiedAt.TabIndex = 1;
             // 
-            // txtCustomerId
+            // txtSalesOrderId
             // 
-            this.txtCustomerId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCustomerId.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.txtCustomerId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtCustomerId.Location = new System.Drawing.Point(9, 31);
-            this.txtCustomerId.Name = "txtCustomerId";
-            this.txtCustomerId.Size = new System.Drawing.Size(139, 31);
-            this.txtCustomerId.TabIndex = 1;
+            this.txtSalesOrderId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSalesOrderId.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSalesOrderId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtSalesOrderId.Location = new System.Drawing.Point(9, 31);
+            this.txtSalesOrderId.Name = "txtSalesOrderId";
+            this.txtSalesOrderId.Size = new System.Drawing.Size(139, 27);
+            this.txtSalesOrderId.TabIndex = 1;
             // 
             // label18
             // 
@@ -973,6 +1000,7 @@
             this.btnPrev.Text = "PREV";
             this.btnPrev.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnPrev.UseVisualStyleBackColor = false;
+            this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
             // 
             // btnLast
             // 
@@ -989,6 +1017,7 @@
             this.btnLast.Text = "LAST";
             this.btnLast.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnLast.UseVisualStyleBackColor = false;
+            this.btnLast.Click += new System.EventHandler(this.btnLast_Click);
             // 
             // btnNext
             // 
@@ -1005,6 +1034,7 @@
             this.btnNext.Text = "NEXT";
             this.btnNext.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnNext.UseVisualStyleBackColor = false;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // btnFirst
             // 
@@ -1021,6 +1051,7 @@
             this.btnFirst.Text = "FIRST";
             this.btnFirst.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnFirst.UseVisualStyleBackColor = false;
+            this.btnFirst.Click += new System.EventHandler(this.btnFirst_Click);
             // 
             // btnPrint
             // 
@@ -1039,12 +1070,93 @@
             this.btnPrint.UseVisualStyleBackColor = false;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label14.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label14.Location = new System.Drawing.Point(15, 317);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(67, 15);
+            this.label14.TabIndex = 17;
+            this.label14.Text = "Total Harga";
+            // 
+            // txtSubTotal
+            // 
+            this.txtSubTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSubTotal.Enabled = false;
+            this.txtSubTotal.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.txtSubTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtSubTotal.Location = new System.Drawing.Point(17, 335);
+            this.txtSubTotal.Name = "txtSubTotal";
+            this.txtSubTotal.Size = new System.Drawing.Size(156, 31);
+            this.txtSubTotal.TabIndex = 37;
+            this.txtSubTotal.Text = "0";
+            this.txtSubTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtSubTotal.Enter += new System.EventHandler(this.txtExtraDiscount_Enter);
+            this.txtSubTotal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtExtraDiscount_KeyPress);
+            this.txtSubTotal.Leave += new System.EventHandler(this.txtExtraDiscount_Leave);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label17.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label17.Location = new System.Drawing.Point(297, 317);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(58, 15);
+            this.label17.TabIndex = 17;
+            this.label17.Text = "Total DPP";
+            // 
+            // txtTaxBaseAmount
+            // 
+            this.txtTaxBaseAmount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTaxBaseAmount.Enabled = false;
+            this.txtTaxBaseAmount.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.txtTaxBaseAmount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtTaxBaseAmount.Location = new System.Drawing.Point(300, 335);
+            this.txtTaxBaseAmount.Name = "txtTaxBaseAmount";
+            this.txtTaxBaseAmount.Size = new System.Drawing.Size(113, 31);
+            this.txtTaxBaseAmount.TabIndex = 37;
+            this.txtTaxBaseAmount.Text = "0";
+            this.txtTaxBaseAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTaxBaseAmount.Enter += new System.EventHandler(this.txtExtraDiscount_Enter);
+            this.txtTaxBaseAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtExtraDiscount_KeyPress);
+            this.txtTaxBaseAmount.Leave += new System.EventHandler(this.txtExtraDiscount_Leave);
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label23.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label23.Location = new System.Drawing.Point(419, 317);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(56, 15);
+            this.label23.TabIndex = 17;
+            this.label23.Text = "PPN 10%";
+            // 
+            // txtValueAddedTaxAmount
+            // 
+            this.txtValueAddedTaxAmount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtValueAddedTaxAmount.Enabled = false;
+            this.txtValueAddedTaxAmount.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.txtValueAddedTaxAmount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtValueAddedTaxAmount.Location = new System.Drawing.Point(422, 335);
+            this.txtValueAddedTaxAmount.Name = "txtValueAddedTaxAmount";
+            this.txtValueAddedTaxAmount.Size = new System.Drawing.Size(113, 31);
+            this.txtValueAddedTaxAmount.TabIndex = 37;
+            this.txtValueAddedTaxAmount.Text = "0";
+            this.txtValueAddedTaxAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtValueAddedTaxAmount.Enter += new System.EventHandler(this.txtExtraDiscount_Enter);
+            this.txtValueAddedTaxAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtExtraDiscount_KeyPress);
+            this.txtValueAddedTaxAmount.Leave += new System.EventHandler(this.txtExtraDiscount_Leave);
+            // 
             // FrmSalesOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1377, 1032);
+            this.ClientSize = new System.Drawing.Size(1659, 1032);
             this.Controls.Add(this.pnlHiddenFields);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.pnlNote);
@@ -1052,8 +1164,6 @@
             this.Controls.Add(this.pnlButtonGroup);
             this.Controls.Add(this.btnSearchCriteria);
             this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.lblTotal);
-            this.Controls.Add(this.label13);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbCustomerDetail);
             this.Controls.Add(this.gbShippingAddress);
@@ -1081,7 +1191,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.TextBox txtShippingAddress;
+        private System.Windows.Forms.TextBox txtDeliveryAddress;
         private System.Windows.Forms.ComboBox cbSubDistrict;
         private System.Windows.Forms.ComboBox cbDistrict;
         private System.Windows.Forms.ComboBox cbProvince;
@@ -1135,7 +1245,7 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Panel pnlHiddenFields;
         private System.Windows.Forms.TextBox txtModifiedAt;
-        private System.Windows.Forms.TextBox txtCustomerId;
+        private System.Windows.Forms.TextBox txtSalesOrderId;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Panel pnlNavigation;
@@ -1158,5 +1268,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn price;
         private System.Windows.Forms.DataGridViewTextBoxColumn discPercent;
         private System.Windows.Forms.DataGridViewTextBoxColumn subTotal;
+        private System.Windows.Forms.TextBox txtSubTotal;
+        private System.Windows.Forms.TextBox txtValueAddedTaxAmount;
+        private System.Windows.Forms.TextBox txtTaxBaseAmount;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label17;
     }
 }

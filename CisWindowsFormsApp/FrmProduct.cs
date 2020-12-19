@@ -433,5 +433,16 @@ namespace CisWindowsFormsApp
                 btnSearch.PerformClick();
             }
         }
+
+        private void txtProductCode_Leave(object sender, EventArgs e)
+        {
+            if (txtProductCode.TextLength != 8)
+                MessageBox.Show("Kode Barang harus 8 karakter, yang terdiri dari: " + Environment.NewLine 
+                    + "- 2 karakter inisial barang" + Environment.NewLine
+                    + "- 1 karakter kategori barang" + Environment.NewLine
+                    + "- 1 karakter jenis pemakaian" + Environment.NewLine
+                    + "- 2 karakter kode principal" + Environment.NewLine
+                    + "- 2 karakter nomor barang", "Informasi",  MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }
