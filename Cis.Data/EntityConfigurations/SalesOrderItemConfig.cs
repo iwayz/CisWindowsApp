@@ -3,7 +3,7 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace Cis.Data
 {
-    public class SalesOrderItemConfig: EntityTypeConfiguration<SalesOrderItem>
+    public class SalesOrderItemConfig : EntityTypeConfiguration<SalesOrderItem>
     {
         public SalesOrderItemConfig()
         {
@@ -23,12 +23,12 @@ namespace Cis.Data
                 .IsRequired();
 
             Property(e => e.BatchId)
-                .HasMaxLength(36)
-                .IsRequired();
+                .HasMaxLength(36);
+            //.IsRequired();
 
             Property(e => e.BatchCode)
-                .HasMaxLength(50)
-                .IsRequired();
+                .HasMaxLength(50);
+            //.IsRequired();
 
             Property(e => e.ExpiredDate)
                 .IsRequired();
@@ -54,7 +54,7 @@ namespace Cis.Data
                 .IsRequired();
 
 
-            HasIndex(e => new { e.SalesOrderId, e.ProductId, e.BatchId })
+            HasIndex(e => new { e.SalesOrderId, e.ProductId, e.BatchId, e.ExpiredDate })
                 .IsUnique();
         }
     }

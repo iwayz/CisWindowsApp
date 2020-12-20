@@ -8,7 +8,7 @@ namespace Cis.Model
     {
         public string ProductCode { get; set; }
         public string ProductName { get; set; }
-        public decimal Price { get; set; }
+        public decimal Price { get; set; } // HNA + PPN 10%
         public DateTime PriceDecreeDate { get; set; } // Tanggal SK Harga
         public float Discount { get; set; }
         public int RestockLevel { get; set; }
@@ -23,5 +23,6 @@ namespace Cis.Model
         public Principal Principal { get; set; }
 
         public ICollection<Batch> Batches { get; set; }
+        public ICollection<SalesOrderItem> SalesOrderItems { get; set; }
     }
 }

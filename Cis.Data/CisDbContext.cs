@@ -32,122 +32,140 @@ namespace Cis.Data
         public DbSet<User> Users { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelmodelBuilder)
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             // Properties configurations
-            modelmodelBuilder.Configurations.AddFromAssembly(Assembly.GetExecutingAssembly());
-            modelmodelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Configurations.AddFromAssembly(Assembly.GetExecutingAssembly());
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
             // Entities configurations
             // Batch to Product
-            modelmodelBuilder.Entity<Batch>()
+            modelBuilder.Entity<Batch>()
                 .HasRequired(b => b.Product)
                 .WithMany(p => p.Batches)
                 .HasForeignKey(b => b.ProductId)
                 .WillCascadeOnDelete(false);
 
             // Customer to Sales Area and Outlet Type
-            modelmodelBuilder.Entity<Customer>()
+            modelBuilder.Entity<Customer>()
                 .HasRequired(c => c.SalesArea)
                 .WithMany(s => s.Customers)
                 .HasForeignKey(c => c.SalesAreaId)
                 .WillCascadeOnDelete(false);
 
-            modelmodelBuilder.Entity<Customer>()
+            modelBuilder.Entity<Customer>()
                 .HasRequired(c => c.OutletType)
                 .WithMany(o => o.Customers)
                 .HasForeignKey(c => c.OutletTypeId)
                 .WillCascadeOnDelete(false);
 
             // Permission Role to Role and Permission
-            modelmodelBuilder.Entity<PermissionRole>()
+            modelBuilder.Entity<PermissionRole>()
                 .HasRequired(p => p.Role)
                 .WithMany(r => r.PermissionRoles)
                 .HasForeignKey(p => p.RoleId)
                 .WillCascadeOnDelete(false);
 
-            modelmodelBuilder.Entity<PermissionRole>()
+            modelBuilder.Entity<PermissionRole>()
                 .HasRequired(pr => pr.Permission)
                 .WithMany(p => p.PermissionRoles)
                 .HasForeignKey(pr => pr.PermisionId)
                 .WillCascadeOnDelete(false);
 
             // Product to Unit, MedicineCat, Usage Type and Principal
-            modelmodelBuilder.Entity<Product>()
+            modelBuilder.Entity<Product>()
                 .HasRequired(p => p.Unit)
                 .WithMany(u => u.Products)
                 .HasForeignKey(p => p.UnitId)
                 .WillCascadeOnDelete(false);
 
-            modelmodelBuilder.Entity<Product>()
+            modelBuilder.Entity<Product>()
                 .HasRequired(p => p.MedicineCat)
                 .WithMany(m => m.Products)
                 .HasForeignKey(p => p.MedicineCatId)
                 .WillCascadeOnDelete(false);
 
-            modelmodelBuilder.Entity<Product>()
+            modelBuilder.Entity<Product>()
                 .HasRequired(p => p.UsageType)
                 .WithMany(u => u.Products)
                 .HasForeignKey(p => p.UsageTypeId)
                 .WillCascadeOnDelete(false);
 
-            modelmodelBuilder.Entity<Product>()
+            modelBuilder.Entity<Product>()
                 .HasRequired(pd => pd.Principal)
                 .WithMany(pc => pc.Products)
                 .HasForeignKey(pd => pd.PrincipalId)
                 .WillCascadeOnDelete(false);
 
             // User Role to Role and User
-            modelmodelBuilder.Entity<UserRole>()
+            modelBuilder.Entity<UserRole>()
                 .HasRequired(u => u.Role)
                 .WithMany(r => r.UserRoles)
                 .HasForeignKey(u => u.RoleId)
                 .WillCascadeOnDelete(false);
 
-            modelmodelBuilder.Entity<UserRole>()
+            modelBuilder.Entity<UserRole>()
                 .HasRequired(ur => ur.User)
                 .WithMany(us => us.UserRoles)
                 .HasForeignKey(ur => ur.UserId)
                 .WillCascadeOnDelete(false);
 
             // Sales Order to Customer, Sales Area, User, Term of Payment, and Salesman
-            modelmodelBuilder.Entity<SalesOrder>()
+            modelBuilder.Entity<SalesOrder>()
                 .HasRequired(so => so.Customer)
                 .WithMany(c => c.SalesOrders)
                 .HasForeignKey(so => so.CustomerId)
                 .WillCascadeOnDelete(false);
 
-            modelmodelBuilder.Entity<SalesOrder>()
+            modelBuilder.Entity<SalesOrder>()
                 .HasRequired(so => so.SalesArea)
                 .WithMany(sa => sa.SalesOrders)
                 .HasForeignKey(so => so.SalesAreaId)
                 .WillCascadeOnDelete(false);
 
-            modelmodelBuilder.Entity<SalesOrder>()
+            modelBuilder.Entity<SalesOrder>()
                 .HasRequired(so => so.User)
                 .WithMany(u => u.SalesOrders)
                 .HasForeignKey(so => so.UserId)
                 .WillCascadeOnDelete(false);
 
-            modelmodelBuilder.Entity<SalesOrder>()
+            modelBuilder.Entity<SalesOrder>()
                 .HasRequired(so => so.TermOfPayment)
                 .WithMany(t => t.SalesOrders)
                 .HasForeignKey(so => so.TermOfPaymentId)
                 .WillCascadeOnDelete(false);
 
-            modelmodelBuilder.Entity<SalesOrder>()
+            modelBuilder.Entity<SalesOrder>()
                 .HasRequired(so => so.Salesman)
                 .WithMany(s => s.SalesOrders)
                 .HasForeignKey(so => so.SalesmanId)
                 .WillCascadeOnDelete(false);
 
             // Sales Order Item to Sales Order
-            modelmodelBuilder.Entity<SalesOrderItem>()
+            modelBuilder.Entity<SalesOrderItem>()
                 .HasRequired(oi => oi.SalesOrder)
                 .WithMany(so => so.SalesOrderItems)
                 .HasForeignKey(oi => oi.SalesOrderId)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<SalesOrderItem>()
+                .HasRequired(oi => oi.Product)
+                .WithMany(p => p.SalesOrderItems)
+                .HasForeignKey(oi => oi.ProductId)
+                .WillCascadeOnDelete(false);
+
+            // Activate this when the Batch is really in-use
+            //modelmodelBuilder.Entity<SalesOrderItem>()
+            //    .HasRequired(oi => oi.Batch)
+            //    .WithMany(b => b.SalesOrderItems)
+            //    .HasForeignKey(oi => oi.BatchId)
+            //    .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<SalesOrderItem>()
+                .HasRequired(oi => oi.UnitOfMeasurement)
+                .WithMany(u => u.SalesOrderItems)
+                .HasForeignKey(oi => oi.UomId)
+                .WillCascadeOnDelete(false);
         }
     }
 }

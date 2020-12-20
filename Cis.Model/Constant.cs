@@ -19,6 +19,11 @@ namespace Cis.Model
             SubDistrict = 3 // Kelurahan
         }
 
+        public enum RecordStatus
+        {
+            Inactive,
+            Active
+        }
 
         public static class Permission
         {

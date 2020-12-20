@@ -60,6 +60,10 @@ namespace CisWindowsFormsApp
             return new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, dateTime.Hour, dateTime.Minute, dateTime.Second);
         }
 
+        public DateTime StandardizeDate(DateTime dateTime)
+        {
+            return new DateTime(dateTime.Year, dateTime.Month, dateTime.Day);
+        }
         public void BindLocationComboBox(CisDbContext dbContext, ComboBox cbLocation, Constant.LocationType locationType, string parentId = "")
         {
             var uow = new UnitOfWork<Location>(dbContext);
@@ -89,6 +93,14 @@ namespace CisWindowsFormsApp
             cbLocation.ValueMember = "Key";
             cbLocation.AutoCompleteCustomSource = autoCompleteCollection;
         }
-       
+
+        public void SetTextBoxToZeroWhenEmpty(object sender)
+        {
+            var obj = (TextBox)sender;
+            if (string.IsNullOrEmpty(obj.Text))
+            {
+                obj.Text = "0";
+            }
+        }
     }
 }

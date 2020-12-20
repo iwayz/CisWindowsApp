@@ -23,5 +23,8 @@ namespace Cis.Model
         public decimal TotalAmount { get; set; }
 
         public SalesOrder SalesOrder { get; set; }
+        public Product Product{ get; set; }
+        //public Batch Batch { get; set; }
+        public UnitOfMeasurement UnitOfMeasurement { get; set; }
     }
 }

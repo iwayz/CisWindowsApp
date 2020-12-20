@@ -10,5 +10,6 @@ namespace Cis.Model
         public string Description { get; set; }
 
         public ICollection<Product> Products { get; set; }
+        public ICollection<SalesOrderItem> SalesOrderItems { get; set; }
     }
 }

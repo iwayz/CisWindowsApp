@@ -125,6 +125,10 @@ namespace Cis.Data
                .HasMaxLength(50)
                .IsRequired();
 
+            Property(e => e.Status)
+                .IsRequired();
+
+
             HasIndex(e => e.SalesNo)
                .IsUnique();
         }

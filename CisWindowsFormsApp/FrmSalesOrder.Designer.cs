@@ -77,15 +77,21 @@
             this.label11 = new System.Windows.Forms.Label();
             this.txtDiscount = new System.Windows.Forms.TextBox();
             this.btnAddItem = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gbSalesOrderDetail = new System.Windows.Forms.GroupBox();
+            this.txtSubTotal = new System.Windows.Forms.TextBox();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.txtValueAddedTaxAmount = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtTaxBaseAmount = new System.Windows.Forms.TextBox();
             this.txtExtraDiscount = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.txtSalesNo = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnSearchCriteria = new System.Windows.Forms.Button();
-            this.label13 = new System.Windows.Forms.Label();
-            this.lblTotal = new System.Windows.Forms.Label();
             this.pnlButtonGroup = new System.Windows.Forms.Panel();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnReload = new System.Windows.Forms.Button();
@@ -106,16 +112,13 @@
             this.btnNext = new System.Windows.Forms.Button();
             this.btnFirst = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
-            this.label14 = new System.Windows.Forms.Label();
-            this.txtSubTotal = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.txtTaxBaseAmount = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.txtValueAddedTaxAmount = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.lblSalesNo = new System.Windows.Forms.Label();
+            this.lblMark = new System.Windows.Forms.Label();
             this.gbShippingAddress.SuspendLayout();
             this.gbCustomerDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesOrderItem)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.gbSalesOrderDetail.SuspendLayout();
             this.pnlButtonGroup.SuspendLayout();
             this.pnlNote.SuspendLayout();
             this.pnlHiddenFields.SuspendLayout();
@@ -562,6 +565,7 @@
             this.txtQty.Text = "0";
             this.txtQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtQty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQty_KeyPress);
+            this.txtQty.Leave += new System.EventHandler(this.txtQty_Leave);
             // 
             // cbBatch
             // 
@@ -594,9 +598,9 @@
             this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label6.Location = new System.Drawing.Point(773, 25);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(38, 15);
+            this.label6.Size = new System.Drawing.Size(109, 15);
             this.label6.TabIndex = 17;
-            this.label6.Text = "Harga";
+            this.label6.Text = "Harga (HNA + PPN)";
             // 
             // txtPrice
             // 
@@ -610,6 +614,7 @@
             this.txtPrice.Text = "0";
             this.txtPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrice_KeyPress);
+            this.txtPrice.Leave += new System.EventHandler(this.txtPrice_Leave);
             // 
             // label11
             // 
@@ -654,39 +659,110 @@
             this.btnAddItem.UseVisualStyleBackColor = false;
             this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
             // 
-            // groupBox1
+            // gbSalesOrderDetail
             // 
-            this.groupBox1.Controls.Add(this.dgvSalesOrderItem);
-            this.groupBox1.Controls.Add(this.btnAddItem);
-            this.groupBox1.Controls.Add(this.dtpExpiredDate);
-            this.groupBox1.Controls.Add(this.cbProduct);
-            this.groupBox1.Controls.Add(this.txtDiscount);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.txtSubTotal);
-            this.groupBox1.Controls.Add(this.lblTotal);
-            this.groupBox1.Controls.Add(this.txtValueAddedTaxAmount);
-            this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.txtTaxBaseAmount);
-            this.groupBox1.Controls.Add(this.txtExtraDiscount);
-            this.groupBox1.Controls.Add(this.txtPrice);
-            this.groupBox1.Controls.Add(this.cbBatch);
-            this.groupBox1.Controls.Add(this.txtQty);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.label14);
-            this.groupBox1.Controls.Add(this.label23);
-            this.groupBox1.Controls.Add(this.label17);
-            this.groupBox1.Controls.Add(this.label16);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.groupBox1.Location = new System.Drawing.Point(23, 268);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1101, 375);
-            this.groupBox1.TabIndex = 6;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "FAKTUR DETAIL";
+            this.gbSalesOrderDetail.Controls.Add(this.dgvSalesOrderItem);
+            this.gbSalesOrderDetail.Controls.Add(this.btnAddItem);
+            this.gbSalesOrderDetail.Controls.Add(this.dtpExpiredDate);
+            this.gbSalesOrderDetail.Controls.Add(this.cbProduct);
+            this.gbSalesOrderDetail.Controls.Add(this.txtDiscount);
+            this.gbSalesOrderDetail.Controls.Add(this.label7);
+            this.gbSalesOrderDetail.Controls.Add(this.txtSubTotal);
+            this.gbSalesOrderDetail.Controls.Add(this.lblTotal);
+            this.gbSalesOrderDetail.Controls.Add(this.txtValueAddedTaxAmount);
+            this.gbSalesOrderDetail.Controls.Add(this.label13);
+            this.gbSalesOrderDetail.Controls.Add(this.txtTaxBaseAmount);
+            this.gbSalesOrderDetail.Controls.Add(this.txtExtraDiscount);
+            this.gbSalesOrderDetail.Controls.Add(this.txtPrice);
+            this.gbSalesOrderDetail.Controls.Add(this.cbBatch);
+            this.gbSalesOrderDetail.Controls.Add(this.txtQty);
+            this.gbSalesOrderDetail.Controls.Add(this.label8);
+            this.gbSalesOrderDetail.Controls.Add(this.label14);
+            this.gbSalesOrderDetail.Controls.Add(this.label23);
+            this.gbSalesOrderDetail.Controls.Add(this.label17);
+            this.gbSalesOrderDetail.Controls.Add(this.label16);
+            this.gbSalesOrderDetail.Controls.Add(this.label10);
+            this.gbSalesOrderDetail.Controls.Add(this.label6);
+            this.gbSalesOrderDetail.Controls.Add(this.label5);
+            this.gbSalesOrderDetail.Controls.Add(this.label11);
+            this.gbSalesOrderDetail.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.gbSalesOrderDetail.Location = new System.Drawing.Point(23, 268);
+            this.gbSalesOrderDetail.Name = "gbSalesOrderDetail";
+            this.gbSalesOrderDetail.Size = new System.Drawing.Size(1101, 375);
+            this.gbSalesOrderDetail.TabIndex = 6;
+            this.gbSalesOrderDetail.TabStop = false;
+            this.gbSalesOrderDetail.Text = "FAKTUR DETAIL";
+            // 
+            // txtSubTotal
+            // 
+            this.txtSubTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSubTotal.Enabled = false;
+            this.txtSubTotal.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.txtSubTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtSubTotal.Location = new System.Drawing.Point(17, 335);
+            this.txtSubTotal.Name = "txtSubTotal";
+            this.txtSubTotal.Size = new System.Drawing.Size(156, 31);
+            this.txtSubTotal.TabIndex = 37;
+            this.txtSubTotal.Text = "0";
+            this.txtSubTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtSubTotal.Enter += new System.EventHandler(this.txtExtraDiscount_Enter);
+            this.txtSubTotal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtExtraDiscount_KeyPress);
+            this.txtSubTotal.Leave += new System.EventHandler(this.txtExtraDiscount_Leave);
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Font = new System.Drawing.Font("Calibri", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblTotal.Location = new System.Drawing.Point(896, 324);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(36, 42);
+            this.lblTotal.TabIndex = 30;
+            this.lblTotal.Text = "0";
+            this.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtValueAddedTaxAmount
+            // 
+            this.txtValueAddedTaxAmount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtValueAddedTaxAmount.Enabled = false;
+            this.txtValueAddedTaxAmount.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.txtValueAddedTaxAmount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtValueAddedTaxAmount.Location = new System.Drawing.Point(422, 335);
+            this.txtValueAddedTaxAmount.Name = "txtValueAddedTaxAmount";
+            this.txtValueAddedTaxAmount.Size = new System.Drawing.Size(113, 31);
+            this.txtValueAddedTaxAmount.TabIndex = 37;
+            this.txtValueAddedTaxAmount.Text = "0";
+            this.txtValueAddedTaxAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtValueAddedTaxAmount.Enter += new System.EventHandler(this.txtExtraDiscount_Enter);
+            this.txtValueAddedTaxAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtExtraDiscount_KeyPress);
+            this.txtValueAddedTaxAmount.Leave += new System.EventHandler(this.txtExtraDiscount_Leave);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label13.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label13.Location = new System.Drawing.Point(900, 309);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(97, 15);
+            this.label13.TabIndex = 30;
+            this.label13.Text = "TOTAL TAGIHAN:";
+            // 
+            // txtTaxBaseAmount
+            // 
+            this.txtTaxBaseAmount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTaxBaseAmount.Enabled = false;
+            this.txtTaxBaseAmount.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.txtTaxBaseAmount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtTaxBaseAmount.Location = new System.Drawing.Point(300, 335);
+            this.txtTaxBaseAmount.Name = "txtTaxBaseAmount";
+            this.txtTaxBaseAmount.Size = new System.Drawing.Size(113, 31);
+            this.txtTaxBaseAmount.TabIndex = 37;
+            this.txtTaxBaseAmount.Text = "0";
+            this.txtTaxBaseAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTaxBaseAmount.Enter += new System.EventHandler(this.txtExtraDiscount_Enter);
+            this.txtTaxBaseAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtExtraDiscount_KeyPress);
+            this.txtTaxBaseAmount.Leave += new System.EventHandler(this.txtExtraDiscount_Leave);
             // 
             // txtExtraDiscount
             // 
@@ -702,6 +778,39 @@
             this.txtExtraDiscount.Enter += new System.EventHandler(this.txtExtraDiscount_Enter);
             this.txtExtraDiscount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtExtraDiscount_KeyPress);
             this.txtExtraDiscount.Leave += new System.EventHandler(this.txtExtraDiscount_Leave);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label14.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label14.Location = new System.Drawing.Point(15, 317);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(67, 15);
+            this.label14.TabIndex = 17;
+            this.label14.Text = "Total Harga";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label23.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label23.Location = new System.Drawing.Point(419, 317);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(56, 15);
+            this.label23.TabIndex = 17;
+            this.label23.Text = "PPN 10%";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label17.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label17.Location = new System.Drawing.Point(297, 317);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(58, 15);
+            this.label17.TabIndex = 17;
+            this.label17.Text = "Total DPP";
             // 
             // label16
             // 
@@ -721,9 +830,9 @@
             this.label12.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label12.Location = new System.Drawing.Point(36, 9);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(52, 15);
+            this.label12.Size = new System.Drawing.Size(88, 15);
             this.label12.TabIndex = 17;
-            this.label12.Text = "NOMOR";
+            this.label12.Text = "Cari No. Faktur";
             // 
             // txtSalesNo
             // 
@@ -765,29 +874,6 @@
             this.btnSearchCriteria.Text = "...";
             this.btnSearchCriteria.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnSearchCriteria.UseVisualStyleBackColor = false;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label13.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label13.Location = new System.Drawing.Point(900, 309);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(97, 15);
-            this.label13.TabIndex = 30;
-            this.label13.Text = "TOTAL TAGIHAN:";
-            // 
-            // lblTotal
-            // 
-            this.lblTotal.AutoSize = true;
-            this.lblTotal.Font = new System.Drawing.Font("Calibri", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblTotal.Location = new System.Drawing.Point(896, 324);
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(36, 42);
-            this.lblTotal.TabIndex = 30;
-            this.lblTotal.Text = "0";
-            this.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // pnlButtonGroup
             // 
@@ -1070,86 +1156,40 @@
             this.btnPrint.UseVisualStyleBackColor = false;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
-            // label14
+            // label24
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label14.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label14.Location = new System.Drawing.Point(15, 317);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(67, 15);
-            this.label14.TabIndex = 17;
-            this.label14.Text = "Total Harga";
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label24.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label24.Location = new System.Drawing.Point(553, 19);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(76, 15);
+            this.label24.TabIndex = 30;
+            this.label24.Text = "NO. FAKTUR:";
             // 
-            // txtSubTotal
+            // lblSalesNo
             // 
-            this.txtSubTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSubTotal.Enabled = false;
-            this.txtSubTotal.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.txtSubTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtSubTotal.Location = new System.Drawing.Point(17, 335);
-            this.txtSubTotal.Name = "txtSubTotal";
-            this.txtSubTotal.Size = new System.Drawing.Size(156, 31);
-            this.txtSubTotal.TabIndex = 37;
-            this.txtSubTotal.Text = "0";
-            this.txtSubTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtSubTotal.Enter += new System.EventHandler(this.txtExtraDiscount_Enter);
-            this.txtSubTotal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtExtraDiscount_KeyPress);
-            this.txtSubTotal.Leave += new System.EventHandler(this.txtExtraDiscount_Leave);
+            this.lblSalesNo.AutoSize = true;
+            this.lblSalesNo.Font = new System.Drawing.Font("Calibri", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSalesNo.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblSalesNo.Location = new System.Drawing.Point(635, 9);
+            this.lblSalesNo.Name = "lblSalesNo";
+            this.lblSalesNo.Size = new System.Drawing.Size(0, 42);
+            this.lblSalesNo.TabIndex = 30;
+            this.lblSalesNo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label17
+            // lblMark
             // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label17.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label17.Location = new System.Drawing.Point(297, 317);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(58, 15);
-            this.label17.TabIndex = 17;
-            this.label17.Text = "Total DPP";
-            // 
-            // txtTaxBaseAmount
-            // 
-            this.txtTaxBaseAmount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTaxBaseAmount.Enabled = false;
-            this.txtTaxBaseAmount.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.txtTaxBaseAmount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtTaxBaseAmount.Location = new System.Drawing.Point(300, 335);
-            this.txtTaxBaseAmount.Name = "txtTaxBaseAmount";
-            this.txtTaxBaseAmount.Size = new System.Drawing.Size(113, 31);
-            this.txtTaxBaseAmount.TabIndex = 37;
-            this.txtTaxBaseAmount.Text = "0";
-            this.txtTaxBaseAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtTaxBaseAmount.Enter += new System.EventHandler(this.txtExtraDiscount_Enter);
-            this.txtTaxBaseAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtExtraDiscount_KeyPress);
-            this.txtTaxBaseAmount.Leave += new System.EventHandler(this.txtExtraDiscount_Leave);
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label23.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label23.Location = new System.Drawing.Point(419, 317);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(56, 15);
-            this.label23.TabIndex = 17;
-            this.label23.Text = "PPN 10%";
-            // 
-            // txtValueAddedTaxAmount
-            // 
-            this.txtValueAddedTaxAmount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtValueAddedTaxAmount.Enabled = false;
-            this.txtValueAddedTaxAmount.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.txtValueAddedTaxAmount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtValueAddedTaxAmount.Location = new System.Drawing.Point(422, 335);
-            this.txtValueAddedTaxAmount.Name = "txtValueAddedTaxAmount";
-            this.txtValueAddedTaxAmount.Size = new System.Drawing.Size(113, 31);
-            this.txtValueAddedTaxAmount.TabIndex = 37;
-            this.txtValueAddedTaxAmount.Text = "0";
-            this.txtValueAddedTaxAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtValueAddedTaxAmount.Enter += new System.EventHandler(this.txtExtraDiscount_Enter);
-            this.txtValueAddedTaxAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtExtraDiscount_KeyPress);
-            this.txtValueAddedTaxAmount.Leave += new System.EventHandler(this.txtExtraDiscount_Leave);
+            this.lblMark.AutoSize = true;
+            this.lblMark.BackColor = System.Drawing.Color.Red;
+            this.lblMark.Font = new System.Drawing.Font("Calibri", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMark.ForeColor = System.Drawing.Color.White;
+            this.lblMark.Location = new System.Drawing.Point(970, 19);
+            this.lblMark.Name = "lblMark";
+            this.lblMark.Size = new System.Drawing.Size(154, 45);
+            this.lblMark.TabIndex = 30;
+            this.lblMark.Text = "DELETED";
+            this.lblMark.Visible = false;
             // 
             // FrmSalesOrder
             // 
@@ -1164,8 +1204,11 @@
             this.Controls.Add(this.pnlButtonGroup);
             this.Controls.Add(this.btnSearchCriteria);
             this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.lblSalesNo);
+            this.Controls.Add(this.gbSalesOrderDetail);
             this.Controls.Add(this.gbCustomerDetail);
+            this.Controls.Add(this.lblMark);
+            this.Controls.Add(this.label24);
             this.Controls.Add(this.gbShippingAddress);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.txtSalesNo);
@@ -1177,8 +1220,8 @@
             this.gbCustomerDetail.ResumeLayout(false);
             this.gbCustomerDetail.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesOrderItem)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gbSalesOrderDetail.ResumeLayout(false);
+            this.gbSalesOrderDetail.PerformLayout();
             this.pnlButtonGroup.ResumeLayout(false);
             this.pnlNote.ResumeLayout(false);
             this.pnlNote.PerformLayout();
@@ -1227,7 +1270,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtDiscount;
         private System.Windows.Forms.Button btnAddItem;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gbSalesOrderDetail;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtSalesNo;
         private System.Windows.Forms.Button btnSearch;
@@ -1274,5 +1317,8 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label lblSalesNo;
+        private System.Windows.Forms.Label lblMark;
     }
 }

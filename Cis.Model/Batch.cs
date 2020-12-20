@@ -13,5 +13,7 @@ namespace Cis.Model
 
         public string ProductId { get; set; }
         public Product Product { get; set; }
+    
+        //public ICollection<SalesOrderItem> SalesOrderItems { get; set; }
     }
 }

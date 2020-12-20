@@ -47,6 +47,7 @@ namespace Cis.Model
         public decimal GrandTotalAmount { get; set; }
         public string UserId { get; set; }
         public string Username { get; set; }
+        public Constant.RecordStatus Status { get; set; }
 
         public Customer Customer { get; set; }
         public Salesman Salesman { get; set; }

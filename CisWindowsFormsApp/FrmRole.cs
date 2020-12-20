@@ -188,7 +188,7 @@ namespace CisWindowsFormsApp
 
 
                         var uwPermRole = new UnitOfWork<PermissionRole>(context);
-                        var existingAccessCodes = GetExistngAccessCodes();
+                        var existingAccessCodes = GetExistingAccessCodes();
                         for (int i = 0; i < cblMasterData.Items.Count; i++)
                         {
                             var permissionCode = existingAccessCodes.Where(a => cblMasterData.Items[i].ToString().Contains(a.ToString())).FirstOrDefault().ToString();
@@ -382,7 +382,7 @@ namespace CisWindowsFormsApp
         private List<PermissionRole> GetSelectedRolePermisions(string roleId)
         {
             List<PermissionRole> permissionRoles = new List<PermissionRole>();
-            var existingAccessCodes = GetExistngAccessCodes();
+            var existingAccessCodes = GetExistingAccessCodes();
             var checkedItems = cblMasterData.CheckedItems.OfType<object>().ToList();
             checkedItems.AddRange(cblTransaksi.CheckedItems.OfType<object>().ToList());
             checkedItems.AddRange(cblReporting.CheckedItems.OfType<object>().ToList());
@@ -409,7 +409,7 @@ namespace CisWindowsFormsApp
             return permissionRoles;
         }
 
-        private List<int> GetExistngAccessCodes()
+        private List<int> GetExistingAccessCodes()
         {
             var existingAccessCodes = Enum.GetValues(typeof(Constant.Permission.MasterData)).Cast<int>().ToList();
             existingAccessCodes.AddRange(Enum.GetValues(typeof(Constant.Permission.Transaction)).Cast<int>().ToList());

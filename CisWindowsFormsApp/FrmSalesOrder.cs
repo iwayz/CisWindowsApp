@@ -174,21 +174,40 @@ namespace CisWindowsFormsApp
 
         private void NavigateRecord(RecordNavigation navigation)
         {
-            if (txtSalesNo.Text.Trim().Length < 12)
-                return;
-
             SalesOrder queryResult;
-            var currSalesNo = Convert.ToInt32(txtSalesNo.Text.Trim().Substring(txtSalesNo.Text.Trim().Length - 6));
+            var currSalesNo = 1;
+            var expectedSalesNo = string.Empty;
+            if (string.IsNullOrEmpty(lblSalesNo.Text))
+            {
+                if (navigation == RecordNavigation.First || navigation == RecordNavigation.Previous || navigation == RecordNavigation.Next)
+                    navigation = RecordNavigation.First;
+                else
+                    navigation = RecordNavigation.Last;
+            }
+            else
+                currSalesNo = Convert.ToInt32(lblSalesNo.Text.Substring(lblSalesNo.Text.Trim().Length - 6));
+
             switch (navigation)
             {
                 case RecordNavigation.First:
                     queryResult = _uow.Repository.GetAll().OrderBy(s => s.SalesNo).FirstOrDefault();
                     break;
                 case RecordNavigation.Previous:
-                    queryResult = _uow.Repository.GetById(string.Concat("SO-", (currSalesNo - 1)));
+                    queryResult = null;
+                    if (currSalesNo > 1)
+                    {
+                        expectedSalesNo = string.Concat("SO-", (currSalesNo - 1).ToString().PadLeft(6, '0'));
+                        queryResult = _uow.Repository.GetAll().Where(s => s.SalesNo == expectedSalesNo).FirstOrDefault();
+                    }
                     break;
                 case RecordNavigation.Next:
-                    queryResult = _uow.Repository.GetById(string.Concat("SO-", (currSalesNo + 1)));
+                    queryResult = null;
+                    var lastRec = _uow.Repository.GetAll().OrderByDescending(s => s.SalesNo).FirstOrDefault();
+                    if (lastRec.Id != txtSalesOrderId.Text.Trim())
+                    {
+                        expectedSalesNo = string.Concat("SO-", (currSalesNo + 1).ToString().PadLeft(6, '0'));
+                        queryResult = _uow.Repository.GetAll().Where(s => s.SalesNo == expectedSalesNo).FirstOrDefault();
+                    }
                     break;
                 case RecordNavigation.Last:
                     queryResult = _uow.Repository.GetAll().OrderByDescending(s => s.SalesNo).FirstOrDefault();
@@ -198,12 +217,59 @@ namespace CisWindowsFormsApp
                     return;
             }
 
+            if (queryResult != null)
+                LoadDataBySelectedItem(queryResult);
+        }
+
+        private void LoadSalesOrderData(string salesNo)
+        {
+            SalesOrder queryResult;
+            queryResult = _uow.Repository.GetAll().Where(s => s.SalesNo == salesNo).FirstOrDefault();
+            if (queryResult == null)
+            {
+                CommonMessageHelper.DataNotFound(txtSalesNo.Text.Trim());
+                return;
+            }
             LoadDataBySelectedItem(queryResult);
+        }
+
+        private void SetUI()
+        {
+            var isEditable = !lblMark.Visible;
+
+            gbCustomerDetail.Enabled = isEditable;
+            gbShippingAddress.Enabled = isEditable;
+            gbSalesOrderDetail.Enabled = isEditable;
+
+            btnAdd.Enabled = isEditable;
+            btnSave.Enabled = isEditable;
+            btnDel.Enabled = isEditable;
+            btnReload.Enabled = isEditable;
+        }
+        private string CreateSalesOrderNo()
+        {
+            var result = string.Empty;
+            var queryResult = _uow.Repository.GetAll().OrderByDescending(s => s.SalesNo).FirstOrDefault();
+            if (queryResult == null)
+                return "SO-000001";
+
+            var lastSalesNo = Convert.ToInt64(queryResult.SalesNo.Substring(queryResult.SalesNo.Length - 6));
+            return string.Concat("SO-", (lastSalesNo + 1).ToString().PadLeft(6,'0'));
+        }
+
+        private string GetLocationName(string locationId)
+        {
+            var loc = new UnitOfWork<Location>(dbContext).Repository.GetById(locationId);
+            return loc == null ? string.Empty : loc.Name;
         }
 
         private void LoadDataBySelectedItem(SalesOrder parentResult)
         {
-            txtSalesNo.Text = parentResult.SalesNo;
+            lblMark.Visible = false;
+            if (parentResult.Status == Constant.RecordStatus.Inactive)
+                lblMark.Visible = true;
+
+            lblSalesNo.Text = parentResult.SalesNo;
             cbCustomer.SelectedValue = parentResult.CustomerId;
             cbSalesman.SelectedValue = parentResult.SalesmanId;
             cbTermOfPayment.SelectedValue = parentResult.TermOfPaymentId;
@@ -214,8 +280,7 @@ namespace CisWindowsFormsApp
             cbProvince.SelectedValue = parentResult.DeliveryProvinceId;
             cbDistrict.SelectedValue = parentResult.DeliveryDistrictId;
             cbSubDistrict.SelectedValue = parentResult.DeliverySubDistrictId;
-            txtExtraDiscount.Text = parentResult.ExtraDiscountAmount.ToString();
-            lblTotal.Text = parentResult.GrandTotalAmount.ToString();
+            txtExtraDiscount.Text = string.Format("{0:n0}", parentResult.ExtraDiscountAmount);
 
             // hidden fields
             txtSalesOrderId.Text = parentResult.Id;
@@ -224,6 +289,8 @@ namespace CisWindowsFormsApp
             IQueryable<SalesOrderItem> childItems;
             UnitOfWork<SalesOrderItem> uowSalesOrderItem = new UnitOfWork<SalesOrderItem>(dbContext);
             childItems = uowSalesOrderItem.Repository.GetAll().Where(e => e.SalesOrderId == parentResult.Id);
+            dgvSalesOrderItem.Rows.Clear();
+            dgvSalesOrderItem.Refresh();
 
             foreach (var item in childItems)
             {
@@ -233,15 +300,22 @@ namespace CisWindowsFormsApp
                 DataGridViewRow row = dgvSalesOrderItem.Rows[rowId];
 
                 // Add the data
+                row.Cells["productId"].Value = item.Id;
                 row.Cells["productCode"].Value = item.ProductCode;
                 row.Cells["productName"].Value = item.ProductName;
-                row.Cells["expDate"].Value = item.ExpiredDate;
-                row.Cells["qty"].Value = item.Quantity;
+                row.Cells["batchId"].Value = item.BatchId;
+                row.Cells["batchCode"].Value = item.BatchCode;
+                row.Cells["expDate"].Value = item.ExpiredDate.ToShortDateString();
+                row.Cells["qty"].Value = string.Format("{0:n0}", item.Quantity);
+                row.Cells["uomId"].Value = item.UomId;
                 row.Cells["uomCode"].Value = item.UomCode;
-                row.Cells["price"].Value = item.Price;
-                row.Cells["discPercent"].Value = item.DiscountPercentage;
-                row.Cells["subTotal"].Value = item.TotalAmount;
+                row.Cells["price"].Value = string.Format("{0:n0}", item.Price);
+                row.Cells["discPercent"].Value = item.DiscountPercentage + "%";
+                row.Cells["subTotal"].Value = string.Format("{0:n0}", item.TotalAmount);
             }
+
+            SetTotalSalesOrder();
+            SetUI();
         }
 
         private void SetDataGridViewUI()
@@ -279,7 +353,7 @@ namespace CisWindowsFormsApp
 
             decimal extraDisc = decimal.Parse(txtExtraDiscount.Text.Trim(), System.Globalization.NumberStyles.Currency);
             decimal taxBase = subTotal - extraDisc;
-            decimal valueAddedTax = (subTotal - extraDisc) * (decimal)0.01;
+            decimal valueAddedTax = (subTotal - extraDisc) * (decimal)0.1; // 10% PPN
             decimal total = taxBase + valueAddedTax;
 
             txtSubTotal.Text = string.Format("{0:n0}", subTotal);
@@ -303,13 +377,6 @@ namespace CisWindowsFormsApp
                || cbProvince.SelectedValue.ToString() == "0")
             {
                 CommonMessageHelper.DataCannotBeEmpty("Alamat, Sales Area, dan Provinsi");
-                return false;
-            }
-
-            if (dgvSalesOrderItem.Rows.Count <=0 
-                || dgvSalesOrderItem.Rows[0].Cells[0].Value == null)
-            {
-                CommonMessageHelper.DataCannotBeEmpty("Detail order");
                 return false;
             }
 
@@ -378,6 +445,7 @@ namespace CisWindowsFormsApp
                 txtDiscount.Text = "0";
                 txtDiscount.Focus();
             }
+           commonHelper.SetTextBoxToZeroWhenEmpty(sender);
         }
 
         private void txtExtraDiscount_KeyPress(object sender, KeyPressEventArgs e)
@@ -395,25 +463,50 @@ namespace CisWindowsFormsApp
 
             UnitOfWork<Product> uowProduct = new UnitOfWork<Product>(dbContext);
             var product = uowProduct.Repository.GetById(cbProduct.SelectedValue.ToString());
+            UnitOfWork<Batch> uowBatch = new UnitOfWork<Batch>(dbContext);
+            var batch = uowBatch.Repository.GetById(cbBatch.SelectedValue.ToString());
             UnitOfWork<UnitOfMeasurement> uowUom = new UnitOfWork<UnitOfMeasurement>(dbContext);
             var uom = uowUom.Repository.GetById(product.UnitId);
+            int rowId = dgvSalesOrderItem.Rows.Count;
+            bool duplicateItem = false;
+            
+            // if any existing data, then update
+            for (int i = 0; i < dgvSalesOrderItem.Rows.Count; ++i)
+            {
+                if (dgvSalesOrderItem.Rows[i].Cells["productId"].Value == null) continue;
 
-            int rowId = dgvSalesOrderItem.Rows.Add();
+                if (dgvSalesOrderItem.Rows[i].Cells["productId"].Value.ToString() == cbProduct.SelectedValue.ToString()
+                    && (dgvSalesOrderItem.Rows[i].Cells["batchId"].Value.ToString() == cbBatch.SelectedValue.ToString() || string.IsNullOrEmpty(dgvSalesOrderItem.Rows[i].Cells["batchId"].Value.ToString()))
+                    && DateTime.Parse(dgvSalesOrderItem.Rows[0].Cells["expDate"].Value.ToString()) == dtpExpiredDate.Value)
+                {
+                    rowId = i;
+                    duplicateItem = true;
+                    break;
+                }
+            }
+
+            if (!duplicateItem)
+                rowId = dgvSalesOrderItem.Rows.Add();
+
             DataGridViewRow row = dgvSalesOrderItem.Rows[rowId];
 
             // Add the data
+            var netPrice = Convert.ToDecimal(txtPrice.Text.Trim()) / (decimal)1.1;
+            var qtyTotalAmount = Convert.ToDecimal(txtQty.Text.Trim()) * netPrice;
+            var discount = 1 - (Convert.ToDecimal(txtDiscount.Text.Trim()) / 100);
+
+            row.Cells["productId"].Value = product.Id;
             row.Cells["productCode"].Value = product.ProductCode;
             row.Cells["productName"].Value = product.ProductName;
+            row.Cells["batchId"].Value = batch != null ? batch.Id : string.Empty;
+            row.Cells["batchCode"].Value = batch != null ? batch.BatchCode : string.Empty;
             row.Cells["expDate"].Value = dtpExpiredDate.Value.ToShortDateString();
             row.Cells["qty"].Value = string.Format("{0:n0}", Convert.ToDecimal(txtQty.Text.Trim()));
+            row.Cells["uomId"].Value = uom.Id;
             row.Cells["uomCode"].Value = uom.UomCode;
-            row.Cells["price"].Value = string.Format("{0:n0}", Convert.ToDecimal(txtPrice.Text.Trim()));
+            row.Cells["price"].Value = string.Format("{0:n0}", netPrice);
             row.Cells["discPercent"].Value = txtDiscount.Text.Trim() + "%";
-
-            // TODO: convert to decimal
-            var qtyTotalAmount = Convert.ToInt32(txtQty.Text.Trim()) * Convert.ToDecimal(txtPrice.Text.Trim());
-            var discount = 1 - (Convert.ToInt32(txtDiscount.Text.Trim()) / 100);
-            row.Cells["subTotal"].Value = string.Format("{0:n0}", qtyTotalAmount - (qtyTotalAmount * discount));
+            row.Cells["subTotal"].Value = string.Format("{0:n0}", qtyTotalAmount * discount);
 
             SetTotalSalesOrder();
 
@@ -424,7 +517,7 @@ namespace CisWindowsFormsApp
             txtQty.Text = "0";
             txtPrice.Text = "0";
             txtDiscount.Text = "0";
-
+            cbProduct.Focus();
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -432,6 +525,7 @@ namespace CisWindowsFormsApp
             //var num = Convert.ToInt32(txtPrice.Text);
             //MessageBox.Show(SpellNumber.Spell(num));
             var c = dgvSalesOrderItem.Rows.Count;
+            var d = cbProduct.SelectedText;
         }
 
         private void btnFirst_Click(object sender, EventArgs e)
@@ -512,15 +606,7 @@ namespace CisWindowsFormsApp
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            SalesOrder queryResult;
-            queryResult = _uow.Repository.GetAll().Where(s => s.SalesNo == txtSalesNo.Text.Trim()).FirstOrDefault();
-            if (queryResult == null)
-            {
-                CommonMessageHelper.DataNotFound(txtSalesNo.Text.Trim());
-                return;
-            }
-            LoadDataBySelectedItem(queryResult);
-
+            LoadSalesOrderData(txtSalesNo.Text.Trim());
         }
 
         private void dgvSalesOrderItem_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
@@ -530,6 +616,8 @@ namespace CisWindowsFormsApp
 
         private void txtExtraDiscount_Leave(object sender, EventArgs e)
         {
+            commonHelper.SetTextBoxToZeroWhenEmpty(sender);
+
             txtExtraDiscount.Text = string.Format("{0:n0}", Convert.ToDecimal(txtExtraDiscount.Text));
             SetTotalSalesOrder();
         }
@@ -556,6 +644,7 @@ namespace CisWindowsFormsApp
         private void btnClear_Click(object sender, EventArgs e)
         {
             txtSalesNo.Text = string.Empty;
+            lblSalesNo.Text = string.Empty;
             cbCustomer.SelectedValue = "0";
             cbSalesman.SelectedValue = "0";
             cbTermOfPayment.SelectedValue = "0";
@@ -564,12 +653,132 @@ namespace CisWindowsFormsApp
             dtpDueDate.Value = DateTime.Today;
             txtDeliveryAddress.Text = string.Empty;
             cbProvince.SelectedValue = "0";
+            txtSubTotal.Text = "0";
             txtExtraDiscount.Text = "0";
+            txtTaxBaseAmount.Text = "0";
+            txtValueAddedTaxAmount.Text = "0";
             lblTotal.Text = "0";
+            lblMark.Visible = false;
+
+            SetUI();
+
+            dgvSalesOrderItem.Rows.Clear();
+            dgvSalesOrderItem.Refresh();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            if (!ValidateMandatoryFields()) return;
+
+            using (var context = new CisDbContext())
+            {
+                using (var dbContextTransaction = context.Database.BeginTransaction())
+                {
+                    var customer = new UnitOfWork<Customer>(context).Repository.GetById(cbCustomer.SelectedValue.ToString());
+                    var salesman = new UnitOfWork<Salesman>(context).Repository.GetById(cbSalesman.SelectedValue.ToString());
+                    var top = new UnitOfWork<TermOfPayment>(context).Repository.GetById(cbTermOfPayment.SelectedValue.ToString());
+                    var salesArea = new UnitOfWork<SalesArea>(context).Repository.GetById(cbSalesArea.SelectedValue.ToString());
+                    var district = new UnitOfWork<Location>(context).Repository.GetById(cbDistrict.SelectedValue.ToString());
+                    var subDistrict = new UnitOfWork<Location>(context).Repository.GetById(cbSubDistrict.SelectedValue.ToString());
+
+                    #region parent 
+                    var uwSalesOrder = new UnitOfWork<SalesOrder>(context);
+                    var soToAdd = new SalesOrder();
+                    soToAdd.SalesNo = CreateSalesOrderNo();
+                    soToAdd.CustomerId = cbCustomer.SelectedValue.ToString();
+                    soToAdd.CustomerName = customer.CustomerName;
+                    soToAdd.CustomerAddress = customer.Address;
+                    soToAdd.CustomerProvinceId = customer.ProvinceId;
+                    soToAdd.CustomerProvince = GetLocationName(customer.ProvinceId);
+                    soToAdd.CustomerDistrictId = customer.DistrictId;
+                    soToAdd.CustomerDistrict = GetLocationName(customer.DistrictId);
+                    soToAdd.CustomerSubDistrictId = customer.SubDistrictId;
+                    soToAdd.CustomerSubDistrict = GetLocationName(customer.SubDistrictId);
+                    soToAdd.CustomerPostalCode = customer.PostalCode;
+                    soToAdd.CustomerPhone = customer.Phone;
+                    soToAdd.CustomerEmail = customer.Email;
+                    soToAdd.CustomerNpwp = customer.Npwp;
+                    soToAdd.DeliveryAddress = txtDeliveryAddress.Text;
+                    soToAdd.DeliveryProvinceId = cbProvince.SelectedValue.ToString();
+                    soToAdd.DeliveryProvince = GetLocationName(cbProvince.SelectedValue.ToString());
+                    soToAdd.DeliveryDistrictId = cbDistrict.SelectedValue.ToString();
+                    soToAdd.DeliveryDistrict = GetLocationName(cbDistrict.SelectedValue.ToString());
+                    soToAdd.DeliverySubDistrictId = cbSubDistrict.SelectedValue.ToString();
+                    soToAdd.DeliverySubDistrict = GetLocationName(cbSubDistrict.SelectedValue.ToString());
+                    soToAdd.SalesAreaId = cbSalesArea.SelectedValue.ToString();
+                    soToAdd.SalesAreaCode = salesArea.AreaCode;
+                    soToAdd.SalesDate = dtpSalesOrderDate.Value;
+                    soToAdd.TermOfPaymentId = cbTermOfPayment.SelectedValue.ToString();
+                    soToAdd.TermOfPaymentCode = top.TermCode;
+                    soToAdd.DueDate = dtpDueDate.Value;
+                    soToAdd.PersonInCharge = Properties.Settings.Default.SalesPicName;
+                    soToAdd.SipaNo = Properties.Settings.Default.SalesPicSipaNo;
+                    soToAdd.SalesmanId = cbSalesman.SelectedValue.ToString();
+                    soToAdd.SalesmanCode = salesman.SalesmanCode;
+                    soToAdd.SubTotalAmount = decimal.Parse(txtSubTotal.Text.Trim(), System.Globalization.NumberStyles.Currency);
+                    soToAdd.ExtraDiscountAmount = decimal.Parse(txtExtraDiscount.Text.Trim(), System.Globalization.NumberStyles.Currency);
+                    soToAdd.TaxBaseAmount = decimal.Parse(txtTaxBaseAmount.Text.Trim(), System.Globalization.NumberStyles.Currency);
+                    soToAdd.ValueAddedTaxAmount = decimal.Parse(txtValueAddedTaxAmount.Text.Trim(), System.Globalization.NumberStyles.Currency);
+                    soToAdd.GrandTotalAmount = decimal.Parse(lblTotal.Text.Trim(), System.Globalization.NumberStyles.Currency);
+                    soToAdd.UserId = Properties.Settings.Default.CurrentUserId;
+                    soToAdd.Username = Properties.Settings.Default.CurrentUser;
+                    soToAdd.Status = Constant.RecordStatus.Active;
+                    soToAdd.CreatedBy = Properties.Settings.Default.CurrentUserId;
+                    soToAdd.CreatedAt = DateTime.Now;
+                    soToAdd.ModifiedBy = Properties.Settings.Default.CurrentUserId;
+                    soToAdd.ModifiedAt = DateTime.Now;
+
+                    uwSalesOrder.Repository.Add(soToAdd);
+                    uwSalesOrder.Commit();
+
+                    #endregion parent 
+
+                    #region child 
+
+                    var uwSoItem = new UnitOfWork<SalesOrderItem>(context);
+                    for (int i = 0; i < dgvSalesOrderItem.Rows.Count; ++i)
+                    {
+                        if (dgvSalesOrderItem.Rows[i].Cells["productCode"].Value == null) continue;
+                        var soiToAdd = new SalesOrderItem
+                        {
+                            SalesOrderId = soToAdd.Id,
+                            ProductId = dgvSalesOrderItem.Rows[i].Cells["productId"].Value.ToString(),
+                            ProductCode = dgvSalesOrderItem.Rows[i].Cells["productCode"].Value.ToString(),
+                            ProductName = dgvSalesOrderItem.Rows[i].Cells["productName"].Value.ToString(),
+                            BatchId = dgvSalesOrderItem.Rows[i].Cells["batchId"].Value.ToString(),
+                            BatchCode = dgvSalesOrderItem.Rows[i].Cells["batchCode"].Value.ToString(),
+                            ExpiredDate = commonHelper.StandardizeDate(DateTime.Parse(dgvSalesOrderItem.Rows[i].Cells["expDate"].Value.ToString())),
+                            Quantity = Convert.ToInt32(dgvSalesOrderItem.Rows[i].Cells["qty"].Value.ToString()),
+                            UomId = dgvSalesOrderItem.Rows[i].Cells["uomId"].Value.ToString(),
+                            UomCode = dgvSalesOrderItem.Rows[i].Cells["uomCode"].Value.ToString(),
+                            Price = decimal.Parse(dgvSalesOrderItem.Rows[i].Cells["price"].Value.ToString(), System.Globalization.NumberStyles.Currency),
+                            DiscountPercentage = float.Parse(dgvSalesOrderItem.Rows[i].Cells["discPercent"].Value.ToString().Replace("%", "")),
+                            TotalAmount = decimal.Parse(dgvSalesOrderItem.Rows[i].Cells["subTotal"].Value.ToString(), System.Globalization.NumberStyles.Currency),
+
+                            // Audit Fields 
+                            CreatedBy = Properties.Settings.Default.CurrentUserId,
+                            CreatedAt = DateTime.Now,
+                            ModifiedBy = Properties.Settings.Default.CurrentUserId,
+                            ModifiedAt = DateTime.Now
+                        };
+                        uwSoItem.Repository.Add(soiToAdd);
+                    }
+                    var res = uwSoItem.Commit();
+
+                    #endregion child 
+
+                    dbContextTransaction.Commit();
+                    
+                    // when commit succeed, update the key fields
+                    lblSalesNo.Text = soToAdd.SalesNo;
+                    txtSalesOrderId.Text = soToAdd.Id;
+                    txtModifiedAt.Text = soToAdd.ModifiedAt.ToString();
+
+                }
+            }
+
+            NavigateRecord(RecordNavigation.Last);
+            CommonMessageHelper.DataSavedSuccessfully();
 
         }
 
@@ -591,31 +800,88 @@ namespace CisWindowsFormsApp
                 {
                     using (var dbContextTransaction = context.Database.BeginTransaction())
                     {
+                        var salesman = new UnitOfWork<Salesman>(context).Repository.GetById(cbSalesman.SelectedValue.ToString());
+                        var top = new UnitOfWork<TermOfPayment>(context).Repository.GetById(cbTermOfPayment.SelectedValue.ToString());
+                        var salesArea = new UnitOfWork<SalesArea>(context).Repository.GetById(cbSalesArea.SelectedValue.ToString());
+                        var prov = new UnitOfWork<Location>(context).Repository.GetById(cbProvince.SelectedValue.ToString());
+                        var district = new UnitOfWork<Location>(context).Repository.GetById(cbDistrict.SelectedValue.ToString());
+                        var subDistrict = new UnitOfWork<Location>(context).Repository.GetById(cbSubDistrict.SelectedValue.ToString());
+
+                        #region parent 
                         var uwSalesOrder = new UnitOfWork<SalesOrder>(context);
                         var soToUpdate = uwSalesOrder.Repository.GetById(txtSalesOrderId.Text.Trim());
+
                         soToUpdate.CustomerId = cbCustomer.SelectedValue.ToString();
-                        soToUpdate.SalesmanId= cbSalesman.SelectedValue.ToString();
+                        soToUpdate.SalesmanId = cbSalesman.SelectedValue.ToString();
+                        soToUpdate.SalesmanCode = salesman.SalesmanCode;
                         soToUpdate.TermOfPaymentId = cbTermOfPayment.SelectedValue.ToString();
+                        soToUpdate.TermOfPaymentCode = top.TermCode;
                         soToUpdate.SalesDate = dtpSalesOrderDate.Value;
                         soToUpdate.DueDate = dtpDueDate.Value;
                         soToUpdate.DeliveryAddress = txtDeliveryAddress.Text;
                         soToUpdate.DeliveryProvinceId = cbProvince.SelectedValue.ToString();
-                        soToUpdate.DeliveryDistrictId= cbDistrict.SelectedValue.ToString();
-                        soToUpdate.DeliverySubDistrictId= cbSubDistrict.SelectedValue.ToString();
+                        soToUpdate.DeliveryProvince = prov.Name;
+                        soToUpdate.DeliveryDistrictId = cbDistrict.SelectedValue.ToString();
+                        soToUpdate.DeliveryDistrict = district.Name;
+                        soToUpdate.DeliverySubDistrictId = cbSubDistrict.SelectedValue.ToString();
+                        soToUpdate.DeliverySubDistrict = subDistrict.Name;
                         soToUpdate.SalesAreaId = cbSalesArea.SelectedValue.ToString();
+                        soToUpdate.SalesAreaCode = salesArea.AreaCode;
+                        soToUpdate.SubTotalAmount = decimal.Parse(txtSubTotal.Text.Trim(), System.Globalization.NumberStyles.Currency);
                         soToUpdate.ExtraDiscountAmount = decimal.Parse(txtExtraDiscount.Text.Trim(), System.Globalization.NumberStyles.Currency);
-                        //soToUpdate.GrandTotalAmount
-
-
+                        soToUpdate.TaxBaseAmount = decimal.Parse(txtTaxBaseAmount.Text.Trim(), System.Globalization.NumberStyles.Currency);
+                        soToUpdate.ValueAddedTaxAmount = decimal.Parse(txtValueAddedTaxAmount.Text.Trim(), System.Globalization.NumberStyles.Currency);
+                        soToUpdate.GrandTotalAmount = decimal.Parse(lblTotal.Text.Trim(), System.Globalization.NumberStyles.Currency);
+                        soToUpdate.UserId = Properties.Settings.Default.CurrentUserId;
+                        soToUpdate.Username = Properties.Settings.Default.CurrentUser;
                         soToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUserId;
                         soToUpdate.ModifiedAt = DateTime.Now;
 
-                        var uwRole = new UnitOfWork<SalesOrder>(context);
-                        uwRole.Repository.Update(soToUpdate);
-                        uwRole.Commit();
+                        uwSalesOrder.Repository.Update(soToUpdate);
+                        uwSalesOrder.Commit();
 
+                        #endregion parent 
 
+                        #region child 
 
+                        var uwSoItem = new UnitOfWork<SalesOrderItem>(context);
+
+                        // clear all item for the identified Sales Order
+                        var tobeClearedItems = uwSoItem.Repository.GetAll().Where(soi => soi.SalesOrderId == txtSalesOrderId.Text.Trim());
+                        foreach (var item in tobeClearedItems)
+                        {
+                            uwSoItem.Repository.Delete(item);
+                        }
+
+                        // add with updated items
+                        for (int i = 0; i < dgvSalesOrderItem.Rows.Count; ++i)
+                        {
+                            var soiToUpdate = new SalesOrderItem
+                            {
+                                SalesOrderId = txtSalesOrderId.Text.Trim(),
+                                ProductId = dgvSalesOrderItem.Rows[i].Cells["productCode"].Value.ToString(),
+                                ProductName = dgvSalesOrderItem.Rows[i].Cells["productName"].Value.ToString(),
+                                BatchId = dgvSalesOrderItem.Rows[i].Cells["batchId"].Value.ToString(),
+                                BatchCode = dgvSalesOrderItem.Rows[i].Cells["batchCode"].Value.ToString(),
+                                ExpiredDate = DateTime.Parse(dgvSalesOrderItem.Rows[i].Cells["expdate"].Value.ToString()),
+                                Quantity = Convert.ToInt32(dgvSalesOrderItem.Rows[i].Cells["qty"].Value.ToString()),
+                                UomId = dgvSalesOrderItem.Rows[i].Cells["uomId"].Value.ToString(),
+                                UomCode = dgvSalesOrderItem.Rows[i].Cells["uomCode"].Value.ToString(),
+                                Price = decimal.Parse(dgvSalesOrderItem.Rows[i].Cells["price"].Value.ToString(), System.Globalization.NumberStyles.Currency),
+                                DiscountPercentage = float.Parse(dgvSalesOrderItem.Rows[i].Cells["discPercent"].Value.ToString()),
+                                TotalAmount = decimal.Parse(dgvSalesOrderItem.Rows[i].Cells["subTotal"].Value.ToString(), System.Globalization.NumberStyles.Currency),
+
+                            // Audit Fields 
+                            CreatedBy = Properties.Settings.Default.CurrentUserId,
+                                CreatedAt = DateTime.Now,
+                                ModifiedBy = Properties.Settings.Default.CurrentUserId,
+                                ModifiedAt = DateTime.Now
+                            };
+                            uwSoItem.Repository.Add(soiToUpdate);
+                        }
+                        uwSoItem.Commit();
+
+                        #endregion child 
 
                         dbContextTransaction.Commit();
                     }
@@ -628,7 +894,35 @@ namespace CisWindowsFormsApp
 
         private void btnDel_Click(object sender, EventArgs e)
         {
+            var soToDel = _uow.Repository.GetById(txtSalesOrderId.Text.Trim());
 
+            if (soToDel != null)
+            {
+                if (DialogResult.Yes == CommonMessageHelper.ConfirmDelete())
+                {
+
+                    // delete the sales order
+                    soToDel.Status = Constant.RecordStatus.Inactive;
+                    _uow.Repository.Update(soToDel);
+                    var res = _uow.Commit();
+
+                    if (!res.Item1 && res.Item2 == "Expected")
+                    {
+                        CommonMessageHelper.ReferredDataCannotBeDeleted();
+                    }
+
+                    if (!res.Item1 && res.Item2 == "Unexpected")
+                    {
+                        CommonMessageHelper.ContactAdminError();
+                    }
+
+                    LoadSalesOrderData(soToDel.SalesNo);
+                }
+            }
+            else
+            {
+                CommonMessageHelper.DataNotFound(lblSalesNo.Text.Trim());
+            }
         }
 
         private void btnReload_Click(object sender, EventArgs e)
@@ -648,6 +942,16 @@ namespace CisWindowsFormsApp
             }
             LoadDataBySelectedItem(queryResult);
 
+        }
+
+        private void txtQty_Leave(object sender, EventArgs e)
+        {
+            commonHelper.SetTextBoxToZeroWhenEmpty(sender);
+        }
+
+        private void txtPrice_Leave(object sender, EventArgs e)
+        {
+            commonHelper.SetTextBoxToZeroWhenEmpty(sender);
         }
     }
 }
