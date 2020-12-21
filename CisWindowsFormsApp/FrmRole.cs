@@ -67,33 +67,31 @@ namespace CisWindowsFormsApp
             }
             else
             {
-                using (var context = new CisDbContext())
+                using (var dbContextTransaction = dbContext.Database.BeginTransaction())
                 {
-                    using (var dbContextTransaction = context.Database.BeginTransaction())
+                    var roleToAdd = new Role
                     {
-                        var roleToAdd = new Role
-                        {
-                            RoleCode = txtRoleCode.Text.Trim(),
-                            Description = txtDescription.Text.Trim(),
+                        RoleCode = txtRoleCode.Text.Trim(),
+                        Description = txtDescription.Text.Trim(),
 
-                            // Audit Fields 
-                            CreatedBy = Properties.Settings.Default.CurrentUserId,
-                            CreatedAt = DateTime.Now,
-                            ModifiedBy = Properties.Settings.Default.CurrentUserId,
-                            ModifiedAt = DateTime.Now
-                        };
-                        var uwRole = new UnitOfWork<Role>(context);
-                        uwRole.Repository.Add(roleToAdd);
-                        uwRole.Commit();
+                        // Audit Fields 
+                        CreatedBy = Properties.Settings.Default.CurrentUserId,
+                        CreatedAt = DateTime.Now,
+                        ModifiedBy = Properties.Settings.Default.CurrentUserId,
+                        ModifiedAt = DateTime.Now
+                    };
+                    var uwRole = new UnitOfWork<Role>(dbContext);
+                    uwRole.Repository.Add(roleToAdd);
+                    uwRole.Commit();
 
-                        var permRolesToAdd = GetSelectedRolePermisions(roleToAdd.Id);
-                        var uwPermRole = new UnitOfWork<PermissionRole>(context);
-                        uwPermRole.Repository.Add(permRolesToAdd);
-                        uwPermRole.Commit();
+                    var permRolesToAdd = GetSelectedRolePermisions(roleToAdd.Id);
+                    var uwPermRole = new UnitOfWork<PermissionRole>(dbContext);
+                    uwPermRole.Repository.Add(permRolesToAdd);
+                    uwPermRole.Commit();
 
-                        dbContextTransaction.Commit();
-                    }
+                    dbContextTransaction.Commit();
                 }
+
 
                 btnReload.PerformClick();
                 CommonMessageHelper.DataSavedSuccessfully();
@@ -171,117 +169,114 @@ namespace CisWindowsFormsApp
             }
             else
             {
-                using (var context = new CisDbContext())
+                using (var dbContextTransaction = dbContext.Database.BeginTransaction())
                 {
-                    using (var dbContextTransaction = context.Database.BeginTransaction())
+                    var roleToUpdate = uowRole.Repository.GetById(txtRoleId.Text.Trim());
+                    roleToUpdate.RoleCode = txtRoleCode.Text.Trim();
+                    roleToUpdate.Description = txtDescription.Text.Trim();
+                    roleToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUserId;
+                    roleToUpdate.ModifiedAt = DateTime.Now;
+
+                    var uwRole = new UnitOfWork<Role>(dbContext);
+                    uwRole.Repository.Update(roleToUpdate);
+                    uwRole.Commit();
+
+
+                    var uwPermRole = new UnitOfWork<PermissionRole>(dbContext);
+                    var existingAccessCodes = GetExistingAccessCodes();
+                    for (int i = 0; i < cblMasterData.Items.Count; i++)
                     {
+                        var permissionCode = existingAccessCodes.Where(a => cblMasterData.Items[i].ToString().Contains(a.ToString())).FirstOrDefault().ToString();
+                        var permission = new UnitOfWork<Permission>(dbContext).Repository.GetAll()
+                            .Where(perm => perm.PermissionCode == permissionCode).FirstOrDefault();
+                        var permRole = uwPermRole.Repository.GetAll().Where(pr => pr.PermisionId == permission.Id && pr.RoleId == roleToUpdate.Id).FirstOrDefault();
 
-                        var roleToUpdate = uowRole.Repository.GetById(txtRoleId.Text.Trim());
-                        roleToUpdate.RoleCode = txtRoleCode.Text.Trim();
-                        roleToUpdate.Description = txtDescription.Text.Trim();
-                        roleToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUserId;
-                        roleToUpdate.ModifiedAt = DateTime.Now;
-
-                        var uwRole = new UnitOfWork<Role>(context);
-                        uwRole.Repository.Update(roleToUpdate);
-                        uwRole.Commit();
-
-
-                        var uwPermRole = new UnitOfWork<PermissionRole>(context);
-                        var existingAccessCodes = GetExistingAccessCodes();
-                        for (int i = 0; i < cblMasterData.Items.Count; i++)
+                        if (cblMasterData.GetItemCheckState(i) == CheckState.Unchecked && permRole != null)
                         {
-                            var permissionCode = existingAccessCodes.Where(a => cblMasterData.Items[i].ToString().Contains(a.ToString())).FirstOrDefault().ToString();
-                            var permission = new UnitOfWork<Permission>(dbContext).Repository.GetAll()
-                                .Where(perm => perm.PermissionCode == permissionCode).FirstOrDefault();
-                            var permRole = uwPermRole.Repository.GetAll().Where(pr => pr.PermisionId == permission.Id && pr.RoleId == roleToUpdate.Id).FirstOrDefault();
-
-                            if (cblMasterData.GetItemCheckState(i) == CheckState.Unchecked && permRole != null)
+                            uwPermRole.Repository.Delete(permRole);
+                        }
+                        else if (cblMasterData.GetItemCheckState(i) == CheckState.Checked && permRole == null)
+                        {
+                            var permRoleToAdd = new PermissionRole
                             {
-                                uwPermRole.Repository.Delete(permRole);
-                            }
-                            else if (cblMasterData.GetItemCheckState(i) == CheckState.Checked && permRole == null)
-                            {
-                                var permRoleToAdd = new PermissionRole
-                                {
-                                    RoleId = roleToUpdate.Id,
-                                    PermisionId = permission.Id,
+                                RoleId = roleToUpdate.Id,
+                                PermisionId = permission.Id,
 
-                                    // Audit Fields 
-                                    CreatedBy = Properties.Settings.Default.CurrentUserId,
-                                    CreatedAt = DateTime.Now,
-                                    ModifiedBy = Properties.Settings.Default.CurrentUserId,
-                                    ModifiedAt = DateTime.Now
-                                };
-                                uwPermRole.Repository.Add(permRoleToAdd);
-                            }
-
-                            uwPermRole.Commit();
+                                // Audit Fields 
+                                CreatedBy = Properties.Settings.Default.CurrentUserId,
+                                CreatedAt = DateTime.Now,
+                                ModifiedBy = Properties.Settings.Default.CurrentUserId,
+                                ModifiedAt = DateTime.Now
+                            };
+                            uwPermRole.Repository.Add(permRoleToAdd);
                         }
 
-                        for (int i = 0; i < cblTransaksi.Items.Count; i++)
-                        {
-                            var permissionCode = existingAccessCodes.Where(a => cblTransaksi.Items[i].ToString().Contains(a.ToString())).FirstOrDefault().ToString();
-                            var permission = new UnitOfWork<Permission>(dbContext).Repository.GetAll()
-                                .Where(perm => perm.PermissionCode == permissionCode).FirstOrDefault();
-                            var permRole = uwPermRole.Repository.GetAll().Where(pr => pr.PermisionId == permission.Id && pr.RoleId == roleToUpdate.Id).FirstOrDefault();
-
-                            if (cblTransaksi.GetItemCheckState(i) == CheckState.Unchecked && permRole != null)
-                            {
-                                uwPermRole.Repository.Delete(permRole);
-                            }
-                            else if (cblTransaksi.GetItemCheckState(i) == CheckState.Checked && permRole == null)
-                            {
-                                var permRoleToAdd = new PermissionRole
-                                {
-                                    RoleId = roleToUpdate.Id,
-                                    PermisionId = permission.Id,
-
-                                    // Audit Fields 
-                                    CreatedBy = Properties.Settings.Default.CurrentUserId,
-                                    CreatedAt = DateTime.Now,
-                                    ModifiedBy = Properties.Settings.Default.CurrentUserId,
-                                    ModifiedAt = DateTime.Now
-                                };
-                                uwPermRole.Repository.Add(permRoleToAdd);
-                            }
-
-                            uwPermRole.Commit();
-                        }
-
-                        for (int i = 0; i < cblReporting.Items.Count; i++)
-                        {
-                            var permissionCode = existingAccessCodes.Where(a => cblReporting.Items[i].ToString().Contains(a.ToString())).FirstOrDefault().ToString();
-                            var permission = new UnitOfWork<Permission>(dbContext).Repository.GetAll()
-                                .Where(perm => perm.PermissionCode == permissionCode).FirstOrDefault();
-                            var permRole = uwPermRole.Repository.GetAll().Where(pr => pr.PermisionId == permission.Id && pr.RoleId == roleToUpdate.Id).FirstOrDefault();
-
-                            if (cblReporting.GetItemCheckState(i) == CheckState.Unchecked && permRole != null)
-                            {
-                                uwPermRole.Repository.Delete(permRole);
-                            }
-                            else if (cblReporting.GetItemCheckState(i) == CheckState.Checked && permRole == null)
-                            {
-                                var permRoleToAdd = new PermissionRole
-                                {
-                                    RoleId = roleToUpdate.Id,
-                                    PermisionId = permission.Id,
-
-                                    // Audit Fields 
-                                    CreatedBy = Properties.Settings.Default.CurrentUserId,
-                                    CreatedAt = DateTime.Now,
-                                    ModifiedBy = Properties.Settings.Default.CurrentUserId,
-                                    ModifiedAt = DateTime.Now
-                                };
-                                uwPermRole.Repository.Add(permRoleToAdd);
-                            }
-
-                            uwPermRole.Commit();
-                        }
-
-                        dbContextTransaction.Commit();
+                        uwPermRole.Commit();
                     }
+
+                    for (int i = 0; i < cblTransaksi.Items.Count; i++)
+                    {
+                        var permissionCode = existingAccessCodes.Where(a => cblTransaksi.Items[i].ToString().Contains(a.ToString())).FirstOrDefault().ToString();
+                        var permission = new UnitOfWork<Permission>(dbContext).Repository.GetAll()
+                            .Where(perm => perm.PermissionCode == permissionCode).FirstOrDefault();
+                        var permRole = uwPermRole.Repository.GetAll().Where(pr => pr.PermisionId == permission.Id && pr.RoleId == roleToUpdate.Id).FirstOrDefault();
+
+                        if (cblTransaksi.GetItemCheckState(i) == CheckState.Unchecked && permRole != null)
+                        {
+                            uwPermRole.Repository.Delete(permRole);
+                        }
+                        else if (cblTransaksi.GetItemCheckState(i) == CheckState.Checked && permRole == null)
+                        {
+                            var permRoleToAdd = new PermissionRole
+                            {
+                                RoleId = roleToUpdate.Id,
+                                PermisionId = permission.Id,
+
+                                // Audit Fields 
+                                CreatedBy = Properties.Settings.Default.CurrentUserId,
+                                CreatedAt = DateTime.Now,
+                                ModifiedBy = Properties.Settings.Default.CurrentUserId,
+                                ModifiedAt = DateTime.Now
+                            };
+                            uwPermRole.Repository.Add(permRoleToAdd);
+                        }
+
+                        uwPermRole.Commit();
+                    }
+
+                    for (int i = 0; i < cblReporting.Items.Count; i++)
+                    {
+                        var permissionCode = existingAccessCodes.Where(a => cblReporting.Items[i].ToString().Contains(a.ToString())).FirstOrDefault().ToString();
+                        var permission = new UnitOfWork<Permission>(dbContext).Repository.GetAll()
+                            .Where(perm => perm.PermissionCode == permissionCode).FirstOrDefault();
+                        var permRole = uwPermRole.Repository.GetAll().Where(pr => pr.PermisionId == permission.Id && pr.RoleId == roleToUpdate.Id).FirstOrDefault();
+
+                        if (cblReporting.GetItemCheckState(i) == CheckState.Unchecked && permRole != null)
+                        {
+                            uwPermRole.Repository.Delete(permRole);
+                        }
+                        else if (cblReporting.GetItemCheckState(i) == CheckState.Checked && permRole == null)
+                        {
+                            var permRoleToAdd = new PermissionRole
+                            {
+                                RoleId = roleToUpdate.Id,
+                                PermisionId = permission.Id,
+
+                                // Audit Fields 
+                                CreatedBy = Properties.Settings.Default.CurrentUserId,
+                                CreatedAt = DateTime.Now,
+                                ModifiedBy = Properties.Settings.Default.CurrentUserId,
+                                ModifiedAt = DateTime.Now
+                            };
+                            uwPermRole.Repository.Add(permRoleToAdd);
+                        }
+
+                        uwPermRole.Commit();
+                    }
+
+                    dbContextTransaction.Commit();
                 }
+
 
                 btnReload.PerformClick();
                 CommonMessageHelper.DataSavedSuccessfully();

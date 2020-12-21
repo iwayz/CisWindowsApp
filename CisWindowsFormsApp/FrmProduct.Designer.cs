@@ -91,7 +91,6 @@
             this.txtProductCode.Name = "txtProductCode";
             this.txtProductCode.Size = new System.Drawing.Size(139, 31);
             this.txtProductCode.TabIndex = 1;
-            this.txtProductCode.Leave += new System.EventHandler(this.txtProductCode_Leave);
             // 
             // txtProductName
             // 

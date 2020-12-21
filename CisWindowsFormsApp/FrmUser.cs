@@ -64,52 +64,49 @@ namespace CisWindowsFormsApp
             }
             else
             {
-                using (var context = new CisDbContext())
+                using (var dbContextTransaction = dbContext.Database.BeginTransaction())
                 {
-                    using (var dbContextTransaction = context.Database.BeginTransaction())
+                    var userToAdd = new User
                     {
-                        var userToAdd = new User
-                        {
-                            Username = txtUsername.Text.Trim(),
-                            Password = new UserHelper().HashPassword(txtPassword.Text.Trim()),
-                            FullName = txtFullName.Text.Trim(),
+                        Username = txtUsername.Text.Trim(),
+                        Password = new UserHelper().HashPassword(txtPassword.Text.Trim()),
+                        FullName = txtFullName.Text.Trim(),
 
-                            // Audit Fields 
-                            CreatedBy = Properties.Settings.Default.CurrentUserId,
-                            CreatedAt = DateTime.Now,
-                            ModifiedBy = Properties.Settings.Default.CurrentUserId,
-                            ModifiedAt = DateTime.Now
-                        };
-                        var uowUsr = new UnitOfWork<User>(context);
+                        // Audit Fields 
+                        CreatedBy = Properties.Settings.Default.CurrentUserId,
+                        CreatedAt = DateTime.Now,
+                        ModifiedBy = Properties.Settings.Default.CurrentUserId,
+                        ModifiedAt = DateTime.Now
+                    };
+                    var uowUsr = new UnitOfWork<User>(dbContext);
 
-                        uowUsr.Repository.Add(userToAdd);
-                        uowUsr.Commit();
+                    uowUsr.Repository.Add(userToAdd);
+                    uowUsr.Commit();
 
-                        var uowUsrRole = new UnitOfWork<UserRole>(context);
-                        var existingUsrRole = uowUsrRole.Repository.GetAll().
-                            Where(u => u.UserId == txtUserId.Text.Trim() && u.RoleId == txtRoleId.Text.Trim()).FirstOrDefault();
-                        if (existingUsrRole != null)
-                        {
-                            CommonMessageHelper.DataAlreadyExist(txtUsername.Text.Trim() + " dan " + cbRole.SelectedText);
-                            return;
-                        }
-
-                        var userRoleToAdd = new UserRole
-                        {
-                            UserId = userToAdd.Id.ToString().ToUpper(),
-                            RoleId = cbRole.SelectedValue.ToString().ToUpper(),
-
-                            // Audit Fields 
-                            CreatedBy = Properties.Settings.Default.CurrentUserId,
-                            CreatedAt = DateTime.Now,
-                            ModifiedBy = Properties.Settings.Default.CurrentUserId,
-                            ModifiedAt = DateTime.Now
-                        };
-                        uowUsrRole.Repository.Add(userRoleToAdd);
-                        uowUsrRole.Commit();
-
-                        dbContextTransaction.Commit();
+                    var uowUsrRole = new UnitOfWork<UserRole>(dbContext);
+                    var existingUsrRole = uowUsrRole.Repository.GetAll().
+                        Where(u => u.UserId == txtUserId.Text.Trim() && u.RoleId == txtRoleId.Text.Trim()).FirstOrDefault();
+                    if (existingUsrRole != null)
+                    {
+                        CommonMessageHelper.DataAlreadyExist(txtUsername.Text.Trim() + " dan " + cbRole.SelectedText);
+                        return;
                     }
+
+                    var userRoleToAdd = new UserRole
+                    {
+                        UserId = userToAdd.Id.ToString().ToUpper(),
+                        RoleId = cbRole.SelectedValue.ToString().ToUpper(),
+
+                        // Audit Fields 
+                        CreatedBy = Properties.Settings.Default.CurrentUserId,
+                        CreatedAt = DateTime.Now,
+                        ModifiedBy = Properties.Settings.Default.CurrentUserId,
+                        ModifiedAt = DateTime.Now
+                    };
+                    uowUsrRole.Repository.Add(userRoleToAdd);
+                    uowUsrRole.Commit();
+
+                    dbContextTransaction.Commit();
                 }
 
                 btnReload.PerformClick();
@@ -157,61 +154,44 @@ namespace CisWindowsFormsApp
             {
                 if (DialogResult.Yes == CommonMessageHelper.ConfirmDelete())
                 {
-
-                    using (var context = new CisDbContext())
+                    using (var dbContextTransaction = dbContext.Database.BeginTransaction())
                     {
-                        using (var dbContextTransaction = context.Database.BeginTransaction())
+                        bool expectedError = false;
+                        bool unexpectedError = false;
+                        var uowUsrRole = new UnitOfWork<UserRole>(dbContext);
+                        var usrRoleToDel = uowUsrRole.Repository.GetAll().Where(u => u.Id == txtUserRoleId.Text.Trim()).FirstOrDefault();
+                        uowUsrRole.Repository.Delete(usrRoleToDel);
+                        var uRoleRes = uowUsrRole.Commit();
+                        if (!uRoleRes.Item1 && uRoleRes.Item2 == "Expected")
                         {
-                            bool expectedError = false;
-                            bool unexpectedError = false;
-                            var uowUsrRole = new UnitOfWork<UserRole>(context);
-                            var usrRoleToDel = uowUsrRole.Repository.GetAll().Where(u => u.Id == txtUserRoleId.Text.Trim()).FirstOrDefault();
-                            uowUsrRole.Repository.Delete(usrRoleToDel);
-                            var uRoleRes = uowUsrRole.Commit();
-                            if (!uRoleRes.Item1 && uRoleRes.Item2 == "Expected")
-                            {
-                                expectedError = true;
-                            }
-
-                            if (!uRoleRes.Item1 && uRoleRes.Item2 == "Unexpected")
-                            {
-                                unexpectedError = true;
-                            }
-
-                            var uowUsr = new UnitOfWork<User>(context);
-                            var usrToDel = uowUsr.Repository.GetAll().Where(u => u.Username == txtUsername.Text.Trim()).FirstOrDefault();
-                            uowUsr.Repository.Delete(usrToDel);
-                            var userRes = uowUsr.Commit();
-                            if (!userRes.Item1 && userRes.Item2 == "Expected")
-                            {
-                                expectedError = true;
-                            }
-
-                            if (!userRes.Item1 && userRes.Item2 == "Unexpected")
-                            {
-                                unexpectedError = true;
-                            }
-
-                            if (expectedError) CommonMessageHelper.ReferredDataCannotBeDeleted();
-                            if (unexpectedError) CommonMessageHelper.ContactAdminError();
-
-                            dbContextTransaction.Commit();
+                            expectedError = true;
                         }
+
+                        if (!uRoleRes.Item1 && uRoleRes.Item2 == "Unexpected")
+                        {
+                            unexpectedError = true;
+                        }
+
+                        var uowUsr = new UnitOfWork<User>(dbContext);
+                        var usrToDel = uowUsr.Repository.GetAll().Where(u => u.Username == txtUsername.Text.Trim()).FirstOrDefault();
+                        uowUsr.Repository.Delete(usrToDel);
+                        var userRes = uowUsr.Commit();
+                        if (!userRes.Item1 && userRes.Item2 == "Expected")
+                        {
+                            expectedError = true;
+                        }
+
+                        if (!userRes.Item1 && userRes.Item2 == "Unexpected")
+                        {
+                            unexpectedError = true;
+                        }
+
+                        if (expectedError) CommonMessageHelper.ReferredDataCannotBeDeleted();
+                        if (unexpectedError) CommonMessageHelper.ContactAdminError();
+
+                        dbContextTransaction.Commit();
                     }
                     btnReload.PerformClick();
-
-                    //uowUser.Repository.Delete(uomToDel);
-                    //var res = uowUser.Commit();
-                    //if (!res.Item1 && res.Item2 == "Expected")
-                    //{
-                    //    CommonMessageHelper.ReferredDataCannotBeDeleted();
-                    //}
-
-                    //if (!res.Item1 && res.Item2 == "Unexpected")
-                    //{
-                    //    CommonMessageHelper.ContactAdminError();
-                    //}
-                    //btnReload.PerformClick();
                 }
             }
             else
@@ -241,34 +221,31 @@ namespace CisWindowsFormsApp
             }
             else
             {
-                using (var context = new CisDbContext())
+                using (var dbContextTransaction = dbContext.Database.BeginTransaction())
                 {
-                    using (var dbContextTransaction = context.Database.BeginTransaction())
-                    {
-                        var uowUsr = new UnitOfWork<User>(context);
-                        var userToUpdate = uowUsr.Repository.GetById(txtUserId.Text.Trim());
-                        userToUpdate.Username = txtUsername.Text.Trim();
+                    var uowUsr = new UnitOfWork<User>(dbContext);
+                    var userToUpdate = uowUsr.Repository.GetById(txtUserId.Text.Trim());
+                    userToUpdate.Username = txtUsername.Text.Trim();
 
-                        if (chkChangePassword.Checked)
-                            userToUpdate.Password = new UserHelper().HashPassword(txtPassword.Text.Trim());
+                    if (chkChangePassword.Checked)
+                        userToUpdate.Password = new UserHelper().HashPassword(txtPassword.Text.Trim());
 
-                        userToUpdate.FullName = txtFullName.Text.Trim();
-                        userToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUserId;
-                        userToUpdate.ModifiedAt = DateTime.Now;
-                        uowUsr.Repository.Update(userToUpdate);
-                        uowUsr.Commit();
+                    userToUpdate.FullName = txtFullName.Text.Trim();
+                    userToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUserId;
+                    userToUpdate.ModifiedAt = DateTime.Now;
+                    uowUsr.Repository.Update(userToUpdate);
+                    uowUsr.Commit();
 
-                        var uowUsrRole = new UnitOfWork<UserRole>(context);
-                        var userRoleToUpdate = uowUsrRole.Repository.GetById(txtUserRoleId.Text.ToString().Trim());
-                        userRoleToUpdate.UserId = txtUserId.Text.Trim();
-                        userRoleToUpdate.RoleId = cbRole.SelectedValue.ToString().Trim();
-                        userRoleToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUserId;
-                        userRoleToUpdate.ModifiedAt = DateTime.Now;
-                        uowUsrRole.Repository.Update(userRoleToUpdate);
-                        uowUsrRole.Commit();
+                    var uowUsrRole = new UnitOfWork<UserRole>(dbContext);
+                    var userRoleToUpdate = uowUsrRole.Repository.GetById(txtUserRoleId.Text.ToString().Trim());
+                    userRoleToUpdate.UserId = txtUserId.Text.Trim();
+                    userRoleToUpdate.RoleId = cbRole.SelectedValue.ToString().Trim();
+                    userRoleToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUserId;
+                    userRoleToUpdate.ModifiedAt = DateTime.Now;
+                    uowUsrRole.Repository.Update(userRoleToUpdate);
+                    uowUsrRole.Commit();
 
-                        dbContextTransaction.Commit();
-                    }
+                    dbContextTransaction.Commit();
                 }
 
                 btnReload.PerformClick();
