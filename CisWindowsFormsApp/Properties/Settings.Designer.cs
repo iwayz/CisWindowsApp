@@ -161,5 +161,15 @@ namespace CisWindowsFormsApp.Properties {
                 return ((string)(this["SalesPicSipaNo"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=CIS_POS;Integrated Security=True")]
+        public string CIS_POSConnectionString {
+            get {
+                return ((string)(this["CIS_POSConnectionString"]));
+            }
+        }
     }
 }

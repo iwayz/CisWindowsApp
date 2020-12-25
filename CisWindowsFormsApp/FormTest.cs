@@ -20,10 +20,25 @@ namespace CisWindowsFormsApp
 
         private void FormTest_Load(object sender, EventArgs e)
         {
+
+            ReportDataSource rds = new ReportDataSource();
+            rds.Name = "DataSetInvoice";
+            var dt = this.dataTableInvoiceTableAdapter.GetData("89815B73-F9A9-46BB-9801-1C8357038267" );
+            rds.Value = dt;
+            this.reportViewer1.LocalReport.DataSources.Add(rds);
+
+
             // TODO: This line of code loads data into the 'dataSet1.OutletType' table. You can move, or remove it, as needed.
-            var compNameParam = new ReportParameter("CompanyName", Properties.Settings.Default.CompName);
+            // 89815B73-F9A9-46BB-9801-1C8357038267
+            var compNameParam = new ReportParameter("CompName", Properties.Settings.Default.CompName);
+            var soIdParam = new ReportParameter("SalesOrderId", "89815B73-F9A9-46BB-9801-1C8357038267");
+            var compDetailParam = new ReportParameter("CompDetail", "Jalan jalan aja");
+            
+            //reportViewer1.LocalReport.DataSources.Clear();
             this.reportViewer1.LocalReport.SetParameters(compNameParam);
-            this.outletTypeTableAdapter.Fill(this.dataSet1.OutletType);
+            this.reportViewer1.LocalReport.SetParameters(compDetailParam);
+            this.reportViewer1.LocalReport.SetParameters(soIdParam);
+            reportViewer1.RefreshReport();
 
             this.reportViewer1.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
             //var pgSetting = new PageSettings();
@@ -44,20 +59,5 @@ namespace CisWindowsFormsApp
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            List<string> formList = new List<string>();
-            Type formType = typeof(Form);
-            foreach (Type type in Assembly.GetExecutingAssembly().GetTypes())
-            {
-                if (formType.IsAssignableFrom(type))
-                {
-                    // type is a Form
-                    Form a = (Form)Activator.CreateInstance(type);
-                    formList.Add(a.Text);
-                }
-            }
-            MessageBox.Show(string.Join(", ", formList));
-        }
     }
 }

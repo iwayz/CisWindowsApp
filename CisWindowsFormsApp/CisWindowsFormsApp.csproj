@@ -9,12 +9,12 @@
 
   <ItemGroup>
     <None Remove="C:\Users\Sudik_S419\.nuget\packages\nlog.config\4.7.5\contentFiles\any\any\NLog.config" />
-    <None Remove="Reports\Report1.rdlc" />
+    <None Remove="Reports\RptInvoice.rdlc" />
     <None Remove="Resources\CisPosManual.pdf" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Reports\Report1.rdlc" />
+    <EmbeddedResource Include="Reports\RptInvoice.rdlc" />
     <EmbeddedResource Include="Resources\CisPosManual.pdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -32,6 +32,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="DataSources\DataSourceInvoice.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataSourceInvoice.xsd</DependentUpon>
+    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -42,10 +47,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Update="Reports\DataSet1.Designer.cs">
+    <Compile Update="Reports\DataSetInvoice.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>DataSet1.xsd</DependentUpon>
+      <DependentUpon>DataSetInvoice.xsd</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -57,13 +62,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="DataSources\DataSourceInvoice.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSourceInvoice.Designer.cs</LastGenOutput>
+    </None>
     <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Update="Reports\DataSet1.xsd">
+    <None Update="Reports\DataSetInvoice.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+      <LastGenOutput>DataSetInvoice.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
 
