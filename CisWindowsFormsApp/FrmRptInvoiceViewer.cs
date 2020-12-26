@@ -23,10 +23,6 @@ namespace CisWindowsFormsApp
 
         private void FrmRptInvoiceViewer_Load(object sender, EventArgs e)
         {
-            reportViewerInvoice.LocalReport.DataSources.Clear();
-            reportViewerInvoice.RefreshReport();
-
-            //SalesOrderId = "89815B73-F9A9-46BB-9801-1C8357038267";
             DataTable dt = dataTableInvoiceTableAdapter.GetData(SalesOrderId);
             ReportDataSource rds = new ReportDataSource("DataSetInvoice", dt);
             reportViewerInvoice.LocalReport.DataSources.Add(rds);
@@ -51,18 +47,15 @@ namespace CisWindowsFormsApp
             reportViewerInvoice.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
             reportViewerInvoice.ZoomMode = ZoomMode.Percent;
             reportViewerInvoice.ZoomPercent = 100;
-            //var pgSetting = new PageSettings();
-            //pgSetting.Landscape = true;
-            //pgSetting.PaperSize = new PaperSize("A5", 580, 830);
-            //this.reportViewer1.SetPageSettings(pgSetting);  
-            //reportViewerInvoice.SetPageSettings(
-            //    new PageSettings
-            //    {
-            //        Landscape = true,
-            //        PaperSize = new PaperSize("A5", 580, 830),
-            //        Margins = new Margins { Top = 25, Left = 15, Right = 15, Bottom = 15 }
-            //    }
-            //);
+            reportViewerInvoice.SetPageSettings(
+                new PageSettings
+                {
+                    Landscape = true,
+                    PaperSize = new PaperSize("A5", 580, 830),
+                    Margins = new Margins { Top = 25, Left = 15, Right = 15, Bottom = 15 }
+                }
+            );
+            reportViewerInvoice.RefreshReport();
 
         }
     }
