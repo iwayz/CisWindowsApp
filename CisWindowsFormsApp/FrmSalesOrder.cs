@@ -522,10 +522,9 @@ namespace CisWindowsFormsApp
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            //var num = Convert.ToInt32(txtPrice.Text);
-            //MessageBox.Show(SpellNumber.Spell(num));
-            var c = dgvSalesOrderItem.Rows.Count;
-            var d = cbProduct.SelectedText;
+            FrmRptInvoiceViewer frmPrint = new FrmRptInvoiceViewer();
+            frmPrint.SalesOrderId = txtSalesOrderId.Text.Trim();
+            frmPrint.ShowDialog();
         }
 
         private void btnFirst_Click(object sender, EventArgs e)
