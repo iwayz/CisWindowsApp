@@ -17,7 +17,7 @@
                          SalesOrder.DeliveryPostalCode, SalesOrder.SalesAreaCode, SalesOrder.SalesDate, SalesOrder.TermOfPaymentCode, SalesOrder.DueDate, SalesOrder.PersonInCharge, SalesOrder.SipaNo, SalesOrder.SubTotalAmount, 
                          SalesOrder.ExtraDiscountAmount, SalesOrder.TaxBaseAmount, SalesOrder.ValueAddedTaxAmount, SalesOrder.GrandTotalAmount, SalesOrder.Username, SalesOrder.SalesmanCode, SalesOrderItem.SalesOrderId, 
                          SalesOrderItem.ProductCode, SalesOrderItem.ProductName, SalesOrderItem.BatchCode, SalesOrderItem.ExpiredDate, SalesOrderItem.Quantity, SalesOrderItem.UomCode, SalesOrderItem.Price, 
-                         SalesOrderItem.DiscountPercentage, SalesOrderItem.TotalAmount, SalesOrderItem.Id AS SalesOrderItemId
+                         SalesOrderItem.DiscountPercentage, SalesOrderItem.TotalAmount, SalesOrderItem.Id AS SalesOrderItemId, SalesOrder.Status
 FROM            SalesOrder INNER JOIN
                          SalesOrderItem ON SalesOrder.Id = SalesOrderItem.SalesOrderId
 WHERE        (SalesOrder.Id = @SalesOrderId)</CommandText>
@@ -69,6 +69,7 @@ WHERE        (SalesOrder.Id = @SalesOrderId)</CommandText>
               <Mapping SourceColumn="DiscountPercentage" DataSetColumn="DiscountPercentage" />
               <Mapping SourceColumn="TotalAmount" DataSetColumn="TotalAmount" />
               <Mapping SourceColumn="SalesOrderItemId" DataSetColumn="SalesOrderItemId" />
+              <Mapping SourceColumn="Status" DataSetColumn="Status" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -80,7 +81,7 @@ WHERE        (SalesOrder.Id = @SalesOrderId)</CommandText>
   <xs:element name="DataSourceInvoice" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSourceInvoice" msprop:Generator_UserDSName="DataSourceInvoice">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="DataTableInvoice" msprop:Generator_TableClassName="DataTableInvoiceDataTable" msprop:Generator_TableVarName="tableDataTableInvoice" msprop:Generator_RowChangedName="DataTableInvoiceRowChanged" msprop:Generator_TablePropName="DataTableInvoice" msprop:Generator_RowDeletingName="DataTableInvoiceRowDeleting" msprop:Generator_RowChangingName="DataTableInvoiceRowChanging" msprop:Generator_RowEvHandlerName="DataTableInvoiceRowChangeEventHandler" msprop:Generator_RowDeletedName="DataTableInvoiceRowDeleted" msprop:Generator_RowClassName="DataTableInvoiceRow" msprop:Generator_UserTableName="DataTableInvoice" msprop:Generator_RowEvArgName="DataTableInvoiceRowChangeEvent">
+        <xs:element name="DataTableInvoice" msprop:Generator_TableClassName="DataTableInvoiceDataTable" msprop:Generator_TableVarName="tableDataTableInvoice" msprop:Generator_TablePropName="DataTableInvoice" msprop:Generator_RowDeletingName="DataTableInvoiceRowDeleting" msprop:Generator_RowChangingName="DataTableInvoiceRowChanging" msprop:Generator_RowEvHandlerName="DataTableInvoiceRowChangeEventHandler" msprop:Generator_RowDeletedName="DataTableInvoiceRowDeleted" msprop:Generator_UserTableName="DataTableInvoice" msprop:Generator_RowChangedName="DataTableInvoiceRowChanged" msprop:Generator_RowEvArgName="DataTableInvoiceRowChangeEvent" msprop:Generator_RowClassName="DataTableInvoiceRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id">
@@ -291,6 +292,7 @@ WHERE        (SalesOrder.Id = @SalesOrderId)</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="Status" msprop:Generator_ColumnVarNameInTable="columnStatus" msprop:Generator_ColumnPropNameInRow="Status" msprop:Generator_ColumnPropNameInTable="StatusColumn" msprop:Generator_UserColumnName="Status" type="xs:int" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

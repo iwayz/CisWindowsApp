@@ -177,6 +177,10 @@
           <DataField>SalesOrderItemId</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="Status">
+          <DataField>Status</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DataSourceInvoice</rd:DataSetName>
@@ -1013,7 +1017,7 @@
       <Width>7.6323in</Width>
       <Page>
         <PageHeader>
-          <Height>4.04014cm</Height>
+          <Height>4.35764cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -1104,8 +1108,8 @@
               </Paragraphs>
               <rd:DefaultName>Textbox2</rd:DefaultName>
               <Left>8.3352cm</Left>
-              <Height>0.89104cm</Height>
-              <Width>4.0916cm</Width>
+              <Height>0.66322cm</Height>
+              <Width>2.34551cm</Width>
               <ZIndex>2</ZIndex>
               <Style>
                 <Border>
@@ -1137,7 +1141,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox2</rd:DefaultName>
-              <Top>0.508cm</Top>
+              <Top>0.6985cm</Top>
               <Left>8.3352cm</Left>
               <Height>0.6cm</Height>
               <Width>1.41931cm</Width>
@@ -1170,7 +1174,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>SalesNo</rd:DefaultName>
-              <Top>0.508cm</Top>
+              <Top>0.6985cm</Top>
               <Left>9.72515cm</Left>
               <Height>0.6cm</Height>
               <Width>3.5259cm</Width>
@@ -1209,7 +1213,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>CompDetail</rd:DefaultName>
-              <Top>1.21383cm</Top>
+              <Top>1.53133cm</Top>
               <Left>8.41003cm</Left>
               <Height>1.97936cm</Height>
               <Width>5.28833cm</Width>
@@ -1244,7 +1248,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>SalesNo</rd:DefaultName>
-              <Top>3.44014cm</Top>
+              <Top>3.75764cm</Top>
               <Left>2.54881cm</Left>
               <Height>0.6cm</Height>
               <Width>2.49529cm</Width>
@@ -1279,7 +1283,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox2</rd:DefaultName>
-              <Top>3.44014cm</Top>
+              <Top>3.75764cm</Top>
               <Left>0.635cm</Left>
               <Height>0.6cm</Height>
               <Width>1.7727cm</Width>
@@ -1314,7 +1318,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>SalesNo</rd:DefaultName>
-              <Top>3.44014cm</Top>
+              <Top>3.75764cm</Top>
               <Left>7.07729cm</Left>
               <Height>0.6cm</Height>
               <Width>2.49529cm</Width>
@@ -1349,7 +1353,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>SalesNo</rd:DefaultName>
-              <Top>3.44014cm</Top>
+              <Top>3.75764cm</Top>
               <Left>10.75576cm</Left>
               <Height>0.6cm</Height>
               <Width>2.49529cm</Width>
@@ -1384,7 +1388,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>SalesNo</rd:DefaultName>
-              <Top>3.44014cm</Top>
+              <Top>3.75764cm</Top>
               <Left>16.4914cm</Left>
               <Height>0.6cm</Height>
               <Width>2.49529cm</Width>
@@ -1419,7 +1423,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox2</rd:DefaultName>
-              <Top>3.44014cm</Top>
+              <Top>3.75764cm</Top>
               <Left>5.1621cm</Left>
               <Height>0.6cm</Height>
               <Width>1.91519cm</Width>
@@ -1454,7 +1458,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox2</rd:DefaultName>
-              <Top>3.44014cm</Top>
+              <Top>3.75764cm</Top>
               <Left>9.74897cm</Left>
               <Height>0.6cm</Height>
               <Width>0.93623cm</Width>
@@ -1489,7 +1493,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox2</rd:DefaultName>
-              <Top>3.44014cm</Top>
+              <Top>3.75764cm</Top>
               <Left>13.72545cm</Left>
               <Height>0.6cm</Height>
               <Width>2.69539cm</Width>
@@ -1530,7 +1534,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>CompDetail</rd:DefaultName>
-              <Top>1.21383cm</Top>
+              <Top>1.53133cm</Top>
               <Left>13.69836cm</Left>
               <Height>1.97937cm</Height>
               <Width>5.28833cm</Width>
@@ -1573,6 +1577,47 @@
                 <Border>
                   <Style>None</Style>
                 </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox27">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>DELETED</Value>
+                      <Style>
+                        <FontFamily>Calibri</FontFamily>
+                        <FontSize>12pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                        <Color>White</Color>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox2</rd:DefaultName>
+              <Top>0.54327cm</Top>
+              <Left>15.46835cm</Left>
+              <Height>0.6cm</Height>
+              <Width>3.51833cm</Width>
+              <ZIndex>16</ZIndex>
+              <Visibility>
+                <Hidden>=Fields!Status.Value &gt;= 1</Hidden>
+              </Visibility>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <BackgroundColor>DimGray</BackgroundColor>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
@@ -1997,9 +2042,9 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>2.40028cm</Top>
+              <Top>2.5517cm</Top>
               <Left>2.65465cm</Left>
-              <Height>0.94396cm</Height>
+              <Height>0.92483cm</Height>
               <Width>8.83173cm</Width>
               <ZIndex>11</ZIndex>
               <Style>

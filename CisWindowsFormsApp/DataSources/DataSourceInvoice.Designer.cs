@@ -359,6 +359,8 @@ namespace CisWindowsFormsApp.DataSources {
             
             private global::System.Data.DataColumn columnSalesOrderItemId;
             
+            private global::System.Data.DataColumn columnStatus;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DataTableInvoiceDataTable() {
@@ -714,6 +716,14 @@ namespace CisWindowsFormsApp.DataSources {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn StatusColumn {
+                get {
+                    return this.columnStatus;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -789,7 +799,8 @@ namespace CisWindowsFormsApp.DataSources {
                         decimal Price, 
                         float DiscountPercentage, 
                         decimal TotalAmount, 
-                        string SalesOrderItemId) {
+                        string SalesOrderItemId, 
+                        int Status) {
                 DataTableInvoiceRow rowDataTableInvoiceRow = ((DataTableInvoiceRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Id,
@@ -831,7 +842,8 @@ namespace CisWindowsFormsApp.DataSources {
                         Price,
                         DiscountPercentage,
                         TotalAmount,
-                        SalesOrderItemId};
+                        SalesOrderItemId,
+                        Status};
                 rowDataTableInvoiceRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDataTableInvoiceRow);
                 return rowDataTableInvoiceRow;
@@ -902,6 +914,7 @@ namespace CisWindowsFormsApp.DataSources {
                 this.columnDiscountPercentage = base.Columns["DiscountPercentage"];
                 this.columnTotalAmount = base.Columns["TotalAmount"];
                 this.columnSalesOrderItemId = base.Columns["SalesOrderItemId"];
+                this.columnStatus = base.Columns["Status"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -987,6 +1000,8 @@ namespace CisWindowsFormsApp.DataSources {
                 base.Columns.Add(this.columnTotalAmount);
                 this.columnSalesOrderItemId = new global::System.Data.DataColumn("SalesOrderItemId", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSalesOrderItemId);
+                this.columnStatus = new global::System.Data.DataColumn("Status", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStatus);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId,
                                 this.columnSalesOrderItemId}, true));
@@ -1046,6 +1061,7 @@ namespace CisWindowsFormsApp.DataSources {
                 this.columnTotalAmount.AllowDBNull = false;
                 this.columnSalesOrderItemId.AllowDBNull = false;
                 this.columnSalesOrderItemId.MaxLength = 36;
+                this.columnStatus.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1690,6 +1706,17 @@ namespace CisWindowsFormsApp.DataSources {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int Status {
+                get {
+                    return ((int)(this[this.tableDataTableInvoice.StatusColumn]));
+                }
+                set {
+                    this[this.tableDataTableInvoice.StatusColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsCustomerProvinceNull() {
                 return this.IsNull(this.tableDataTableInvoice.CustomerProvinceColumn);
             }
@@ -2004,6 +2031,7 @@ namespace CisWindowsFormsApp.DataSources.DataSourceInvoiceTableAdapters {
             tableMapping.ColumnMappings.Add("DiscountPercentage", "DiscountPercentage");
             tableMapping.ColumnMappings.Add("TotalAmount", "TotalAmount");
             tableMapping.ColumnMappings.Add("SalesOrderItemId", "SalesOrderItemId");
+            tableMapping.ColumnMappings.Add("Status", "Status");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -2025,7 +2053,7 @@ namespace CisWindowsFormsApp.DataSources.DataSourceInvoiceTableAdapters {
                          SalesOrder.DeliveryPostalCode, SalesOrder.SalesAreaCode, SalesOrder.SalesDate, SalesOrder.TermOfPaymentCode, SalesOrder.DueDate, SalesOrder.PersonInCharge, SalesOrder.SipaNo, SalesOrder.SubTotalAmount, 
                          SalesOrder.ExtraDiscountAmount, SalesOrder.TaxBaseAmount, SalesOrder.ValueAddedTaxAmount, SalesOrder.GrandTotalAmount, SalesOrder.Username, SalesOrder.SalesmanCode, SalesOrderItem.SalesOrderId, 
                          SalesOrderItem.ProductCode, SalesOrderItem.ProductName, SalesOrderItem.BatchCode, SalesOrderItem.ExpiredDate, SalesOrderItem.Quantity, SalesOrderItem.UomCode, SalesOrderItem.Price, 
-                         SalesOrderItem.DiscountPercentage, SalesOrderItem.TotalAmount, SalesOrderItem.Id AS SalesOrderItemId
+                         SalesOrderItem.DiscountPercentage, SalesOrderItem.TotalAmount, SalesOrderItem.Id AS SalesOrderItemId, SalesOrder.Status
 FROM            SalesOrder INNER JOIN
                          SalesOrderItem ON SalesOrder.Id = SalesOrderItem.SalesOrderId
 WHERE        (SalesOrder.Id = @SalesOrderId)";
