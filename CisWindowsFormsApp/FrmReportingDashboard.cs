@@ -14,5 +14,11 @@ namespace CisWindowsFormsApp
         {
             InitializeComponent();
         }
+
+        private void btnExportExcel_Click(object sender, EventArgs e)
+        {
+            FrmInvoiceRecap frmInvoiceRecap = new FrmInvoiceRecap();
+            frmInvoiceRecap.ShowDialog();
+        }
     }
 }

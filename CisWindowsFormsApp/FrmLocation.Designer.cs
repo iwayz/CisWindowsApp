@@ -69,7 +69,7 @@
             this.lvProvince.HideSelection = false;
             this.lvProvince.Location = new System.Drawing.Point(30, 36);
             this.lvProvince.Name = "lvProvince";
-            this.lvProvince.Size = new System.Drawing.Size(250, 443);
+            this.lvProvince.Size = new System.Drawing.Size(250, 322);
             this.lvProvince.TabIndex = 1;
             this.lvProvince.UseCompatibleStateImageBehavior = false;
             this.lvProvince.View = System.Windows.Forms.View.Details;
@@ -97,7 +97,7 @@
             this.lvDistrict.LabelWrap = false;
             this.lvDistrict.Location = new System.Drawing.Point(327, 36);
             this.lvDistrict.Name = "lvDistrict";
-            this.lvDistrict.Size = new System.Drawing.Size(250, 443);
+            this.lvDistrict.Size = new System.Drawing.Size(250, 322);
             this.lvDistrict.TabIndex = 2;
             this.lvDistrict.UseCompatibleStateImageBehavior = false;
             this.lvDistrict.View = System.Windows.Forms.View.Details;
@@ -124,7 +124,7 @@
             this.lvSubDistrict.HideSelection = false;
             this.lvSubDistrict.Location = new System.Drawing.Point(624, 36);
             this.lvSubDistrict.Name = "lvSubDistrict";
-            this.lvSubDistrict.Size = new System.Drawing.Size(250, 443);
+            this.lvSubDistrict.Size = new System.Drawing.Size(250, 322);
             this.lvSubDistrict.TabIndex = 3;
             this.lvSubDistrict.UseCompatibleStateImageBehavior = false;
             this.lvSubDistrict.View = System.Windows.Forms.View.Details;
@@ -224,7 +224,7 @@
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.lblTotalProvince);
-            this.panel1.Location = new System.Drawing.Point(31, 492);
+            this.panel1.Location = new System.Drawing.Point(31, 364);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(249, 115);
             this.panel1.TabIndex = 4;
@@ -248,7 +248,7 @@
             this.panel2.Controls.Add(this.lblProvince);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.lblTotalDistrict);
-            this.panel2.Location = new System.Drawing.Point(327, 492);
+            this.panel2.Location = new System.Drawing.Point(327, 364);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(249, 115);
             this.panel2.TabIndex = 4;
@@ -286,7 +286,7 @@
             this.panel3.Controls.Add(this.lblDistrict);
             this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.lblTotalSubDistrict);
-            this.panel3.Location = new System.Drawing.Point(625, 492);
+            this.panel3.Location = new System.Drawing.Point(625, 364);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(249, 115);
             this.panel3.TabIndex = 4;

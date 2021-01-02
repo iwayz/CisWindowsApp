@@ -115,7 +115,7 @@
             this.txtSalesmanCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSalesmanCode.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtSalesmanCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtSalesmanCode.Location = new System.Drawing.Point(31, 48);
+            this.txtSalesmanCode.Location = new System.Drawing.Point(31, 28);
             this.txtSalesmanCode.Name = "txtSalesmanCode";
             this.txtSalesmanCode.Size = new System.Drawing.Size(148, 31);
             this.txtSalesmanCode.TabIndex = 1;
@@ -125,7 +125,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(31, 32);
+            this.label3.Location = new System.Drawing.Point(31, 12);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(89, 15);
             this.label3.TabIndex = 4;
@@ -136,7 +136,7 @@
             this.txtFullName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtFullName.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtFullName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtFullName.Location = new System.Drawing.Point(31, 98);
+            this.txtFullName.Location = new System.Drawing.Point(31, 78);
             this.txtFullName.Name = "txtFullName";
             this.txtFullName.Size = new System.Drawing.Size(283, 31);
             this.txtFullName.TabIndex = 2;
@@ -146,7 +146,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label4.Location = new System.Drawing.Point(31, 82);
+            this.label4.Location = new System.Drawing.Point(31, 62);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(87, 15);
             this.label4.TabIndex = 4;
@@ -160,7 +160,7 @@
             this.btnReload.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnReload.ForeColor = System.Drawing.Color.White;
             this.btnReload.Image = ((System.Drawing.Image)(resources.GetObject("btnReload.Image")));
-            this.btnReload.Location = new System.Drawing.Point(351, 318);
+            this.btnReload.Location = new System.Drawing.Point(351, 298);
             this.btnReload.Name = "btnReload";
             this.btnReload.Size = new System.Drawing.Size(71, 52);
             this.btnReload.TabIndex = 15;
@@ -177,7 +177,7 @@
             this.btnDel.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnDel.ForeColor = System.Drawing.Color.White;
             this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
-            this.btnDel.Location = new System.Drawing.Point(351, 251);
+            this.btnDel.Location = new System.Drawing.Point(351, 231);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(71, 52);
             this.btnDel.TabIndex = 14;
@@ -194,7 +194,7 @@
             this.btnSave.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(351, 184);
+            this.btnSave.Location = new System.Drawing.Point(351, 164);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(71, 52);
             this.btnSave.TabIndex = 13;
@@ -211,7 +211,7 @@
             this.btnAdd.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnAdd.ForeColor = System.Drawing.Color.White;
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(351, 116);
+            this.btnAdd.Location = new System.Drawing.Point(351, 96);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(71, 52);
             this.btnAdd.TabIndex = 12;
@@ -228,7 +228,7 @@
             this.btnClear.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnClear.ForeColor = System.Drawing.Color.White;
             this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
-            this.btnClear.Location = new System.Drawing.Point(351, 48);
+            this.btnClear.Location = new System.Drawing.Point(351, 28);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(71, 52);
             this.btnClear.TabIndex = 11;
@@ -241,10 +241,10 @@
             // 
             this.dgvSalesman.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSalesman.GridColor = System.Drawing.Color.White;
-            this.dgvSalesman.Location = new System.Drawing.Point(453, 85);
+            this.dgvSalesman.Location = new System.Drawing.Point(453, 65);
             this.dgvSalesman.Margin = new System.Windows.Forms.Padding(9, 3, 3, 3);
             this.dgvSalesman.Name = "dgvSalesman";
-            this.dgvSalesman.Size = new System.Drawing.Size(509, 436);
+            this.dgvSalesman.Size = new System.Drawing.Size(509, 421);
             this.dgvSalesman.TabIndex = 0;
             this.dgvSalesman.Text = "dataGridView1";
             this.dgvSalesman.Click += new System.EventHandler(this.dgvSalesman_Click);
@@ -279,7 +279,7 @@
             this.gbGender.Controls.Add(this.rbFemale);
             this.gbGender.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.gbGender.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.gbGender.Location = new System.Drawing.Point(31, 138);
+            this.gbGender.Location = new System.Drawing.Point(31, 110);
             this.gbGender.Name = "gbGender";
             this.gbGender.Size = new System.Drawing.Size(218, 46);
             this.gbGender.TabIndex = 3;
@@ -301,7 +301,7 @@
             this.txtAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAddress.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtAddress.Location = new System.Drawing.Point(31, 202);
+            this.txtAddress.Location = new System.Drawing.Point(31, 173);
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(283, 65);
@@ -312,7 +312,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label5.Location = new System.Drawing.Point(31, 186);
+            this.label5.Location = new System.Drawing.Point(31, 157);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(46, 15);
             this.label5.TabIndex = 4;
@@ -323,7 +323,7 @@
             this.txtPostCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPostCode.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtPostCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtPostCode.Location = new System.Drawing.Point(28, 435);
+            this.txtPostCode.Location = new System.Drawing.Point(28, 406);
             this.txtPostCode.MaxLength = 5;
             this.txtPostCode.Name = "txtPostCode";
             this.txtPostCode.Size = new System.Drawing.Size(104, 31);
@@ -335,7 +335,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label6.Location = new System.Drawing.Point(28, 419);
+            this.label6.Location = new System.Drawing.Point(28, 390);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(57, 15);
             this.label6.TabIndex = 4;
@@ -346,7 +346,7 @@
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEmail.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtEmail.Location = new System.Drawing.Point(28, 490);
+            this.txtEmail.Location = new System.Drawing.Point(28, 455);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(283, 31);
             this.txtEmail.TabIndex = 10;
@@ -356,7 +356,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label7.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label7.Location = new System.Drawing.Point(28, 475);
+            this.label7.Location = new System.Drawing.Point(28, 440);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(36, 15);
             this.label7.TabIndex = 4;
@@ -367,7 +367,7 @@
             this.txtPhone.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhone.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtPhone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtPhone.Location = new System.Drawing.Point(141, 435);
+            this.txtPhone.Location = new System.Drawing.Point(141, 406);
             this.txtPhone.MaxLength = 20;
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(170, 31);
@@ -379,7 +379,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label8.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label8.Location = new System.Drawing.Point(141, 419);
+            this.label8.Location = new System.Drawing.Point(141, 390);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(50, 15);
             this.label8.TabIndex = 4;
@@ -390,7 +390,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label9.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label9.Location = new System.Drawing.Point(31, 270);
+            this.label9.Location = new System.Drawing.Point(31, 241);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(50, 15);
             this.label9.TabIndex = 4;
@@ -403,7 +403,7 @@
             this.cbProvince.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.cbProvince.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.cbProvince.FormattingEnabled = true;
-            this.cbProvince.Location = new System.Drawing.Point(31, 285);
+            this.cbProvince.Location = new System.Drawing.Point(31, 256);
             this.cbProvince.Name = "cbProvince";
             this.cbProvince.Size = new System.Drawing.Size(235, 31);
             this.cbProvince.TabIndex = 5;
@@ -414,7 +414,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label10.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label10.Location = new System.Drawing.Point(28, 319);
+            this.label10.Location = new System.Drawing.Point(28, 290);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(100, 15);
             this.label10.TabIndex = 4;
@@ -427,7 +427,7 @@
             this.cbDistrict.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.cbDistrict.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.cbDistrict.FormattingEnabled = true;
-            this.cbDistrict.Location = new System.Drawing.Point(28, 335);
+            this.cbDistrict.Location = new System.Drawing.Point(28, 306);
             this.cbDistrict.Name = "cbDistrict";
             this.cbDistrict.Size = new System.Drawing.Size(235, 31);
             this.cbDistrict.TabIndex = 6;
@@ -438,7 +438,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label11.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label11.Location = new System.Drawing.Point(28, 369);
+            this.label11.Location = new System.Drawing.Point(28, 340);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(67, 15);
             this.label11.TabIndex = 4;
@@ -451,7 +451,7 @@
             this.cbSubDistrict.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.cbSubDistrict.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.cbSubDistrict.FormattingEnabled = true;
-            this.cbSubDistrict.Location = new System.Drawing.Point(28, 385);
+            this.cbSubDistrict.Location = new System.Drawing.Point(28, 356);
             this.cbSubDistrict.Name = "cbSubDistrict";
             this.cbSubDistrict.Size = new System.Drawing.Size(235, 31);
             this.cbSubDistrict.TabIndex = 7;
@@ -464,7 +464,7 @@
             this.btnSearch.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnSearch.ForeColor = System.Drawing.Color.White;
             this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
-            this.btnSearch.Location = new System.Drawing.Point(931, 48);
+            this.btnSearch.Location = new System.Drawing.Point(931, 28);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(31, 31);
             this.btnSearch.TabIndex = 39;
@@ -477,7 +477,7 @@
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSearch.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtSearch.Location = new System.Drawing.Point(453, 48);
+            this.txtSearch.Location = new System.Drawing.Point(453, 28);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(472, 31);
             this.txtSearch.TabIndex = 38;

@@ -50,7 +50,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1064, 87);
+            this.panel1.Size = new System.Drawing.Size(1064, 34);
             this.panel1.TabIndex = 0;
             // 
             // button1
@@ -61,12 +61,12 @@
             this.button1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(147, 10);
+            this.button1.Location = new System.Drawing.Point(142, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(121, 61);
+            this.button1.Size = new System.Drawing.Size(121, 27);
             this.button1.TabIndex = 0;
             this.button1.Text = "Pembelian";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -78,12 +78,12 @@
             this.btnSales.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.btnSales.ForeColor = System.Drawing.Color.White;
             this.btnSales.Image = ((System.Drawing.Image)(resources.GetObject("btnSales.Image")));
-            this.btnSales.Location = new System.Drawing.Point(21, 10);
+            this.btnSales.Location = new System.Drawing.Point(16, 3);
             this.btnSales.Name = "btnSales";
-            this.btnSales.Size = new System.Drawing.Size(121, 61);
+            this.btnSales.Size = new System.Drawing.Size(120, 27);
             this.btnSales.TabIndex = 0;
             this.btnSales.Text = "Penjualan";
-            this.btnSales.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnSales.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSales.UseVisualStyleBackColor = false;
             this.btnSales.Click += new System.EventHandler(this.btnSales_Click);
             // 
@@ -91,9 +91,9 @@
             // 
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 87);
+            this.panel2.Location = new System.Drawing.Point(0, 34);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1064, 35);
+            this.panel2.Size = new System.Drawing.Size(1064, 29);
             this.panel2.TabIndex = 1;
             // 
             // panel4
@@ -102,7 +102,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(292, 35);
+            this.panel4.Size = new System.Drawing.Size(292, 29);
             this.panel4.TabIndex = 0;
             // 
             // lblTransactionChildHeader
@@ -119,16 +119,16 @@
             // pnlTransactionChildren
             // 
             this.pnlTransactionChildren.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlTransactionChildren.Location = new System.Drawing.Point(0, 122);
+            this.pnlTransactionChildren.Location = new System.Drawing.Point(0, 63);
             this.pnlTransactionChildren.Name = "pnlTransactionChildren";
-            this.pnlTransactionChildren.Size = new System.Drawing.Size(1064, 480);
+            this.pnlTransactionChildren.Size = new System.Drawing.Size(1064, 539);
             this.pnlTransactionChildren.TabIndex = 2;
             // 
             // pnlSeparator
             // 
             this.pnlSeparator.BackColor = System.Drawing.Color.Silver;
             this.pnlSeparator.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlSeparator.Location = new System.Drawing.Point(0, 122);
+            this.pnlSeparator.Location = new System.Drawing.Point(0, 63);
             this.pnlSeparator.Name = "pnlSeparator";
             this.pnlSeparator.Size = new System.Drawing.Size(1064, 2);
             this.pnlSeparator.TabIndex = 2;

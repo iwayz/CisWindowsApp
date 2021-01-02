@@ -88,7 +88,7 @@
             this.pnlLeftPane.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlLeftPane.Location = new System.Drawing.Point(0, 24);
             this.pnlLeftPane.Name = "pnlLeftPane";
-            this.pnlLeftPane.Size = new System.Drawing.Size(176, 657);
+            this.pnlLeftPane.Size = new System.Drawing.Size(172, 657);
             this.pnlLeftPane.TabIndex = 0;
             // 
             // btnLogout
@@ -104,7 +104,7 @@
             this.btnLogout.Location = new System.Drawing.Point(0, 333);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
-            this.btnLogout.Size = new System.Drawing.Size(176, 30);
+            this.btnLogout.Size = new System.Drawing.Size(172, 30);
             this.btnLogout.TabIndex = 4;
             this.btnLogout.Text = "  Logout";
             this.btnLogout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -121,7 +121,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 545);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(176, 112);
+            this.panel1.Size = new System.Drawing.Size(172, 112);
             this.panel1.TabIndex = 3;
             // 
             // panel3
@@ -147,7 +147,7 @@
             this.lblToday.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.lblToday.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Italic);
             this.lblToday.ForeColor = System.Drawing.Color.White;
-            this.lblToday.Location = new System.Drawing.Point(0, 32);
+            this.lblToday.Location = new System.Drawing.Point(-2, 32);
             this.lblToday.Name = "lblToday";
             this.lblToday.Size = new System.Drawing.Size(178, 29);
             this.lblToday.TabIndex = 0;
@@ -167,7 +167,7 @@
             this.btnReporting.Location = new System.Drawing.Point(0, 303);
             this.btnReporting.Name = "btnReporting";
             this.btnReporting.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
-            this.btnReporting.Size = new System.Drawing.Size(176, 30);
+            this.btnReporting.Size = new System.Drawing.Size(172, 30);
             this.btnReporting.TabIndex = 2;
             this.btnReporting.Text = "  Reporting";
             this.btnReporting.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -188,7 +188,7 @@
             this.btnTransaksi.Location = new System.Drawing.Point(0, 273);
             this.btnTransaksi.Name = "btnTransaksi";
             this.btnTransaksi.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
-            this.btnTransaksi.Size = new System.Drawing.Size(176, 30);
+            this.btnTransaksi.Size = new System.Drawing.Size(172, 30);
             this.btnTransaksi.TabIndex = 2;
             this.btnTransaksi.Text = "  Transaksi";
             this.btnTransaksi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -209,7 +209,7 @@
             this.btnMasterData.Location = new System.Drawing.Point(0, 243);
             this.btnMasterData.Name = "btnMasterData";
             this.btnMasterData.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
-            this.btnMasterData.Size = new System.Drawing.Size(176, 30);
+            this.btnMasterData.Size = new System.Drawing.Size(172, 30);
             this.btnMasterData.TabIndex = 2;
             this.btnMasterData.Text = "  Master Data";
             this.btnMasterData.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -224,7 +224,7 @@
             this.pnlSeparatorLeftPane.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlSeparatorLeftPane.Location = new System.Drawing.Point(0, 209);
             this.pnlSeparatorLeftPane.Name = "pnlSeparatorLeftPane";
-            this.pnlSeparatorLeftPane.Size = new System.Drawing.Size(176, 34);
+            this.pnlSeparatorLeftPane.Size = new System.Drawing.Size(172, 34);
             this.pnlSeparatorLeftPane.TabIndex = 1;
             // 
             // panel5
@@ -244,7 +244,7 @@
             this.pnlLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlLogo.Location = new System.Drawing.Point(0, 0);
             this.pnlLogo.Name = "pnlLogo";
-            this.pnlLogo.Size = new System.Drawing.Size(176, 209);
+            this.pnlLogo.Size = new System.Drawing.Size(172, 209);
             this.pnlLogo.TabIndex = 0;
             // 
             // label1
@@ -252,7 +252,7 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label1.Font = new System.Drawing.Font("Calibri", 48F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Location = new System.Drawing.Point(-2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(178, 70);
             this.label1.TabIndex = 0;
@@ -264,7 +264,7 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label2.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(0, 70);
+            this.label2.Location = new System.Drawing.Point(-2, 70);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(178, 24);
             this.label2.TabIndex = 0;
@@ -276,7 +276,7 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(0, 94);
+            this.label3.Location = new System.Drawing.Point(-2, 94);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(178, 23);
             this.label3.TabIndex = 0;
@@ -287,7 +287,7 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.Silver;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(176, 24);
+            this.panel2.Location = new System.Drawing.Point(172, 24);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(2, 657);
             this.panel2.TabIndex = 1;
@@ -298,9 +298,9 @@
             this.pnlHeader.Controls.Add(this.panel7);
             this.pnlHeader.Controls.Add(this.panel6);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlHeader.Location = new System.Drawing.Point(178, 24);
+            this.pnlHeader.Location = new System.Drawing.Point(174, 24);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(1086, 43);
+            this.pnlHeader.Size = new System.Drawing.Size(1090, 30);
             this.pnlHeader.TabIndex = 2;
             // 
             // panel7
@@ -309,17 +309,17 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel7.Location = new System.Drawing.Point(0, 0);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(483, 43);
+            this.panel7.Size = new System.Drawing.Size(483, 30);
             this.panel7.TabIndex = 1;
             // 
             // lblHeader
             // 
             this.lblHeader.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.lblHeader.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold);
+            this.lblHeader.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHeader.ForeColor = System.Drawing.Color.White;
-            this.lblHeader.Location = new System.Drawing.Point(5, 8);
+            this.lblHeader.Location = new System.Drawing.Point(6, 0);
             this.lblHeader.Name = "lblHeader";
-            this.lblHeader.Size = new System.Drawing.Size(438, 31);
+            this.lblHeader.Size = new System.Drawing.Size(438, 33);
             this.lblHeader.TabIndex = 0;
             this.lblHeader.Text = "Great App";
             this.lblHeader.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -329,9 +329,9 @@
             this.panel6.Controls.Add(this.pictureBox2);
             this.panel6.Controls.Add(this.lblCurrentUser);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel6.Location = new System.Drawing.Point(855, 0);
+            this.panel6.Location = new System.Drawing.Point(859, 0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(231, 43);
+            this.panel6.Size = new System.Drawing.Size(231, 30);
             this.panel6.TabIndex = 0;
             // 
             // pictureBox2
@@ -339,7 +339,7 @@
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(179, 0);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(33, 43);
+            this.pictureBox2.Size = new System.Drawing.Size(33, 33);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
@@ -349,9 +349,9 @@
             this.lblCurrentUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.lblCurrentUser.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.lblCurrentUser.ForeColor = System.Drawing.Color.White;
-            this.lblCurrentUser.Location = new System.Drawing.Point(27, 8);
+            this.lblCurrentUser.Location = new System.Drawing.Point(27, 0);
             this.lblCurrentUser.Name = "lblCurrentUser";
-            this.lblCurrentUser.Size = new System.Drawing.Size(147, 31);
+            this.lblCurrentUser.Size = new System.Drawing.Size(147, 26);
             this.lblCurrentUser.TabIndex = 0;
             this.lblCurrentUser.Text = "Georgeous";
             this.lblCurrentUser.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -360,17 +360,17 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.LightGray;
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(178, 67);
+            this.panel4.Location = new System.Drawing.Point(174, 54);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1086, 3);
+            this.panel4.Size = new System.Drawing.Size(1090, 3);
             this.panel4.TabIndex = 3;
             // 
             // pnlChildren
             // 
             this.pnlChildren.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlChildren.Location = new System.Drawing.Point(178, 70);
+            this.pnlChildren.Location = new System.Drawing.Point(174, 57);
             this.pnlChildren.Name = "pnlChildren";
-            this.pnlChildren.Size = new System.Drawing.Size(1086, 611);
+            this.pnlChildren.Size = new System.Drawing.Size(1090, 624);
             this.pnlChildren.TabIndex = 4;
             // 
             // panel8
@@ -378,18 +378,18 @@
             this.panel8.Controls.Add(this.lblCompanyWeb);
             this.panel8.Controls.Add(this.lblCompanyName);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel8.Location = new System.Drawing.Point(178, 627);
+            this.panel8.Location = new System.Drawing.Point(174, 641);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(1086, 54);
+            this.panel8.Size = new System.Drawing.Size(1090, 40);
             this.panel8.TabIndex = 5;
             // 
             // lblCompanyWeb
             // 
             this.lblCompanyWeb.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblCompanyWeb.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCompanyWeb.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCompanyWeb.Location = new System.Drawing.Point(0, 18);
             this.lblCompanyWeb.Name = "lblCompanyWeb";
-            this.lblCompanyWeb.Size = new System.Drawing.Size(1086, 17);
+            this.lblCompanyWeb.Size = new System.Drawing.Size(1090, 17);
             this.lblCompanyWeb.TabIndex = 1;
             this.lblCompanyWeb.Text = "Website";
             this.lblCompanyWeb.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -397,11 +397,11 @@
             // lblCompanyName
             // 
             this.lblCompanyName.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblCompanyName.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCompanyName.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCompanyName.Location = new System.Drawing.Point(0, 0);
             this.lblCompanyName.Name = "lblCompanyName";
             this.lblCompanyName.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            this.lblCompanyName.Size = new System.Drawing.Size(1086, 18);
+            this.lblCompanyName.Size = new System.Drawing.Size(1090, 18);
             this.lblCompanyName.TabIndex = 0;
             this.lblCompanyName.Text = "Company Name";
             this.lblCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -428,7 +428,7 @@
             // settingToolStripMenuItem
             // 
             this.settingToolStripMenuItem.Name = "settingToolStripMenuItem";
-            this.settingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.settingToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
             this.settingToolStripMenuItem.Text = "Setting";
             // 
             // helpToolStripMenuItem
@@ -443,14 +443,14 @@
             // manualBookToolStripMenuItem
             // 
             this.manualBookToolStripMenuItem.Name = "manualBookToolStripMenuItem";
-            this.manualBookToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.manualBookToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.manualBookToolStripMenuItem.Text = "Manual Book";
             this.manualBookToolStripMenuItem.Click += new System.EventHandler(this.manualBookToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.aboutToolStripMenuItem.Text = "About";
             // 
             // FrmMain

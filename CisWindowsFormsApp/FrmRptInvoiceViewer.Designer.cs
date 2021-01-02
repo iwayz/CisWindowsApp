@@ -60,7 +60,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.reportViewerInvoice);
             this.Name = "FrmRptInvoiceViewer";
-            this.Text = "FrmRptInvoiceViewer";
+            this.Text = "Cetak Faktur";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmRptInvoiceViewer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataSourceInvoice)).EndInit();
