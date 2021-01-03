@@ -88,7 +88,7 @@
             this.pnlLeftPane.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlLeftPane.Location = new System.Drawing.Point(0, 24);
             this.pnlLeftPane.Name = "pnlLeftPane";
-            this.pnlLeftPane.Size = new System.Drawing.Size(172, 657);
+            this.pnlLeftPane.Size = new System.Drawing.Size(172, 705);
             this.pnlLeftPane.TabIndex = 0;
             // 
             // btnLogout
@@ -119,7 +119,7 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.lblToday);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 545);
+            this.panel1.Location = new System.Drawing.Point(0, 593);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(172, 112);
             this.panel1.TabIndex = 3;
@@ -289,7 +289,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(172, 24);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(2, 657);
+            this.panel2.Size = new System.Drawing.Size(2, 705);
             this.panel2.TabIndex = 1;
             // 
             // pnlHeader
@@ -300,7 +300,7 @@
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHeader.Location = new System.Drawing.Point(174, 24);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(1090, 30);
+            this.pnlHeader.Size = new System.Drawing.Size(1176, 30);
             this.pnlHeader.TabIndex = 2;
             // 
             // panel7
@@ -329,7 +329,7 @@
             this.panel6.Controls.Add(this.pictureBox2);
             this.panel6.Controls.Add(this.lblCurrentUser);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel6.Location = new System.Drawing.Point(859, 0);
+            this.panel6.Location = new System.Drawing.Point(945, 0);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(231, 30);
             this.panel6.TabIndex = 0;
@@ -362,7 +362,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(174, 54);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1090, 3);
+            this.panel4.Size = new System.Drawing.Size(1176, 3);
             this.panel4.TabIndex = 3;
             // 
             // pnlChildren
@@ -370,7 +370,7 @@
             this.pnlChildren.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlChildren.Location = new System.Drawing.Point(174, 57);
             this.pnlChildren.Name = "pnlChildren";
-            this.pnlChildren.Size = new System.Drawing.Size(1090, 624);
+            this.pnlChildren.Size = new System.Drawing.Size(1176, 672);
             this.pnlChildren.TabIndex = 4;
             // 
             // panel8
@@ -378,9 +378,9 @@
             this.panel8.Controls.Add(this.lblCompanyWeb);
             this.panel8.Controls.Add(this.lblCompanyName);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel8.Location = new System.Drawing.Point(174, 641);
+            this.panel8.Location = new System.Drawing.Point(174, 689);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(1090, 40);
+            this.panel8.Size = new System.Drawing.Size(1176, 40);
             this.panel8.TabIndex = 5;
             // 
             // lblCompanyWeb
@@ -389,7 +389,7 @@
             this.lblCompanyWeb.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCompanyWeb.Location = new System.Drawing.Point(0, 18);
             this.lblCompanyWeb.Name = "lblCompanyWeb";
-            this.lblCompanyWeb.Size = new System.Drawing.Size(1090, 17);
+            this.lblCompanyWeb.Size = new System.Drawing.Size(1176, 17);
             this.lblCompanyWeb.TabIndex = 1;
             this.lblCompanyWeb.Text = "Website";
             this.lblCompanyWeb.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -401,7 +401,7 @@
             this.lblCompanyName.Location = new System.Drawing.Point(0, 0);
             this.lblCompanyName.Name = "lblCompanyName";
             this.lblCompanyName.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            this.lblCompanyName.Size = new System.Drawing.Size(1090, 18);
+            this.lblCompanyName.Size = new System.Drawing.Size(1176, 18);
             this.lblCompanyName.TabIndex = 0;
             this.lblCompanyName.Text = "Company Name";
             this.lblCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -413,7 +413,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1264, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1350, 24);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -458,7 +458,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.ClientSize = new System.Drawing.Size(1350, 729);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.pnlChildren);
             this.Controls.Add(this.panel4);

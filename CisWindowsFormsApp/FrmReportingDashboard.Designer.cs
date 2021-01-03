@@ -46,7 +46,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(686, 87);
+            this.panel1.Size = new System.Drawing.Size(686, 48);
             this.panel1.TabIndex = 0;
             // 
             // btnExportExcel
@@ -59,10 +59,10 @@
             this.btnExportExcel.Image = ((System.Drawing.Image)(resources.GetObject("btnExportExcel.Image")));
             this.btnExportExcel.Location = new System.Drawing.Point(18, 10);
             this.btnExportExcel.Name = "btnExportExcel";
-            this.btnExportExcel.Size = new System.Drawing.Size(111, 61);
+            this.btnExportExcel.Size = new System.Drawing.Size(129, 30);
             this.btnExportExcel.TabIndex = 0;
-            this.btnExportExcel.Text = "Export (xlsx)";
-            this.btnExportExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnExportExcel.Text = " EXP. Faktur";
+            this.btnExportExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExportExcel.UseVisualStyleBackColor = false;
             this.btnExportExcel.Click += new System.EventHandler(this.btnExportExcel_Click);
             // 
@@ -70,9 +70,9 @@
             // 
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 87);
+            this.panel2.Location = new System.Drawing.Point(0, 48);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(686, 35);
+            this.panel2.Size = new System.Drawing.Size(686, 29);
             this.panel2.TabIndex = 1;
             // 
             // panel4
@@ -81,7 +81,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(287, 35);
+            this.panel4.Size = new System.Drawing.Size(277, 29);
             this.panel4.TabIndex = 0;
             // 
             // lblReportingChildHeader
@@ -98,9 +98,9 @@
             // panel3
             // 
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 122);
+            this.panel3.Location = new System.Drawing.Point(0, 77);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(686, 268);
+            this.panel3.Size = new System.Drawing.Size(686, 313);
             this.panel3.TabIndex = 2;
             // 
             // FrmReportingDashboard

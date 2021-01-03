@@ -120,14 +120,10 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnExportExcel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAABGdBTUEAALGPC/xhBQAAAYtJREFUWEft
-        lzFKA0EYhQOGIHZWsbPSIkXO4CWMB8gdTJMilxBJld7KQrAznQiCtQfwHuv/3v9c1jA7k5lRsPCDx2be
-        /2YeSzYkGezSNM3GlMtKe1cm7D/gYbngpAK65eDedMQDc/C92eyWg0fTMQ/dF9+XTagcPJlOePA++J5s
-        +srBs+mUh6fwfDaxcvBmOmdBDM9mkyoHLyyIoWAu3fJtRBcs6cMCJdxoex06LJcP07XpIiXVhLHAb/Jf
-        HkahEHiSvxQiNQdl5RoTWy7dbVlqROSFKL7zhSLIjEzvdP060gizBd0wVe/5RDHk5m41c1nwJm71UlV+
-        pxix9VYvCeZM9VNVDi4VRbY9DD6ncarLwaHiBGu3k/xI+ZXiBGu3k1SXPyj6Dfg+jlJdfqYosvwqBfA5
-        jVNV3v2sj91qxrLgxT7joLj81TRUDLlbunaVBW9oQq6P4vKZIshM3WqZaoTZzK0gZeUaE1uu3W1Za0Tk
-        hSi+8+5vsRCpOah64Gr52+Ul/1L3YaMKMRh8AhTAxlSqbxRhAAAAAElFTkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAJNJREFUOE+l
+        0cENwjAMheFMA+fO0ZG6RzfquRdW4Uxj50/tIBMi5ZMs0ffsCkGqPh30R56HLkd08wfXv/LELyl97KuX
+        lzz1yCtdLOhPPfIoQqz0sTuMM0M+jDNDrnhe8ryZJdppkFc72SbD512KSrIGubdSSbeWyFAZ8gZVt7uR
+        e1PfYO434HnqX/iLM0M+rFyldAFatohZjc2qygAAAABJRU5ErkJggg==
 </value>
   </data>
 </root>

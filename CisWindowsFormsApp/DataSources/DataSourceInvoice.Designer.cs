@@ -361,6 +361,8 @@ namespace CisWindowsFormsApp.DataSources {
             
             private global::System.Data.DataColumn columnStatus;
             
+            private global::System.Data.DataColumn columnDescription;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DataTableInvoiceDataTable() {
@@ -724,6 +726,14 @@ namespace CisWindowsFormsApp.DataSources {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn DescriptionColumn {
+                get {
+                    return this.columnDescription;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -800,7 +810,8 @@ namespace CisWindowsFormsApp.DataSources {
                         float DiscountPercentage, 
                         decimal TotalAmount, 
                         string SalesOrderItemId, 
-                        int Status) {
+                        int Status, 
+                        string Description) {
                 DataTableInvoiceRow rowDataTableInvoiceRow = ((DataTableInvoiceRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Id,
@@ -843,7 +854,8 @@ namespace CisWindowsFormsApp.DataSources {
                         DiscountPercentage,
                         TotalAmount,
                         SalesOrderItemId,
-                        Status};
+                        Status,
+                        Description};
                 rowDataTableInvoiceRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDataTableInvoiceRow);
                 return rowDataTableInvoiceRow;
@@ -915,6 +927,7 @@ namespace CisWindowsFormsApp.DataSources {
                 this.columnTotalAmount = base.Columns["TotalAmount"];
                 this.columnSalesOrderItemId = base.Columns["SalesOrderItemId"];
                 this.columnStatus = base.Columns["Status"];
+                this.columnDescription = base.Columns["Description"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1002,6 +1015,8 @@ namespace CisWindowsFormsApp.DataSources {
                 base.Columns.Add(this.columnSalesOrderItemId);
                 this.columnStatus = new global::System.Data.DataColumn("Status", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnStatus);
+                this.columnDescription = new global::System.Data.DataColumn("Description", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDescription);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId,
                                 this.columnSalesOrderItemId}, true));
@@ -1062,6 +1077,7 @@ namespace CisWindowsFormsApp.DataSources {
                 this.columnSalesOrderItemId.AllowDBNull = false;
                 this.columnSalesOrderItemId.MaxLength = 36;
                 this.columnStatus.AllowDBNull = false;
+                this.columnDescription.MaxLength = 2147483647;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1717,6 +1733,22 @@ namespace CisWindowsFormsApp.DataSources {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Description {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataTableInvoice.DescriptionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Description\' in table \'DataTableInvoice\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTableInvoice.DescriptionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsCustomerProvinceNull() {
                 return this.IsNull(this.tableDataTableInvoice.CustomerProvinceColumn);
             }
@@ -1857,6 +1889,18 @@ namespace CisWindowsFormsApp.DataSources {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetBatchCodeNull() {
                 this[this.tableDataTableInvoice.BatchCodeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsDescriptionNull() {
+                return this.IsNull(this.tableDataTableInvoice.DescriptionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetDescriptionNull() {
+                this[this.tableDataTableInvoice.DescriptionColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -2032,6 +2076,7 @@ namespace CisWindowsFormsApp.DataSources.DataSourceInvoiceTableAdapters {
             tableMapping.ColumnMappings.Add("TotalAmount", "TotalAmount");
             tableMapping.ColumnMappings.Add("SalesOrderItemId", "SalesOrderItemId");
             tableMapping.ColumnMappings.Add("Status", "Status");
+            tableMapping.ColumnMappings.Add("Description", "Description");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -2048,15 +2093,26 @@ namespace CisWindowsFormsApp.DataSources.DataSourceInvoiceTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        SalesOrder.Id, SalesOrder.SalesNo, SalesOrder.CustomerName, SalesOrder.CustomerAddress, SalesOrder.CustomerProvince, SalesOrder.CustomerDistrict, SalesOrder.CustomerSubDistrict, SalesOrder.CustomerPostalCode, 
-                         SalesOrder.CustomerPhone, SalesOrder.CustomerEmail, SalesOrder.CustomerNpwp, SalesOrder.DeliveryAddress, SalesOrder.DeliveryProvince, SalesOrder.DeliveryDistrict, SalesOrder.DeliverySubDistrict, 
-                         SalesOrder.DeliveryPostalCode, SalesOrder.SalesAreaCode, SalesOrder.SalesDate, SalesOrder.TermOfPaymentCode, SalesOrder.DueDate, SalesOrder.PersonInCharge, SalesOrder.SipaNo, SalesOrder.SubTotalAmount, 
-                         SalesOrder.ExtraDiscountAmount, SalesOrder.TaxBaseAmount, SalesOrder.ValueAddedTaxAmount, SalesOrder.GrandTotalAmount, SalesOrder.Username, SalesOrder.SalesmanCode, SalesOrderItem.SalesOrderId, 
-                         SalesOrderItem.ProductCode, SalesOrderItem.ProductName, SalesOrderItem.BatchCode, SalesOrderItem.ExpiredDate, SalesOrderItem.Quantity, SalesOrderItem.UomCode, SalesOrderItem.Price, 
-                         SalesOrderItem.DiscountPercentage, SalesOrderItem.TotalAmount, SalesOrderItem.Id AS SalesOrderItemId, SalesOrder.Status
-FROM            SalesOrder INNER JOIN
-                         SalesOrderItem ON SalesOrder.Id = SalesOrderItem.SalesOrderId
-WHERE        (SalesOrder.Id = @SalesOrderId)";
+            this._commandCollection[0].CommandText = "SELECT        SalesOrder.Id, SalesOrder.SalesNo, SalesOrder.CustomerName, SalesOr" +
+                "der.CustomerAddress, SalesOrder.CustomerProvince, SalesOrder.CustomerDistrict, S" +
+                "alesOrder.CustomerSubDistrict, SalesOrder.CustomerPostalCode, \r\n                " +
+                "         SalesOrder.CustomerPhone, SalesOrder.CustomerEmail, SalesOrder.Customer" +
+                "Npwp, SalesOrder.DeliveryAddress, SalesOrder.DeliveryProvince, SalesOrder.Delive" +
+                "ryDistrict, SalesOrder.DeliverySubDistrict, \r\n                         SalesOrde" +
+                "r.DeliveryPostalCode, SalesOrder.SalesAreaCode, SalesOrder.SalesDate, SalesOrder" +
+                ".TermOfPaymentCode, SalesOrder.DueDate, SalesOrder.PersonInCharge, SalesOrder.Si" +
+                "paNo, SalesOrder.SubTotalAmount, \r\n                         SalesOrder.ExtraDisc" +
+                "ountAmount, SalesOrder.TaxBaseAmount, SalesOrder.ValueAddedTaxAmount, SalesOrder" +
+                ".GrandTotalAmount, SalesOrder.Username, SalesOrder.SalesmanCode, SalesOrderItem." +
+                "SalesOrderId, \r\n                         SalesOrderItem.ProductCode, SalesOrderI" +
+                "tem.ProductName, SalesOrderItem.BatchCode, SalesOrderItem.ExpiredDate, SalesOrde" +
+                "rItem.Quantity, SalesOrderItem.UomCode, SalesOrderItem.Price, \r\n                " +
+                "         SalesOrderItem.DiscountPercentage, SalesOrderItem.TotalAmount, SalesOrd" +
+                "erItem.Id AS SalesOrderItemId, SalesOrder.Status, SalesArea.Description\r\nFROM   " +
+                "         SalesOrder INNER JOIN\r\n                         SalesOrderItem ON Sales" +
+                "Order.Id = SalesOrderItem.SalesOrderId INNER JOIN\r\n                         Sale" +
+                "sArea ON SalesOrder.SalesAreaId = SalesArea.Id\r\nWHERE        (SalesOrder.Id = @S" +
+                "alesOrderId)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SalesOrderId", global::System.Data.SqlDbType.NVarChar, 36, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }

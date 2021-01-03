@@ -134,6 +134,7 @@
             // txtTermCode
             // 
             this.txtTermCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTermCode.Enabled = false;
             this.txtTermCode.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtTermCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtTermCode.Location = new System.Drawing.Point(22, 38);
@@ -182,10 +183,9 @@
             this.btnReload.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnReload.ForeColor = System.Drawing.Color.White;
             this.btnReload.Image = ((System.Drawing.Image)(resources.GetObject("btnReload.Image")));
-            this.btnReload.Location = new System.Drawing.Point(172, 168);
+            this.btnReload.Location = new System.Drawing.Point(96, 225);
             this.btnReload.Name = "btnReload";
-            this.btnReload.Padding = new System.Windows.Forms.Padding(0, 17, 0, 0);
-            this.btnReload.Size = new System.Drawing.Size(71, 109);
+            this.btnReload.Size = new System.Drawing.Size(71, 52);
             this.btnReload.TabIndex = 50;
             this.btnReload.Text = "RELOAD";
             this.btnReload.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -200,13 +200,14 @@
             this.btnDel.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnDel.ForeColor = System.Drawing.Color.White;
             this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
-            this.btnDel.Location = new System.Drawing.Point(95, 225);
+            this.btnDel.Location = new System.Drawing.Point(172, 304);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(71, 52);
             this.btnDel.TabIndex = 49;
             this.btnDel.Text = "DELETE";
             this.btnDel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnDel.UseVisualStyleBackColor = false;
+            this.btnDel.Visible = false;
             this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
             // 
             // btnSave
@@ -234,13 +235,14 @@
             this.btnAdd.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnAdd.ForeColor = System.Drawing.Color.White;
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(95, 168);
+            this.btnAdd.Location = new System.Drawing.Point(95, 304);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(71, 52);
             this.btnAdd.TabIndex = 47;
             this.btnAdd.Text = "ADD";
             this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Visible = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnClear
@@ -251,13 +253,14 @@
             this.btnClear.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnClear.ForeColor = System.Drawing.Color.White;
             this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
-            this.btnClear.Location = new System.Drawing.Point(19, 168);
+            this.btnClear.Location = new System.Drawing.Point(19, 304);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(71, 52);
             this.btnClear.TabIndex = 46;
             this.btnClear.Text = "CLEAR";
             this.btnClear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Visible = false;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // dgvTerm

@@ -38,7 +38,7 @@ namespace CisWindowsFormsApp
             isAdd = true;
             SetUIButtonGroup();
 
-            txtCustomerName.Focus();
+            txtCustomerCode.Focus();
             if (string.IsNullOrEmpty(txtSipaNo.Text))
                 dtpSipaExpiredDate.Value = DateTime.Parse("1900-01-01");
             CheckSourceRefData();
@@ -50,7 +50,8 @@ namespace CisWindowsFormsApp
             isAdd = true;
             SetUIButtonGroup();
 
-            txtCustomerName.Focus();
+            txtCustomerCode.Focus();
+            txtCustomerCode.Text = string.Empty;
             txtCustomerName.Text = string.Empty;
             txtAddress.Text = string.Empty;
 
@@ -78,18 +79,19 @@ namespace CisWindowsFormsApp
         {
             if (!ValidateMandatoryFields()) return;
             var existingCust = uowCust.Repository.GetAll()
-                .Where(r => r.CustomerName == txtCustomerName.Text.Trim()
+                .Where(r => r.CustomerCode == txtCustomerCode.Text.Trim()
                 && r.Address == txtAddress.Text.Trim())
                 .FirstOrDefault();
 
             if (existingCust != null)
             {
-                CommonMessageHelper.DataAlreadyExist(txtCustomerName.Text.Trim() + " dengan alamat " + txtAddress.Text.Trim());
+                CommonMessageHelper.DataAlreadyExist(txtCustomerCode.Text.Trim() + " dengan alamat " + txtAddress.Text.Trim());
             }
             else
             {
                 var custToAdd = new Customer
                 {
+                    CustomerCode = txtCustomerCode.Text.Trim(),
                     CustomerName = txtCustomerName.Text.Trim(),
                     Address = txtAddress.Text.Trim(),
                     ProvinceId = cbProvince.SelectedValue.ToString(),
@@ -130,11 +132,12 @@ namespace CisWindowsFormsApp
             var commonHelper = new CommonFunctionHelper();
             if (commonHelper.StandardizeDateTime(lastUpdated) != commonHelper.StandardizeDateTime(repoLastUpdated))
             {
-                CommonMessageHelper.DataHasBeenUpdatedPriorToSave(txtCustomerName.Text.Trim());
+                CommonMessageHelper.DataHasBeenUpdatedPriorToSave(txtCustomerCode.Text.Trim());
             }
             else
             {
                 var custToUpdate = uowCust.Repository.GetById(txtCustomerId.Text.Trim());
+                custToUpdate.CustomerCode= txtCustomerCode.Text.Trim();
                 custToUpdate.CustomerName = txtCustomerName.Text.Trim();
                 custToUpdate.Address = txtAddress.Text.Trim();
                 custToUpdate.ProvinceId = cbProvince.SelectedValue.ToString();
@@ -164,7 +167,7 @@ namespace CisWindowsFormsApp
         private void btnDel_Click(object sender, EventArgs e)
         {
             var roleToDel = uowCust.Repository.GetAll()
-                .Where(r => r.CustomerName == txtCustomerName.Text.Trim()
+                .Where(r => r.CustomerCode== txtCustomerCode.Text.Trim()
                 && r.Address == txtAddress.Text.Trim())
                 .FirstOrDefault();
 
@@ -188,7 +191,7 @@ namespace CisWindowsFormsApp
             }
             else
             {
-                CommonMessageHelper.DataNotFound(txtCustomerName.Text.Trim());
+                CommonMessageHelper.DataNotFound(txtCustomerCode.Text.Trim());
             }
         }
 
@@ -250,6 +253,7 @@ namespace CisWindowsFormsApp
             new
             {
                 salesman.Id,
+                salesman.CustomerCode,
                 salesman.CustomerName,
                 salesman.Address,
                 salesman.ProvinceId,
@@ -273,6 +277,8 @@ namespace CisWindowsFormsApp
 
         private void SetUIGridView()
         {
+            dgvCustomer.Columns[nameof(Customer.CustomerCode)].HeaderText = "KODE PELANGGAN";
+            dgvCustomer.Columns[nameof(Customer.CustomerCode)].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells; 
             dgvCustomer.Columns[nameof(Customer.CustomerName)].HeaderText = "NAMA PELANGGAN";
             dgvCustomer.Columns[nameof(Customer.CustomerName)].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgvCustomer.Columns[nameof(Customer.Address)].HeaderText = "ALAMAT";
@@ -302,6 +308,7 @@ namespace CisWindowsFormsApp
         private void SetUIbySelectedGridItem()
         {
             var currentRow = dgvCustomer.CurrentRow;
+            txtCustomerCode.Text = currentRow.Cells[nameof(Customer.CustomerCode)].Value.ToString();
             txtCustomerName.Text = currentRow.Cells[nameof(Customer.CustomerName)].Value.ToString();
             txtAddress.Text = currentRow.Cells[nameof(Customer.Address)].Value.ToString();
             cbProvince.SelectedValue = currentRow.Cells[nameof(Customer.ProvinceId)].Value.ToString();
@@ -326,9 +333,9 @@ namespace CisWindowsFormsApp
 
         private bool ValidateMandatoryFields()
         {
-            if (string.IsNullOrEmpty(txtCustomerName.Text) || string.IsNullOrEmpty(txtAddress.Text))
+            if (string.IsNullOrEmpty(txtCustomerCode.Text) || string.IsNullOrEmpty(txtCustomerName.Text) || string.IsNullOrEmpty(txtAddress.Text))
             {
-                CommonMessageHelper.DataCannotBeEmpty("Nama Pelanggan dan Alamat");
+                CommonMessageHelper.DataCannotBeEmpty("Kode, Nama Pelanggan dan Alamat");
                 return false;
 
             }

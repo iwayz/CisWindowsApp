@@ -181,6 +181,10 @@
           <DataField>Status</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
+        <Field Name="Description">
+          <DataField>Description</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DataSourceInvoice</rd:DataSetName>
@@ -1196,6 +1200,7 @@
                   <TextRuns>
                     <TextRun>
                       <Value>= "KEPADA:" &amp; System.Environment.NewLine 
+&amp; Fields!CustomerName.Value &amp; System.Environment.NewLine 
 &amp; Fields!CustomerAddress.Value 
 &amp; ", " &amp; System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.
     ToTitleCase(Fields!CustomerSubDistrict.Value.ToString().ToLower())
@@ -1515,6 +1520,7 @@
                   <TextRuns>
                     <TextRun>
                       <Value>= "ALAMAT KIRIM:" &amp; System.Environment.NewLine 
+&amp; Fields!CustomerName.Value &amp; System.Environment.NewLine 
 &amp; Fields!DeliveryAddress.Value 
 &amp; ", " &amp; System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.
     ToTitleCase(Fields!DeliverySubDistrict.Value.ToString().ToLower())
@@ -1523,7 +1529,7 @@
 &amp; ", " &amp; System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.
     ToTitleCase(Fields!DeliveryProvince.Value.ToString().ToLower())
 &amp; System.Environment.NewLine 
-&amp; "Rayon: " &amp; Fields!SalesAreaCode.Value</Value>
+&amp; "Rayon: " &amp; Fields!Description.Value</Value>
                       <Style>
                         <FontFamily>Calibri</FontFamily>
                         <FontSize>8pt</FontSize>
