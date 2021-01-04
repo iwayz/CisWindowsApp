@@ -13,6 +13,7 @@ namespace Cis.Data
         }
 
         public DbSet<Batch> Batches { get; set; }
+        public DbSet<CompanyInfo> CompanyInfos { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<MedicineCat> MedicineCategories { get; set; }

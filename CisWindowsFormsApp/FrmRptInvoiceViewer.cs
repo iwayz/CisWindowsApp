@@ -30,12 +30,12 @@ namespace CisWindowsFormsApp
             // parameters
             var compNameParam = new ReportParameter("CompName", Properties.Settings.Default.CompName);
             var compPicParam = new ReportParameter("CompPic", Properties.Settings.Default.SalesPicName + Environment.NewLine + Properties.Settings.Default.SalesPicSipaNo);
-            var soIdParam = new ReportParameter("SalesOrderId", "89815B73-F9A9-46BB-9801-1C8357038267");
-            var compDetail = @"JL. Mayjend Bambang Sugeng Km.5 Magelang 56172" + Environment.NewLine
-                + "Telpon 0293-325333 , Email: cise@sari-sehat.com" + Environment.NewLine
-                + "Ijin PBF: xxxxxxxx" + Environment.NewLine 
-                + "SIUP: xxxxxxxx" + Environment.NewLine
-                + "NPWP: xxxxxxxx" + Environment.NewLine;
+            var soIdParam = new ReportParameter("SalesOrderId", SalesOrderId);
+            var compDetail = @Properties.Settings.Default.CompAddress + Environment.NewLine
+                + "Telpon " + Properties.Settings.Default.CompPhone + ", Email: "+ Properties.Settings.Default.CompEmail + Environment.NewLine
+                + "Ijin PBF: " + Properties.Settings.Default.CompPbf + Environment.NewLine 
+                + "SIUP: " + Properties.Settings.Default.CompSiup + Environment.NewLine
+                + "NPWP: " + Properties.Settings.Default.CompNpwp + Environment.NewLine;
             var compDetailParam = new ReportParameter("CompDetail", compDetail);
 
             reportViewerInvoice.LocalReport.SetParameters(compNameParam);

@@ -130,6 +130,14 @@ namespace CisWindowsFormsApp
 
         private void btnDel_Click(object sender, EventArgs e)
         {
+            // Role SUPER cannot be deleted!
+            if (txtRoleCode.Text.ToUpper().Trim() == "SUPER")
+            {
+                MessageBox.Show("Role SUPER tidak boleh dihapus."
+                            , "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             var roleToDel = uowRole.Repository.GetAll().Where(u => u.RoleCode == txtRoleCode.Text.Trim()).FirstOrDefault();
             if (roleToDel != null)
             {

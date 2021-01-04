@@ -91,5 +91,11 @@ namespace CisWindowsFormsApp
             }
 
         }
+
+        private void settingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCompanyInfo frmCompanyInfo = new FrmCompanyInfo();
+            frmCompanyInfo.ShowDialog();
+        }
     }
 }
