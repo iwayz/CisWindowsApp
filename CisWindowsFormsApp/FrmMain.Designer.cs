@@ -428,7 +428,7 @@
             // settingToolStripMenuItem
             // 
             this.settingToolStripMenuItem.Name = "settingToolStripMenuItem";
-            this.settingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.settingToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
             this.settingToolStripMenuItem.Text = "Setting";
             this.settingToolStripMenuItem.Click += new System.EventHandler(this.settingToolStripMenuItem_Click);
             // 
@@ -444,15 +444,16 @@
             // manualBookToolStripMenuItem
             // 
             this.manualBookToolStripMenuItem.Name = "manualBookToolStripMenuItem";
-            this.manualBookToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.manualBookToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.manualBookToolStripMenuItem.Text = "Manual Book";
             this.manualBookToolStripMenuItem.Click += new System.EventHandler(this.manualBookToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // FrmMain
             // 
