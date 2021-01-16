@@ -207,12 +207,11 @@ namespace CisWindowsFormsApp
                 gvSelectedIndex = dgvProduct.CurrentRow.Index;
                 BindProductGridView();
                 SetUIGridView();
-                dgvProduct.CurrentCell = this.dgvProduct[1, gvSelectedIndex < dgvProduct.RowCount ? gvSelectedIndex : gvSelectedIndex - 1];
+                dgvProduct.CurrentCell = this.dgvProduct[1, isAdd ? dgvProduct.RowCount-1 : (gvSelectedIndex < dgvProduct.RowCount ? gvSelectedIndex : gvSelectedIndex - 1)];
                 SetUIbySelectedGridItem();
                 txtModifiedAt.Text = dgvProduct.CurrentRow.Cells[nameof(Product.ModifiedAt)].Value.ToString();
             }
 
-            isAdd = dgvProduct.RowCount <= 0;
             SetUIButtonGroup();
 
         }
@@ -366,6 +365,7 @@ namespace CisWindowsFormsApp
 
         private void dgvProduct_Click(object sender, EventArgs e)
         {
+            isAdd = false;
             btnReload.PerformClick();
         }
 
@@ -392,7 +392,7 @@ namespace CisWindowsFormsApp
                 return false;
             }
 
-            if (txtProductCode.TextLength != 8)
+            if (txtProductCode.Text.Trim().Length != 8)
             {
                 MessageBox.Show("Kode Barang harus 8 karakter, yang terdiri dari: " + Environment.NewLine
                     + "- 2 karakter inisial barang" + Environment.NewLine

@@ -216,16 +216,16 @@ namespace CisWindowsFormsApp
                 gvSelectedIndex = dgvCustomer.CurrentRow.Index;
                 BindCustomerGridView();
                 SetUIGridView();
-                dgvCustomer.CurrentCell = this.dgvCustomer[1, gvSelectedIndex < dgvCustomer.RowCount ? gvSelectedIndex : gvSelectedIndex - 1];
+                dgvCustomer.CurrentCell = this.dgvCustomer[1, isAdd ? dgvCustomer.RowCount-1 : (gvSelectedIndex < dgvCustomer.RowCount ? gvSelectedIndex : gvSelectedIndex - 1)];
                 SetUIbySelectedGridItem();
                 txtModifiedAt.Text = dgvCustomer.CurrentRow.Cells[nameof(Customer.ModifiedAt)].Value.ToString();
             }
-            isAdd = dgvCustomer.RowCount <= 0;
             SetUIButtonGroup();
         }
 
         private void dgvCustomer_Click(object sender, EventArgs e)
         {
+            isAdd = false;
             btnReload.PerformClick();
         }
 

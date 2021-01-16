@@ -39,6 +39,7 @@ namespace CisWindowsFormsApp
 
             BindCheckBoxList(cblMasterData, Constant.Permission.PermissionType.Master);
             BindCheckBoxList(cblTransaksi, Constant.Permission.PermissionType.Transaction);
+            BindCheckBoxList(cblReporting, Constant.Permission.PermissionType.Reporting);
 
             txtRoleCode.Focus();
         }
@@ -119,12 +120,11 @@ namespace CisWindowsFormsApp
                 gvSelectedIndex = dgvRole.CurrentRow.Index;
                 BindRoleGridView();
                 SetUIGridView();
-                dgvRole.CurrentCell = this.dgvRole[1, gvSelectedIndex < dgvRole.RowCount ? gvSelectedIndex : gvSelectedIndex - 1];
+                dgvRole.CurrentCell = this.dgvRole[1, isAdd ? dgvRole.RowCount-1 : (gvSelectedIndex < dgvRole.RowCount ? gvSelectedIndex : gvSelectedIndex - 1)];
                 SetUIbySelectedGridItem();
                 txtModifiedAt.Text = dgvRole.CurrentRow.Cells[nameof(Role.ModifiedAt)].Value.ToString();
             }
 
-            isAdd = dgvRole.RowCount <= 0;
             SetUIButtonGroup();
         }
 
@@ -293,6 +293,7 @@ namespace CisWindowsFormsApp
 
         private void dgvRole_Click(object sender, EventArgs e)
         {
+            isAdd = false;
             btnReload.PerformClick();
             LoadRolePermision();
         }
@@ -416,9 +417,8 @@ namespace CisWindowsFormsApp
         {
             var existingAccessCodes = Enum.GetValues(typeof(Constant.Permission.MasterData)).Cast<int>().ToList();
             existingAccessCodes.AddRange(Enum.GetValues(typeof(Constant.Permission.Transaction)).Cast<int>().ToList());
-            // TODO: ACTIVATE this when the reporting is ready
-            //existingAccessCodes.AddRange(Enum.GetValues(typeof(Constant.Permission.Reporting)).Cast<int>().ToList());
-            
+            existingAccessCodes.AddRange(Enum.GetValues(typeof(Constant.Permission.Reporting)).Cast<int>().ToList());
+
             return existingAccessCodes;
         }
 

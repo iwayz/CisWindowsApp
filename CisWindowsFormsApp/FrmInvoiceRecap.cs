@@ -141,7 +141,7 @@ namespace CisWindowsFormsApp
             {
                 xlWorkSheet.Cells[rowNum, 1] = item.sodcusd.sod.SalesDate.ToShortDateString();
                 xlWorkSheet.Cells[rowNum, 2] = item.sodcusd.sod.SalesNo;
-                xlWorkSheet.Cells[rowNum, 3] = item.sodcusd.cusd.CustomerCode;
+                xlWorkSheet.Cells[rowNum, 3] = "'" + item.sodcusd.cusd.CustomerCode.ToString();
                 xlWorkSheet.Cells[rowNum, 4] = item.sodcusd.cusd.CustomerName;
                 xlWorkSheet.Cells[rowNum, 5] = item.sodcusd.sod.CustomerAddress;
                 xlWorkSheet.Cells[rowNum, 6] = item.sodcusd.sod.CustomerDistrict;
@@ -150,7 +150,7 @@ namespace CisWindowsFormsApp
                 xlWorkSheet.Cells[rowNum, 9] = item.sodcusd.cusd.Description;
                 xlWorkSheet.Cells[rowNum, 10] = item.sodcusd.sod.ProductCode;
                 xlWorkSheet.Cells[rowNum, 11] = item.sodcusd.sod.ProductName;
-                xlWorkSheet.Cells[rowNum, 12] = item.sodcusd.sod.UomCode;
+                xlWorkSheet.Cells[rowNum, 12] = item.sodcusd.sod.UomCode.ToString();
                 xlWorkSheet.Cells[rowNum, 13] = item.sodcusd.sod.Quantity;
                 xlWorkSheet.Cells[rowNum, 14] = item.sodcusd.sod.Price;
                 xlWorkSheet.Cells[rowNum, 15] = item.sodcusd.sod.TotalAmount;
@@ -187,7 +187,7 @@ namespace CisWindowsFormsApp
 
         private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            MessageBox.Show("Proses export Date Rekapitulasi telah selesai, silakan cek file di: " + Environment.NewLine + fileLoc, "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Proses export Data Rekapitulasi telah selesai, silakan cek file di: " + Environment.NewLine + fileLoc, "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
             pnlDateRange.Enabled = true;
             pbExport.Value = 0;
             this.Height = 160;

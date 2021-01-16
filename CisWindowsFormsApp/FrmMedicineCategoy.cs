@@ -98,13 +98,11 @@ namespace CisWindowsFormsApp
                 gvSelectedIndex = dgvMedCat.CurrentRow.Index;
                 BindMedCatGridView();
                 SetUIGridView();
-                // TODO: apply this logic to other forms
-                dgvMedCat.CurrentCell = this.dgvMedCat[1, gvSelectedIndex < dgvMedCat.RowCount ? gvSelectedIndex : gvSelectedIndex - 1];
+                dgvMedCat.CurrentCell = this.dgvMedCat[1, isAdd ? dgvMedCat.RowCount-1 : (gvSelectedIndex < dgvMedCat.RowCount ? gvSelectedIndex : gvSelectedIndex - 1)];
                 SetUIbySelectedGridItem();
                 txtModifiedAt.Text = dgvMedCat.CurrentRow.Cells[nameof(MedicineCat.ModifiedAt)].Value.ToString();
             }
 
-            isAdd = dgvMedCat.RowCount <= 0;
             SetUIButtonGroup();
         }
 
@@ -164,6 +162,7 @@ namespace CisWindowsFormsApp
 
         private void dgvMedCat_Click(object sender, EventArgs e)
         {
+            isAdd = false;
             btnReload.PerformClick();
         }
 

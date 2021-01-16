@@ -105,12 +105,11 @@ namespace CisWindowsFormsApp
                 gvSelectedIndex = dgvBatch.CurrentRow.Index;
                 BindBatchtGridView();
                 SetUIGridView();
-                dgvBatch.CurrentCell = this.dgvBatch[1, gvSelectedIndex < dgvBatch.RowCount ? gvSelectedIndex : gvSelectedIndex - 1];
+                dgvBatch.CurrentCell = this.dgvBatch[1, isAdd ? dgvBatch.RowCount-1 : (gvSelectedIndex < dgvBatch.RowCount ? gvSelectedIndex : gvSelectedIndex - 1)];
                 SetUIbySelectedGridItem();
                 txtModifiedAt.Text = dgvBatch.CurrentRow.Cells[nameof(Batch.ModifiedAt)].Value.ToString();
             }
 
-            isAdd = dgvBatch.RowCount <= 0;
             SetUIButtonGroup();
         }
 
@@ -294,6 +293,7 @@ namespace CisWindowsFormsApp
 
         private void dgvBatch_Click(object sender, EventArgs e)
         {
+            isAdd = false;
             btnReload.PerformClick();
         }
 

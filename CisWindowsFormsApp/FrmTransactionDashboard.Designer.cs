@@ -112,9 +112,8 @@
             this.lblTransactionChildHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
             this.lblTransactionChildHeader.Location = new System.Drawing.Point(21, 3);
             this.lblTransactionChildHeader.Name = "lblTransactionChildHeader";
-            this.lblTransactionChildHeader.Size = new System.Drawing.Size(84, 23);
+            this.lblTransactionChildHeader.Size = new System.Drawing.Size(0, 23);
             this.lblTransactionChildHeader.TabIndex = 0;
-            this.lblTransactionChildHeader.Text = "Summary";
             // 
             // pnlTransactionChildren
             // 

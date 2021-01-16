@@ -17,7 +17,6 @@ namespace CisWindowsFormsApp
         CisDbContext dbContext;
         UnitOfWork<SalesOrder> _uow;
         bool isAdd = false;
-        List<int> foundIndices = new List<int>();
         CommonFunctionHelper commonHelper = new CommonFunctionHelper();
 
         enum RecordNavigation
@@ -152,11 +151,18 @@ namespace CisWindowsFormsApp
 
         private void SetUIButtonGroup()
         {
-            btnSave.Enabled = !isAdd;
-            btnDel.Enabled = !isAdd;
+            var disable = String.IsNullOrEmpty(lblSalesNo.Text);
+            btnSave.Enabled = !disable;
+            btnDel.Enabled = !disable;
+            btnPrint.Enabled = !disable;
+            btnReload.Enabled = !disable;
+            btnAdd.Enabled = disable;
 
-            btnSave.BackColor = !isAdd ? Color.FromArgb(36, 141, 193) : Color.Gray;
-            btnDel.BackColor = !isAdd ? Color.FromArgb(36, 141, 193) : Color.Gray;
+            btnSave.BackColor = !disable ? Color.FromArgb(36, 141, 193) : Color.Gray;
+            btnDel.BackColor = !disable ? Color.FromArgb(36, 141, 193) : Color.Gray;
+            btnPrint.BackColor = !disable ? Color.FromArgb(36, 141, 193) : Color.Gray;
+            btnReload.BackColor = !disable ? Color.FromArgb(36, 141, 193) : Color.Gray;
+            btnAdd.BackColor = disable ? Color.FromArgb(36, 141, 193) : Color.Gray;
         }
 
         private void CheckSourceRefData()
@@ -219,6 +225,8 @@ namespace CisWindowsFormsApp
 
             if (queryResult != null)
                 LoadDataBySelectedItem(queryResult);
+
+            SetUIButtonGroup();
         }
 
         private void LoadSalesOrderData(string salesNo)
@@ -407,8 +415,11 @@ namespace CisWindowsFormsApp
             BindComboBoxBatch("0");
             commonHelper.BindLocationComboBox(dbContext, cbProvince, Constant.LocationType.Province);
 
-            CheckSourceRefData();
+            isAdd = true;
+            SetUIButtonGroup();
 
+            cbCustomer.Focus();
+            CheckSourceRefData();
         }
 
         private void cbProvince_SelectedIndexChanged(object sender, EventArgs e)
@@ -660,7 +671,8 @@ namespace CisWindowsFormsApp
             lblMark.Visible = false;
 
             SetUI();
-
+            isAdd = true;
+            SetUIButtonGroup();
             dgvSalesOrderItem.Rows.Clear();
             dgvSalesOrderItem.Refresh();
         }
@@ -745,7 +757,7 @@ namespace CisWindowsFormsApp
                         BatchId = dgvSalesOrderItem.Rows[i].Cells["batchId"].Value.ToString(),
                         BatchCode = dgvSalesOrderItem.Rows[i].Cells["batchCode"].Value.ToString(),
                         ExpiredDate = commonHelper.StandardizeDate(DateTime.Parse(dgvSalesOrderItem.Rows[i].Cells["expDate"].Value.ToString())),
-                        Quantity = Convert.ToInt32(dgvSalesOrderItem.Rows[i].Cells["qty"].Value.ToString()),
+                        Quantity = Convert.ToInt32(decimal.Parse(dgvSalesOrderItem.Rows[i].Cells["qty"].Value.ToString(), System.Globalization.NumberStyles.Currency)),
                         UomId = dgvSalesOrderItem.Rows[i].Cells["uomId"].Value.ToString(),
                         UomCode = dgvSalesOrderItem.Rows[i].Cells["uomCode"].Value.ToString(),
                         Price = decimal.Parse(dgvSalesOrderItem.Rows[i].Cells["price"].Value.ToString(), System.Globalization.NumberStyles.Currency),
@@ -861,7 +873,7 @@ namespace CisWindowsFormsApp
                             BatchId = dgvSalesOrderItem.Rows[i].Cells["batchId"].Value.ToString(),
                             BatchCode = dgvSalesOrderItem.Rows[i].Cells["batchCode"].Value.ToString(),
                             ExpiredDate = DateTime.Parse(dgvSalesOrderItem.Rows[i].Cells["expdate"].Value.ToString()),
-                            Quantity = Convert.ToInt32(dgvSalesOrderItem.Rows[i].Cells["qty"].Value.ToString()),
+                            Quantity = Convert.ToInt32(decimal.Parse(dgvSalesOrderItem.Rows[i].Cells["qty"].Value.ToString(), System.Globalization.NumberStyles.Currency)),
                             UomId = dgvSalesOrderItem.Rows[i].Cells["uomId"].Value.ToString(),
                             UomCode = dgvSalesOrderItem.Rows[i].Cells["uomCode"].Value.ToString(),
                             Price = decimal.Parse(dgvSalesOrderItem.Rows[i].Cells["price"].Value.ToString(), System.Globalization.NumberStyles.Currency),

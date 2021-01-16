@@ -1207,7 +1207,7 @@
 &amp; ", " &amp; System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.
     ToTitleCase(Fields!CustomerDistrict.Value.ToString().ToLower())
 &amp; ", " &amp; System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.
-    ToTitleCase(Fields!CustomerProvince.Value.ToString().ToLower())</Value>
+    ToTitleCase(Fields!CustomerProvince.Value.ToString())</Value>
                       <Style>
                         <FontFamily>Calibri</FontFamily>
                         <FontSize>8pt</FontSize>
@@ -1527,7 +1527,7 @@
 &amp; ", " &amp; System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.
     ToTitleCase(Fields!DeliveryDistrict.Value.ToString().ToLower())
 &amp; ", " &amp; System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.
-    ToTitleCase(Fields!DeliveryProvince.Value.ToString().ToLower())
+    ToTitleCase(Fields!DeliveryProvince.Value.ToString())
 &amp; System.Environment.NewLine 
 &amp; "Rayon: " &amp; Fields!Description.Value</Value>
                       <Style>

@@ -78,7 +78,8 @@ namespace CisWindowsFormsApp
                 frmMain.ShowDialog();
             }
             else
-                MessageBox.Show("Username or password invalid");
+                MessageBox.Show("Username atau Password Anda salah.",
+                 "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
         private void SetAppConfigCompanyInfo()

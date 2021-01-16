@@ -44,6 +44,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtRoleCode = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtPermissionId = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.gbMaster = new System.Windows.Forms.GroupBox();
@@ -52,8 +54,6 @@
             this.cblTransaksi = new System.Windows.Forms.CheckedListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cblReporting = new System.Windows.Forms.CheckedListBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtPermissionId = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRole)).BeginInit();
             this.panel1.SuspendLayout();
             this.gbMaster.SuspendLayout();
@@ -110,7 +110,7 @@
             this.dgvRole.Location = new System.Drawing.Point(24, 245);
             this.dgvRole.Margin = new System.Windows.Forms.Padding(9, 3, 3, 3);
             this.dgvRole.Name = "dgvRole";
-            this.dgvRole.Size = new System.Drawing.Size(421, 193);
+            this.dgvRole.Size = new System.Drawing.Size(375, 193);
             this.dgvRole.TabIndex = 0;
             this.dgvRole.Text = "dataGridView1";
             this.dgvRole.Click += new System.EventHandler(this.dgvRole_Click);
@@ -123,7 +123,7 @@
             this.btnClear.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnClear.ForeColor = System.Drawing.Color.White;
             this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
-            this.btnClear.Location = new System.Drawing.Point(39, 102);
+            this.btnClear.Location = new System.Drawing.Point(24, 111);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(71, 52);
             this.btnClear.TabIndex = 3;
@@ -140,7 +140,7 @@
             this.btnAdd.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnAdd.ForeColor = System.Drawing.Color.White;
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(115, 102);
+            this.btnAdd.Location = new System.Drawing.Point(100, 111);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(71, 52);
             this.btnAdd.TabIndex = 4;
@@ -157,7 +157,7 @@
             this.btnSave.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(191, 102);
+            this.btnSave.Location = new System.Drawing.Point(176, 111);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(71, 52);
             this.btnSave.TabIndex = 7;
@@ -174,7 +174,7 @@
             this.btnDel.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnDel.ForeColor = System.Drawing.Color.White;
             this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
-            this.btnDel.Location = new System.Drawing.Point(267, 102);
+            this.btnDel.Location = new System.Drawing.Point(252, 111);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(71, 52);
             this.btnDel.TabIndex = 6;
@@ -191,7 +191,7 @@
             this.btnReload.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnReload.ForeColor = System.Drawing.Color.White;
             this.btnReload.Image = ((System.Drawing.Image)(resources.GetObject("btnReload.Image")));
-            this.btnReload.Location = new System.Drawing.Point(343, 102);
+            this.btnReload.Location = new System.Drawing.Point(328, 111);
             this.btnReload.Name = "btnReload";
             this.btnReload.Size = new System.Drawing.Size(71, 52);
             this.btnReload.TabIndex = 5;
@@ -218,7 +218,7 @@
             this.txtDescription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtDescription.Location = new System.Drawing.Point(178, 36);
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(267, 31);
+            this.txtDescription.Size = new System.Drawing.Size(221, 31);
             this.txtDescription.TabIndex = 2;
             // 
             // label4
@@ -252,9 +252,30 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(27, 480);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1077, 147);
+            this.panel1.Size = new System.Drawing.Size(1004, 147);
             this.panel1.TabIndex = 8;
             this.panel1.Visible = false;
+            // 
+            // txtPermissionId
+            // 
+            this.txtPermissionId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPermissionId.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.txtPermissionId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtPermissionId.Location = new System.Drawing.Point(210, 31);
+            this.txtPermissionId.Name = "txtPermissionId";
+            this.txtPermissionId.Size = new System.Drawing.Size(195, 31);
+            this.txtPermissionId.TabIndex = 1;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label5.Location = new System.Drawing.Point(210, 16);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(80, 15);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Permission Id";
             // 
             // btnSearch
             // 
@@ -264,7 +285,7 @@
             this.btnSearch.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnSearch.ForeColor = System.Drawing.Color.White;
             this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
-            this.btnSearch.Location = new System.Drawing.Point(414, 208);
+            this.btnSearch.Location = new System.Drawing.Point(368, 208);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(31, 31);
             this.btnSearch.TabIndex = 39;
@@ -279,7 +300,7 @@
             this.txtSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtSearch.Location = new System.Drawing.Point(24, 208);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(384, 31);
+            this.txtSearch.Size = new System.Drawing.Size(338, 31);
             this.txtSearch.TabIndex = 38;
             this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
             // 
@@ -287,7 +308,7 @@
             // 
             this.gbMaster.Controls.Add(this.cblMasterData);
             this.gbMaster.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.gbMaster.Location = new System.Drawing.Point(492, 36);
+            this.gbMaster.Location = new System.Drawing.Point(425, 36);
             this.gbMaster.Name = "gbMaster";
             this.gbMaster.Size = new System.Drawing.Size(200, 402);
             this.gbMaster.TabIndex = 40;
@@ -309,7 +330,7 @@
             // 
             this.groupBox1.Controls.Add(this.cblTransaksi);
             this.groupBox1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.groupBox1.Location = new System.Drawing.Point(698, 36);
+            this.groupBox1.Location = new System.Drawing.Point(631, 36);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 402);
             this.groupBox1.TabIndex = 40;
@@ -331,7 +352,7 @@
             // 
             this.groupBox2.Controls.Add(this.cblReporting);
             this.groupBox2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.groupBox2.Location = new System.Drawing.Point(904, 36);
+            this.groupBox2.Location = new System.Drawing.Point(837, 36);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(200, 402);
             this.groupBox2.TabIndex = 40;
@@ -349,33 +370,12 @@
             this.cblReporting.Size = new System.Drawing.Size(182, 357);
             this.cblReporting.TabIndex = 41;
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label5.Location = new System.Drawing.Point(210, 16);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(80, 15);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Permission Id";
-            // 
-            // txtPermissionId
-            // 
-            this.txtPermissionId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPermissionId.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.txtPermissionId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtPermissionId.Location = new System.Drawing.Point(210, 31);
-            this.txtPermissionId.Name = "txtPermissionId";
-            this.txtPermissionId.Size = new System.Drawing.Size(195, 31);
-            this.txtPermissionId.TabIndex = 1;
-            // 
             // FrmRole
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1157, 678);
+            this.ClientSize = new System.Drawing.Size(1064, 678);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbMaster);

@@ -91,9 +91,8 @@
             this.lblReportingChildHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
             this.lblReportingChildHeader.Location = new System.Drawing.Point(10, 3);
             this.lblReportingChildHeader.Name = "lblReportingChildHeader";
-            this.lblReportingChildHeader.Size = new System.Drawing.Size(84, 23);
+            this.lblReportingChildHeader.Size = new System.Drawing.Size(0, 23);
             this.lblReportingChildHeader.TabIndex = 0;
-            this.lblReportingChildHeader.Text = "Summary";
             // 
             // panel3
             // 

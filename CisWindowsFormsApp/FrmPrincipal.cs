@@ -37,7 +37,7 @@ namespace CisWindowsFormsApp
             isAdd = true;
             SetUIButtonGroup();
 
-            txtPrincipalName.Focus();
+            txtPrincipalCode.Focus();
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -45,7 +45,8 @@ namespace CisWindowsFormsApp
             isAdd = true;
             SetUIButtonGroup();
 
-            txtPrincipalName.Focus();
+            txtPrincipalCode.Focus();
+            txtPrincipalCode.Text = string.Empty;
             txtPrincipalName.Text = string.Empty;
             txtAddress.Text = string.Empty;
 
@@ -64,15 +65,16 @@ namespace CisWindowsFormsApp
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (!ValidateMandatoryFields()) return;
-            var existingPrincipal = uowPrincipal.Repository.GetAll().Where(r => r.PrincipalName == txtPrincipalName.Text.Trim()).FirstOrDefault();
+            var existingPrincipal = uowPrincipal.Repository.GetAll().Where(r => r.PrincipalCode == txtPrincipalCode.Text.Trim()).FirstOrDefault();
             if (existingPrincipal != null)
             {
-                CommonMessageHelper.DataAlreadyExist(txtPrincipalName.Text.Trim());
+                CommonMessageHelper.DataAlreadyExist(txtPrincipalCode.Text.Trim());
             }
             else
             {
                 var PrincipalToAdd = new Principal
                 {
+                    PrincipalCode = txtPrincipalCode.Text.Trim(),
                     PrincipalName = txtPrincipalName.Text.Trim(),
                     Address = txtAddress.Text.Trim(),
                     PostalCode = txtPostCode.Text.Trim(),
@@ -104,7 +106,7 @@ namespace CisWindowsFormsApp
             var commonHelper = new CommonFunctionHelper();
             if (commonHelper.StandardizeDateTime(lastUpdated) != commonHelper.StandardizeDateTime(repoLastUpdated))
             {
-                CommonMessageHelper.DataHasBeenUpdatedPriorToSave(txtPrincipalName.Text.Trim());
+                CommonMessageHelper.DataHasBeenUpdatedPriorToSave(txtPrincipalCode.Text.Trim());
             }
             else
             {
@@ -130,7 +132,7 @@ namespace CisWindowsFormsApp
 
         private void btnDel_Click(object sender, EventArgs e)
         {
-            var roleToDel = uowPrincipal.Repository.GetAll().Where(u => u.PrincipalName == txtPrincipalName.Text.Trim()).FirstOrDefault();
+            var roleToDel = uowPrincipal.Repository.GetAll().Where(u => u.PrincipalCode== txtPrincipalCode.Text.Trim()).FirstOrDefault();
             if (roleToDel != null)
             {
                 if (DialogResult.Yes == CommonMessageHelper.ConfirmDelete())
@@ -151,7 +153,7 @@ namespace CisWindowsFormsApp
             }
             else
             {
-                CommonMessageHelper.DataNotFound(txtPrincipalName.Text.Trim());
+                CommonMessageHelper.DataNotFound(txtPrincipalCode.Text.Trim());
             }
         }
 
@@ -176,16 +178,16 @@ namespace CisWindowsFormsApp
                 gvSelectedIndex = dgvPrincipal.CurrentRow.Index;
                 BindPrincipalGridView();
                 SetUIGridView();
-                dgvPrincipal.CurrentCell = this.dgvPrincipal[1, gvSelectedIndex < dgvPrincipal.RowCount ? gvSelectedIndex : gvSelectedIndex - 1];
+                dgvPrincipal.CurrentCell = this.dgvPrincipal[1, isAdd ? dgvPrincipal.RowCount-1 : (gvSelectedIndex < dgvPrincipal.RowCount ? gvSelectedIndex : gvSelectedIndex - 1)];
                 SetUIbySelectedGridItem();
                 txtModifiedAt.Text = dgvPrincipal.CurrentRow.Cells[nameof(Principal.ModifiedAt)].Value.ToString();
             }
-            isAdd = dgvPrincipal.RowCount <= 0;
             SetUIButtonGroup();
         }
 
         private void dgvPrincipal_Click(object sender, EventArgs e)
         {
+            isAdd = false;
             btnReload.PerformClick();
         }
 
@@ -207,11 +209,12 @@ namespace CisWindowsFormsApp
 
         private void BindPrincipalGridView()
         {
-            var principal = new UnitOfWork<Principal>(dbContext).Repository.GetAll().OrderBy(s => s.PrincipalName);
+            var principal = new UnitOfWork<Principal>(dbContext).Repository.GetAll().OrderBy(s => s.PrincipalCode);
             var principalDetail = principal.Select(Principal =>
             new
             {
                 Principal.Id,
+                Principal.PrincipalCode,
                 Principal.PrincipalName,
                 Principal.Address,
                 Principal.ProvinceId,
@@ -228,6 +231,8 @@ namespace CisWindowsFormsApp
 
         private void SetUIGridView()
         {
+            dgvPrincipal.Columns[nameof(Principal.PrincipalCode)].HeaderText = "KODE PRINCIPAL";
+            dgvPrincipal.Columns[nameof(Principal.PrincipalCode)].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells; 
             dgvPrincipal.Columns[nameof(Principal.PrincipalName)].HeaderText = "NAMA PRINCIPAL";
             dgvPrincipal.Columns[nameof(Principal.PrincipalName)].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgvPrincipal.Columns[nameof(Principal.Address)].HeaderText = "ALAMAT";
@@ -248,6 +253,7 @@ namespace CisWindowsFormsApp
         private void SetUIbySelectedGridItem()
         {
             var currentRow = dgvPrincipal.CurrentRow;
+            txtPrincipalCode.Text = currentRow.Cells[nameof(Principal.PrincipalCode)].Value.ToString();
             txtPrincipalName.Text = currentRow.Cells[nameof(Principal.PrincipalName)].Value.ToString();
             txtAddress.Text = currentRow.Cells[nameof(Principal.Address)].Value.ToString();
             cbProvince.SelectedValue = currentRow.Cells[nameof(Principal.ProvinceId)].Value.ToString();
@@ -265,9 +271,9 @@ namespace CisWindowsFormsApp
 
         private bool ValidateMandatoryFields()
         {
-            if (string.IsNullOrEmpty(txtPrincipalName.Text))
+            if (string.IsNullOrEmpty(txtPrincipalCode.Text) || string.IsNullOrEmpty(txtPrincipalName.Text))
             {
-                CommonMessageHelper.DataCannotBeEmpty("Kode Sales dan Nama Lengkap");
+                CommonMessageHelper.DataCannotBeEmpty("Kode Principal dan Nama Principal");
                 return false;
 
             }

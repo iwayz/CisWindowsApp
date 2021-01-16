@@ -60,8 +60,8 @@ namespace Cis.Model
 
             public enum Reporting
             {
-                Sales,
-                Order // TODO: add other reporting form
+                Sales = 300,
+                Order = 301 // TODO: add other reporting form
             }
         }
 

@@ -40,6 +40,7 @@ namespace CisWindowsFormsApp
 
         private void dgvOutlet_Click(object sender, EventArgs e)
         {
+            isAdd = false;
             btnReload.PerformClick();
         }
 
@@ -100,12 +101,11 @@ namespace CisWindowsFormsApp
                 gvSelectedIndex = dgvOutlet.CurrentRow.Index;
                 BindOutletTypeGridView();
                 SetUIGridView();
-                dgvOutlet.CurrentCell = this.dgvOutlet[1, gvSelectedIndex < dgvOutlet.RowCount ? gvSelectedIndex : gvSelectedIndex - 1];
+                dgvOutlet.CurrentCell = this.dgvOutlet[1, isAdd ? dgvOutlet.RowCount-1 : (gvSelectedIndex < dgvOutlet.RowCount ? gvSelectedIndex : gvSelectedIndex - 1)];
                 SetUIbySelectedGridItem();
                 txtModifiedAt.Text = dgvOutlet.CurrentRow.Cells[nameof(OutletType.ModifiedAt)].Value.ToString();
             }
 
-            isAdd = dgvOutlet.RowCount <= 0;
             SetUIButtonGroup();
         }
 

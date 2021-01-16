@@ -363,6 +363,7 @@
             this.chkChangePassword.TabIndex = 5;
             this.chkChangePassword.Text = "Ganti Password";
             this.chkChangePassword.UseVisualStyleBackColor = true;
+            this.chkChangePassword.Visible = false;
             this.chkChangePassword.CheckedChanged += new System.EventHandler(this.chkChangePassword_CheckedChanged);
             // 
             // pnlRetypePassword

@@ -25,7 +25,7 @@ namespace CisWindowsFormsApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FrmUserRole(), sender);
+            OpenChildForm(new FormTest(), sender);
 
         }
 

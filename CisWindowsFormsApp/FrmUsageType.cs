@@ -132,12 +132,11 @@ namespace CisWindowsFormsApp
                 gvSelectedIndex = dgvUsageType.CurrentRow.Index;
                 BindUsageTyperidView();
                 SetUIGridView();
-                dgvUsageType.CurrentCell = this.dgvUsageType[1, gvSelectedIndex < dgvUsageType.RowCount ? gvSelectedIndex : gvSelectedIndex - 1];
+                dgvUsageType.CurrentCell = this.dgvUsageType[1, isAdd ? dgvUsageType.RowCount-1 : (gvSelectedIndex < dgvUsageType.RowCount ? gvSelectedIndex : gvSelectedIndex - 1)];
                 SetUIbySelectedGridItem();
                 txtModifiedAt.Text = dgvUsageType.CurrentRow.Cells[nameof(UsageType.ModifiedAt)].Value.ToString();
             }
 
-            isAdd = dgvUsageType.RowCount <= 0;
             SetUIButtonGroup();
 
         }
@@ -198,6 +197,7 @@ namespace CisWindowsFormsApp
 
         private void dgvUsageType_Click(object sender, EventArgs e)
         {
+            isAdd = false;
             btnReload.PerformClick();
         }
 

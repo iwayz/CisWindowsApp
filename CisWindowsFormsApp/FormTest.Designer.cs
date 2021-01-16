@@ -32,7 +32,8 @@
             this.dataSourceInvoice = new CisWindowsFormsApp.DataSources.DataSourceInvoice();
             this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataTableInvoiceTableAdapter = new CisWindowsFormsApp.DataSources.DataSourceInvoiceTableAdapters.DataTableInvoiceTableAdapter();
-            this.button1 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblTransactionChildHeader = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataSourceInvoice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
             this.SuspendLayout();
@@ -46,25 +47,35 @@
             // 
             this.dataTableInvoiceTableAdapter.ClearBeforeFill = true;
             // 
-            // button1
+            // panel1
             // 
-            this.button1.Location = new System.Drawing.Point(402, 234);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(768, 52);
+            this.panel1.TabIndex = 0;
+            // 
+            // lblTransactionChildHeader
+            // 
+            this.lblTransactionChildHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblTransactionChildHeader.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold);
+            this.lblTransactionChildHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
+            this.lblTransactionChildHeader.Location = new System.Drawing.Point(0, 52);
+            this.lblTransactionChildHeader.Name = "lblTransactionChildHeader";
+            this.lblTransactionChildHeader.Size = new System.Drawing.Size(768, 23);
+            this.lblTransactionChildHeader.TabIndex = 1;
+            this.lblTransactionChildHeader.Text = "Fitur belum tersedia.";
+            this.lblTransactionChildHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FormTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(768, 489);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.lblTransactionChildHeader);
+            this.Controls.Add(this.panel1);
             this.Name = "FormTest";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormTest";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormTest_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataSourceInvoice)).EndInit();
@@ -77,6 +88,7 @@
         private DataSources.DataSourceInvoice dataSourceInvoice;
         private System.Windows.Forms.BindingSource bindingSource;
         private DataSources.DataSourceInvoiceTableAdapters.DataTableInvoiceTableAdapter dataTableInvoiceTableAdapter;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblTransactionChildHeader;
     }
 }

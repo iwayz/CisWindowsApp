@@ -81,12 +81,11 @@ namespace CisWindowsFormsApp
                 gvSelectedIndex = dgvUom.CurrentRow.Index;
                 BindUomGridView();
                 SetUIGridView();
-                dgvUom.CurrentCell = this.dgvUom[1, gvSelectedIndex < dgvUom.RowCount ? gvSelectedIndex : gvSelectedIndex - 1];
+                dgvUom.CurrentCell = this.dgvUom[1, isAdd ? dgvUom.RowCount-1 : (gvSelectedIndex < dgvUom.RowCount ? gvSelectedIndex : gvSelectedIndex - 1)];
                 SetUIbySelectedGridItem();
                 txtModifiedAt.Text = dgvUom.CurrentRow.Cells[nameof(UnitOfMeasurement.ModifiedAt)].Value.ToString();
             }
 
-            isAdd = dgvUom.RowCount <= 0;
             SetUIButtonGroup();
         }
 
@@ -146,6 +145,7 @@ namespace CisWindowsFormsApp
 
         private void dgvUom_Click(object sender, EventArgs e)
         {
+            isAdd = false;
             btnReload.PerformClick();
         }
 

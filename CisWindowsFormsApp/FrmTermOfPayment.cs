@@ -99,12 +99,11 @@ namespace CisWindowsFormsApp
                 BindMedCatGridView();
                 SetUIGridView();
                 
-                dgvTerm.CurrentCell = this.dgvTerm[1, gvSelectedIndex < dgvTerm.RowCount ? gvSelectedIndex : gvSelectedIndex - 1];
+                dgvTerm.CurrentCell = this.dgvTerm[1, isAdd ? dgvTerm.RowCount-1 : (gvSelectedIndex < dgvTerm.RowCount ? gvSelectedIndex : gvSelectedIndex - 1)];
                 SetUIbySelectedGridItem();
                 txtModifiedAt.Text = dgvTerm.CurrentRow.Cells[nameof(TermOfPayment.ModifiedAt)].Value.ToString();
             }
 
-            isAdd = dgvTerm.RowCount <= 0;
             SetUIButtonGroup();
         }
 
@@ -164,6 +163,7 @@ namespace CisWindowsFormsApp
 
         private void dgvTerm_Click(object sender, EventArgs e)
         {
+            isAdd = false;
             btnReload.PerformClick();
         }
 

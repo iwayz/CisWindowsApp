@@ -40,6 +40,7 @@ namespace CisWindowsFormsApp
 
         private void dgvSalesArea_Click(object sender, EventArgs e)
         {
+            isAdd = false;
             btnReload.PerformClick();
         }
 
@@ -100,13 +101,11 @@ namespace CisWindowsFormsApp
                 gvSelectedIndex = dgvSalesArea.CurrentRow.Index;
                 BindAreaGridView();
                 SetUIGridView();
-                if (isAdd) gvSelectedIndex = dgvSalesArea.RowCount;
-                dgvSalesArea.CurrentCell = this.dgvSalesArea[1, gvSelectedIndex < dgvSalesArea.RowCount ? gvSelectedIndex : gvSelectedIndex - 1];
+                dgvSalesArea.CurrentCell = this.dgvSalesArea[1, isAdd ? dgvSalesArea.RowCount-1 : (gvSelectedIndex < dgvSalesArea.RowCount ? gvSelectedIndex : gvSelectedIndex - 1)];
                 SetUIbySelectedGridItem();
                 txtModifiedAt.Text = dgvSalesArea.CurrentRow.Cells[nameof(SalesArea.ModifiedAt)].Value.ToString();
             }
 
-            isAdd = dgvSalesArea.RowCount <= 0;
             SetUIButtonGroup();
 
         }

@@ -120,11 +120,10 @@ namespace CisWindowsFormsApp
                 gvSelectedIndex = dgvSalesman.CurrentRow.Index;
                 BindRoleGridView();
                 SetUIGridView();
-                dgvSalesman.CurrentCell = this.dgvSalesman[1, gvSelectedIndex < dgvSalesman.RowCount ? gvSelectedIndex : gvSelectedIndex - 1];
+                dgvSalesman.CurrentCell = this.dgvSalesman[1, isAdd ? dgvSalesman.RowCount-1 : (gvSelectedIndex < dgvSalesman.RowCount ? gvSelectedIndex : gvSelectedIndex - 1)];
                 SetUIbySelectedGridItem();
                 txtModifiedAt.Text = dgvSalesman.CurrentRow.Cells[nameof(Salesman.ModifiedAt)].Value.ToString();
             }
-            isAdd = dgvSalesman.RowCount <= 0;
             SetUIButtonGroup();
         }
 
@@ -193,6 +192,7 @@ namespace CisWindowsFormsApp
 
         private void dgvSalesman_Click(object sender, EventArgs e)
         {
+            isAdd = false;
             btnReload.PerformClick();
         }
 

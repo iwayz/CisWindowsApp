@@ -280,7 +280,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(178, 23);
             this.label3.TabIndex = 0;
-            this.label3.Text = "©2020 v1.0";
+            this.label3.Text = "©2021 v1.0";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel2
@@ -444,14 +444,14 @@
             // manualBookToolStripMenuItem
             // 
             this.manualBookToolStripMenuItem.Name = "manualBookToolStripMenuItem";
-            this.manualBookToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.manualBookToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.manualBookToolStripMenuItem.Text = "Manual Book";
             this.manualBookToolStripMenuItem.Click += new System.EventHandler(this.manualBookToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 

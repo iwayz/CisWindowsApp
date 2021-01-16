@@ -10,6 +10,10 @@ namespace Cis.Data.EntityConfigurations
     {
         public PrincipalConfig()
         {
+            Property(e => e.PrincipalCode)
+                .HasMaxLength(50)
+                .IsRequired(); 
+            
             Property(e => e.PrincipalName)
                 .HasMaxLength(100)
                 .IsRequired();
@@ -35,7 +39,7 @@ namespace Cis.Data.EntityConfigurations
             Property(e => e.Email)
                 .IsOptional();
 
-            HasIndex(e => e.PrincipalName);
+            HasIndex(e => e.PrincipalCode);
         }
     }
 }

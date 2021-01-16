@@ -49,9 +49,11 @@ namespace CisWindowsFormsApp
             txtFullName.Text = string.Empty;
             txtRetypePassword.Text = string.Empty;
             chkChangePassword.Checked = false;
+            chkChangePassword.Visible = true;
             txtUsername.Focus();
 
             BindRoleComboBox();
+            chkChangePassword.Visible = false;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -84,13 +86,13 @@ namespace CisWindowsFormsApp
                     uowUsr.Commit();
 
                     var uowUsrRole = new UnitOfWork<UserRole>(dbContext);
-                    var existingUsrRole = uowUsrRole.Repository.GetAll().
-                        Where(u => u.UserId == txtUserId.Text.Trim() && u.RoleId == txtRoleId.Text.Trim()).FirstOrDefault();
-                    if (existingUsrRole != null)
-                    {
-                        CommonMessageHelper.DataAlreadyExist(txtUsername.Text.Trim() + " dan " + cbRole.SelectedText);
-                        return;
-                    }
+                    //var existingUsrRole = uowUsrRole.Repository.GetAll().
+                    //    Where(u => u.UserId == txtUserId.Text.Trim() && u.RoleId == txtRoleId.Text.Trim()).FirstOrDefault();
+                    //if (existingUsrRole != null)
+                    //{
+                    //    CommonMessageHelper.DataAlreadyExist(txtUsername.Text.Trim() + " dan " + cbRole.SelectedText);
+                    //    return;
+                    //}
 
                     var userRoleToAdd = new UserRole
                     {
@@ -111,6 +113,7 @@ namespace CisWindowsFormsApp
 
                 btnReload.PerformClick();
                 CommonMessageHelper.DataSavedSuccessfully();
+                chkChangePassword.Visible = false;
             }
         }
 
@@ -135,14 +138,13 @@ namespace CisWindowsFormsApp
                 gvSelectedIndex = dgvUser.CurrentRow.Index;
                 BindUserGridView();
                 SetUIGridView();
-                dgvUser.CurrentCell = this.dgvUser[1, gvSelectedIndex < dgvUser.RowCount ? gvSelectedIndex : gvSelectedIndex - 1];
+                dgvUser.CurrentCell = this.dgvUser[1, isAdd ? dgvUser.RowCount-1 : (gvSelectedIndex < dgvUser.RowCount ? gvSelectedIndex : gvSelectedIndex - 1)];
                 SetUIbySelectedGridItem();
                 txtUserModifiedAt.Text = dgvUser.CurrentRow.Cells["UModifiedAt"].Value.ToString();
             }
             chkChangePassword.Checked = false;
             txtRetypePassword.Text = string.Empty;
 
-            isAdd = dgvUser.RowCount <= 0;
             SetUIButtonGroup();
         }
 
@@ -255,6 +257,7 @@ namespace CisWindowsFormsApp
 
         private void dgvUser_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            isAdd = false;
             btnReload.PerformClick();
         }
 
@@ -382,7 +385,7 @@ namespace CisWindowsFormsApp
             txtFullName.Text = currentRow.Cells[nameof(User.FullName)].Value.ToString();
 
             cbRole.SelectedValue = currentRow.Cells[nameof(UserRole.RoleId)].Value.ToString();
-
+            chkChangePassword.Visible = true;
 
             // hidden fields
             txtUserId.Text = currentRow.Cells["UserId"].Value.ToString();

@@ -52,18 +52,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.dtpSalesOrderDate = new System.Windows.Forms.DateTimePicker();
             this.dgvSalesOrderItem = new System.Windows.Forms.DataGridView();
-            this.productId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.batchId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.batchCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.expDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uomId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uomCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.discPercent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cbProduct = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -114,6 +102,18 @@
             this.label24 = new System.Windows.Forms.Label();
             this.lblSalesNo = new System.Windows.Forms.Label();
             this.lblMark = new System.Windows.Forms.Label();
+            this.productId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.batchId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.batchCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.expDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uomId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uomCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.discPercent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbShippingAddress.SuspendLayout();
             this.gbCustomerDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesOrderItem)).BeginInit();
@@ -414,87 +414,6 @@
             this.dgvSalesOrderItem.TabIndex = 29;
             this.dgvSalesOrderItem.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgvSalesOrderItem_UserDeletedRow);
             // 
-            // productId
-            // 
-            this.productId.HeaderText = "PRODUCT ID";
-            this.productId.Name = "productId";
-            this.productId.ReadOnly = true;
-            this.productId.Visible = false;
-            // 
-            // productCode
-            // 
-            this.productCode.HeaderText = "KODE BRG";
-            this.productCode.Name = "productCode";
-            this.productCode.ReadOnly = true;
-            // 
-            // productName
-            // 
-            this.productName.HeaderText = "NAMA BARANG";
-            this.productName.Name = "productName";
-            this.productName.ReadOnly = true;
-            this.productName.Width = 300;
-            // 
-            // batchId
-            // 
-            this.batchId.HeaderText = "BATCH ID";
-            this.batchId.Name = "batchId";
-            this.batchId.ReadOnly = true;
-            this.batchId.Visible = false;
-            // 
-            // batchCode
-            // 
-            this.batchCode.HeaderText = "BATCH";
-            this.batchCode.Name = "batchCode";
-            this.batchCode.ReadOnly = true;
-            this.batchCode.Width = 75;
-            // 
-            // expDate
-            // 
-            this.expDate.HeaderText = "EXP. DATE";
-            this.expDate.Name = "expDate";
-            this.expDate.ReadOnly = true;
-            // 
-            // qty
-            // 
-            this.qty.HeaderText = "QTY";
-            this.qty.Name = "qty";
-            this.qty.ReadOnly = true;
-            this.qty.Width = 75;
-            // 
-            // uomId
-            // 
-            this.uomId.HeaderText = "UOM ID";
-            this.uomId.Name = "uomId";
-            this.uomId.ReadOnly = true;
-            this.uomId.Visible = false;
-            // 
-            // uomCode
-            // 
-            this.uomCode.HeaderText = "SAT";
-            this.uomCode.Name = "uomCode";
-            this.uomCode.ReadOnly = true;
-            this.uomCode.Width = 75;
-            // 
-            // price
-            // 
-            this.price.HeaderText = "HARGA";
-            this.price.Name = "price";
-            this.price.ReadOnly = true;
-            // 
-            // discPercent
-            // 
-            this.discPercent.HeaderText = "DISKON";
-            this.discPercent.Name = "discPercent";
-            this.discPercent.ReadOnly = true;
-            this.discPercent.Width = 75;
-            // 
-            // subTotal
-            // 
-            this.subTotal.HeaderText = "JML. HARGA";
-            this.subTotal.Name = "subTotal";
-            this.subTotal.ReadOnly = true;
-            this.subTotal.Width = 126;
-            // 
             // cbProduct
             // 
             this.cbProduct.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
@@ -662,7 +581,6 @@
             // 
             this.gbSalesOrderDetail.Controls.Add(this.dgvSalesOrderItem);
             this.gbSalesOrderDetail.Controls.Add(this.btnAddItem);
-            this.gbSalesOrderDetail.Controls.Add(this.pnlNote);
             this.gbSalesOrderDetail.Controls.Add(this.dtpExpiredDate);
             this.gbSalesOrderDetail.Controls.Add(this.cbProduct);
             this.gbSalesOrderDetail.Controls.Add(this.txtDiscount);
@@ -697,9 +615,9 @@
             // 
             this.pnlNote.Controls.Add(this.lblNoteDetail);
             this.pnlNote.Controls.Add(this.label15);
-            this.pnlNote.Location = new System.Drawing.Point(379, 253);
+            this.pnlNote.Location = new System.Drawing.Point(23, 549);
             this.pnlNote.Name = "pnlNote";
-            this.pnlNote.Size = new System.Drawing.Size(373, 49);
+            this.pnlNote.Size = new System.Drawing.Size(950, 49);
             this.pnlNote.TabIndex = 42;
             this.pnlNote.Visible = false;
             // 
@@ -735,7 +653,7 @@
             this.txtSubTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtSubTotal.Location = new System.Drawing.Point(17, 270);
             this.txtSubTotal.Name = "txtSubTotal";
-            this.txtSubTotal.Size = new System.Drawing.Size(100, 27);
+            this.txtSubTotal.Size = new System.Drawing.Size(131, 27);
             this.txtSubTotal.TabIndex = 37;
             this.txtSubTotal.Text = "0";
             this.txtSubTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -745,12 +663,12 @@
             // 
             // lblTotal
             // 
-            this.lblTotal.AutoSize = true;
+            this.lblTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotal.Font = new System.Drawing.Font("Calibri", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblTotal.Location = new System.Drawing.Point(766, 259);
+            this.lblTotal.Location = new System.Drawing.Point(683, 260);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(36, 42);
+            this.lblTotal.Size = new System.Drawing.Size(254, 42);
             this.lblTotal.TabIndex = 30;
             this.lblTotal.Text = "0";
             this.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -761,9 +679,9 @@
             this.txtValueAddedTaxAmount.Enabled = false;
             this.txtValueAddedTaxAmount.Font = new System.Drawing.Font("Calibri", 12F);
             this.txtValueAddedTaxAmount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtValueAddedTaxAmount.Location = new System.Drawing.Point(295, 270);
+            this.txtValueAddedTaxAmount.Location = new System.Drawing.Point(384, 270);
             this.txtValueAddedTaxAmount.Name = "txtValueAddedTaxAmount";
-            this.txtValueAddedTaxAmount.Size = new System.Drawing.Size(70, 27);
+            this.txtValueAddedTaxAmount.Size = new System.Drawing.Size(109, 27);
             this.txtValueAddedTaxAmount.TabIndex = 37;
             this.txtValueAddedTaxAmount.Text = "0";
             this.txtValueAddedTaxAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -776,7 +694,7 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label13.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label13.Location = new System.Drawing.Point(770, 244);
+            this.label13.Location = new System.Drawing.Point(840, 244);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(97, 15);
             this.label13.TabIndex = 30;
@@ -788,9 +706,9 @@
             this.txtTaxBaseAmount.Enabled = false;
             this.txtTaxBaseAmount.Font = new System.Drawing.Font("Calibri", 12F);
             this.txtTaxBaseAmount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtTaxBaseAmount.Location = new System.Drawing.Point(219, 270);
+            this.txtTaxBaseAmount.Location = new System.Drawing.Point(269, 270);
             this.txtTaxBaseAmount.Name = "txtTaxBaseAmount";
-            this.txtTaxBaseAmount.Size = new System.Drawing.Size(70, 27);
+            this.txtTaxBaseAmount.Size = new System.Drawing.Size(109, 27);
             this.txtTaxBaseAmount.TabIndex = 37;
             this.txtTaxBaseAmount.Text = "0";
             this.txtTaxBaseAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -803,9 +721,9 @@
             this.txtExtraDiscount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtExtraDiscount.Font = new System.Drawing.Font("Calibri", 12F);
             this.txtExtraDiscount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtExtraDiscount.Location = new System.Drawing.Point(123, 270);
+            this.txtExtraDiscount.Location = new System.Drawing.Point(154, 270);
             this.txtExtraDiscount.Name = "txtExtraDiscount";
-            this.txtExtraDiscount.Size = new System.Drawing.Size(90, 27);
+            this.txtExtraDiscount.Size = new System.Drawing.Size(109, 27);
             this.txtExtraDiscount.TabIndex = 37;
             this.txtExtraDiscount.Text = "0";
             this.txtExtraDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -829,7 +747,7 @@
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label23.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label23.Location = new System.Drawing.Point(292, 252);
+            this.label23.Location = new System.Drawing.Point(381, 252);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(56, 15);
             this.label23.TabIndex = 17;
@@ -840,7 +758,7 @@
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label17.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label17.Location = new System.Drawing.Point(216, 252);
+            this.label17.Location = new System.Drawing.Point(269, 252);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(58, 15);
             this.label17.TabIndex = 17;
@@ -851,7 +769,7 @@
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label16.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label16.Location = new System.Drawing.Point(120, 252);
+            this.label16.Location = new System.Drawing.Point(154, 252);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(79, 15);
             this.label16.TabIndex = 17;
@@ -1176,6 +1094,88 @@
             this.lblMark.Text = "DELETED";
             this.lblMark.Visible = false;
             // 
+            // productId
+            // 
+            this.productId.HeaderText = "PRODUCT ID";
+            this.productId.Name = "productId";
+            this.productId.ReadOnly = true;
+            this.productId.Visible = false;
+            // 
+            // productCode
+            // 
+            this.productCode.HeaderText = "KODE BRG";
+            this.productCode.Name = "productCode";
+            this.productCode.ReadOnly = true;
+            this.productCode.Width = 90;
+            // 
+            // productName
+            // 
+            this.productName.HeaderText = "NAMA BARANG";
+            this.productName.Name = "productName";
+            this.productName.ReadOnly = true;
+            this.productName.Width = 290;
+            // 
+            // batchId
+            // 
+            this.batchId.HeaderText = "BATCH ID";
+            this.batchId.Name = "batchId";
+            this.batchId.ReadOnly = true;
+            this.batchId.Visible = false;
+            // 
+            // batchCode
+            // 
+            this.batchCode.HeaderText = "BATCH";
+            this.batchCode.Name = "batchCode";
+            this.batchCode.ReadOnly = true;
+            this.batchCode.Width = 75;
+            // 
+            // expDate
+            // 
+            this.expDate.HeaderText = "EXP. DATE";
+            this.expDate.Name = "expDate";
+            this.expDate.ReadOnly = true;
+            // 
+            // qty
+            // 
+            this.qty.HeaderText = "QTY";
+            this.qty.Name = "qty";
+            this.qty.ReadOnly = true;
+            this.qty.Width = 50;
+            // 
+            // uomId
+            // 
+            this.uomId.HeaderText = "UOM ID";
+            this.uomId.Name = "uomId";
+            this.uomId.ReadOnly = true;
+            this.uomId.Visible = false;
+            // 
+            // uomCode
+            // 
+            this.uomCode.HeaderText = "SAT";
+            this.uomCode.Name = "uomCode";
+            this.uomCode.ReadOnly = true;
+            this.uomCode.Width = 50;
+            // 
+            // price
+            // 
+            this.price.HeaderText = "HARGA";
+            this.price.Name = "price";
+            this.price.ReadOnly = true;
+            this.price.Width = 70;
+            // 
+            // discPercent
+            // 
+            this.discPercent.HeaderText = "DISKON";
+            this.discPercent.Name = "discPercent";
+            this.discPercent.ReadOnly = true;
+            this.discPercent.Width = 55;
+            // 
+            // subTotal
+            // 
+            this.subTotal.HeaderText = "JML. HARGA";
+            this.subTotal.Name = "subTotal";
+            this.subTotal.ReadOnly = true;
+            // 
             // FrmSalesOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1184,6 +1184,7 @@
             this.ClientSize = new System.Drawing.Size(1082, 749);
             this.Controls.Add(this.pnlHiddenFields);
             this.Controls.Add(this.btnPrint);
+            this.Controls.Add(this.pnlNote);
             this.Controls.Add(this.pnlNavigation);
             this.Controls.Add(this.pnlButtonGroup);
             this.Controls.Add(this.btnSearch);
@@ -1281,6 +1282,15 @@
         private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.TextBox txtExtraDiscount;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txtSubTotal;
+        private System.Windows.Forms.TextBox txtValueAddedTaxAmount;
+        private System.Windows.Forms.TextBox txtTaxBaseAmount;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label lblSalesNo;
+        private System.Windows.Forms.Label lblMark;
         private System.Windows.Forms.DataGridViewTextBoxColumn productId;
         private System.Windows.Forms.DataGridViewTextBoxColumn productCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn productName;
@@ -1293,14 +1303,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn price;
         private System.Windows.Forms.DataGridViewTextBoxColumn discPercent;
         private System.Windows.Forms.DataGridViewTextBoxColumn subTotal;
-        private System.Windows.Forms.TextBox txtSubTotal;
-        private System.Windows.Forms.TextBox txtValueAddedTaxAmount;
-        private System.Windows.Forms.TextBox txtTaxBaseAmount;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label lblSalesNo;
-        private System.Windows.Forms.Label lblMark;
     }
 }

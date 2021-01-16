@@ -345,9 +345,8 @@
             this.lblMasterDataChildHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
             this.lblMasterDataChildHeader.Location = new System.Drawing.Point(18, 0);
             this.lblMasterDataChildHeader.Name = "lblMasterDataChildHeader";
-            this.lblMasterDataChildHeader.Size = new System.Drawing.Size(84, 23);
+            this.lblMasterDataChildHeader.Size = new System.Drawing.Size(0, 23);
             this.lblMasterDataChildHeader.TabIndex = 0;
-            this.lblMasterDataChildHeader.Text = "Summary";
             // 
             // pnlHeaderSeparator
             // 
