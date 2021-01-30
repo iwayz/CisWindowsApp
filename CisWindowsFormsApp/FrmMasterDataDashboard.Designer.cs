@@ -51,9 +51,14 @@
             this.pnlHeaderSeparator = new System.Windows.Forms.Panel();
             this.toolTipButton = new System.Windows.Forms.ToolTip(this.components);
             this.pnlMasterDataChildren = new System.Windows.Forms.Panel();
+            this.pnlLogo = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.pnlChildHeader.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.pnlMasterDataChildren.SuspendLayout();
+            this.pnlLogo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnProducts
@@ -360,11 +365,32 @@
             // pnlMasterDataChildren
             // 
             this.pnlMasterDataChildren.AutoScroll = true;
+            this.pnlMasterDataChildren.Controls.Add(this.pnlLogo);
             this.pnlMasterDataChildren.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMasterDataChildren.Location = new System.Drawing.Point(0, 120);
             this.pnlMasterDataChildren.Name = "pnlMasterDataChildren";
             this.pnlMasterDataChildren.Size = new System.Drawing.Size(972, 438);
             this.pnlMasterDataChildren.TabIndex = 4;
+            // 
+            // pnlLogo
+            // 
+            this.pnlLogo.Controls.Add(this.pictureBox1);
+            this.pnlLogo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlLogo.Location = new System.Drawing.Point(0, 0);
+            this.pnlLogo.Name = "pnlLogo";
+            this.pnlLogo.Size = new System.Drawing.Size(972, 262);
+            this.pnlLogo.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(0, 75);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(972, 187);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // FrmMasterDataDashboard
             // 
@@ -383,6 +409,9 @@
             this.pnlChildHeader.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.pnlMasterDataChildren.ResumeLayout(false);
+            this.pnlLogo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -410,5 +439,7 @@
         private System.Windows.Forms.ToolTip toolTipButton;
         private System.Windows.Forms.Panel pnlMasterDataChildren;
         private System.Windows.Forms.Button btnTermOfPayment;
+        private System.Windows.Forms.Panel pnlLogo;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

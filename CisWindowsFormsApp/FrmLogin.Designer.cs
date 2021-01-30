@@ -39,6 +39,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.lnkExit = new System.Windows.Forms.LinkLabel();
+            this.lblWebsite = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -47,10 +49,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(118, 39);
+            this.pictureBox1.Location = new System.Drawing.Point(30, 75);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(94, 96);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.Size = new System.Drawing.Size(300, 187);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -60,7 +61,7 @@
             this.txtUserName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtUserName.Font = new System.Drawing.Font("Calibri", 16F);
             this.txtUserName.ForeColor = System.Drawing.Color.Silver;
-            this.txtUserName.Location = new System.Drawing.Point(67, 243);
+            this.txtUserName.Location = new System.Drawing.Point(405, 111);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(226, 27);
             this.txtUserName.TabIndex = 2;
@@ -73,7 +74,7 @@
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPassword.Font = new System.Drawing.Font("Calibri", 16F);
             this.txtPassword.ForeColor = System.Drawing.Color.Silver;
-            this.txtPassword.Location = new System.Drawing.Point(67, 305);
+            this.txtPassword.Location = new System.Drawing.Point(405, 173);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(226, 27);
             this.txtPassword.TabIndex = 3;
@@ -87,7 +88,7 @@
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold);
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(37, 372);
+            this.btnLogin.Location = new System.Drawing.Point(375, 240);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(256, 35);
             this.btnLogin.TabIndex = 4;
@@ -98,7 +99,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(37, 243);
+            this.pictureBox2.Location = new System.Drawing.Point(375, 111);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(17, 17);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -108,7 +109,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(37, 305);
+            this.pictureBox3.Location = new System.Drawing.Point(375, 173);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(17, 17);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -118,7 +119,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Silver;
-            this.panel1.Location = new System.Drawing.Point(37, 275);
+            this.panel1.Location = new System.Drawing.Point(375, 143);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(257, 2);
             this.panel1.TabIndex = 4;
@@ -126,7 +127,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Silver;
-            this.panel2.Location = new System.Drawing.Point(37, 336);
+            this.panel2.Location = new System.Drawing.Point(375, 204);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(257, 2);
             this.panel2.TabIndex = 4;
@@ -136,7 +137,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
-            this.label1.Location = new System.Drawing.Point(99, 159);
+            this.label1.Location = new System.Drawing.Point(437, 27);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label1.Size = new System.Drawing.Size(132, 59);
@@ -148,7 +149,7 @@
             this.lnkExit.AutoSize = true;
             this.lnkExit.Font = new System.Drawing.Font("Calibri", 15.75F);
             this.lnkExit.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
-            this.lnkExit.Location = new System.Drawing.Point(144, 421);
+            this.lnkExit.Location = new System.Drawing.Point(482, 289);
             this.lnkExit.Name = "lnkExit";
             this.lnkExit.Size = new System.Drawing.Size(43, 26);
             this.lnkExit.TabIndex = 1;
@@ -156,13 +157,35 @@
             this.lnkExit.Text = "Exit";
             this.lnkExit.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkExit_LinkClicked);
             // 
+            // lblWebsite
+            // 
+            this.lblWebsite.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.lblWebsite.Location = new System.Drawing.Point(27, 265);
+            this.lblWebsite.Name = "lblWebsite";
+            this.lblWebsite.Size = new System.Drawing.Size(303, 23);
+            this.lblWebsite.TabIndex = 5;
+            this.lblWebsite.Text = "web";
+            this.lblWebsite.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Silver;
+            this.panel3.ForeColor = System.Drawing.Color.Silver;
+            this.panel3.Location = new System.Drawing.Point(345, 90);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(2, 150);
+            this.panel3.TabIndex = 6;
+            // 
             // FrmLogin
             // 
             this.AcceptButton = this.btnLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(331, 471);
+            this.CancelButton = this.lnkExit;
+            this.ClientSize = new System.Drawing.Size(664, 349);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.lblWebsite);
             this.Controls.Add(this.lnkExit);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel2);
@@ -198,5 +221,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.LinkLabel lnkExit;
+        private System.Windows.Forms.Label lblWebsite;
+        private System.Windows.Forms.Panel panel3;
     }
 }

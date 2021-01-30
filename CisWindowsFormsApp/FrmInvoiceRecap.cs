@@ -75,8 +75,10 @@ namespace CisWindowsFormsApp
                     res.so.SalesNo,
                     res.so.CustomerId,
                     res.so.CustomerName,
+                    res.so.CustomerNpwp,
                     res.so.CustomerAddress,
                     res.so.CustomerDistrict,
+                    res.so.SalesmanCode,
                     res.so.SalesAreaId,
                     res.so.SalesAreaCode,
                     res.so.CustomerProvince,
@@ -115,25 +117,27 @@ namespace CisWindowsFormsApp
             xlWorkSheet.Cells[1, 2] = "NO. FAKTUR";
             xlWorkSheet.Cells[1, 3] = "KODE PELANGGAN";
             xlWorkSheet.Cells[1, 4] = "NAMA PELANGGAN";
-            xlWorkSheet.Cells[1, 5] = "ALAMAT LENGKAP";
-            xlWorkSheet.Cells[1, 6] = "KOTA";
-            xlWorkSheet.Cells[1, 7] = "RAYON";
-            xlWorkSheet.Cells[1, 8] = "PERWAKILAN";
-            xlWorkSheet.Cells[1, 9] = "JENIS OUTLET";
-            xlWorkSheet.Cells[1, 10] = "KODE BARANG";
-            xlWorkSheet.Cells[1, 11] = "NAMA BARANG";
-            xlWorkSheet.Cells[1, 12] = "SAT";
-            xlWorkSheet.Cells[1, 13] = "QTY";
-            xlWorkSheet.Cells[1, 14] = "HARGA HNA";
-            xlWorkSheet.Cells[1, 15] = "GROSS VALUE";
-            xlWorkSheet.Cells[1, 16] = "%DISKON";
-            xlWorkSheet.Cells[1, 17] = "DPP";
-            xlWorkSheet.Cells[1, 18] = "PPN 10%";
-            xlWorkSheet.Cells[1, 19] = "NETT VALUE";
-            xlWorkSheet.Cells[1, 20] = "TGL.JTH TEMPO";
-            xlWorkSheet.Cells[1, 21] = "ALAMAT KIRIM";
-            xlWorkSheet.Cells[1, 22] = "KOTA";
-            xlWorkSheet.Cells[1, 23] = "NO. TELPON";
+            xlWorkSheet.Cells[1, 5] = "NPWP";
+            xlWorkSheet.Cells[1, 6] = "ALAMAT LENGKAP";
+            xlWorkSheet.Cells[1, 7] = "KOTA";
+            xlWorkSheet.Cells[1, 8] = "NAMA SALES";
+            xlWorkSheet.Cells[1, 9] = "RAYON";
+            xlWorkSheet.Cells[1, 10] = "PERWAKILAN";
+            xlWorkSheet.Cells[1, 11] = "JENIS OUTLET";
+            xlWorkSheet.Cells[1, 12] = "KODE BARANG";
+            xlWorkSheet.Cells[1, 13] = "NAMA BARANG";
+            xlWorkSheet.Cells[1, 14] = "SAT";
+            xlWorkSheet.Cells[1, 15] = "QTY";
+            xlWorkSheet.Cells[1, 16] = "HARGA HNA";
+            xlWorkSheet.Cells[1, 17] = "GROSS VALUE";
+            xlWorkSheet.Cells[1, 18] = "%DISKON";
+            xlWorkSheet.Cells[1, 19] = "DPP";
+            xlWorkSheet.Cells[1, 20] = "PPN 10%";
+            xlWorkSheet.Cells[1, 21] = "NETT VALUE";
+            xlWorkSheet.Cells[1, 22] = "TGL.JTH TEMPO";
+            xlWorkSheet.Cells[1, 23] = "ALAMAT KIRIM";
+            xlWorkSheet.Cells[1, 24] = "KOTA";
+            xlWorkSheet.Cells[1, 25] = "NO. TELPON";
 
             var rowNum = 2;
             var totalRec = recapDetail.Count();
@@ -143,25 +147,27 @@ namespace CisWindowsFormsApp
                 xlWorkSheet.Cells[rowNum, 2] = item.sodcusd.sod.SalesNo;
                 xlWorkSheet.Cells[rowNum, 3] = "'" + item.sodcusd.cusd.CustomerCode.ToString();
                 xlWorkSheet.Cells[rowNum, 4] = item.sodcusd.cusd.CustomerName;
-                xlWorkSheet.Cells[rowNum, 5] = item.sodcusd.sod.CustomerAddress;
-                xlWorkSheet.Cells[rowNum, 6] = item.sodcusd.sod.CustomerDistrict;
-                xlWorkSheet.Cells[rowNum, 7] = item.sa.Description;
-                xlWorkSheet.Cells[rowNum, 8] = item.sodcusd.sod.CustomerProvince;
-                xlWorkSheet.Cells[rowNum, 9] = item.sodcusd.cusd.Description;
-                xlWorkSheet.Cells[rowNum, 10] = item.sodcusd.sod.ProductCode;
-                xlWorkSheet.Cells[rowNum, 11] = item.sodcusd.sod.ProductName;
-                xlWorkSheet.Cells[rowNum, 12] = item.sodcusd.sod.UomCode.ToString();
-                xlWorkSheet.Cells[rowNum, 13] = item.sodcusd.sod.Quantity;
-                xlWorkSheet.Cells[rowNum, 14] = item.sodcusd.sod.Price;
-                xlWorkSheet.Cells[rowNum, 15] = item.sodcusd.sod.TotalAmount;
-                xlWorkSheet.Cells[rowNum, 16] = item.sodcusd.sod.DiscountPercentage;
-                xlWorkSheet.Cells[rowNum, 17] = item.sodcusd.sod.TaxBaseAmount;
-                xlWorkSheet.Cells[rowNum, 18] = item.sodcusd.sod.ValueAddedTaxAmount;
-                xlWorkSheet.Cells[rowNum, 19] = (item.sodcusd.sod.TaxBaseAmount + item.sodcusd.sod.ValueAddedTaxAmount);
-                xlWorkSheet.Cells[rowNum, 20] = item.sodcusd.sod.DueDate.ToShortDateString();
-                xlWorkSheet.Cells[rowNum, 21] = item.sodcusd.sod.DeliveryAddress;
-                xlWorkSheet.Cells[rowNum, 22] = item.sodcusd.sod.DeliveryDistrict;
-                xlWorkSheet.Cells[rowNum, 23] = item.sodcusd.sod.CustomerPhone;
+                xlWorkSheet.Cells[rowNum, 5] = "'" + item.sodcusd.sod.CustomerNpwp;
+                xlWorkSheet.Cells[rowNum, 6] = item.sodcusd.sod.CustomerAddress;
+                xlWorkSheet.Cells[rowNum, 7] = item.sodcusd.sod.CustomerDistrict;
+                xlWorkSheet.Cells[rowNum, 8] = item.sodcusd.sod.SalesmanCode;
+                xlWorkSheet.Cells[rowNum, 9] = item.sa.Description;
+                xlWorkSheet.Cells[rowNum, 10] = item.sodcusd.sod.CustomerProvince;
+                xlWorkSheet.Cells[rowNum, 11] = item.sodcusd.cusd.Description;
+                xlWorkSheet.Cells[rowNum, 12] = item.sodcusd.sod.ProductCode;
+                xlWorkSheet.Cells[rowNum, 13] = item.sodcusd.sod.ProductName;
+                xlWorkSheet.Cells[rowNum, 14] = item.sodcusd.sod.UomCode.ToString();
+                xlWorkSheet.Cells[rowNum, 15] = item.sodcusd.sod.Quantity;
+                xlWorkSheet.Cells[rowNum, 16] = item.sodcusd.sod.Price;
+                xlWorkSheet.Cells[rowNum, 17] = item.sodcusd.sod.TotalAmount;
+                xlWorkSheet.Cells[rowNum, 18] = item.sodcusd.sod.DiscountPercentage;
+                xlWorkSheet.Cells[rowNum, 19] = item.sodcusd.sod.TaxBaseAmount;
+                xlWorkSheet.Cells[rowNum, 20] = item.sodcusd.sod.ValueAddedTaxAmount;
+                xlWorkSheet.Cells[rowNum, 21] = (item.sodcusd.sod.TaxBaseAmount + item.sodcusd.sod.ValueAddedTaxAmount);
+                xlWorkSheet.Cells[rowNum, 22] = item.sodcusd.sod.DueDate.ToShortDateString();
+                xlWorkSheet.Cells[rowNum, 23] = item.sodcusd.sod.DeliveryAddress;
+                xlWorkSheet.Cells[rowNum, 24] = item.sodcusd.sod.DeliveryDistrict;
+                xlWorkSheet.Cells[rowNum, 25] = item.sodcusd.sod.CustomerPhone;
 
                 var progress = ((rowNum - 1) * 100) / totalRec;
                 backgroundWorker.ReportProgress(progress);

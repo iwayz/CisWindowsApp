@@ -128,27 +128,6 @@ namespace CisWindowsFormsApp
             cbProduct.AutoCompleteCustomSource = autoCompleteCollection;
         }
 
-        private void BindComboBoxBatch(string productId)
-        {
-            var uow = new UnitOfWork<Batch>(dbContext);
-            var queryResult = uow.Repository.GetAll().Where(e => e.ProductId == productId)
-                .OrderBy(e => e.ExpiredDate);
-
-            AutoCompleteStringCollection autoCompleteCollection = new AutoCompleteStringCollection();
-            Dictionary<string, string> dataSource = new Dictionary<string, string>();
-            dataSource.Add("0", "--Pilih--");
-            foreach (var res in queryResult)
-            {
-                dataSource.Add(res.Id, res.BatchCode);
-                autoCompleteCollection.Add(res.BatchCode);
-            }
-
-            cbBatch.DataSource = new BindingSource(dataSource, null);
-            cbBatch.DisplayMember = "Value";
-            cbBatch.ValueMember = "Key";
-            cbBatch.AutoCompleteCustomSource = autoCompleteCollection;
-        }
-
         private void SetUIButtonGroup()
         {
             var disable = String.IsNullOrEmpty(lblSalesNo.Text);
@@ -224,7 +203,7 @@ namespace CisWindowsFormsApp
             }
 
             if (queryResult != null)
-                LoadDataBySelectedItem(queryResult);
+                LoadDataItem(queryResult);
 
             SetUIButtonGroup();
         }
@@ -238,7 +217,7 @@ namespace CisWindowsFormsApp
                 CommonMessageHelper.DataNotFound(txtSalesNo.Text.Trim());
                 return;
             }
-            LoadDataBySelectedItem(queryResult);
+            LoadDataItem(queryResult);
         }
 
         private void SetUI()
@@ -271,7 +250,7 @@ namespace CisWindowsFormsApp
             return loc == null ? string.Empty : loc.Name;
         }
 
-        private void LoadDataBySelectedItem(SalesOrder parentResult)
+        private void LoadDataItem(SalesOrder parentResult)
         {
             lblMark.Visible = false;
             if (parentResult.Status == Constant.RecordStatus.Inactive)
@@ -296,7 +275,7 @@ namespace CisWindowsFormsApp
 
             IQueryable<SalesOrderItem> childItems;
             UnitOfWork<SalesOrderItem> uowSalesOrderItem = new UnitOfWork<SalesOrderItem>(dbContext);
-            childItems = uowSalesOrderItem.Repository.GetAll().Where(e => e.SalesOrderId == parentResult.Id);
+            childItems = uowSalesOrderItem.Repository.GetAll().Where(e => e.SalesOrderId == parentResult.Id).OrderBy(e => e.ProductCode);
             dgvSalesOrderItem.Rows.Clear();
             dgvSalesOrderItem.Refresh();
 
@@ -412,7 +391,6 @@ namespace CisWindowsFormsApp
             BindComboBoxTermOfPayment();
             BindComboBoxSalesArea();
             BindComboBoxProduct();
-            BindComboBoxBatch("0");
             commonHelper.BindLocationComboBox(dbContext, cbProvince, Constant.LocationType.Province);
 
             isAdd = true;
@@ -472,10 +450,16 @@ namespace CisWindowsFormsApp
                 return;
             }
 
+            if (string.IsNullOrEmpty(txtQty.Text.Trim()) || txtQty.Text.Trim() == "0")
+            {
+                CommonMessageHelper.DataCannotBeEmpty("Qty");
+                return;
+            }
+
             UnitOfWork<Product> uowProduct = new UnitOfWork<Product>(dbContext);
             var product = uowProduct.Repository.GetById(cbProduct.SelectedValue.ToString());
             UnitOfWork<Batch> uowBatch = new UnitOfWork<Batch>(dbContext);
-            var batch = uowBatch.Repository.GetById(cbBatch.SelectedValue.ToString());
+            var batch = uowBatch.Repository.GetAll().Where(b => b.BatchCode.Equals(txtBatch.Text.Trim())).FirstOrDefault();
             UnitOfWork<UnitOfMeasurement> uowUom = new UnitOfWork<UnitOfMeasurement>(dbContext);
             var uom = uowUom.Repository.GetById(product.UnitId);
             int rowId = dgvSalesOrderItem.Rows.Count;
@@ -487,7 +471,7 @@ namespace CisWindowsFormsApp
                 if (dgvSalesOrderItem.Rows[i].Cells["productId"].Value == null) continue;
 
                 if (dgvSalesOrderItem.Rows[i].Cells["productId"].Value.ToString() == cbProduct.SelectedValue.ToString()
-                    && (dgvSalesOrderItem.Rows[i].Cells["batchId"].Value.ToString() == cbBatch.SelectedValue.ToString() || string.IsNullOrEmpty(dgvSalesOrderItem.Rows[i].Cells["batchId"].Value.ToString()))
+                    && (dgvSalesOrderItem.Rows[i].Cells["batchCode"].Value.ToString() == txtBatch.Text.Trim() || string.IsNullOrEmpty(dgvSalesOrderItem.Rows[i].Cells["batchId"].Value.ToString()))
                     && DateTime.Parse(dgvSalesOrderItem.Rows[0].Cells["expDate"].Value.ToString()) == dtpExpiredDate.Value)
                 {
                     rowId = i;
@@ -510,7 +494,7 @@ namespace CisWindowsFormsApp
             row.Cells["productCode"].Value = product.ProductCode;
             row.Cells["productName"].Value = product.ProductName;
             row.Cells["batchId"].Value = batch != null ? batch.Id : string.Empty;
-            row.Cells["batchCode"].Value = batch != null ? batch.BatchCode : string.Empty;
+            row.Cells["batchCode"].Value = txtBatch.Text.Trim();
             row.Cells["expDate"].Value = dtpExpiredDate.Value.ToShortDateString();
             row.Cells["qty"].Value = string.Format("{0:n0}", Convert.ToDecimal(txtQty.Text.Trim()));
             row.Cells["uomId"].Value = uom.Id;
@@ -523,7 +507,7 @@ namespace CisWindowsFormsApp
 
             // reset back the add item 
             cbProduct.SelectedValue = "0";
-            cbBatch.SelectedValue = "0";
+            txtBatch.Text = string.Empty;
             dtpExpiredDate.Value = DateTime.Today;
             txtQty.Text = "0";
             txtPrice.Text = "0";
@@ -594,7 +578,6 @@ namespace CisWindowsFormsApp
         private void cbProduct_SelectedIndexChanged(object sender, EventArgs e)
         {
             string prodId = cbProduct.SelectedValue.ToString();
-            BindComboBoxBatch(prodId);
 
             var uow = new UnitOfWork<Product>(dbContext);
             var queryResult = uow.Repository.GetById(prodId);
@@ -602,16 +585,6 @@ namespace CisWindowsFormsApp
             
             txtPrice.Text = queryResult.Price.ToString("G29");
             txtDiscount.Text = queryResult.Discount.ToString();
-        }
-
-        private void cbBatch_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var uow = new UnitOfWork<Batch>(dbContext);
-            var queryResult = uow.Repository.GetById(cbBatch.SelectedValue.ToString());
-            if (queryResult == null) return;
-            dtpExpiredDate.Value = queryResult.ExpiredDate;
-
-            txtQty.Focus();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -949,7 +922,7 @@ namespace CisWindowsFormsApp
                 CommonMessageHelper.DataNotFound(lblSalesNo.Text.Trim());
                 return;
             }
-            LoadDataBySelectedItem(queryResult);
+            LoadDataItem(queryResult);
 
         }
 
@@ -961,6 +934,16 @@ namespace CisWindowsFormsApp
         private void txtPrice_Leave(object sender, EventArgs e)
         {
             commonHelper.SetTextBoxToZeroWhenEmpty(sender);
+        }
+
+        private void txtBatch_Leave(object sender, EventArgs e)
+        {
+            var uow = new UnitOfWork<Batch>(dbContext);
+            var queryResult = uow.Repository.GetAll().Where(b => b.BatchCode.Equals(txtBatch.Text.Trim())).FirstOrDefault();
+            if (queryResult == null) return;
+            dtpExpiredDate.Value = queryResult.ExpiredDate;
+
+            txtQty.Focus();
         }
     }
 }

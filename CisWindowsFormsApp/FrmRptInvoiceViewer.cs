@@ -32,8 +32,8 @@ namespace CisWindowsFormsApp
             var compPicParam = new ReportParameter("CompPic", Properties.Settings.Default.SalesPicName + Environment.NewLine + Properties.Settings.Default.SalesPicSipaNo);
             var soIdParam = new ReportParameter("SalesOrderId", SalesOrderId);
             var compDetail = @Properties.Settings.Default.CompAddress + Environment.NewLine
-                + "Telpon " + Properties.Settings.Default.CompPhone + ", Email: "+ Properties.Settings.Default.CompEmail + Environment.NewLine
-                + "Ijin PBF: " + Properties.Settings.Default.CompPbf + Environment.NewLine 
+                + "Telepon: " + Properties.Settings.Default.CompPhone + ", Email: "+ Properties.Settings.Default.CompEmail + Environment.NewLine
+                + "PBF: " + Properties.Settings.Default.CompPbf + Environment.NewLine 
                 + "SIUP: " + Properties.Settings.Default.CompSiup + Environment.NewLine
                 + "NPWP: " + Properties.Settings.Default.CompNpwp + Environment.NewLine;
             var compDetailParam = new ReportParameter("CompDetail", compDetail);
@@ -50,9 +50,9 @@ namespace CisWindowsFormsApp
             reportViewerInvoice.SetPageSettings(
                 new PageSettings
                 {
-                    Landscape = true,
-                    PaperSize = new PaperSize("A5", 580, 830),
-                    Margins = new Margins { Top = 25, Left = 15, Right = 15, Bottom = 15 }
+                    //Landscape = true,
+                    PaperSize = new PaperSize("Cont. Form A5", 830, 580),
+                    Margins = new Margins { Top = 30, Left = 20, Right = 40, Bottom = 40 }
                 }
             );
             reportViewerInvoice.RefreshReport();

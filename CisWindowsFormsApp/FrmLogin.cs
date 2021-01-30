@@ -112,7 +112,7 @@ namespace CisWindowsFormsApp
         private void FrmLogin_Load(object sender, EventArgs e)
         {
             uowCompInfo = new UnitOfWork<CompanyInfo>(dbContext);
-
+            lblWebsite.Text = Properties.Settings.Default.CompWebsite;
         }
     }
 }

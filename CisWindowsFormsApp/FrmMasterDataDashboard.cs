@@ -183,6 +183,7 @@ namespace CisWindowsFormsApp
             childForm.BringToFront();
             childForm.Show();
             lblMasterDataChildHeader.Text = childForm.Text;
+            this.pnlLogo.Visible = false;
         }
 
         private void FrmMasterDataDashboard_Load(object sender, EventArgs e)

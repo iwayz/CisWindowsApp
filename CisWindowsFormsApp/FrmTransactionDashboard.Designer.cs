@@ -37,9 +37,13 @@
             this.lblTransactionChildHeader = new System.Windows.Forms.Label();
             this.pnlTransactionChildren = new System.Windows.Forms.Panel();
             this.pnlSeparator = new System.Windows.Forms.Panel();
+            this.pnlLogo = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.pnlLogo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -132,12 +136,33 @@
             this.pnlSeparator.Size = new System.Drawing.Size(1064, 2);
             this.pnlSeparator.TabIndex = 2;
             // 
+            // pnlLogo
+            // 
+            this.pnlLogo.Controls.Add(this.pictureBox1);
+            this.pnlLogo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlLogo.Location = new System.Drawing.Point(0, 65);
+            this.pnlLogo.Name = "pnlLogo";
+            this.pnlLogo.Size = new System.Drawing.Size(1064, 262);
+            this.pnlLogo.TabIndex = 3;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(0, 75);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(1064, 187);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // FrmTransactionDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1064, 602);
+            this.Controls.Add(this.pnlLogo);
             this.Controls.Add(this.pnlSeparator);
             this.Controls.Add(this.pnlTransactionChildren);
             this.Controls.Add(this.panel2);
@@ -148,6 +173,8 @@
             this.panel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            this.pnlLogo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -162,5 +189,7 @@
         private System.Windows.Forms.Button btnSales;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel pnlSeparator;
+        private System.Windows.Forms.Panel pnlLogo;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

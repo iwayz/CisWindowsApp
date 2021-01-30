@@ -44,6 +44,7 @@ namespace CisWindowsFormsApp
             childForm.BringToFront();
             childForm.Show();
             lblTransactionChildHeader.Text = childForm.Text;
+            this.pnlLogo.Visible = false;
         }
     }
 }
