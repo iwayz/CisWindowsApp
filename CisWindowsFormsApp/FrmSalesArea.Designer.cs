@@ -46,8 +46,14 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
+            this.cbRepresentative = new System.Windows.Forms.ComboBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.pnlNote = new System.Windows.Forms.Panel();
+            this.lblNoteDetail = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesArea)).BeginInit();
             this.panel1.SuspendLayout();
+            this.pnlNote.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtModifiedAt
@@ -121,7 +127,7 @@
             this.txtDescription.Location = new System.Drawing.Point(22, 100);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(269, 70);
+            this.txtDescription.Size = new System.Drawing.Size(269, 58);
             this.txtDescription.TabIndex = 2;
             // 
             // label4
@@ -143,7 +149,7 @@
             this.btnReload.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnReload.ForeColor = System.Drawing.Color.White;
             this.btnReload.Image = ((System.Drawing.Image)(resources.GetObject("btnReload.Image")));
-            this.btnReload.Location = new System.Drawing.Point(177, 204);
+            this.btnReload.Location = new System.Drawing.Point(178, 231);
             this.btnReload.Name = "btnReload";
             this.btnReload.Padding = new System.Windows.Forms.Padding(0, 17, 0, 0);
             this.btnReload.Size = new System.Drawing.Size(71, 109);
@@ -161,7 +167,7 @@
             this.btnDel.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnDel.ForeColor = System.Drawing.Color.White;
             this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
-            this.btnDel.Location = new System.Drawing.Point(101, 261);
+            this.btnDel.Location = new System.Drawing.Point(102, 288);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(71, 52);
             this.btnDel.TabIndex = 6;
@@ -178,7 +184,7 @@
             this.btnSave.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(25, 261);
+            this.btnSave.Location = new System.Drawing.Point(26, 288);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(71, 52);
             this.btnSave.TabIndex = 7;
@@ -195,7 +201,7 @@
             this.btnAdd.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnAdd.ForeColor = System.Drawing.Color.White;
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(101, 204);
+            this.btnAdd.Location = new System.Drawing.Point(102, 231);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(71, 52);
             this.btnAdd.TabIndex = 4;
@@ -212,7 +218,7 @@
             this.btnClear.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnClear.ForeColor = System.Drawing.Color.White;
             this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
-            this.btnClear.Location = new System.Drawing.Point(25, 204);
+            this.btnClear.Location = new System.Drawing.Point(26, 231);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(71, 52);
             this.btnClear.TabIndex = 3;
@@ -228,7 +234,7 @@
             this.dgvSalesArea.Location = new System.Drawing.Point(303, 85);
             this.dgvSalesArea.Margin = new System.Windows.Forms.Padding(9, 3, 3, 3);
             this.dgvSalesArea.Name = "dgvSalesArea";
-            this.dgvSalesArea.Size = new System.Drawing.Size(369, 228);
+            this.dgvSalesArea.Size = new System.Drawing.Size(369, 249);
             this.dgvSalesArea.TabIndex = 0;
             this.dgvSalesArea.Text = "dataGridView1";
             this.dgvSalesArea.Click += new System.EventHandler(this.dgvSalesArea_Click);
@@ -239,7 +245,7 @@
             this.panel1.Controls.Add(this.txtAreaId);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(25, 414);
+            this.panel1.Location = new System.Drawing.Point(22, 461);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(353, 72);
             this.panel1.TabIndex = 8;
@@ -272,12 +278,72 @@
             this.txtSearch.TabIndex = 38;
             this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
             // 
+            // cbRepresentative
+            // 
+            this.cbRepresentative.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbRepresentative.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cbRepresentative.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.cbRepresentative.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.cbRepresentative.FormattingEnabled = true;
+            this.cbRepresentative.Location = new System.Drawing.Point(23, 177);
+            this.cbRepresentative.Name = "cbRepresentative";
+            this.cbRepresentative.Size = new System.Drawing.Size(235, 31);
+            this.cbRepresentative.TabIndex = 41;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label29.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label29.Location = new System.Drawing.Point(23, 161);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(67, 15);
+            this.label29.TabIndex = 40;
+            this.label29.Text = "Perwakilan";
+            // 
+            // pnlNote
+            // 
+            this.pnlNote.Controls.Add(this.lblNoteDetail);
+            this.pnlNote.Controls.Add(this.label15);
+            this.pnlNote.Location = new System.Drawing.Point(303, 340);
+            this.pnlNote.Name = "pnlNote";
+            this.pnlNote.Size = new System.Drawing.Size(369, 100);
+            this.pnlNote.TabIndex = 42;
+            this.pnlNote.Visible = false;
+            // 
+            // lblNoteDetail
+            // 
+            this.lblNoteDetail.AutoSize = true;
+            this.lblNoteDetail.BackColor = System.Drawing.Color.Gold;
+            this.lblNoteDetail.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.lblNoteDetail.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblNoteDetail.Location = new System.Drawing.Point(9, 28);
+            this.lblNoteDetail.Name = "lblNoteDetail";
+            this.lblNoteDetail.Padding = new System.Windows.Forms.Padding(3);
+            this.lblNoteDetail.Size = new System.Drawing.Size(76, 21);
+            this.lblNoteDetail.TabIndex = 4;
+            this.lblNoteDetail.Text = "Note Detail";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label15.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label15.Location = new System.Drawing.Point(9, 9);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(72, 15);
+            this.label15.TabIndex = 4;
+            this.label15.Text = "PERHATIAN!";
+            // 
             // FrmSalesArea
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(684, 519);
+            this.ClientSize = new System.Drawing.Size(684, 573);
+            this.Controls.Add(this.pnlNote);
+            this.Controls.Add(this.cbRepresentative);
+            this.Controls.Add(this.label29);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.panel1);
@@ -297,6 +363,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesArea)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.pnlNote.ResumeLayout(false);
+            this.pnlNote.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -321,5 +389,10 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.ComboBox cbRepresentative;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Panel pnlNote;
+        private System.Windows.Forms.Label lblNoteDetail;
+        private System.Windows.Forms.Label label15;
     }
 }

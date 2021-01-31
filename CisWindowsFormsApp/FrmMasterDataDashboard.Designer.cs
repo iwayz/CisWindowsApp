@@ -37,6 +37,7 @@
             this.btnSalesAreas = new System.Windows.Forms.Button();
             this.btnSalesmen = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnRepresentative = new System.Windows.Forms.Button();
             this.btnTermOfPayment = new System.Windows.Forms.Button();
             this.btnUsageTypes = new System.Windows.Forms.Button();
             this.btnUOM = new System.Windows.Forms.Button();
@@ -69,7 +70,7 @@
             this.btnProducts.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.btnProducts.ForeColor = System.Drawing.Color.White;
             this.btnProducts.Image = ((System.Drawing.Image)(resources.GetObject("btnProducts.Image")));
-            this.btnProducts.Location = new System.Drawing.Point(22, 10);
+            this.btnProducts.Location = new System.Drawing.Point(12, 10);
             this.btnProducts.Name = "btnProducts";
             this.btnProducts.Size = new System.Drawing.Size(129, 30);
             this.btnProducts.TabIndex = 0;
@@ -86,7 +87,7 @@
             this.btnCustomers.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.btnCustomers.ForeColor = System.Drawing.Color.White;
             this.btnCustomers.Image = ((System.Drawing.Image)(resources.GetObject("btnCustomers.Image")));
-            this.btnCustomers.Location = new System.Drawing.Point(156, 10);
+            this.btnCustomers.Location = new System.Drawing.Point(146, 10);
             this.btnCustomers.Name = "btnCustomers";
             this.btnCustomers.Size = new System.Drawing.Size(129, 30);
             this.btnCustomers.TabIndex = 0;
@@ -103,7 +104,7 @@
             this.btnUsers.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.btnUsers.ForeColor = System.Drawing.Color.White;
             this.btnUsers.Image = ((System.Drawing.Image)(resources.GetObject("btnUsers.Image")));
-            this.btnUsers.Location = new System.Drawing.Point(290, 10);
+            this.btnUsers.Location = new System.Drawing.Point(280, 10);
             this.btnUsers.Name = "btnUsers";
             this.btnUsers.Size = new System.Drawing.Size(129, 30);
             this.btnUsers.TabIndex = 0;
@@ -120,7 +121,7 @@
             this.btnPrincipals.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.btnPrincipals.ForeColor = System.Drawing.Color.White;
             this.btnPrincipals.Image = ((System.Drawing.Image)(resources.GetObject("btnPrincipals.Image")));
-            this.btnPrincipals.Location = new System.Drawing.Point(423, 10);
+            this.btnPrincipals.Location = new System.Drawing.Point(413, 10);
             this.btnPrincipals.Name = "btnPrincipals";
             this.btnPrincipals.Size = new System.Drawing.Size(129, 30);
             this.btnPrincipals.TabIndex = 0;
@@ -137,7 +138,7 @@
             this.btnSalesAreas.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.btnSalesAreas.ForeColor = System.Drawing.Color.White;
             this.btnSalesAreas.Image = ((System.Drawing.Image)(resources.GetObject("btnSalesAreas.Image")));
-            this.btnSalesAreas.Location = new System.Drawing.Point(557, 10);
+            this.btnSalesAreas.Location = new System.Drawing.Point(547, 10);
             this.btnSalesAreas.Name = "btnSalesAreas";
             this.btnSalesAreas.Size = new System.Drawing.Size(129, 30);
             this.btnSalesAreas.TabIndex = 0;
@@ -154,7 +155,7 @@
             this.btnSalesmen.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.btnSalesmen.ForeColor = System.Drawing.Color.White;
             this.btnSalesmen.Image = ((System.Drawing.Image)(resources.GetObject("btnSalesmen.Image")));
-            this.btnSalesmen.Location = new System.Drawing.Point(691, 10);
+            this.btnSalesmen.Location = new System.Drawing.Point(681, 10);
             this.btnSalesmen.Name = "btnSalesmen";
             this.btnSalesmen.Size = new System.Drawing.Size(129, 30);
             this.btnSalesmen.TabIndex = 0;
@@ -165,6 +166,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnRepresentative);
             this.panel1.Controls.Add(this.btnTermOfPayment);
             this.panel1.Controls.Add(this.btnUsageTypes);
             this.panel1.Controls.Add(this.btnUOM);
@@ -182,8 +184,26 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(972, 89);
+            this.panel1.Size = new System.Drawing.Size(1104, 89);
             this.panel1.TabIndex = 1;
+            // 
+            // btnRepresentative
+            // 
+            this.btnRepresentative.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(125)))), ((int)(((byte)(239)))));
+            this.btnRepresentative.FlatAppearance.BorderSize = 0;
+            this.btnRepresentative.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRepresentative.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.btnRepresentative.ForeColor = System.Drawing.Color.White;
+            this.btnRepresentative.Image = ((System.Drawing.Image)(resources.GetObject("btnRepresentative.Image")));
+            this.btnRepresentative.Location = new System.Drawing.Point(950, 10);
+            this.btnRepresentative.Name = "btnRepresentative";
+            this.btnRepresentative.Size = new System.Drawing.Size(129, 30);
+            this.btnRepresentative.TabIndex = 2;
+            this.btnRepresentative.Text = "Perwakilan";
+            this.btnRepresentative.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTipButton.SetToolTip(this.btnRepresentative, "Jenis Pemakaian");
+            this.btnRepresentative.UseVisualStyleBackColor = false;
+            this.btnRepresentative.Click += new System.EventHandler(this.btnRepresentative_Click);
             // 
             // btnTermOfPayment
             // 
@@ -193,7 +213,7 @@
             this.btnTermOfPayment.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTermOfPayment.ForeColor = System.Drawing.Color.White;
             this.btnTermOfPayment.Image = ((System.Drawing.Image)(resources.GetObject("btnTermOfPayment.Image")));
-            this.btnTermOfPayment.Location = new System.Drawing.Point(825, 46);
+            this.btnTermOfPayment.Location = new System.Drawing.Point(815, 46);
             this.btnTermOfPayment.Name = "btnTermOfPayment";
             this.btnTermOfPayment.Size = new System.Drawing.Size(129, 30);
             this.btnTermOfPayment.TabIndex = 1;
@@ -211,7 +231,7 @@
             this.btnUsageTypes.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.btnUsageTypes.ForeColor = System.Drawing.Color.White;
             this.btnUsageTypes.Image = ((System.Drawing.Image)(resources.GetObject("btnUsageTypes.Image")));
-            this.btnUsageTypes.Location = new System.Drawing.Point(290, 46);
+            this.btnUsageTypes.Location = new System.Drawing.Point(280, 46);
             this.btnUsageTypes.Name = "btnUsageTypes";
             this.btnUsageTypes.Size = new System.Drawing.Size(129, 30);
             this.btnUsageTypes.TabIndex = 0;
@@ -229,7 +249,7 @@
             this.btnUOM.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.btnUOM.ForeColor = System.Drawing.Color.White;
             this.btnUOM.Image = ((System.Drawing.Image)(resources.GetObject("btnUOM.Image")));
-            this.btnUOM.Location = new System.Drawing.Point(557, 46);
+            this.btnUOM.Location = new System.Drawing.Point(547, 46);
             this.btnUOM.Name = "btnUOM";
             this.btnUOM.Size = new System.Drawing.Size(129, 30);
             this.btnUOM.TabIndex = 0;
@@ -247,7 +267,7 @@
             this.btnMedCats.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.btnMedCats.ForeColor = System.Drawing.Color.White;
             this.btnMedCats.Image = ((System.Drawing.Image)(resources.GetObject("btnMedCats.Image")));
-            this.btnMedCats.Location = new System.Drawing.Point(156, 46);
+            this.btnMedCats.Location = new System.Drawing.Point(146, 46);
             this.btnMedCats.Name = "btnMedCats";
             this.btnMedCats.Size = new System.Drawing.Size(129, 30);
             this.btnMedCats.TabIndex = 0;
@@ -265,7 +285,7 @@
             this.btnOutletTypes.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.btnOutletTypes.ForeColor = System.Drawing.Color.White;
             this.btnOutletTypes.Image = ((System.Drawing.Image)(resources.GetObject("btnOutletTypes.Image")));
-            this.btnOutletTypes.Location = new System.Drawing.Point(21, 46);
+            this.btnOutletTypes.Location = new System.Drawing.Point(11, 46);
             this.btnOutletTypes.Name = "btnOutletTypes";
             this.btnOutletTypes.Size = new System.Drawing.Size(129, 30);
             this.btnOutletTypes.TabIndex = 0;
@@ -282,7 +302,7 @@
             this.btnBatches.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.btnBatches.ForeColor = System.Drawing.Color.White;
             this.btnBatches.Image = ((System.Drawing.Image)(resources.GetObject("btnBatches.Image")));
-            this.btnBatches.Location = new System.Drawing.Point(825, 10);
+            this.btnBatches.Location = new System.Drawing.Point(815, 10);
             this.btnBatches.Name = "btnBatches";
             this.btnBatches.Size = new System.Drawing.Size(129, 30);
             this.btnBatches.TabIndex = 0;
@@ -299,7 +319,7 @@
             this.btnLocations.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.btnLocations.ForeColor = System.Drawing.Color.White;
             this.btnLocations.Image = ((System.Drawing.Image)(resources.GetObject("btnLocations.Image")));
-            this.btnLocations.Location = new System.Drawing.Point(691, 46);
+            this.btnLocations.Location = new System.Drawing.Point(681, 46);
             this.btnLocations.Name = "btnLocations";
             this.btnLocations.Size = new System.Drawing.Size(129, 30);
             this.btnLocations.TabIndex = 0;
@@ -316,7 +336,7 @@
             this.btnRoles.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.btnRoles.ForeColor = System.Drawing.Color.White;
             this.btnRoles.Image = ((System.Drawing.Image)(resources.GetObject("btnRoles.Image")));
-            this.btnRoles.Location = new System.Drawing.Point(423, 46);
+            this.btnRoles.Location = new System.Drawing.Point(413, 46);
             this.btnRoles.Name = "btnRoles";
             this.btnRoles.Size = new System.Drawing.Size(129, 30);
             this.btnRoles.TabIndex = 0;
@@ -331,7 +351,7 @@
             this.pnlChildHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlChildHeader.Location = new System.Drawing.Point(0, 89);
             this.pnlChildHeader.Name = "pnlChildHeader";
-            this.pnlChildHeader.Size = new System.Drawing.Size(972, 29);
+            this.pnlChildHeader.Size = new System.Drawing.Size(1104, 29);
             this.pnlChildHeader.TabIndex = 2;
             // 
             // panel3
@@ -359,7 +379,7 @@
             this.pnlHeaderSeparator.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHeaderSeparator.Location = new System.Drawing.Point(0, 118);
             this.pnlHeaderSeparator.Name = "pnlHeaderSeparator";
-            this.pnlHeaderSeparator.Size = new System.Drawing.Size(972, 2);
+            this.pnlHeaderSeparator.Size = new System.Drawing.Size(1104, 2);
             this.pnlHeaderSeparator.TabIndex = 3;
             // 
             // pnlMasterDataChildren
@@ -369,7 +389,7 @@
             this.pnlMasterDataChildren.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMasterDataChildren.Location = new System.Drawing.Point(0, 120);
             this.pnlMasterDataChildren.Name = "pnlMasterDataChildren";
-            this.pnlMasterDataChildren.Size = new System.Drawing.Size(972, 438);
+            this.pnlMasterDataChildren.Size = new System.Drawing.Size(1104, 438);
             this.pnlMasterDataChildren.TabIndex = 4;
             // 
             // pnlLogo
@@ -378,7 +398,7 @@
             this.pnlLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlLogo.Location = new System.Drawing.Point(0, 0);
             this.pnlLogo.Name = "pnlLogo";
-            this.pnlLogo.Size = new System.Drawing.Size(972, 262);
+            this.pnlLogo.Size = new System.Drawing.Size(1104, 262);
             this.pnlLogo.TabIndex = 0;
             // 
             // pictureBox1
@@ -387,7 +407,7 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 75);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(972, 187);
+            this.pictureBox1.Size = new System.Drawing.Size(1104, 187);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -397,7 +417,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(972, 558);
+            this.ClientSize = new System.Drawing.Size(1104, 558);
             this.Controls.Add(this.pnlMasterDataChildren);
             this.Controls.Add(this.pnlHeaderSeparator);
             this.Controls.Add(this.pnlChildHeader);
@@ -441,5 +461,6 @@
         private System.Windows.Forms.Button btnTermOfPayment;
         private System.Windows.Forms.Panel pnlLogo;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnRepresentative;
     }
 }

@@ -202,5 +202,17 @@ namespace CisWindowsFormsApp
 
             OpenChildForm(new FrmTermOfPayment(), sender);
         }
+
+        private void btnRepresentative_Click(object sender, EventArgs e)
+        {
+            if (!(new CommonFunctionHelper().ValidateAccess((int)Constant.Permission.MasterData.Representative)))
+            {
+                CommonMessageHelper.NoAccess();
+                return;
+
+            }
+
+            OpenChildForm(new FrmRepresentative(), sender);
+        }
     }
 }

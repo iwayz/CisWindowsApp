@@ -173,6 +173,18 @@
         KH4BVdDRcEtjXscAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="btnRepresentative.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAACbSURBVDhPrdPRCYUwDIXhvrmHc/jgFu7hWC7hEu5Tk+a/1DaXEsQP+pCTpIjQ9Jmc8yVHHdSH
+        lUWfXVo3aKiT+rSycJnWDfIw1iryMNYq8jDWKvIw1irJVjnPH6c00/OkMytrLWlMZQTE/ddNxJ40Z5sx
+        xP0FM7EnzcVmhhbGPWluNjO0Me5Jc7eZoZ3xj8nNv8cU8fcxvbggpRu+wEdboH/3rgAAAABJRU5ErkJg
+        gg==
+</value>
+  </data>
+  <metadata name="toolTipButton.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <data name="btnTermOfPayment.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAI9JREFUOE/l
@@ -181,9 +193,6 @@
         wv0nPKD5D6D8Cqedizj3A9niaHi4NoXVAAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="toolTipButton.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <data name="btnUsageTypes.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAJRJREFUOE/F

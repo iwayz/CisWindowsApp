@@ -21,6 +21,7 @@ namespace CisWindowsFormsApp
         UnitOfWork<Customer> uowCus;
         UnitOfWork<OutletType> uowOt;
         UnitOfWork<SalesArea> uowSa;
+        UnitOfWork<Representative> uowRe;
         string fileLoc = string.Empty;
 
         public FrmInvoiceRecap()
@@ -36,6 +37,7 @@ namespace CisWindowsFormsApp
             uowCus= new UnitOfWork<Customer>(dbContext);
             uowOt= new UnitOfWork<OutletType>(dbContext);
             uowSa = new UnitOfWork<SalesArea>(dbContext);
+            uowRe = new UnitOfWork<Representative>(dbContext);
         }
 
         private void btnExport_Click(object sender, EventArgs e)
@@ -51,7 +53,9 @@ namespace CisWindowsFormsApp
 
         private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            var salesArea = uowSa.Repository.GetAll();
+            var representative = uowRe.Repository.GetAll();
+            var salesArea = uowSa.Repository.GetAll()
+                .Join(representative, sa => sa.RepresentativeId, re => re.Id, (sa, re) => new { sa, re }).Select(res => res);
             var customer = uowCus.Repository.GetAll();
             var outlet = uowOt.Repository.GetAll();
             var cusDet = customer.Join(outlet, c => c.OutletTypeId, o => o.Id, (c, o) => new { c, o })
@@ -65,7 +69,7 @@ namespace CisWindowsFormsApp
                     res.o.Description
                 }).ToList();
 
-            var salesOrder = uowSo.Repository.GetAll();
+            var salesOrder = uowSo.Repository.GetAll().Where(s => s.SalesDate >= dtpFrom.Value && s.SalesDate <= dtpTo.Value);
             var salesOrderItem = uowSoi.Repository.GetAll();
             var salesOrderDetail = salesOrderItem
                 .Join(salesOrder, soi => soi.SalesOrderId, so => so.Id, (soi, so) => new { soi, so })
@@ -99,7 +103,7 @@ namespace CisWindowsFormsApp
                 .ToList();
 
             var recapDetail = salesOrderDetail.Join(cusDet, sod => sod.CustomerId, cusd => cusd.Id, (sod, cusd) => new { sod, cusd })
-                .Join(salesArea, sodcusd => sodcusd.sod.SalesAreaId, sa => sa.Id, (sodcusd, sa) => new { sodcusd, sa })
+                .Join(salesArea, sodcusd => sodcusd.sod.SalesAreaId, sa => sa.sa.Id, (sodcusd, sa) => new { sodcusd, sa })
                 .ToList().OrderBy(res => res.sodcusd.sod.SalesNo);
 
             Excel.Application xlApp = new Excel.Application();
@@ -151,8 +155,8 @@ namespace CisWindowsFormsApp
                 xlWorkSheet.Cells[rowNum, 6] = item.sodcusd.sod.CustomerAddress;
                 xlWorkSheet.Cells[rowNum, 7] = item.sodcusd.sod.CustomerDistrict;
                 xlWorkSheet.Cells[rowNum, 8] = item.sodcusd.sod.SalesmanCode;
-                xlWorkSheet.Cells[rowNum, 9] = item.sa.Description;
-                xlWorkSheet.Cells[rowNum, 10] = item.sodcusd.sod.CustomerProvince;
+                xlWorkSheet.Cells[rowNum, 9] = item.sa.sa.Description;
+                xlWorkSheet.Cells[rowNum, 10] = item.sa.re.Description;  
                 xlWorkSheet.Cells[rowNum, 11] = item.sodcusd.cusd.Description;
                 xlWorkSheet.Cells[rowNum, 12] = item.sodcusd.sod.ProductCode;
                 xlWorkSheet.Cells[rowNum, 13] = item.sodcusd.sod.ProductName;

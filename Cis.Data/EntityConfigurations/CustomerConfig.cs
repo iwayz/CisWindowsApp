@@ -60,6 +60,7 @@ namespace Cis.Data
                 .IsRequired();
 
             Property(e => e.SalesAreaId)
+                .HasMaxLength(36)
                 .IsRequired();
 
             HasIndex(e => e.CustomerCode)

@@ -547,20 +547,23 @@ namespace CisWindowsFormsApp
             var top = cbTermOfPayment.Text.Trim();
             switch (top)
             {
-                case "NET-7":
+                case "NET-07":
                     dtpDueDate.Value = dtpSalesOrderDate.Value.AddDays(7);
                     break;
-                case "NET-10":
-                    dtpDueDate.Value = dtpSalesOrderDate.Value.AddDays(10);
+                case "NET-14":
+                    dtpDueDate.Value = dtpSalesOrderDate.Value.AddDays(14);
+                    break;
+                case "NET-21":
+                    dtpDueDate.Value = dtpSalesOrderDate.Value.AddDays(21);
                     break;
                 case "NET-30":
                     dtpDueDate.Value = dtpSalesOrderDate.Value.AddDays(30);
                     break;
+                case "NET-45":
+                    dtpDueDate.Value = dtpSalesOrderDate.Value.AddDays(45);
+                    break;
                 case "NET-60":
                     dtpDueDate.Value = dtpSalesOrderDate.Value.AddDays(60);
-                    break;
-                case "NET-90":
-                    dtpDueDate.Value = dtpSalesOrderDate.Value.AddDays(90);
                     break;
                 case "EOM":
                     var year = dtpSalesOrderDate.Value.Year;

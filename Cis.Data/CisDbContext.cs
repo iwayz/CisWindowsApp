@@ -22,6 +22,7 @@ namespace Cis.Data
         public DbSet<PermissionRole> PermissionRoles { get; set; }
         public DbSet<Principal> Principals { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Representative> Representatives { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<SalesArea> SalesAreas { get; set; }
         public DbSet<Salesman> Salesmen { get; set; }
@@ -164,8 +165,15 @@ namespace Cis.Data
 
             modelBuilder.Entity<SalesOrderItem>()
                 .HasRequired(oi => oi.UnitOfMeasurement)
-                .WithMany(u => u.SalesOrderItems)
+                .WithMany(o => o.SalesOrderItems)
                 .HasForeignKey(oi => oi.UomId)
+                .WillCascadeOnDelete(false);
+
+            // Sales Area to Representative
+            modelBuilder.Entity<SalesArea>()
+                .HasRequired(sa => sa.Representative)
+                .WithMany(r => r.SalesAreas)
+                .HasForeignKey(sa => sa.RepresentativeId)
                 .WillCascadeOnDelete(false);
         }
     }

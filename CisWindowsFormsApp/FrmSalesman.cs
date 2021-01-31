@@ -317,7 +317,9 @@ namespace CisWindowsFormsApp
 
         private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            e.Handled = (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+                && e.KeyChar != '/' && e.KeyChar != '(' && e.KeyChar != ')'
+                && e.KeyChar != '-' && e.KeyChar != '+' && e.KeyChar != ' ';
         }
     }
 }

@@ -18,6 +18,7 @@ namespace CisWindowsFormsApp
         UnitOfWork<Product> uowProduct;
         bool isAdd = true;
         List<int> foundIndices = new List<int>();
+        CommonFunctionHelper commonHelper = new CommonFunctionHelper();
 
         public FrmProduct()
         {
@@ -104,7 +105,7 @@ namespace CisWindowsFormsApp
                 {
                     ProductCode = txtProductCode.Text.Trim(),
                     ProductName = txtProductName.Text.Trim(),
-                    Price = Convert.ToDecimal(txtPrice.Text.Trim()),
+                    Price = decimal.Parse(txtPrice.Text.Trim(), System.Globalization.NumberStyles.Currency),
                     PriceDecreeDate = DateTime.Parse(dtpDecreeDate.Value.ToString("yyyy-MM-dd")),
                     Discount = float.Parse(txtDiscount.Text.Trim()),
                     RestockLevel = Convert.ToInt32(txtRestock.Text.Trim()),
@@ -141,7 +142,9 @@ namespace CisWindowsFormsApp
                 var prodToUpdate = uowProduct.Repository.GetById(txtProductId.Text.Trim());
                 prodToUpdate.ProductCode = txtProductCode.Text.Trim();
                 prodToUpdate.ProductName = txtProductName.Text.Trim();
-                prodToUpdate.Price = Convert.ToDecimal(txtPrice.Text.Trim());
+                //Price = decimal.Parse(dgvSalesOrderItem.Rows[i].Cells["price"].Value.ToString(), System.Globalization.NumberStyles.Currency),
+                //prodToUpdate.Price = Convert.ToDecimal(txtPrice.Text.Trim());
+                prodToUpdate.Price = decimal.Parse(txtPrice.Text.Trim(), System.Globalization.NumberStyles.Currency);
                 prodToUpdate.PriceDecreeDate = DateTime.Parse(dtpDecreeDate.Value.ToString("yyyy-MM-dd"));
                 prodToUpdate.Discount = float.Parse(txtDiscount.Text.Trim());
                 prodToUpdate.RestockLevel = Convert.ToInt32(txtRestock.Text.Trim());
@@ -221,7 +224,7 @@ namespace CisWindowsFormsApp
             var currentRow = dgvProduct.CurrentRow;
             txtProductCode.Text = currentRow.Cells[nameof(Product.ProductCode)].Value.ToString();
             txtProductName.Text = currentRow.Cells[nameof(Product.ProductName)].Value.ToString();
-            txtPrice.Text = currentRow.Cells[nameof(Product.Price)].Value.ToString();
+            txtPrice.Text = string.Format("{0:n0}", Convert.ToDecimal(currentRow.Cells[nameof(Product.Price)].Value.ToString()));
             dtpDecreeDate.Value = DateTime.Parse(currentRow.Cells[nameof(Product.PriceDecreeDate)].Value.ToString());
             txtDiscount.Text = currentRow.Cells[nameof(Product.Discount)].Value.ToString();
             txtRestock.Text = currentRow.Cells[nameof(Product.RestockLevel)].Value.ToString();
@@ -443,6 +446,16 @@ namespace CisWindowsFormsApp
             }
         }
 
-        
+        private void txtPrice_Enter(object sender, EventArgs e)
+        {
+            txtPrice.Text = decimal.Parse(txtPrice.Text.Trim(), System.Globalization.NumberStyles.Currency).ToString();
+        }
+
+        private void txtPrice_Leave(object sender, EventArgs e)
+        {
+            commonHelper.SetTextBoxToZeroWhenEmpty(sender);
+
+            txtPrice.Text = string.Format("{0:n0}", Convert.ToDecimal(txtPrice.Text));
+        }
     }
 }

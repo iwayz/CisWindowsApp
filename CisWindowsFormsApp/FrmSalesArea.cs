@@ -30,10 +30,12 @@ namespace CisWindowsFormsApp
             uowArea = new UnitOfWork<SalesArea>(dbContext);
 
             BindAreaGridView();
+            BindComboBoxSalesArea();
             SetUIGridView();
 
             isAdd = true;
             SetUIButtonGroup();
+            CheckSourceRefData();
 
             txtAreaCode.Focus();
         }
@@ -47,7 +49,8 @@ namespace CisWindowsFormsApp
         private void btnClear_Click(object sender, EventArgs e)
         {
             isAdd = true;
-            SetUIButtonGroup(); 
+            SetUIButtonGroup();
+            BindComboBoxSalesArea();
             txtAreaCode.Text = string.Empty;
             txtDescription.Text = string.Empty;
             txtAreaCode.Focus();
@@ -67,7 +70,10 @@ namespace CisWindowsFormsApp
                 {
                     AreaCode = txtAreaCode.Text.Trim(),
                     Description = txtDescription.Text.Trim(),
-                     					 // Audit Fields 					CreatedBy = Properties.Settings.Default.CurrentUserId,
+                    RepresentativeId = cbRepresentative.SelectedValue.ToString(),
+
+                    // Audit Fields 
+                    CreatedBy = Properties.Settings.Default.CurrentUserId,
                     CreatedAt = DateTime.Now,
                     ModifiedBy = Properties.Settings.Default.CurrentUserId,
                     ModifiedAt = DateTime.Now
@@ -154,6 +160,7 @@ namespace CisWindowsFormsApp
                 var areaToUpdate = uowArea.Repository.GetById(txtAreaId.Text.Trim());
                 areaToUpdate.AreaCode = txtAreaCode.Text.Trim();
                 areaToUpdate.Description = txtDescription.Text.Trim();
+                areaToUpdate.RepresentativeId = cbRepresentative.SelectedValue.ToString();
                 areaToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUserId;
                 areaToUpdate.ModifiedAt = DateTime.Now;
 
@@ -162,6 +169,26 @@ namespace CisWindowsFormsApp
                 btnReload.PerformClick();
                 CommonMessageHelper.DataSavedSuccessfully();
             }
+        }
+
+        private void BindComboBoxSalesArea()
+        {
+            var uow = new UnitOfWork<Representative>(dbContext);
+            var representative = uow.Repository.GetAll().OrderBy(m => m.RepresentativeCode);
+
+            AutoCompleteStringCollection autoCompleteCollection = new AutoCompleteStringCollection();
+            Dictionary<string, string> dsRepresentative = new Dictionary<string, string>();
+            dsRepresentative.Add("0", "--Pilih--");
+            foreach (var repre in representative)
+            {
+                dsRepresentative.Add(repre.Id, repre.RepresentativeCode + " - " + repre.Description);
+                autoCompleteCollection.Add(repre.RepresentativeCode + " - " + repre.Description);
+            }
+
+            cbRepresentative.DataSource = new BindingSource(dsRepresentative, null);
+            cbRepresentative.DisplayMember = "Value";
+            cbRepresentative.ValueMember = "Key";
+            cbRepresentative.AutoCompleteCustomSource = autoCompleteCollection;
         }
 
         private void BindAreaGridView()
@@ -173,6 +200,7 @@ namespace CisWindowsFormsApp
                 area.Id,
                 area.AreaCode,
                 area.Description,
+                area.RepresentativeId,
                 area.ModifiedAt
             });
 
@@ -184,8 +212,11 @@ namespace CisWindowsFormsApp
             dgvSalesArea.Columns[nameof(SalesArea.AreaCode)].HeaderText = "KODE AREA";
             dgvSalesArea.Columns[nameof(SalesArea.Description)].HeaderText = "KETERANGAN";
             dgvSalesArea.Columns[nameof(SalesArea.Description)].Width = 250;
+
             dgvSalesArea.Columns[nameof(SalesArea.Id)].Visible = false;
             dgvSalesArea.Columns[nameof(SalesArea.ModifiedAt)].Visible = false;
+            dgvSalesArea.Columns[nameof(SalesArea.RepresentativeId)].Visible = false;
+
         }
 
         private void SetUIbySelectedGridItem()
@@ -193,6 +224,7 @@ namespace CisWindowsFormsApp
             var currentRow = dgvSalesArea.CurrentRow;
             txtAreaCode.Text = currentRow.Cells[nameof(SalesArea.AreaCode)].Value.ToString();
             txtDescription.Text = currentRow.Cells[nameof(SalesArea.Description)].Value.ToString();
+            cbRepresentative.SelectedValue = currentRow.Cells[nameof(SalesArea.RepresentativeId)].Value.ToString();
 
             // hidden fields
             txtAreaId.Text = currentRow.Cells[nameof(SalesArea.Id)].Value.ToString();
@@ -207,6 +239,12 @@ namespace CisWindowsFormsApp
                 CommonMessageHelper.DataCannotBeEmpty("Kode Area dan Keterangan");
                 return false;
 
+            }
+
+            if (cbRepresentative.Items.Count <= 1)
+            {
+                CommonMessageHelper.ReferredDataNotSet("Perwakilan");
+                return false;
             }
             return true;
         }
@@ -236,6 +274,15 @@ namespace CisWindowsFormsApp
                 e.Handled = true;
                 btnSearch.PerformClick();
             }
+        }
+
+        private void CheckSourceRefData()
+        {
+            List<string> refData = new List<string>();
+            if (cbRepresentative.Items.Count <= 1) refData.Add("Perwakilan");
+
+            lblNoteDetail.Text = "Data referensi (" + string.Join(", ", refData) + ") belum tersedia. ";
+            if (refData.Count > 0) pnlNote.Visible = true;
         }
     }
 }

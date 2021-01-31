@@ -30,9 +30,9 @@ namespace CisWindowsFormsApp
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmInvoiceRecap));
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpFrom = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dtpTo = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.btnExport = new System.Windows.Forms.Button();
             this.pbExport = new System.Windows.Forms.ProgressBar();
@@ -43,13 +43,13 @@ namespace CisWindowsFormsApp
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dateTimePicker1
+            // dtpFrom
             // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Calibri", 12F);
-            this.dateTimePicker1.Location = new System.Drawing.Point(12, 30);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(156, 27);
-            this.dateTimePicker1.TabIndex = 0;
+            this.dtpFrom.Font = new System.Drawing.Font("Calibri", 12F);
+            this.dtpFrom.Location = new System.Drawing.Point(12, 30);
+            this.dtpFrom.Name = "dtpFrom";
+            this.dtpFrom.Size = new System.Drawing.Size(156, 27);
+            this.dtpFrom.TabIndex = 0;
             // 
             // label1
             // 
@@ -61,13 +61,13 @@ namespace CisWindowsFormsApp
             this.label1.TabIndex = 1;
             this.label1.Text = "Tanggal Awal";
             // 
-            // dateTimePicker2
+            // dtpTo
             // 
-            this.dateTimePicker2.Font = new System.Drawing.Font("Calibri", 12F);
-            this.dateTimePicker2.Location = new System.Drawing.Point(190, 30);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(156, 27);
-            this.dateTimePicker2.TabIndex = 0;
+            this.dtpTo.Font = new System.Drawing.Font("Calibri", 12F);
+            this.dtpTo.Location = new System.Drawing.Point(190, 30);
+            this.dtpTo.Name = "dtpTo";
+            this.dtpTo.Size = new System.Drawing.Size(156, 27);
+            this.dtpTo.TabIndex = 0;
             // 
             // label2
             // 
@@ -112,8 +112,8 @@ namespace CisWindowsFormsApp
             // 
             // pnlDateRange
             // 
-            this.pnlDateRange.Controls.Add(this.dateTimePicker1);
-            this.pnlDateRange.Controls.Add(this.dateTimePicker2);
+            this.pnlDateRange.Controls.Add(this.dtpFrom);
+            this.pnlDateRange.Controls.Add(this.dtpTo);
             this.pnlDateRange.Controls.Add(this.btnExport);
             this.pnlDateRange.Controls.Add(this.label1);
             this.pnlDateRange.Controls.Add(this.label2);
@@ -158,9 +158,9 @@ namespace CisWindowsFormsApp
 
         #endregion
 
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpFrom;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dtpTo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.ProgressBar pbExport;
