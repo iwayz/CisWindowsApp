@@ -548,6 +548,7 @@
             this.Controls.Add(this.txtProductName);
             this.Controls.Add(this.txtProductCode);
             this.Controls.Add(this.dgvProduct);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmProduct";
             this.Text = "PRODUK";
             this.Load += new System.EventHandler(this.FrmProduct_Load);

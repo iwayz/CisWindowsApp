@@ -105,7 +105,7 @@
             this.txtAreaCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtAreaCode.Location = new System.Drawing.Point(22, 50);
             this.txtAreaCode.Name = "txtAreaCode";
-            this.txtAreaCode.Size = new System.Drawing.Size(195, 31);
+            this.txtAreaCode.Size = new System.Drawing.Size(151, 31);
             this.txtAreaCode.TabIndex = 1;
             // 
             // label3
@@ -305,9 +305,9 @@
             // 
             this.pnlNote.Controls.Add(this.lblNoteDetail);
             this.pnlNote.Controls.Add(this.label15);
-            this.pnlNote.Location = new System.Drawing.Point(303, 340);
+            this.pnlNote.Location = new System.Drawing.Point(22, 346);
             this.pnlNote.Name = "pnlNote";
-            this.pnlNote.Size = new System.Drawing.Size(369, 100);
+            this.pnlNote.Size = new System.Drawing.Size(650, 94);
             this.pnlNote.TabIndex = 42;
             this.pnlNote.Visible = false;
             // 
@@ -357,6 +357,7 @@
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtAreaCode);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmSalesArea";
             this.Text = "SALES AREA";
             this.Load += new System.EventHandler(this.FrmSalesArea_Load);

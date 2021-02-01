@@ -392,6 +392,7 @@
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.dgvRole);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmRole";
             this.Text = "ROLE";
             this.Load += new System.EventHandler(this.FrmRole_Load);

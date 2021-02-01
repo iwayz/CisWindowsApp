@@ -268,7 +268,7 @@
             this.txtRepresentativeCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtRepresentativeCode.Location = new System.Drawing.Point(22, 38);
             this.txtRepresentativeCode.Name = "txtRepresentativeCode";
-            this.txtRepresentativeCode.Size = new System.Drawing.Size(183, 31);
+            this.txtRepresentativeCode.Size = new System.Drawing.Size(101, 31);
             this.txtRepresentativeCode.TabIndex = 1;
             // 
             // FrmRepresentative
@@ -290,6 +290,7 @@
             this.Controls.Add(this.btnReload);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtRepresentativeCode);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmRepresentative";
             this.Text = "PERWAKILAN";
             this.Load += new System.EventHandler(this.FrmRepresentative_Load);

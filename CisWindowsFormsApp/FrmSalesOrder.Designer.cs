@@ -1194,6 +1194,7 @@
             this.Controls.Add(this.gbShippingAddress);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.txtSalesNo);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmSalesOrder";
             this.Text = "PENJUALAN";
             this.Load += new System.EventHandler(this.FrmSalesOrder_Load);

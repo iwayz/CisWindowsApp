@@ -408,6 +408,7 @@
             this.Controls.Add(this.txtBatchCode);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtQuantity);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmBatch";
             this.Text = "BATCH";
             this.Load += new System.EventHandler(this.FrmBatch_Load);

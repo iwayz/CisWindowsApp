@@ -98,6 +98,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label30 = new System.Windows.Forms.Label();
             this.txtPhone = new System.Windows.Forms.TextBox();
+            this.txtCustomerCode = new System.Windows.Forms.TextBox();
+            this.label31 = new System.Windows.Forms.Label();
             this.cbSalesArea = new System.Windows.Forms.ComboBox();
             this.cbOutletType = new System.Windows.Forms.ComboBox();
             this.label29 = new System.Windows.Forms.Label();
@@ -108,8 +110,6 @@
             this.label15 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.label31 = new System.Windows.Forms.Label();
-            this.txtCustomerCode = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
             this.pnlHiddenFields.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -927,6 +927,27 @@
             this.txtPhone.TabIndex = 7;
             this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
             // 
+            // txtCustomerCode
+            // 
+            this.txtCustomerCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCustomerCode.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.txtCustomerCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtCustomerCode.Location = new System.Drawing.Point(14, 32);
+            this.txtCustomerCode.Name = "txtCustomerCode";
+            this.txtCustomerCode.Size = new System.Drawing.Size(170, 31);
+            this.txtCustomerCode.TabIndex = 1;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label31.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label31.Location = new System.Drawing.Point(14, 16);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(93, 15);
+            this.label31.TabIndex = 4;
+            this.label31.Text = "Kode Pelanggan";
+            // 
             // cbSalesArea
             // 
             this.cbSalesArea.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
@@ -1046,27 +1067,6 @@
             this.txtSearch.TabIndex = 38;
             this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
             // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label31.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label31.Location = new System.Drawing.Point(14, 16);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(93, 15);
-            this.label31.TabIndex = 4;
-            this.label31.Text = "Kode Pelanggan";
-            // 
-            // txtCustomerCode
-            // 
-            this.txtCustomerCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCustomerCode.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.txtCustomerCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtCustomerCode.Location = new System.Drawing.Point(14, 32);
-            this.txtCustomerCode.Name = "txtCustomerCode";
-            this.txtCustomerCode.Size = new System.Drawing.Size(283, 31);
-            this.txtCustomerCode.TabIndex = 1;
-            // 
             // FrmCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1082,6 +1082,7 @@
             this.Controls.Add(this.dgvCustomer);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.textBox13);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmCustomer";
             this.Text = "PELANGGAN";
             this.Load += new System.EventHandler(this.FrmCustomer_Load);

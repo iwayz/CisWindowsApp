@@ -241,7 +241,7 @@
             this.txtUsageTypeCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtUsageTypeCode.Location = new System.Drawing.Point(26, 40);
             this.txtUsageTypeCode.Name = "txtUsageTypeCode";
-            this.txtUsageTypeCode.Size = new System.Drawing.Size(191, 31);
+            this.txtUsageTypeCode.Size = new System.Drawing.Size(97, 31);
             this.txtUsageTypeCode.TabIndex = 1;
             // 
             // btnSearch
@@ -290,6 +290,7 @@
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.dgvUsageType);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmUsageType";
             this.Text = "JENIS PEMAKAIAN";
             this.Load += new System.EventHandler(this.FrmUsageType_Load);

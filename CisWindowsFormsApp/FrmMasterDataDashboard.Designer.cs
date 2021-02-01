@@ -422,6 +422,7 @@
             this.Controls.Add(this.pnlHeaderSeparator);
             this.Controls.Add(this.pnlChildHeader);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmMasterDataDashboard";
             this.Text = "MASTER DATA";
             this.Load += new System.EventHandler(this.FrmMasterDataDashboard_Load);

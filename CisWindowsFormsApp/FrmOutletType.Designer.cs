@@ -230,7 +230,7 @@
             this.txtOutletCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtOutletCode.Location = new System.Drawing.Point(23, 38);
             this.txtOutletCode.Name = "txtOutletCode";
-            this.txtOutletCode.Size = new System.Drawing.Size(221, 31);
+            this.txtOutletCode.Size = new System.Drawing.Size(74, 31);
             this.txtOutletCode.TabIndex = 1;
             // 
             // label4
@@ -290,6 +290,7 @@
             this.Controls.Add(this.txtOutletCode);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtOutlet);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmOutletType";
             this.Text = "JENIS OUTLET";
             this.Load += new System.EventHandler(this.FrmOutletType_Load);

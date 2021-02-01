@@ -72,6 +72,7 @@
             this.button1.Text = "Pembelian";
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnSales
@@ -167,6 +168,7 @@
             this.Controls.Add(this.pnlTransactionChildren);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmTransactionDashboard";
             this.Text = "TRANSAKSI";
             this.panel1.ResumeLayout(false);

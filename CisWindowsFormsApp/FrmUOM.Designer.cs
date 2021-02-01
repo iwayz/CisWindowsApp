@@ -290,6 +290,7 @@
             this.Controls.Add(this.txtUomDesc);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtUomCode);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmUOM";
             this.Text = "SATUAN UNIT";
             this.Load += new System.EventHandler(this.FrmUOM_Load);

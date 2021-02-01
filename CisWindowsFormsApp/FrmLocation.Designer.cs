@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLocation));
             this.lvProvince = new System.Windows.Forms.ListView();
             this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.NAME = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -333,6 +334,7 @@
             this.Controls.Add(this.lvSubDistrict);
             this.Controls.Add(this.lvDistrict);
             this.Controls.Add(this.lvProvince);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmLocation";
             this.Text = "DATA KOTA";
             this.Load += new System.EventHandler(this.FrmLocation_Load);

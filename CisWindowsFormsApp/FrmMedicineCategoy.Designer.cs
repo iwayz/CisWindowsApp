@@ -290,6 +290,7 @@
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.dgvMedCat);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmMedicineCategoy";
             this.Text = "KATEGORI OBAT";
             this.Load += new System.EventHandler(this.FrmMedicineCategoy_Load);

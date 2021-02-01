@@ -481,6 +481,7 @@
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtUsername);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmUser";
             this.Text = "USER";
             this.Load += new System.EventHandler(this.FrmUser_Load);

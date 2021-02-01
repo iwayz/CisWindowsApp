@@ -437,7 +437,7 @@
             this.txtPrincipalCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtPrincipalCode.Location = new System.Drawing.Point(12, 21);
             this.txtPrincipalCode.Name = "txtPrincipalCode";
-            this.txtPrincipalCode.Size = new System.Drawing.Size(184, 31);
+            this.txtPrincipalCode.Size = new System.Drawing.Size(88, 31);
             this.txtPrincipalCode.TabIndex = 1;
             // 
             // label3
@@ -508,6 +508,7 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmPrincipal";
             this.Text = "PRINCIPAL";
             this.Load += new System.EventHandler(this.FrmPrincipal_Load);

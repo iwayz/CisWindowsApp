@@ -517,6 +517,7 @@
             this.Controls.Add(this.txtFullName);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtSalesmanCode);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmSalesman";
             this.Text = "SALESMAN";
             this.Load += new System.EventHandler(this.FrmSalesman_Load);

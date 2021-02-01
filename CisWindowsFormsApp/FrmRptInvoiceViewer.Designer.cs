@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRptInvoiceViewer));
             this.reportViewerInvoice = new Microsoft.Reporting.WinForms.ReportViewer();
             this.dataSourceInvoice = new CisWindowsFormsApp.DataSources.DataSourceInvoice();
             this.dataTableInvoiceTableAdapter = new CisWindowsFormsApp.DataSources.DataSourceInvoiceTableAdapters.DataTableInvoiceTableAdapter();
@@ -59,6 +60,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.reportViewerInvoice);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmRptInvoiceViewer";
             this.Text = "Cetak Faktur";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

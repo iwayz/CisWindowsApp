@@ -294,6 +294,7 @@
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.dgvTerm);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmTermOfPayment";
             this.Text = "TERM OF PAYMENT";
             this.Load += new System.EventHandler(this.FrmTermOfPayment_Load);

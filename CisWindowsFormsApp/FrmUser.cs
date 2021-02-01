@@ -334,7 +334,8 @@ namespace CisWindowsFormsApp
 
         private void BindUserGridView()
         {
-            var users = new UnitOfWork<User>(dbContext).Repository.GetAll();
+            var users = new UnitOfWork<User>(dbContext).Repository.GetAll()
+                .Where(u => u.Username != "cisadmin");
             var userRoles = new UnitOfWork<UserRole>(dbContext).Repository.GetAll();
             var roles = new UnitOfWork<Role>(dbContext).Repository.GetAll();
 

@@ -370,6 +370,7 @@
             this.Controls.Add(this.gbPic);
             this.Controls.Add(this.gbLicense);
             this.Controls.Add(this.gbContact);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmCompanyInfo";
