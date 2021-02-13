@@ -38,6 +38,11 @@ namespace CisWindowsFormsApp
             uowOt= new UnitOfWork<OutletType>(dbContext);
             uowSa = new UnitOfWork<SalesArea>(dbContext);
             uowRe = new UnitOfWork<Representative>(dbContext);
+
+            // set the date from to beginning of current month
+            var year = dtpFrom.Value.Year;
+            var month = dtpFrom.Value.Month;
+            dtpFrom.Value = new DateTime(year, month, 1);
         }
 
         private void btnExport_Click(object sender, EventArgs e)
@@ -69,7 +74,8 @@ namespace CisWindowsFormsApp
                     res.o.Description
                 }).ToList();
 
-            var salesOrder = uowSo.Repository.GetAll().Where(s => s.SalesDate >= dtpFrom.Value && s.SalesDate <= dtpTo.Value);
+            var salesOrder = uowSo.Repository.GetAll().
+                Where(s => s.SalesDate >= dtpFrom.Value && s.SalesDate <= dtpTo.Value && s.Status == Constant.RecordStatus.Active);
             var salesOrderItem = uowSoi.Repository.GetAll();
             var salesOrderDetail = salesOrderItem
                 .Join(salesOrder, soi => soi.SalesOrderId, so => so.Id, (soi, so) => new { soi, so })
@@ -88,6 +94,8 @@ namespace CisWindowsFormsApp
                     res.so.CustomerProvince,
                     res.soi.ProductCode,
                     res.soi.ProductName,
+                    res.soi.BatchCode,
+                    res.soi.ExpiredDate,
                     res.soi.UomCode,
                     res.soi.Quantity,
                     res.soi.Price,
@@ -130,23 +138,33 @@ namespace CisWindowsFormsApp
             xlWorkSheet.Cells[1, 11] = "JENIS OUTLET";
             xlWorkSheet.Cells[1, 12] = "KODE BARANG";
             xlWorkSheet.Cells[1, 13] = "NAMA BARANG";
-            xlWorkSheet.Cells[1, 14] = "SAT";
-            xlWorkSheet.Cells[1, 15] = "QTY";
-            xlWorkSheet.Cells[1, 16] = "HARGA HNA";
-            xlWorkSheet.Cells[1, 17] = "GROSS VALUE";
-            xlWorkSheet.Cells[1, 18] = "%DISKON";
-            xlWorkSheet.Cells[1, 19] = "DPP";
-            xlWorkSheet.Cells[1, 20] = "PPN 10%";
-            xlWorkSheet.Cells[1, 21] = "NETT VALUE";
-            xlWorkSheet.Cells[1, 22] = "TGL.JTH TEMPO";
-            xlWorkSheet.Cells[1, 23] = "ALAMAT KIRIM";
-            xlWorkSheet.Cells[1, 24] = "KOTA";
-            xlWorkSheet.Cells[1, 25] = "NO. TELPON";
+            xlWorkSheet.Cells[1, 14] = "NOMER BATCH";
+            xlWorkSheet.Cells[1, 15] = "KADALUWARSA";
+            xlWorkSheet.Cells[1, 16] = "SAT";
+            xlWorkSheet.Cells[1, 17] = "QTY";
+            xlWorkSheet.Cells[1, 18] = "HARGA HNA";
+            xlWorkSheet.Cells[1, 19] = "GROSS VALUE";
+            xlWorkSheet.Cells[1, 20] = "%DISKON";
+            xlWorkSheet.Cells[1, 21] = "DPP";
+            xlWorkSheet.Cells[1, 22] = "PPN 10%";
+            xlWorkSheet.Cells[1, 23] = "NETT VALUE";
+            xlWorkSheet.Cells[1, 24] = "TGL.JTH TEMPO";
+            xlWorkSheet.Cells[1, 25] = "ALAMAT KIRIM";
+            xlWorkSheet.Cells[1, 26] = "KOTA";
+            xlWorkSheet.Cells[1, 27] = "NO. TELPON";
 
             var rowNum = 2;
             var totalRec = recapDetail.Count();
             foreach (var item in recapDetail)
             {
+                var qty = item.sodcusd.sod.Quantity;
+                var price = item.sodcusd.sod.Price;
+                var discount = item.sodcusd.sod.DiscountPercentage;
+                var grossValue = item.sodcusd.sod.TotalAmount;
+                var taxBaseAmount = grossValue * (1 - Convert.ToDecimal(discount));
+                var valueAddedAmount = taxBaseAmount * Convert.ToDecimal(0.1);
+                var netValue = taxBaseAmount + valueAddedAmount;
+
                 xlWorkSheet.Cells[rowNum, 1] = item.sodcusd.sod.SalesDate.ToShortDateString();
                 xlWorkSheet.Cells[rowNum, 2] = item.sodcusd.sod.SalesNo;
                 xlWorkSheet.Cells[rowNum, 3] = "'" + item.sodcusd.cusd.CustomerCode.ToString();
@@ -160,18 +178,20 @@ namespace CisWindowsFormsApp
                 xlWorkSheet.Cells[rowNum, 11] = item.sodcusd.cusd.Description;
                 xlWorkSheet.Cells[rowNum, 12] = item.sodcusd.sod.ProductCode;
                 xlWorkSheet.Cells[rowNum, 13] = item.sodcusd.sod.ProductName;
-                xlWorkSheet.Cells[rowNum, 14] = item.sodcusd.sod.UomCode.ToString();
-                xlWorkSheet.Cells[rowNum, 15] = item.sodcusd.sod.Quantity;
-                xlWorkSheet.Cells[rowNum, 16] = item.sodcusd.sod.Price;
-                xlWorkSheet.Cells[rowNum, 17] = item.sodcusd.sod.TotalAmount;
-                xlWorkSheet.Cells[rowNum, 18] = item.sodcusd.sod.DiscountPercentage;
-                xlWorkSheet.Cells[rowNum, 19] = item.sodcusd.sod.TaxBaseAmount;
-                xlWorkSheet.Cells[rowNum, 20] = item.sodcusd.sod.ValueAddedTaxAmount;
-                xlWorkSheet.Cells[rowNum, 21] = (item.sodcusd.sod.TaxBaseAmount + item.sodcusd.sod.ValueAddedTaxAmount);
-                xlWorkSheet.Cells[rowNum, 22] = item.sodcusd.sod.DueDate.ToShortDateString();
-                xlWorkSheet.Cells[rowNum, 23] = item.sodcusd.sod.DeliveryAddress;
-                xlWorkSheet.Cells[rowNum, 24] = item.sodcusd.sod.DeliveryDistrict;
-                xlWorkSheet.Cells[rowNum, 25] = item.sodcusd.sod.CustomerPhone;
+                xlWorkSheet.Cells[rowNum, 14] = "'" + item.sodcusd.sod.BatchCode;
+                xlWorkSheet.Cells[rowNum, 15] = "'" + item.sodcusd.sod.ExpiredDate.ToString("MM/yyyy");
+                xlWorkSheet.Cells[rowNum, 16] = item.sodcusd.sod.UomCode.ToString();
+                xlWorkSheet.Cells[rowNum, 17] = qty;
+                xlWorkSheet.Cells[rowNum, 18] = price;
+                xlWorkSheet.Cells[rowNum, 19] = grossValue;
+                xlWorkSheet.Cells[rowNum, 20] = discount;
+                xlWorkSheet.Cells[rowNum, 21] = taxBaseAmount;
+                xlWorkSheet.Cells[rowNum, 22] = valueAddedAmount;
+                xlWorkSheet.Cells[rowNum, 23] = netValue;
+                xlWorkSheet.Cells[rowNum, 24] = item.sodcusd.sod.DueDate.ToShortDateString();
+                xlWorkSheet.Cells[rowNum, 25] = item.sodcusd.sod.DeliveryAddress;
+                xlWorkSheet.Cells[rowNum, 26] = item.sodcusd.sod.DeliveryDistrict;
+                xlWorkSheet.Cells[rowNum, 27] = item.sodcusd.sod.CustomerPhone;
 
                 var progress = ((rowNum - 1) * 100) / totalRec;
                 backgroundWorker.ReportProgress(progress);

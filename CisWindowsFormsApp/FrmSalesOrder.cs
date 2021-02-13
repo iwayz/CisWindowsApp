@@ -292,7 +292,7 @@ namespace CisWindowsFormsApp
                 row.Cells["productName"].Value = item.ProductName;
                 row.Cells["batchId"].Value = item.BatchId;
                 row.Cells["batchCode"].Value = item.BatchCode;
-                row.Cells["expDate"].Value = item.ExpiredDate.ToShortDateString();
+                row.Cells["expDate"].Value = item.ExpiredDate.ToString("MM/yyyy");
                 row.Cells["qty"].Value = string.Format("{0:n0}", item.Quantity);
                 row.Cells["uomId"].Value = item.UomId;
                 row.Cells["uomCode"].Value = item.UomCode;
@@ -398,6 +398,10 @@ namespace CisWindowsFormsApp
 
             cbCustomer.Focus();
             CheckSourceRefData();
+
+            dtpExpiredDate.Format = DateTimePickerFormat.Custom;
+            dtpExpiredDate.CustomFormat = "MM/yyyy";
+            dtpExpiredDate.ShowUpDown = true;
         }
 
         private void cbProvince_SelectedIndexChanged(object sender, EventArgs e)
@@ -486,8 +490,8 @@ namespace CisWindowsFormsApp
             DataGridViewRow row = dgvSalesOrderItem.Rows[rowId];
 
             // Add the data
-            var netPrice = Convert.ToDecimal(txtPrice.Text.Trim()) / (decimal)1.1;
-            var qtyTotalAmount = Convert.ToDecimal(txtQty.Text.Trim()) * netPrice;
+            var netPrice = Convert.ToInt64(Convert.ToDecimal(txtPrice.Text.Trim()) / (decimal)1.1);
+            var subTotal = Convert.ToDecimal(txtQty.Text.Trim()) * netPrice;
             var discount = 1 - (Convert.ToDecimal(txtDiscount.Text.Trim()) / 100);
 
             row.Cells["productId"].Value = product.Id;
@@ -495,13 +499,16 @@ namespace CisWindowsFormsApp
             row.Cells["productName"].Value = product.ProductName;
             row.Cells["batchId"].Value = batch != null ? batch.Id : string.Empty;
             row.Cells["batchCode"].Value = txtBatch.Text.Trim();
-            row.Cells["expDate"].Value = dtpExpiredDate.Value.ToShortDateString();
+            var year = dtpExpiredDate.Value.Year;
+            var month = dtpExpiredDate.Value.Month;
+            DateTime expiredDate = new DateTime(year, month, DateTime.DaysInMonth(year, month));
+            row.Cells["expDate"].Value = expiredDate.ToString("MM/yyyy");
             row.Cells["qty"].Value = string.Format("{0:n0}", Convert.ToDecimal(txtQty.Text.Trim()));
             row.Cells["uomId"].Value = uom.Id;
             row.Cells["uomCode"].Value = uom.UomCode;
             row.Cells["price"].Value = string.Format("{0:n0}", netPrice);
             row.Cells["discPercent"].Value = txtDiscount.Text.Trim() + "%";
-            row.Cells["subTotal"].Value = string.Format("{0:n0}", qtyTotalAmount * discount);
+            row.Cells["subTotal"].Value = string.Format("{0:n0}", subTotal * discount);
 
             SetTotalSalesOrder();
 
@@ -724,6 +731,11 @@ namespace CisWindowsFormsApp
                 for (int i = 0; i < dgvSalesOrderItem.Rows.Count; ++i)
                 {
                     if (dgvSalesOrderItem.Rows[i].Cells["productCode"].Value == null) continue;
+
+                    DateTime expiredDate = DateTime.Parse(dgvSalesOrderItem.Rows[i].Cells["expDate"].Value.ToString());
+                    var year = expiredDate.Year;
+                    var month = expiredDate.Month;
+                    expiredDate = new DateTime(year, month, DateTime.DaysInMonth(year, month));
                     var soiToAdd = new SalesOrderItem
                     {
                         SalesOrderId = soToAdd.Id,
@@ -732,7 +744,7 @@ namespace CisWindowsFormsApp
                         ProductName = dgvSalesOrderItem.Rows[i].Cells["productName"].Value.ToString(),
                         BatchId = dgvSalesOrderItem.Rows[i].Cells["batchId"].Value.ToString(),
                         BatchCode = dgvSalesOrderItem.Rows[i].Cells["batchCode"].Value.ToString(),
-                        ExpiredDate = commonHelper.StandardizeDate(DateTime.Parse(dgvSalesOrderItem.Rows[i].Cells["expDate"].Value.ToString())),
+                        ExpiredDate = commonHelper.StandardizeDate(expiredDate),
                         Quantity = Convert.ToInt32(decimal.Parse(dgvSalesOrderItem.Rows[i].Cells["qty"].Value.ToString(), System.Globalization.NumberStyles.Currency)),
                         UomId = dgvSalesOrderItem.Rows[i].Cells["uomId"].Value.ToString(),
                         UomCode = dgvSalesOrderItem.Rows[i].Cells["uomCode"].Value.ToString(),
@@ -782,6 +794,8 @@ namespace CisWindowsFormsApp
             {
                 using (var dbContextTransaction = dbContext.Database.BeginTransaction())
                 {
+                    var customerId = cbCustomer.SelectedValue.ToString();
+                    var customer = new UnitOfWork<Customer>(dbContext).Repository.GetById(customerId);
                     var salesman = new UnitOfWork<Salesman>(dbContext).Repository.GetById(cbSalesman.SelectedValue.ToString());
                     var top = new UnitOfWork<TermOfPayment>(dbContext).Repository.GetById(cbTermOfPayment.SelectedValue.ToString());
                     var salesArea = new UnitOfWork<SalesArea>(dbContext).Repository.GetById(cbSalesArea.SelectedValue.ToString());
@@ -793,7 +807,19 @@ namespace CisWindowsFormsApp
                     var uwSalesOrder = new UnitOfWork<SalesOrder>(dbContext);
                     var soToUpdate = uwSalesOrder.Repository.GetById(txtSalesOrderId.Text.Trim());
 
-                    soToUpdate.CustomerId = cbCustomer.SelectedValue.ToString();
+                    soToUpdate.CustomerId = customerId ;
+                    soToUpdate.CustomerName = customer.CustomerName;
+                    soToUpdate.CustomerAddress = customer.Address;
+                    soToUpdate.CustomerProvinceId = customer.ProvinceId;
+                    soToUpdate.CustomerProvince = GetLocationName(customer.ProvinceId);
+                    soToUpdate.CustomerDistrictId = customer.DistrictId;
+                    soToUpdate.CustomerDistrict = GetLocationName(customer.DistrictId);
+                    soToUpdate.CustomerSubDistrictId = customer.SubDistrictId;
+                    soToUpdate.CustomerSubDistrict = GetLocationName(customer.SubDistrictId);
+                    soToUpdate.CustomerPostalCode = customer.PostalCode;
+                    soToUpdate.CustomerPhone = customer.Phone;
+                    soToUpdate.CustomerEmail = customer.Email;
+                    soToUpdate.CustomerNpwp = customer.Npwp;
                     soToUpdate.SalesmanId = cbSalesman.SelectedValue.ToString();
                     soToUpdate.SalesmanCode = salesman.SalesmanCode;
                     soToUpdate.TermOfPaymentId = cbTermOfPayment.SelectedValue.ToString();
@@ -840,6 +866,11 @@ namespace CisWindowsFormsApp
                     for (int i = 0; i < dgvSalesOrderItem.Rows.Count; ++i)
                     {
                         if (dgvSalesOrderItem.Rows[i].Cells["productCode"].Value == null) continue;
+
+                        DateTime expiredDate = DateTime.Parse(dgvSalesOrderItem.Rows[i].Cells["expdate"].Value.ToString());
+                        var year = expiredDate.Year;
+                        var month = expiredDate.Month;
+                        expiredDate = new DateTime(year, month, DateTime.DaysInMonth(year, month));
                         var soiToUpdate = new SalesOrderItem
                         {
                             SalesOrderId = txtSalesOrderId.Text.Trim(),
@@ -848,7 +879,7 @@ namespace CisWindowsFormsApp
                             ProductName = dgvSalesOrderItem.Rows[i].Cells["productName"].Value.ToString(),
                             BatchId = dgvSalesOrderItem.Rows[i].Cells["batchId"].Value.ToString(),
                             BatchCode = dgvSalesOrderItem.Rows[i].Cells["batchCode"].Value.ToString(),
-                            ExpiredDate = DateTime.Parse(dgvSalesOrderItem.Rows[i].Cells["expdate"].Value.ToString()),
+                            ExpiredDate = commonHelper.StandardizeDate(expiredDate),
                             Quantity = Convert.ToInt32(decimal.Parse(dgvSalesOrderItem.Rows[i].Cells["qty"].Value.ToString(), System.Globalization.NumberStyles.Currency)),
                             UomId = dgvSalesOrderItem.Rows[i].Cells["uomId"].Value.ToString(),
                             UomCode = dgvSalesOrderItem.Rows[i].Cells["uomCode"].Value.ToString(),

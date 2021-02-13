@@ -213,10 +213,10 @@
                   <Width>5.3748cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.81334cm</Width>
+                  <Width>1.7cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.41521cm</Width>
+                  <Width>1.9cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.09771cm</Width>
@@ -741,7 +741,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=FormatDateTime(Fields!ExpiredDate.Value,DateFormat.ShortDate)</Value>
+                                  <Value>=Month(Fields!ExpiredDate.Value) &amp; "/" &amp; Year(Fields!ExpiredDate.Value)</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
                                     <FontSize>9pt</FontSize>
@@ -1005,7 +1005,7 @@
             <Top>0.04008cm</Top>
             <Left>0.635cm</Left>
             <Height>1.06771cm</Height>
-            <Width>18.35168cm</Width>
+            <Width>18.72313cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1018,7 +1018,7 @@
         <Height>0.43614in</Height>
         <Style />
       </Body>
-      <Width>7.6323in</Width>
+      <Width>7.66355in</Width>
       <Page>
         <PageHeader>
           <Height>4.26953cm</Height>
@@ -1040,7 +1040,7 @@
               </ReportItems>
               <KeepTogether>true</KeepTogether>
               <Top>1.28438cm</Top>
-              <Left>8.11094cm</Left>
+              <Left>8.36494cm</Left>
               <Height>2.21926cm</Height>
               <Width>10.87574cm</Width>
               <Style>
@@ -1165,7 +1165,9 @@
 &amp; ", " &amp; System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.
     ToTitleCase(Fields!CustomerDistrict.Value.ToString().ToLower())
 &amp; ", " &amp; System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.
-    ToTitleCase(Fields!CustomerProvince.Value.ToString())</Value>
+    ToTitleCase(Fields!CustomerProvince.Value.ToString())
+&amp; System.Environment.NewLine 
+&amp; "NPWP: " &amp; Fields!CustomerNpwp.Value</Value>
                       <Style>
                         <FontFamily>Calibri</FontFamily>
                         <FontSize>8pt</FontSize>
@@ -1177,7 +1179,7 @@
               </Paragraphs>
               <rd:DefaultName>CompDetail</rd:DefaultName>
               <Top>1.489cm</Top>
-              <Left>8.41003cm</Left>
+              <Left>8.66403cm</Left>
               <Height>1.97936cm</Height>
               <Width>4.99588cm</Width>
               <ZIndex>4</ZIndex>
@@ -1212,7 +1214,7 @@
               </Paragraphs>
               <rd:DefaultName>SalesNo</rd:DefaultName>
               <Top>3.50364cm</Top>
-              <Left>6.99381cm</Left>
+              <Left>7.24781cm</Left>
               <Height>0.6cm</Height>
               <Width>1.80737cm</Width>
               <ZIndex>5</ZIndex>
@@ -1247,7 +1249,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox2</rd:DefaultName>
               <Top>3.50364cm</Top>
-              <Left>5.24933cm</Left>
+              <Left>5.50333cm</Left>
               <Height>0.6cm</Height>
               <Width>1.66687cm</Width>
               <ZIndex>6</ZIndex>
@@ -1282,7 +1284,7 @@
               </Paragraphs>
               <rd:DefaultName>SalesNo</rd:DefaultName>
               <Top>3.50364cm</Top>
-              <Left>10.72778cm</Left>
+              <Left>10.98178cm</Left>
               <Height>0.6cm</Height>
               <Width>1.8cm</Width>
               <ZIndex>7</ZIndex>
@@ -1317,7 +1319,7 @@
               </Paragraphs>
               <rd:DefaultName>SalesNo</rd:DefaultName>
               <Top>3.50364cm</Top>
-              <Left>13.69837cm</Left>
+              <Left>13.95237cm</Left>
               <Height>0.6cm</Height>
               <Width>1.45768cm</Width>
               <ZIndex>8</ZIndex>
@@ -1352,7 +1354,7 @@
               </Paragraphs>
               <rd:DefaultName>SalesNo</rd:DefaultName>
               <Top>3.50364cm</Top>
-              <Left>17.18668cm</Left>
+              <Left>17.44068cm</Left>
               <Height>0.6cm</Height>
               <Width>1.8cm</Width>
               <ZIndex>9</ZIndex>
@@ -1387,7 +1389,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox2</rd:DefaultName>
               <Top>3.50364cm</Top>
-              <Left>8.87685cm</Left>
+              <Left>9.13085cm</Left>
               <Height>0.6cm</Height>
               <Width>1.75645cm</Width>
               <ZIndex>10</ZIndex>
@@ -1422,7 +1424,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox2</rd:DefaultName>
               <Top>3.50364cm</Top>
-              <Left>12.66997cm</Left>
+              <Left>12.92397cm</Left>
               <Height>0.6cm</Height>
               <Width>0.93623cm</Width>
               <ZIndex>11</ZIndex>
@@ -1457,7 +1459,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox2</rd:DefaultName>
               <Top>3.50364cm</Top>
-              <Left>15.23358cm</Left>
+              <Left>15.48758cm</Left>
               <Height>0.6cm</Height>
               <Width>1.82226cm</Width>
               <ZIndex>12</ZIndex>
@@ -1499,7 +1501,7 @@
               </Paragraphs>
               <rd:DefaultName>CompDetail</rd:DefaultName>
               <Top>1.489cm</Top>
-              <Left>13.69836cm</Left>
+              <Left>13.95236cm</Left>
               <Height>1.97937cm</Height>
               <Width>5.28833cm</Width>
               <ZIndex>13</ZIndex>
@@ -1533,7 +1535,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>SalesNo</rd:DefaultName>
-              <Left>15.46079cm</Left>
+              <Left>15.71479cm</Left>
               <Height>0.6cm</Height>
               <Width>3.5259cm</Width>
               <ZIndex>14</ZIndex>
@@ -1570,7 +1572,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox2</rd:DefaultName>
               <Top>0.54327cm</Top>
-              <Left>15.46835cm</Left>
+              <Left>15.72235cm</Left>
               <Height>0.6cm</Height>
               <Width>3.51833cm</Width>
               <ZIndex>15</ZIndex>
@@ -1633,7 +1635,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox2</rd:DefaultName>
               <Top>0.22854cm</Top>
-              <Left>12.1746cm</Left>
+              <Left>12.4286cm</Left>
               <Height>0.6cm</Height>
               <Width>3.29375cm</Width>
               <Style>
@@ -1665,7 +1667,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox2</rd:DefaultName>
               <Top>0.66979cm</Top>
-              <Left>12.1746cm</Left>
+              <Left>12.4286cm</Left>
               <Height>0.6cm</Height>
               <Width>3.29375cm</Width>
               <ZIndex>1</ZIndex>
@@ -1698,7 +1700,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox2</rd:DefaultName>
               <Top>1.11534cm</Top>
-              <Left>12.1746cm</Left>
+              <Left>12.4286cm</Left>
               <Height>0.6cm</Height>
               <Width>3.29375cm</Width>
               <ZIndex>2</ZIndex>
@@ -1731,7 +1733,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox2</rd:DefaultName>
               <Top>1.58834cm</Top>
-              <Left>12.1746cm</Left>
+              <Left>12.4286cm</Left>
               <Height>0.6cm</Height>
               <Width>3.29375cm</Width>
               <ZIndex>3</ZIndex>
@@ -1764,7 +1766,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox2</rd:DefaultName>
               <Top>2.06134cm</Top>
-              <Left>12.1746cm</Left>
+              <Left>12.4286cm</Left>
               <Height>0.6cm</Height>
               <Width>3.29375cm</Width>
               <ZIndex>4</ZIndex>
@@ -1799,7 +1801,7 @@
               </Paragraphs>
               <rd:DefaultName>ExtraDiscountAmount</rd:DefaultName>
               <Top>0.66979cm</Top>
-              <Left>15.82523cm</Left>
+              <Left>16.07923cm</Left>
               <Height>0.6cm</Height>
               <Width>3.16146cm</Width>
               <ZIndex>5</ZIndex>
@@ -1834,7 +1836,7 @@
               </Paragraphs>
               <rd:DefaultName>TaxBaseAmount</rd:DefaultName>
               <Top>1.11104cm</Top>
-              <Left>15.82523cm</Left>
+              <Left>16.07923cm</Left>
               <Height>0.6cm</Height>
               <Width>3.16146cm</Width>
               <ZIndex>6</ZIndex>
@@ -1869,7 +1871,7 @@
               </Paragraphs>
               <rd:DefaultName>ValueAddedTaxAmount</rd:DefaultName>
               <Top>1.58404cm</Top>
-              <Left>15.82523cm</Left>
+              <Left>16.07923cm</Left>
               <Height>0.6cm</Height>
               <Width>3.16146cm</Width>
               <ZIndex>7</ZIndex>
@@ -1904,7 +1906,7 @@
               </Paragraphs>
               <rd:DefaultName>GrandTotalAmount</rd:DefaultName>
               <Top>2.05704cm</Top>
-              <Left>15.82523cm</Left>
+              <Left>16.07923cm</Left>
               <Height>0.6cm</Height>
               <Width>3.16146cm</Width>
               <ZIndex>8</ZIndex>
@@ -1939,7 +1941,7 @@
               </Paragraphs>
               <rd:DefaultName>TotalAmount1</rd:DefaultName>
               <Top>0.22854cm</Top>
-              <Left>15.82523cm</Left>
+              <Left>16.07923cm</Left>
               <Height>0.6cm</Height>
               <Width>3.16146cm</Width>
               <ZIndex>9</ZIndex>
@@ -2215,7 +2217,7 @@
               <Top>0.07056cm</Top>
               <Left>0.635cm</Left>
               <Height>0cm</Height>
-              <Width>18.35169cm</Width>
+              <Width>18.60569cm</Width>
               <ZIndex>17</ZIndex>
               <Style>
                 <Border>
@@ -2295,7 +2297,7 @@
             </Textbox>
             <Line Name="Line3">
               <Top>2.07954cm</Top>
-              <Left>12.1746cm</Left>
+              <Left>12.4286cm</Left>
               <Height>0cm</Height>
               <Width>6.81209cm</Width>
               <ZIndex>20</ZIndex>
