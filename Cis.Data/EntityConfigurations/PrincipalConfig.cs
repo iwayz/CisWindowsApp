@@ -29,10 +29,6 @@ namespace Cis.Data.EntityConfigurations
                 .HasMaxLength(36)
                 .IsRequired();
 
-            Property(e => e.SubDistrictId)
-                .HasMaxLength(36)
-                .IsRequired();
-
             Property(e => e.Phone)
                 .IsOptional();
 

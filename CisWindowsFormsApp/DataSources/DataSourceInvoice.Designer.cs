@@ -291,8 +291,6 @@ namespace CisWindowsFormsApp.DataSources {
             
             private global::System.Data.DataColumn columnCustomerDistrict;
             
-            private global::System.Data.DataColumn columnCustomerSubDistrict;
-            
             private global::System.Data.DataColumn columnCustomerPostalCode;
             
             private global::System.Data.DataColumn columnCustomerPhone;
@@ -306,8 +304,6 @@ namespace CisWindowsFormsApp.DataSources {
             private global::System.Data.DataColumn columnDeliveryProvince;
             
             private global::System.Data.DataColumn columnDeliveryDistrict;
-            
-            private global::System.Data.DataColumn columnDeliverySubDistrict;
             
             private global::System.Data.DataColumn columnDeliveryPostalCode;
             
@@ -446,14 +442,6 @@ namespace CisWindowsFormsApp.DataSources {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn CustomerSubDistrictColumn {
-                get {
-                    return this.columnCustomerSubDistrict;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn CustomerPostalCodeColumn {
                 get {
                     return this.columnCustomerPostalCode;
@@ -505,14 +493,6 @@ namespace CisWindowsFormsApp.DataSources {
             public global::System.Data.DataColumn DeliveryDistrictColumn {
                 get {
                     return this.columnDeliveryDistrict;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn DeliverySubDistrictColumn {
-                get {
-                    return this.columnDeliverySubDistrict;
                 }
             }
             
@@ -776,7 +756,6 @@ namespace CisWindowsFormsApp.DataSources {
                         string CustomerAddress, 
                         string CustomerProvince, 
                         string CustomerDistrict, 
-                        string CustomerSubDistrict, 
                         string CustomerPostalCode, 
                         string CustomerPhone, 
                         string CustomerEmail, 
@@ -784,7 +763,6 @@ namespace CisWindowsFormsApp.DataSources {
                         string DeliveryAddress, 
                         string DeliveryProvince, 
                         string DeliveryDistrict, 
-                        string DeliverySubDistrict, 
                         string DeliveryPostalCode, 
                         string SalesAreaCode, 
                         System.DateTime SalesDate, 
@@ -820,7 +798,6 @@ namespace CisWindowsFormsApp.DataSources {
                         CustomerAddress,
                         CustomerProvince,
                         CustomerDistrict,
-                        CustomerSubDistrict,
                         CustomerPostalCode,
                         CustomerPhone,
                         CustomerEmail,
@@ -828,7 +805,6 @@ namespace CisWindowsFormsApp.DataSources {
                         DeliveryAddress,
                         DeliveryProvince,
                         DeliveryDistrict,
-                        DeliverySubDistrict,
                         DeliveryPostalCode,
                         SalesAreaCode,
                         SalesDate,
@@ -892,7 +868,6 @@ namespace CisWindowsFormsApp.DataSources {
                 this.columnCustomerAddress = base.Columns["CustomerAddress"];
                 this.columnCustomerProvince = base.Columns["CustomerProvince"];
                 this.columnCustomerDistrict = base.Columns["CustomerDistrict"];
-                this.columnCustomerSubDistrict = base.Columns["CustomerSubDistrict"];
                 this.columnCustomerPostalCode = base.Columns["CustomerPostalCode"];
                 this.columnCustomerPhone = base.Columns["CustomerPhone"];
                 this.columnCustomerEmail = base.Columns["CustomerEmail"];
@@ -900,7 +875,6 @@ namespace CisWindowsFormsApp.DataSources {
                 this.columnDeliveryAddress = base.Columns["DeliveryAddress"];
                 this.columnDeliveryProvince = base.Columns["DeliveryProvince"];
                 this.columnDeliveryDistrict = base.Columns["DeliveryDistrict"];
-                this.columnDeliverySubDistrict = base.Columns["DeliverySubDistrict"];
                 this.columnDeliveryPostalCode = base.Columns["DeliveryPostalCode"];
                 this.columnSalesAreaCode = base.Columns["SalesAreaCode"];
                 this.columnSalesDate = base.Columns["SalesDate"];
@@ -945,8 +919,6 @@ namespace CisWindowsFormsApp.DataSources {
                 base.Columns.Add(this.columnCustomerProvince);
                 this.columnCustomerDistrict = new global::System.Data.DataColumn("CustomerDistrict", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCustomerDistrict);
-                this.columnCustomerSubDistrict = new global::System.Data.DataColumn("CustomerSubDistrict", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCustomerSubDistrict);
                 this.columnCustomerPostalCode = new global::System.Data.DataColumn("CustomerPostalCode", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCustomerPostalCode);
                 this.columnCustomerPhone = new global::System.Data.DataColumn("CustomerPhone", typeof(string), null, global::System.Data.MappingType.Element);
@@ -961,8 +933,6 @@ namespace CisWindowsFormsApp.DataSources {
                 base.Columns.Add(this.columnDeliveryProvince);
                 this.columnDeliveryDistrict = new global::System.Data.DataColumn("DeliveryDistrict", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDeliveryDistrict);
-                this.columnDeliverySubDistrict = new global::System.Data.DataColumn("DeliverySubDistrict", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDeliverySubDistrict);
                 this.columnDeliveryPostalCode = new global::System.Data.DataColumn("DeliveryPostalCode", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDeliveryPostalCode);
                 this.columnSalesAreaCode = new global::System.Data.DataColumn("SalesAreaCode", typeof(string), null, global::System.Data.MappingType.Element);
@@ -1030,7 +1000,6 @@ namespace CisWindowsFormsApp.DataSources {
                 this.columnCustomerAddress.MaxLength = 2147483647;
                 this.columnCustomerProvince.MaxLength = 2147483647;
                 this.columnCustomerDistrict.MaxLength = 2147483647;
-                this.columnCustomerSubDistrict.MaxLength = 2147483647;
                 this.columnCustomerPostalCode.MaxLength = 5;
                 this.columnCustomerPhone.MaxLength = 2147483647;
                 this.columnCustomerEmail.MaxLength = 2147483647;
@@ -1039,7 +1008,6 @@ namespace CisWindowsFormsApp.DataSources {
                 this.columnDeliveryAddress.MaxLength = 2147483647;
                 this.columnDeliveryProvince.MaxLength = 2147483647;
                 this.columnDeliveryDistrict.MaxLength = 2147483647;
-                this.columnDeliverySubDistrict.MaxLength = 2147483647;
                 this.columnDeliveryPostalCode.MaxLength = 5;
                 this.columnSalesAreaCode.AllowDBNull = false;
                 this.columnSalesAreaCode.MaxLength = 50;
@@ -1296,23 +1264,6 @@ namespace CisWindowsFormsApp.DataSources {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string CustomerSubDistrict {
-                get {
-                    try {
-                        return ((string)(this[this.tableDataTableInvoice.CustomerSubDistrictColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'CustomerSubDistrict\' in table \'DataTableInvoice\' is DBNull." +
-                                "", e);
-                    }
-                }
-                set {
-                    this[this.tableDataTableInvoice.CustomerSubDistrictColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string CustomerPostalCode {
                 get {
                     try {
@@ -1415,23 +1366,6 @@ namespace CisWindowsFormsApp.DataSources {
                 }
                 set {
                     this[this.tableDataTableInvoice.DeliveryDistrictColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string DeliverySubDistrict {
-                get {
-                    try {
-                        return ((string)(this[this.tableDataTableInvoice.DeliverySubDistrictColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'DeliverySubDistrict\' in table \'DataTableInvoice\' is DBNull." +
-                                "", e);
-                    }
-                }
-                set {
-                    this[this.tableDataTableInvoice.DeliverySubDistrictColumn] = value;
                 }
             }
             
@@ -1773,18 +1707,6 @@ namespace CisWindowsFormsApp.DataSources {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsCustomerSubDistrictNull() {
-                return this.IsNull(this.tableDataTableInvoice.CustomerSubDistrictColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetCustomerSubDistrictNull() {
-                this[this.tableDataTableInvoice.CustomerSubDistrictColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsCustomerPostalCodeNull() {
                 return this.IsNull(this.tableDataTableInvoice.CustomerPostalCodeColumn);
             }
@@ -1853,18 +1775,6 @@ namespace CisWindowsFormsApp.DataSources {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetDeliveryDistrictNull() {
                 this[this.tableDataTableInvoice.DeliveryDistrictColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsDeliverySubDistrictNull() {
-                return this.IsNull(this.tableDataTableInvoice.DeliverySubDistrictColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetDeliverySubDistrictNull() {
-                this[this.tableDataTableInvoice.DeliverySubDistrictColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1957,6 +1867,8 @@ namespace CisWindowsFormsApp.DataSources.DataSourceInvoiceTableAdapters {
         
         private global::System.Data.SqlClient.SqlConnection _connection;
         
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
         private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
         
         private bool _clearBeforeFill;
@@ -1969,7 +1881,7 @@ namespace CisWindowsFormsApp.DataSources.DataSourceInvoiceTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private global::System.Data.SqlClient.SqlDataAdapter Adapter {
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
             get {
                 if ((this._adapter == null)) {
                     this.InitAdapter();
@@ -2002,6 +1914,32 @@ namespace CisWindowsFormsApp.DataSources.DataSourceInvoiceTableAdapters {
                     if ((this.CommandCollection[i] != null)) {
                         ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
                     }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
                 }
             }
         }
@@ -2041,7 +1979,6 @@ namespace CisWindowsFormsApp.DataSources.DataSourceInvoiceTableAdapters {
             tableMapping.ColumnMappings.Add("CustomerAddress", "CustomerAddress");
             tableMapping.ColumnMappings.Add("CustomerProvince", "CustomerProvince");
             tableMapping.ColumnMappings.Add("CustomerDistrict", "CustomerDistrict");
-            tableMapping.ColumnMappings.Add("CustomerSubDistrict", "CustomerSubDistrict");
             tableMapping.ColumnMappings.Add("CustomerPostalCode", "CustomerPostalCode");
             tableMapping.ColumnMappings.Add("CustomerPhone", "CustomerPhone");
             tableMapping.ColumnMappings.Add("CustomerEmail", "CustomerEmail");
@@ -2049,7 +1986,6 @@ namespace CisWindowsFormsApp.DataSources.DataSourceInvoiceTableAdapters {
             tableMapping.ColumnMappings.Add("DeliveryAddress", "DeliveryAddress");
             tableMapping.ColumnMappings.Add("DeliveryProvince", "DeliveryProvince");
             tableMapping.ColumnMappings.Add("DeliveryDistrict", "DeliveryDistrict");
-            tableMapping.ColumnMappings.Add("DeliverySubDistrict", "DeliverySubDistrict");
             tableMapping.ColumnMappings.Add("DeliveryPostalCode", "DeliveryPostalCode");
             tableMapping.ColumnMappings.Add("SalesAreaCode", "SalesAreaCode");
             tableMapping.ColumnMappings.Add("SalesDate", "SalesDate");
@@ -2093,26 +2029,16 @@ namespace CisWindowsFormsApp.DataSources.DataSourceInvoiceTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        SalesOrder.Id, SalesOrder.SalesNo, SalesOrder.CustomerName, SalesOr" +
-                "der.CustomerAddress, SalesOrder.CustomerProvince, SalesOrder.CustomerDistrict, S" +
-                "alesOrder.CustomerSubDistrict, SalesOrder.CustomerPostalCode, \r\n                " +
-                "         SalesOrder.CustomerPhone, SalesOrder.CustomerEmail, SalesOrder.Customer" +
-                "Npwp, SalesOrder.DeliveryAddress, SalesOrder.DeliveryProvince, SalesOrder.Delive" +
-                "ryDistrict, SalesOrder.DeliverySubDistrict, \r\n                         SalesOrde" +
-                "r.DeliveryPostalCode, SalesOrder.SalesAreaCode, SalesOrder.SalesDate, SalesOrder" +
-                ".TermOfPaymentCode, SalesOrder.DueDate, SalesOrder.PersonInCharge, SalesOrder.Si" +
-                "paNo, SalesOrder.SubTotalAmount, \r\n                         SalesOrder.ExtraDisc" +
-                "ountAmount, SalesOrder.TaxBaseAmount, SalesOrder.ValueAddedTaxAmount, SalesOrder" +
-                ".GrandTotalAmount, SalesOrder.Username, SalesOrder.SalesmanCode, SalesOrderItem." +
-                "SalesOrderId, \r\n                         SalesOrderItem.ProductCode, SalesOrderI" +
-                "tem.ProductName, SalesOrderItem.BatchCode, SalesOrderItem.ExpiredDate, SalesOrde" +
-                "rItem.Quantity, SalesOrderItem.UomCode, SalesOrderItem.Price, \r\n                " +
-                "         SalesOrderItem.DiscountPercentage, SalesOrderItem.TotalAmount, SalesOrd" +
-                "erItem.Id AS SalesOrderItemId, SalesOrder.Status, SalesArea.Description\r\nFROM   " +
-                "         SalesOrder INNER JOIN\r\n                         SalesOrderItem ON Sales" +
-                "Order.Id = SalesOrderItem.SalesOrderId INNER JOIN\r\n                         Sale" +
-                "sArea ON SalesOrder.SalesAreaId = SalesArea.Id\r\nWHERE        (SalesOrder.Id = @S" +
-                "alesOrderId)";
+            this._commandCollection[0].CommandText = @"SELECT        SalesOrder.Id, SalesOrder.SalesNo, SalesOrder.CustomerName, SalesOrder.CustomerAddress, SalesOrder.CustomerProvince, SalesOrder.CustomerDistrict, SalesOrder.CustomerPostalCode, SalesOrder.CustomerPhone, 
+                         SalesOrder.CustomerEmail, SalesOrder.CustomerNpwp, SalesOrder.DeliveryAddress, SalesOrder.DeliveryProvince, SalesOrder.DeliveryDistrict, SalesOrder.DeliveryPostalCode, SalesOrder.SalesAreaCode, 
+                         SalesOrder.SalesDate, SalesOrder.TermOfPaymentCode, SalesOrder.DueDate, SalesOrder.PersonInCharge, SalesOrder.SipaNo, SalesOrder.SubTotalAmount, SalesOrder.ExtraDiscountAmount, SalesOrder.TaxBaseAmount, 
+                         SalesOrder.ValueAddedTaxAmount, SalesOrder.GrandTotalAmount, SalesOrder.Username, SalesOrder.SalesmanCode, SalesOrderItem.SalesOrderId, SalesOrderItem.ProductCode, SalesOrderItem.ProductName, 
+                         SalesOrderItem.BatchCode, SalesOrderItem.ExpiredDate, SalesOrderItem.Quantity, SalesOrderItem.UomCode, SalesOrderItem.Price, SalesOrderItem.DiscountPercentage, SalesOrderItem.TotalAmount, 
+                         SalesOrderItem.Id AS SalesOrderItemId, SalesOrder.Status, SalesArea.Description
+FROM            SalesOrder INNER JOIN
+                         SalesOrderItem ON SalesOrder.Id = SalesOrderItem.SalesOrderId INNER JOIN
+                         SalesArea ON SalesOrder.SalesAreaId = SalesArea.Id
+WHERE        (SalesOrder.Id = @SalesOrderId)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SalesOrderId", global::System.Data.SqlDbType.NVarChar, 36, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -2151,6 +2077,367 @@ namespace CisWindowsFormsApp.DataSources.DataSourceInvoiceTableAdapters {
             DataSourceInvoice.DataTableInvoiceDataTable dataTable = new DataSourceInvoice.DataTableInvoiceDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
+        }
+    }
+    
+    /// <summary>
+    ///TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerDesigner, Microsoft.VSD" +
+        "esigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapterManager")]
+    public partial class TableAdapterManager : global::System.ComponentModel.Component {
+        
+        private UpdateOrderOption _updateOrder;
+        
+        private bool _backupDataSetBeforeUpdate;
+        
+        private global::System.Data.IDbConnection _connection;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public UpdateOrderOption UpdateOrder {
+            get {
+                return this._updateOrder;
+            }
+            set {
+                this._updateOrder = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public bool BackupDataSetBeforeUpdate {
+            get {
+                return this._backupDataSetBeforeUpdate;
+            }
+            set {
+                this._backupDataSetBeforeUpdate = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        public global::System.Data.IDbConnection Connection {
+            get {
+                if ((this._connection != null)) {
+                    return this._connection;
+                }
+                return null;
+            }
+            set {
+                this._connection = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        public int TableAdapterInstanceCount {
+            get {
+                int count = 0;
+                return count;
+            }
+        }
+        
+        /// <summary>
+        ///Update rows in top-down order.
+        ///</summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private int UpdateUpdatedRows(DataSourceInvoice dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+            int result = 0;
+            return result;
+        }
+        
+        /// <summary>
+        ///Insert rows in top-down order.
+        ///</summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private int UpdateInsertedRows(DataSourceInvoice dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+            int result = 0;
+            return result;
+        }
+        
+        /// <summary>
+        ///Delete rows in bottom-up order.
+        ///</summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private int UpdateDeletedRows(DataSourceInvoice dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+            int result = 0;
+            return result;
+        }
+        
+        /// <summary>
+        ///Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+        ///</summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private global::System.Data.DataRow[] GetRealUpdatedRows(global::System.Data.DataRow[] updatedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+            if (((updatedRows == null) 
+                        || (updatedRows.Length < 1))) {
+                return updatedRows;
+            }
+            if (((allAddedRows == null) 
+                        || (allAddedRows.Count < 1))) {
+                return updatedRows;
+            }
+            global::System.Collections.Generic.List<global::System.Data.DataRow> realUpdatedRows = new global::System.Collections.Generic.List<global::System.Data.DataRow>();
+            for (int i = 0; (i < updatedRows.Length); i = (i + 1)) {
+                global::System.Data.DataRow row = updatedRows[i];
+                if ((allAddedRows.Contains(row) == false)) {
+                    realUpdatedRows.Add(row);
+                }
+            }
+            return realUpdatedRows.ToArray();
+        }
+        
+        /// <summary>
+        ///Update all changes to the dataset.
+        ///</summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public virtual int UpdateAll(DataSourceInvoice dataSet) {
+            if ((dataSet == null)) {
+                throw new global::System.ArgumentNullException("dataSet");
+            }
+            if ((dataSet.HasChanges() == false)) {
+                return 0;
+            }
+            global::System.Data.IDbConnection workConnection = this.Connection;
+            if ((workConnection == null)) {
+                throw new global::System.ApplicationException("TableAdapterManager contains no connection information. Set each TableAdapterMana" +
+                        "ger TableAdapter property to a valid TableAdapter instance.");
+            }
+            bool workConnOpened = false;
+            if (((workConnection.State & global::System.Data.ConnectionState.Broken) 
+                        == global::System.Data.ConnectionState.Broken)) {
+                workConnection.Close();
+            }
+            if ((workConnection.State == global::System.Data.ConnectionState.Closed)) {
+                workConnection.Open();
+                workConnOpened = true;
+            }
+            global::System.Data.IDbTransaction workTransaction = workConnection.BeginTransaction();
+            if ((workTransaction == null)) {
+                throw new global::System.ApplicationException("The transaction cannot begin. The current data connection does not support transa" +
+                        "ctions or the current state is not allowing the transaction to begin.");
+            }
+            global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows = new global::System.Collections.Generic.List<global::System.Data.DataRow>();
+            global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows = new global::System.Collections.Generic.List<global::System.Data.DataRow>();
+            global::System.Collections.Generic.List<global::System.Data.Common.DataAdapter> adaptersWithAcceptChangesDuringUpdate = new global::System.Collections.Generic.List<global::System.Data.Common.DataAdapter>();
+            global::System.Collections.Generic.Dictionary<object, global::System.Data.IDbConnection> revertConnections = new global::System.Collections.Generic.Dictionary<object, global::System.Data.IDbConnection>();
+            int result = 0;
+            global::System.Data.DataSet backupDataSet = null;
+            if (this.BackupDataSetBeforeUpdate) {
+                backupDataSet = new global::System.Data.DataSet();
+                backupDataSet.Merge(dataSet);
+            }
+            try {
+                // ---- Prepare for update -----------
+                //
+                // 
+                //---- Perform updates -----------
+                //
+                if ((this.UpdateOrder == UpdateOrderOption.UpdateInsertDelete)) {
+                    result = (result + this.UpdateUpdatedRows(dataSet, allChangedRows, allAddedRows));
+                    result = (result + this.UpdateInsertedRows(dataSet, allAddedRows));
+                }
+                else {
+                    result = (result + this.UpdateInsertedRows(dataSet, allAddedRows));
+                    result = (result + this.UpdateUpdatedRows(dataSet, allChangedRows, allAddedRows));
+                }
+                result = (result + this.UpdateDeletedRows(dataSet, allChangedRows));
+                // 
+                //---- Commit updates -----------
+                //
+                workTransaction.Commit();
+                if ((0 < allAddedRows.Count)) {
+                    global::System.Data.DataRow[] rows = new System.Data.DataRow[allAddedRows.Count];
+                    allAddedRows.CopyTo(rows);
+                    for (int i = 0; (i < rows.Length); i = (i + 1)) {
+                        global::System.Data.DataRow row = rows[i];
+                        row.AcceptChanges();
+                    }
+                }
+                if ((0 < allChangedRows.Count)) {
+                    global::System.Data.DataRow[] rows = new System.Data.DataRow[allChangedRows.Count];
+                    allChangedRows.CopyTo(rows);
+                    for (int i = 0; (i < rows.Length); i = (i + 1)) {
+                        global::System.Data.DataRow row = rows[i];
+                        row.AcceptChanges();
+                    }
+                }
+            }
+            catch (global::System.Exception ex) {
+                workTransaction.Rollback();
+                // ---- Restore the dataset -----------
+                if (this.BackupDataSetBeforeUpdate) {
+                    global::System.Diagnostics.Debug.Assert((backupDataSet != null));
+                    dataSet.Clear();
+                    dataSet.Merge(backupDataSet);
+                }
+                else {
+                    if ((0 < allAddedRows.Count)) {
+                        global::System.Data.DataRow[] rows = new System.Data.DataRow[allAddedRows.Count];
+                        allAddedRows.CopyTo(rows);
+                        for (int i = 0; (i < rows.Length); i = (i + 1)) {
+                            global::System.Data.DataRow row = rows[i];
+                            row.AcceptChanges();
+                            row.SetAdded();
+                        }
+                    }
+                }
+                throw ex;
+            }
+            finally {
+                if (workConnOpened) {
+                    workConnection.Close();
+                }
+                if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
+                    global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];
+                    adaptersWithAcceptChangesDuringUpdate.CopyTo(adapters);
+                    for (int i = 0; (i < adapters.Length); i = (i + 1)) {
+                        global::System.Data.Common.DataAdapter adapter = adapters[i];
+                        adapter.AcceptChangesDuringUpdate = true;
+                    }
+                }
+            }
+            return result;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        protected virtual void SortSelfReferenceRows(global::System.Data.DataRow[] rows, global::System.Data.DataRelation relation, bool childFirst) {
+            global::System.Array.Sort<global::System.Data.DataRow>(rows, new SelfReferenceComparer(relation, childFirst));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        protected virtual bool MatchTableAdapterConnection(global::System.Data.IDbConnection inputConnection) {
+            if ((this._connection != null)) {
+                return true;
+            }
+            if (((this.Connection == null) 
+                        || (inputConnection == null))) {
+                return true;
+            }
+            if (string.Equals(this.Connection.ConnectionString, inputConnection.ConnectionString, global::System.StringComparison.Ordinal)) {
+                return true;
+            }
+            return false;
+        }
+        
+        /// <summary>
+        ///Update Order Option
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public enum UpdateOrderOption {
+            
+            InsertUpdateDelete = 0,
+            
+            UpdateInsertDelete = 1,
+        }
+        
+        /// <summary>
+        ///Used to sort self-referenced table's rows
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private class SelfReferenceComparer : object, global::System.Collections.Generic.IComparer<global::System.Data.DataRow> {
+            
+            private global::System.Data.DataRelation _relation;
+            
+            private int _childFirst;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal SelfReferenceComparer(global::System.Data.DataRelation relation, bool childFirst) {
+                this._relation = relation;
+                if (childFirst) {
+                    this._childFirst = -1;
+                }
+                else {
+                    this._childFirst = 1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            private global::System.Data.DataRow GetRoot(global::System.Data.DataRow row, out int distance) {
+                global::System.Diagnostics.Debug.Assert((row != null));
+                global::System.Data.DataRow root = row;
+                distance = 0;
+
+                global::System.Collections.Generic.IDictionary<global::System.Data.DataRow, global::System.Data.DataRow> traversedRows = new global::System.Collections.Generic.Dictionary<global::System.Data.DataRow, global::System.Data.DataRow>();
+                traversedRows[row] = row;
+
+                global::System.Data.DataRow parent = row.GetParentRow(this._relation, global::System.Data.DataRowVersion.Default);
+                for (
+                ; ((parent != null) 
+                            && (traversedRows.ContainsKey(parent) == false)); 
+                ) {
+                    distance = (distance + 1);
+                    root = parent;
+                    traversedRows[parent] = parent;
+                    parent = parent.GetParentRow(this._relation, global::System.Data.DataRowVersion.Default);
+                }
+
+                if ((distance == 0)) {
+                    traversedRows.Clear();
+                    traversedRows[row] = row;
+                    parent = row.GetParentRow(this._relation, global::System.Data.DataRowVersion.Original);
+                    for (
+                    ; ((parent != null) 
+                                && (traversedRows.ContainsKey(parent) == false)); 
+                    ) {
+                        distance = (distance + 1);
+                        root = parent;
+                        traversedRows[parent] = parent;
+                        parent = parent.GetParentRow(this._relation, global::System.Data.DataRowVersion.Original);
+                    }
+                }
+
+                return root;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int Compare(global::System.Data.DataRow row1, global::System.Data.DataRow row2) {
+                if (object.ReferenceEquals(row1, row2)) {
+                    return 0;
+                }
+                if ((row1 == null)) {
+                    return -1;
+                }
+                if ((row2 == null)) {
+                    return 1;
+                }
+
+                int distance1 = 0;
+                global::System.Data.DataRow root1 = this.GetRoot(row1, out distance1);
+
+                int distance2 = 0;
+                global::System.Data.DataRow root2 = this.GetRoot(row2, out distance2);
+
+                if (object.ReferenceEquals(root1, root2)) {
+                    return (this._childFirst * distance1.CompareTo(distance2));
+                }
+                else {
+                    global::System.Diagnostics.Debug.Assert(((root1.Table != null) 
+                                    && (root2.Table != null)));
+                    if ((root1.Table.Rows.IndexOf(root1) < root2.Table.Rows.IndexOf(root2))) {
+                        return -1;
+                    }
+                    else {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }

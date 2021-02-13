@@ -26,10 +26,6 @@ namespace Cis.Data
                 .HasMaxLength(10)
                 .IsRequired();
 
-            Property(e => e.SubDistrictId)
-                .HasMaxLength(10)
-                .IsRequired();
-
             Property(e => e.PostalCode)
                 .HasMaxLength(5)
                 .IsOptional();

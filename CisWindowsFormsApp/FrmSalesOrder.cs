@@ -266,7 +266,6 @@ namespace CisWindowsFormsApp
             cbSalesArea.SelectedValue = parentResult.SalesAreaId;
             cbProvince.SelectedValue = parentResult.DeliveryProvinceId;
             cbDistrict.SelectedValue = parentResult.DeliveryDistrictId;
-            cbSubDistrict.SelectedValue = parentResult.DeliverySubDistrictId;
             txtExtraDiscount.Text = string.Format("{0:n0}", parentResult.ExtraDiscountAmount);
 
             // hidden fields
@@ -411,7 +410,6 @@ namespace CisWindowsFormsApp
 
         private void cbDistrict_SelectedIndexChanged(object sender, EventArgs e)
         {
-            commonHelper.BindLocationComboBox(dbContext, cbSubDistrict, Constant.LocationType.SubDistrict, cbDistrict.SelectedValue.ToString());
         }
 
         private void txtQty_KeyPress(object sender, KeyPressEventArgs e)
@@ -630,7 +628,6 @@ namespace CisWindowsFormsApp
             cbSalesArea.SelectedValue = queryResult.SalesAreaId;
             cbProvince.SelectedValue = queryResult.ProvinceId;
             cbDistrict.SelectedValue = queryResult.DistrictId;
-            cbSubDistrict.SelectedValue = queryResult.SubDistrictId;
 
         }
 
@@ -671,7 +668,6 @@ namespace CisWindowsFormsApp
                 var top = new UnitOfWork<TermOfPayment>(dbContext).Repository.GetById(cbTermOfPayment.SelectedValue.ToString());
                 var salesArea = new UnitOfWork<SalesArea>(dbContext).Repository.GetById(cbSalesArea.SelectedValue.ToString());
                 var district = new UnitOfWork<Location>(dbContext).Repository.GetById(cbDistrict.SelectedValue.ToString());
-                var subDistrict = new UnitOfWork<Location>(dbContext).Repository.GetById(cbSubDistrict.SelectedValue.ToString());
 
                 #region parent 
                 var uwSalesOrder = new UnitOfWork<SalesOrder>(dbContext);
@@ -684,8 +680,6 @@ namespace CisWindowsFormsApp
                 soToAdd.CustomerProvince = GetLocationName(customer.ProvinceId);
                 soToAdd.CustomerDistrictId = customer.DistrictId;
                 soToAdd.CustomerDistrict = GetLocationName(customer.DistrictId);
-                soToAdd.CustomerSubDistrictId = customer.SubDistrictId;
-                soToAdd.CustomerSubDistrict = GetLocationName(customer.SubDistrictId);
                 soToAdd.CustomerPostalCode = customer.PostalCode;
                 soToAdd.CustomerPhone = customer.Phone;
                 soToAdd.CustomerEmail = customer.Email;
@@ -695,8 +689,6 @@ namespace CisWindowsFormsApp
                 soToAdd.DeliveryProvince = GetLocationName(cbProvince.SelectedValue.ToString());
                 soToAdd.DeliveryDistrictId = cbDistrict.SelectedValue.ToString();
                 soToAdd.DeliveryDistrict = GetLocationName(cbDistrict.SelectedValue.ToString());
-                soToAdd.DeliverySubDistrictId = cbSubDistrict.SelectedValue.ToString();
-                soToAdd.DeliverySubDistrict = GetLocationName(cbSubDistrict.SelectedValue.ToString());
                 soToAdd.SalesAreaId = cbSalesArea.SelectedValue.ToString();
                 soToAdd.SalesAreaCode = salesArea.AreaCode;
                 soToAdd.SalesDate = dtpSalesOrderDate.Value;
@@ -801,7 +793,6 @@ namespace CisWindowsFormsApp
                     var salesArea = new UnitOfWork<SalesArea>(dbContext).Repository.GetById(cbSalesArea.SelectedValue.ToString());
                     var prov = new UnitOfWork<Location>(dbContext).Repository.GetById(cbProvince.SelectedValue.ToString());
                     var district = new UnitOfWork<Location>(dbContext).Repository.GetById(cbDistrict.SelectedValue.ToString());
-                    var subDistrict = new UnitOfWork<Location>(dbContext).Repository.GetById(cbSubDistrict.SelectedValue.ToString());
 
                     #region parent 
                     var uwSalesOrder = new UnitOfWork<SalesOrder>(dbContext);
@@ -814,8 +805,6 @@ namespace CisWindowsFormsApp
                     soToUpdate.CustomerProvince = GetLocationName(customer.ProvinceId);
                     soToUpdate.CustomerDistrictId = customer.DistrictId;
                     soToUpdate.CustomerDistrict = GetLocationName(customer.DistrictId);
-                    soToUpdate.CustomerSubDistrictId = customer.SubDistrictId;
-                    soToUpdate.CustomerSubDistrict = GetLocationName(customer.SubDistrictId);
                     soToUpdate.CustomerPostalCode = customer.PostalCode;
                     soToUpdate.CustomerPhone = customer.Phone;
                     soToUpdate.CustomerEmail = customer.Email;
@@ -831,8 +820,6 @@ namespace CisWindowsFormsApp
                     soToUpdate.DeliveryProvince = prov.Name;
                     soToUpdate.DeliveryDistrictId = cbDistrict.SelectedValue.ToString();
                     soToUpdate.DeliveryDistrict = district.Name;
-                    soToUpdate.DeliverySubDistrictId = cbSubDistrict.SelectedValue.ToString();
-                    soToUpdate.DeliverySubDistrict = subDistrict.Name;
                     soToUpdate.SalesAreaId = cbSalesArea.SelectedValue.ToString();
                     soToUpdate.SalesAreaCode = salesArea.AreaCode;
                     soToUpdate.SubTotalAmount = decimal.Parse(txtSubTotal.Text.Trim(), System.Globalization.NumberStyles.Currency);

@@ -30,10 +30,6 @@ namespace Cis.Data
                 .HasMaxLength(10)
                 .IsRequired();
 
-            Property(e => e.CustomerSubDistrictId)
-                .HasMaxLength(10)
-                .IsRequired();
-
             Property(e => e.CustomerPostalCode)
                 .HasMaxLength(5)
                 .IsOptional();
@@ -55,10 +51,6 @@ namespace Cis.Data
                 .IsRequired();
 
             Property(e => e.DeliveryDistrictId)
-                .HasMaxLength(10)
-                .IsRequired();
-
-            Property(e => e.DeliverySubDistrictId)
                 .HasMaxLength(10)
                 .IsRequired();
 

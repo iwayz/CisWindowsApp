@@ -16,8 +16,6 @@ namespace Cis.Model
         public string CustomerProvince { get; set; }
         public string CustomerDistrictId { get; set; }
         public string CustomerDistrict { get; set; }
-        public string CustomerSubDistrictId { get; set; }
-        public string CustomerSubDistrict { get; set; }
         public string CustomerPostalCode { get; set; }
         public string CustomerPhone { get; set; }
         public string CustomerEmail { get; set; }
@@ -27,8 +25,6 @@ namespace Cis.Model
         public string DeliveryProvince { get; set; }
         public string DeliveryDistrictId { get; set; }
         public string DeliveryDistrict { get; set; }
-        public string DeliverySubDistrictId { get; set; }
-        public string DeliverySubDistrict { get; set; }
         public string DeliveryPostalCode { get; set; }
         public string SalesmanId { get; set; }
         public string SalesmanCode { get; set; }

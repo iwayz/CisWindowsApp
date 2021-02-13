@@ -30,10 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSalesOrder));
             this.txtDeliveryAddress = new System.Windows.Forms.TextBox();
-            this.cbSubDistrict = new System.Windows.Forms.ComboBox();
             this.cbDistrict = new System.Windows.Forms.ComboBox();
             this.cbProvince = new System.Windows.Forms.ComboBox();
-            this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -132,20 +130,8 @@
             this.txtDeliveryAddress.Location = new System.Drawing.Point(15, 37);
             this.txtDeliveryAddress.Multiline = true;
             this.txtDeliveryAddress.Name = "txtDeliveryAddress";
-            this.txtDeliveryAddress.Size = new System.Drawing.Size(240, 70);
+            this.txtDeliveryAddress.Size = new System.Drawing.Size(240, 117);
             this.txtDeliveryAddress.TabIndex = 20;
-            // 
-            // cbSubDistrict
-            // 
-            this.cbSubDistrict.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cbSubDistrict.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.cbSubDistrict.Font = new System.Drawing.Font("Calibri", 12F);
-            this.cbSubDistrict.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cbSubDistrict.FormattingEnabled = true;
-            this.cbSubDistrict.Location = new System.Drawing.Point(261, 127);
-            this.cbSubDistrict.Name = "cbSubDistrict";
-            this.cbSubDistrict.Size = new System.Drawing.Size(235, 27);
-            this.cbSubDistrict.TabIndex = 23;
             // 
             // cbDistrict
             // 
@@ -172,17 +158,6 @@
             this.cbProvince.Size = new System.Drawing.Size(235, 27);
             this.cbProvince.TabIndex = 21;
             this.cbProvince.SelectedIndexChanged += new System.EventHandler(this.cbProvince_SelectedIndexChanged);
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label22.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label22.Location = new System.Drawing.Point(261, 110);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(67, 15);
-            this.label22.TabIndex = 15;
-            this.label22.Text = "Kecamatan";
             // 
             // label21
             // 
@@ -239,8 +214,6 @@
             this.gbShippingAddress.Controls.Add(this.label2);
             this.gbShippingAddress.Controls.Add(this.label20);
             this.gbShippingAddress.Controls.Add(this.label21);
-            this.gbShippingAddress.Controls.Add(this.label22);
-            this.gbShippingAddress.Controls.Add(this.cbSubDistrict);
             this.gbShippingAddress.Controls.Add(this.cbDistrict);
             this.gbShippingAddress.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.gbShippingAddress.Location = new System.Drawing.Point(464, 65);
@@ -257,7 +230,7 @@
             this.cbSalesArea.Font = new System.Drawing.Font("Calibri", 12F);
             this.cbSalesArea.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.cbSalesArea.FormattingEnabled = true;
-            this.cbSalesArea.Location = new System.Drawing.Point(15, 127);
+            this.cbSalesArea.Location = new System.Drawing.Point(261, 129);
             this.cbSalesArea.Name = "cbSalesArea";
             this.cbSalesArea.Size = new System.Drawing.Size(240, 27);
             this.cbSalesArea.TabIndex = 24;
@@ -267,7 +240,7 @@
             this.label29.AutoSize = true;
             this.label29.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label29.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label29.Location = new System.Drawing.Point(15, 110);
+            this.label29.Location = new System.Drawing.Point(261, 112);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(63, 15);
             this.label29.TabIndex = 30;
@@ -1218,10 +1191,8 @@
 
         #endregion
         private System.Windows.Forms.TextBox txtDeliveryAddress;
-        private System.Windows.Forms.ComboBox cbSubDistrict;
         private System.Windows.Forms.ComboBox cbDistrict;
         private System.Windows.Forms.ComboBox cbProvince;
-        private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label9;

@@ -53,7 +53,6 @@ namespace CisWindowsFormsApp
 
             commonHelper.BindLocationComboBox(dbContext, cbProvince, Constant.LocationType.Province);
             commonHelper.BindLocationComboBox(dbContext, cbDistrict, Constant.LocationType.Province);
-            commonHelper.BindLocationComboBox(dbContext, cbSubDistrict, Constant.LocationType.Province);
 
             txtPostCode.Text = string.Empty;
             txtPhone.Text = string.Empty;
@@ -85,8 +84,6 @@ namespace CisWindowsFormsApp
                     Email = txtEmail.Text.Trim(),
                     ProvinceId = cbProvince.SelectedValue.ToString(),
                     DistrictId = cbDistrict.SelectedValue.ToString(),
-                    SubDistrictId = cbSubDistrict.SelectedValue.ToString(),
-
                      					 // Audit Fields 					CreatedBy = Properties.Settings.Default.CurrentUserId,
                     CreatedAt = DateTime.Now,
                     ModifiedBy = Properties.Settings.Default.CurrentUserId,
@@ -178,7 +175,6 @@ namespace CisWindowsFormsApp
                 salesmanToUpdate.Email = txtEmail.Text.Trim();
                 salesmanToUpdate.ProvinceId = cbProvince.SelectedValue.ToString();
                 salesmanToUpdate.DistrictId = cbDistrict.SelectedValue.ToString();
-                salesmanToUpdate.SubDistrictId = cbSubDistrict.SelectedValue.ToString();
 
                 salesmanToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUserId;
                 salesmanToUpdate.ModifiedAt = DateTime.Now;
@@ -203,7 +199,6 @@ namespace CisWindowsFormsApp
 
         private void cbDistrict_SelectedIndexChanged(object sender, EventArgs e)
         {
-            commonHelper.BindLocationComboBox(dbContext, cbSubDistrict, Constant.LocationType.SubDistrict, cbDistrict.SelectedValue.ToString());
         }
 
         private void txtPostCode_KeyPress(object sender, KeyPressEventArgs e)
@@ -224,7 +219,6 @@ namespace CisWindowsFormsApp
                 salesman.Address,
                 salesman.ProvinceId,
                 salesman.DistrictId,
-                salesman.SubDistrictId,
                 salesman.PostalCode,
                 salesman.Phone,
                 salesman.Email,
@@ -252,7 +246,6 @@ namespace CisWindowsFormsApp
             dgvSalesman.Columns[nameof(Salesman.Id)].Visible = false;
             dgvSalesman.Columns[nameof(Salesman.ProvinceId)].Visible = false;
             dgvSalesman.Columns[nameof(Salesman.DistrictId)].Visible = false;
-            dgvSalesman.Columns[nameof(Salesman.SubDistrictId)].Visible = false;
             dgvSalesman.Columns[nameof(Salesman.PostalCode)].Visible = false;
             dgvSalesman.Columns[nameof(Salesman.ModifiedAt)].Visible = false;
         }
@@ -267,7 +260,6 @@ namespace CisWindowsFormsApp
             txtAddress.Text = currentRow.Cells[nameof(Salesman.Address)].Value.ToString();
             cbProvince.SelectedValue = currentRow.Cells[nameof(Salesman.ProvinceId)].Value.ToString();
             cbDistrict.SelectedValue = currentRow.Cells[nameof(Salesman.DistrictId)].Value.ToString();
-            cbSubDistrict.SelectedValue = currentRow.Cells[nameof(Salesman.SubDistrictId)].Value.ToString();
             txtPostCode.Text = currentRow.Cells[nameof(Salesman.PostalCode)].Value.ToString();
             txtPhone.Text = currentRow.Cells[nameof(Salesman.Phone)].Value.ToString();
             txtEmail.Text = currentRow.Cells[nameof(Salesman.Email)].Value.ToString();

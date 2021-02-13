@@ -38,7 +38,7 @@ namespace CisWindowsFormsApp
             isAdd = true;
             SetUIButtonGroup();
 
-            txtCustomerCode.Focus();
+            cbSalesArea.Focus();
             if (string.IsNullOrEmpty(txtSipaNo.Text))
                 dtpSipaExpiredDate.Value = DateTime.Parse("1900-01-01");
             CheckSourceRefData();
@@ -57,7 +57,6 @@ namespace CisWindowsFormsApp
 
             BindLocationComboBox(cbProvince, Constant.LocationType.Province);
             BindLocationComboBox(cbDistrict, Constant.LocationType.District);
-            BindLocationComboBox(cbSubDistrict, Constant.LocationType.SubDistrict);
 
             txtPostCode.Text = string.Empty;
             txtPhone.Text = string.Empty;
@@ -96,7 +95,6 @@ namespace CisWindowsFormsApp
                     Address = txtAddress.Text.Trim(),
                     ProvinceId = cbProvince.SelectedValue.ToString(),
                     DistrictId = cbDistrict.SelectedValue.ToString(),
-                    SubDistrictId = cbSubDistrict.SelectedValue.ToString(),
                     PostalCode = txtPostCode.Text.Trim(),
                     Phone = txtPhone.Text.Trim(),
                     Email = txtEmail.Text.Trim(),
@@ -142,7 +140,6 @@ namespace CisWindowsFormsApp
                 custToUpdate.Address = txtAddress.Text.Trim();
                 custToUpdate.ProvinceId = cbProvince.SelectedValue.ToString();
                 custToUpdate.DistrictId = cbDistrict.SelectedValue.ToString();
-                custToUpdate.SubDistrictId = cbSubDistrict.SelectedValue.ToString();
                 custToUpdate.PostalCode = txtPostCode.Text.Trim();
                 custToUpdate.Phone = txtPhone.Text.Trim();
                 custToUpdate.Email = txtEmail.Text.Trim();
@@ -237,7 +234,6 @@ namespace CisWindowsFormsApp
 
         private void cbDistrict_SelectedIndexChanged(object sender, EventArgs e)
         {
-            BindLocationComboBox(cbSubDistrict, Constant.LocationType.SubDistrict, cbDistrict.SelectedValue.ToString());
 
         }
 
@@ -258,7 +254,6 @@ namespace CisWindowsFormsApp
                 salesman.Address,
                 salesman.ProvinceId,
                 salesman.DistrictId,
-                salesman.SubDistrictId,
                 salesman.PostalCode,
                 salesman.Phone,
                 salesman.Email,
@@ -292,7 +287,6 @@ namespace CisWindowsFormsApp
             dgvCustomer.Columns[nameof(Customer.ModifiedAt)].Visible = false;
             dgvCustomer.Columns[nameof(Customer.ProvinceId)].Visible = false;
             dgvCustomer.Columns[nameof(Customer.DistrictId)].Visible = false;
-            dgvCustomer.Columns[nameof(Customer.SubDistrictId)].Visible = false;
             dgvCustomer.Columns[nameof(Customer.PostalCode)].Visible = false;
             dgvCustomer.Columns[nameof(Customer.Npwp)].Visible = false;
             dgvCustomer.Columns[nameof(Customer.PharmacistName)].Visible = false;
@@ -313,7 +307,6 @@ namespace CisWindowsFormsApp
             txtAddress.Text = currentRow.Cells[nameof(Customer.Address)].Value.ToString();
             cbProvince.SelectedValue = currentRow.Cells[nameof(Customer.ProvinceId)].Value.ToString();
             cbDistrict.SelectedValue = currentRow.Cells[nameof(Customer.DistrictId)].Value.ToString();
-            cbSubDistrict.SelectedValue = currentRow.Cells[nameof(Customer.SubDistrictId)].Value.ToString();
             txtPostCode.Text = currentRow.Cells[nameof(Customer.PostalCode)].Value.ToString();
             txtPhone.Text = currentRow.Cells[nameof(Customer.Phone)].Value.ToString();
             txtEmail.Text = currentRow.Cells[nameof(Customer.Email)].Value.ToString();
@@ -461,6 +454,27 @@ namespace CisWindowsFormsApp
             e.Handled = (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
                 && e.KeyChar != '/' && e.KeyChar != '(' && e.KeyChar != ')'
                 && e.KeyChar != '-' && e.KeyChar != '+' && e.KeyChar != ' ';
+        }
+
+        private string GetCustomerCode()
+        {
+            var areaCode = cbSalesArea.SelectedValue.ToString();
+            if (areaCode.Contains("Pilih")) return string.Empty;
+
+            //TODO: add condition if no record found yet on that area.
+            var lastCustomerCode = uowCust.Repository.GetAll()
+                .Where(e => e.SalesAreaId == areaCode)
+                .OrderByDescending(e => e.CustomerCode).FirstOrDefault().CustomerCode;
+
+            var lastNumber = Convert.ToInt32(lastCustomerCode.Substring(2)) + 1;
+            var nextCustomerCode = lastCustomerCode.Substring(0, 2) + lastNumber.ToString().PadLeft(4);
+            
+            return nextCustomerCode;
+        }
+
+        private void cbSalesArea_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtCustomerCode.Text = GetCustomerCode();
         }
     }
 }

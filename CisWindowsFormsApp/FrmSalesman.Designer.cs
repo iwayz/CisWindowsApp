@@ -59,8 +59,6 @@
             this.cbProvince = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.cbDistrict = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.cbSubDistrict = new System.Windows.Forms.ComboBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesman)).BeginInit();
@@ -244,7 +242,7 @@
             this.dgvSalesman.Location = new System.Drawing.Point(453, 65);
             this.dgvSalesman.Margin = new System.Windows.Forms.Padding(9, 3, 3, 3);
             this.dgvSalesman.Name = "dgvSalesman";
-            this.dgvSalesman.Size = new System.Drawing.Size(509, 421);
+            this.dgvSalesman.Size = new System.Drawing.Size(509, 371);
             this.dgvSalesman.TabIndex = 0;
             this.dgvSalesman.Text = "dataGridView1";
             this.dgvSalesman.Click += new System.EventHandler(this.dgvSalesman_Click);
@@ -323,7 +321,7 @@
             this.txtPostCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPostCode.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtPostCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtPostCode.Location = new System.Drawing.Point(28, 406);
+            this.txtPostCode.Location = new System.Drawing.Point(28, 356);
             this.txtPostCode.MaxLength = 5;
             this.txtPostCode.Name = "txtPostCode";
             this.txtPostCode.Size = new System.Drawing.Size(104, 31);
@@ -335,7 +333,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label6.Location = new System.Drawing.Point(28, 390);
+            this.label6.Location = new System.Drawing.Point(28, 340);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(57, 15);
             this.label6.TabIndex = 4;
@@ -346,7 +344,7 @@
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEmail.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtEmail.Location = new System.Drawing.Point(28, 455);
+            this.txtEmail.Location = new System.Drawing.Point(28, 405);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(283, 31);
             this.txtEmail.TabIndex = 10;
@@ -356,7 +354,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label7.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label7.Location = new System.Drawing.Point(28, 440);
+            this.label7.Location = new System.Drawing.Point(28, 390);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(36, 15);
             this.label7.TabIndex = 4;
@@ -367,7 +365,7 @@
             this.txtPhone.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhone.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtPhone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtPhone.Location = new System.Drawing.Point(141, 406);
+            this.txtPhone.Location = new System.Drawing.Point(141, 356);
             this.txtPhone.MaxLength = 20;
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(170, 31);
@@ -379,7 +377,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label8.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label8.Location = new System.Drawing.Point(141, 390);
+            this.label8.Location = new System.Drawing.Point(141, 340);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(50, 15);
             this.label8.TabIndex = 4;
@@ -433,29 +431,6 @@
             this.cbDistrict.TabIndex = 6;
             this.cbDistrict.SelectedIndexChanged += new System.EventHandler(this.cbDistrict_SelectedIndexChanged);
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label11.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label11.Location = new System.Drawing.Point(28, 340);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(67, 15);
-            this.label11.TabIndex = 4;
-            this.label11.Text = "Kecamatan";
-            // 
-            // cbSubDistrict
-            // 
-            this.cbSubDistrict.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cbSubDistrict.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.cbSubDistrict.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.cbSubDistrict.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cbSubDistrict.FormattingEnabled = true;
-            this.cbSubDistrict.Location = new System.Drawing.Point(28, 356);
-            this.cbSubDistrict.Name = "cbSubDistrict";
-            this.cbSubDistrict.Size = new System.Drawing.Size(235, 31);
-            this.cbSubDistrict.TabIndex = 7;
-            // 
             // btnSearch
             // 
             this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
@@ -491,10 +466,8 @@
             this.ClientSize = new System.Drawing.Size(972, 715);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSearch);
-            this.Controls.Add(this.cbSubDistrict);
             this.Controls.Add(this.cbDistrict);
             this.Controls.Add(this.cbProvince);
-            this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.gbGender);
@@ -563,8 +536,6 @@
         private System.Windows.Forms.ComboBox cbProvince;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cbDistrict;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox cbSubDistrict;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TextBox txtSearch;
     }

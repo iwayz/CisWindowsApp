@@ -12,12 +12,12 @@
               <DbSource ConnectionRef="CIS_POSConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        SalesOrder.Id, SalesOrder.SalesNo, SalesOrder.CustomerName, SalesOrder.CustomerAddress, SalesOrder.CustomerProvince, SalesOrder.CustomerDistrict, SalesOrder.CustomerSubDistrict, SalesOrder.CustomerPostalCode, 
-                         SalesOrder.CustomerPhone, SalesOrder.CustomerEmail, SalesOrder.CustomerNpwp, SalesOrder.DeliveryAddress, SalesOrder.DeliveryProvince, SalesOrder.DeliveryDistrict, SalesOrder.DeliverySubDistrict, 
-                         SalesOrder.DeliveryPostalCode, SalesOrder.SalesAreaCode, SalesOrder.SalesDate, SalesOrder.TermOfPaymentCode, SalesOrder.DueDate, SalesOrder.PersonInCharge, SalesOrder.SipaNo, SalesOrder.SubTotalAmount, 
-                         SalesOrder.ExtraDiscountAmount, SalesOrder.TaxBaseAmount, SalesOrder.ValueAddedTaxAmount, SalesOrder.GrandTotalAmount, SalesOrder.Username, SalesOrder.SalesmanCode, SalesOrderItem.SalesOrderId, 
-                         SalesOrderItem.ProductCode, SalesOrderItem.ProductName, SalesOrderItem.BatchCode, SalesOrderItem.ExpiredDate, SalesOrderItem.Quantity, SalesOrderItem.UomCode, SalesOrderItem.Price, 
-                         SalesOrderItem.DiscountPercentage, SalesOrderItem.TotalAmount, SalesOrderItem.Id AS SalesOrderItemId, SalesOrder.Status, SalesArea.Description
+                    <CommandText>SELECT        SalesOrder.Id, SalesOrder.SalesNo, SalesOrder.CustomerName, SalesOrder.CustomerAddress, SalesOrder.CustomerProvince, SalesOrder.CustomerDistrict, SalesOrder.CustomerPostalCode, SalesOrder.CustomerPhone, 
+                         SalesOrder.CustomerEmail, SalesOrder.CustomerNpwp, SalesOrder.DeliveryAddress, SalesOrder.DeliveryProvince, SalesOrder.DeliveryDistrict, SalesOrder.DeliveryPostalCode, SalesOrder.SalesAreaCode, 
+                         SalesOrder.SalesDate, SalesOrder.TermOfPaymentCode, SalesOrder.DueDate, SalesOrder.PersonInCharge, SalesOrder.SipaNo, SalesOrder.SubTotalAmount, SalesOrder.ExtraDiscountAmount, SalesOrder.TaxBaseAmount, 
+                         SalesOrder.ValueAddedTaxAmount, SalesOrder.GrandTotalAmount, SalesOrder.Username, SalesOrder.SalesmanCode, SalesOrderItem.SalesOrderId, SalesOrderItem.ProductCode, SalesOrderItem.ProductName, 
+                         SalesOrderItem.BatchCode, SalesOrderItem.ExpiredDate, SalesOrderItem.Quantity, SalesOrderItem.UomCode, SalesOrderItem.Price, SalesOrderItem.DiscountPercentage, SalesOrderItem.TotalAmount, 
+                         SalesOrderItem.Id AS SalesOrderItemId, SalesOrder.Status, SalesArea.Description
 FROM            SalesOrder INNER JOIN
                          SalesOrderItem ON SalesOrder.Id = SalesOrderItem.SalesOrderId INNER JOIN
                          SalesArea ON SalesOrder.SalesAreaId = SalesArea.Id
@@ -36,7 +36,6 @@ WHERE        (SalesOrder.Id = @SalesOrderId)</CommandText>
               <Mapping SourceColumn="CustomerAddress" DataSetColumn="CustomerAddress" />
               <Mapping SourceColumn="CustomerProvince" DataSetColumn="CustomerProvince" />
               <Mapping SourceColumn="CustomerDistrict" DataSetColumn="CustomerDistrict" />
-              <Mapping SourceColumn="CustomerSubDistrict" DataSetColumn="CustomerSubDistrict" />
               <Mapping SourceColumn="CustomerPostalCode" DataSetColumn="CustomerPostalCode" />
               <Mapping SourceColumn="CustomerPhone" DataSetColumn="CustomerPhone" />
               <Mapping SourceColumn="CustomerEmail" DataSetColumn="CustomerEmail" />
@@ -44,7 +43,6 @@ WHERE        (SalesOrder.Id = @SalesOrderId)</CommandText>
               <Mapping SourceColumn="DeliveryAddress" DataSetColumn="DeliveryAddress" />
               <Mapping SourceColumn="DeliveryProvince" DataSetColumn="DeliveryProvince" />
               <Mapping SourceColumn="DeliveryDistrict" DataSetColumn="DeliveryDistrict" />
-              <Mapping SourceColumn="DeliverySubDistrict" DataSetColumn="DeliverySubDistrict" />
               <Mapping SourceColumn="DeliveryPostalCode" DataSetColumn="DeliveryPostalCode" />
               <Mapping SourceColumn="SalesAreaCode" DataSetColumn="SalesAreaCode" />
               <Mapping SourceColumn="SalesDate" DataSetColumn="SalesDate" />
@@ -83,7 +81,7 @@ WHERE        (SalesOrder.Id = @SalesOrderId)</CommandText>
   <xs:element name="DataSourceInvoice" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSourceInvoice" msprop:Generator_UserDSName="DataSourceInvoice">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="DataTableInvoice" msprop:Generator_TableClassName="DataTableInvoiceDataTable" msprop:Generator_TableVarName="tableDataTableInvoice" msprop:Generator_TablePropName="DataTableInvoice" msprop:Generator_RowDeletingName="DataTableInvoiceRowDeleting" msprop:Generator_RowChangingName="DataTableInvoiceRowChanging" msprop:Generator_RowEvHandlerName="DataTableInvoiceRowChangeEventHandler" msprop:Generator_RowDeletedName="DataTableInvoiceRowDeleted" msprop:Generator_UserTableName="DataTableInvoice" msprop:Generator_RowChangedName="DataTableInvoiceRowChanged" msprop:Generator_RowEvArgName="DataTableInvoiceRowChangeEvent" msprop:Generator_RowClassName="DataTableInvoiceRow">
+        <xs:element name="DataTableInvoice" msprop:Generator_TableClassName="DataTableInvoiceDataTable" msprop:Generator_TableVarName="tableDataTableInvoice" msprop:Generator_RowChangedName="DataTableInvoiceRowChanged" msprop:Generator_TablePropName="DataTableInvoice" msprop:Generator_RowDeletingName="DataTableInvoiceRowDeleting" msprop:Generator_RowChangingName="DataTableInvoiceRowChanging" msprop:Generator_RowEvHandlerName="DataTableInvoiceRowChangeEventHandler" msprop:Generator_RowDeletedName="DataTableInvoiceRowDeleted" msprop:Generator_RowClassName="DataTableInvoiceRow" msprop:Generator_UserTableName="DataTableInvoice" msprop:Generator_RowEvArgName="DataTableInvoiceRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id">
@@ -122,13 +120,6 @@ WHERE        (SalesOrder.Id = @SalesOrderId)</CommandText>
                 </xs:simpleType>
               </xs:element>
               <xs:element name="CustomerDistrict" msprop:Generator_ColumnVarNameInTable="columnCustomerDistrict" msprop:Generator_ColumnPropNameInRow="CustomerDistrict" msprop:Generator_ColumnPropNameInTable="CustomerDistrictColumn" msprop:Generator_UserColumnName="CustomerDistrict" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="CustomerSubDistrict" msprop:Generator_ColumnVarNameInTable="columnCustomerSubDistrict" msprop:Generator_ColumnPropNameInRow="CustomerSubDistrict" msprop:Generator_ColumnPropNameInTable="CustomerSubDistrictColumn" msprop:Generator_UserColumnName="CustomerSubDistrict" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="2147483647" />
@@ -178,13 +169,6 @@ WHERE        (SalesOrder.Id = @SalesOrderId)</CommandText>
                 </xs:simpleType>
               </xs:element>
               <xs:element name="DeliveryDistrict" msprop:Generator_ColumnVarNameInTable="columnDeliveryDistrict" msprop:Generator_ColumnPropNameInRow="DeliveryDistrict" msprop:Generator_ColumnPropNameInTable="DeliveryDistrictColumn" msprop:Generator_UserColumnName="DeliveryDistrict" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="DeliverySubDistrict" msprop:Generator_ColumnVarNameInTable="columnDeliverySubDistrict" msprop:Generator_ColumnPropNameInRow="DeliverySubDistrict" msprop:Generator_ColumnPropNameInTable="DeliverySubDistrictColumn" msprop:Generator_UserColumnName="DeliverySubDistrict" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="2147483647" />

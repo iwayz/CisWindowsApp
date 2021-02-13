@@ -213,10 +213,10 @@
                   <Width>5.3748cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.7cm</Width>
+                  <Width>1.9cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.9cm</Width>
+                  <Width>1.7cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.09771cm</Width>
@@ -364,7 +364,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>EXP. DATE</Value>
+                                  <Value>BATCH</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
                                     <FontSize>9pt</FontSize>
@@ -403,7 +403,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>BATCH</Value>
+                                  <Value>EXP. DATE</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
                                     <FontSize>9pt</FontSize>
@@ -741,7 +741,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Month(Fields!ExpiredDate.Value) &amp; "/" &amp; Year(Fields!ExpiredDate.Value)</Value>
+                                  <Value>=Fields!BatchCode.Value</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
                                     <FontSize>9pt</FontSize>
@@ -774,7 +774,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!BatchCode.Value</Value>
+                                  <Value>=Month(Fields!ExpiredDate.Value) &amp; "/" &amp; Year(Fields!ExpiredDate.Value)</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
                                     <FontSize>9pt</FontSize>
@@ -1018,7 +1018,7 @@
         <Height>0.43614in</Height>
         <Style />
       </Body>
-      <Width>7.66355in</Width>
+      <Width>7.70005in</Width>
       <Page>
         <PageHeader>
           <Height>4.26953cm</Height>
@@ -1160,8 +1160,6 @@
                       <Value>= "KEPADA:" &amp; System.Environment.NewLine 
 &amp; Fields!CustomerName.Value &amp; System.Environment.NewLine 
 &amp; Fields!CustomerAddress.Value 
-&amp; ", " &amp; System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.
-    ToTitleCase(Fields!CustomerSubDistrict.Value.ToString().ToLower())
 &amp; ", " &amp; System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.
     ToTitleCase(Fields!CustomerDistrict.Value.ToString().ToLower())
 &amp; ", " &amp; System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.
@@ -1482,8 +1480,6 @@
                       <Value>= "ALAMAT KIRIM:" &amp; System.Environment.NewLine 
 &amp; Fields!CustomerName.Value &amp; System.Environment.NewLine 
 &amp; Fields!DeliveryAddress.Value 
-&amp; ", " &amp; System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.
-    ToTitleCase(Fields!DeliverySubDistrict.Value.ToString().ToLower())
 &amp; ", " &amp; System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.
     ToTitleCase(Fields!DeliveryDistrict.Value.ToString().ToLower())
 &amp; ", " &amp; System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.

@@ -29,10 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
-            this.cbSubDistrict = new System.Windows.Forms.ComboBox();
             this.cbDistrict = new System.Windows.Forms.ComboBox();
             this.cbProvince = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -70,18 +68,6 @@
             this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
-            // cbSubDistrict
-            // 
-            this.cbSubDistrict.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cbSubDistrict.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.cbSubDistrict.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.cbSubDistrict.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cbSubDistrict.FormattingEnabled = true;
-            this.cbSubDistrict.Location = new System.Drawing.Point(9, 305);
-            this.cbSubDistrict.Name = "cbSubDistrict";
-            this.cbSubDistrict.Size = new System.Drawing.Size(235, 31);
-            this.cbSubDistrict.TabIndex = 6;
-            // 
             // cbDistrict
             // 
             this.cbDistrict.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
@@ -107,17 +93,6 @@
             this.cbProvince.Size = new System.Drawing.Size(235, 31);
             this.cbProvince.TabIndex = 4;
             this.cbProvince.SelectedIndexChanged += new System.EventHandler(this.cbProvince_SelectedIndexChanged);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label11.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label11.Location = new System.Drawing.Point(9, 289);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(67, 15);
-            this.label11.TabIndex = 20;
-            this.label11.Text = "Kecamatan";
             // 
             // label10
             // 
@@ -202,7 +177,7 @@
             this.dgvPrincipal.Location = new System.Drawing.Point(3, 72);
             this.dgvPrincipal.Margin = new System.Windows.Forms.Padding(9, 3, 3, 3);
             this.dgvPrincipal.Name = "dgvPrincipal";
-            this.dgvPrincipal.Size = new System.Drawing.Size(509, 369);
+            this.dgvPrincipal.Size = new System.Drawing.Size(509, 328);
             this.dgvPrincipal.TabIndex = 16;
             this.dgvPrincipal.Text = "dataGridView1";
             this.dgvPrincipal.Click += new System.EventHandler(this.dgvPrincipal_Click);
@@ -297,7 +272,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label7.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label7.Location = new System.Drawing.Point(9, 395);
+            this.label7.Location = new System.Drawing.Point(9, 346);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(36, 15);
             this.label7.TabIndex = 28;
@@ -308,7 +283,7 @@
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEmail.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtEmail.Location = new System.Drawing.Point(9, 410);
+            this.txtEmail.Location = new System.Drawing.Point(9, 361);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(283, 31);
             this.txtEmail.TabIndex = 9;
@@ -318,7 +293,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label8.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label8.Location = new System.Drawing.Point(122, 339);
+            this.label8.Location = new System.Drawing.Point(122, 290);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(50, 15);
             this.label8.TabIndex = 29;
@@ -329,7 +304,7 @@
             this.txtPhone.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhone.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtPhone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtPhone.Location = new System.Drawing.Point(122, 355);
+            this.txtPhone.Location = new System.Drawing.Point(122, 306);
             this.txtPhone.MaxLength = 20;
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(170, 31);
@@ -341,7 +316,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label6.Location = new System.Drawing.Point(9, 339);
+            this.label6.Location = new System.Drawing.Point(9, 290);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(57, 15);
             this.label6.TabIndex = 27;
@@ -352,7 +327,7 @@
             this.txtPostCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPostCode.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtPostCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtPostCode.Location = new System.Drawing.Point(9, 355);
+            this.txtPostCode.Location = new System.Drawing.Point(9, 306);
             this.txtPostCode.MaxLength = 5;
             this.txtPostCode.Name = "txtPostCode";
             this.txtPostCode.Size = new System.Drawing.Size(104, 31);
@@ -456,13 +431,11 @@
             this.panel2.Controls.Add(this.txtPrincipalCode);
             this.panel2.Controls.Add(this.txtPrincipalName);
             this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.cbSubDistrict);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.cbDistrict);
             this.panel2.Controls.Add(this.txtAddress);
             this.panel2.Controls.Add(this.cbProvince);
             this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.txtPostCode);
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.label6);
@@ -525,11 +498,8 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ComboBox cbSubDistrict;
         private System.Windows.Forms.ComboBox cbDistrict;
         private System.Windows.Forms.ComboBox cbProvince;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel panel1;
