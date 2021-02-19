@@ -461,20 +461,20 @@ namespace CisWindowsFormsApp
             var areaCode = cbSalesArea.SelectedValue.ToString();
             if (areaCode.Contains("Pilih")) return string.Empty;
 
-            //TODO: add condition if no record found yet on that area.
-            var lastCustomerCode = uowCust.Repository.GetAll()
+            var lastRec = uowCust.Repository.GetAll()
                 .Where(e => e.SalesAreaId == areaCode)
-                .OrderByDescending(e => e.CustomerCode).FirstOrDefault().CustomerCode;
+                .OrderByDescending(e => e.CustomerCode).FirstOrDefault();
 
-            var lastNumber = Convert.ToInt32(lastCustomerCode.Substring(2)) + 1;
-            var nextCustomerCode = lastCustomerCode.Substring(0, 2) + lastNumber.ToString().PadLeft(4);
+            var lastNumber = lastRec == null ? 0 : Convert.ToInt32(lastRec.CustomerCode.Substring(2));
+            var nextCustomerCode = cbSalesArea.Text.Substring(0, 2) + (lastNumber + 1).ToString().PadLeft(4, '0');
             
             return nextCustomerCode;
         }
 
         private void cbSalesArea_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtCustomerCode.Text = GetCustomerCode();
+            if (isAdd && cbSalesArea.SelectedValue.ToString() != "0")
+                txtCustomerCode.Text = GetCustomerCode();
         }
     }
 }
