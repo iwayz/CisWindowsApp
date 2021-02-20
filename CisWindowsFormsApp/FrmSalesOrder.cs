@@ -488,7 +488,7 @@ namespace CisWindowsFormsApp
             DataGridViewRow row = dgvSalesOrderItem.Rows[rowId];
 
             // Add the data
-            var netPrice = Convert.ToInt64(Convert.ToDecimal(txtPrice.Text.Trim()) / (decimal)1.1);
+            var netPrice = Convert.ToDecimal(txtPrice.Text.Trim()) / (decimal)1.1;
             var subTotal = Convert.ToDecimal(txtQty.Text.Trim()) * netPrice;
             var discount = 1 - (Convert.ToDecimal(txtDiscount.Text.Trim()) / 100);
 

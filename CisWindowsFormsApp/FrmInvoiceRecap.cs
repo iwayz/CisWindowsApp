@@ -159,11 +159,11 @@ namespace CisWindowsFormsApp
             {
                 var qty = item.sodcusd.sod.Quantity;
                 var price = item.sodcusd.sod.Price;
-                var discount = item.sodcusd.sod.DiscountPercentage;
+                var discountPercentage = Math.Round(item.sodcusd.sod.DiscountPercentage / 100, 2);
                 var grossValue = item.sodcusd.sod.TotalAmount;
-                var taxBaseAmount = grossValue * (1 - Convert.ToDecimal(discount));
-                var valueAddedAmount = taxBaseAmount * Convert.ToDecimal(0.1);
-                var netValue = taxBaseAmount + valueAddedAmount;
+                var taxBaseAmount = Math.Round(grossValue * (1 - Convert.ToDecimal(discountPercentage)), MidpointRounding.AwayFromZero);
+                var valueAddedAmount = Math.Round(taxBaseAmount * Convert.ToDecimal(0.1), MidpointRounding.AwayFromZero);
+                var netValue = Math.Round(taxBaseAmount + valueAddedAmount, MidpointRounding.AwayFromZero);
 
                 xlWorkSheet.Cells[rowNum, 1] = item.sodcusd.sod.SalesDate.ToShortDateString();
                 xlWorkSheet.Cells[rowNum, 2] = item.sodcusd.sod.SalesNo;
@@ -184,7 +184,7 @@ namespace CisWindowsFormsApp
                 xlWorkSheet.Cells[rowNum, 17] = qty;
                 xlWorkSheet.Cells[rowNum, 18] = price;
                 xlWorkSheet.Cells[rowNum, 19] = grossValue;
-                xlWorkSheet.Cells[rowNum, 20] = discount;
+                xlWorkSheet.Cells[rowNum, 20] = discountPercentage;
                 xlWorkSheet.Cells[rowNum, 21] = taxBaseAmount;
                 xlWorkSheet.Cells[rowNum, 22] = valueAddedAmount;
                 xlWorkSheet.Cells[rowNum, 23] = netValue;

@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmProduct));
             this.dgvProduct = new System.Windows.Forms.DataGridView();
-            this.txtProductCode = new System.Windows.Forms.TextBox();
             this.txtProductName = new System.Windows.Forms.TextBox();
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.dtpDecreeDate = new System.Windows.Forms.DateTimePicker();
@@ -40,7 +39,6 @@
             this.cbMedCat = new System.Windows.Forms.ComboBox();
             this.cbUsageType = new System.Windows.Forms.ComboBox();
             this.cbPrincipal = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -65,6 +63,9 @@
             this.pnlNote = new System.Windows.Forms.Panel();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
+            this.txtManualCode = new System.Windows.Forms.TextBox();
+            this.txtAutoCode = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).BeginInit();
             this.pnlHiddenField.SuspendLayout();
             this.pnlNote.SuspendLayout();
@@ -81,16 +82,6 @@
             this.dgvProduct.TabIndex = 0;
             this.dgvProduct.Text = "dataGridView1";
             this.dgvProduct.Click += new System.EventHandler(this.dgvProduct_Click);
-            // 
-            // txtProductCode
-            // 
-            this.txtProductCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtProductCode.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.txtProductCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtProductCode.Location = new System.Drawing.Point(24, 31);
-            this.txtProductCode.Name = "txtProductCode";
-            this.txtProductCode.Size = new System.Drawing.Size(139, 31);
-            this.txtProductCode.TabIndex = 1;
             // 
             // txtProductName
             // 
@@ -177,6 +168,7 @@
             this.cbMedCat.Name = "cbMedCat";
             this.cbMedCat.Size = new System.Drawing.Size(283, 31);
             this.cbMedCat.TabIndex = 8;
+            this.cbMedCat.SelectedIndexChanged += new System.EventHandler(this.cbMedCat_SelectedIndexChanged);
             // 
             // cbUsageType
             // 
@@ -187,8 +179,9 @@
             this.cbUsageType.FormattingEnabled = true;
             this.cbUsageType.Location = new System.Drawing.Point(24, 280);
             this.cbUsageType.Name = "cbUsageType";
-            this.cbUsageType.Size = new System.Drawing.Size(193, 31);
+            this.cbUsageType.Size = new System.Drawing.Size(283, 31);
             this.cbUsageType.TabIndex = 9;
+            this.cbUsageType.SelectedIndexChanged += new System.EventHandler(this.cbUsageType_SelectedIndexChanged);
             // 
             // cbPrincipal
             // 
@@ -201,17 +194,7 @@
             this.cbPrincipal.Name = "cbPrincipal";
             this.cbPrincipal.Size = new System.Drawing.Size(283, 31);
             this.cbPrincipal.TabIndex = 10;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(24, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 15);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Kode Produk";
+            this.cbPrincipal.SelectedIndexChanged += new System.EventHandler(this.cbPrincipal_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -512,12 +495,49 @@
             this.txtSearch.TabIndex = 38;
             this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
             // 
+            // txtManualCode
+            // 
+            this.txtManualCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtManualCode.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtManualCode.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.txtManualCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtManualCode.Location = new System.Drawing.Point(24, 34);
+            this.txtManualCode.MaxLength = 2;
+            this.txtManualCode.Name = "txtManualCode";
+            this.txtManualCode.Size = new System.Drawing.Size(51, 31);
+            this.txtManualCode.TabIndex = 1;
+            // 
+            // txtAutoCode
+            // 
+            this.txtAutoCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtAutoCode.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.txtAutoCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtAutoCode.Location = new System.Drawing.Point(81, 34);
+            this.txtAutoCode.Name = "txtAutoCode";
+            this.txtAutoCode.ReadOnly = true;
+            this.txtAutoCode.Size = new System.Drawing.Size(93, 31);
+            this.txtAutoCode.TabIndex = 1;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label14.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label14.Location = new System.Drawing.Point(24, 16);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(77, 15);
+            this.label14.TabIndex = 4;
+            this.label14.Text = "Kode Produk";
+            // 
             // FrmProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1118, 700);
+            this.Controls.Add(this.txtAutoCode);
+            this.Controls.Add(this.txtManualCode);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.pnlNote);
@@ -536,7 +556,6 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.cbPrincipal);
             this.Controls.Add(this.cbUsageType);
             this.Controls.Add(this.cbMedCat);
@@ -546,7 +565,6 @@
             this.Controls.Add(this.txtDiscount);
             this.Controls.Add(this.txtPrice);
             this.Controls.Add(this.txtProductName);
-            this.Controls.Add(this.txtProductCode);
             this.Controls.Add(this.dgvProduct);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmProduct";
@@ -565,7 +583,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvProduct;
-        private System.Windows.Forms.TextBox txtProductCode;
         private System.Windows.Forms.TextBox txtProductName;
         private System.Windows.Forms.TextBox txtPrice;
         private System.Windows.Forms.DateTimePicker dtpDecreeDate;
@@ -575,7 +592,6 @@
         private System.Windows.Forms.ComboBox cbMedCat;
         private System.Windows.Forms.ComboBox cbUsageType;
         private System.Windows.Forms.ComboBox cbPrincipal;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -600,5 +616,8 @@
         private System.Windows.Forms.Panel pnlNote;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.TextBox txtManualCode;
+        private System.Windows.Forms.TextBox txtAutoCode;
+        private System.Windows.Forms.Label label14;
     }
 }

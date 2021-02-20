@@ -25,7 +25,7 @@ namespace CisWindowsFormsApp
             InitializeComponent();
             dbContext = new CisDbContext();
 
-            
+
         }
 
         private void FrmProduct_Load(object sender, EventArgs e)
@@ -42,10 +42,10 @@ namespace CisWindowsFormsApp
             isAdd = true;
             SetUIButtonGroup();
 
-            txtProductCode.Focus();
+            txtManualCode.Focus();
             CheckSourceRefData();
         }
-        
+
         private void txtPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
@@ -75,10 +75,11 @@ namespace CisWindowsFormsApp
         private void btnClear_Click(object sender, EventArgs e)
         {
             isAdd = true;
-            SetUIButtonGroup(); 
-            txtProductCode.Text = string.Empty;
+            SetUIButtonGroup();
+            txtManualCode.Text = string.Empty;
+            txtAutoCode.Text = string.Empty;
             txtProductName.Text = string.Empty;
-            txtProductCode.Focus();
+            txtManualCode.Focus();
 
             txtPrice.Text = "0";
             dtpDecreeDate.Value = DateTime.Now;
@@ -93,17 +94,17 @@ namespace CisWindowsFormsApp
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (!ValidateMandatoryFields()) return;
-
-            var existingProduct = uowProduct.Repository.GetAll().Where(p => p.ProductCode == txtProductCode.Text.Trim()).FirstOrDefault();
+            var productCode = GetCurrentProductCode();
+            var existingProduct = uowProduct.Repository.GetAll().Where(p => p.ProductCode == productCode).FirstOrDefault();
             if (existingProduct != null)
             {
-                CommonMessageHelper.DataAlreadyExist(txtProductCode.Text.Trim());
+                CommonMessageHelper.DataAlreadyExist(GetCurrentProductCode());
             }
             else
             {
                 var prodToAdd = new Product
                 {
-                    ProductCode = txtProductCode.Text.Trim(),
+                    ProductCode = GetCurrentProductCode(),
                     ProductName = txtProductName.Text.Trim(),
                     Price = decimal.Parse(txtPrice.Text.Trim(), System.Globalization.NumberStyles.Currency),
                     PriceDecreeDate = DateTime.Parse(dtpDecreeDate.Value.ToString("yyyy-MM-dd")),
@@ -113,7 +114,9 @@ namespace CisWindowsFormsApp
                     MedicineCatId = cbMedCat.SelectedValue.ToString(),
                     UsageTypeId = cbUsageType.SelectedValue.ToString(),
                     PrincipalId = cbPrincipal.SelectedValue.ToString(),
-                     					 // Audit Fields 					CreatedBy = Properties.Settings.Default.CurrentUserId,
+
+                    // Audit Fields 
+                    CreatedBy = Properties.Settings.Default.CurrentUserId,
                     CreatedAt = DateTime.Now,
                     ModifiedBy = Properties.Settings.Default.CurrentUserId,
                     ModifiedAt = DateTime.Now
@@ -128,19 +131,19 @@ namespace CisWindowsFormsApp
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (!ValidateMandatoryFields()) return;
-            
+
             var repoLastUpdated = uowProduct.Repository.GetById(txtProductId.Text.Trim()).ModifiedAt;
             var lastUpdated = DateTime.Parse(txtModifiedAt.Text.Trim());
-            
+
             var commonHelper = new CommonFunctionHelper();
             if (commonHelper.StandardizeDateTime(lastUpdated) != commonHelper.StandardizeDateTime(repoLastUpdated))
             {
-                CommonMessageHelper.DataHasBeenUpdatedPriorToSave(txtProductCode.Text.Trim());
+                CommonMessageHelper.DataHasBeenUpdatedPriorToSave(GetCurrentProductCode());
             }
             else
             {
                 var prodToUpdate = uowProduct.Repository.GetById(txtProductId.Text.Trim());
-                prodToUpdate.ProductCode = txtProductCode.Text.Trim();
+                prodToUpdate.ProductCode = GetCurrentProductCode();
                 prodToUpdate.ProductName = txtProductName.Text.Trim();
                 //Price = decimal.Parse(dgvSalesOrderItem.Rows[i].Cells["price"].Value.ToString(), System.Globalization.NumberStyles.Currency),
                 //prodToUpdate.Price = Convert.ToDecimal(txtPrice.Text.Trim());
@@ -164,7 +167,8 @@ namespace CisWindowsFormsApp
 
         private void btnDel_Click(object sender, EventArgs e)
         {
-            var prodToDel = uowProduct.Repository.GetAll().Where(p => p.ProductCode == txtProductCode.Text.Trim()).FirstOrDefault();
+            var currentProductCode = GetCurrentProductCode();
+            var prodToDel = uowProduct.Repository.GetAll().Where(p => p.ProductCode == currentProductCode).FirstOrDefault();
             if (prodToDel != null)
             {
                 if (DialogResult.Yes == CommonMessageHelper.ConfirmDelete())
@@ -185,7 +189,7 @@ namespace CisWindowsFormsApp
             }
             else
             {
-                CommonMessageHelper.DataNotFound(txtProductCode.Text.Trim());
+                CommonMessageHelper.DataNotFound(GetCurrentProductCode());
             }
         }
 
@@ -210,7 +214,7 @@ namespace CisWindowsFormsApp
                 gvSelectedIndex = dgvProduct.CurrentRow.Index;
                 BindProductGridView();
                 SetUIGridView();
-                dgvProduct.CurrentCell = this.dgvProduct[1, isAdd ? dgvProduct.RowCount-1 : (gvSelectedIndex < dgvProduct.RowCount ? gvSelectedIndex : gvSelectedIndex - 1)];
+                dgvProduct.CurrentCell = this.dgvProduct[1, isAdd ? dgvProduct.RowCount - 1 : (gvSelectedIndex < dgvProduct.RowCount ? gvSelectedIndex : gvSelectedIndex - 1)];
                 SetUIbySelectedGridItem();
                 txtModifiedAt.Text = dgvProduct.CurrentRow.Cells[nameof(Product.ModifiedAt)].Value.ToString();
             }
@@ -222,7 +226,9 @@ namespace CisWindowsFormsApp
         private void SetUIbySelectedGridItem()
         {
             var currentRow = dgvProduct.CurrentRow;
-            txtProductCode.Text = currentRow.Cells[nameof(Product.ProductCode)].Value.ToString();
+            var productCode = currentRow.Cells[nameof(Product.ProductCode)].Value.ToString();
+            txtManualCode.Text = productCode.Substring(0, 2);
+            txtAutoCode.Text = productCode.Substring(2);
             txtProductName.Text = currentRow.Cells[nameof(Product.ProductName)].Value.ToString();
             txtPrice.Text = string.Format("{0:n0}", Convert.ToDecimal(currentRow.Cells[nameof(Product.Price)].Value.ToString()));
             dtpDecreeDate.Value = DateTime.Parse(currentRow.Cells[nameof(Product.PriceDecreeDate)].Value.ToString());
@@ -262,7 +268,7 @@ namespace CisWindowsFormsApp
         private void BindMedicineCategoriesComboBox()
         {
             var uow = new UnitOfWork<MedicineCat>(dbContext);
-            var medCats = uow.Repository.GetAll().OrderBy(m => m.Description);
+            var medCats = uow.Repository.GetAll().OrderBy(m => m.MedicineCatCode);
 
             AutoCompleteStringCollection autoCompleteCollection = new AutoCompleteStringCollection();
             Dictionary<string, string> dsMedCats = new Dictionary<string, string>();
@@ -283,7 +289,7 @@ namespace CisWindowsFormsApp
         private void BindUsageTypeComboBox()
         {
             var uow = new UnitOfWork<UsageType>(dbContext);
-            var usageTypes = uow.Repository.GetAll().OrderBy(u => u.Description);
+            var usageTypes = uow.Repository.GetAll().OrderBy(u => u.UsageTypeCode);
 
             AutoCompleteStringCollection autoCompleteCollection = new AutoCompleteStringCollection();
             Dictionary<string, string> dsUsageTypes = new Dictionary<string, string>();
@@ -304,7 +310,7 @@ namespace CisWindowsFormsApp
         private void BindPrincipalComboBox()
         {
             var uow = new UnitOfWork<Principal>(dbContext);
-            var principals = uow.Repository.GetAll().OrderBy(p => p.PrincipalName);
+            var principals = uow.Repository.GetAll().OrderBy(p => p.PrincipalCode);
 
             AutoCompleteStringCollection autoCompleteCollection = new AutoCompleteStringCollection();
             Dictionary<string, string> dsPrincipals = new Dictionary<string, string>();
@@ -319,7 +325,7 @@ namespace CisWindowsFormsApp
             cbPrincipal.DisplayMember = "Value";
             cbPrincipal.ValueMember = "Key";
             cbPrincipal.AutoCompleteCustomSource = autoCompleteCollection;
-            
+
         }
 
         private void BindProductGridView()
@@ -354,9 +360,9 @@ namespace CisWindowsFormsApp
             dgvProduct.Columns[nameof(Product.Price)].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvProduct.Columns[nameof(Product.PriceDecreeDate)].HeaderText = "SK. HARGA";
             dgvProduct.Columns[nameof(Product.PriceDecreeDate)].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgvProduct.Columns[nameof(Product.Discount)].HeaderText = "DISC";
+            dgvProduct.Columns[nameof(Product.Discount)].HeaderText = "DISKON";
             dgvProduct.Columns[nameof(Product.Discount)].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgvProduct.Columns[nameof(Product.RestockLevel)].HeaderText = "RESTOCK";
+            dgvProduct.Columns[nameof(Product.RestockLevel)].HeaderText = "RE-STOK";
             dgvProduct.Columns[nameof(Product.RestockLevel)].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvProduct.Columns[nameof(Product.Id)].Visible = false;
             dgvProduct.Columns[nameof(Product.UnitId)].Visible = false;
@@ -374,7 +380,7 @@ namespace CisWindowsFormsApp
 
         private bool ValidateMandatoryFields()
         {
-            if (string.IsNullOrEmpty(txtProductCode.Text) || string.IsNullOrEmpty(txtProductName.Text))
+            if (string.IsNullOrEmpty(txtManualCode.Text) || string.IsNullOrEmpty(txtProductName.Text))
             {
                 CommonMessageHelper.DataCannotBeEmpty("Kode Produk dan Nama Produk");
                 return false;
@@ -383,26 +389,21 @@ namespace CisWindowsFormsApp
 
             if (cbMedCat.Items.Count <= 1 || cbUsageType.Items.Count <= 1 || cbPrincipal.Items.Count <= 1)
             {
-                var emptyRefData = cbMedCat.Items.Count <= 1 ? "Kategori Obat" : (cbUsageType.Items.Count <= 1 ? "Jenis Pemakaian" : (cbPrincipal.Items.Count <=1 ? "Principal" : "Satuan Unit"));
+                var emptyRefData = cbMedCat.Items.Count <= 1 ? "Kategori Obat" : (cbUsageType.Items.Count <= 1 ? "Jenis Pemakaian" : (cbPrincipal.Items.Count <= 1 ? "Principal" : "Satuan Unit"));
                 CommonMessageHelper.ReferredDataNotSet(emptyRefData);
                 return false;
             }
 
-            if (cbMedCat.SelectedValue.ToString() == "0" || cbUsageType.SelectedValue.ToString() == "0" 
+            if (cbMedCat.SelectedValue.ToString() == "0" || cbUsageType.SelectedValue.ToString() == "0"
                 || cbPrincipal.SelectedValue.ToString() == "0" || cbUom.SelectedValue.ToString() == "0")
             {
                 CommonMessageHelper.DataCannotBeEmpty("Satuan Unit, Kategori Obat, Jenis Pemakaian dan Principal");
                 return false;
             }
 
-            if (txtProductCode.Text.Trim().Length != 8)
+            if (txtManualCode.Text.Trim().Length != 2)
             {
-                MessageBox.Show("Kode Barang harus 8 karakter, yang terdiri dari: " + Environment.NewLine
-                    + "- 2 karakter inisial barang" + Environment.NewLine
-                    + "- 1 karakter kategori barang" + Environment.NewLine
-                    + "- 1 karakter jenis pemakaian" + Environment.NewLine
-                    + "- 2 karakter kode principal" + Environment.NewLine
-                    + "- 2 karakter nomor barang", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Kode Inisial Barang harus 2 karakter", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
             return true;
@@ -413,8 +414,8 @@ namespace CisWindowsFormsApp
             btnSave.Enabled = !isAdd;
             btnDel.Enabled = !isAdd;
 
-            btnSave.BackColor = !isAdd ? Color.FromArgb( 36, 141, 193) : Color.Gray;
-            btnDel.BackColor = !isAdd ? Color.FromArgb( 36, 141, 193) : Color.Gray;
+            btnSave.BackColor = !isAdd ? Color.FromArgb(36, 141, 193) : Color.Gray;
+            btnDel.BackColor = !isAdd ? Color.FromArgb(36, 141, 193) : Color.Gray;
 
         }
 
@@ -456,6 +457,60 @@ namespace CisWindowsFormsApp
             commonHelper.SetTextBoxToZeroWhenEmpty(sender);
 
             txtPrice.Text = string.Format("{0:n0}", Convert.ToDecimal(txtPrice.Text));
+        }
+
+
+        private string GetNextProductCode()
+        {
+            var nextProductCode = string.Empty;
+            if (cbMedCat.SelectedValue != null && cbMedCat.SelectedValue.ToString() != "0"
+                && cbUsageType.SelectedValue != null && cbUsageType.SelectedValue.ToString() != "0"
+                && cbPrincipal.SelectedValue != null && cbPrincipal.SelectedValue.ToString() != "0")
+            {
+                var medCat = new UnitOfWork<MedicineCat>(dbContext)
+                    .Repository.GetAll().Where(e => e.Id == cbMedCat.SelectedValue.ToString()).FirstOrDefault();
+                var usageType = new UnitOfWork<UsageType>(dbContext)
+                    .Repository.GetAll().Where(e => e.Id == cbUsageType.SelectedValue.ToString()).FirstOrDefault();
+                var principal = new UnitOfWork<Principal>(dbContext)
+                    .Repository.GetAll().Where(e => e.Id == cbPrincipal.SelectedValue.ToString()).FirstOrDefault();
+
+                // if any of these is empty then return, the validation will be done on the saving
+                if (medCat == null || usageType == null || principal == null)
+                    return string.Empty;
+
+                var principalId = cbPrincipal.SelectedValue.ToString();
+                var lastRec = uowProduct.Repository.GetAll()
+                    .Where(e => e.PrincipalId == principalId)
+                    .OrderByDescending(e => e.ProductCode.Substring(e.ProductCode.Length - 2))
+                    .FirstOrDefault();
+
+                var lastNumber = lastRec == null ? 0 : Convert.ToInt32(lastRec.ProductCode.Substring(lastRec.ProductCode.Length - 2));
+                nextProductCode = $"{medCat.MedicineCatCode}{usageType.UsageTypeCode}{principal.PrincipalCode}{(lastNumber + 1).ToString().PadLeft(2, '0')}";
+            }
+            return nextProductCode;
+        }
+
+        private void cbPrincipal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (isAdd)
+                txtAutoCode.Text = GetNextProductCode();
+        }
+
+        private void cbMedCat_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (isAdd)
+                txtAutoCode.Text = GetNextProductCode();
+        }
+
+        private void cbUsageType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (isAdd)
+                txtAutoCode.Text = GetNextProductCode();
+        }
+
+        private string GetCurrentProductCode()
+        {
+            return $"{txtManualCode.Text.Trim()}{txtAutoCode.Text.Trim()}";
         }
     }
 }
