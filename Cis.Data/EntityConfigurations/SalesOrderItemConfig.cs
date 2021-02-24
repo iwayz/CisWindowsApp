@@ -45,12 +45,14 @@ namespace Cis.Data
                 .IsRequired();
 
             Property(e => e.Price)
+                .HasPrecision(15, 5)
                 .IsRequired();
 
             Property(e => e.DiscountPercentage)
                 .IsRequired();
 
             Property(e => e.TotalAmount)
+                .HasPrecision(15, 5)
                 .IsRequired();
 
 

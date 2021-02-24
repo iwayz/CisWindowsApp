@@ -102,5 +102,12 @@ namespace CisWindowsFormsApp
                 obj.Text = "0";
             }
         }
+
+        public DateTime GetEndOfMonth(DateTime dateTime)
+        {
+            var year = dateTime.Year;
+            var month = dateTime.Month;
+            return new DateTime(year, month, DateTime.DaysInMonth(year, month));
+        }
     }
 }

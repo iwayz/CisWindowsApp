@@ -5,7 +5,7 @@
 	  <!--<TargetFramework>netcoreapp3.1</TargetFramework>-->
 	  <TargetFramework>net47</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <FileVersion>1.0.2102.1</FileVersion>
+    <FileVersion>1.0.2102.2</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

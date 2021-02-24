@@ -95,18 +95,23 @@ namespace Cis.Data
                 .IsRequired();
 
             Property(e => e.SubTotalAmount)
+                .HasPrecision(15, 5)
                 .IsRequired();
 
             Property(e => e.ExtraDiscountAmount)
+                .HasPrecision(15, 5)
                 .IsRequired();
 
             Property(e => e.TaxBaseAmount)
+                .HasPrecision(15, 5)
                 .IsRequired();
 
             Property(e => e.ValueAddedTaxAmount)
+                .HasPrecision(15, 5)
                 .IsRequired();
 
             Property(e => e.GrandTotalAmount)
+                .HasPrecision(15, 5)
                 .IsRequired();
 
             Property(e => e.UserId)

@@ -17,6 +17,7 @@ namespace Cis.Data
                 .IsRequired();
 
             Property(e => e.Price)
+                .HasPrecision(15, 5)
                 .IsRequired();
 
             Property(e => e.PriceDecreeDate)

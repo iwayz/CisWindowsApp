@@ -161,9 +161,9 @@ namespace CisWindowsFormsApp
                 var price = item.sodcusd.sod.Price;
                 var discountPercentage = Math.Round(item.sodcusd.sod.DiscountPercentage / 100, 2);
                 var grossValue = item.sodcusd.sod.TotalAmount;
-                var taxBaseAmount = Math.Round(grossValue * (1 - Convert.ToDecimal(discountPercentage)), MidpointRounding.AwayFromZero);
-                var valueAddedAmount = Math.Round(taxBaseAmount * Convert.ToDecimal(0.1), MidpointRounding.AwayFromZero);
-                var netValue = Math.Round(taxBaseAmount + valueAddedAmount, MidpointRounding.AwayFromZero);
+                var taxBaseAmount = Math.Round(grossValue * (1 - Convert.ToDecimal(discountPercentage)), 5, MidpointRounding.AwayFromZero);
+                var valueAddedAmount = Math.Round(taxBaseAmount * Convert.ToDecimal(0.1), 5, MidpointRounding.AwayFromZero);
+                var netValue = Math.Round(taxBaseAmount + valueAddedAmount, 5, MidpointRounding.AwayFromZero);
 
                 xlWorkSheet.Cells[rowNum, 1].NumberFormat = "dd/mm/yy;@";
                 xlWorkSheet.Cells[rowNum, 1].HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
