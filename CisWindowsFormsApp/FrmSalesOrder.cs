@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -340,7 +341,7 @@ namespace CisWindowsFormsApp
                 {
                     var qty = decimal.Parse(dgvSalesOrderItem.Rows[i].Cells["qty"].Value.ToString(), System.Globalization.NumberStyles.Currency);
                     var price = Math.Round(decimal.Parse(dgvSalesOrderItem.Rows[i].Cells["priceReal"].Value.ToString(), System.Globalization.NumberStyles.Currency), 5, MidpointRounding.AwayFromZero);
-                    var discountPercentage = Math.Round(Convert.ToDecimal(dgvSalesOrderItem.Rows[i].Cells["discPercent"].Value.ToString().Replace("%", "")) / 100, 2);
+                    var discountPercentage = Math.Round(Convert.ToDecimal(ValidateDiscount(dgvSalesOrderItem.Rows[i].Cells["discPercent"].Value.ToString().Replace("%", ""))) / 100, 5, MidpointRounding.AwayFromZero);
                     subTotalReal += (qty * price * ((decimal)1 - discountPercentage));
                 }
             }
@@ -377,6 +378,13 @@ namespace CisWindowsFormsApp
             return true;
         }
 
+        private float ValidateDiscount(string discount)
+        {
+            var numberDecimalSeparator = Convert.ToChar(Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator);
+
+            return float.Parse(string.IsNullOrWhiteSpace(discount) ? "0"
+                : (numberDecimalSeparator.Equals(',') ? discount.Replace('.', ',') : discount.Replace(',', '.')));
+        }
         #endregion helper methods
 
 
@@ -432,15 +440,26 @@ namespace CisWindowsFormsApp
 
         private void txtDiscount_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && (e.KeyChar != ',');
-            //&& (e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1);
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ',') && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
 
+            if (e.KeyChar == '.')
+            {
+                e.KeyChar = ',';
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
+            {
+                e.Handled = true;
+            }
         }
 
         private void txtDiscount_Leave(object sender, EventArgs e)
         {
-
-            var disc = float.Parse(string.IsNullOrWhiteSpace(txtDiscount.Text) ? "0" : txtDiscount.Text.Replace(',', '.'));
+            var disc = ValidateDiscount(txtDiscount.Text.Trim());
             if (disc > 100)
             {
                 MessageBox.Show("Discount tidak boleh melebihi angka 100.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -503,7 +522,7 @@ namespace CisWindowsFormsApp
             
 
             var netPrice = Math.Round(Convert.ToDecimal(txtPrice.Text.Trim()) / (decimal)1.1, 5, MidpointRounding.AwayFromZero);
-            var discountPercentage = Math.Round(Convert.ToDecimal(txtDiscount.Text.Trim()) / 100, 2);
+            var discountPercentage = Math.Round(Convert.ToDecimal(ValidateDiscount(txtDiscount.Text.Trim())) / 100, 5, MidpointRounding.AwayFromZero);
             var grossValue = Math.Round(qty * netPrice, 5, MidpointRounding.AwayFromZero); ;
             var taxBaseAmount = Math.Round(grossValue * (1 - Convert.ToDecimal(discountPercentage)), 5, MidpointRounding.AwayFromZero);
 
@@ -518,7 +537,7 @@ namespace CisWindowsFormsApp
             row.Cells["uomId"].Value = uom.Id;
             row.Cells["uomCode"].Value = uom.UomCode;
             row.Cells["price"].Value = string.Format("{0:n0}", netPrice);
-            row.Cells["discPercent"].Value = txtDiscount.Text.Trim() + "%";
+            row.Cells["discPercent"].Value = string.Format("{0:n2}", ValidateDiscount(txtDiscount.Text.Trim())) + "%";
             row.Cells["subTotal"].Value = string.Format("{0:n0}", taxBaseAmount);
             
             // hidden
@@ -604,12 +623,13 @@ namespace CisWindowsFormsApp
             if (queryResult == null) return;
             
             txtPrice.Text = queryResult.Price.ToString("G29");
-            txtDiscount.Text = queryResult.Discount.ToString();
+            txtDiscount.Text = queryResult.Discount.ToString().Replace('.',',');
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
             LoadSalesOrderData(txtSalesNo.Text.Trim());
+            SetUIButtonGroup();
         }
 
         private void dgvSalesOrderItem_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
@@ -621,7 +641,7 @@ namespace CisWindowsFormsApp
         {
             commonHelper.SetTextBoxToZeroWhenEmpty(sender);
 
-            txtExtraDiscount.Text = string.Format("{0:n2}", Convert.ToDecimal(txtExtraDiscount.Text));
+            txtExtraDiscount.Text = string.Format("{0:n0}", Convert.ToDecimal(txtExtraDiscount.Text));
             SetTotalSalesOrder();
         }
 
