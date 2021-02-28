@@ -65,7 +65,7 @@ namespace CisWindowsFormsApp
 
         public static void NoAccess()
         {
-            MessageBox.Show("Anda tidak memiliki izin untuk mengakses data ini."
+            MessageBox.Show("Anda tidak memiliki izin untuk mengakses fitur/ data ini."
                             , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 

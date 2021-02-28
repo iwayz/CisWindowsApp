@@ -62,6 +62,7 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manualBookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.backupDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlLeftPane.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -420,7 +421,8 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.settingToolStripMenuItem});
+            this.settingToolStripMenuItem,
+            this.backupDatabaseToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
@@ -428,7 +430,7 @@
             // settingToolStripMenuItem
             // 
             this.settingToolStripMenuItem.Name = "settingToolStripMenuItem";
-            this.settingToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.settingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.settingToolStripMenuItem.Text = "Setting";
             this.settingToolStripMenuItem.Click += new System.EventHandler(this.settingToolStripMenuItem_Click);
             // 
@@ -454,6 +456,13 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // backupDatabaseToolStripMenuItem
+            // 
+            this.backupDatabaseToolStripMenuItem.Name = "backupDatabaseToolStripMenuItem";
+            this.backupDatabaseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.backupDatabaseToolStripMenuItem.Text = "Backup Database";
+            this.backupDatabaseToolStripMenuItem.Click += new System.EventHandler(this.backupDatabaseToolStripMenuItem_Click);
             // 
             // FrmMain
             // 
@@ -530,5 +539,6 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manualBookToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem backupDatabaseToolStripMenuItem;
     }
 }

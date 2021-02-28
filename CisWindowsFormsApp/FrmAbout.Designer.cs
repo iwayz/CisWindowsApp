@@ -33,10 +33,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblAssemblyVersion = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.linkLabelWeb = new System.Windows.Forms.LinkLabel();
             this.btnOk = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblFileVersion = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -75,7 +77,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.lblFileVersion);
+            this.panel1.Controls.Add(this.lblAssemblyVersion);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -84,15 +87,25 @@
             this.panel1.Size = new System.Drawing.Size(532, 161);
             this.panel1.TabIndex = 1;
             // 
-            // label5
+            // lblAssemblyVersion
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(39, 117);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(105, 15);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Versi 1.0 | ©2021";
+            this.lblAssemblyVersion.AutoSize = true;
+            this.lblAssemblyVersion.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.lblAssemblyVersion.Location = new System.Drawing.Point(39, 117);
+            this.lblAssemblyVersion.Name = "lblAssemblyVersion";
+            this.lblAssemblyVersion.Size = new System.Drawing.Size(102, 15);
+            this.lblAssemblyVersion.TabIndex = 0;
+            this.lblAssemblyVersion.Text = "Assembly version";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(282, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(238, 132);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
             // 
             // linkLabelWeb
             // 
@@ -117,15 +130,25 @@
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
-            // pictureBox1
+            // lblFileVersion
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(282, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(238, 132);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
+            this.lblFileVersion.AutoSize = true;
+            this.lblFileVersion.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.lblFileVersion.Location = new System.Drawing.Point(38, 132);
+            this.lblFileVersion.Name = "lblFileVersion";
+            this.lblFileVersion.Size = new System.Drawing.Size(69, 15);
+            this.lblFileVersion.TabIndex = 0;
+            this.lblFileVersion.Text = "File version";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label4.Location = new System.Drawing.Point(39, 251);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(46, 15);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "©2021";
             // 
             // FrmAbout
             // 
@@ -133,6 +156,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(532, 315);
             this.Controls.Add(this.btnOk);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.linkLabelWeb);
             this.Controls.Add(this.label2);
@@ -144,6 +168,7 @@
             this.Name = "FrmAbout";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "About";
+            this.Load += new System.EventHandler(this.FrmAbout_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -158,9 +183,11 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblAssemblyVersion;
         private System.Windows.Forms.LinkLabel linkLabelWeb;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lblFileVersion;
+        private System.Windows.Forms.Label label4;
     }
 }

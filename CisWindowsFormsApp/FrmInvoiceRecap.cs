@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.Linq;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Runtime.InteropServices;
+using System.Diagnostics;
+using System.IO;
 
 namespace CisWindowsFormsApp
 {
@@ -48,12 +50,11 @@ namespace CisWindowsFormsApp
         private void btnExport_Click(object sender, EventArgs e)
         {
             pnlDateRange.Enabled = false;
+            SetUiPanel(true);
             pbExport.Maximum = 100;
             pbExport.Step = 1;
             pbExport.Value = 0;
             backgroundWorker.RunWorkerAsync();
-
-            this.Height = 255;
         }
 
         private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -215,9 +216,9 @@ namespace CisWindowsFormsApp
                 rowNum++;
             }
             xlWorkSheet.Columns.AutoFit();
-            var fileDir = System.IO.Directory.CreateDirectory(System.IO.Path.Combine(Environment.CurrentDirectory, "REKAPITULASI"));
+            var fileDir = Directory.CreateDirectory(System.IO.Path.Combine(Environment.CurrentDirectory, "REKAPITULASI"));
             var fileName = "REKAPITULASI FAKTUR_" + DateTime.Now.ToString("yyyyMMddHHmmss");
-            fileLoc = System.IO.Path.Combine(Environment.CurrentDirectory, "REKAPITULASI",  fileName);
+            fileLoc = Path.Combine(fileDir.FullName,  fileName);
             xlWorkBook.SaveAs(fileLoc, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
             xlWorkBook.Close(true, misValue, misValue);
             xlApp.Quit();
@@ -234,10 +235,37 @@ namespace CisWindowsFormsApp
 
         private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            MessageBox.Show("Proses export Data Rekapitulasi telah selesai, silakan cek file di: " + Environment.NewLine + fileLoc, "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Proses export Data Rekapitulasi telah selesai.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            txtFileLocation.Text = $"{fileLoc}.xls";
             pnlDateRange.Enabled = true;
             pbExport.Value = 0;
-            this.Height = 160;
+
+            SetUiPanel(false);
+        }
+
+        private void btnBrowse_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(fileLoc))
+                return;
+
+            Process.Start(Path.GetDirectoryName(fileLoc));
+        }
+
+        private void SetUiPanel(bool isExport)
+        {
+            pnlResult.Visible = !isExport;
+            pnlProgress.Visible = isExport;
+
+            if (isExport)
+            {
+                pnlProgress.Location = new Point(16, 114);
+                pnlResult.Location = new Point(16, 220);
+            }
+            else
+            {
+                pnlProgress.Location = new Point(16, 220);
+                pnlResult.Location = new Point(16, 114);
+            }
         }
     }
 }

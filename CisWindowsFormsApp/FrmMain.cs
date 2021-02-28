@@ -1,10 +1,13 @@
-﻿using NLog;
+﻿using Cis.Data;
+using Cis.Model;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -102,6 +105,26 @@ namespace CisWindowsFormsApp
         {
             FrmAbout frmAbout = new FrmAbout();
             frmAbout.ShowDialog();
+        }
+
+        private void backupDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Only Super Admin can do the backup
+            using (var context = new CisDbContext())
+            {
+                var userRole = new UnitOfWork<UserRole>(context).Repository.GetAll()
+                    .Where(u => u.UserId == Properties.Settings.Default.CurrentUserId).FirstOrDefault();
+                var isSuperAdmin = new UnitOfWork<Role>(context).Repository.GetAll()
+                    .Where(r => r.Id == userRole.RoleId && r.RoleCode == "SUPER").FirstOrDefault() != null;
+
+                if (!isSuperAdmin)
+                {
+                    CommonMessageHelper.NoAccess();
+                    return;
+                }
+                FrmBackupDatabase frmBackupDatabase = new FrmBackupDatabase();
+                frmBackupDatabase.ShowDialog();
+            }
         }
     }
 }

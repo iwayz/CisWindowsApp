@@ -26,5 +26,13 @@ namespace CisWindowsFormsApp
         {
             System.Diagnostics.Process.Start("www.sari-sehat.com");
         }
+
+        private void FrmAbout_Load(object sender, EventArgs e)
+        {
+            System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            System.Diagnostics.FileVersionInfo fvi = System.Diagnostics.FileVersionInfo.GetVersionInfo(assembly.Location);
+            lblAssemblyVersion.Text = $"Assembly version: {assembly.GetName().Version.ToString()}";
+            lblFileVersion.Text = $"File version: {fvi.FileVersion.ToString()}";
+        }
     }
 }

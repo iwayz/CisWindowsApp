@@ -39,8 +39,15 @@ namespace CisWindowsFormsApp
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.pnlDateRange = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pnlResult = new System.Windows.Forms.Panel();
+            this.txtFileLocation = new System.Windows.Forms.TextBox();
+            this.lblFileLocation = new System.Windows.Forms.Label();
+            this.btnBrowse = new System.Windows.Forms.Button();
+            this.pnlProgress = new System.Windows.Forms.Panel();
             this.pnlDateRange.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.pnlResult.SuspendLayout();
+            this.pnlProgress.SuspendLayout();
             this.SuspendLayout();
             // 
             // dtpFrom
@@ -87,7 +94,7 @@ namespace CisWindowsFormsApp
             this.btnExport.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnExport.ForeColor = System.Drawing.Color.White;
             this.btnExport.Image = ((System.Drawing.Image)(resources.GetObject("btnExport.Image")));
-            this.btnExport.Location = new System.Drawing.Point(242, 74);
+            this.btnExport.Location = new System.Drawing.Point(242, 63);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(104, 30);
             this.btnExport.TabIndex = 23;
@@ -98,9 +105,9 @@ namespace CisWindowsFormsApp
             // 
             // pbExport
             // 
-            this.pbExport.Location = new System.Drawing.Point(16, 28);
+            this.pbExport.Location = new System.Drawing.Point(6, 28);
             this.pbExport.Name = "pbExport";
-            this.pbExport.Size = new System.Drawing.Size(334, 23);
+            this.pbExport.Size = new System.Drawing.Size(322, 23);
             this.pbExport.TabIndex = 24;
             // 
             // backgroundWorker
@@ -119,33 +126,87 @@ namespace CisWindowsFormsApp
             this.pnlDateRange.Controls.Add(this.label2);
             this.pnlDateRange.Location = new System.Drawing.Point(16, 5);
             this.pnlDateRange.Name = "pnlDateRange";
-            this.pnlDateRange.Size = new System.Drawing.Size(363, 117);
+            this.pnlDateRange.Size = new System.Drawing.Size(363, 103);
             this.pnlDateRange.TabIndex = 25;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.pbExport);
             this.groupBox1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.groupBox1.Location = new System.Drawing.Point(16, 128);
+            this.groupBox1.Location = new System.Drawing.Point(12, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(363, 71);
+            this.groupBox1.Size = new System.Drawing.Size(334, 71);
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Progress";
+            // 
+            // pnlResult
+            // 
+            this.pnlResult.Controls.Add(this.txtFileLocation);
+            this.pnlResult.Controls.Add(this.lblFileLocation);
+            this.pnlResult.Controls.Add(this.btnBrowse);
+            this.pnlResult.Location = new System.Drawing.Point(16, 220);
+            this.pnlResult.Name = "pnlResult";
+            this.pnlResult.Size = new System.Drawing.Size(363, 100);
+            this.pnlResult.TabIndex = 28;
+            // 
+            // txtFileLocation
+            // 
+            this.txtFileLocation.Font = new System.Drawing.Font("Calibri", 12F);
+            this.txtFileLocation.Location = new System.Drawing.Point(12, 31);
+            this.txtFileLocation.Name = "txtFileLocation";
+            this.txtFileLocation.ReadOnly = true;
+            this.txtFileLocation.Size = new System.Drawing.Size(334, 27);
+            this.txtFileLocation.TabIndex = 24;
+            // 
+            // lblFileLocation
+            // 
+            this.lblFileLocation.AutoSize = true;
+            this.lblFileLocation.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.lblFileLocation.Location = new System.Drawing.Point(9, 13);
+            this.lblFileLocation.Name = "lblFileLocation";
+            this.lblFileLocation.Size = new System.Drawing.Size(66, 15);
+            this.lblFileLocation.TabIndex = 1;
+            this.lblFileLocation.Text = "Lokasi File:";
+            // 
+            // btnBrowse
+            // 
+            this.btnBrowse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
+            this.btnBrowse.FlatAppearance.BorderSize = 0;
+            this.btnBrowse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBrowse.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnBrowse.ForeColor = System.Drawing.Color.White;
+            this.btnBrowse.Location = new System.Drawing.Point(242, 64);
+            this.btnBrowse.Name = "btnBrowse";
+            this.btnBrowse.Size = new System.Drawing.Size(104, 30);
+            this.btnBrowse.TabIndex = 23;
+            this.btnBrowse.Text = "Browse...";
+            this.btnBrowse.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnBrowse.UseVisualStyleBackColor = false;
+            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
+            // 
+            // pnlProgress
+            // 
+            this.pnlProgress.Controls.Add(this.groupBox1);
+            this.pnlProgress.Location = new System.Drawing.Point(16, 114);
+            this.pnlProgress.Name = "pnlProgress";
+            this.pnlProgress.Size = new System.Drawing.Size(363, 100);
+            this.pnlProgress.TabIndex = 28;
             // 
             // FrmInvoiceRecap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(394, 121);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(394, 221);
+            this.Controls.Add(this.pnlProgress);
+            this.Controls.Add(this.pnlResult);
             this.Controls.Add(this.pnlDateRange);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(410, 160);
+            this.MinimumSize = new System.Drawing.Size(410, 260);
             this.Name = "FrmInvoiceRecap";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "REKAPITULASI FAKTUR";
@@ -153,6 +214,9 @@ namespace CisWindowsFormsApp
             this.pnlDateRange.ResumeLayout(false);
             this.pnlDateRange.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            this.pnlResult.ResumeLayout(false);
+            this.pnlResult.PerformLayout();
+            this.pnlProgress.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -168,5 +232,10 @@ namespace CisWindowsFormsApp
         private System.ComponentModel.BackgroundWorker backgroundWorker;
         private System.Windows.Forms.Panel pnlDateRange;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Panel pnlResult;
+        private System.Windows.Forms.TextBox txtFileLocation;
+        private System.Windows.Forms.Label lblFileLocation;
+        private System.Windows.Forms.Button btnBrowse;
+        private System.Windows.Forms.Panel pnlProgress;
     }
 }

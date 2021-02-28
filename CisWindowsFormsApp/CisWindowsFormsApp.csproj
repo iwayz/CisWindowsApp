@@ -5,7 +5,7 @@
 	  <!--<TargetFramework>netcoreapp3.1</TargetFramework>-->
 	  <TargetFramework>net47</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <FileVersion>1.0.2102.2</FileVersion>
+    <FileVersion>1.0.2102.3</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -98,6 +98,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="Microsoft.SqlServer.ConnectionInfo">
+      <HintPath>C:\Program Files (x86)\Microsoft SQL Server\100\SDK\Assemblies\Microsoft.SqlServer.ConnectionInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.ConnectionInfoExtended">
+      <HintPath>C:\Program Files (x86)\Microsoft SQL Server\100\SDK\Assemblies\Microsoft.SqlServer.ConnectionInfoExtended.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Smo">
+      <HintPath>C:\Program Files (x86)\Microsoft SQL Server\100\SDK\Assemblies\Microsoft.SqlServer.Smo.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.SmoExtended">
+      <HintPath>C:\Program Files (x86)\Microsoft SQL Server\100\SDK\Assemblies\Microsoft.SqlServer.SmoExtended.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
   </ItemGroup>
 
