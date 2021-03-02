@@ -36,8 +36,8 @@ namespace CisWindowsFormsApp
         {
             uowSo = new UnitOfWork<SalesOrder>(dbContext);
             uowSoi = new UnitOfWork<SalesOrderItem>(dbContext);
-            uowCus= new UnitOfWork<Customer>(dbContext);
-            uowOt= new UnitOfWork<OutletType>(dbContext);
+            uowCus = new UnitOfWork<Customer>(dbContext);
+            uowOt = new UnitOfWork<OutletType>(dbContext);
             uowSa = new UnitOfWork<SalesArea>(dbContext);
             uowRe = new UnitOfWork<Representative>(dbContext);
 
@@ -104,6 +104,7 @@ namespace CisWindowsFormsApp
                     res.soi.DiscountPercentage,
                     res.so.TaxBaseAmount,
                     res.so.ValueAddedTaxAmount,
+                    res.so.ExtraDiscountAmount,
                     res.so.DueDate,
                     res.so.DeliveryAddress,
                     res.so.DeliveryDistrict,
@@ -113,7 +114,7 @@ namespace CisWindowsFormsApp
 
             var recapDetail = salesOrderDetail.Join(cusDet, sod => sod.CustomerId, cusd => cusd.Id, (sod, cusd) => new { sod, cusd })
                 .Join(salesArea, sodcusd => sodcusd.sod.SalesAreaId, sa => sa.sa.Id, (sodcusd, sa) => new { sodcusd, sa })
-                .ToList().OrderBy(res => res.sodcusd.sod.SalesNo);
+                .ToList().OrderBy(res => res.sodcusd.sod.SalesNo).ThenByDescending(res => res.sodcusd.sod.TotalAmount);
 
             Excel.Application xlApp = new Excel.Application();
             Excel.Workbook xlWorkBook;
@@ -146,79 +147,87 @@ namespace CisWindowsFormsApp
             xlWorkSheet.Cells[1, 18] = "HARGA HNA";
             xlWorkSheet.Cells[1, 19] = "GROSS VALUE";
             xlWorkSheet.Cells[1, 20] = "%DISKON";
-            xlWorkSheet.Cells[1, 21] = "DPP";
-            xlWorkSheet.Cells[1, 22] = "PPN 10%";
-            xlWorkSheet.Cells[1, 23] = "NETT VALUE";
-            xlWorkSheet.Cells[1, 24] = "TGL.JTH TEMPO";
-            xlWorkSheet.Cells[1, 25] = "ALAMAT KIRIM";
-            xlWorkSheet.Cells[1, 26] = "KOTA";
-            xlWorkSheet.Cells[1, 27] = "NO. TELPON";
-            
-            var rowNum = 2;
-            var totalRec = recapDetail.Count();
+            xlWorkSheet.Cells[1, 21] = "EXT. DISKON";
+            xlWorkSheet.Cells[1, 22] = "DPP";
+            xlWorkSheet.Cells[1, 23] = "PPN 10%";
+            xlWorkSheet.Cells[1, 24] = "NETT VALUE";
+            xlWorkSheet.Cells[1, 25] = "TGL.JTH TEMPO";
+            xlWorkSheet.Cells[1, 26] = "ALAMAT KIRIM";
+            xlWorkSheet.Cells[1, 27] = "KOTA";
+            xlWorkSheet.Cells[1, 28] = "NO. TELPON";
+
+            var rowNumber = 2;
+            var totalRecord = recapDetail.Count();
+            var currentSalesNo = string.Empty;
             foreach (var item in recapDetail)
             {
+                var isNewSalesNo = !currentSalesNo.Equals(item.sodcusd.sod.SalesNo);
+                currentSalesNo = item.sodcusd.sod.SalesNo;
+                
                 var qty = item.sodcusd.sod.Quantity;
                 var price = item.sodcusd.sod.Price;
+                var grossValue = qty * price;
                 var discountPercentage = Math.Round(item.sodcusd.sod.DiscountPercentage / 100, 2);
-                var grossValue = item.sodcusd.sod.TotalAmount;
-                var taxBaseAmount = Math.Round(grossValue * (1 - Convert.ToDecimal(discountPercentage)), 5, MidpointRounding.AwayFromZero);
+                var extraDiscount = isNewSalesNo ? item.sodcusd.sod.ExtraDiscountAmount : 0;
+                var taxBaseAmount = Math.Round((grossValue * (1 - Convert.ToDecimal(discountPercentage)) - extraDiscount), 5, MidpointRounding.AwayFromZero);
                 var valueAddedAmount = Math.Round(taxBaseAmount * Convert.ToDecimal(0.1), 5, MidpointRounding.AwayFromZero);
                 var netValue = Math.Round(taxBaseAmount + valueAddedAmount, 5, MidpointRounding.AwayFromZero);
 
-                xlWorkSheet.Cells[rowNum, 1].NumberFormat = "dd/mm/yy;@";
-                xlWorkSheet.Cells[rowNum, 1].HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
-                xlWorkSheet.Cells[rowNum, 1] = item.sodcusd.sod.SalesDate.ToShortDateString();
-                xlWorkSheet.Cells[rowNum, 2] = item.sodcusd.sod.SalesNo;
-                xlWorkSheet.Cells[rowNum, 3].NumberFormat = "@";
-                xlWorkSheet.Cells[rowNum, 3] = item.sodcusd.cusd.CustomerCode.ToString();
-                xlWorkSheet.Cells[rowNum, 4] = item.sodcusd.cusd.CustomerName;
-                xlWorkSheet.Cells[rowNum, 5].NumberFormat = "@";
-                xlWorkSheet.Cells[rowNum, 5] = item.sodcusd.sod.CustomerNpwp;
-                xlWorkSheet.Cells[rowNum, 6] = item.sodcusd.sod.CustomerAddress;
-                xlWorkSheet.Cells[rowNum, 7] = item.sodcusd.sod.CustomerDistrict;
-                xlWorkSheet.Cells[rowNum, 8] = item.sodcusd.sod.SalesmanCode;
-                xlWorkSheet.Cells[rowNum, 9] = item.sa.sa.Description;
-                xlWorkSheet.Cells[rowNum, 10] = item.sa.re.Description;
-                xlWorkSheet.Cells[rowNum, 11] = item.sodcusd.cusd.Description;
-                xlWorkSheet.Cells[rowNum, 12] = item.sodcusd.sod.ProductCode;
-                xlWorkSheet.Cells[rowNum, 13] = item.sodcusd.sod.ProductName;
-                xlWorkSheet.Cells[rowNum, 14].NumberFormat = "@";
-                xlWorkSheet.Cells[rowNum, 14] = item.sodcusd.sod.BatchCode;
-                xlWorkSheet.Cells[rowNum, 15].NumberFormat = "@";
-                xlWorkSheet.Cells[rowNum, 15].HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
-                xlWorkSheet.Cells[rowNum, 15] = item.sodcusd.sod.ExpiredDate.ToString("MM/yyyy");
-                xlWorkSheet.Cells[rowNum, 16] = item.sodcusd.sod.UomCode.ToString();
-                xlWorkSheet.Cells[rowNum, 17].NumberFormat = "#.##0";
-                xlWorkSheet.Cells[rowNum, 17] = qty;
-                xlWorkSheet.Cells[rowNum, 18].NumberFormat = "#.##0";
-                xlWorkSheet.Cells[rowNum, 18] = price;
-                xlWorkSheet.Cells[rowNum, 19].NumberFormat = "#.##0";
-                xlWorkSheet.Cells[rowNum, 19] = grossValue;
-                xlWorkSheet.Cells[rowNum, 20].NumberFormat = "0,0%";
-                xlWorkSheet.Cells[rowNum, 20] = discountPercentage;
-                xlWorkSheet.Cells[rowNum, 21].NumberFormat = "#.##0";
-                xlWorkSheet.Cells[rowNum, 21] = taxBaseAmount;
-                xlWorkSheet.Cells[rowNum, 22].NumberFormat = "#.##0";
-                xlWorkSheet.Cells[rowNum, 22] = valueAddedAmount;
-                xlWorkSheet.Cells[rowNum, 23].NumberFormat = "#.##0";
-                xlWorkSheet.Cells[rowNum, 23] = netValue;
-                xlWorkSheet.Cells[rowNum, 24].NumberFormat = "dd/mm/yy;@";
-                xlWorkSheet.Cells[rowNum, 24].HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
-                xlWorkSheet.Cells[rowNum, 24] = item.sodcusd.sod.DueDate.ToShortDateString();
-                xlWorkSheet.Cells[rowNum, 25] = item.sodcusd.sod.DeliveryAddress;
-                xlWorkSheet.Cells[rowNum, 26] = item.sodcusd.sod.DeliveryDistrict;
-                xlWorkSheet.Cells[rowNum, 27].NumberFormat = "@";
-                xlWorkSheet.Cells[rowNum, 27] = item.sodcusd.sod.CustomerPhone;
+                xlWorkSheet.Cells[rowNumber, 1].NumberFormat = "dd/mm/yy;@";
+                xlWorkSheet.Cells[rowNumber, 1].HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                xlWorkSheet.Cells[rowNumber, 1] = item.sodcusd.sod.SalesDate.ToShortDateString();
+                xlWorkSheet.Cells[rowNumber, 2] = item.sodcusd.sod.SalesNo;
+                xlWorkSheet.Cells[rowNumber, 3].NumberFormat = "@";
+                xlWorkSheet.Cells[rowNumber, 3] = item.sodcusd.cusd.CustomerCode.ToString();
+                xlWorkSheet.Cells[rowNumber, 4] = item.sodcusd.cusd.CustomerName;
+                xlWorkSheet.Cells[rowNumber, 5].NumberFormat = "@";
+                xlWorkSheet.Cells[rowNumber, 5] = item.sodcusd.sod.CustomerNpwp;
+                xlWorkSheet.Cells[rowNumber, 6] = item.sodcusd.sod.CustomerAddress;
+                xlWorkSheet.Cells[rowNumber, 7] = item.sodcusd.sod.CustomerDistrict;
+                xlWorkSheet.Cells[rowNumber, 8] = item.sodcusd.sod.SalesmanCode;
+                xlWorkSheet.Cells[rowNumber, 9] = item.sa.sa.Description;
+                xlWorkSheet.Cells[rowNumber, 10] = item.sa.re.Description;
+                xlWorkSheet.Cells[rowNumber, 11] = item.sodcusd.cusd.Description;
+                xlWorkSheet.Cells[rowNumber, 12] = item.sodcusd.sod.ProductCode;
+                xlWorkSheet.Cells[rowNumber, 13] = item.sodcusd.sod.ProductName;
+                xlWorkSheet.Cells[rowNumber, 14].NumberFormat = "@";
+                xlWorkSheet.Cells[rowNumber, 14] = item.sodcusd.sod.BatchCode;
+                xlWorkSheet.Cells[rowNumber, 15].NumberFormat = "@";
+                xlWorkSheet.Cells[rowNumber, 15].HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                xlWorkSheet.Cells[rowNumber, 15] = item.sodcusd.sod.ExpiredDate.ToString("MM/yyyy");
+                xlWorkSheet.Cells[rowNumber, 16] = item.sodcusd.sod.UomCode.ToString();
+                xlWorkSheet.Cells[rowNumber, 17].NumberFormat = "#.##0";
+                xlWorkSheet.Cells[rowNumber, 17] = qty;
+                xlWorkSheet.Cells[rowNumber, 18].NumberFormat = "#.##0";
+                xlWorkSheet.Cells[rowNumber, 18] = price;
+                xlWorkSheet.Cells[rowNumber, 19].NumberFormat = "#.##0";
+                xlWorkSheet.Cells[rowNumber, 19] = grossValue;
+                xlWorkSheet.Cells[rowNumber, 20].NumberFormat = "0,0%";
+                xlWorkSheet.Cells[rowNumber, 20] = discountPercentage;
+                xlWorkSheet.Cells[rowNumber, 21].NumberFormat = "#.##0";
+                xlWorkSheet.Cells[rowNumber, 21] = extraDiscount;
+                xlWorkSheet.Cells[rowNumber, 22].NumberFormat = "#.##0";
+                xlWorkSheet.Cells[rowNumber, 22] = taxBaseAmount;
+                xlWorkSheet.Cells[rowNumber, 23].NumberFormat = "#.##0";
+                xlWorkSheet.Cells[rowNumber, 23] = valueAddedAmount;
+                xlWorkSheet.Cells[rowNumber, 24].NumberFormat = "#.##0";
+                xlWorkSheet.Cells[rowNumber, 24] = netValue;
+                xlWorkSheet.Cells[rowNumber, 25].NumberFormat = "dd/mm/yy;@";
+                xlWorkSheet.Cells[rowNumber, 25].HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                xlWorkSheet.Cells[rowNumber, 25] = item.sodcusd.sod.DueDate.ToShortDateString();
+                xlWorkSheet.Cells[rowNumber, 26] = item.sodcusd.sod.DeliveryAddress;
+                xlWorkSheet.Cells[rowNumber, 27] = item.sodcusd.sod.DeliveryDistrict;
+                xlWorkSheet.Cells[rowNumber, 28].NumberFormat = "@";
+                xlWorkSheet.Cells[rowNumber, 28] = item.sodcusd.sod.CustomerPhone;
 
-                var progress = ((rowNum - 1) * 100) / totalRec;
+                var progress = ((rowNumber - 1) * 100) / totalRecord;
                 backgroundWorker.ReportProgress(progress);
-                rowNum++;
+                rowNumber++;
             }
             xlWorkSheet.Columns.AutoFit();
             var fileDir = Directory.CreateDirectory(System.IO.Path.Combine(Environment.CurrentDirectory, "REKAPITULASI"));
             var fileName = "REKAPITULASI FAKTUR_" + DateTime.Now.ToString("yyyyMMddHHmmss");
-            fileLoc = Path.Combine(fileDir.FullName,  fileName);
+            fileLoc = Path.Combine(fileDir.FullName, fileName);
             xlWorkBook.SaveAs(fileLoc, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
             xlWorkBook.Close(true, misValue, misValue);
             xlApp.Quit();
