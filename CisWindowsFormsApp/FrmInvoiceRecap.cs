@@ -168,7 +168,7 @@ namespace CisWindowsFormsApp
                     var qty = item.sodcusd.sod.Quantity;
                     var price = item.sodcusd.sod.Price;
                     var grossValue = qty * price;
-                    var discountPercentage = Math.Round(item.sodcusd.sod.DiscountPercentage / 100, 2);
+                    var discountPercentage = Math.Round(item.sodcusd.sod.DiscountPercentage / 100, 4, MidpointRounding.AwayFromZero);
                     var extraDiscount = item.sodcusd.sod.ExtraDiscountAmount;
 
                     // Set the Extra Discount proportionally
