@@ -52,7 +52,7 @@ namespace CisWindowsFormsApp
                 {
                     //Landscape = true,
                     PaperSize = new PaperSize("Cont. Form A5", 830, 580),
-                    Margins = new Margins { Top = 30, Left = 20, Right = 40, Bottom = 40 }
+                    Margins = new Margins { Top = 10, Left = 20, Right = 40, Bottom = 40 }
                 }
             );
             reportViewerInvoice.RefreshReport();

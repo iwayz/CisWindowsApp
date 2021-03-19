@@ -1068,7 +1068,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>CompName</rd:DefaultName>
-              <Top>1.53133cm</Top>
+              <Top>1.75358cm</Top>
               <Left>0.41276cm</Left>
               <Height>0.6cm</Height>
               <Width>6.86562cm</Width>
@@ -1100,9 +1100,9 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>CompDetail</rd:DefaultName>
-              <Top>2.03933cm</Top>
+              <Top>2.26158cm</Top>
               <Left>0.41276cm</Left>
-              <Height>2.06431cm</Height>
+              <Height>1.74681cm</Height>
               <Width>6.86562cm</Width>
               <ZIndex>2</ZIndex>
               <Style>
@@ -1590,9 +1590,9 @@
               <Source>Embedded</Source>
               <Value>CISe_logo_BW</Value>
               <Sizing>FitProportional</Sizing>
-              <Top>0.03133cm</Top>
+              <Top>0.1905cm</Top>
               <Left>0.41275cm</Left>
-              <Height>1.5cm</Height>
+              <Height>1.39198cm</Height>
               <Width>2.51353cm</Width>
               <ZIndex>16</ZIndex>
               <Style>
