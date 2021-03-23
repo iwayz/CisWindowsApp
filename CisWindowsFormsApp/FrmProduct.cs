@@ -358,6 +358,7 @@ namespace CisWindowsFormsApp
             dgvProduct.Columns[nameof(Product.ProductName)].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgvProduct.Columns[nameof(Product.Price)].HeaderText = "HARGA";
             dgvProduct.Columns[nameof(Product.Price)].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvProduct.Columns[nameof(Product.Price)].DefaultCellStyle.Format = "N0";
             dgvProduct.Columns[nameof(Product.PriceDecreeDate)].HeaderText = "SK. HARGA";
             dgvProduct.Columns[nameof(Product.PriceDecreeDate)].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvProduct.Columns[nameof(Product.Discount)].HeaderText = "DISKON";

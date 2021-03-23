@@ -762,7 +762,9 @@ namespace CisWindowsFormsApp
                     var qty = Convert.ToInt32(decimal.Parse(dgvSalesOrderItem.Rows[i].Cells["qty"].Value.ToString(), System.Globalization.NumberStyles.Currency));
                     var priceReal = Math.Round(decimal.Parse(dgvSalesOrderItem.Rows[i].Cells["priceReal"].Value.ToString(), System.Globalization.NumberStyles.Currency),
                         5, MidpointRounding.AwayFromZero);
-                    var subTotalReal = Math.Round(qty * priceReal, 5, MidpointRounding.AwayFromZero);
+                    var discountPercentage = Math.Round(Convert.ToDecimal(ValidateDiscount(dgvSalesOrderItem.Rows[i].Cells["discPercent"].Value.ToString().Replace("%",""))) / 100, 5, MidpointRounding.AwayFromZero);
+                    var grossValue = Math.Round(qty * priceReal, 5, MidpointRounding.AwayFromZero);
+                    var subTotalReal = Math.Round(grossValue * (1 - Convert.ToDecimal(discountPercentage)), 5, MidpointRounding.AwayFromZero);
 
                     var soiToAdd = new SalesOrderItem
                     {
@@ -894,7 +896,9 @@ namespace CisWindowsFormsApp
                         var qty = Convert.ToInt32(decimal.Parse(dgvSalesOrderItem.Rows[i].Cells["qty"].Value.ToString(), System.Globalization.NumberStyles.Currency));
                         var priceReal = Math.Round(decimal.Parse(dgvSalesOrderItem.Rows[i].Cells["priceReal"].Value.ToString(), System.Globalization.NumberStyles.Currency),
                             5, MidpointRounding.AwayFromZero);
-                        var subTotalReal = Math.Round(qty * priceReal, 5, MidpointRounding.AwayFromZero);
+                        var discountPercentage = Math.Round(Convert.ToDecimal(ValidateDiscount(dgvSalesOrderItem.Rows[i].Cells["discPercent"].Value.ToString().Replace("%",""))) / 100, 5, MidpointRounding.AwayFromZero);
+                        var grossValue = Math.Round(qty * priceReal, 5, MidpointRounding.AwayFromZero);
+                        var subTotalReal = Math.Round(grossValue * (1 - Convert.ToDecimal(discountPercentage)), 5, MidpointRounding.AwayFromZero);
 
                         var soiToUpdate = new SalesOrderItem
                         {
