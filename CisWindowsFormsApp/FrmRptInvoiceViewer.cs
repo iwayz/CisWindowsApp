@@ -50,11 +50,12 @@ namespace CisWindowsFormsApp
             reportViewerInvoice.SetPageSettings(
                 new PageSettings
                 {
-                    //Landscape = true,
-                    PaperSize = new PaperSize("Cont. Form A5", 830, 580),
+                    Landscape = true,
+                    PaperSize = new PaperSize("Cont. Form A5", 580, 830),
                     Margins = new Margins { Top = 10, Left = 20, Right = 40, Bottom = 40 }
                 }
             );
+            reportViewerInvoice.ShowExportButton = false;
             reportViewerInvoice.RefreshReport();
 
         }
