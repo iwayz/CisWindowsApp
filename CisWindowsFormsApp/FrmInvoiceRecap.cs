@@ -161,24 +161,25 @@ namespace CisWindowsFormsApp
                 xlWorkSheet.Cells[1, 27] = "KOTA";
                 xlWorkSheet.Cells[1, 28] = "NO. TELPON";
 
+                var salesOrderHelper = new SalesOrderHelper();
                 var rowNumber = 2; // Row number 1 is Header
                 var totalRecord = recapDetail.Count();
                 foreach (var item in recapDetail)
                 {
                     var qty = item.sodcusd.sod.Quantity;
-                    var price = item.sodcusd.sod.Price;
-                    var grossValue = qty * price;
-                    var discountPercentage = Math.Round(item.sodcusd.sod.DiscountPercentage / 100, 4, MidpointRounding.AwayFromZero);
+                    var nettPrice = item.sodcusd.sod.Price;
+                    var grossValue = salesOrderHelper.CalculateGrossValue(qty, nettPrice);
+                    var discountPercent = Math.Round(Convert.ToDecimal(item.sodcusd.sod.DiscountPercentage / 100), 4, MidpointRounding.AwayFromZero);
                     var extraDiscount = item.sodcusd.sod.ExtraDiscountAmount;
 
                     // Set the Extra Discount proportionally
                     var sumOfGrossValue = recapDetail.Where(so => so.sodcusd.sod.SalesNo == item.sodcusd.sod.SalesNo)
-                        .Sum(aa => (aa.sodcusd.sod.Quantity * aa.sodcusd.sod.Price));
+                        .Sum(rc => (rc.sodcusd.sod.Quantity * rc.sodcusd.sod.Price));
                     var propotionalExtraDiscount = (grossValue / sumOfGrossValue) * extraDiscount;
 
-                    var taxBaseAmount = Math.Round((grossValue * (1 - Convert.ToDecimal(discountPercentage)) - propotionalExtraDiscount), 5, MidpointRounding.AwayFromZero);
-                    var valueAddedAmount = Math.Round(taxBaseAmount * Convert.ToDecimal(0.1), 5, MidpointRounding.AwayFromZero);
-                    var netValue = Math.Round(taxBaseAmount + valueAddedAmount, 5, MidpointRounding.AwayFromZero);
+                    var taxBaseAmount = salesOrderHelper.CalculateTaxBaseAmount(qty, nettPrice, discountPercent, extraDiscount);
+                    var valueAddedAmount = salesOrderHelper.CalculateValueAddedAmount(taxBaseAmount);
+                    var netValue = salesOrderHelper.CalculateNettValueAmount(taxBaseAmount, valueAddedAmount);
 
                     xlWorkSheet.Cells[rowNumber, 1].NumberFormat = "dd/mm/yy;@";
                     xlWorkSheet.Cells[rowNumber, 1].HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
@@ -206,11 +207,11 @@ namespace CisWindowsFormsApp
                     xlWorkSheet.Cells[rowNumber, 17].NumberFormat = "#.##0";
                     xlWorkSheet.Cells[rowNumber, 17] = qty;
                     xlWorkSheet.Cells[rowNumber, 18].NumberFormat = "#.##0";
-                    xlWorkSheet.Cells[rowNumber, 18] = price;
+                    xlWorkSheet.Cells[rowNumber, 18] = nettPrice;
                     xlWorkSheet.Cells[rowNumber, 19].NumberFormat = "#.##0";
                     xlWorkSheet.Cells[rowNumber, 19] = grossValue;
                     xlWorkSheet.Cells[rowNumber, 20].NumberFormat = "0,0%";
-                    xlWorkSheet.Cells[rowNumber, 20] = discountPercentage;
+                    xlWorkSheet.Cells[rowNumber, 20] = discountPercent;
                     xlWorkSheet.Cells[rowNumber, 21].NumberFormat = "#.##0";
                     xlWorkSheet.Cells[rowNumber, 21] = propotionalExtraDiscount;
                     xlWorkSheet.Cells[rowNumber, 22].NumberFormat = "#.##0";

@@ -19,6 +19,7 @@ namespace CisWindowsFormsApp
         UnitOfWork<SalesOrder> _uow;
         bool isAdd = false;
         CommonFunctionHelper commonHelper = new CommonFunctionHelper();
+        SalesOrderHelper salesOrderHelper = new SalesOrderHelper();
 
         enum RecordNavigation
         {
@@ -234,6 +235,7 @@ namespace CisWindowsFormsApp
             btnDel.Enabled = isEditable;
             btnReload.Enabled = isEditable;
         }
+        
         private string CreateSalesOrderNo()
         {
             var result = string.Empty;
@@ -334,24 +336,24 @@ namespace CisWindowsFormsApp
 
         private void SetTotalSalesOrder()
         {
-            decimal subTotalReal = 0;
+            decimal subTotal = 0;
             for (int i = 0; i < dgvSalesOrderItem.Rows.Count; ++i)
             {
-                if (dgvSalesOrderItem.Rows[i].Cells["priceReal"].Value != null)
+                if (dgvSalesOrderItem.Rows[i].Cells["price"].Value != null)
                 {
                     var qty = decimal.Parse(dgvSalesOrderItem.Rows[i].Cells["qty"].Value.ToString(), System.Globalization.NumberStyles.Currency);
-                    var price = Math.Round(decimal.Parse(dgvSalesOrderItem.Rows[i].Cells["priceReal"].Value.ToString(), System.Globalization.NumberStyles.Currency), 5, MidpointRounding.AwayFromZero);
-                    var discountPercentage = Math.Round(Convert.ToDecimal(ValidateDiscount(dgvSalesOrderItem.Rows[i].Cells["discPercent"].Value.ToString().Replace("%", ""))) / 100, 5, MidpointRounding.AwayFromZero);
-                    subTotalReal += (qty * price * ((decimal)1 - discountPercentage));
+                    var nettPrice = Math.Round(decimal.Parse(dgvSalesOrderItem.Rows[i].Cells["price"].Value.ToString(), System.Globalization.NumberStyles.Currency), 5, MidpointRounding.AwayFromZero);
+                    var discountPercent = Math.Round(Convert.ToDecimal(ValidateDiscount(dgvSalesOrderItem.Rows[i].Cells["discPercent"].Value.ToString().Replace("%", ""))) / 100, 5, MidpointRounding.AwayFromZero);
+                    subTotal += salesOrderHelper.CalculateTaxBaseAmount(qty, nettPrice, discountPercent);
                 }
             }
 
             decimal extraDisc = decimal.Parse(txtExtraDiscount.Text.Trim(), System.Globalization.NumberStyles.Currency);
-            decimal taxBase = Math.Round(subTotalReal - extraDisc, 5, MidpointRounding.AwayFromZero);
+            decimal taxBase = Math.Round(subTotal - extraDisc, 5, MidpointRounding.AwayFromZero);
             decimal valueAddedTax = Math.Round(taxBase * (decimal)0.1, 5, MidpointRounding.AwayFromZero); // 10% PPN
             decimal total = Math.Round(taxBase + valueAddedTax, 5, MidpointRounding.AwayFromZero);
 
-            txtSubTotal.Text = string.Format("{0:n0}", subTotalReal);
+            txtSubTotal.Text = string.Format("{0:n0}", subTotal);
             txtTaxBaseAmount.Text = string.Format("{0:n0}", taxBase);
             txtValueAddedTaxAmount.Text = string.Format("{0:n0}", valueAddedTax);
             lblTotal.Text = string.Format("{0:n0}", total);
@@ -519,29 +521,25 @@ namespace CisWindowsFormsApp
 
             // Add the data
             var qty = Convert.ToDecimal(txtQty.Text.Trim());
-            
-
-            var netPrice = Math.Round(Convert.ToDecimal(txtPrice.Text.Trim()) / (decimal)1.1, 5, MidpointRounding.AwayFromZero);
+            var nettPrice = Convert.ToDecimal(txtPrice.Text.Trim());
             var discountPercentage = Math.Round(Convert.ToDecimal(ValidateDiscount(txtDiscount.Text.Trim())) / 100, 5, MidpointRounding.AwayFromZero);
-            var grossValue = Math.Round(qty * netPrice, 5, MidpointRounding.AwayFromZero); ;
-            var taxBaseAmount = Math.Round(grossValue * (1 - Convert.ToDecimal(discountPercentage)), 5, MidpointRounding.AwayFromZero);
+            var taxBaseAmount = salesOrderHelper.CalculateTaxBaseAmount(qty, nettPrice, discountPercentage);
 
             row.Cells["productId"].Value = product.Id;
             row.Cells["productCode"].Value = product.ProductCode;
             row.Cells["productName"].Value = product.ProductName;
             row.Cells["batchId"].Value = batch != null ? batch.Id : string.Empty;
             row.Cells["batchCode"].Value = txtBatch.Text.Trim();
-            DateTime expiredDate = commonHelper.GetEndOfMonth(dtpExpiredDate.Value);
-            row.Cells["expDate"].Value = expiredDate.ToString("MM/yyyy");
-            row.Cells["qty"].Value = string.Format("{0:n0}", Convert.ToDecimal(txtQty.Text.Trim()));
+            row.Cells["expDate"].Value = commonHelper.GetEndOfMonth(dtpExpiredDate.Value).ToString("MM/yyyy");
+            row.Cells["qty"].Value = string.Format("{0:n0}", qty);
             row.Cells["uomId"].Value = uom.Id;
             row.Cells["uomCode"].Value = uom.UomCode;
-            row.Cells["price"].Value = string.Format("{0:n0}", netPrice);
+            row.Cells["price"].Value = string.Format("{0:n0}", nettPrice);
             row.Cells["discPercent"].Value = string.Format("{0:n2}", ValidateDiscount(txtDiscount.Text.Trim())) + "%";
             row.Cells["subTotal"].Value = string.Format("{0:n0}", taxBaseAmount);
             
             // hidden
-            row.Cells["priceReal"].Value = string.Format("{0:n10}", netPrice); ;
+            row.Cells["priceReal"].Value = string.Format("{0:n10}", nettPrice); ;
 
             SetTotalSalesOrder();
 
@@ -760,11 +758,9 @@ namespace CisWindowsFormsApp
                     expiredDate = commonHelper.GetEndOfMonth(expiredDate);
 
                     var qty = Convert.ToInt32(decimal.Parse(dgvSalesOrderItem.Rows[i].Cells["qty"].Value.ToString(), System.Globalization.NumberStyles.Currency));
-                    var priceReal = Math.Round(decimal.Parse(dgvSalesOrderItem.Rows[i].Cells["priceReal"].Value.ToString(), System.Globalization.NumberStyles.Currency),
-                        5, MidpointRounding.AwayFromZero);
-                    var discountPercentage = Math.Round(Convert.ToDecimal(ValidateDiscount(dgvSalesOrderItem.Rows[i].Cells["discPercent"].Value.ToString().Replace("%",""))) / 100, 5, MidpointRounding.AwayFromZero);
-                    var grossValue = Math.Round(qty * priceReal, 5, MidpointRounding.AwayFromZero);
-                    var subTotalReal = Math.Round(grossValue * (1 - Convert.ToDecimal(discountPercentage)), 5, MidpointRounding.AwayFromZero);
+                    var nettPrice = Math.Round(decimal.Parse(dgvSalesOrderItem.Rows[i].Cells["price"].Value.ToString(), System.Globalization.NumberStyles.Currency), 5, MidpointRounding.AwayFromZero);
+                    var discountPercent = Math.Round(Convert.ToDecimal(ValidateDiscount(dgvSalesOrderItem.Rows[i].Cells["discPercent"].Value.ToString().Replace("%",""))) / 100, 5, MidpointRounding.AwayFromZero);
+                    var subTotal = salesOrderHelper.CalculateTaxBaseAmount(qty, nettPrice, discountPercent);
 
                     var soiToAdd = new SalesOrderItem
                     {
@@ -778,9 +774,9 @@ namespace CisWindowsFormsApp
                         Quantity = qty,
                         UomId = dgvSalesOrderItem.Rows[i].Cells["uomId"].Value.ToString(),
                         UomCode = dgvSalesOrderItem.Rows[i].Cells["uomCode"].Value.ToString(),
-                        Price = priceReal,
+                        Price = nettPrice,
                         DiscountPercentage = float.Parse(dgvSalesOrderItem.Rows[i].Cells["discPercent"].Value.ToString().Replace("%", "")),
-                        TotalAmount = subTotalReal,
+                        TotalAmount = subTotal,
 
                         // Audit Fields 
                         CreatedBy = Properties.Settings.Default.CurrentUserId,
@@ -894,11 +890,10 @@ namespace CisWindowsFormsApp
 
                         var expiredDate = commonHelper.GetEndOfMonth(DateTime.Parse(dgvSalesOrderItem.Rows[i].Cells["expDate"].Value.ToString()));
                         var qty = Convert.ToInt32(decimal.Parse(dgvSalesOrderItem.Rows[i].Cells["qty"].Value.ToString(), System.Globalization.NumberStyles.Currency));
-                        var priceReal = Math.Round(decimal.Parse(dgvSalesOrderItem.Rows[i].Cells["priceReal"].Value.ToString(), System.Globalization.NumberStyles.Currency),
-                            5, MidpointRounding.AwayFromZero);
-                        var discountPercentage = Math.Round(Convert.ToDecimal(ValidateDiscount(dgvSalesOrderItem.Rows[i].Cells["discPercent"].Value.ToString().Replace("%",""))) / 100, 5, MidpointRounding.AwayFromZero);
-                        var grossValue = Math.Round(qty * priceReal, 5, MidpointRounding.AwayFromZero);
-                        var subTotalReal = Math.Round(grossValue * (1 - Convert.ToDecimal(discountPercentage)), 5, MidpointRounding.AwayFromZero);
+                        var nettPrice = Math.Round(decimal.Parse(dgvSalesOrderItem.Rows[i].Cells["price"].Value.ToString(), System.Globalization.NumberStyles.Currency), 5, MidpointRounding.AwayFromZero);
+                        var discountPercent = Math.Round(Convert.ToDecimal(ValidateDiscount(dgvSalesOrderItem.Rows[i].Cells["discPercent"].Value.ToString().Replace("%",""))) / 100, 5, MidpointRounding.AwayFromZero);
+                        var grossValue = Math.Round(qty * nettPrice, 5, MidpointRounding.AwayFromZero);
+                        var subTotal = salesOrderHelper.CalculateTaxBaseAmount(qty, nettPrice, discountPercent);
 
                         var soiToUpdate = new SalesOrderItem
                         {
@@ -912,9 +907,9 @@ namespace CisWindowsFormsApp
                             Quantity = qty,
                             UomId = dgvSalesOrderItem.Rows[i].Cells["uomId"].Value.ToString(),
                             UomCode = dgvSalesOrderItem.Rows[i].Cells["uomCode"].Value.ToString(),
-                            Price = priceReal,
+                            Price = nettPrice,
                             DiscountPercentage = float.Parse(dgvSalesOrderItem.Rows[i].Cells["discPercent"].Value.ToString().Replace("%", "")),
-                            TotalAmount = subTotalReal,
+                            TotalAmount = subTotal,
 
                             // Audit Fields 
                             CreatedBy = Properties.Settings.Default.CurrentUserId,

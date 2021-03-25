@@ -2029,16 +2029,25 @@ namespace CisWindowsFormsApp.DataSources.DataSourceInvoiceTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        SalesOrder.Id, SalesOrder.SalesNo, SalesOrder.CustomerName, SalesOrder.CustomerAddress, SalesOrder.CustomerProvince, SalesOrder.CustomerDistrict, SalesOrder.CustomerPostalCode, SalesOrder.CustomerPhone, 
-                         SalesOrder.CustomerEmail, SalesOrder.CustomerNpwp, SalesOrder.DeliveryAddress, SalesOrder.DeliveryProvince, SalesOrder.DeliveryDistrict, SalesOrder.DeliveryPostalCode, SalesOrder.SalesAreaCode, 
-                         SalesOrder.SalesDate, SalesOrder.TermOfPaymentCode, SalesOrder.DueDate, SalesOrder.PersonInCharge, SalesOrder.SipaNo, SalesOrder.SubTotalAmount, SalesOrder.ExtraDiscountAmount, SalesOrder.TaxBaseAmount, 
-                         SalesOrder.ValueAddedTaxAmount, SalesOrder.GrandTotalAmount, SalesOrder.Username, SalesOrder.SalesmanCode, SalesOrderItem.SalesOrderId, SalesOrderItem.ProductCode, SalesOrderItem.ProductName, 
-                         SalesOrderItem.BatchCode, SalesOrderItem.ExpiredDate, SalesOrderItem.Quantity, SalesOrderItem.UomCode, SalesOrderItem.Price, SalesOrderItem.DiscountPercentage, SalesOrderItem.TotalAmount, 
-                         SalesOrderItem.Id AS SalesOrderItemId, SalesOrder.Status, SalesArea.Description
-FROM            SalesOrder INNER JOIN
-                         SalesOrderItem ON SalesOrder.Id = SalesOrderItem.SalesOrderId INNER JOIN
-                         SalesArea ON SalesOrder.SalesAreaId = SalesArea.Id
-WHERE        (SalesOrder.Id = @SalesOrderId)";
+            this._commandCollection[0].CommandText = "SELECT        SalesOrder.Id, SalesOrder.SalesNo, SalesOrder.CustomerName, SalesOr" +
+                "der.CustomerAddress, SalesOrder.CustomerProvince, SalesOrder.CustomerDistrict, S" +
+                "alesOrder.CustomerPostalCode, SalesOrder.CustomerPhone, \r\n                      " +
+                "   SalesOrder.CustomerEmail, SalesOrder.CustomerNpwp, SalesOrder.DeliveryAddress" +
+                ", SalesOrder.DeliveryProvince, SalesOrder.DeliveryDistrict, SalesOrder.DeliveryP" +
+                "ostalCode, SalesOrder.SalesAreaCode, \r\n                         SalesOrder.Sales" +
+                "Date, SalesOrder.TermOfPaymentCode, SalesOrder.DueDate, SalesOrder.PersonInCharg" +
+                "e, SalesOrder.SipaNo, SalesOrder.SubTotalAmount, SalesOrder.ExtraDiscountAmount," +
+                " SalesOrder.TaxBaseAmount, \r\n                         SalesOrder.ValueAddedTaxAm" +
+                "ount, SalesOrder.GrandTotalAmount, SalesOrder.Username, SalesOrder.SalesmanCode," +
+                " SalesOrderItem.SalesOrderId, SalesOrderItem.ProductCode, SalesOrderItem.Product" +
+                "Name, \r\n                         SalesOrderItem.BatchCode, SalesOrderItem.Expire" +
+                "dDate, SalesOrderItem.Quantity, SalesOrderItem.UomCode, SalesOrderItem.Price, Sa" +
+                "lesOrderItem.DiscountPercentage, SalesOrderItem.TotalAmount, \r\n                 " +
+                "        SalesOrderItem.Id AS SalesOrderItemId, SalesOrder.Status, SalesArea.Desc" +
+                "ription\r\nFROM            SalesOrder INNER JOIN\r\n                         SalesOr" +
+                "derItem ON SalesOrder.Id = SalesOrderItem.SalesOrderId INNER JOIN\r\n             " +
+                "            SalesArea ON SalesOrder.SalesAreaId = SalesArea.Id\r\nWHERE        (Sa" +
+                "lesOrder.Id = @SalesOrderId)\r\nORDER BY SalesOrderItem.ProductCode";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SalesOrderId", global::System.Data.SqlDbType.NVarChar, 36, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
