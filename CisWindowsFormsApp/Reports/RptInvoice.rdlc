@@ -770,7 +770,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Month(Fields!ExpiredDate.Value) &amp; "/" &amp; Year(Fields!ExpiredDate.Value)</Value>
+                                  <Value>=Month(Fields!ExpiredDate.Value).ToString("D2") &amp; "/" &amp; Year(Fields!ExpiredDate.Value)</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
                                   </Style>

@@ -626,6 +626,9 @@ namespace CisWindowsFormsApp
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtSalesNo.Text.Trim()))
+                return;
+
             LoadSalesOrderData(txtSalesNo.Text.Trim());
             SetUIButtonGroup();
         }
@@ -1002,6 +1005,15 @@ namespace CisWindowsFormsApp
             dtpExpiredDate.Value = queryResult.ExpiredDate;
 
             txtQty.Focus();
+        }
+
+        private void txtSalesNo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (Char)Keys.Enter)
+            {
+                e.Handled = true;
+                btnSearch.PerformClick();
+            }
         }
     }
 }

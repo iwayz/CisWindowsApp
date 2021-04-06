@@ -858,6 +858,7 @@
             this.txtSalesNo.Name = "txtSalesNo";
             this.txtSalesNo.Size = new System.Drawing.Size(168, 27);
             this.txtSalesNo.TabIndex = 1;
+            this.txtSalesNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSalesNo_KeyPress);
             // 
             // btnSearch
             // 
