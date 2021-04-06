@@ -567,9 +567,9 @@
             this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label6.Location = new System.Drawing.Point(548, 16);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(109, 15);
+            this.label6.Size = new System.Drawing.Size(74, 15);
             this.label6.TabIndex = 17;
-            this.label6.Text = "Harga (HNA + PPN)";
+            this.label6.Text = "Harga (HNA)";
             // 
             // txtPrice
             // 

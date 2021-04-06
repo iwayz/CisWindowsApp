@@ -44,15 +44,15 @@ namespace CisWindowsFormsApp
             reportViewerInvoice.LocalReport.SetParameters(soIdParam);
             reportViewerInvoice.RefreshReport();
 
-            reportViewerInvoice.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
+            reportViewerInvoice.SetDisplayMode(DisplayMode.PrintLayout);
             reportViewerInvoice.ZoomMode = ZoomMode.Percent;
             reportViewerInvoice.ZoomPercent = 100;
             reportViewerInvoice.SetPageSettings(
                 new PageSettings
                 {
-                    Landscape = true,
-                    PaperSize = new PaperSize("Cont. Form A5", 580, 830),
-                    Margins = new Margins { Top = 10, Left = 20, Right = 40, Bottom = 40 }
+                    //Landscape = true,
+                    PaperSize = new PaperSize(PaperKind.Custom.ToString(), 950, 550),
+                    Margins = new Margins { Top = 20, Left = 50, Right = 50, Bottom = 20 }
                 }
             );
             reportViewerInvoice.ShowExportButton = false;

@@ -214,9 +214,9 @@
             this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label3.Location = new System.Drawing.Point(24, 117);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(109, 15);
+            this.label3.Size = new System.Drawing.Size(74, 15);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Harga (HNA + PPN)";
+            this.label3.Text = "Harga (HNA)";
             // 
             // label4
             // 
