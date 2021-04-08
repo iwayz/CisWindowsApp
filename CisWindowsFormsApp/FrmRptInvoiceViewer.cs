@@ -47,12 +47,15 @@ namespace CisWindowsFormsApp
             reportViewerInvoice.SetDisplayMode(DisplayMode.PrintLayout);
             reportViewerInvoice.ZoomMode = ZoomMode.Percent;
             reportViewerInvoice.ZoomPercent = 100;
+            var marginBottom = 40;
+            if (dt.Rows.Count <= 6)
+                marginBottom = 20;
             reportViewerInvoice.SetPageSettings(
                 new PageSettings
                 {
                     //Landscape = true,
                     PaperSize = new PaperSize(PaperKind.Custom.ToString(), 950, 550),
-                    Margins = new Margins { Top = 20, Left = 50, Right = 50, Bottom = 20 }
+                    Margins = new Margins { Top = 20, Left = 50, Right = 50, Bottom = marginBottom }
                 }
             );
             reportViewerInvoice.ShowExportButton = false;
