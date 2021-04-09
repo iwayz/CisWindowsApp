@@ -54,8 +54,8 @@ namespace CisWindowsFormsApp
                 new PageSettings
                 {
                     //Landscape = true,
-                    PaperSize = new PaperSize(PaperKind.Custom.ToString(), 950, 550),
-                    Margins = new Margins { Top = 20, Left = 50, Right = 50, Bottom = marginBottom }
+                    PaperSize = new PaperSize("Faktur CISPOS", 950, 550),
+                    Margins = new Margins { Top = 20, Left = 20, Right = 20, Bottom = marginBottom }
                 }
             );
             reportViewerInvoice.ShowExportButton = false;
