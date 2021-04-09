@@ -506,7 +506,7 @@ namespace CisWindowsFormsApp
                 
                 if (dgvSalesOrderItem.Rows[i].Cells["productId"].Value.ToString() == cbProduct.SelectedValue.ToString()
                     && (dgvSalesOrderItem.Rows[i].Cells["batchCode"].Value.ToString() == txtBatch.Text.Trim() || string.IsNullOrEmpty(dgvSalesOrderItem.Rows[i].Cells["batchId"].Value.ToString()))
-                    && commonHelper.GetEndOfMonth(DateTime.Parse(dgvSalesOrderItem.Rows[0].Cells["expDate"].Value.ToString())) == commonHelper.GetEndOfMonth(dtpExpiredDate.Value))
+                    && commonHelper.GetEndOfMonth(DateTime.Parse(dgvSalesOrderItem.Rows[i].Cells["expDate"].Value.ToString())) == commonHelper.GetEndOfMonth(dtpExpiredDate.Value))
                 {
                     rowId = i;
                     duplicateItem = true;
