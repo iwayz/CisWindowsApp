@@ -183,7 +183,7 @@ namespace CisWindowsFormsApp
 
                     xlWorkSheet.Cells[rowNumber, 1].NumberFormat = "dd/mm/yy;@";
                     xlWorkSheet.Cells[rowNumber, 1].HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
-                    xlWorkSheet.Cells[rowNumber, 1] = item.sodcusd.sod.SalesDate.ToShortDateString();
+                    xlWorkSheet.Cells[rowNumber, 1] = item.sodcusd.sod.SalesDate;
                     xlWorkSheet.Cells[rowNumber, 2] = item.sodcusd.sod.SalesNo;
                     xlWorkSheet.Cells[rowNumber, 3].NumberFormat = "@";
                     xlWorkSheet.Cells[rowNumber, 3] = item.sodcusd.cusd.CustomerCode.ToString();
@@ -222,7 +222,7 @@ namespace CisWindowsFormsApp
                     xlWorkSheet.Cells[rowNumber, 24] = netValue;
                     xlWorkSheet.Cells[rowNumber, 25].NumberFormat = "dd/mm/yy;@";
                     xlWorkSheet.Cells[rowNumber, 25].HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
-                    xlWorkSheet.Cells[rowNumber, 25] = item.sodcusd.sod.DueDate.ToShortDateString();
+                    xlWorkSheet.Cells[rowNumber, 25] = item.sodcusd.sod.DueDate;
                     xlWorkSheet.Cells[rowNumber, 26] = item.sodcusd.sod.DeliveryAddress;
                     xlWorkSheet.Cells[rowNumber, 27] = item.sodcusd.sod.DeliveryDistrict;
                     xlWorkSheet.Cells[rowNumber, 28].NumberFormat = "@";
