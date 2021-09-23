@@ -26,12 +26,12 @@ namespace Cis.Data
             }
             catch (DbUpdateException dbEx)
             {
-                logger.Error(dbEx, "Expected");
+                logger.Error(dbEx.InnerException.InnerException.Message, "Expected");
                 return (false, "Expected");
             }
             catch (Exception ex)
             {
-                logger.Error(ex, "Unexpected");
+                logger.Error(ex.InnerException.InnerException.Message, "Unexpected");
                 return (false, "Unexpected");
             }
             finally

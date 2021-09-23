@@ -2080,7 +2080,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=FormatDateTime(Fields!DueDate.Value,DateFormat.ShortDate)</Value>
+                      <Value>=Day(Fields!DueDate.Value).ToString("D2") &amp; "/" &amp; Month(Fields!DueDate.Value).ToString("D2") &amp; "/" &amp; Year(Fields!DueDate.Value)</Value>
                       <Style>
                         <FontFamily>Calibri</FontFamily>
                       </Style>

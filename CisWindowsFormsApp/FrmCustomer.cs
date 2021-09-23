@@ -50,7 +50,7 @@ namespace CisWindowsFormsApp
             isAdd = true;
             SetUIButtonGroup();
 
-            txtCustomerCode.Focus();
+            cbSalesArea.Focus();
             txtCustomerCode.Text = string.Empty;
             txtCustomerName.Text = string.Empty;
             txtAddress.Text = string.Empty;
@@ -72,6 +72,7 @@ namespace CisWindowsFormsApp
 
             txtCustomerId.Text = string.Empty;
             txtModifiedAt.Text = string.Empty;
+            cbSalesArea.Enabled = isAdd;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -115,6 +116,8 @@ namespace CisWindowsFormsApp
                 };
                 uowCust.Repository.Add(custToAdd);
                 uowCust.Commit();
+                isAdd = false;
+                cbSalesArea.Enabled = isAdd;
                 btnReload.PerformClick();
                 CommonMessageHelper.DataSavedSuccessfully();
             }
@@ -218,6 +221,7 @@ namespace CisWindowsFormsApp
                 txtModifiedAt.Text = dgvCustomer.CurrentRow.Cells[nameof(Customer.ModifiedAt)].Value.ToString();
             }
             SetUIButtonGroup();
+            cbSalesArea.Enabled = isAdd;
         }
 
         private void dgvCustomer_Click(object sender, EventArgs e)
@@ -318,6 +322,7 @@ namespace CisWindowsFormsApp
             cbOutletType.SelectedValue = currentRow.Cells[nameof(Customer.OutletTypeId)].Value.ToString();
             cbSalesArea.SelectedValue = currentRow.Cells[nameof(Customer.SalesAreaId)].Value.ToString();
 
+            cbSalesArea.Enabled = isAdd;
             // hidden fields
             txtCustomerId.Text = currentRow.Cells[nameof(Customer.Id)].Value.ToString();
             txtModifiedAt.Text = currentRow.Cells[nameof(Customer.ModifiedAt)].Value.ToString();
@@ -333,6 +338,13 @@ namespace CisWindowsFormsApp
 
             }
 
+            if (cbOutletType.SelectedItem.ToString().Contains("Pilih"))
+            {
+                CommonMessageHelper.DataCannotBeEmpty("Jenis Outlet");
+                return false;
+
+            }
+            
             if (cbOutletType.Items.Count <= 1 || cbSalesArea.Items.Count <= 1)
             {
                 var emptyRefData = cbOutletType.Items.Count <= 1 ? "Jenis Outlet" : "Sales Area";

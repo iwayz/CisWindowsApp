@@ -59,15 +59,8 @@
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.txtCustomerName = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtAddress = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.txtPostCode = new System.Windows.Forms.TextBox();
             this.textBox13 = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
             this.btnReload = new System.Windows.Forms.Button();
             this.btnDel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
@@ -78,41 +71,48 @@
             this.txtCustomerId = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.cbProvince = new System.Windows.Forms.ComboBox();
-            this.cbDistrict = new System.Windows.Forms.ComboBox();
             this.pnlHiddenFields = new System.Windows.Forms.Panel();
-            this.txtNpwp = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.txtPharmacistName = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.txtSipaNo = new System.Windows.Forms.TextBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.txtSiaNo = new System.Windows.Forms.TextBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.dtpSipaExpiredDate = new System.Windows.Forms.DateTimePicker();
-            this.label27 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label30 = new System.Windows.Forms.Label();
-            this.txtPhone = new System.Windows.Forms.TextBox();
-            this.txtCustomerCode = new System.Windows.Forms.TextBox();
-            this.label31 = new System.Windows.Forms.Label();
-            this.cbSalesArea = new System.Windows.Forms.ComboBox();
-            this.cbOutletType = new System.Windows.Forms.ComboBox();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
             this.pnlButtonGroup = new System.Windows.Forms.Panel();
             this.pnlNote = new System.Windows.Forms.Panel();
             this.lblNoteDetail = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.txtSiaNo = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.txtSipaNo = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtPharmacistName = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.txtNpwp = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.txtPostCode = new System.Windows.Forms.TextBox();
+            this.cbDistrict = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.cbOutletType = new System.Windows.Forms.ComboBox();
+            this.cbSalesArea = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.txtCustomerName = new System.Windows.Forms.TextBox();
+            this.txtCustomerCode = new System.Windows.Forms.TextBox();
+            this.dtpSipaExpiredDate = new System.Windows.Forms.DateTimePicker();
+            this.txtAddress = new System.Windows.Forms.TextBox();
+            this.txtPhone = new System.Windows.Forms.TextBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.cbProvince = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
             this.pnlHiddenFields.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.pnlButtonGroup.SuspendLayout();
             this.pnlNote.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -439,61 +439,6 @@
             this.radioButton4.Size = new System.Drawing.Size(104, 24);
             this.radioButton4.TabIndex = 0;
             // 
-            // txtCustomerName
-            // 
-            this.txtCustomerName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCustomerName.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.txtCustomerName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtCustomerName.Location = new System.Drawing.Point(14, 128);
-            this.txtCustomerName.Name = "txtCustomerName";
-            this.txtCustomerName.Size = new System.Drawing.Size(283, 31);
-            this.txtCustomerName.TabIndex = 1;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label13.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label13.Location = new System.Drawing.Point(14, 112);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(97, 15);
-            this.label13.TabIndex = 4;
-            this.label13.Text = "Nama Pelanggan";
-            // 
-            // txtAddress
-            // 
-            this.txtAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtAddress.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.txtAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtAddress.Location = new System.Drawing.Point(14, 174);
-            this.txtAddress.Multiline = true;
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(283, 49);
-            this.txtAddress.TabIndex = 2;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label14.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label14.Location = new System.Drawing.Point(14, 158);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(46, 15);
-            this.label14.TabIndex = 4;
-            this.label14.Text = "Alamat";
-            // 
-            // txtPostCode
-            // 
-            this.txtPostCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPostCode.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.txtPostCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtPostCode.Location = new System.Drawing.Point(14, 340);
-            this.txtPostCode.MaxLength = 5;
-            this.txtPostCode.Name = "txtPostCode";
-            this.txtPostCode.Size = new System.Drawing.Size(104, 31);
-            this.txtPostCode.TabIndex = 6;
-            this.txtPostCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPostCode_KeyPress);
-            // 
             // textBox13
             // 
             this.textBox13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -515,27 +460,6 @@
             this.label16.Size = new System.Drawing.Size(50, 15);
             this.label16.TabIndex = 4;
             this.label16.Text = "Telepon";
-            // 
-            // txtEmail
-            // 
-            this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtEmail.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.txtEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtEmail.Location = new System.Drawing.Point(14, 389);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(283, 31);
-            this.txtEmail.TabIndex = 8;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label17.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label17.Location = new System.Drawing.Point(14, 374);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(36, 15);
-            this.label17.TabIndex = 4;
-            this.label17.Text = "Email";
             // 
             // btnReload
             // 
@@ -676,54 +600,6 @@
             this.label19.TabIndex = 4;
             this.label19.Text = "Id";
             // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label20.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label20.Location = new System.Drawing.Point(14, 225);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(50, 15);
-            this.label20.TabIndex = 4;
-            this.label20.Text = "Provinsi";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label21.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label21.Location = new System.Drawing.Point(14, 275);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(100, 15);
-            this.label21.TabIndex = 4;
-            this.label21.Text = "Kabupaten/ Kota";
-            // 
-            // cbProvince
-            // 
-            this.cbProvince.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cbProvince.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.cbProvince.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.cbProvince.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cbProvince.FormattingEnabled = true;
-            this.cbProvince.Location = new System.Drawing.Point(14, 241);
-            this.cbProvince.Name = "cbProvince";
-            this.cbProvince.Size = new System.Drawing.Size(235, 31);
-            this.cbProvince.TabIndex = 3;
-            this.cbProvince.SelectedIndexChanged += new System.EventHandler(this.cbProvince_SelectedIndexChanged);
-            // 
-            // cbDistrict
-            // 
-            this.cbDistrict.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cbDistrict.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.cbDistrict.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.cbDistrict.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cbDistrict.FormattingEnabled = true;
-            this.cbDistrict.Location = new System.Drawing.Point(14, 291);
-            this.cbDistrict.Name = "cbDistrict";
-            this.cbDistrict.Size = new System.Drawing.Size(235, 31);
-            this.cbDistrict.TabIndex = 4;
-            this.cbDistrict.SelectedIndexChanged += new System.EventHandler(this.cbDistrict_SelectedIndexChanged);
-            // 
             // pnlHiddenFields
             // 
             this.pnlHiddenFields.Controls.Add(this.txtModifiedAt);
@@ -735,239 +611,6 @@
             this.pnlHiddenFields.Size = new System.Drawing.Size(353, 72);
             this.pnlHiddenFields.TabIndex = 8;
             this.pnlHiddenFields.Visible = false;
-            // 
-            // txtNpwp
-            // 
-            this.txtNpwp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtNpwp.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.txtNpwp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtNpwp.Location = new System.Drawing.Point(14, 438);
-            this.txtNpwp.Name = "txtNpwp";
-            this.txtNpwp.Size = new System.Drawing.Size(283, 31);
-            this.txtNpwp.TabIndex = 9;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label23.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label23.Location = new System.Drawing.Point(14, 423);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(42, 15);
-            this.label23.TabIndex = 4;
-            this.label23.Text = "NPWP";
-            // 
-            // txtPharmacistName
-            // 
-            this.txtPharmacistName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPharmacistName.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.txtPharmacistName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtPharmacistName.Location = new System.Drawing.Point(14, 487);
-            this.txtPharmacistName.Name = "txtPharmacistName";
-            this.txtPharmacistName.Size = new System.Drawing.Size(283, 31);
-            this.txtPharmacistName.TabIndex = 10;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label24.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label24.Location = new System.Drawing.Point(14, 469);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(94, 15);
-            this.label24.TabIndex = 4;
-            this.label24.Text = "Nama Apoteker";
-            // 
-            // txtSipaNo
-            // 
-            this.txtSipaNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSipaNo.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.txtSipaNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtSipaNo.Location = new System.Drawing.Point(14, 536);
-            this.txtSipaNo.Name = "txtSipaNo";
-            this.txtSipaNo.Size = new System.Drawing.Size(283, 31);
-            this.txtSipaNo.TabIndex = 11;
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label25.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label25.Location = new System.Drawing.Point(14, 521);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(52, 15);
-            this.label25.TabIndex = 4;
-            this.label25.Text = "No. SIPA";
-            // 
-            // txtSiaNo
-            // 
-            this.txtSiaNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSiaNo.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.txtSiaNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtSiaNo.Location = new System.Drawing.Point(14, 637);
-            this.txtSiaNo.Name = "txtSiaNo";
-            this.txtSiaNo.Size = new System.Drawing.Size(283, 31);
-            this.txtSiaNo.TabIndex = 13;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label26.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label26.Location = new System.Drawing.Point(14, 622);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(46, 15);
-            this.label26.TabIndex = 4;
-            this.label26.Text = "No. SIA";
-            // 
-            // dtpSipaExpiredDate
-            // 
-            this.dtpSipaExpiredDate.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dtpSipaExpiredDate.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.dtpSipaExpiredDate.Location = new System.Drawing.Point(14, 588);
-            this.dtpSipaExpiredDate.Name = "dtpSipaExpiredDate";
-            this.dtpSipaExpiredDate.Size = new System.Drawing.Size(188, 31);
-            this.dtpSipaExpiredDate.TabIndex = 12;
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label27.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label27.Location = new System.Drawing.Point(14, 570);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(94, 15);
-            this.label27.TabIndex = 4;
-            this.label27.Text = "Tgl. Expired SIPA";
-            // 
-            // panel2
-            // 
-            this.panel2.AutoScroll = true;
-            this.panel2.Controls.Add(this.label30);
-            this.panel2.Controls.Add(this.txtPhone);
-            this.panel2.Controls.Add(this.txtAddress);
-            this.panel2.Controls.Add(this.dtpSipaExpiredDate);
-            this.panel2.Controls.Add(this.txtCustomerCode);
-            this.panel2.Controls.Add(this.txtCustomerName);
-            this.panel2.Controls.Add(this.label31);
-            this.panel2.Controls.Add(this.label13);
-            this.panel2.Controls.Add(this.cbSalesArea);
-            this.panel2.Controls.Add(this.cbOutletType);
-            this.panel2.Controls.Add(this.label29);
-            this.panel2.Controls.Add(this.label14);
-            this.panel2.Controls.Add(this.cbDistrict);
-            this.panel2.Controls.Add(this.txtPostCode);
-            this.panel2.Controls.Add(this.cbProvince);
-            this.panel2.Controls.Add(this.label28);
-            this.panel2.Controls.Add(this.txtEmail);
-            this.panel2.Controls.Add(this.label21);
-            this.panel2.Controls.Add(this.txtNpwp);
-            this.panel2.Controls.Add(this.label20);
-            this.panel2.Controls.Add(this.txtPharmacistName);
-            this.panel2.Controls.Add(this.label17);
-            this.panel2.Controls.Add(this.txtSipaNo);
-            this.panel2.Controls.Add(this.label23);
-            this.panel2.Controls.Add(this.txtSiaNo);
-            this.panel2.Controls.Add(this.label24);
-            this.panel2.Controls.Add(this.label25);
-            this.panel2.Controls.Add(this.label27);
-            this.panel2.Controls.Add(this.label26);
-            this.panel2.Location = new System.Drawing.Point(12, 10);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(326, 481);
-            this.panel2.TabIndex = 0;
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label30.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label30.Location = new System.Drawing.Point(14, 325);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(50, 15);
-            this.label30.TabIndex = 4;
-            this.label30.Text = "Telepon";
-            // 
-            // txtPhone
-            // 
-            this.txtPhone.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPhone.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.txtPhone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtPhone.Location = new System.Drawing.Point(14, 340);
-            this.txtPhone.MaxLength = 20;
-            this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(170, 31);
-            this.txtPhone.TabIndex = 7;
-            this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
-            // 
-            // txtCustomerCode
-            // 
-            this.txtCustomerCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCustomerCode.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.txtCustomerCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtCustomerCode.Location = new System.Drawing.Point(14, 80);
-            this.txtCustomerCode.Name = "txtCustomerCode";
-            this.txtCustomerCode.ReadOnly = true;
-            this.txtCustomerCode.Size = new System.Drawing.Size(170, 31);
-            this.txtCustomerCode.TabIndex = 1;
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label31.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label31.Location = new System.Drawing.Point(14, 64);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(93, 15);
-            this.label31.TabIndex = 4;
-            this.label31.Text = "Kode Pelanggan";
-            // 
-            // cbSalesArea
-            // 
-            this.cbSalesArea.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cbSalesArea.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.cbSalesArea.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.cbSalesArea.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cbSalesArea.FormattingEnabled = true;
-            this.cbSalesArea.Location = new System.Drawing.Point(14, 32);
-            this.cbSalesArea.Name = "cbSalesArea";
-            this.cbSalesArea.Size = new System.Drawing.Size(235, 31);
-            this.cbSalesArea.TabIndex = 1;
-            this.cbSalesArea.SelectedIndexChanged += new System.EventHandler(this.cbSalesArea_SelectedIndexChanged);
-            // 
-            // cbOutletType
-            // 
-            this.cbOutletType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cbOutletType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.cbOutletType.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.cbOutletType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cbOutletType.FormattingEnabled = true;
-            this.cbOutletType.Location = new System.Drawing.Point(14, 687);
-            this.cbOutletType.Name = "cbOutletType";
-            this.cbOutletType.Size = new System.Drawing.Size(235, 31);
-            this.cbOutletType.TabIndex = 14;
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label29.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label29.Location = new System.Drawing.Point(14, 16);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(63, 15);
-            this.label29.TabIndex = 4;
-            this.label29.Text = "Sales Area";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label28.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label28.Location = new System.Drawing.Point(14, 671);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(72, 15);
-            this.label28.TabIndex = 4;
-            this.label28.Text = "Jenis Outlet";
             // 
             // pnlButtonGroup
             // 
@@ -1042,6 +685,363 @@
             this.txtSearch.TabIndex = 38;
             this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
             // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label26.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label26.Location = new System.Drawing.Point(14, 622);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(46, 15);
+            this.label26.TabIndex = 4;
+            this.label26.Text = "No. SIA";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label27.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label27.Location = new System.Drawing.Point(14, 570);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(94, 15);
+            this.label27.TabIndex = 4;
+            this.label27.Text = "Tgl. Expired SIPA";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label25.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label25.Location = new System.Drawing.Point(14, 521);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(52, 15);
+            this.label25.TabIndex = 4;
+            this.label25.Text = "No. SIPA";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label24.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label24.Location = new System.Drawing.Point(14, 469);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(94, 15);
+            this.label24.TabIndex = 4;
+            this.label24.Text = "Nama Apoteker";
+            // 
+            // txtSiaNo
+            // 
+            this.txtSiaNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSiaNo.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.txtSiaNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtSiaNo.Location = new System.Drawing.Point(14, 637);
+            this.txtSiaNo.Name = "txtSiaNo";
+            this.txtSiaNo.Size = new System.Drawing.Size(283, 31);
+            this.txtSiaNo.TabIndex = 13;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label23.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label23.Location = new System.Drawing.Point(14, 423);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(42, 15);
+            this.label23.TabIndex = 4;
+            this.label23.Text = "NPWP";
+            // 
+            // txtSipaNo
+            // 
+            this.txtSipaNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSipaNo.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.txtSipaNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtSipaNo.Location = new System.Drawing.Point(14, 536);
+            this.txtSipaNo.Name = "txtSipaNo";
+            this.txtSipaNo.Size = new System.Drawing.Size(283, 31);
+            this.txtSipaNo.TabIndex = 11;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label17.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label17.Location = new System.Drawing.Point(14, 374);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(36, 15);
+            this.label17.TabIndex = 4;
+            this.label17.Text = "Email";
+            // 
+            // txtPharmacistName
+            // 
+            this.txtPharmacistName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPharmacistName.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.txtPharmacistName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtPharmacistName.Location = new System.Drawing.Point(14, 487);
+            this.txtPharmacistName.Name = "txtPharmacistName";
+            this.txtPharmacistName.Size = new System.Drawing.Size(283, 31);
+            this.txtPharmacistName.TabIndex = 10;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label20.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label20.Location = new System.Drawing.Point(14, 225);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(50, 15);
+            this.label20.TabIndex = 4;
+            this.label20.Text = "Provinsi";
+            // 
+            // txtNpwp
+            // 
+            this.txtNpwp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtNpwp.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.txtNpwp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtNpwp.Location = new System.Drawing.Point(14, 438);
+            this.txtNpwp.Name = "txtNpwp";
+            this.txtNpwp.Size = new System.Drawing.Size(283, 31);
+            this.txtNpwp.TabIndex = 9;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label21.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label21.Location = new System.Drawing.Point(14, 275);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(100, 15);
+            this.label21.TabIndex = 4;
+            this.label21.Text = "Kabupaten/ Kota";
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtEmail.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.txtEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtEmail.Location = new System.Drawing.Point(14, 389);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(283, 31);
+            this.txtEmail.TabIndex = 8;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label28.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label28.Location = new System.Drawing.Point(14, 671);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(72, 15);
+            this.label28.TabIndex = 4;
+            this.label28.Text = "Jenis Outlet";
+            // 
+            // txtPostCode
+            // 
+            this.txtPostCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPostCode.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.txtPostCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtPostCode.Location = new System.Drawing.Point(14, 340);
+            this.txtPostCode.MaxLength = 5;
+            this.txtPostCode.Name = "txtPostCode";
+            this.txtPostCode.Size = new System.Drawing.Size(104, 31);
+            this.txtPostCode.TabIndex = 6;
+            this.txtPostCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPostCode_KeyPress);
+            // 
+            // cbDistrict
+            // 
+            this.cbDistrict.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbDistrict.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cbDistrict.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.cbDistrict.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.cbDistrict.FormattingEnabled = true;
+            this.cbDistrict.Location = new System.Drawing.Point(14, 291);
+            this.cbDistrict.Name = "cbDistrict";
+            this.cbDistrict.Size = new System.Drawing.Size(235, 31);
+            this.cbDistrict.TabIndex = 6;
+            this.cbDistrict.SelectedIndexChanged += new System.EventHandler(this.cbDistrict_SelectedIndexChanged);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label14.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label14.Location = new System.Drawing.Point(14, 158);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(46, 15);
+            this.label14.TabIndex = 4;
+            this.label14.Text = "Alamat";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label29.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label29.Location = new System.Drawing.Point(14, 16);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(63, 15);
+            this.label29.TabIndex = 4;
+            this.label29.Text = "Sales Area";
+            // 
+            // cbOutletType
+            // 
+            this.cbOutletType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbOutletType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cbOutletType.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.cbOutletType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.cbOutletType.FormattingEnabled = true;
+            this.cbOutletType.Location = new System.Drawing.Point(14, 687);
+            this.cbOutletType.Name = "cbOutletType";
+            this.cbOutletType.Size = new System.Drawing.Size(235, 31);
+            this.cbOutletType.TabIndex = 14;
+            // 
+            // cbSalesArea
+            // 
+            this.cbSalesArea.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbSalesArea.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cbSalesArea.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.cbSalesArea.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.cbSalesArea.FormattingEnabled = true;
+            this.cbSalesArea.Location = new System.Drawing.Point(14, 32);
+            this.cbSalesArea.Name = "cbSalesArea";
+            this.cbSalesArea.Size = new System.Drawing.Size(235, 31);
+            this.cbSalesArea.TabIndex = 1;
+            this.cbSalesArea.SelectedIndexChanged += new System.EventHandler(this.cbSalesArea_SelectedIndexChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label13.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label13.Location = new System.Drawing.Point(14, 112);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(97, 15);
+            this.label13.TabIndex = 4;
+            this.label13.Text = "Nama Pelanggan";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label31.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label31.Location = new System.Drawing.Point(14, 64);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(93, 15);
+            this.label31.TabIndex = 4;
+            this.label31.Text = "Kode Pelanggan";
+            // 
+            // txtCustomerName
+            // 
+            this.txtCustomerName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCustomerName.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.txtCustomerName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtCustomerName.Location = new System.Drawing.Point(14, 128);
+            this.txtCustomerName.Name = "txtCustomerName";
+            this.txtCustomerName.Size = new System.Drawing.Size(283, 31);
+            this.txtCustomerName.TabIndex = 3;
+            // 
+            // txtCustomerCode
+            // 
+            this.txtCustomerCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCustomerCode.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.txtCustomerCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtCustomerCode.Location = new System.Drawing.Point(14, 80);
+            this.txtCustomerCode.Name = "txtCustomerCode";
+            this.txtCustomerCode.ReadOnly = true;
+            this.txtCustomerCode.Size = new System.Drawing.Size(170, 31);
+            this.txtCustomerCode.TabIndex = 2;
+            // 
+            // dtpSipaExpiredDate
+            // 
+            this.dtpSipaExpiredDate.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dtpSipaExpiredDate.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.dtpSipaExpiredDate.Location = new System.Drawing.Point(14, 588);
+            this.dtpSipaExpiredDate.Name = "dtpSipaExpiredDate";
+            this.dtpSipaExpiredDate.Size = new System.Drawing.Size(188, 31);
+            this.dtpSipaExpiredDate.TabIndex = 12;
+            // 
+            // txtAddress
+            // 
+            this.txtAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtAddress.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.txtAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtAddress.Location = new System.Drawing.Point(14, 174);
+            this.txtAddress.Multiline = true;
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(283, 49);
+            this.txtAddress.TabIndex = 4;
+            // 
+            // txtPhone
+            // 
+            this.txtPhone.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPhone.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.txtPhone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtPhone.Location = new System.Drawing.Point(14, 340);
+            this.txtPhone.MaxLength = 20;
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(170, 31);
+            this.txtPhone.TabIndex = 7;
+            this.txtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhone_KeyPress);
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label30.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label30.Location = new System.Drawing.Point(14, 325);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(50, 15);
+            this.label30.TabIndex = 4;
+            this.label30.Text = "Telepon";
+            // 
+            // panel2
+            // 
+            this.panel2.AutoScroll = true;
+            this.panel2.Controls.Add(this.label30);
+            this.panel2.Controls.Add(this.txtPhone);
+            this.panel2.Controls.Add(this.txtAddress);
+            this.panel2.Controls.Add(this.dtpSipaExpiredDate);
+            this.panel2.Controls.Add(this.txtCustomerCode);
+            this.panel2.Controls.Add(this.txtCustomerName);
+            this.panel2.Controls.Add(this.label31);
+            this.panel2.Controls.Add(this.label13);
+            this.panel2.Controls.Add(this.cbSalesArea);
+            this.panel2.Controls.Add(this.cbOutletType);
+            this.panel2.Controls.Add(this.label29);
+            this.panel2.Controls.Add(this.label14);
+            this.panel2.Controls.Add(this.cbDistrict);
+            this.panel2.Controls.Add(this.txtPostCode);
+            this.panel2.Controls.Add(this.cbProvince);
+            this.panel2.Controls.Add(this.label28);
+            this.panel2.Controls.Add(this.txtEmail);
+            this.panel2.Controls.Add(this.label21);
+            this.panel2.Controls.Add(this.txtNpwp);
+            this.panel2.Controls.Add(this.label20);
+            this.panel2.Controls.Add(this.txtPharmacistName);
+            this.panel2.Controls.Add(this.label17);
+            this.panel2.Controls.Add(this.txtSipaNo);
+            this.panel2.Controls.Add(this.label23);
+            this.panel2.Controls.Add(this.txtSiaNo);
+            this.panel2.Controls.Add(this.label24);
+            this.panel2.Controls.Add(this.label25);
+            this.panel2.Controls.Add(this.label27);
+            this.panel2.Controls.Add(this.label26);
+            this.panel2.Location = new System.Drawing.Point(12, 10);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(326, 481);
+            this.panel2.TabIndex = 0;
+            // 
+            // cbProvince
+            // 
+            this.cbProvince.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbProvince.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cbProvince.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.cbProvince.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.cbProvince.FormattingEnabled = true;
+            this.cbProvince.Location = new System.Drawing.Point(14, 241);
+            this.cbProvince.Name = "cbProvince";
+            this.cbProvince.Size = new System.Drawing.Size(235, 31);
+            this.cbProvince.TabIndex = 5;
+            this.cbProvince.SelectedIndexChanged += new System.EventHandler(this.cbProvince_SelectedIndexChanged);
+            // 
             // FrmCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1064,11 +1064,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).EndInit();
             this.pnlHiddenFields.ResumeLayout(false);
             this.pnlHiddenFields.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.pnlButtonGroup.ResumeLayout(false);
             this.pnlNote.ResumeLayout(false);
             this.pnlNote.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1106,15 +1106,8 @@
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.TextBox txtCustomerName;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox txtAddress;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox txtPostCode;
         private System.Windows.Forms.TextBox textBox13;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button btnReload;
         private System.Windows.Forms.Button btnDel;
         private System.Windows.Forms.Button btnSave;
@@ -1125,35 +1118,42 @@
         private System.Windows.Forms.TextBox txtCustomerId;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.ComboBox cbProvince;
-        private System.Windows.Forms.ComboBox cbDistrict;
         private System.Windows.Forms.Panel pnlHiddenFields;
-        private System.Windows.Forms.TextBox txtNpwp;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.TextBox txtPharmacistName;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.TextBox txtSipaNo;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.TextBox txtSiaNo;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.DateTimePicker dtpSipaExpiredDate;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.ComboBox cbSalesArea;
-        private System.Windows.Forms.ComboBox cbOutletType;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Panel pnlButtonGroup;
-        private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.Panel pnlNote;
         private System.Windows.Forms.Label lblNoteDetail;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.TextBox txtCustomerCode;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox txtSiaNo;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox txtSipaNo;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox txtPharmacistName;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox txtNpwp;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.TextBox txtPostCode;
+        private System.Windows.Forms.ComboBox cbDistrict;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.ComboBox cbOutletType;
+        private System.Windows.Forms.ComboBox cbSalesArea;
+        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.TextBox txtCustomerName;
+        private System.Windows.Forms.TextBox txtCustomerCode;
+        private System.Windows.Forms.DateTimePicker dtpSipaExpiredDate;
+        private System.Windows.Forms.TextBox txtAddress;
+        private System.Windows.Forms.TextBox txtPhone;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.ComboBox cbProvince;
     }
 }
