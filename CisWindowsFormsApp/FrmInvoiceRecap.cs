@@ -1,18 +1,18 @@
 ﻿using Cis.Data;
 using Cis.Model;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using System.Linq;
-using Excel = Microsoft.Office.Interop.Excel;
-using System.Runtime.InteropServices;
-using System.Diagnostics;
-using System.IO;
 using NLog;
+using System;
+using System.ComponentModel;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+using System.Diagnostics;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace CisWindowsFormsApp
 {
@@ -25,6 +25,9 @@ namespace CisWindowsFormsApp
         UnitOfWork<OutletType> uowOt;
         UnitOfWork<SalesArea> uowSa;
         UnitOfWork<Representative> uowRe;
+        UnitOfWork<Product> uowPrd;
+        UnitOfWork<Principal> uowPri;
+
         string fileLoc = string.Empty;
         string exceptionMessage = string.Empty;
 
@@ -42,6 +45,8 @@ namespace CisWindowsFormsApp
             uowOt = new UnitOfWork<OutletType>(dbContext);
             uowSa = new UnitOfWork<SalesArea>(dbContext);
             uowRe = new UnitOfWork<Representative>(dbContext);
+            uowPrd= new UnitOfWork<Product>(dbContext);
+            uowPri = new UnitOfWork<Principal>(dbContext);
 
             // set the date from to beginning of current month
             var year = dtpFrom.Value.Year;
@@ -64,11 +69,19 @@ namespace CisWindowsFormsApp
             try
             {
                 var representative = uowRe.Repository.GetAll();
-                var salesArea = uowSa.Repository.GetAll()
-                    .Join(representative, sa => sa.RepresentativeId, re => re.Id, (sa, re) => new { sa, re }).Select(res => res);
-                var customer = uowCus.Repository.GetAll();
+                var salesAreaDet = uowSa.Repository.GetAll()
+                    .Join(representative, sa => sa.RepresentativeId, re => re.Id, (sa, re) => new { sa, re })
+                    .Select(res => new
+                    {
+                        res.sa.Id,
+                        res.sa.AreaCode,
+                        Rayon = res.sa.Description,
+                        Representative = res.re.Description
+                    });
+
                 var outlet = uowOt.Repository.GetAll();
-                var cusDet = customer.Join(outlet, c => c.OutletTypeId, o => o.Id, (c, o) => new { c, o })
+                var cusDet = uowCus.Repository.GetAll()
+                    .Join(outlet, c => c.OutletTypeId, o => o.Id, (c, o) => new { c, o })
                     .Select(res => new
                     {
                         res.c.Id,
@@ -76,50 +89,69 @@ namespace CisWindowsFormsApp
                         res.c.CustomerName,
                         res.c.OutletTypeId,
                         res.o.OutletTypeCode,
-                        res.o.Description
-                    }).ToList();
+                        OutletType = res.o.Description
+                    });
+
+                var principal = uowPri.Repository.GetAll();
+                var productDet = uowPrd.Repository.GetAll()
+                    .Join(principal, prd => prd.PrincipalId, pri => pri.Id, (prd, pri) => new { prd, pri })
+                    .Select(res => new
+                    {
+                        ProductId = res.prd.Id,
+                        res.prd.ProductCode,
+                        res.prd.ProductName,
+                        res.prd.PrincipalId,
+                        res.pri.PrincipalName
+                    });
 
                 var salesOrder = uowSo.Repository.GetAll().
                     Where(s => s.SalesDate >= dtpFrom.Value && s.SalesDate <= dtpTo.Value && s.Status == Constant.RecordStatus.Active);
-                var salesOrderItem = uowSoi.Repository.GetAll();
-                var salesOrderDetail = salesOrderItem
+
+                var salesOrderDetail = uowSoi.Repository.GetAll()
                     .Join(salesOrder, soi => soi.SalesOrderId, so => so.Id, (soi, so) => new { soi, so })
+                    .Join(productDet, soiSo => soiSo.soi.ProductId, prdDet => prdDet.ProductId, (soiSo, prdDet) => new { soiSo, prdDet })
+                    .Join(cusDet, soiSoPrd => soiSoPrd.soiSo.so.CustomerId, cusd => cusd.Id, (soiSoPrd, cusd) => new { soiSoPrd, cusd })
+                    .Join(salesAreaDet, soiSoPrdCus => soiSoPrdCus.soiSoPrd.soiSo.so.SalesAreaId, sa => sa.Id, (soiSoPrdCus, sa) => new { soiSoPrdCus, sa })
                     .Select(res => new
                     {
-                        res.so.SalesDate,
-                        res.so.SalesNo,
-                        res.so.CustomerId,
-                        res.so.CustomerName,
-                        res.so.CustomerNpwp,
-                        res.so.CustomerAddress,
-                        res.so.CustomerDistrict,
-                        res.so.SalesmanCode,
-                        res.so.SalesAreaId,
-                        res.so.SalesAreaCode,
-                        res.so.CustomerProvince,
-                        res.soi.ProductCode,
-                        res.soi.ProductName,
-                        res.soi.BatchCode,
-                        res.soi.ExpiredDate,
-                        res.soi.UomCode,
-                        res.soi.Quantity,
-                        res.soi.Price,
-                        res.soi.TotalAmount,
-                        res.soi.DiscountPercentage,
-                        res.so.TaxBaseAmount,
-                        res.so.ValueAddedTaxAmount,
-                        res.so.ExtraDiscountAmount,
-                        res.so.GrandTotalAmount,
-                        res.so.DueDate,
-                        res.so.DeliveryAddress,
-                        res.so.DeliveryDistrict,
-                        res.so.CustomerPhone
+                        res.soiSoPrdCus.soiSoPrd.soiSo.so.SalesDate,
+                        res.soiSoPrdCus.soiSoPrd.soiSo.so.SalesNo,
+                        res.soiSoPrdCus.soiSoPrd.soiSo.so.CustomerId,
+                        res.soiSoPrdCus.cusd.CustomerCode,
+                        res.soiSoPrdCus.soiSoPrd.soiSo.so.CustomerName,
+                        res.soiSoPrdCus.soiSoPrd.soiSo.so.CustomerNpwp,
+                        res.soiSoPrdCus.soiSoPrd.soiSo.so.CustomerAddress,
+                        res.soiSoPrdCus.soiSoPrd.soiSo.so.CustomerDistrict,
+                        res.soiSoPrdCus.soiSoPrd.soiSo.so.SalesmanCode,
+                        res.soiSoPrdCus.soiSoPrd.soiSo.so.SalesAreaId,
+                        res.soiSoPrdCus.soiSoPrd.soiSo.so.SalesAreaCode,
+                        res.sa.Rayon,
+                        res.sa.Representative,
+                        res.soiSoPrdCus.cusd.OutletType,
+                        res.soiSoPrdCus.soiSoPrd.soiSo.so.CustomerProvince,
+                        res.soiSoPrdCus.soiSoPrd.soiSo.soi.ProductId,
+                        res.soiSoPrdCus.soiSoPrd.soiSo.soi.ProductCode,
+                        res.soiSoPrdCus.soiSoPrd.soiSo.soi.ProductName,
+                        res.soiSoPrdCus.soiSoPrd.soiSo.soi.BatchCode,
+                        res.soiSoPrdCus.soiSoPrd.soiSo.soi.ExpiredDate,
+                        res.soiSoPrdCus.soiSoPrd.soiSo.soi.UomCode,
+                        res.soiSoPrdCus.soiSoPrd.soiSo.soi.Quantity,
+                        res.soiSoPrdCus.soiSoPrd.soiSo.soi.Price,
+                        res.soiSoPrdCus.soiSoPrd.soiSo.soi.TotalAmount,
+                        res.soiSoPrdCus.soiSoPrd.soiSo.soi.DiscountPercentage,
+                        res.soiSoPrdCus.soiSoPrd.soiSo.so.TaxBaseAmount,
+                        res.soiSoPrdCus.soiSoPrd.soiSo.so.ValueAddedTaxAmount,
+                        res.soiSoPrdCus.soiSoPrd.soiSo.so.ExtraDiscountAmount,
+                        res.soiSoPrdCus.soiSoPrd.soiSo.so.GrandTotalAmount,
+                        res.soiSoPrdCus.soiSoPrd.soiSo.so.DueDate,
+                        res.soiSoPrdCus.soiSoPrd.soiSo.so.DeliveryAddress,
+                        res.soiSoPrdCus.soiSoPrd.soiSo.so.DeliveryDistrict,
+                        res.soiSoPrdCus.soiSoPrd.soiSo.so.CustomerPhone,
+                        res.soiSoPrdCus.soiSoPrd.prdDet.PrincipalName
                     })
                     .ToList();
 
-                var recapDetail = salesOrderDetail.Join(cusDet, sod => sod.CustomerId, cusd => cusd.Id, (sod, cusd) => new { sod, cusd })
-                    .Join(salesArea, sodcusd => sodcusd.sod.SalesAreaId, sa => sa.sa.Id, (sodcusd, sa) => new { sodcusd, sa })
-                    .ToList().OrderBy(res => res.sodcusd.sod.SalesNo);
+                var recapDetail = salesOrderDetail.OrderBy(res => res.SalesNo);
 
                 Excel.Application xlApp = new Excel.Application();
                 Excel.Workbook xlWorkBook;
@@ -153,28 +185,31 @@ namespace CisWindowsFormsApp
                 xlWorkSheet.Cells[1, 19] = "GROSS VALUE";
                 xlWorkSheet.Cells[1, 20] = "%DISKON";
                 xlWorkSheet.Cells[1, 21] = "EXT. DISKON";
-                xlWorkSheet.Cells[1, 22] = "DPP";
-                xlWorkSheet.Cells[1, 23] = "PPN 10%";
-                xlWorkSheet.Cells[1, 24] = "NETT VALUE";
-                xlWorkSheet.Cells[1, 25] = "TGL.JTH TEMPO";
-                xlWorkSheet.Cells[1, 26] = "ALAMAT KIRIM";
-                xlWorkSheet.Cells[1, 27] = "KOTA";
-                xlWorkSheet.Cells[1, 28] = "NO. TELPON";
+                xlWorkSheet.Cells[1, 22] = "TOTAL DISKON";
+                xlWorkSheet.Cells[1, 23] = "DPP";
+                xlWorkSheet.Cells[1, 24] = "PPN 10%";
+                xlWorkSheet.Cells[1, 25] = "NETT VALUE";
+                xlWorkSheet.Cells[1, 26] = "TGL.JTH TEMPO";
+                xlWorkSheet.Cells[1, 27] = "ALAMAT KIRIM";
+                xlWorkSheet.Cells[1, 28] = "KOTA";
+                xlWorkSheet.Cells[1, 29] = "NO. TELPON";
+                xlWorkSheet.Cells[1, 30] = "PRINCIAPL";
 
                 var salesOrderHelper = new SalesOrderHelper();
                 var rowNumber = 2; // Row number 1 is Header
                 var totalRecord = recapDetail.Count();
                 foreach (var item in recapDetail)
                 {
-                    var qty = item.sodcusd.sod.Quantity;
-                    var nettPrice = item.sodcusd.sod.Price;
+                    var qty = item.Quantity;
+                    var nettPrice = item.Price;
                     var grossValue = salesOrderHelper.CalculateGrossValue(qty, nettPrice);
-                    var discountPercent = Math.Round(Convert.ToDecimal(item.sodcusd.sod.DiscountPercentage / 100), 4, MidpointRounding.AwayFromZero);
-                    var extraDiscount = item.sodcusd.sod.ExtraDiscountAmount;
+                    var discountPercent = Math.Round(Convert.ToDecimal(item.DiscountPercentage / 100), 4, MidpointRounding.AwayFromZero);
+                    var extraDiscount = item.ExtraDiscountAmount;
+                    var totalDiscount = Math.Round(Convert.ToDecimal(grossValue * discountPercent), 4, MidpointRounding.AwayFromZero); ;
 
                     // Set the Extra Discount proportionally
-                    var sumOfGrossValue = recapDetail.Where(so => so.sodcusd.sod.SalesNo == item.sodcusd.sod.SalesNo)
-                        .Sum(rc => (rc.sodcusd.sod.Quantity * rc.sodcusd.sod.Price));
+                    var sumOfGrossValue = recapDetail.Where(so => so.SalesNo == item.SalesNo)
+                        .Sum(rc => (rc.Quantity * rc.Price));
                     var propotionalExtraDiscount = (grossValue / sumOfGrossValue) * extraDiscount;
 
                     var taxBaseAmount = salesOrderHelper.CalculateTaxBaseAmount(qty, nettPrice, discountPercent, extraDiscount);
@@ -183,50 +218,82 @@ namespace CisWindowsFormsApp
 
                     xlWorkSheet.Cells[rowNumber, 1].NumberFormat = "dd/mm/yy;@";
                     xlWorkSheet.Cells[rowNumber, 1].HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
-                    xlWorkSheet.Cells[rowNumber, 1] = item.sodcusd.sod.SalesDate;
-                    xlWorkSheet.Cells[rowNumber, 2] = item.sodcusd.sod.SalesNo;
+                    xlWorkSheet.Cells[rowNumber, 1] = item.SalesDate;
+
+                    xlWorkSheet.Cells[rowNumber, 2] = item.SalesNo;
+
                     xlWorkSheet.Cells[rowNumber, 3].NumberFormat = "@";
-                    xlWorkSheet.Cells[rowNumber, 3] = item.sodcusd.cusd.CustomerCode.ToString();
-                    xlWorkSheet.Cells[rowNumber, 4] = item.sodcusd.cusd.CustomerName;
+                    xlWorkSheet.Cells[rowNumber, 3] = item.CustomerCode.ToString().Trim();
+
+                    xlWorkSheet.Cells[rowNumber, 4] = item.CustomerName;
+
                     xlWorkSheet.Cells[rowNumber, 5].NumberFormat = "@";
-                    xlWorkSheet.Cells[rowNumber, 5] = item.sodcusd.sod.CustomerNpwp;
-                    xlWorkSheet.Cells[rowNumber, 6] = item.sodcusd.sod.CustomerAddress;
-                    xlWorkSheet.Cells[rowNumber, 7] = item.sodcusd.sod.CustomerDistrict;
-                    xlWorkSheet.Cells[rowNumber, 8] = item.sodcusd.sod.SalesmanCode;
-                    xlWorkSheet.Cells[rowNumber, 9] = item.sa.sa.Description;
-                    xlWorkSheet.Cells[rowNumber, 10] = item.sa.re.Description;
-                    xlWorkSheet.Cells[rowNumber, 11] = item.sodcusd.cusd.Description;
-                    xlWorkSheet.Cells[rowNumber, 12] = item.sodcusd.sod.ProductCode;
-                    xlWorkSheet.Cells[rowNumber, 13] = item.sodcusd.sod.ProductName;
+                    xlWorkSheet.Cells[rowNumber, 5] = item.CustomerNpwp;
+
+                    xlWorkSheet.Cells[rowNumber, 6] = item.CustomerAddress;
+
+                    xlWorkSheet.Cells[rowNumber, 7] = item.CustomerDistrict;
+
+                    xlWorkSheet.Cells[rowNumber, 8] = item.SalesmanCode;
+
+                    xlWorkSheet.Cells[rowNumber, 9] = item.Rayon;
+
+                    xlWorkSheet.Cells[rowNumber, 10] = item.Representative;
+
+                    xlWorkSheet.Cells[rowNumber, 11] = item.OutletType;
+
+                    xlWorkSheet.Cells[rowNumber, 12] = item.ProductCode;
+
+                    xlWorkSheet.Cells[rowNumber, 13] = item.ProductName;
+
                     xlWorkSheet.Cells[rowNumber, 14].NumberFormat = "@";
-                    xlWorkSheet.Cells[rowNumber, 14] = item.sodcusd.sod.BatchCode;
+                    xlWorkSheet.Cells[rowNumber, 14] = item.BatchCode;
+
                     xlWorkSheet.Cells[rowNumber, 15].NumberFormat = "@";
                     xlWorkSheet.Cells[rowNumber, 15].HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
-                    xlWorkSheet.Cells[rowNumber, 15] = item.sodcusd.sod.ExpiredDate.ToString("MM/yyyy");
-                    xlWorkSheet.Cells[rowNumber, 16] = item.sodcusd.sod.UomCode.ToString();
+                    xlWorkSheet.Cells[rowNumber, 15] = item.ExpiredDate.ToString("MM/yyyy");
+
+                    xlWorkSheet.Cells[rowNumber, 16] = item.UomCode.ToString();
+
                     xlWorkSheet.Cells[rowNumber, 17].NumberFormat = "#.##0";
                     xlWorkSheet.Cells[rowNumber, 17] = qty;
+
                     xlWorkSheet.Cells[rowNumber, 18].NumberFormat = "#.##0";
                     xlWorkSheet.Cells[rowNumber, 18] = nettPrice;
+
                     xlWorkSheet.Cells[rowNumber, 19].NumberFormat = "#.##0";
                     xlWorkSheet.Cells[rowNumber, 19] = grossValue;
+
                     xlWorkSheet.Cells[rowNumber, 20].NumberFormat = "0,0%";
                     xlWorkSheet.Cells[rowNumber, 20] = discountPercent;
+
                     xlWorkSheet.Cells[rowNumber, 21].NumberFormat = "#.##0";
                     xlWorkSheet.Cells[rowNumber, 21] = propotionalExtraDiscount;
+
                     xlWorkSheet.Cells[rowNumber, 22].NumberFormat = "#.##0";
-                    xlWorkSheet.Cells[rowNumber, 22] = taxBaseAmount;
+                    xlWorkSheet.Cells[rowNumber, 22] = totalDiscount;
+
                     xlWorkSheet.Cells[rowNumber, 23].NumberFormat = "#.##0";
-                    xlWorkSheet.Cells[rowNumber, 23] = valueAddedAmount;
+                    xlWorkSheet.Cells[rowNumber, 24] = taxBaseAmount;
+
                     xlWorkSheet.Cells[rowNumber, 24].NumberFormat = "#.##0";
-                    xlWorkSheet.Cells[rowNumber, 24] = netValue;
-                    xlWorkSheet.Cells[rowNumber, 25].NumberFormat = "dd/mm/yy;@";
-                    xlWorkSheet.Cells[rowNumber, 25].HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
-                    xlWorkSheet.Cells[rowNumber, 25] = item.sodcusd.sod.DueDate;
-                    xlWorkSheet.Cells[rowNumber, 26] = item.sodcusd.sod.DeliveryAddress;
-                    xlWorkSheet.Cells[rowNumber, 27] = item.sodcusd.sod.DeliveryDistrict;
-                    xlWorkSheet.Cells[rowNumber, 28].NumberFormat = "@";
-                    xlWorkSheet.Cells[rowNumber, 28] = item.sodcusd.sod.CustomerPhone;
+                    xlWorkSheet.Cells[rowNumber, 24] = valueAddedAmount;
+
+                    xlWorkSheet.Cells[rowNumber, 25].NumberFormat = "#.##0";
+                    xlWorkSheet.Cells[rowNumber, 25] = netValue;
+
+                    xlWorkSheet.Cells[rowNumber, 26].NumberFormat = "dd/mm/yy;@";
+                    xlWorkSheet.Cells[rowNumber, 26].HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                    xlWorkSheet.Cells[rowNumber, 26] = item.DueDate;
+
+                    xlWorkSheet.Cells[rowNumber, 27] = item.DeliveryAddress;
+
+                    xlWorkSheet.Cells[rowNumber, 28] = item.DeliveryDistrict;
+
+                    xlWorkSheet.Cells[rowNumber, 29].NumberFormat = "@";
+                    xlWorkSheet.Cells[rowNumber, 29] = item.CustomerPhone;
+
+                    xlWorkSheet.Cells[rowNumber, 30] = item.PrincipalName;
 
                     var progress = ((rowNumber - 1) * 100) / totalRecord;
                     backgroundWorker.ReportProgress(progress);
@@ -298,5 +365,261 @@ namespace CisWindowsFormsApp
                 pnlResult.Location = new Point(16, 114);
             }
         }
+
+        #region Research / Testing
+
+        private DataTable ReadDataInvoiceRecap(DateTime fromDate, DateTime toDate)
+        {
+            var connString = ((ConnectionStringsSection)ConfigurationManager.GetSection("connectionStrings")).ConnectionStrings["DefaultConnection"].ConnectionString;
+
+            DataTable recapData = new DataTable();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    string query = $@"SELECT 
+	                                SO.SalesDate, 
+	                                SO.SalesNo,
+	                                SO.CustomerId,
+	                                CUST.CustomerCode,
+	                                SO.CustomerName,
+	                                SO.CustomerNpwp,
+	                                SO.CustomerAddress,
+	                                SO.CustomerDistrict,
+	                                SO.CustomerProvince,
+	                                SO.SalesmanCode,
+	                                SO.SalesAreaId,
+	                                SO.SalesAreaCode,
+	                                SAR.Description Rayon,
+	                                REP.Description Representative,
+	                                OTL.Description OutletType,
+	                                SOI.ProductId,
+	                                SOI.ProductCode,
+	                                SOI.ProductName,
+	                                SOI.BatchCode,
+	                                SOI.ExpiredDate,
+	                                SOI.UomCode,
+	                                SOI.Quantity,
+	                                SOI.Price,
+	                                SOI.TotalAmount,
+	                                SOI.DiscountPercentage,
+	                                SO.TaxBaseAmount,
+	                                SO.ValueAddedTaxAmount,
+	                                SO.ExtraDiscountAmount,
+	                                SO.GrandTotalAmount,
+	                                SO.DueDate,
+	                                SO.DeliveryAddress,
+	                                SO.DeliveryDistrict,
+	                                CUST.Phone,
+	                                PRI.PrincipalName
+                                FROM SalesOrderItem SOI
+                                JOIN SalesOrder SO ON SOI.SalesOrderId = SO.Id
+                                JOIN Customer CUST ON SO.CustomerId = CUST.Id
+                                JOIN OutletType OTL ON CUST.OutletTypeId = OTL.Id
+                                JOIN Product PRD ON SOI.ProductId = PRD.Id
+                                JOIN Principal PRI ON PRD.PrincipalId = PRI.Id
+                                JOIN SalesArea SAR ON SO.SalesAreaId = SAR.Id
+                                JOIN Representative REP ON SAR.RepresentativeId = REP.Id
+                                WHERE SO.SalesDate >= @fromDate AND SO.SalesDate <= @toDate
+                                    AND SO.Status = @recordStatus
+                                ORDER BY SO.SalesNo";
+                    
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@fromDate", fromDate);
+                    cmd.Parameters.AddWithValue("@toDate", toDate);
+                    cmd.Parameters.AddWithValue("@recordStatus", Constant.RecordStatus.Active);
+
+                    conn.Open();
+
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(recapData);
+                    conn.Close();
+                    da.Dispose();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                exceptionMessage = ex.Message;
+            }
+
+            return recapData;
+        }
+
+        private void DoRecap()
+        {
+            try
+            {
+                var recapDetail = ReadDataInvoiceRecap(dtpFrom.Value, dtpTo.Value);
+
+                Excel.Application xlApp = new Excel.Application();
+                Excel.Workbook xlWorkBook;
+                Excel.Worksheet xlWorkSheet;
+                object misValue = System.Reflection.Missing.Value;
+
+                xlWorkBook = xlApp.Workbooks.Add(misValue);
+                xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+                xlWorkSheet.Name = "UBICAPS";
+                xlWorkSheet.Cells[1, 1].EntireRow.Font.Bold = true;
+
+                // Header
+                xlWorkSheet.Cells[1, 1] = "TANGGAL";
+                xlWorkSheet.Cells[1, 2] = "NO. FAKTUR";
+                xlWorkSheet.Cells[1, 3] = "KODE PELANGGAN";
+                xlWorkSheet.Cells[1, 4] = "NAMA PELANGGAN";
+                xlWorkSheet.Cells[1, 5] = "NPWP";
+                xlWorkSheet.Cells[1, 6] = "ALAMAT LENGKAP";
+                xlWorkSheet.Cells[1, 7] = "KOTA";
+                xlWorkSheet.Cells[1, 8] = "NAMA SALES";
+                xlWorkSheet.Cells[1, 9] = "RAYON";
+                xlWorkSheet.Cells[1, 10] = "PERWAKILAN";
+                xlWorkSheet.Cells[1, 11] = "JENIS OUTLET";
+                xlWorkSheet.Cells[1, 12] = "KODE BARANG";
+                xlWorkSheet.Cells[1, 13] = "NAMA BARANG";
+                xlWorkSheet.Cells[1, 14] = "NOMER BATCH";
+                xlWorkSheet.Cells[1, 15] = "KADALUWARSA";
+                xlWorkSheet.Cells[1, 16] = "SAT";
+                xlWorkSheet.Cells[1, 17] = "QTY";
+                xlWorkSheet.Cells[1, 18] = "HARGA HNA";
+                xlWorkSheet.Cells[1, 19] = "GROSS VALUE";
+                xlWorkSheet.Cells[1, 20] = "%DISKON";
+                xlWorkSheet.Cells[1, 21] = "EXT. DISKON";
+                xlWorkSheet.Cells[1, 22] = "TOTAL DISKON";
+                xlWorkSheet.Cells[1, 23] = "DPP";
+                xlWorkSheet.Cells[1, 24] = "PPN 10%";
+                xlWorkSheet.Cells[1, 25] = "NETT VALUE";
+                xlWorkSheet.Cells[1, 26] = "TGL.JTH TEMPO";
+                xlWorkSheet.Cells[1, 27] = "ALAMAT KIRIM";
+                xlWorkSheet.Cells[1, 28] = "KOTA";
+                xlWorkSheet.Cells[1, 29] = "NO. TELPON";
+                xlWorkSheet.Cells[1, 30] = "PRINCIPAL";
+
+                var salesOrderHelper = new SalesOrderHelper();
+                var rowNumber = 2; // Row number 1 is Header
+                var totalRecord = recapDetail.Rows.Count;
+                for (int i = 0; i < totalRecord; i++)
+                {
+                    var item = recapDetail.Rows[i];
+
+                    var qty = Convert.ToInt32(item["Quantity"]);
+                    var nettPrice = Convert.ToDecimal(item["Price"]);
+                    var grossValue = salesOrderHelper.CalculateGrossValue(qty, nettPrice);
+                    var discountPercent = Math.Round(Convert.ToDecimal(Convert.ToDecimal(item["DiscountPercentage"]) / 100), 4, MidpointRounding.AwayFromZero);
+                    var extraDiscount = Convert.ToDecimal(item["ExtraDiscountAmount"]);
+                    var totalDiscount = Math.Round(Convert.ToDecimal(grossValue * discountPercent), 4, MidpointRounding.AwayFromZero); ;
+
+                    
+                    // Set the Extra Discount proportionally
+                    var sumOfGrossValue = recapDetail.AsEnumerable().Where(so => so.Field<String>("SalesNo") == item["SalesNo"].ToString())
+                        .Sum(rc => (rc.Field<int>("Quantity") * rc.Field<Decimal>("Price")));
+                    var propotionalExtraDiscount = (grossValue / sumOfGrossValue) * extraDiscount;
+
+                    var taxBaseAmount = salesOrderHelper.CalculateTaxBaseAmount(qty, nettPrice, discountPercent, extraDiscount);
+                    var valueAddedAmount = salesOrderHelper.CalculateValueAddedAmount(taxBaseAmount);
+                    var netValue = salesOrderHelper.CalculateNettValueAmount(taxBaseAmount, valueAddedAmount);
+
+                    xlWorkSheet.Cells[rowNumber, 1].NumberFormat = "dd/mm/yy;@";
+                    xlWorkSheet.Cells[rowNumber, 1].HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                    xlWorkSheet.Cells[rowNumber, 1] = DateTime.Parse(item["SalesDate"].ToString());
+
+                    xlWorkSheet.Cells[rowNumber, 2] = item["SalesNo"].ToString().Trim();
+
+                    xlWorkSheet.Cells[rowNumber, 3].NumberFormat = "@";
+                    xlWorkSheet.Cells[rowNumber, 3] = item["CustomerCode"].ToString().Trim();
+
+                    xlWorkSheet.Cells[rowNumber, 4] = item["CustomerName"].ToString();
+
+                    xlWorkSheet.Cells[rowNumber, 5].NumberFormat = "@";
+                    xlWorkSheet.Cells[rowNumber, 5] = item["CustomerNpwp"].ToString();
+
+                    xlWorkSheet.Cells[rowNumber, 6] = item["CustomerAddress"].ToString();
+
+                    xlWorkSheet.Cells[rowNumber, 7] = item["CustomerDistrict"].ToString();
+
+                    xlWorkSheet.Cells[rowNumber, 8] = item["SalesmanCode"].ToString();
+
+                    xlWorkSheet.Cells[rowNumber, 9] = item["Rayon"].ToString();
+
+                    xlWorkSheet.Cells[rowNumber, 10] = item["Representative"].ToString();
+
+                    xlWorkSheet.Cells[rowNumber, 11] = item["OutletType"].ToString();
+
+                    xlWorkSheet.Cells[rowNumber, 12] = item["ProductCode"].ToString();
+
+                    xlWorkSheet.Cells[rowNumber, 13] = item["ProductName"].ToString();
+
+                    xlWorkSheet.Cells[rowNumber, 14].NumberFormat = "@";
+                    xlWorkSheet.Cells[rowNumber, 14] = item["BatchCode"].ToString();
+
+                    xlWorkSheet.Cells[rowNumber, 15].NumberFormat = "@";
+                    xlWorkSheet.Cells[rowNumber, 15].HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                    xlWorkSheet.Cells[rowNumber, 15] = DateTime.Parse(item["ExpiredDate"].ToString()).ToString("MM/yyyy");
+
+                    xlWorkSheet.Cells[rowNumber, 16] = item["UomCode"].ToString();
+
+                    xlWorkSheet.Cells[rowNumber, 17].NumberFormat = "#.##0";
+                    xlWorkSheet.Cells[rowNumber, 17] = qty;
+
+                    xlWorkSheet.Cells[rowNumber, 18].NumberFormat = "#.##0";
+                    xlWorkSheet.Cells[rowNumber, 18] = nettPrice;
+
+                    xlWorkSheet.Cells[rowNumber, 19].NumberFormat = "#.##0";
+                    xlWorkSheet.Cells[rowNumber, 19] = grossValue;
+
+                    xlWorkSheet.Cells[rowNumber, 20].NumberFormat = "0,0%";
+                    xlWorkSheet.Cells[rowNumber, 20] = discountPercent;
+
+                    xlWorkSheet.Cells[rowNumber, 21].NumberFormat = "#.##0";
+                    xlWorkSheet.Cells[rowNumber, 21] = propotionalExtraDiscount;
+
+                    xlWorkSheet.Cells[rowNumber, 22].NumberFormat = "#.##0";
+                    xlWorkSheet.Cells[rowNumber, 22] = totalDiscount;
+
+                    xlWorkSheet.Cells[rowNumber, 23].NumberFormat = "#.##0";
+                    xlWorkSheet.Cells[rowNumber, 24] = taxBaseAmount;
+
+                    xlWorkSheet.Cells[rowNumber, 24].NumberFormat = "#.##0";
+                    xlWorkSheet.Cells[rowNumber, 24] = valueAddedAmount;
+
+                    xlWorkSheet.Cells[rowNumber, 25].NumberFormat = "#.##0";
+                    xlWorkSheet.Cells[rowNumber, 25] = netValue;
+
+                    xlWorkSheet.Cells[rowNumber, 26].NumberFormat = "dd/mm/yy;@";
+                    xlWorkSheet.Cells[rowNumber, 26].HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                    xlWorkSheet.Cells[rowNumber, 26] = DateTime.Parse(item["DueDate"].ToString());
+
+                    xlWorkSheet.Cells[rowNumber, 27] = item["DeliveryAddress"].ToString();
+
+                    xlWorkSheet.Cells[rowNumber, 28] = item["DeliveryDistrict"].ToString();
+
+                    xlWorkSheet.Cells[rowNumber, 29].NumberFormat = "@";
+                    xlWorkSheet.Cells[rowNumber, 29] = item["Phone"].ToString();
+
+                    xlWorkSheet.Cells[rowNumber, 30] = item["PrincipalName"].ToString();
+
+                    var progress = ((rowNumber - 1) * 100) / totalRecord;
+                    backgroundWorker.ReportProgress(progress);
+                    rowNumber++;
+                }
+                xlWorkSheet.Columns.AutoFit();
+                var fileDir = Directory.CreateDirectory(System.IO.Path.Combine(Environment.CurrentDirectory, "REKAPITULASI", "UBICAPS"));
+                var fileName = "REKAPITULASI FAKTUR_" + DateTime.Now.ToString("yyyyMMdd_HHmmss");
+                fileLoc = Path.Combine(fileDir.FullName, fileName);
+                xlWorkBook.SaveAs(fileLoc, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                xlWorkBook.Close(true, misValue, misValue);
+                xlApp.Quit();
+
+                Marshal.ReleaseComObject(xlWorkSheet);
+                Marshal.ReleaseComObject(xlWorkBook);
+                Marshal.ReleaseComObject(xlApp);
+            }
+            catch (Exception ex)
+            {
+                exceptionMessage = ex.Message;
+            }
+
+        }
+
+        #endregion
     }
 }
