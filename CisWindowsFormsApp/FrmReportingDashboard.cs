@@ -27,5 +27,29 @@ namespace CisWindowsFormsApp
             FrmInvoiceRecap frmInvoiceRecap = new FrmInvoiceRecap();
             frmInvoiceRecap.ShowDialog();
         }
+
+        private void btnExportProduct_Click(object sender, EventArgs e)
+        {
+            if (!(new CommonFunctionHelper().ValidateAccess((int)Constant.Permission.MasterData.Product)))
+            {
+                CommonMessageHelper.NoAccess();
+                return;
+            }
+
+            FrmProductRecap frmProductRecap = new FrmProductRecap();
+            frmProductRecap.ShowDialog();
+        }
+
+        private void btnExportPelanggan_Click(object sender, EventArgs e)
+        {
+            if (!(new CommonFunctionHelper().ValidateAccess((int)Constant.Permission.MasterData.Customer)))
+            {
+                CommonMessageHelper.NoAccess();
+                return;
+            }
+
+            FrmCustomerRecap frmCustomerRecap = new FrmCustomerRecap();
+            frmCustomerRecap.ShowDialog();
+        }
     }
 }

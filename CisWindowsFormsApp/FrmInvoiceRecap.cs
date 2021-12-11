@@ -233,8 +233,8 @@ namespace CisWindowsFormsApp
                     rowNumber++;
                 }
                 xlWorkSheet.Columns.AutoFit();
-                var fileDir = Directory.CreateDirectory(System.IO.Path.Combine(Environment.CurrentDirectory, "REKAPITULASI"));
-                var fileName = "REKAPITULASI FAKTUR_" + DateTime.Now.ToString("yyyyMMddHHmmss");
+                var fileDir = Directory.CreateDirectory(System.IO.Path.Combine(Environment.CurrentDirectory, "REKAPITULASI", "UBICAPS"));
+                var fileName = "REKAPITULASI FAKTUR_" + DateTime.Now.ToString("yyyyMMdd_HHmmss");
                 fileLoc = Path.Combine(fileDir.FullName, fileName);
                 xlWorkBook.SaveAs(fileLoc, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
                 xlWorkBook.Close(true, misValue, misValue);

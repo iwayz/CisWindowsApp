@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmReportingDashboard));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnExportPelanggan = new System.Windows.Forms.Button();
+            this.btnExportProduct = new System.Windows.Forms.Button();
             this.btnExportExcel = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -46,12 +48,48 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnExportPelanggan);
+            this.panel1.Controls.Add(this.btnExportProduct);
             this.panel1.Controls.Add(this.btnExportExcel);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(686, 48);
+            this.panel1.Size = new System.Drawing.Size(1002, 48);
             this.panel1.TabIndex = 0;
+            // 
+            // btnExportPelanggan
+            // 
+            this.btnExportPelanggan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(74)))), ((int)(((byte)(156)))));
+            this.btnExportPelanggan.FlatAppearance.BorderSize = 0;
+            this.btnExportPelanggan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportPelanggan.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.btnExportPelanggan.ForeColor = System.Drawing.Color.White;
+            this.btnExportPelanggan.Image = ((System.Drawing.Image)(resources.GetObject("btnExportPelanggan.Image")));
+            this.btnExportPelanggan.Location = new System.Drawing.Point(326, 10);
+            this.btnExportPelanggan.Name = "btnExportPelanggan";
+            this.btnExportPelanggan.Size = new System.Drawing.Size(148, 30);
+            this.btnExportPelanggan.TabIndex = 2;
+            this.btnExportPelanggan.Text = " Exp. Pelanggan";
+            this.btnExportPelanggan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnExportPelanggan.UseVisualStyleBackColor = false;
+            this.btnExportPelanggan.Click += new System.EventHandler(this.btnExportPelanggan_Click);
+            // 
+            // btnExportProduct
+            // 
+            this.btnExportProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(125)))), ((int)(((byte)(239)))));
+            this.btnExportProduct.FlatAppearance.BorderSize = 0;
+            this.btnExportProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportProduct.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.btnExportProduct.ForeColor = System.Drawing.Color.White;
+            this.btnExportProduct.Image = ((System.Drawing.Image)(resources.GetObject("btnExportProduct.Image")));
+            this.btnExportProduct.Location = new System.Drawing.Point(172, 10);
+            this.btnExportProduct.Name = "btnExportProduct";
+            this.btnExportProduct.Size = new System.Drawing.Size(148, 30);
+            this.btnExportProduct.TabIndex = 1;
+            this.btnExportProduct.Text = " Exp. Produk";
+            this.btnExportProduct.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnExportProduct.UseVisualStyleBackColor = false;
+            this.btnExportProduct.Click += new System.EventHandler(this.btnExportProduct_Click);
             // 
             // btnExportExcel
             // 
@@ -63,9 +101,9 @@
             this.btnExportExcel.Image = ((System.Drawing.Image)(resources.GetObject("btnExportExcel.Image")));
             this.btnExportExcel.Location = new System.Drawing.Point(18, 10);
             this.btnExportExcel.Name = "btnExportExcel";
-            this.btnExportExcel.Size = new System.Drawing.Size(129, 30);
+            this.btnExportExcel.Size = new System.Drawing.Size(148, 30);
             this.btnExportExcel.TabIndex = 0;
-            this.btnExportExcel.Text = " EXP. Faktur";
+            this.btnExportExcel.Text = " Exp. Faktur";
             this.btnExportExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExportExcel.UseVisualStyleBackColor = false;
             this.btnExportExcel.Click += new System.EventHandler(this.btnExportExcel_Click);
@@ -76,7 +114,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 48);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(686, 29);
+            this.panel2.Size = new System.Drawing.Size(1002, 29);
             this.panel2.TabIndex = 1;
             // 
             // panel4
@@ -103,7 +141,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 77);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(686, 313);
+            this.panel3.Size = new System.Drawing.Size(1002, 602);
             this.panel3.TabIndex = 2;
             // 
             // pnlLogo
@@ -112,7 +150,7 @@
             this.pnlLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlLogo.Location = new System.Drawing.Point(0, 77);
             this.pnlLogo.Name = "pnlLogo";
-            this.pnlLogo.Size = new System.Drawing.Size(686, 262);
+            this.pnlLogo.Size = new System.Drawing.Size(1002, 262);
             this.pnlLogo.TabIndex = 3;
             // 
             // pictureBox1
@@ -121,7 +159,7 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 75);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(686, 187);
+            this.pictureBox1.Size = new System.Drawing.Size(1002, 187);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -131,7 +169,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(686, 390);
+            this.ClientSize = new System.Drawing.Size(1002, 679);
             this.Controls.Add(this.pnlLogo);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -159,5 +197,7 @@
         private System.Windows.Forms.Button btnExportExcel;
         private System.Windows.Forms.Panel pnlLogo;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnExportPelanggan;
+        private System.Windows.Forms.Button btnExportProduct;
     }
 }

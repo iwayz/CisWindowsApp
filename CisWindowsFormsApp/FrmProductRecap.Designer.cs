@@ -1,7 +1,7 @@
 ﻿
 namespace CisWindowsFormsApp
 {
-    partial class FrmInvoiceRecap
+    partial class FrmProductRecap
     {
         /// <summary>
         /// Required designer variable.
@@ -29,106 +29,30 @@ namespace CisWindowsFormsApp
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmInvoiceRecap));
-            this.dtpFrom = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dtpTo = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnExport = new System.Windows.Forms.Button();
-            this.pbExport = new System.Windows.Forms.ProgressBar();
-            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.pnlDateRange = new System.Windows.Forms.Panel();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmProductRecap));
+            this.pnlProgress = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pbExport = new System.Windows.Forms.ProgressBar();
+            this.pnlCriteria = new System.Windows.Forms.Panel();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.pnlResult = new System.Windows.Forms.Panel();
             this.txtFileLocation = new System.Windows.Forms.TextBox();
             this.lblFileLocation = new System.Windows.Forms.Label();
             this.btnBrowse = new System.Windows.Forms.Button();
-            this.pnlProgress = new System.Windows.Forms.Panel();
-            this.pnlDateRange.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.pnlResult.SuspendLayout();
             this.pnlProgress.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.pnlCriteria.SuspendLayout();
+            this.pnlResult.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dtpFrom
+            // pnlProgress
             // 
-            this.dtpFrom.Font = new System.Drawing.Font("Calibri", 12F);
-            this.dtpFrom.Location = new System.Drawing.Point(12, 30);
-            this.dtpFrom.Name = "dtpFrom";
-            this.dtpFrom.Size = new System.Drawing.Size(156, 27);
-            this.dtpFrom.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(9, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 15);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Tanggal Awal";
-            // 
-            // dtpTo
-            // 
-            this.dtpTo.Font = new System.Drawing.Font("Calibri", 12F);
-            this.dtpTo.Location = new System.Drawing.Point(190, 30);
-            this.dtpTo.Name = "dtpTo";
-            this.dtpTo.Size = new System.Drawing.Size(156, 27);
-            this.dtpTo.TabIndex = 0;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(187, 12);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(78, 15);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Tanggal Akhir";
-            // 
-            // btnExport
-            // 
-            this.btnExport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
-            this.btnExport.FlatAppearance.BorderSize = 0;
-            this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExport.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnExport.ForeColor = System.Drawing.Color.White;
-            this.btnExport.Image = ((System.Drawing.Image)(resources.GetObject("btnExport.Image")));
-            this.btnExport.Location = new System.Drawing.Point(242, 63);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(104, 30);
-            this.btnExport.TabIndex = 23;
-            this.btnExport.Text = "  EXPORT";
-            this.btnExport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnExport.UseVisualStyleBackColor = false;
-            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
-            // 
-            // pbExport
-            // 
-            this.pbExport.Location = new System.Drawing.Point(6, 28);
-            this.pbExport.Name = "pbExport";
-            this.pbExport.Size = new System.Drawing.Size(322, 23);
-            this.pbExport.TabIndex = 24;
-            // 
-            // backgroundWorker
-            // 
-            this.backgroundWorker.WorkerReportsProgress = true;
-            this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
-            this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_ProgressChanged);
-            this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
-            // 
-            // pnlDateRange
-            // 
-            this.pnlDateRange.BackColor = System.Drawing.SystemColors.Window;
-            this.pnlDateRange.Controls.Add(this.dtpFrom);
-            this.pnlDateRange.Controls.Add(this.dtpTo);
-            this.pnlDateRange.Controls.Add(this.btnExport);
-            this.pnlDateRange.Controls.Add(this.label1);
-            this.pnlDateRange.Controls.Add(this.label2);
-            this.pnlDateRange.Location = new System.Drawing.Point(16, 5);
-            this.pnlDateRange.Name = "pnlDateRange";
-            this.pnlDateRange.Size = new System.Drawing.Size(363, 103);
-            this.pnlDateRange.TabIndex = 25;
+            this.pnlProgress.Controls.Add(this.groupBox1);
+            this.pnlProgress.Location = new System.Drawing.Point(16, 90);
+            this.pnlProgress.Name = "pnlProgress";
+            this.pnlProgress.Size = new System.Drawing.Size(363, 92);
+            this.pnlProgress.TabIndex = 30;
             // 
             // groupBox1
             // 
@@ -141,15 +65,54 @@ namespace CisWindowsFormsApp
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Progress";
             // 
+            // pbExport
+            // 
+            this.pbExport.Location = new System.Drawing.Point(6, 28);
+            this.pbExport.Name = "pbExport";
+            this.pbExport.Size = new System.Drawing.Size(322, 23);
+            this.pbExport.TabIndex = 24;
+            // 
+            // pnlCriteria
+            // 
+            this.pnlCriteria.Controls.Add(this.btnExport);
+            this.pnlCriteria.Location = new System.Drawing.Point(16, 34);
+            this.pnlCriteria.Name = "pnlCriteria";
+            this.pnlCriteria.Size = new System.Drawing.Size(363, 44);
+            this.pnlCriteria.TabIndex = 29;
+            // 
+            // btnExport
+            // 
+            this.btnExport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
+            this.btnExport.FlatAppearance.BorderSize = 0;
+            this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExport.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnExport.ForeColor = System.Drawing.Color.White;
+            this.btnExport.Image = ((System.Drawing.Image)(resources.GetObject("btnExport.Image")));
+            this.btnExport.Location = new System.Drawing.Point(122, 6);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(104, 30);
+            this.btnExport.TabIndex = 23;
+            this.btnExport.Text = "  EXPORT";
+            this.btnExport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnExport.UseVisualStyleBackColor = false;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
+            // backgroundWorker
+            // 
+            this.backgroundWorker.WorkerReportsProgress = true;
+            this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
+            this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_ProgressChanged);
+            this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
+            // 
             // pnlResult
             // 
             this.pnlResult.Controls.Add(this.txtFileLocation);
             this.pnlResult.Controls.Add(this.lblFileLocation);
             this.pnlResult.Controls.Add(this.btnBrowse);
-            this.pnlResult.Location = new System.Drawing.Point(16, 220);
+            this.pnlResult.Location = new System.Drawing.Point(16, 271);
             this.pnlResult.Name = "pnlResult";
             this.pnlResult.Size = new System.Drawing.Size(363, 100);
-            this.pnlResult.TabIndex = 28;
+            this.pnlResult.TabIndex = 31;
             // 
             // txtFileLocation
             // 
@@ -186,58 +149,45 @@ namespace CisWindowsFormsApp
             this.btnBrowse.UseVisualStyleBackColor = false;
             this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
             // 
-            // pnlProgress
-            // 
-            this.pnlProgress.BackColor = System.Drawing.SystemColors.Window;
-            this.pnlProgress.Controls.Add(this.groupBox1);
-            this.pnlProgress.Location = new System.Drawing.Point(16, 114);
-            this.pnlProgress.Name = "pnlProgress";
-            this.pnlProgress.Size = new System.Drawing.Size(363, 100);
-            this.pnlProgress.TabIndex = 28;
-            // 
-            // FrmInvoiceRecap
+            // FrmProductRecap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(394, 221);
-            this.Controls.Add(this.pnlProgress);
             this.Controls.Add(this.pnlResult);
-            this.Controls.Add(this.pnlDateRange);
+            this.Controls.Add(this.pnlProgress);
+            this.Controls.Add(this.pnlCriteria);
+            this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(410, 260);
-            this.Name = "FrmInvoiceRecap";
+            this.Name = "FrmProductRecap";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "REKAPITULASI FAKTUR";
-            this.Load += new System.EventHandler(this.FrmInvoiceRecap_Load);
-            this.pnlDateRange.ResumeLayout(false);
-            this.pnlDateRange.PerformLayout();
+            this.Text = "REKAPITULASI PRODUK";
+            this.Load += new System.EventHandler(this.FrmProductRecap_Load);
+            this.pnlProgress.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            this.pnlCriteria.ResumeLayout(false);
             this.pnlResult.ResumeLayout(false);
             this.pnlResult.PerformLayout();
-            this.pnlProgress.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DateTimePicker dtpFrom;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dtpTo;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnExport;
-        private System.Windows.Forms.ProgressBar pbExport;
-        private System.ComponentModel.BackgroundWorker backgroundWorker;
-        private System.Windows.Forms.Panel pnlDateRange;
+        private System.Windows.Forms.Panel pnlProgress;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ProgressBar pbExport;
+        private System.Windows.Forms.Panel pnlCriteria;
+        private System.Windows.Forms.Button btnExport;
+        private System.ComponentModel.BackgroundWorker backgroundWorker;
         private System.Windows.Forms.Panel pnlResult;
         private System.Windows.Forms.TextBox txtFileLocation;
         private System.Windows.Forms.Label lblFileLocation;
         private System.Windows.Forms.Button btnBrowse;
-        private System.Windows.Forms.Panel pnlProgress;
     }
 }
