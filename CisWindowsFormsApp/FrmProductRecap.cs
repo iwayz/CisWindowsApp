@@ -110,9 +110,9 @@ namespace CisWindowsFormsApp
                     xlWorkSheet.Cells[rowNumber, 3].NumberFormat = "@";
                     xlWorkSheet.Cells[rowNumber, 3] = item.Price;
 
-                    xlWorkSheet.Cells[rowNumber, 4].NumberFormat = "dd/mm/yy;@";
+                    xlWorkSheet.Cells[rowNumber, 4].NumberFormat = "dd/mm/yyyy;@";
                     xlWorkSheet.Cells[rowNumber, 4].HorizontalAlignment = Excel.XlHAlign.xlHAlignRight; 
-                    xlWorkSheet.Cells[rowNumber, 4] = item.PriceDecreeDate;
+                    xlWorkSheet.Cells[rowNumber, 4] = item.PriceDecreeDate.ToString("dd/MM/yyyy");
                     
                     xlWorkSheet.Cells[rowNumber, 5].NumberFormat = "@";
                     xlWorkSheet.Cells[rowNumber, 5] = item.Discount;

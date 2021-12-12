@@ -107,7 +107,7 @@ namespace CisWindowsFormsApp
                 var salesOrder = uowSo.Repository.GetAll().
                     Where(s => s.SalesDate >= dtpFrom.Value && s.SalesDate <= dtpTo.Value && s.Status == Constant.RecordStatus.Active);
 
-                var salesOrderDetail = uowSoi.Repository.GetAll()
+                var recapDetail = uowSoi.Repository.GetAll()
                     .Join(salesOrder, soi => soi.SalesOrderId, so => so.Id, (soi, so) => new { soi, so })
                     .Join(productDet, soiSo => soiSo.soi.ProductId, prdDet => prdDet.ProductId, (soiSo, prdDet) => new { soiSo, prdDet })
                     .Join(cusDet, soiSoPrd => soiSoPrd.soiSo.so.CustomerId, cusd => cusd.Id, (soiSoPrd, cusd) => new { soiSoPrd, cusd })
@@ -149,9 +149,8 @@ namespace CisWindowsFormsApp
                         res.soiSoPrdCus.soiSoPrd.soiSo.so.CustomerPhone,
                         res.soiSoPrdCus.soiSoPrd.prdDet.PrincipalName
                     })
+                    .OrderBy(res => res.SalesNo)
                     .ToList();
-
-                var recapDetail = salesOrderDetail.OrderBy(res => res.SalesNo);
 
                 Excel.Application xlApp = new Excel.Application();
                 Excel.Workbook xlWorkBook;
@@ -193,7 +192,7 @@ namespace CisWindowsFormsApp
                 xlWorkSheet.Cells[1, 27] = "ALAMAT KIRIM";
                 xlWorkSheet.Cells[1, 28] = "KOTA";
                 xlWorkSheet.Cells[1, 29] = "NO. TELPON";
-                xlWorkSheet.Cells[1, 30] = "PRINCIAPL";
+                xlWorkSheet.Cells[1, 30] = "PRINCIPAL";
 
                 var salesOrderHelper = new SalesOrderHelper();
                 var rowNumber = 2; // Row number 1 is Header
@@ -216,9 +215,9 @@ namespace CisWindowsFormsApp
                     var valueAddedAmount = salesOrderHelper.CalculateValueAddedAmount(taxBaseAmount);
                     var netValue = salesOrderHelper.CalculateNettValueAmount(taxBaseAmount, valueAddedAmount);
 
-                    xlWorkSheet.Cells[rowNumber, 1].NumberFormat = "dd/mm/yy;@";
+                    xlWorkSheet.Cells[rowNumber, 1].NumberFormat = "dd/mm/yyyy;@";
                     xlWorkSheet.Cells[rowNumber, 1].HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
-                    xlWorkSheet.Cells[rowNumber, 1] = item.SalesDate;
+                    xlWorkSheet.Cells[rowNumber, 1] = item.SalesDate.ToString("dd/MM/yyyy");
 
                     xlWorkSheet.Cells[rowNumber, 2] = item.SalesNo;
 
@@ -282,9 +281,9 @@ namespace CisWindowsFormsApp
                     xlWorkSheet.Cells[rowNumber, 25].NumberFormat = "#.##0";
                     xlWorkSheet.Cells[rowNumber, 25] = netValue;
 
-                    xlWorkSheet.Cells[rowNumber, 26].NumberFormat = "dd/mm/yy;@";
+                    xlWorkSheet.Cells[rowNumber, 26].NumberFormat = "dd/mm/yyyy;@";
                     xlWorkSheet.Cells[rowNumber, 26].HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
-                    xlWorkSheet.Cells[rowNumber, 26] = item.DueDate;
+                    xlWorkSheet.Cells[rowNumber, 26] = item.DueDate.ToString("dd/MM/yyyy");
 
                     xlWorkSheet.Cells[rowNumber, 27] = item.DeliveryAddress;
 
@@ -295,8 +294,10 @@ namespace CisWindowsFormsApp
 
                     xlWorkSheet.Cells[rowNumber, 30] = item.PrincipalName;
 
+                    // progress bar
                     var progress = ((rowNumber - 1) * 100) / totalRecord;
                     backgroundWorker.ReportProgress(progress);
+
                     rowNumber++;
                 }
                 xlWorkSheet.Columns.AutoFit();

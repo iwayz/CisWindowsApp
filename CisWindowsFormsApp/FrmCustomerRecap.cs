@@ -140,9 +140,9 @@ namespace CisWindowsFormsApp
                     xlWorkSheet.Cells[rowNumber, 11].NumberFormat = "@";
                     xlWorkSheet.Cells[rowNumber, 11] = item.SipaNo;
 
-                    xlWorkSheet.Cells[rowNumber, 12].NumberFormat = "dd/mm/yy;@";
+                    xlWorkSheet.Cells[rowNumber, 12].NumberFormat = "dd/mm/yyyy;@";
                     xlWorkSheet.Cells[rowNumber, 12].HorizontalAlignment = Excel.XlHAlign.xlHAlignRight; 
-                    xlWorkSheet.Cells[rowNumber, 12] = item.SipaExpiredDate;
+                    xlWorkSheet.Cells[rowNumber, 12] = item.SipaExpiredDate.ToString("dd/MM/yyyy");
                     
                     xlWorkSheet.Cells[rowNumber, 13].NumberFormat = "@";
                     xlWorkSheet.Cells[rowNumber, 13] = item.SiaNo;

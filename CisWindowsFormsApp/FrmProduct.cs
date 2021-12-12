@@ -407,6 +407,16 @@ namespace CisWindowsFormsApp
                 MessageBox.Show("Kode Inisial Barang harus 2 karakter", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
+
+            var productCode = string.Concat(txtManualCode.Text.Trim(), txtAutoCode.Text.Trim());
+            var productName = txtProductName.Text.Trim();
+            var existingProduct = uowProduct.Repository.GetAll().FirstOrDefault(p => p.ProductName == productName && p.ProductCode != productCode);
+            if (existingProduct != null)
+            {
+                MessageBox.Show($"Produk dengan nama '{productName}' sudah ada, silakan gunakan nama produk lain.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+
             return true;
         }
 

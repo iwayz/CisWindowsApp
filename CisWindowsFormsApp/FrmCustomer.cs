@@ -352,6 +352,14 @@ namespace CisWindowsFormsApp
                 return false;
             }
 
+            var customerCode = txtCustomerCode.Text.Trim();
+            var customerName = txtCustomerName.Text.Trim();
+            var existingCust = uowCust.Repository.GetAll().FirstOrDefault(c => c.CustomerName == customerName && c.CustomerCode != customerCode);
+            if (existingCust != null)
+            {
+                MessageBox.Show($"Pelanggan dengan nama '{customerName}' sudah ada, silakan gunakan nama pelanggan lain.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
             return true;
         }
 

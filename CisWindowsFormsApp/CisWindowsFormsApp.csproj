@@ -11,6 +11,7 @@
   <ItemGroup>
     <None Remove="C:\Users\Sudik_S419\.nuget\packages\nlog.config\4.7.5\contentFiles\any\any\NLog.config" />
     <None Remove="Reports\RptInvoice.rdlc" />
+    <None Remove="Reports\RptInvoiceV2.rdlc" />
     <None Remove="Resources\CisPosManual.pdf" />
   </ItemGroup>
 
@@ -29,6 +30,7 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Reports\RptInvoice.rdlc" />
+    <EmbeddedResource Include="Reports\RptInvoiceV2.rdlc" />
     <EmbeddedResource Include="Resources\CisPosManual.pdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
