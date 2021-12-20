@@ -204,7 +204,7 @@ namespace CisWindowsFormsApp
                     var grossValue = salesOrderHelper.CalculateGrossValue(qty, nettPrice);
                     var discountPercent = Math.Round(Convert.ToDecimal(item.DiscountPercentage / 100), 4, MidpointRounding.AwayFromZero);
                     var extraDiscount = item.ExtraDiscountAmount;
-                    var totalDiscount = Math.Round(Convert.ToDecimal(grossValue * discountPercent), 4, MidpointRounding.AwayFromZero); ;
+                    var totalDiscount = Math.Round(Convert.ToDecimal(grossValue * discountPercent), 4, MidpointRounding.AwayFromZero) + extraDiscount;
 
                     // Set the Extra Discount proportionally
                     var sumOfGrossValue = recapDetail.Where(so => so.SalesNo == item.SalesNo)
