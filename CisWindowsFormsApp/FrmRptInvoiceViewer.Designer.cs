@@ -38,7 +38,7 @@
             // reportViewerInvoice
             // 
             this.reportViewerInvoice.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.reportViewerInvoice.LocalReport.ReportEmbeddedResource = "CisWindowsFormsApp.Reports.RptInvoiceV2.rdlc";
+            this.reportViewerInvoice.LocalReport.ReportEmbeddedResource = "CisWindowsFormsApp.Reports.RptInvoiceV3.rdlc";
             this.reportViewerInvoice.Location = new System.Drawing.Point(0, 0);
             this.reportViewerInvoice.Name = "reportViewerInvoice";
             this.reportViewerInvoice.ServerReport.BearerToken = null;

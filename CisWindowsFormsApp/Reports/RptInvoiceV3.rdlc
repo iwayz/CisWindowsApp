@@ -1,0 +1,2590 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSourceInvoice">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>bc02d7fb-21e4-4ac5-bf63-9c2870f0b42d</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="DataSetInvoice">
+      <Query>
+        <DataSourceName>DataSourceInvoice</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="Id">
+          <DataField>Id</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SalesNo">
+          <DataField>SalesNo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CustomerName">
+          <DataField>CustomerName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CustomerAddress">
+          <DataField>CustomerAddress</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CustomerProvince">
+          <DataField>CustomerProvince</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CustomerDistrict">
+          <DataField>CustomerDistrict</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CustomerSubDistrict">
+          <DataField>CustomerSubDistrict</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CustomerPostalCode">
+          <DataField>CustomerPostalCode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CustomerPhone">
+          <DataField>CustomerPhone</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CustomerEmail">
+          <DataField>CustomerEmail</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CustomerNpwp">
+          <DataField>CustomerNpwp</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DeliveryAddress">
+          <DataField>DeliveryAddress</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DeliveryProvince">
+          <DataField>DeliveryProvince</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DeliveryDistrict">
+          <DataField>DeliveryDistrict</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DeliverySubDistrict">
+          <DataField>DeliverySubDistrict</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DeliveryPostalCode">
+          <DataField>DeliveryPostalCode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SalesAreaCode">
+          <DataField>SalesAreaCode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SalesDate">
+          <DataField>SalesDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="TermOfPaymentCode">
+          <DataField>TermOfPaymentCode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DueDate">
+          <DataField>DueDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="PersonInCharge">
+          <DataField>PersonInCharge</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SipaNo">
+          <DataField>SipaNo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SubTotalAmount">
+          <DataField>SubTotalAmount</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ExtraDiscountAmount">
+          <DataField>ExtraDiscountAmount</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="TaxBaseAmount">
+          <DataField>TaxBaseAmount</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ValueAddedTaxAmount">
+          <DataField>ValueAddedTaxAmount</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="GrandTotalAmount">
+          <DataField>GrandTotalAmount</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Username">
+          <DataField>Username</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SalesmanCode">
+          <DataField>SalesmanCode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SalesOrderId">
+          <DataField>SalesOrderId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductCode">
+          <DataField>ProductCode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ProductName">
+          <DataField>ProductName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BatchCode">
+          <DataField>BatchCode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ExpiredDate">
+          <DataField>ExpiredDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Quantity">
+          <DataField>Quantity</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="UomCode">
+          <DataField>UomCode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Price">
+          <DataField>Price</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="DiscountPercentage">
+          <DataField>DiscountPercentage</DataField>
+          <rd:TypeName>System.Single</rd:TypeName>
+        </Field>
+        <Field Name="TotalAmount">
+          <DataField>TotalAmount</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="SalesOrderItemId">
+          <DataField>SalesOrderItemId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Status">
+          <DataField>Status</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Description">
+          <DataField>Description</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>DataSourceInvoice</rd:DataSetName>
+        <rd:SchemaPath>D:\Sudik\CIS\CisWindowsApp\CisWindowsFormsApp\DataSources\DataSourceInvoice.xsd</rd:SchemaPath>
+        <rd:TableName>DataTableInvoice</rd:TableName>
+        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
+        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
+        <rd:TableAdapterName>DataTableInvoiceTableAdapter</rd:TableAdapterName>
+      </rd:DataSetInfo>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Tablix Name="Tablix2">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>0.8cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>2.02953cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>5.34059cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>2.07248cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1.7cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1.4202cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1.72426cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1.01834cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1.38875cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>2.31804cm</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>0.6cm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox14">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>NO</Value>
+                                  <Style>
+                                    <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox14</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <TopBorder>
+                              <Style>Solid</Style>
+                              <Width>1.5pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <PaddingLeft>5pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox36">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>KODE BRG.</Value>
+                                  <Style>
+                                    <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox36</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <TopBorder>
+                              <Style>Solid</Style>
+                              <Width>1.5pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <PaddingLeft>5pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox18">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>NAMA BARANG</Value>
+                                  <Style>
+                                    <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox18</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <TopBorder>
+                              <Style>Solid</Style>
+                              <Width>1.5pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <PaddingLeft>5pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox20">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>BATCH</Value>
+                                  <Style>
+                                    <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox20</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <TopBorder>
+                              <Style>Solid</Style>
+                              <Width>1.5pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <PaddingLeft>5pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox22">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>EXP. DATE</Value>
+                                  <Style>
+                                    <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                                    <FontSize>7.5pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox22</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <TopBorder>
+                              <Style>Solid</Style>
+                              <Width>1.5pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <PaddingLeft>5pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox26">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>QTY</Value>
+                                  <Style>
+                                    <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox26</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <TopBorder>
+                              <Style>Solid</Style>
+                              <Width>1.5pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <PaddingLeft>5pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox30">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>HARGA</Value>
+                                  <Style>
+                                    <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox30</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <TopBorder>
+                              <Style>Solid</Style>
+                              <Width>1.5pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <PaddingLeft>5pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox28">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>SAT</Value>
+                                  <Style>
+                                    <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox28</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <TopBorder>
+                              <Style>Solid</Style>
+                              <Width>1.5pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <PaddingLeft>5pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox32">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>DISKON</Value>
+                                  <Style>
+                                    <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox32</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <TopBorder>
+                              <Style>Solid</Style>
+                              <Width>1.5pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <PaddingLeft>5pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox34">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>JML. HARGA</Value>
+                                  <Style>
+                                    <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox34</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <TopBorder>
+                              <Style>Solid</Style>
+                              <Width>1.5pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </BottomBorder>
+                            <PaddingLeft>5pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.56473cm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="ProductCode1">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=RowNumber(Nothing)</Value>
+                                  <Style>
+                                    <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>ProductCode1</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>5pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="ProductCode">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!ProductCode.Value</Value>
+                                  <Style>
+                                    <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>ProductCode</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>5pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="ProductName">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!ProductName.Value</Value>
+                                  <Style>
+                                    <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>ProductName</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>5pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="ExpiredDate">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!BatchCode.Value</Value>
+                                  <Style>
+                                    <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>ExpiredDate</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>5pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="BatchCode">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Month(Fields!ExpiredDate.Value).ToString("D2") &amp; "/" &amp; Year(Fields!ExpiredDate.Value)</Value>
+                                  <Style>
+                                    <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>BatchCode</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>5pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Quantity">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Replace(Format(Fields!Quantity.Value, "n0"),",",".")</Value>
+                                  <Style>
+                                    <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Quantity</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>5pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Price">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Replace(Format(Fields!Price.Value, "n0"),",",".")</Value>
+                                  <Style>
+                                    <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Price</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>5pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="UomCode">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!UomCode.Value</Value>
+                                  <Style>
+                                    <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>UomCode</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>5pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="DiscountPercentage">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Replace(Format(Fields!DiscountPercentage.Value, "n2"),",",".") &amp; "%"</Value>
+                                  <Style>
+                                    <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>DiscountPercentage</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>5pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="TotalAmount">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Replace(Format(Fields!TotalAmount.Value, "n0"),",",".")</Value>
+                                  <Style>
+                                    <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>TotalAmount</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>5pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <FixedData>true</FixedData>
+                  <KeepWithGroup>After</KeepWithGroup>
+                  <RepeatOnNewPage>true</RepeatOnNewPage>
+                </TablixMember>
+                <TablixMember>
+                  <Group Name="Details" />
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <DataSetName>DataSetInvoice</DataSetName>
+            <Top>0.04008cm</Top>
+            <Left>0.09525cm</Left>
+            <Height>1.16473cm</Height>
+            <Width>19.81219cm</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <FontFamily>Calibri</FontFamily>
+            </Style>
+          </Tablix>
+          <Rectangle Name="Footer">
+            <ReportItems>
+              <Textbox Name="Textbox3">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Total Harga</Value>
+                        <Style>
+                          <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox2</rd:DefaultName>
+                <Top>0.25323cm</Top>
+                <Left>12.93894cm</Left>
+                <Height>0.6cm</Height>
+                <Width>3.29375cm</Width>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox4">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Extra Diskon</Value>
+                        <Style>
+                          <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox2</rd:DefaultName>
+                <Top>0.69448cm</Top>
+                <Left>12.93894cm</Left>
+                <Height>0.6cm</Height>
+                <Width>3.29375cm</Width>
+                <ZIndex>1</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox5">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Total DPP</Value>
+                        <Style>
+                          <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox2</rd:DefaultName>
+                <Top>1.14003cm</Top>
+                <Left>12.93894cm</Left>
+                <Height>0.6cm</Height>
+                <Width>3.29375cm</Width>
+                <ZIndex>2</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox6">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>PPN 10%</Value>
+                        <Style>
+                          <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox2</rd:DefaultName>
+                <Top>1.61303cm</Top>
+                <Left>12.93894cm</Left>
+                <Height>0.6cm</Height>
+                <Width>3.29375cm</Width>
+                <ZIndex>3</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox7">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>TOTAL TAGIHAN (RP)</Value>
+                        <Style>
+                          <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox2</rd:DefaultName>
+                <Top>2.08173cm</Top>
+                <Left>12.93894cm</Left>
+                <Height>0.6cm</Height>
+                <Width>3.87112cm</Width>
+                <ZIndex>4</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="ExtraDiscountAmount">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>="(" &amp; Replace(Format(Fields!ExtraDiscountAmount.Value, "n0"),",",".") &amp; ")"</Value>
+                        <Style>
+                          <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>ExtraDiscountAmount</rd:DefaultName>
+                <Top>0.69448cm</Top>
+                <Left>16.65307cm</Left>
+                <Height>0.6cm</Height>
+                <Width>3.16146cm</Width>
+                <ZIndex>5</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="TaxBaseAmount">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=Replace(Format(Fields!TaxBaseAmount.Value, "n0"),",",".")</Value>
+                        <Style>
+                          <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>TaxBaseAmount</rd:DefaultName>
+                <Top>1.13573cm</Top>
+                <Left>16.65307cm</Left>
+                <Height>0.6cm</Height>
+                <Width>3.16146cm</Width>
+                <ZIndex>6</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="ValueAddedTaxAmount">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=Replace(Format(Fields!ValueAddedTaxAmount.Value, "n0"),",",".")</Value>
+                        <Style>
+                          <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>ValueAddedTaxAmount</rd:DefaultName>
+                <Top>1.60873cm</Top>
+                <Left>16.65307cm</Left>
+                <Height>0.6cm</Height>
+                <Width>3.16146cm</Width>
+                <ZIndex>7</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="GrandTotalAmount">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=Replace(Format(Fields!GrandTotalAmount.Value, "n0"),",",".")</Value>
+                        <Style>
+                          <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>GrandTotalAmount</rd:DefaultName>
+                <Top>2.08173cm</Top>
+                <Left>16.65307cm</Left>
+                <Height>0.6cm</Height>
+                <Width>3.16146cm</Width>
+                <ZIndex>8</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="TotalAmount1">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=Replace(Format(Fields!SubTotalAmount.Value, "n0"),",",".")</Value>
+                        <Style>
+                          <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>TotalAmount1</rd:DefaultName>
+                <Top>0.25323cm</Top>
+                <Left>16.65307cm</Left>
+                <Height>0.6cm</Height>
+                <Width>3.16146cm</Width>
+                <ZIndex>9</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Rectangle Name="Rectangle1">
+                <ReportItems>
+                  <Textbox Name="Textbox2">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>Terbilang:</Value>
+                            <Style>
+                              <FontStyle>Italic</FontStyle>
+                              <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                              <FontSize>9pt</FontSize>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style />
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Textbox2</rd:DefaultName>
+                    <Left>0.14993cm</Left>
+                    <Height>0.6cm</Height>
+                    <Width>1.69333cm</Width>
+                    <Style>
+                      <Border>
+                        <Style>None</Style>
+                      </Border>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                  <Textbox Name="Textbox1">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>=Code.Spell(Fields!GrandTotalAmount.Value)</Value>
+                            <Style>
+                              <FontStyle>Italic</FontStyle>
+                              <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                              <FontSize>9pt</FontSize>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style />
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Textbox1</rd:DefaultName>
+                    <Left>2.01965cm</Left>
+                    <Height>1.27027cm</Height>
+                    <Width>10.55889cm</Width>
+                    <ZIndex>1</ZIndex>
+                    <Style>
+                      <Border>
+                        <Style>None</Style>
+                      </Border>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </ReportItems>
+                <KeepTogether>true</KeepTogether>
+                <Top>2.17451cm</Top>
+                <Left>0.06584cm</Left>
+                <Height>1.27027cm</Height>
+                <Width>12.76021cm</Width>
+                <ZIndex>10</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>Solid</Style>
+                  </Border>
+                </Style>
+              </Rectangle>
+              <Textbox Name="Textbox8">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>PENERIMA</Value>
+                        <Style>
+                          <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                          <FontSize>9pt</FontSize>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Center</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox2</rd:DefaultName>
+                <Top>0.20108cm</Top>
+                <Left>0.51034cm</Left>
+                <Height>0.6cm</Height>
+                <Width>4.54139cm</Width>
+                <ZIndex>11</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox9">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>PENANGGUNG JAWAB</Value>
+                        <Style>
+                          <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                          <FontSize>9pt</FontSize>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Center</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox2</rd:DefaultName>
+                <Top>0.20108cm</Top>
+                <Left>7.26341cm</Left>
+                <Height>0.6cm</Height>
+                <Width>4.0916cm</Width>
+                <ZIndex>12</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox11">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=First(Fields!PersonInCharge.Value, "DataSetInvoice") 
+&amp; System.Environment.NewLine 
+&amp; First(Fields!SipaNo.Value, "DataSetInvoice")</Value>
+                        <Style>
+                          <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                          <FontSize>9pt</FontSize>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Center</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox2</rd:DefaultName>
+                <Top>1.43923cm</Top>
+                <Left>5.66443cm</Left>
+                <Height>0.7cm</Height>
+                <Width>6.97995cm</Width>
+                <ZIndex>13</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox12">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>CAP &amp; TTD</Value>
+                        <Style>
+                          <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                          <FontSize>9pt</FontSize>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Center</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox2</rd:DefaultName>
+                <Top>0.50398cm</Top>
+                <Left>0.51034cm</Left>
+                <Height>0.6cm</Height>
+                <Width>4.54139cm</Width>
+                <ZIndex>14</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox13">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Pembayaran cek/giro dianggap sah setelah diuangkan. Barang diterima dalam kondisi baik.</Value>
+                        <Style>
+                          <FontStyle>Italic</FontStyle>
+                          <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                          <FontSize>8pt</FontSize>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox2</rd:DefaultName>
+                <Top>3.5859cm</Top>
+                <Left>0.06585cm</Left>
+                <Height>0.45005cm</Height>
+                <Width>17.01584cm</Width>
+                <ZIndex>15</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Line Name="Line2">
+                <Top>0.09525cm</Top>
+                <Left>0.06585cm</Left>
+                <Height>0cm</Height>
+                <Width>19.84159cm</Width>
+                <ZIndex>16</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>Solid</Style>
+                  </Border>
+                </Style>
+              </Line>
+              <Line Name="Line3">
+                <Top>2.10423cm</Top>
+                <Left>13.00244cm</Left>
+                <Height>0cm</Height>
+                <Width>6.81209cm</Width>
+                <ZIndex>17</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>Solid</Style>
+                  </Border>
+                </Style>
+              </Line>
+              <Textbox Name="Textbox31">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>(</Value>
+                        <Style>
+                          <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Center</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox2</rd:DefaultName>
+                <Top>1.62742cm</Top>
+                <Left>0.06585cm</Left>
+                <Height>0.6cm</Height>
+                <Width>0.79999cm</Width>
+                <ZIndex>18</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox33">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>)</Value>
+                        <Style>
+                          <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Center</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox2</rd:DefaultName>
+                <Top>1.64953cm</Top>
+                <Left>4.68805cm</Left>
+                <Height>0.6cm</Height>
+                <Width>0.79999cm</Width>
+                <ZIndex>19</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox35">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>(</Value>
+                        <Style>
+                          <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Center</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox2</rd:DefaultName>
+                <Top>1.64953cm</Top>
+                <Left>5.48804cm</Left>
+                <Height>0.6043cm</Height>
+                <Width>0.79999cm</Width>
+                <ZIndex>20</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox37">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>)</Value>
+                        <Style>
+                          <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Center</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox2</rd:DefaultName>
+                <Top>1.64953cm</Top>
+                <Left>12.20245cm</Left>
+                <Height>0.6cm</Height>
+                <Width>0.79999cm</Width>
+                <ZIndex>21</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+            </ReportItems>
+            <KeepTogether>true</KeepTogether>
+            <Top>1.26237cm</Top>
+            <Height>4.03595cm</Height>
+            <Width>19.90744cm</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Rectangle>
+        </ReportItems>
+        <Height>2.08595in</Height>
+        <Style />
+      </Body>
+      <Width>7.89186in</Width>
+      <Page>
+        <PageHeader>
+          <Height>4.37537cm</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Rectangle Name="Rectangle2">
+              <ReportItems>
+                <Line Name="Line1">
+                  <Left>5.92268cm</Left>
+                  <Height>2.3677cm</Height>
+                  <Width>0cm</Width>
+                  <Style>
+                    <Border>
+                      <Style>Solid</Style>
+                    </Border>
+                  </Style>
+                </Line>
+                <Textbox Name="CompDetail2">
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>= "KEPADA:" &amp; System.Environment.NewLine 
+&amp; Fields!CustomerName.Value &amp; System.Environment.NewLine 
+&amp; Fields!CustomerAddress.Value 
+&amp; ", " &amp; System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.
+    ToTitleCase(Fields!CustomerDistrict.Value.ToString().ToLower())
+&amp; ", " &amp; System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.
+    ToTitleCase(Fields!CustomerProvince.Value.ToString())
+&amp; System.Environment.NewLine 
+&amp; "NPWP: " &amp; IIf(Len(Fields!CustomerNpwp.Value) &lt; 1, "-", Fields!CustomerNpwp.Value)</Value>
+                          <Style>
+                            <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                            <FontSize>9pt</FontSize>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style />
+                    </Paragraph>
+                  </Paragraphs>
+                  <rd:DefaultName>CompDetail</rd:DefaultName>
+                  <Top>0.07056cm</Top>
+                  <Left>0.16091cm</Left>
+                  <Height>2.16485cm</Height>
+                  <Width>5.5cm</Width>
+                  <ZIndex>1</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                </Textbox>
+                <Textbox Name="CompDetail3">
+                  <KeepTogether>true</KeepTogether>
+                  <Paragraphs>
+                    <Paragraph>
+                      <TextRuns>
+                        <TextRun>
+                          <Value>= "ALAMAT KIRIM:" &amp; System.Environment.NewLine 
+&amp; Fields!CustomerName.Value &amp; System.Environment.NewLine 
+&amp; Fields!DeliveryAddress.Value 
+&amp; ", " &amp; System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.
+    ToTitleCase(Fields!DeliveryDistrict.Value.ToString().ToLower())
+&amp; ", " &amp; System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.
+    ToTitleCase(Fields!DeliveryProvince.Value.ToString())
+&amp; System.Environment.NewLine 
+&amp; "Rayon: " &amp; Fields!Description.Value</Value>
+                          <Style>
+                            <FontStyle>Normal</FontStyle>
+                            <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                            <FontSize>9pt</FontSize>
+                            <FontWeight>Thin</FontWeight>
+                          </Style>
+                        </TextRun>
+                      </TextRuns>
+                      <Style />
+                    </Paragraph>
+                  </Paragraphs>
+                  <rd:DefaultName>CompDetail</rd:DefaultName>
+                  <Left>6.23247cm</Left>
+                  <Height>2.16485cm</Height>
+                  <Width>5.5cm</Width>
+                  <ZIndex>2</ZIndex>
+                  <Style>
+                    <Border>
+                      <Style>None</Style>
+                    </Border>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                </Textbox>
+              </ReportItems>
+              <KeepTogether>true</KeepTogether>
+              <Top>1.14327cm</Top>
+              <Left>7.89987cm</Left>
+              <Height>2.3677cm</Height>
+              <Width>12cm</Width>
+              <Style>
+                <Border>
+                  <Style>Solid</Style>
+                </Border>
+              </Style>
+            </Rectangle>
+            <Textbox Name="CompName">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Parameters!CompName.Value</Value>
+                      <Style>
+                        <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                        <FontSize>12pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>CompName</rd:DefaultName>
+              <Top>1.75358cm</Top>
+              <Left>0.09526cm</Left>
+              <Height>0.6cm</Height>
+              <Width>7.88832cm</Width>
+              <ZIndex>1</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="CompDetail">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Parameters!CompDetail.Value</Value>
+                      <Style>
+                        <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>CompDetail</rd:DefaultName>
+              <Top>2.26158cm</Top>
+              <Left>0.09526cm</Left>
+              <Height>1.97639cm</Height>
+              <Width>7.88832cm</Width>
+              <ZIndex>2</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox15">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>="FAKTUR" &amp; System.Environment.NewLine 
+&amp; "NOMOR: " + First(Fields!SalesNo.Value, "DataSetInvoice")</Value>
+                      <Style>
+                        <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                        <FontSize>14pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox2</rd:DefaultName>
+              <Left>7cm</Left>
+              <Height>0.87869cm</Height>
+              <Width>7cm</Width>
+              <ZIndex>3</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="SalesNo2">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Fields!SalesmanCode.Value</Value>
+                      <Style>
+                        <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                        <FontSize>9pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>SalesNo</rd:DefaultName>
+              <Top>3.66239cm</Top>
+              <Left>6.82711cm</Left>
+              <Height>0.6cm</Height>
+              <Width>1.80737cm</Width>
+              <ZIndex>4</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox17">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Salesman:</Value>
+                      <Style>
+                        <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                        <FontSize>9pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox2</rd:DefaultName>
+              <Top>3.66239cm</Top>
+              <Left>5.00326cm</Left>
+              <Height>0.6cm</Height>
+              <Width>1.74624cm</Width>
+              <ZIndex>5</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="SalesNo3">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Day(Fields!SalesDate.Value).ToString("D2") &amp; "/" &amp; Month(Fields!SalesDate.Value).ToString("D2") &amp; "/" &amp; Year(Fields!SalesDate.Value)</Value>
+                      <Style>
+                        <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                        <FontSize>9pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>SalesNo</rd:DefaultName>
+              <Top>3.66239cm</Top>
+              <Left>10.56108cm</Left>
+              <Height>0.6cm</Height>
+              <Width>2.0833cm</Width>
+              <ZIndex>6</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="SalesNo4">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Fields!TermOfPaymentCode.Value</Value>
+                      <Style>
+                        <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                        <FontSize>9pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>SalesNo</rd:DefaultName>
+              <Top>3.66239cm</Top>
+              <Left>13.84917cm</Left>
+              <Height>0.6cm</Height>
+              <Width>1.68268cm</Width>
+              <ZIndex>7</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="SalesNo5">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Day(Fields!DueDate.Value).ToString("D2") &amp; "/" &amp; Month(Fields!DueDate.Value).ToString("D2") &amp; "/" &amp; Year(Fields!DueDate.Value)</Value>
+                      <Style>
+                        <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                        <FontSize>9pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>SalesNo</rd:DefaultName>
+              <Top>3.66239cm</Top>
+              <Left>17.62144cm</Left>
+              <Height>0.6cm</Height>
+              <Width>2.15104cm</Width>
+              <ZIndex>8</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox19">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Tgl. Faktur:</Value>
+                      <Style>
+                        <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                        <FontSize>9pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox2</rd:DefaultName>
+              <Top>3.66239cm</Top>
+              <Left>8.71015cm</Left>
+              <Height>0.6cm</Height>
+              <Width>1.81565cm</Width>
+              <ZIndex>9</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox21">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>TOP:</Value>
+                      <Style>
+                        <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                        <FontSize>9pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox2</rd:DefaultName>
+              <Top>3.66239cm</Top>
+              <Left>12.82077cm</Left>
+              <Height>0.6cm</Height>
+              <Width>0.93623cm</Width>
+              <ZIndex>10</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox23">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Tgl. Tempo:</Value>
+                      <Style>
+                        <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                        <FontSize>9pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox2</rd:DefaultName>
+              <Top>3.66239cm</Top>
+              <Left>15.70188cm</Left>
+              <Height>0.6cm</Height>
+              <Width>1.95455cm</Width>
+              <ZIndex>11</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="SalesNo6">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>="Hal: " &amp; Globals!PageNumber &amp; "/" &amp; Globals!TotalPages</Value>
+                      <Style>
+                        <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                        <FontSize>9pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>SalesNo</rd:DefaultName>
+              <Left>16.38154cm</Left>
+              <Height>0.6cm</Height>
+              <Width>3.5259cm</Width>
+              <ZIndex>12</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox27">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>DELETED</Value>
+                      <Style>
+                        <FontFamily>NeueHaasGroteskText Pro</FontFamily>
+                        <FontSize>12pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                        <Color>White</Color>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox2</rd:DefaultName>
+              <Top>0.54327cm</Top>
+              <Left>16.38154cm</Left>
+              <Height>0.6cm</Height>
+              <Width>3.51833cm</Width>
+              <ZIndex>13</ZIndex>
+              <Visibility>
+                <Hidden>=Fields!Status.Value &gt;= 1</Hidden>
+              </Visibility>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <BackgroundColor>DimGray</BackgroundColor>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Image Name="CISe_logo_bw">
+              <Source>Embedded</Source>
+              <Value>CISe_logo_BW</Value>
+              <Sizing>FitProportional</Sizing>
+              <Top>0.1905cm</Top>
+              <Left>0.09525cm</Left>
+              <Height>1.39198cm</Height>
+              <Width>2.51353cm</Width>
+              <ZIndex>14</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+              </Style>
+            </Image>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageHeader>
+        <PageHeight>13.97cm</PageHeight>
+        <PageWidth>24.13cm</PageWidth>
+        <InteractiveHeight>13.97cm</InteractiveHeight>
+        <InteractiveWidth>24.13cm</InteractiveWidth>
+        <LeftMargin>0.5cm</LeftMargin>
+        <RightMargin>0.5cm</RightMargin>
+        <TopMargin>0cm</TopMargin>
+        <BottomMargin>0cm</BottomMargin>
+        <ColumnSpacing>0.13cm</ColumnSpacing>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="CompName">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CompDetail">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="SalesOrderId">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CompPic">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>3</NumberOfRows>
+      <CellDefinitions>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>CompName</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>CompDetail</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>3</ColumnIndex>
+          <RowIndex>1</RowIndex>
+          <ParameterName>SalesOrderId</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>2</RowIndex>
+          <ParameterName>CompPic</ParameterName>
+        </CellDefinition>
+      </CellDefinitions>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+  <Code>Public Function Spell(ByVal number As Integer) As String
+		If number &gt; 999999999 Then Return "### Nominal terlalu besar. Maksimal nominal adalah 999.999.999 ###"
+		Dim n, m As Integer
+		Dim result As String = String.Empty
+		n = Math.Floor(number / 1000000)
+		m = number Mod 1000000
+		If n &gt; 0 Then result += SpellHundreds(n) &amp; " Juta "
+		n = Math.Floor(m / 1000)
+		m = m Mod 1000
+		If n &gt; 0 Then result += SpellHundreds(n) &amp; If(n = 1, " Seribu ", " Ribu")
+		result += SpellHundreds(m) &amp; "Rupiah"
+		Return System.Text.RegularExpressions.Regex.Replace(result, "\s+", " ").Trim()
+	End Function
+
+	Private Function GetHundreds(ByVal number As Integer) As String
+		If number &lt;= 0 Then Return String.Empty
+		Return If(number = 1, " Seratus", String.Concat(GetTeensUnit(number), " Ratus "))
+	End Function
+
+	Private Function SpellHundreds(ByVal number As Integer) As String
+		Dim result As String = String.Empty
+		Dim n As Integer
+		n = Math.Floor(number / 100)
+		number = number Mod 100
+		result += GetHundreds(n)
+
+		If number &gt;= 20 Then
+			n = Math.Floor(number / 10)
+			number = number Mod 10
+			result += GetTens(n)
+		End If
+
+		result += GetTeensUnit(number)
+		Return result
+	End Function
+
+	Private Function GetTens(ByVal number As Integer) As String
+		Dim result As String = String.Empty
+
+		Select Case number
+			Case 2
+				result = "  Dua Puluh "
+			Case 3
+				result = " Tiga Puluh "
+			Case 4
+				result = " Empat Puluh "
+			Case 5
+				result = " Lima Puluh "
+			Case 6
+				result = " Enam Puluh "
+			Case 7
+				result = " Tujuh Puluh "
+			Case 8
+				result = " Delapan Puluh "
+			Case 9
+				result = " Sembilan Puluh "
+		End Select
+
+		Return result
+	End Function
+
+	Private Function GetTeensUnit(ByVal number As Integer) As String
+		Dim result As String = String.Empty
+
+		Select Case number
+			Case 1
+				result = " Satu "
+			Case 2
+				result = " Dua "
+			Case 3
+				result = " Tiga "
+			Case 4
+				result = " Empat "
+			Case 5
+				result = " Lima "
+			Case 6
+				result = " Enam "
+			Case 7
+				result = " Tujuh "
+			Case 8
+				result = " Delapan "
+			Case 9
+				result = " Sembilan "
+			Case 10
+				result = " SePuluh  "
+			Case 11
+				result = " Sebelas "
+			Case 12
+				result = " Dua Belas "
+			Case 13
+				result = " Tiga Belas "
+			Case 14
+				result = " Empat Belas "
+			Case 15
+				result = " Lima Belas "
+			Case 16
+				result = " Enam Belas "
+			Case 17
+				result = " Tujuh Belas "
+			Case 18
+				result = " Delapan Belas "
+			Case 19
+				result = " Sembilan Belas "
+			Case Else
+				result = " "
+		End Select
+
+		Return result
+	End Function</Code>
+  <EmbeddedImages>
+    <EmbeddedImage Name="CISe_logo_BW">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>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</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>bc5d0f5e-5059-43dc-a32e-23a9de983a46</rd:ReportID>
+</Report>

@@ -5,7 +5,7 @@
 	  <!--<TargetFramework>netcoreapp3.1</TargetFramework>-->
 	  <TargetFramework>net47</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <FileVersion>1.1.2112.1</FileVersion>
+    <FileVersion>1.1.2112.2</FileVersion>
     <AssemblyVersion>1.1.0.0</AssemblyVersion>
     <Version>1.1.0</Version>
   </PropertyGroup>
@@ -14,6 +14,7 @@
     <None Remove="C:\Users\Sudik_S419\.nuget\packages\nlog.config\4.7.5\contentFiles\any\any\NLog.config" />
     <None Remove="Reports\RptInvoice.rdlc" />
     <None Remove="Reports\RptInvoiceV2.rdlc" />
+    <None Remove="Reports\RptInvoiceV3.rdlc" />
     <None Remove="Resources\CisPosManual.pdf" />
   </ItemGroup>
 
@@ -33,6 +34,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Reports\RptInvoice.rdlc" />
     <EmbeddedResource Include="Reports\RptInvoiceV2.rdlc" />
+    <EmbeddedResource Include="Reports\RptInvoiceV3.rdlc" />
     <EmbeddedResource Include="Resources\CisPosManual.pdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
