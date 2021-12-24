@@ -228,10 +228,10 @@
                   <Width>1.01834cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.38875cm</Width>
+                  <Width>1.48875cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.31804cm</Width>
+                  <Width>2.21804cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -664,8 +664,8 @@
                                 <TextRun>
                                   <Value>=RowNumber(Nothing)</Value>
                                   <Style>
-                                    <FontFamily>NeueHaasGroteskText Pro</FontFamily>
-                                    <FontSize>8pt</FontSize>
+                                    <FontFamily>NeueHaasGroteskText Pro Md</FontFamily>
+                                    <FontSize>9pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -697,8 +697,8 @@
                                 <TextRun>
                                   <Value>=Fields!ProductCode.Value</Value>
                                   <Style>
-                                    <FontFamily>NeueHaasGroteskText Pro</FontFamily>
-                                    <FontSize>8pt</FontSize>
+                                    <FontFamily>NeueHaasGroteskText Pro Md</FontFamily>
+                                    <FontSize>9pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -730,8 +730,8 @@
                                 <TextRun>
                                   <Value>=Fields!ProductName.Value</Value>
                                   <Style>
-                                    <FontFamily>NeueHaasGroteskText Pro</FontFamily>
-                                    <FontSize>8pt</FontSize>
+                                    <FontFamily>NeueHaasGroteskText Pro Md</FontFamily>
+                                    <FontSize>9pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -763,8 +763,8 @@
                                 <TextRun>
                                   <Value>=Fields!BatchCode.Value</Value>
                                   <Style>
-                                    <FontFamily>NeueHaasGroteskText Pro</FontFamily>
-                                    <FontSize>8pt</FontSize>
+                                    <FontFamily>NeueHaasGroteskText Pro Md</FontFamily>
+                                    <FontSize>9pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -796,8 +796,8 @@
                                 <TextRun>
                                   <Value>=Month(Fields!ExpiredDate.Value).ToString("D2") &amp; "/" &amp; Year(Fields!ExpiredDate.Value)</Value>
                                   <Style>
-                                    <FontFamily>NeueHaasGroteskText Pro</FontFamily>
-                                    <FontSize>8pt</FontSize>
+                                    <FontFamily>NeueHaasGroteskText Pro Md</FontFamily>
+                                    <FontSize>9pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -829,8 +829,8 @@
                                 <TextRun>
                                   <Value>=Replace(Format(Fields!Quantity.Value, "n0"),",",".")</Value>
                                   <Style>
-                                    <FontFamily>NeueHaasGroteskText Pro</FontFamily>
-                                    <FontSize>8pt</FontSize>
+                                    <FontFamily>NeueHaasGroteskText Pro Md</FontFamily>
+                                    <FontSize>9pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -864,8 +864,8 @@
                                 <TextRun>
                                   <Value>=Replace(Format(Fields!Price.Value, "n0"),",",".")</Value>
                                   <Style>
-                                    <FontFamily>NeueHaasGroteskText Pro</FontFamily>
-                                    <FontSize>8pt</FontSize>
+                                    <FontFamily>NeueHaasGroteskText Pro Md</FontFamily>
+                                    <FontSize>9pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -899,8 +899,8 @@
                                 <TextRun>
                                   <Value>=Fields!UomCode.Value</Value>
                                   <Style>
-                                    <FontFamily>NeueHaasGroteskText Pro</FontFamily>
-                                    <FontSize>8pt</FontSize>
+                                    <FontFamily>NeueHaasGroteskText Pro Md</FontFamily>
+                                    <FontSize>9pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -932,8 +932,8 @@
                                 <TextRun>
                                   <Value>=Replace(Format(Fields!DiscountPercentage.Value, "n2"),",",".") &amp; "%"</Value>
                                   <Style>
-                                    <FontFamily>NeueHaasGroteskText Pro</FontFamily>
-                                    <FontSize>8pt</FontSize>
+                                    <FontFamily>NeueHaasGroteskText Pro Md</FontFamily>
+                                    <FontSize>9pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -967,8 +967,8 @@
                                 <TextRun>
                                   <Value>=Replace(Format(Fields!TotalAmount.Value, "n0"),",",".")</Value>
                                   <Style>
-                                    <FontFamily>NeueHaasGroteskText Pro</FontFamily>
-                                    <FontSize>8pt</FontSize>
+                                    <FontFamily>NeueHaasGroteskText Pro Md</FontFamily>
+                                    <FontSize>9pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
