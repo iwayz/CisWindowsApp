@@ -56,6 +56,11 @@ namespace CisWindowsFormsApp
 
         private void btnExport_Click(object sender, EventArgs e)
         {
+            if(dtpTo.Value < dtpFrom.Value)
+            {
+                MessageBox.Show("Tanggal Akhir harus lebih besar dari Tanggal Awal.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             pnlDateRange.Enabled = false;
             SetUiPanel(true);
             pbExport.Maximum = 100;
@@ -215,7 +220,7 @@ namespace CisWindowsFormsApp
                     var valueAddedAmount = salesOrderHelper.CalculateValueAddedAmount(taxBaseAmount);
                     var netValue = salesOrderHelper.CalculateNettValueAmount(taxBaseAmount, valueAddedAmount);
 
-                    xlWorkSheet.Cells[rowNumber, 1].NumberFormat = "dd/mm/yyyy;@";
+                    xlWorkSheet.Cells[rowNumber, 1].NumberFormat = "@";
                     xlWorkSheet.Cells[rowNumber, 1].HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
                     xlWorkSheet.Cells[rowNumber, 1] = item.SalesDate.ToString("dd/MM/yyyy");
 
@@ -273,7 +278,7 @@ namespace CisWindowsFormsApp
                     xlWorkSheet.Cells[rowNumber, 22] = totalDiscount;
 
                     xlWorkSheet.Cells[rowNumber, 23].NumberFormat = "#.##0";
-                    xlWorkSheet.Cells[rowNumber, 24] = taxBaseAmount;
+                    xlWorkSheet.Cells[rowNumber, 23] = taxBaseAmount;
 
                     xlWorkSheet.Cells[rowNumber, 24].NumberFormat = "#.##0";
                     xlWorkSheet.Cells[rowNumber, 24] = valueAddedAmount;
@@ -281,7 +286,7 @@ namespace CisWindowsFormsApp
                     xlWorkSheet.Cells[rowNumber, 25].NumberFormat = "#.##0";
                     xlWorkSheet.Cells[rowNumber, 25] = netValue;
 
-                    xlWorkSheet.Cells[rowNumber, 26].NumberFormat = "dd/mm/yyyy;@";
+                    xlWorkSheet.Cells[rowNumber, 26].NumberFormat = "@";
                     xlWorkSheet.Cells[rowNumber, 26].HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
                     xlWorkSheet.Cells[rowNumber, 26] = item.DueDate.ToString("dd/MM/yyyy");
 

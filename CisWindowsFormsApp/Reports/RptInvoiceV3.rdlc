@@ -1832,7 +1832,7 @@
 &amp; "NPWP: " &amp; IIf(Len(Fields!CustomerNpwp.Value) &lt; 1, "-", Fields!CustomerNpwp.Value)</Value>
                           <Style>
                             <FontFamily>NeueHaasGroteskText Pro</FontFamily>
-                            <FontSize>9pt</FontSize>
+                            <FontSize>8pt</FontSize>
                           </Style>
                         </TextRun>
                       </TextRuns>
@@ -1842,7 +1842,7 @@
                   <rd:DefaultName>CompDetail</rd:DefaultName>
                   <Top>0.07056cm</Top>
                   <Left>0.16091cm</Left>
-                  <Height>2.16485cm</Height>
+                  <Height>2.27217cm</Height>
                   <Width>5.5cm</Width>
                   <ZIndex>1</ZIndex>
                   <Style>
@@ -1873,7 +1873,7 @@
                           <Style>
                             <FontStyle>Normal</FontStyle>
                             <FontFamily>NeueHaasGroteskText Pro</FontFamily>
-                            <FontSize>9pt</FontSize>
+                            <FontSize>8pt</FontSize>
                             <FontWeight>Thin</FontWeight>
                           </Style>
                         </TextRun>
@@ -1883,7 +1883,7 @@
                   </Paragraphs>
                   <rd:DefaultName>CompDetail</rd:DefaultName>
                   <Left>6.23247cm</Left>
-                  <Height>2.16485cm</Height>
+                  <Height>2.34273cm</Height>
                   <Width>5.5cm</Width>
                   <ZIndex>2</ZIndex>
                   <Style>
