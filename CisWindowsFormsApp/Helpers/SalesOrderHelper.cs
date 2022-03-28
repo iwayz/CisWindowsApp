@@ -34,7 +34,7 @@ namespace CisWindowsFormsApp
 
         public decimal CalculateValueAddedAmount(decimal taxBaseAmount)
         {
-            return Math.Round(taxBaseAmount * Convert.ToDecimal(0.1), 0, MidpointRounding.AwayFromZero);
+            return Math.Round(taxBaseAmount * Convert.ToDecimal(0.11), 0, MidpointRounding.AwayFromZero);
         }
 
         public decimal CalculateNettValueAmount(decimal taxBaseAmount, decimal valueAddedAmount)

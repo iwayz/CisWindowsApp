@@ -350,7 +350,7 @@ namespace CisWindowsFormsApp
 
             decimal extraDisc = decimal.Parse(txtExtraDiscount.Text.Trim(), System.Globalization.NumberStyles.Currency);
             decimal taxBase = Math.Round(subTotal - extraDisc, 5, MidpointRounding.AwayFromZero);
-            decimal valueAddedTax = Math.Round(taxBase * (decimal)0.1, 5, MidpointRounding.AwayFromZero); // 10% PPN
+            decimal valueAddedTax = Math.Round(taxBase * (decimal)0.11, 5, MidpointRounding.AwayFromZero); // 11% PPN
             decimal total = Math.Round(taxBase + valueAddedTax, 5, MidpointRounding.AwayFromZero);
 
             txtSubTotal.Text = string.Format("{0:n0}", subTotal);
