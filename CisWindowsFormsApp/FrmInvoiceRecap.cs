@@ -220,7 +220,7 @@ namespace CisWindowsFormsApp
                     var valueAddedAmount = salesOrderHelper.CalculateValueAddedAmount(taxBaseAmount);
                     var netValue = salesOrderHelper.CalculateNettValueAmount(taxBaseAmount, valueAddedAmount);
 
-                    xlWorkSheet.Cells[rowNumber, 1].NumberFormat = "@";
+                    xlWorkSheet.Cells[rowNumber, 1].NumberFormat = "dd/mm/yyyy;@";
                     xlWorkSheet.Cells[rowNumber, 1].HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
                     xlWorkSheet.Cells[rowNumber, 1] = item.SalesDate.ToString("dd/MM/yyyy");
 
@@ -253,7 +253,7 @@ namespace CisWindowsFormsApp
                     xlWorkSheet.Cells[rowNumber, 14].NumberFormat = "@";
                     xlWorkSheet.Cells[rowNumber, 14] = item.BatchCode;
 
-                    xlWorkSheet.Cells[rowNumber, 15].NumberFormat = "@";
+                    xlWorkSheet.Cells[rowNumber, 15].NumberFormat = "dd/mm/yyyy;@";
                     xlWorkSheet.Cells[rowNumber, 15].HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
                     xlWorkSheet.Cells[rowNumber, 15] = item.ExpiredDate.ToString("MM/yyyy");
 
@@ -286,7 +286,7 @@ namespace CisWindowsFormsApp
                     xlWorkSheet.Cells[rowNumber, 25].NumberFormat = "#.##0";
                     xlWorkSheet.Cells[rowNumber, 25] = netValue;
 
-                    xlWorkSheet.Cells[rowNumber, 26].NumberFormat = "@";
+                    xlWorkSheet.Cells[rowNumber, 26].NumberFormat = "dd/mm/yyyy;@";
                     xlWorkSheet.Cells[rowNumber, 26].HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
                     xlWorkSheet.Cells[rowNumber, 26] = item.DueDate.ToString("dd/MM/yyyy");
 
