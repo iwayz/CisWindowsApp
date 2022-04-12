@@ -8,7 +8,7 @@ using System.Drawing.Printing;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
-using Excel = Microsoft.Office.Interop.Excel;
+//using Excel = Microsoft.Office.Interop.Excel;
 using System.Runtime.InteropServices;
 
 namespace CisWindowsFormsApp

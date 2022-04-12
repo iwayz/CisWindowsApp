@@ -208,6 +208,17 @@ namespace CisWindowsFormsApp
                 LoadDataItem(queryResult);
 
             SetUIButtonGroup();
+
+            // set tax label to 11% for any transaction from 1 April 2022
+            if (dtpSalesOrderDate.Value >= new DateTime(2022,4,1))
+            {
+                lblTax.Text = "PPN 11%";
+            }
+            else
+            {
+                lblTax.Text = "PPN 10%";
+
+            }
         }
 
         private void LoadSalesOrderData(string salesNo)
@@ -337,22 +348,38 @@ namespace CisWindowsFormsApp
         private void SetTotalSalesOrder()
         {
             decimal subTotal = 0;
-            for (int i = 0; i < dgvSalesOrderItem.Rows.Count; ++i)
+            decimal extraDisc = 0;
+            decimal taxBase = 0; ;
+            decimal valueAddedTax = 0;
+            decimal total = 0;
+
+            if (isAdd)
             {
-                if (dgvSalesOrderItem.Rows[i].Cells["price"].Value != null)
+                for (int i = 0; i < dgvSalesOrderItem.Rows.Count; ++i)
                 {
-                    var qty = decimal.Parse(dgvSalesOrderItem.Rows[i].Cells["qty"].Value.ToString(), System.Globalization.NumberStyles.Currency);
-                    var nettPrice = Math.Round(decimal.Parse(dgvSalesOrderItem.Rows[i].Cells["price"].Value.ToString(), System.Globalization.NumberStyles.Currency), 5, MidpointRounding.AwayFromZero);
-                    var discountPercent = Math.Round(Convert.ToDecimal(ValidateDiscount(dgvSalesOrderItem.Rows[i].Cells["discPercent"].Value.ToString().Replace("%", ""))) / 100, 5, MidpointRounding.AwayFromZero);
-                    subTotal += salesOrderHelper.CalculateTaxBaseAmount(qty, nettPrice, discountPercent);
+                    if (dgvSalesOrderItem.Rows[i].Cells["price"].Value != null)
+                    {
+                        var qty = decimal.Parse(dgvSalesOrderItem.Rows[i].Cells["qty"].Value.ToString(), System.Globalization.NumberStyles.Currency);
+                        var nettPrice = Math.Round(decimal.Parse(dgvSalesOrderItem.Rows[i].Cells["price"].Value.ToString(), System.Globalization.NumberStyles.Currency), 5, MidpointRounding.AwayFromZero);
+                        var discountPercent = Math.Round(Convert.ToDecimal(ValidateDiscount(dgvSalesOrderItem.Rows[i].Cells["discPercent"].Value.ToString().Replace("%", ""))) / 100, 5, MidpointRounding.AwayFromZero);
+                        subTotal += salesOrderHelper.CalculateTaxBaseAmount(qty, nettPrice, discountPercent);
+                    }
                 }
+
+                extraDisc = decimal.Parse(txtExtraDiscount.Text.Trim(), System.Globalization.NumberStyles.Currency);
+                taxBase = Math.Round(subTotal - extraDisc, 5, MidpointRounding.AwayFromZero);
+                valueAddedTax = Math.Round(taxBase * (decimal)0.11, 5, MidpointRounding.AwayFromZero); // 11% PPN
+                total = Math.Round(taxBase + valueAddedTax, 5, MidpointRounding.AwayFromZero);
             }
+            else
+            {
+                var salesOrder = _uow.Repository.GetById(txtSalesOrderId.Text.Trim());
 
-            decimal extraDisc = decimal.Parse(txtExtraDiscount.Text.Trim(), System.Globalization.NumberStyles.Currency);
-            decimal taxBase = Math.Round(subTotal - extraDisc, 5, MidpointRounding.AwayFromZero);
-            decimal valueAddedTax = Math.Round(taxBase * (decimal)0.11, 5, MidpointRounding.AwayFromZero); // 11% PPN
-            decimal total = Math.Round(taxBase + valueAddedTax, 5, MidpointRounding.AwayFromZero);
-
+                subTotal = Math.Round(salesOrder.SubTotalAmount, 5, MidpointRounding.AwayFromZero);
+                taxBase = Math.Round(salesOrder.TaxBaseAmount, 5, MidpointRounding.AwayFromZero);
+                valueAddedTax = Math.Round(salesOrder.ValueAddedTaxAmount, 5, MidpointRounding.AwayFromZero); // 11% PPN
+                total = Math.Round(salesOrder.GrandTotalAmount, 5, MidpointRounding.AwayFromZero);
+            }
             txtSubTotal.Text = string.Format("{0:n0}", subTotal);
             txtTaxBaseAmount.Text = string.Format("{0:n0}", taxBase);
             txtValueAddedTaxAmount.Text = string.Format("{0:n0}", valueAddedTax);
@@ -395,7 +422,7 @@ namespace CisWindowsFormsApp
             InitializeComponent();
             dbContext = new CisDbContext();
 
-            isAdd = true;
+            //isAdd = true;
             SetDataGridViewUI();
         }
 
@@ -410,7 +437,7 @@ namespace CisWindowsFormsApp
             BindComboBoxProduct();
             commonHelper.BindLocationComboBox(dbContext, cbProvince, Constant.LocationType.Province);
 
-            isAdd = true;
+            //isAdd = true;
             SetUIButtonGroup();
 
             cbCustomer.Focus();
@@ -799,6 +826,7 @@ namespace CisWindowsFormsApp
                 lblSalesNo.Text = soToAdd.SalesNo;
                 txtSalesOrderId.Text = soToAdd.Id;
                 txtModifiedAt.Text = soToAdd.ModifiedAt.ToString();
+                isAdd = false;
 
             }
 

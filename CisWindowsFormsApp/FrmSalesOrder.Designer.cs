@@ -84,7 +84,7 @@
             this.txtExtraDiscount = new System.Windows.Forms.TextBox();
             this.txtBatch = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
+            this.lblTax = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.pnlNote = new System.Windows.Forms.Panel();
@@ -647,7 +647,7 @@
             this.gbSalesOrderDetail.Controls.Add(this.txtBatch);
             this.gbSalesOrderDetail.Controls.Add(this.label8);
             this.gbSalesOrderDetail.Controls.Add(this.label14);
-            this.gbSalesOrderDetail.Controls.Add(this.label23);
+            this.gbSalesOrderDetail.Controls.Add(this.lblTax);
             this.gbSalesOrderDetail.Controls.Add(this.label17);
             this.gbSalesOrderDetail.Controls.Add(this.label16);
             this.gbSalesOrderDetail.Controls.Add(this.label10);
@@ -770,16 +770,16 @@
             this.label14.TabIndex = 17;
             this.label14.Text = "Total Harga";
             // 
-            // label23
+            // lblTax
             // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label23.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label23.Location = new System.Drawing.Point(381, 252);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(56, 15);
-            this.label23.TabIndex = 17;
-            this.label23.Text = "PPN 10%";
+            this.lblTax.AutoSize = true;
+            this.lblTax.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.lblTax.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblTax.Location = new System.Drawing.Point(381, 252);
+            this.lblTax.Name = "lblTax";
+            this.lblTax.Size = new System.Drawing.Size(56, 15);
+            this.lblTax.TabIndex = 17;
+            this.lblTax.Text = "PPN 10%";
             // 
             // label17
             // 
@@ -1266,7 +1266,7 @@
         private System.Windows.Forms.TextBox txtValueAddedTaxAmount;
         private System.Windows.Forms.TextBox txtTaxBaseAmount;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label lblTax;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label lblSalesNo;

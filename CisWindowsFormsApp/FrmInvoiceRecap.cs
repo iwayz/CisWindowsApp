@@ -191,7 +191,7 @@ namespace CisWindowsFormsApp
                 xlWorkSheet.Cells[1, 21] = "EXT. DISKON";
                 xlWorkSheet.Cells[1, 22] = "TOTAL DISKON";
                 xlWorkSheet.Cells[1, 23] = "DPP";
-                xlWorkSheet.Cells[1, 24] = "PPN 10%";
+                xlWorkSheet.Cells[1, 24] = "PPN 11%";
                 xlWorkSheet.Cells[1, 25] = "NETT VALUE";
                 xlWorkSheet.Cells[1, 26] = "TGL.JTH TEMPO";
                 xlWorkSheet.Cells[1, 27] = "ALAMAT KIRIM";
