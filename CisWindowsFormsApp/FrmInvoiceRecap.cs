@@ -191,7 +191,7 @@ namespace CisWindowsFormsApp
                 xlWorkSheet.Cells[1, 21] = "EXT. DISKON";
                 xlWorkSheet.Cells[1, 22] = "TOTAL DISKON";
                 xlWorkSheet.Cells[1, 23] = "DPP";
-                xlWorkSheet.Cells[1, 24] = "PPN 11%";
+                xlWorkSheet.Cells[1, 24] = recapDetail.Max(s => s.SalesDate) >= new DateTime(2022, 4, 1) ? "PPN 11%" : "PPN 10%";
                 xlWorkSheet.Cells[1, 25] = "NETT VALUE";
                 xlWorkSheet.Cells[1, 26] = "TGL.JTH TEMPO";
                 xlWorkSheet.Cells[1, 27] = "ALAMAT KIRIM";
@@ -217,7 +217,7 @@ namespace CisWindowsFormsApp
                     var propotionalExtraDiscount = (grossValue / sumOfGrossValue) * extraDiscount;
 
                     var taxBaseAmount = salesOrderHelper.CalculateTaxBaseAmount(qty, nettPrice, discountPercent, extraDiscount);
-                    var valueAddedAmount = salesOrderHelper.CalculateValueAddedAmount(taxBaseAmount);
+                    var valueAddedAmount = salesOrderHelper.CalculateValueAddedAmount(taxBaseAmount, item.SalesDate);
                     var netValue = salesOrderHelper.CalculateNettValueAmount(taxBaseAmount, valueAddedAmount);
 
                     xlWorkSheet.Cells[rowNumber, 1].NumberFormat = "dd/mm/yyyy;@";
@@ -521,7 +521,7 @@ namespace CisWindowsFormsApp
                     var propotionalExtraDiscount = (grossValue / sumOfGrossValue) * extraDiscount;
 
                     var taxBaseAmount = salesOrderHelper.CalculateTaxBaseAmount(qty, nettPrice, discountPercent, extraDiscount);
-                    var valueAddedAmount = salesOrderHelper.CalculateValueAddedAmount(taxBaseAmount);
+                    var valueAddedAmount = salesOrderHelper.CalculateValueAddedAmount(taxBaseAmount, DateTime.Parse(item["SalesDate"].ToString()));
                     var netValue = salesOrderHelper.CalculateNettValueAmount(taxBaseAmount, valueAddedAmount);
 
                     xlWorkSheet.Cells[rowNumber, 1].NumberFormat = "dd/mm/yy;@";

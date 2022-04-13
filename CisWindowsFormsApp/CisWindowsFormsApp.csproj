@@ -5,7 +5,7 @@
 	  <!--<TargetFramework>netcoreapp3.1</TargetFramework>-->
 	  <TargetFramework>net47</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <FileVersion>1.1.2204.3</FileVersion>
+    <FileVersion>1.1.2204.4</FileVersion>
     <AssemblyVersion>1.1.0.0</AssemblyVersion>
     <Version>1.1.0</Version>
     <PackageReleaseNotes>Perubahan PPN dari 10% menjadi 11%</PackageReleaseNotes>

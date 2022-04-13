@@ -32,9 +32,12 @@ namespace CisWindowsFormsApp
             return Math.Round((grossValue * (1 - Convert.ToDecimal(discountPercent)) - extraDiscountAmount), 0, MidpointRounding.AwayFromZero);
         }
 
-        public decimal CalculateValueAddedAmount(decimal taxBaseAmount)
+        public decimal CalculateValueAddedAmount(decimal taxBaseAmount, DateTime salesDate)
         {
-            return Math.Round(taxBaseAmount * Convert.ToDecimal(0.11), 0, MidpointRounding.AwayFromZero);
+            if (salesDate >= new DateTime(2022, 4, 1))
+                return Math.Round(taxBaseAmount * Convert.ToDecimal(0.11), 0, MidpointRounding.AwayFromZero);
+
+            return Math.Round(taxBaseAmount * Convert.ToDecimal(0.10), 0, MidpointRounding.AwayFromZero);
         }
 
         public decimal CalculateNettValueAmount(decimal taxBaseAmount, decimal valueAddedAmount)

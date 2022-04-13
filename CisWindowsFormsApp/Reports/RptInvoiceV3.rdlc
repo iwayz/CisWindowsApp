@@ -1137,7 +1137,7 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>PPN 11%</Value>
+                        <Value>=IIf(Fields!SalesDate.Value &gt;= DateValue("April 01, 2022"), "PPN 11%", "PPN 10%")</Value>
                         <Style>
                           <FontFamily>NeueHaasGroteskText Pro</FontFamily>
                         </Style>
