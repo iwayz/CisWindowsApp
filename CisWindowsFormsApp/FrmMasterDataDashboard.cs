@@ -12,6 +12,9 @@ namespace CisWindowsFormsApp
 
     public partial class FrmMasterDataDashboard : Form
     {
+        public int AreaWidth { get; set; } = 1024;
+        public int AreaHeight { get; set; } = 800;
+
         private Form activeForm;
 
         public FrmMasterDataDashboard()
@@ -27,6 +30,7 @@ namespace CisWindowsFormsApp
                 return;
             }
             
+            pnlMenu.Hide();
             OpenChildForm(new FrmRole(), sender);
         }
 
@@ -38,6 +42,7 @@ namespace CisWindowsFormsApp
                 return;
             }
 
+            pnlMenu.Hide();
             OpenChildForm(new FrmCustomer(), sender);
         }
 
@@ -49,6 +54,7 @@ namespace CisWindowsFormsApp
                 return;
             }
 
+            pnlMenu.Hide();
             OpenChildForm(new FrmUser(), sender);
         }
 
@@ -60,6 +66,7 @@ namespace CisWindowsFormsApp
                 return;
             }
             
+            pnlMenu.Hide();
             OpenChildForm(new FrmPrincipal(), sender);
         }
 
@@ -71,6 +78,7 @@ namespace CisWindowsFormsApp
                 return;
             }
             
+            pnlMenu.Hide();
             OpenChildForm(new FrmSalesArea(), sender);
         }
 
@@ -82,6 +90,7 @@ namespace CisWindowsFormsApp
                 return;
             }
             
+            pnlMenu.Hide();
             OpenChildForm(new FrmSalesman(), sender);
         }
 
@@ -93,6 +102,7 @@ namespace CisWindowsFormsApp
                 return;
             }
 
+            pnlMenu.Hide();
             OpenChildForm(new FrmBatch(), sender);
         }
 
@@ -104,6 +114,7 @@ namespace CisWindowsFormsApp
                 return;
             }
             
+            pnlMenu.Hide();
             OpenChildForm(new FrmOutletType(), sender);
         }
 
@@ -116,6 +127,7 @@ namespace CisWindowsFormsApp
 
             }
 
+            pnlMenu.Hide();
             OpenChildForm(new FrmMedicineCategoy(), sender);
         }
 
@@ -129,6 +141,7 @@ namespace CisWindowsFormsApp
 
             }
             
+            pnlMenu.Hide();
             OpenChildForm(new FrmUOM(), sender);
         }
 
@@ -141,6 +154,7 @@ namespace CisWindowsFormsApp
 
             }
             
+            pnlMenu.Hide();
             OpenChildForm(new FrmLocation(), sender);
 
         }
@@ -152,7 +166,7 @@ namespace CisWindowsFormsApp
                 CommonMessageHelper.NoAccess();
                 return;
             }
-            
+            pnlMenu.Hide();
             OpenChildForm(new FrmProduct(), sender);
         }
 
@@ -165,6 +179,7 @@ namespace CisWindowsFormsApp
 
             }
             
+            pnlMenu.Hide();
             OpenChildForm(new FrmUsageType(), sender);
         }
 
@@ -183,12 +198,16 @@ namespace CisWindowsFormsApp
             childForm.BringToFront();
             childForm.Show();
             lblMasterDataChildHeader.Text = childForm.Text;
-            this.pnlLogo.Visible = false;
         }
 
         private void FrmMasterDataDashboard_Load(object sender, EventArgs e)
         {
             //btnProducts.PerformClick();
+            gbMenu.Left = (AreaWidth - gbMenu.Width) / 2;
+            gbMenu.Top = (AreaHeight- gbMenu.Height) / 5;
+
+            lblMasterDataChildHeader.Left = (this.pnlChildHeader.Width - lblMasterDataChildHeader.Width) / 2;
+            lblMasterDataChildHeader.Top = (this.pnlChildHeader.Height - lblMasterDataChildHeader.Height) / 2;
         }
 
         private void btnTermOfPayment_Click(object sender, EventArgs e)
@@ -200,6 +219,7 @@ namespace CisWindowsFormsApp
 
             }
 
+            pnlMenu.Hide();
             OpenChildForm(new FrmTermOfPayment(), sender);
         }
 
@@ -212,6 +232,7 @@ namespace CisWindowsFormsApp
 
             }
 
+            pnlMenu.Hide();
             OpenChildForm(new FrmRepresentative(), sender);
         }
     }

@@ -39,8 +39,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtPbf = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtSiup = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.txtNpwp = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtWeb = new System.Windows.Forms.TextBox();
@@ -48,9 +46,9 @@
             this.gbContact = new System.Windows.Forms.GroupBox();
             this.gbLicense = new System.Windows.Forms.GroupBox();
             this.gbPic = new System.Windows.Forms.GroupBox();
-            this.txtPic = new System.Windows.Forms.TextBox();
+            this.txtPicName = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtSipa = new System.Windows.Forms.TextBox();
+            this.txtPicLincenseNo = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnReload = new System.Windows.Forms.Button();
@@ -79,7 +77,7 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(332, 31);
             this.txtName.TabIndex = 1;
-            this.txtName.Text = "PT. CAPUNG INDAH SEJAHTERA";
+            this.txtName.Text = "PT. CAPUNG INDAH SENTOSA";
             // 
             // txtAddress
             // 
@@ -165,37 +163,16 @@
             this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label5.Location = new System.Drawing.Point(19, 22);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(46, 15);
+            this.label5.Size = new System.Drawing.Size(79, 15);
             this.label5.TabIndex = 21;
-            this.label5.Text = "Ijin PBF";
-            // 
-            // txtSiup
-            // 
-            this.txtSiup.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSiup.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.txtSiup.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtSiup.Location = new System.Drawing.Point(19, 86);
-            this.txtSiup.Name = "txtSiup";
-            this.txtSiup.Size = new System.Drawing.Size(338, 31);
-            this.txtSiup.TabIndex = 2;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label6.Location = new System.Drawing.Point(19, 71);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(31, 15);
-            this.label6.TabIndex = 21;
-            this.label6.Text = "SIUP";
+            this.label5.Text = "No. Izin PBOT";
             // 
             // txtNpwp
             // 
             this.txtNpwp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNpwp.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtNpwp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtNpwp.Location = new System.Drawing.Point(19, 135);
+            this.txtNpwp.Location = new System.Drawing.Point(19, 92);
             this.txtNpwp.Name = "txtNpwp";
             this.txtNpwp.Size = new System.Drawing.Size(338, 31);
             this.txtNpwp.TabIndex = 3;
@@ -205,7 +182,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label7.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label7.Location = new System.Drawing.Point(19, 120);
+            this.label7.Location = new System.Drawing.Point(19, 77);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(42, 15);
             this.label7.TabIndex = 21;
@@ -257,41 +234,39 @@
             // 
             this.gbLicense.Controls.Add(this.label5);
             this.gbLicense.Controls.Add(this.txtPbf);
-            this.gbLicense.Controls.Add(this.txtSiup);
             this.gbLicense.Controls.Add(this.label7);
             this.gbLicense.Controls.Add(this.txtNpwp);
-            this.gbLicense.Controls.Add(this.label6);
             this.gbLicense.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.gbLicense.Location = new System.Drawing.Point(437, 26);
             this.gbLicense.Name = "gbLicense";
-            this.gbLicense.Size = new System.Drawing.Size(381, 181);
+            this.gbLicense.Size = new System.Drawing.Size(381, 154);
             this.gbLicense.TabIndex = 2;
             this.gbLicense.TabStop = false;
             this.gbLicense.Text = "Ijin Perusahaan";
             // 
             // gbPic
             // 
-            this.gbPic.Controls.Add(this.txtPic);
+            this.gbPic.Controls.Add(this.txtPicName);
             this.gbPic.Controls.Add(this.label9);
-            this.gbPic.Controls.Add(this.txtSipa);
+            this.gbPic.Controls.Add(this.txtPicLincenseNo);
             this.gbPic.Controls.Add(this.label10);
             this.gbPic.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.gbPic.Location = new System.Drawing.Point(437, 213);
+            this.gbPic.Location = new System.Drawing.Point(437, 192);
             this.gbPic.Name = "gbPic";
-            this.gbPic.Size = new System.Drawing.Size(381, 143);
+            this.gbPic.Size = new System.Drawing.Size(381, 158);
             this.gbPic.TabIndex = 3;
             this.gbPic.TabStop = false;
             this.gbPic.Text = "Penanggung Jawab";
             // 
-            // txtPic
+            // txtPicName
             // 
-            this.txtPic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPic.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.txtPic.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtPic.Location = new System.Drawing.Point(19, 37);
-            this.txtPic.Name = "txtPic";
-            this.txtPic.Size = new System.Drawing.Size(338, 31);
-            this.txtPic.TabIndex = 1;
+            this.txtPicName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPicName.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.txtPicName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtPicName.Location = new System.Drawing.Point(19, 37);
+            this.txtPicName.Name = "txtPicName";
+            this.txtPicName.Size = new System.Drawing.Size(338, 31);
+            this.txtPicName.TabIndex = 1;
             // 
             // label9
             // 
@@ -304,15 +279,15 @@
             this.label9.TabIndex = 21;
             this.label9.Text = "Nama";
             // 
-            // txtSipa
+            // txtPicLincenseNo
             // 
-            this.txtSipa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSipa.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.txtSipa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtSipa.Location = new System.Drawing.Point(19, 86);
-            this.txtSipa.Name = "txtSipa";
-            this.txtSipa.Size = new System.Drawing.Size(338, 31);
-            this.txtSipa.TabIndex = 2;
+            this.txtPicLincenseNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPicLincenseNo.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.txtPicLincenseNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtPicLincenseNo.Location = new System.Drawing.Point(19, 86);
+            this.txtPicLincenseNo.Name = "txtPicLincenseNo";
+            this.txtPicLincenseNo.Size = new System.Drawing.Size(338, 31);
+            this.txtPicLincenseNo.TabIndex = 2;
             // 
             // label10
             // 
@@ -321,9 +296,9 @@
             this.label10.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label10.Location = new System.Drawing.Point(19, 71);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(52, 15);
+            this.label10.Size = new System.Drawing.Size(64, 15);
             this.label10.TabIndex = 21;
-            this.label10.Text = "No. SIPA";
+            this.label10.Text = "No. SIPTTK";
             // 
             // btnSave
             // 
@@ -399,8 +374,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtPbf;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtSiup;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtNpwp;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtWeb;
@@ -408,9 +381,9 @@
         private System.Windows.Forms.GroupBox gbContact;
         private System.Windows.Forms.GroupBox gbLicense;
         private System.Windows.Forms.GroupBox gbPic;
-        private System.Windows.Forms.TextBox txtPic;
+        private System.Windows.Forms.TextBox txtPicName;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtSipa;
+        private System.Windows.Forms.TextBox txtPicLincenseNo;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnReload;

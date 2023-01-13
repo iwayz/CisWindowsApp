@@ -353,33 +353,24 @@ namespace CisWindowsFormsApp
             decimal valueAddedTax = 0;
             decimal total = 0;
 
-            if (isAdd)
+
+            for (int i = 0; i < dgvSalesOrderItem.Rows.Count; ++i)
             {
-                for (int i = 0; i < dgvSalesOrderItem.Rows.Count; ++i)
+                if (dgvSalesOrderItem.Rows[i].Cells["price"].Value != null)
                 {
-                    if (dgvSalesOrderItem.Rows[i].Cells["price"].Value != null)
-                    {
-                        var qty = decimal.Parse(dgvSalesOrderItem.Rows[i].Cells["qty"].Value.ToString(), System.Globalization.NumberStyles.Currency);
-                        var nettPrice = Math.Round(decimal.Parse(dgvSalesOrderItem.Rows[i].Cells["price"].Value.ToString(), System.Globalization.NumberStyles.Currency), 5, MidpointRounding.AwayFromZero);
-                        var discountPercent = Math.Round(Convert.ToDecimal(ValidateDiscount(dgvSalesOrderItem.Rows[i].Cells["discPercent"].Value.ToString().Replace("%", ""))) / 100, 5, MidpointRounding.AwayFromZero);
-                        subTotal += salesOrderHelper.CalculateTaxBaseAmount(qty, nettPrice, discountPercent);
-                    }
+                    var qty = decimal.Parse(dgvSalesOrderItem.Rows[i].Cells["qty"].Value.ToString(), System.Globalization.NumberStyles.Currency);
+                    var nettPrice = Math.Round(decimal.Parse(dgvSalesOrderItem.Rows[i].Cells["price"].Value.ToString(), System.Globalization.NumberStyles.Currency), 5, MidpointRounding.AwayFromZero);
+                    var discountPercent = Math.Round(Convert.ToDecimal(ValidateDiscount(dgvSalesOrderItem.Rows[i].Cells["discPercent"].Value.ToString().Replace("%", ""))) / 100, 5, MidpointRounding.AwayFromZero);
+                    subTotal += salesOrderHelper.CalculateTaxBaseAmount(qty, nettPrice, discountPercent);
                 }
-
-                extraDisc = decimal.Parse(txtExtraDiscount.Text.Trim(), System.Globalization.NumberStyles.Currency);
-                taxBase = Math.Round(subTotal - extraDisc, 5, MidpointRounding.AwayFromZero);
-                valueAddedTax = Math.Round(taxBase * (decimal)0.11, 5, MidpointRounding.AwayFromZero); // 11% PPN
-                total = Math.Round(taxBase + valueAddedTax, 5, MidpointRounding.AwayFromZero);
             }
-            else
-            {
-                var salesOrder = _uow.Repository.GetById(txtSalesOrderId.Text.Trim());
 
-                subTotal = Math.Round(salesOrder.SubTotalAmount, 5, MidpointRounding.AwayFromZero);
-                taxBase = Math.Round(salesOrder.TaxBaseAmount, 5, MidpointRounding.AwayFromZero);
-                valueAddedTax = Math.Round(salesOrder.ValueAddedTaxAmount, 5, MidpointRounding.AwayFromZero); // 11% PPN
-                total = Math.Round(salesOrder.GrandTotalAmount, 5, MidpointRounding.AwayFromZero);
-            }
+            extraDisc = decimal.Parse(txtExtraDiscount.Text.Trim(), System.Globalization.NumberStyles.Currency);
+            taxBase = Math.Round(subTotal - extraDisc, 5, MidpointRounding.AwayFromZero);
+            var taxPercent = dtpSalesOrderDate.Value >= new DateTime(2022, 4, 1) ? (decimal)0.11 : (decimal)0.10;
+            valueAddedTax = Math.Round(taxBase * taxPercent, 5, MidpointRounding.AwayFromZero); 
+            total = Math.Round(taxBase + valueAddedTax, 5, MidpointRounding.AwayFromZero);
+
             txtSubTotal.Text = string.Format("{0:n0}", subTotal);
             txtTaxBaseAmount.Text = string.Format("{0:n0}", taxBase);
             txtValueAddedTaxAmount.Text = string.Format("{0:n0}", valueAddedTax);
@@ -446,6 +437,8 @@ namespace CisWindowsFormsApp
             dtpExpiredDate.Format = DateTimePickerFormat.Custom;
             dtpExpiredDate.CustomFormat = "MM/yyyy";
             dtpExpiredDate.ShowUpDown = true;
+
+            NavigateRecord(RecordNavigation.Last);
         }
 
         private void cbProvince_SelectedIndexChanged(object sender, EventArgs e)
@@ -755,8 +748,8 @@ namespace CisWindowsFormsApp
                 soToAdd.TermOfPaymentId = cbTermOfPayment.SelectedValue.ToString();
                 soToAdd.TermOfPaymentCode = top.TermCode;
                 soToAdd.DueDate = dtpDueDate.Value;
-                soToAdd.PersonInCharge = Properties.Settings.Default.SalesPicName;
-                soToAdd.SipaNo = Properties.Settings.Default.SalesPicSipaNo;
+                soToAdd.PersonInCharge = Properties.Settings.Default.PicName;
+                soToAdd.SipaNo = Properties.Settings.Default.PicLicenseNo;
                 soToAdd.SalesmanId = cbSalesman.SelectedValue.ToString();
                 soToAdd.SalesmanCode = salesman.SalesmanCode;
                 soToAdd.SubTotalAmount = decimal.Parse(txtSubTotal.Text.Trim(), System.Globalization.NumberStyles.Currency);

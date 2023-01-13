@@ -209,12 +209,12 @@ namespace CisWindowsFormsApp
                     var grossValue = salesOrderHelper.CalculateGrossValue(qty, nettPrice);
                     var discountPercent = Math.Round(Convert.ToDecimal(item.DiscountPercentage / 100), 4, MidpointRounding.AwayFromZero);
                     var extraDiscount = item.ExtraDiscountAmount;
-                    var totalDiscount = Math.Round(Convert.ToDecimal(grossValue * discountPercent), 4, MidpointRounding.AwayFromZero) + extraDiscount;
 
                     // Set the Extra Discount proportionally
                     var sumOfGrossValue = recapDetail.Where(so => so.SalesNo == item.SalesNo)
                         .Sum(rc => (rc.Quantity * rc.Price));
                     var propotionalExtraDiscount = (grossValue / sumOfGrossValue) * extraDiscount;
+                    var totalDiscount = Math.Round(Convert.ToDecimal(grossValue * discountPercent), 4, MidpointRounding.AwayFromZero) + propotionalExtraDiscount;
 
                     var taxBaseAmount = salesOrderHelper.CalculateTaxBaseAmount(qty, nettPrice, discountPercent, extraDiscount);
                     var valueAddedAmount = salesOrderHelper.CalculateValueAddedAmount(taxBaseAmount, item.SalesDate);
@@ -222,7 +222,7 @@ namespace CisWindowsFormsApp
 
                     xlWorkSheet.Cells[rowNumber, 1].NumberFormat = "dd/mm/yyyy;@";
                     xlWorkSheet.Cells[rowNumber, 1].HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
-                    xlWorkSheet.Cells[rowNumber, 1] = item.SalesDate.ToString("dd/MM/yyyy");
+                    xlWorkSheet.Cells[rowNumber, 1] = item.SalesDate;
 
                     xlWorkSheet.Cells[rowNumber, 2] = item.SalesNo;
 
@@ -255,7 +255,7 @@ namespace CisWindowsFormsApp
 
                     xlWorkSheet.Cells[rowNumber, 15].NumberFormat = "dd/mm/yyyy;@";
                     xlWorkSheet.Cells[rowNumber, 15].HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
-                    xlWorkSheet.Cells[rowNumber, 15] = item.ExpiredDate.ToString("MM/yyyy");
+                    xlWorkSheet.Cells[rowNumber, 15] = item.ExpiredDate;
 
                     xlWorkSheet.Cells[rowNumber, 16] = item.UomCode.ToString();
 
@@ -288,7 +288,7 @@ namespace CisWindowsFormsApp
 
                     xlWorkSheet.Cells[rowNumber, 26].NumberFormat = "dd/mm/yyyy;@";
                     xlWorkSheet.Cells[rowNumber, 26].HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
-                    xlWorkSheet.Cells[rowNumber, 26] = item.DueDate.ToString("dd/MM/yyyy");
+                    xlWorkSheet.Cells[rowNumber, 26] = item.DueDate;
 
                     xlWorkSheet.Cells[rowNumber, 27] = item.DeliveryAddress;
 

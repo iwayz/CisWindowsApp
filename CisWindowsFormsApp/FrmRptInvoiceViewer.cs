@@ -29,12 +29,11 @@ namespace CisWindowsFormsApp
 
             // parameters
             var compNameParam = new ReportParameter("CompName", Properties.Settings.Default.CompName);
-            var compPicParam = new ReportParameter("CompPic", Properties.Settings.Default.SalesPicName + Environment.NewLine + Properties.Settings.Default.SalesPicSipaNo);
+            var compPicParam = new ReportParameter("CompPic", Properties.Settings.Default.PicName + Environment.NewLine + Properties.Settings.Default.PicLicenseNo);
             var soIdParam = new ReportParameter("SalesOrderId", SalesOrderId);
             var compDetail = @Properties.Settings.Default.CompAddress + Environment.NewLine
                 + "Telepon: " + Properties.Settings.Default.CompPhone + ", Email: "+ Properties.Settings.Default.CompEmail + Environment.NewLine
-                + "PBF: " + Properties.Settings.Default.CompPbf + Environment.NewLine 
-                + "SIUP: " + Properties.Settings.Default.CompSiup + Environment.NewLine
+                + "PBOT: " + Properties.Settings.Default.CompLicenseNo + Environment.NewLine 
                 + "NPWP: " + Properties.Settings.Default.CompNpwp + Environment.NewLine;
             var compDetailParam = new ReportParameter("CompDetail", compDetail);
 

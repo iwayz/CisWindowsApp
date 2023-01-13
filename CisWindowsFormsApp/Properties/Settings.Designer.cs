@@ -12,7 +12,7 @@ namespace CisWindowsFormsApp.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.7.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.10.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -25,7 +25,7 @@ namespace CisWindowsFormsApp.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("PT. CAPUNG INDAH SEJAHTERA")]
+        [global::System.Configuration.DefaultSettingValueAttribute("PT. CAPUNG INDAH SENTOSA")]
         public string CompName {
             get {
                 return ((string)(this["CompName"]));
@@ -52,7 +52,7 @@ namespace CisWindowsFormsApp.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("cise@sari-sehat.com")]
+        [global::System.Configuration.DefaultSettingValueAttribute("adm.ptcis@capungindah.com")]
         public string CompEmail {
             get {
                 return ((string)(this["CompEmail"]));
@@ -61,25 +61,16 @@ namespace CisWindowsFormsApp.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("xxx")]
-        public string CompPbf {
+        [global::System.Configuration.DefaultSettingValueAttribute("10112200794940001")]
+        public string CompLicenseNo {
             get {
-                return ((string)(this["CompPbf"]));
+                return ((string)(this["CompLicenseNo"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("xxx")]
-        public string CompSiup {
-            get {
-                return ((string)(this["CompSiup"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("xxx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("61.468.918.0-524.000")]
         public string CompNpwp {
             get {
                 return ((string)(this["CompNpwp"]));
@@ -128,7 +119,7 @@ namespace CisWindowsFormsApp.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("www.sari-sehat.com")]
+        [global::System.Configuration.DefaultSettingValueAttribute("www.capungindah.com")]
         public string CompWebsite {
             get {
                 return ((string)(this["CompWebsite"]));
@@ -146,19 +137,19 @@ namespace CisWindowsFormsApp.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("PharmacistName")]
-        public string SalesPicName {
+        [global::System.Configuration.DefaultSettingValueAttribute("Annisa Indah Wahyuni, A.Md. Farm.")]
+        public string PicName {
             get {
-                return ((string)(this["SalesPicName"]));
+                return ((string)(this["PicName"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("PharmacistSipaNo")]
-        public string SalesPicSipaNo {
+        [global::System.Configuration.DefaultSettingValueAttribute("10112200794940001")]
+        public string PicLicenseNo {
             get {
-                return ((string)(this["SalesPicSipaNo"]));
+                return ((string)(this["PicLicenseNo"]));
             }
         }
         

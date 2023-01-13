@@ -47,11 +47,10 @@ namespace CisWindowsFormsApp
             SaveCompInfoValue(nameof(Properties.Settings.Default.CompPhone), txtPhone.Text);
             SaveCompInfoValue(nameof(Properties.Settings.Default.CompEmail), txtEmail.Text);
             SaveCompInfoValue(nameof(Properties.Settings.Default.CompWebsite), txtWeb.Text);
-            SaveCompInfoValue(nameof(Properties.Settings.Default.CompPbf), txtPbf.Text);
-            SaveCompInfoValue(nameof(Properties.Settings.Default.CompSiup), txtSiup.Text);
+            SaveCompInfoValue(nameof(Properties.Settings.Default.CompLicenseNo), txtPbf.Text);
             SaveCompInfoValue(nameof(Properties.Settings.Default.CompNpwp), txtNpwp.Text);
-            SaveCompInfoValue(nameof(Properties.Settings.Default.SalesPicName), txtPic.Text);
-            SaveCompInfoValue(nameof(Properties.Settings.Default.SalesPicSipaNo), txtSipa.Text);
+            SaveCompInfoValue(nameof(Properties.Settings.Default.PicName), txtPicName.Text);
+            SaveCompInfoValue(nameof(Properties.Settings.Default.PicLicenseNo), txtPicLincenseNo.Text);
 
             // update app settings
             Properties.Settings.Default[nameof(Properties.Settings.Default.CompName)] = txtName.Text;
@@ -59,11 +58,10 @@ namespace CisWindowsFormsApp
             Properties.Settings.Default[nameof(Properties.Settings.Default.CompPhone)] = txtPhone.Text;
             Properties.Settings.Default[nameof(Properties.Settings.Default.CompEmail)] = txtEmail.Text;
             Properties.Settings.Default[nameof(Properties.Settings.Default.CompWebsite)] = txtWeb.Text;
-            Properties.Settings.Default[nameof(Properties.Settings.Default.CompPbf)] = txtPbf.Text;
-            Properties.Settings.Default[nameof(Properties.Settings.Default.CompSiup)] = txtSiup.Text;
+            Properties.Settings.Default[nameof(Properties.Settings.Default.CompLicenseNo)] = txtPbf.Text;
             Properties.Settings.Default[nameof(Properties.Settings.Default.CompNpwp)] = txtNpwp.Text;
-            Properties.Settings.Default[nameof(Properties.Settings.Default.SalesPicName)] = txtPic.Text;
-            Properties.Settings.Default[nameof(Properties.Settings.Default.SalesPicSipaNo)] = txtSipa.Text;
+            Properties.Settings.Default[nameof(Properties.Settings.Default.PicName)] = txtPicName.Text;
+            Properties.Settings.Default[nameof(Properties.Settings.Default.PicLicenseNo)] = txtPicLincenseNo.Text;
             Properties.Settings.Default.Save();
 
             btnReload.PerformClick();
@@ -74,37 +72,68 @@ namespace CisWindowsFormsApp
         private void LoadCompanyInfo()
         {
             var compInfo = uow.Repository.GetAll();
-            var compName = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.CompName)).FirstOrDefault().Value;
-            var compAddress = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.CompAddress)).FirstOrDefault().Value;
-            var compPhone = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.CompPhone)).FirstOrDefault().Value;
-            var compEmail = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.CompEmail)).FirstOrDefault().Value;
-            var compWeb = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.CompWebsite)).FirstOrDefault().Value;
-            var compPbf = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.CompPbf)).FirstOrDefault().Value;
-            var compSiup = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.CompSiup)).FirstOrDefault().Value;
-            var compNpwp = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.CompNpwp)).FirstOrDefault().Value;
-            var salesPicName = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.SalesPicName)).FirstOrDefault().Value;
-            var salesPicSipaNo = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.SalesPicSipaNo)).FirstOrDefault().Value;
+            string compName, compAddress, compPhone, compEmail, compWeb, compLicenseNo, compNpwp, picName, picLincenseNo;
+
+            if (compInfo.Any())
+            {
+                compName = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.CompName)).FirstOrDefault().Value;
+                compAddress = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.CompAddress)).FirstOrDefault().Value;
+                compPhone = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.CompPhone)).FirstOrDefault().Value;
+                compEmail = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.CompEmail)).FirstOrDefault().Value;
+                compWeb = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.CompWebsite)).FirstOrDefault().Value;
+                compLicenseNo = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.CompLicenseNo)).FirstOrDefault().Value;
+                compNpwp = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.CompNpwp)).FirstOrDefault().Value;
+                picName = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.PicName)).FirstOrDefault().Value;
+                picLincenseNo = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.PicLicenseNo)).FirstOrDefault().Value;
+            } else
+            {
+                compName = Properties.Settings.Default.CompName;
+                compAddress = Properties.Settings.Default.CompAddress;
+                compPhone = Properties.Settings.Default.CompPhone;
+                compEmail = Properties.Settings.Default.CompEmail;
+                compWeb = Properties.Settings.Default.CompWebsite;
+                compLicenseNo = Properties.Settings.Default.CompLicenseNo;
+                compNpwp = Properties.Settings.Default.CompNpwp;
+                picName = Properties.Settings.Default.PicName;
+                picLincenseNo = Properties.Settings.Default.PicLicenseNo;
+            }
+            
 
             txtName.Text = compName;
             txtAddress.Text = compAddress;
             txtPhone.Text = compPhone;
             txtEmail.Text = compEmail;
             txtWeb.Text = compWeb;
-            txtPbf.Text = compPbf;
-            txtSiup.Text = compSiup;
+            txtPbf.Text = compLicenseNo;
             txtNpwp.Text = compNpwp;
-            txtPic.Text = salesPicName;
-            txtSipa.Text = salesPicSipaNo;
+
+            txtPicName.Text = picName;
+            txtPicLincenseNo.Text = picLincenseNo;
         }
 
         private void SaveCompInfoValue(string key, string val)
         {
             var valToUpdate = uow.Repository.GetAll().Where(e => e.Key == key).FirstOrDefault();
-            valToUpdate.Value = val;
-            valToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUserId;
-            valToUpdate.ModifiedAt = DateTime.Now;
+            if (valToUpdate != null)
+            {
+                valToUpdate.Value = val;
+                valToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUserId;
+                valToUpdate.ModifiedAt = DateTime.Now;
+                uow.Repository.Update(valToUpdate);
+            }
+            else
+            {
+                uow.Repository.Add(new CompanyInfo
+                {
+                    Key = key,
+                    Value = val,
+                    CreatedBy = Properties.Settings.Default.CurrentUserId,
+                    CreatedAt = DateTime.Now,
+                    ModifiedBy = Properties.Settings.Default.CurrentUserId,
+                    ModifiedAt = DateTime.Now
+                });
+            }
 
-            uow.Repository.Update(valToUpdate);
             var res = uow.Commit();
         }
 

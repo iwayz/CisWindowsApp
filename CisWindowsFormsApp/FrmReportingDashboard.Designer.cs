@@ -29,140 +29,119 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmReportingDashboard));
-            this.panel1 = new System.Windows.Forms.Panel();
             this.btnExportPelanggan = new System.Windows.Forms.Button();
             this.btnExportProduct = new System.Windows.Forms.Button();
             this.btnExportExcel = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.pnlChildHeader = new System.Windows.Forms.Panel();
             this.lblReportingChildHeader = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.pnlLogo = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.pnlLogo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pnlSeparator = new System.Windows.Forms.Panel();
+            this.pnlMenuReporting = new System.Windows.Forms.Panel();
+            this.gbMenuReporting = new System.Windows.Forms.GroupBox();
+            this.pnlChildHeader.SuspendLayout();
+            this.pnlMenuReporting.SuspendLayout();
+            this.gbMenuReporting.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.btnExportPelanggan);
-            this.panel1.Controls.Add(this.btnExportProduct);
-            this.panel1.Controls.Add(this.btnExportExcel);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1002, 48);
-            this.panel1.TabIndex = 0;
             // 
             // btnExportPelanggan
             // 
-            this.btnExportPelanggan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(157)))), ((int)(((byte)(74)))), ((int)(((byte)(156)))));
+            this.btnExportPelanggan.BackColor = System.Drawing.Color.DarkOrange;
             this.btnExportPelanggan.FlatAppearance.BorderSize = 0;
             this.btnExportPelanggan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExportPelanggan.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.btnExportPelanggan.ForeColor = System.Drawing.Color.White;
             this.btnExportPelanggan.Image = ((System.Drawing.Image)(resources.GetObject("btnExportPelanggan.Image")));
-            this.btnExportPelanggan.Location = new System.Drawing.Point(326, 10);
+            this.btnExportPelanggan.Location = new System.Drawing.Point(133, 169);
             this.btnExportPelanggan.Name = "btnExportPelanggan";
-            this.btnExportPelanggan.Size = new System.Drawing.Size(148, 30);
+            this.btnExportPelanggan.Size = new System.Drawing.Size(237, 60);
             this.btnExportPelanggan.TabIndex = 2;
             this.btnExportPelanggan.Text = " Exp. Pelanggan";
-            this.btnExportPelanggan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnExportPelanggan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnExportPelanggan.UseVisualStyleBackColor = false;
             this.btnExportPelanggan.Click += new System.EventHandler(this.btnExportPelanggan_Click);
             // 
             // btnExportProduct
             // 
-            this.btnExportProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(125)))), ((int)(((byte)(239)))));
+            this.btnExportProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(151)))), ((int)(((byte)(143)))));
             this.btnExportProduct.FlatAppearance.BorderSize = 0;
             this.btnExportProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExportProduct.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.btnExportProduct.ForeColor = System.Drawing.Color.White;
             this.btnExportProduct.Image = ((System.Drawing.Image)(resources.GetObject("btnExportProduct.Image")));
-            this.btnExportProduct.Location = new System.Drawing.Point(172, 10);
+            this.btnExportProduct.Location = new System.Drawing.Point(133, 103);
             this.btnExportProduct.Name = "btnExportProduct";
-            this.btnExportProduct.Size = new System.Drawing.Size(148, 30);
+            this.btnExportProduct.Size = new System.Drawing.Size(237, 60);
             this.btnExportProduct.TabIndex = 1;
             this.btnExportProduct.Text = " Exp. Produk";
-            this.btnExportProduct.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnExportProduct.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnExportProduct.UseVisualStyleBackColor = false;
             this.btnExportProduct.Click += new System.EventHandler(this.btnExportProduct_Click);
             // 
             // btnExportExcel
             // 
-            this.btnExportExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(115)))), ((int)(((byte)(70)))));
+            this.btnExportExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(95)))), ((int)(((byte)(139)))));
             this.btnExportExcel.FlatAppearance.BorderSize = 0;
             this.btnExportExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExportExcel.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.btnExportExcel.ForeColor = System.Drawing.Color.White;
             this.btnExportExcel.Image = ((System.Drawing.Image)(resources.GetObject("btnExportExcel.Image")));
-            this.btnExportExcel.Location = new System.Drawing.Point(18, 10);
+            this.btnExportExcel.Location = new System.Drawing.Point(133, 37);
             this.btnExportExcel.Name = "btnExportExcel";
-            this.btnExportExcel.Size = new System.Drawing.Size(148, 30);
+            this.btnExportExcel.Size = new System.Drawing.Size(237, 60);
             this.btnExportExcel.TabIndex = 0;
             this.btnExportExcel.Text = " Exp. Faktur";
-            this.btnExportExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnExportExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnExportExcel.UseVisualStyleBackColor = false;
             this.btnExportExcel.Click += new System.EventHandler(this.btnExportExcel_Click);
             // 
-            // panel2
+            // pnlChildHeader
             // 
-            this.panel2.Controls.Add(this.panel4);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 48);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1002, 29);
-            this.panel2.TabIndex = 1;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.lblReportingChildHeader);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(277, 29);
-            this.panel4.TabIndex = 0;
+            this.pnlChildHeader.Controls.Add(this.lblReportingChildHeader);
+            this.pnlChildHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlChildHeader.Location = new System.Drawing.Point(0, 0);
+            this.pnlChildHeader.Name = "pnlChildHeader";
+            this.pnlChildHeader.Size = new System.Drawing.Size(1002, 40);
+            this.pnlChildHeader.TabIndex = 1;
             // 
             // lblReportingChildHeader
             // 
+            this.lblReportingChildHeader.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblReportingChildHeader.AutoSize = true;
             this.lblReportingChildHeader.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold);
             this.lblReportingChildHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
-            this.lblReportingChildHeader.Location = new System.Drawing.Point(10, 3);
+            this.lblReportingChildHeader.Location = new System.Drawing.Point(12, 9);
             this.lblReportingChildHeader.Name = "lblReportingChildHeader";
-            this.lblReportingChildHeader.Size = new System.Drawing.Size(0, 23);
+            this.lblReportingChildHeader.Size = new System.Drawing.Size(61, 23);
             this.lblReportingChildHeader.TabIndex = 0;
+            this.lblReportingChildHeader.Text = "MENU";
             // 
-            // panel3
+            // pnlSeparator
             // 
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 77);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1002, 602);
-            this.panel3.TabIndex = 2;
+            this.pnlSeparator.BackColor = System.Drawing.Color.Silver;
+            this.pnlSeparator.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlSeparator.Location = new System.Drawing.Point(0, 40);
+            this.pnlSeparator.Name = "pnlSeparator";
+            this.pnlSeparator.Size = new System.Drawing.Size(1002, 2);
+            this.pnlSeparator.TabIndex = 2;
             // 
-            // pnlLogo
+            // pnlMenuReporting
             // 
-            this.pnlLogo.Controls.Add(this.pictureBox1);
-            this.pnlLogo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlLogo.Location = new System.Drawing.Point(0, 77);
-            this.pnlLogo.Name = "pnlLogo";
-            this.pnlLogo.Size = new System.Drawing.Size(1002, 262);
-            this.pnlLogo.TabIndex = 3;
+            this.pnlMenuReporting.Controls.Add(this.gbMenuReporting);
+            this.pnlMenuReporting.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlMenuReporting.Location = new System.Drawing.Point(0, 42);
+            this.pnlMenuReporting.Name = "pnlMenuReporting";
+            this.pnlMenuReporting.Size = new System.Drawing.Size(1002, 637);
+            this.pnlMenuReporting.TabIndex = 3;
             // 
-            // pictureBox1
+            // gbMenuReporting
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 75);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1002, 187);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.gbMenuReporting.Controls.Add(this.btnExportPelanggan);
+            this.gbMenuReporting.Controls.Add(this.btnExportProduct);
+            this.gbMenuReporting.Controls.Add(this.btnExportExcel);
+            this.gbMenuReporting.Location = new System.Drawing.Point(183, 92);
+            this.gbMenuReporting.Name = "gbMenuReporting";
+            this.gbMenuReporting.Size = new System.Drawing.Size(506, 266);
+            this.gbMenuReporting.TabIndex = 0;
+            this.gbMenuReporting.TabStop = false;
             // 
             // FrmReportingDashboard
             // 
@@ -170,34 +149,29 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1002, 679);
-            this.Controls.Add(this.pnlLogo);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlMenuReporting);
+            this.Controls.Add(this.pnlSeparator);
+            this.Controls.Add(this.pnlChildHeader);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmReportingDashboard";
             this.Text = "REPORTING";
-            this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.pnlLogo.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.Load += new System.EventHandler(this.FrmReportingDashboard_Load);
+            this.pnlChildHeader.ResumeLayout(false);
+            this.pnlChildHeader.PerformLayout();
+            this.pnlMenuReporting.ResumeLayout(false);
+            this.gbMenuReporting.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel pnlChildHeader;
+        private System.Windows.Forms.Panel pnlSeparator;
         private System.Windows.Forms.Label lblReportingChildHeader;
         private System.Windows.Forms.Button btnExportExcel;
-        private System.Windows.Forms.Panel pnlLogo;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel pnlMenuReporting;
         private System.Windows.Forms.Button btnExportPelanggan;
         private System.Windows.Forms.Button btnExportProduct;
+        private System.Windows.Forms.GroupBox gbMenuReporting;
     }
 }

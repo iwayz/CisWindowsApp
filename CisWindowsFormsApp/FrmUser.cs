@@ -119,6 +119,14 @@ namespace CisWindowsFormsApp
 
         private void btnReload_Click(object sender, EventArgs e)
         {
+            using (var context = new CisDbContext())
+            {
+                var entity = context.Users.Find("7E888248-072B-41CF-A8EB-E0A55FEEEB7B");
+                context.Entry(entity).State = System.Data.Entity.EntityState.Unchanged;
+                context.SaveChanges();
+            }
+
+            
             var countRole = uowUser.Repository.GetAll().Count();
             if (countRole <= 0)
             {

@@ -11,6 +11,9 @@ namespace CisWindowsFormsApp
 {
     public partial class FrmReportingDashboard : Form
     {
+        public int AreaWidth { get; set; } = 1024;
+        public int AreaHeight { get; set; } = 800;
+
         public FrmReportingDashboard()
         {
             InitializeComponent();
@@ -50,6 +53,15 @@ namespace CisWindowsFormsApp
 
             FrmCustomerRecap frmCustomerRecap = new FrmCustomerRecap();
             frmCustomerRecap.ShowDialog();
+        }
+
+        private void FrmReportingDashboard_Load(object sender, EventArgs e)
+        {
+            gbMenuReporting.Left = (AreaWidth - gbMenuReporting.Width) / 2;
+            gbMenuReporting.Top = (AreaHeight - gbMenuReporting.Height) / 5;
+
+            lblReportingChildHeader.Left = (this.pnlChildHeader.Width - lblReportingChildHeader.Width) / 2;
+            lblReportingChildHeader.Top = (this.pnlChildHeader.Height - lblReportingChildHeader.Height) / 2;
         }
     }
 }

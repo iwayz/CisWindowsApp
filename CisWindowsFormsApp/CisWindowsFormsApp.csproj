@@ -5,10 +5,11 @@
 	  <!--<TargetFramework>netcoreapp3.1</TargetFramework>-->
 	  <TargetFramework>net47</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <FileVersion>1.1.2204.4</FileVersion>
-    <AssemblyVersion>1.1.0.0</AssemblyVersion>
-    <Version>1.1.0</Version>
-    <PackageReleaseNotes>Perubahan PPN dari 10% menjadi 11%</PackageReleaseNotes>
+    <FileVersion>2.1.2301.1</FileVersion>
+    <AssemblyVersion>2.1.0.0</AssemblyVersion>
+    <Version>2.0.0</Version>
+    <PackageReleaseNotes>New look, New company name
+PT. Capung Indah Sentosa</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

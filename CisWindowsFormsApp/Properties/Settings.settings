@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="CompName" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">PT. CAPUNG INDAH SEJAHTERA</Value>
+      <Value Profile="(Default)">PT. CAPUNG INDAH SENTOSA</Value>
     </Setting>
     <Setting Name="CompAddress" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Jl. Mayjend Bambang Sugeng Km. 5, Magelang 56172</Value>
@@ -12,16 +12,13 @@
       <Value Profile="(Default)">0293-325 333</Value>
     </Setting>
     <Setting Name="CompEmail" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">cise@sari-sehat.com</Value>
+      <Value Profile="(Default)">adm.ptcis@capungindah.com</Value>
     </Setting>
-    <Setting Name="CompPbf" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">xxx</Value>
-    </Setting>
-    <Setting Name="CompSiup" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">xxx</Value>
+    <Setting Name="CompLicenseNo" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">10112200794940001</Value>
     </Setting>
     <Setting Name="CompNpwp" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">xxx</Value>
+      <Value Profile="(Default)">61.468.918.0-524.000</Value>
     </Setting>
     <Setting Name="CompBankAcc" Type="System.String" Scope="Application">
       <Value Profile="(Default)">BCA 344.025.7070</Value>
@@ -46,16 +43,16 @@
       <Value Profile="(Default)">Data Source=MTPC746\IWMSSQLSERVER;Initial Catalog=POSCIS;Integrated Security=True</Value>
     </Setting>
     <Setting Name="CompWebsite" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">www.sari-sehat.com</Value>
+      <Value Profile="(Default)">www.capungindah.com</Value>
     </Setting>
     <Setting Name="CurrentUserId" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Guid</Value>
     </Setting>
-    <Setting Name="SalesPicName" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">PharmacistName</Value>
+    <Setting Name="PicName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Annisa Indah Wahyuni, A.Md. Farm.</Value>
     </Setting>
-    <Setting Name="SalesPicSipaNo" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">PharmacistSipaNo</Value>
+    <Setting Name="PicLicenseNo" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">10112200794940001</Value>
     </Setting>
     <Setting Name="CIS_POSConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;

@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.pnlLeftPane = new System.Windows.Forms.Panel();
             this.btnLogout = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlDateTime = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxDate = new System.Windows.Forms.PictureBox();
             this.lblToday = new System.Windows.Forms.Label();
             this.btnReporting = new System.Windows.Forms.Button();
             this.btnTransaksi = new System.Windows.Forms.Button();
@@ -43,7 +44,7 @@
             this.pnlLogo = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblYear = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -65,9 +66,10 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manualBookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.pnlLeftPane.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pnlDateTime.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDate)).BeginInit();
             this.pnlSeparatorLeftPane.SuspendLayout();
             this.pnlLogo.SuspendLayout();
             this.pnlHeader.SuspendLayout();
@@ -80,9 +82,9 @@
             // 
             // pnlLeftPane
             // 
-            this.pnlLeftPane.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(65)))), ((int)(((byte)(79)))));
+            this.pnlLeftPane.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(50)))), ((int)(((byte)(77)))));
             this.pnlLeftPane.Controls.Add(this.btnLogout);
-            this.pnlLeftPane.Controls.Add(this.panel1);
+            this.pnlLeftPane.Controls.Add(this.pnlDateTime);
             this.pnlLeftPane.Controls.Add(this.btnReporting);
             this.pnlLeftPane.Controls.Add(this.btnTransaksi);
             this.pnlLeftPane.Controls.Add(this.btnMasterData);
@@ -115,17 +117,18 @@
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
-            // panel1
+            // pnlDateTime
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(65)))), ((int)(((byte)(79)))));
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.lblToday);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 593);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(172, 112);
-            this.panel1.TabIndex = 3;
+            this.pnlDateTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(50)))), ((int)(((byte)(77)))));
+            this.pnlDateTime.Controls.Add(this.panel3);
+            this.pnlDateTime.Controls.Add(this.pictureBoxDate);
+            this.pnlDateTime.Controls.Add(this.lblToday);
+            this.pnlDateTime.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlDateTime.Location = new System.Drawing.Point(0, 593);
+            this.pnlDateTime.Name = "pnlDateTime";
+            this.pnlDateTime.Size = new System.Drawing.Size(172, 112);
+            this.pnlDateTime.TabIndex = 3;
+            this.toolTip.SetToolTip(this.pnlDateTime, "Such a beautiful day");
             // 
             // panel3
             // 
@@ -135,22 +138,22 @@
             this.panel3.Size = new System.Drawing.Size(69, 2);
             this.panel3.TabIndex = 2;
             // 
-            // pictureBox1
+            // pictureBoxDate
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(81, 16);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(16, 16);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.pictureBoxDate.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxDate.Image")));
+            this.pictureBoxDate.Location = new System.Drawing.Point(81, 16);
+            this.pictureBoxDate.Name = "pictureBoxDate";
+            this.pictureBoxDate.Size = new System.Drawing.Size(16, 16);
+            this.pictureBoxDate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBoxDate.TabIndex = 1;
+            this.pictureBoxDate.TabStop = false;
             // 
             // lblToday
             // 
             this.lblToday.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.lblToday.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Italic);
             this.lblToday.ForeColor = System.Drawing.Color.White;
-            this.lblToday.Location = new System.Drawing.Point(-2, 32);
+            this.lblToday.Location = new System.Drawing.Point(-3, 43);
             this.lblToday.Name = "lblToday";
             this.lblToday.Size = new System.Drawing.Size(178, 29);
             this.lblToday.TabIndex = 0;
@@ -243,7 +246,7 @@
             this.pnlLogo.BackColor = System.Drawing.Color.Transparent;
             this.pnlLogo.Controls.Add(this.label1);
             this.pnlLogo.Controls.Add(this.label2);
-            this.pnlLogo.Controls.Add(this.label3);
+            this.pnlLogo.Controls.Add(this.lblYear);
             this.pnlLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlLogo.Location = new System.Drawing.Point(0, 0);
             this.pnlLogo.Name = "pnlLogo";
@@ -274,17 +277,17 @@
             this.label2.Text = "C A P U N G";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label3
+            // lblYear
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.label3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(-2, 94);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(178, 23);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "©2021";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblYear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.lblYear.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.lblYear.ForeColor = System.Drawing.Color.White;
+            this.lblYear.Location = new System.Drawing.Point(-2, 94);
+            this.lblYear.Name = "lblYear";
+            this.lblYear.Size = new System.Drawing.Size(178, 23);
+            this.lblYear.TabIndex = 0;
+            this.lblYear.Text = "Year";
+            this.lblYear.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel2
             // 
@@ -297,7 +300,7 @@
             // 
             // pnlHeader
             // 
-            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(125)))), ((int)(((byte)(239)))));
+            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(169)))), ((int)(((byte)(130)))));
             this.pnlHeader.Controls.Add(this.panel7);
             this.pnlHeader.Controls.Add(this.panel6);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
@@ -370,6 +373,7 @@
             // 
             // pnlChildren
             // 
+            this.pnlChildren.BackColor = System.Drawing.Color.White;
             this.pnlChildren.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlChildren.Location = new System.Drawing.Point(174, 57);
             this.pnlChildren.Name = "pnlChildren";
@@ -502,10 +506,11 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMain_FormClosed);
             this.Load += new System.EventHandler(this.Main_Load);
+            this.Resize += new System.EventHandler(this.FrmMain_Resize);
             this.pnlLeftPane.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.pnlDateTime.ResumeLayout(false);
+            this.pnlDateTime.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDate)).EndInit();
             this.pnlSeparatorLeftPane.ResumeLayout(false);
             this.pnlLogo.ResumeLayout(false);
             this.pnlHeader.ResumeLayout(false);
@@ -532,9 +537,9 @@
         private System.Windows.Forms.Button btnMasterData;
         private System.Windows.Forms.Button btnReporting;
         private System.Windows.Forms.Button btnTransaksi;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlDateTime;
         private System.Windows.Forms.Label lblToday;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBoxDate;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel6;
@@ -545,7 +550,7 @@
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblYear;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Label lblCompanyName;
         private System.Windows.Forms.Label lblCompanyWeb;
@@ -558,5 +563,6 @@
         private System.Windows.Forms.ToolStripMenuItem backupDatabaseToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }
