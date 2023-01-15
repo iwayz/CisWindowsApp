@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSalesOrder));
             this.txtDeliveryAddress = new System.Windows.Forms.TextBox();
             this.cbDistrict = new System.Windows.Forms.ComboBox();
@@ -113,6 +114,9 @@
             this.label24 = new System.Windows.Forms.Label();
             this.lblSalesNo = new System.Windows.Forms.Label();
             this.lblMark = new System.Windows.Forms.Label();
+            this.txtRealSalesNo = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.toolTipSales = new System.Windows.Forms.ToolTip(this.components);
             this.gbShippingAddress.SuspendLayout();
             this.gbCustomerDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesOrderItem)).BeginInit();
@@ -858,6 +862,7 @@
             this.txtSalesNo.Name = "txtSalesNo";
             this.txtSalesNo.Size = new System.Drawing.Size(168, 27);
             this.txtSalesNo.TabIndex = 1;
+            this.toolTipSales.SetToolTip(this.txtSalesNo, "Tambahkan digit tahun pada awal No. Faktur. Contoh: 23S1-090015");
             this.txtSalesNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSalesNo_KeyPress);
             // 
             // btnSearch
@@ -975,6 +980,8 @@
             // 
             // pnlHiddenFields
             // 
+            this.pnlHiddenFields.Controls.Add(this.label22);
+            this.pnlHiddenFields.Controls.Add(this.txtRealSalesNo);
             this.pnlHiddenFields.Controls.Add(this.txtModifiedAt);
             this.pnlHiddenFields.Controls.Add(this.txtSalesOrderId);
             this.pnlHiddenFields.Controls.Add(this.label18);
@@ -1158,12 +1165,40 @@
             this.lblMark.Text = "DELETED";
             this.lblMark.Visible = false;
             // 
+            // txtRealSalesNo
+            // 
+            this.txtRealSalesNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtRealSalesNo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRealSalesNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtRealSalesNo.Location = new System.Drawing.Point(342, 31);
+            this.txtRealSalesNo.Name = "txtRealSalesNo";
+            this.txtRealSalesNo.Size = new System.Drawing.Size(175, 27);
+            this.txtRealSalesNo.TabIndex = 5;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label22.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label22.Location = new System.Drawing.Point(342, 13);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(79, 15);
+            this.label22.TabIndex = 6;
+            this.label22.Text = "Real Sales No";
+            // 
+            // toolTipSales
+            // 
+            this.toolTipSales.AutomaticDelay = 200;
+            this.toolTipSales.AutoPopDelay = 5000;
+            this.toolTipSales.InitialDelay = 200;
+            this.toolTipSales.ReshowDelay = 40;
+            // 
             // FrmSalesOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1082, 749);
+            this.ClientSize = new System.Drawing.Size(1082, 1039);
             this.Controls.Add(this.pnlHiddenFields);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.pnlNote);
@@ -1285,5 +1320,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn discPercent;
         private System.Windows.Forms.DataGridViewTextBoxColumn subTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn priceReal;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox txtRealSalesNo;
+        private System.Windows.Forms.ToolTip toolTipSales;
     }
 }

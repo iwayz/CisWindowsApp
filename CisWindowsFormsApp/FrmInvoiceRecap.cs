@@ -224,7 +224,7 @@ namespace CisWindowsFormsApp
                     xlWorkSheet.Cells[rowNumber, 1].HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
                     xlWorkSheet.Cells[rowNumber, 1] = item.SalesDate;
 
-                    xlWorkSheet.Cells[rowNumber, 2] = item.SalesNo;
+                    xlWorkSheet.Cells[rowNumber, 2] = item.SalesNo.Substring(2);
 
                     xlWorkSheet.Cells[rowNumber, 3].NumberFormat = "@";
                     xlWorkSheet.Cells[rowNumber, 3] = item.CustomerCode.ToString().Trim();

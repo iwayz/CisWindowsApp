@@ -119,14 +119,22 @@ namespace CisWindowsFormsApp
 
         private void btnReload_Click(object sender, EventArgs e)
         {
-            using (var context = new CisDbContext())
-            {
-                var entity = context.Users.Find("7E888248-072B-41CF-A8EB-E0A55FEEEB7B");
-                context.Entry(entity).State = System.Data.Entity.EntityState.Unchanged;
-                context.SaveChanges();
-            }
+            //using (var context = new CisDbContext())
+            //{
+            //    var entity = context.Users.Find("474D19E1-F238-40CC-9C02-440C6E6BE20A");
+            //    var a = context.Entry(entity).State;
+            //    context.Entry(entity).State = System.Data.Entity.EntityState.Unchanged;
+            //    context.SaveChanges();
+            //    var a1 = context.Entry(entity).State;
 
-            
+            //    //var entityUR = context.UserRoles.Find("67365D15-0230-40A2-A9AB-5D8A5925271D");
+            //    //var b = context.Entry(entityUR).State;
+
+            //    //context.Entry(entityUR).State = System.Data.Entity.EntityState.Unchanged;
+            //    //context.SaveChanges();
+            //    //var b1 = context.Entry(entityUR).State;
+            //}
+
             var countRole = uowUser.Repository.GetAll().Count();
             if (countRole <= 0)
             {
@@ -143,7 +151,7 @@ namespace CisWindowsFormsApp
                     SetUIGridView();
                     dgvUser.CurrentCell = this.dgvUser[1, 0];
                 }
-                gvSelectedIndex = dgvUser.CurrentRow.Index;
+                gvSelectedIndex = dgvUser.CurrentRow!=null ? dgvUser.CurrentRow.Index : 0;
                 BindUserGridView();
                 SetUIGridView();
                 dgvUser.CurrentCell = this.dgvUser[1, isAdd ? dgvUser.RowCount-1 : (gvSelectedIndex < dgvUser.RowCount ? gvSelectedIndex : gvSelectedIndex - 1)];
@@ -199,7 +207,14 @@ namespace CisWindowsFormsApp
                         if (expectedError) CommonMessageHelper.ReferredDataCannotBeDeleted();
                         if (unexpectedError) CommonMessageHelper.ContactAdminError();
 
-                        dbContextTransaction.Commit();
+                        if (expectedError || unexpectedError)
+                        {
+                            dbContextTransaction.Rollback();
+                        }
+                        else
+                        {
+                            dbContextTransaction.Commit();
+                        }
                     }
                     btnReload.PerformClick();
                 }
@@ -363,7 +378,6 @@ namespace CisWindowsFormsApp
                     UModifiedAt = res.uUr.u.ModifiedAt,
                     URModifiedAt= res.uUr.ur.ModifiedAt,
                 });
-
 
             dgvUser.DataSource = userRoleDetail.OrderBy(e => e.Username).ToList();
         }

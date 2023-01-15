@@ -30,15 +30,15 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAbout));
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblCompanyName = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblFileVersion = new System.Windows.Forms.Label();
             this.lblAssemblyVersion = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.linkLabelWeb = new System.Windows.Forms.LinkLabel();
             this.btnOk = new System.Windows.Forms.Button();
-            this.lblFileVersion = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblYear = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -53,15 +53,15 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Aplikasi ini dibuat khusus untuk:";
             // 
-            // label2
+            // lblCompanyName
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(38, 213);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(256, 23);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "PT. CAPUNG INDAH SEJAHTERA";
+            this.lblCompanyName.AutoSize = true;
+            this.lblCompanyName.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Bold);
+            this.lblCompanyName.Location = new System.Drawing.Point(38, 213);
+            this.lblCompanyName.Name = "lblCompanyName";
+            this.lblCompanyName.Size = new System.Drawing.Size(240, 23);
+            this.lblCompanyName.TabIndex = 0;
+            this.lblCompanyName.Text = "PT. CAPUNG INDAH SENTOSA";
             // 
             // label3
             // 
@@ -87,6 +87,16 @@
             this.panel1.Size = new System.Drawing.Size(532, 161);
             this.panel1.TabIndex = 1;
             // 
+            // lblFileVersion
+            // 
+            this.lblFileVersion.AutoSize = true;
+            this.lblFileVersion.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.lblFileVersion.Location = new System.Drawing.Point(38, 132);
+            this.lblFileVersion.Name = "lblFileVersion";
+            this.lblFileVersion.Size = new System.Drawing.Size(69, 15);
+            this.lblFileVersion.TabIndex = 0;
+            this.lblFileVersion.Text = "File version";
+            // 
             // lblAssemblyVersion
             // 
             this.lblAssemblyVersion.AutoSize = true;
@@ -100,7 +110,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(282, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(265, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(238, 132);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -113,10 +123,10 @@
             this.linkLabelWeb.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.linkLabelWeb.Location = new System.Drawing.Point(39, 236);
             this.linkLabelWeb.Name = "linkLabelWeb";
-            this.linkLabelWeb.Size = new System.Drawing.Size(118, 15);
+            this.linkLabelWeb.Size = new System.Drawing.Size(133, 15);
             this.linkLabelWeb.TabIndex = 2;
             this.linkLabelWeb.TabStop = true;
-            this.linkLabelWeb.Text = "www.sari-sehat.com";
+            this.linkLabelWeb.Text = "www.capungindah.com";
             this.linkLabelWeb.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelWeb_LinkClicked);
             // 
             // btnOk
@@ -130,25 +140,15 @@
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
-            // lblFileVersion
+            // lblYear
             // 
-            this.lblFileVersion.AutoSize = true;
-            this.lblFileVersion.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.lblFileVersion.Location = new System.Drawing.Point(38, 132);
-            this.lblFileVersion.Name = "lblFileVersion";
-            this.lblFileVersion.Size = new System.Drawing.Size(69, 15);
-            this.lblFileVersion.TabIndex = 0;
-            this.lblFileVersion.Text = "File version";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label4.Location = new System.Drawing.Point(39, 251);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 15);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "©2021";
+            this.lblYear.AutoSize = true;
+            this.lblYear.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.lblYear.Location = new System.Drawing.Point(39, 251);
+            this.lblYear.Name = "lblYear";
+            this.lblYear.Size = new System.Drawing.Size(46, 15);
+            this.lblYear.TabIndex = 0;
+            this.lblYear.Text = "©2023";
             // 
             // FrmAbout
             // 
@@ -156,10 +156,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(532, 315);
             this.Controls.Add(this.btnOk);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lblYear);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.linkLabelWeb);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblCompanyName);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -180,7 +180,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblCompanyName;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblAssemblyVersion;
@@ -188,6 +188,6 @@
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblFileVersion;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblYear;
     }
 }

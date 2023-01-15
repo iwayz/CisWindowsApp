@@ -114,16 +114,32 @@ namespace CisWindowsFormsApp
             {
                 if (DialogResult.Yes == CommonMessageHelper.ConfirmDelete())
                 {
-                    uowTop.Repository.Delete(topToDel);
-                    var res = uowTop.Commit();
-                    if (!res.Item1 && res.Item2 == "Expected")
+                    using (var dbContextTransaction = dbContext.Database.BeginTransaction())
                     {
-                        CommonMessageHelper.ReferredDataCannotBeDeleted();
-                    }
+                        bool expectedError = false;
+                        bool unexpectedError = false;
+                        uowTop.Repository.Delete(topToDel);
+                        var res = uowTop.Commit();
+                        if (!res.Item1 && res.Item2 == "Expected")
+                        {
+                            expectedError = true;
+                            CommonMessageHelper.ReferredDataCannotBeDeleted();
+                        }
 
-                    if (!res.Item1 && res.Item2 == "Unexpected")
-                    {
-                        CommonMessageHelper.ContactAdminError();
+                        if (!res.Item1 && res.Item2 == "Unexpected")
+                        {
+                            unexpectedError = true;
+                            CommonMessageHelper.ContactAdminError();
+                        }
+
+                        if (expectedError || unexpectedError)
+                        {
+                            dbContextTransaction.Rollback();
+                        }
+                        else
+                        {
+                            dbContextTransaction.Commit();
+                        }
                     }
                     btnReload.PerformClick();
                 }

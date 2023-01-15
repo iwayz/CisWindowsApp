@@ -33,7 +33,7 @@ namespace CisWindowsFormsApp
             var soIdParam = new ReportParameter("SalesOrderId", SalesOrderId);
             var compDetail = @Properties.Settings.Default.CompAddress + Environment.NewLine
                 + "Telepon: " + Properties.Settings.Default.CompPhone + ", Email: "+ Properties.Settings.Default.CompEmail + Environment.NewLine
-                + "PBOT: " + Properties.Settings.Default.CompLicenseNo + Environment.NewLine 
+                + "Nomor Izin PBOT: " + Properties.Settings.Default.CompLicenseNo + Environment.NewLine 
                 + "NPWP: " + Properties.Settings.Default.CompNpwp + Environment.NewLine;
             var compDetailParam = new ReportParameter("CompDetail", compDetail);
 

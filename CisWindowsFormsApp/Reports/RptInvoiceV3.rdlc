@@ -1982,7 +1982,7 @@
                   <TextRuns>
                     <TextRun>
                       <Value>="FAKTUR" &amp; System.Environment.NewLine 
-&amp; "NOMOR: " + First(Fields!SalesNo.Value, "DataSetInvoice")</Value>
+&amp; "NOMOR: " + First(Mid(Fields!SalesNo.Value,3,Len(Fields!SalesNo.Value)), "DataSetInvoice")</Value>
                       <Style>
                         <FontFamily>NeueHaasGroteskText Pro</FontFamily>
                         <FontSize>14pt</FontSize>

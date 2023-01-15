@@ -49,6 +49,7 @@ namespace CisWindowsFormsApp
             SaveCompInfoValue(nameof(Properties.Settings.Default.CompWebsite), txtWeb.Text);
             SaveCompInfoValue(nameof(Properties.Settings.Default.CompLicenseNo), txtPbf.Text);
             SaveCompInfoValue(nameof(Properties.Settings.Default.CompNpwp), txtNpwp.Text);
+
             SaveCompInfoValue(nameof(Properties.Settings.Default.PicName), txtPicName.Text);
             SaveCompInfoValue(nameof(Properties.Settings.Default.PicLicenseNo), txtPicLincenseNo.Text);
 
@@ -64,6 +65,19 @@ namespace CisWindowsFormsApp
             Properties.Settings.Default[nameof(Properties.Settings.Default.PicLicenseNo)] = txtPicLincenseNo.Text;
             Properties.Settings.Default.Save();
 
+
+            // find the last sales order no and get the prefix
+            //var salesOrderPrefix = new UnitOfWork<SalesOrder>(dbContext).Repository.GetAll()
+            //    .OrderByDescending(so => so.SalesDate)
+            //    .FirstOrDefault()?.SalesNo.Substring(0, 2) ?? string.Empty;
+            //if (salesOrderPrefix != txtSalesOrderPrefix.Text.Trim()
+            //    && DialogResult.Yes == MessageBox.Show("Terdapat perubahan pada Prefix No. Faktur dari data sebelumnya. Perubahan pada prefix akan berpengaruh pada penomoran faktur dan akan diset ulang dari awal (0). Yakin melakukan perubahan pada Prefix No. Faktur?"
+            //    , "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+            //{
+            //    SaveCompInfoValue(nameof(Properties.Settings.Default.SalesOrderPrefix), txtSalesOrderPrefix.Text);
+            //    Properties.Settings.Default[nameof(Properties.Settings.Default.SalesOrderPrefix)] = txtSalesOrderPrefix.Text;
+            //}
+
             btnReload.PerformClick();
             MessageBox.Show("Data telah berhasil disimpan. Silakan restart aplikasi ini agar perubahan bisa diterapkan."
                             , "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -72,43 +86,19 @@ namespace CisWindowsFormsApp
         private void LoadCompanyInfo()
         {
             var compInfo = uow.Repository.GetAll();
-            string compName, compAddress, compPhone, compEmail, compWeb, compLicenseNo, compNpwp, picName, picLincenseNo;
 
-            if (compInfo.Any())
-            {
-                compName = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.CompName)).FirstOrDefault().Value;
-                compAddress = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.CompAddress)).FirstOrDefault().Value;
-                compPhone = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.CompPhone)).FirstOrDefault().Value;
-                compEmail = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.CompEmail)).FirstOrDefault().Value;
-                compWeb = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.CompWebsite)).FirstOrDefault().Value;
-                compLicenseNo = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.CompLicenseNo)).FirstOrDefault().Value;
-                compNpwp = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.CompNpwp)).FirstOrDefault().Value;
-                picName = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.PicName)).FirstOrDefault().Value;
-                picLincenseNo = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.PicLicenseNo)).FirstOrDefault().Value;
-            } else
-            {
-                compName = Properties.Settings.Default.CompName;
-                compAddress = Properties.Settings.Default.CompAddress;
-                compPhone = Properties.Settings.Default.CompPhone;
-                compEmail = Properties.Settings.Default.CompEmail;
-                compWeb = Properties.Settings.Default.CompWebsite;
-                compLicenseNo = Properties.Settings.Default.CompLicenseNo;
-                compNpwp = Properties.Settings.Default.CompNpwp;
-                picName = Properties.Settings.Default.PicName;
-                picLincenseNo = Properties.Settings.Default.PicLicenseNo;
-            }
-            
+            txtName.Text = compInfo.FirstOrDefault(e => e.Key == nameof(Properties.Settings.Default.CompName))?.Value ?? Properties.Settings.Default.CompName;
+            txtAddress.Text = compInfo.FirstOrDefault(e => e.Key == nameof(Properties.Settings.Default.CompAddress))?.Value ?? Properties.Settings.Default.CompAddress;
+            txtPhone.Text = compInfo.FirstOrDefault(e => e.Key == nameof(Properties.Settings.Default.CompPhone))?.Value ?? Properties.Settings.Default.CompPhone;
+            txtEmail.Text = compInfo.FirstOrDefault(e => e.Key == nameof(Properties.Settings.Default.CompEmail))?.Value ?? Properties.Settings.Default.CompEmail;
+            txtWeb.Text = compInfo.FirstOrDefault(e => e.Key == nameof(Properties.Settings.Default.CompWebsite))?.Value ?? Properties.Settings.Default.CompWebsite;
+            txtPbf.Text = compInfo.FirstOrDefault(e => e.Key == nameof(Properties.Settings.Default.CompLicenseNo))?.Value ?? Properties.Settings.Default.CompLicenseNo;
+            txtNpwp.Text = compInfo.FirstOrDefault(e => e.Key == nameof(Properties.Settings.Default.CompNpwp))?.Value ?? Properties.Settings.Default.CompNpwp;
+            //txtSalesOrderPrefix.Text = compInfo.FirstOrDefault(e => e.Key == nameof(Properties.Settings.Default.SalesOrderPrefix))?.Value ?? Properties.Settings.Default.SalesOrderPrefix;
 
-            txtName.Text = compName;
-            txtAddress.Text = compAddress;
-            txtPhone.Text = compPhone;
-            txtEmail.Text = compEmail;
-            txtWeb.Text = compWeb;
-            txtPbf.Text = compLicenseNo;
-            txtNpwp.Text = compNpwp;
+            txtPicName.Text = compInfo.FirstOrDefault(e => e.Key == nameof(Properties.Settings.Default.PicName))?.Value ?? Properties.Settings.Default.PicName;
+            txtPicLincenseNo.Text = compInfo.FirstOrDefault(e => e.Key == nameof(Properties.Settings.Default.PicLicenseNo))?.Value ?? Properties.Settings.Default.PicLicenseNo;
 
-            txtPicName.Text = picName;
-            txtPicLincenseNo.Text = picLincenseNo;
         }
 
         private void SaveCompInfoValue(string key, string val)

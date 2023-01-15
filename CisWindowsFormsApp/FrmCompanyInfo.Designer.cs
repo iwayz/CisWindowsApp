@@ -239,7 +239,7 @@
             this.gbLicense.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.gbLicense.Location = new System.Drawing.Point(437, 26);
             this.gbLicense.Name = "gbLicense";
-            this.gbLicense.Size = new System.Drawing.Size(381, 154);
+            this.gbLicense.Size = new System.Drawing.Size(381, 163);
             this.gbLicense.TabIndex = 2;
             this.gbLicense.TabStop = false;
             this.gbLicense.Text = "Ijin Perusahaan";
@@ -251,9 +251,9 @@
             this.gbPic.Controls.Add(this.txtPicLincenseNo);
             this.gbPic.Controls.Add(this.label10);
             this.gbPic.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.gbPic.Location = new System.Drawing.Point(437, 192);
+            this.gbPic.Location = new System.Drawing.Point(437, 207);
             this.gbPic.Name = "gbPic";
-            this.gbPic.Size = new System.Drawing.Size(381, 158);
+            this.gbPic.Size = new System.Drawing.Size(381, 143);
             this.gbPic.TabIndex = 3;
             this.gbPic.TabStop = false;
             this.gbPic.Text = "Penanggung Jawab";

@@ -97,28 +97,6 @@ namespace CisWindowsFormsApp.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=root;password=admin;persistsecurityinfo=True;database=ci" +
-            "s_pos")]
-        public string cis_posCS {
-            get {
-                return ((string)(this["cis_posCS"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=MTPC746\\IWMSSQLSERVER;Initial Catalog=POSCIS;Integrated Security=True" +
-            "")]
-        public string POSCISConnectionString {
-            get {
-                return ((string)(this["POSCISConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("www.capungindah.com")]
         public string CompWebsite {
             get {
@@ -160,6 +138,15 @@ namespace CisWindowsFormsApp.Properties {
         public string CIS_POSConnectionString {
             get {
                 return ((string)(this["CIS_POSConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("S1")]
+        public string SalesOrderPrefix {
+            get {
+                return ((string)(this["SalesOrderPrefix"]));
             }
         }
     }

@@ -162,7 +162,6 @@ namespace CisWindowsFormsApp
         private void NavigateRecord(RecordNavigation navigation)
         {
             SalesOrder queryResult;
-            var currSalesNo = 1;
             var expectedSalesNo = string.Empty;
             if (string.IsNullOrEmpty(lblSalesNo.Text))
             {
@@ -171,33 +170,42 @@ namespace CisWindowsFormsApp
                 else
                     navigation = RecordNavigation.Last;
             }
-            else
-                currSalesNo = Convert.ToInt32(lblSalesNo.Text.Substring(lblSalesNo.Text.Trim().Length - 6));
+
+            var firstRec = _uow.Repository.GetAll()
+                .OrderBy(s => s.SalesNo)
+                .FirstOrDefault();
+
+            var lastRec = _uow.Repository.GetAll()
+                .OrderByDescending(s => s.SalesNo)
+                .FirstOrDefault();
 
             switch (navigation)
             {
                 case RecordNavigation.First:
-                    queryResult = _uow.Repository.GetAll().OrderBy(s => s.SalesNo).FirstOrDefault();
+                    queryResult = firstRec;
                     break;
                 case RecordNavigation.Previous:
                     queryResult = null;
-                    if (currSalesNo > 1)
+                    if (firstRec.Id != txtSalesOrderId.Text.Trim())
                     {
-                        expectedSalesNo = string.Concat("SO-", (currSalesNo - 1).ToString().PadLeft(6, '0'));
-                        queryResult = _uow.Repository.GetAll().Where(s => s.SalesNo == expectedSalesNo).FirstOrDefault();
+                        queryResult = _uow.Repository.GetAll()
+                            .Where(s => string.Compare(s.SalesNo, txtRealSalesNo.Text.Trim()) < 0)
+                            .OrderByDescending(s => s.SalesNo)
+                            .FirstOrDefault();
                     }
                     break;
                 case RecordNavigation.Next:
                     queryResult = null;
-                    var lastRec = _uow.Repository.GetAll().OrderByDescending(s => s.SalesNo).FirstOrDefault();
                     if (lastRec.Id != txtSalesOrderId.Text.Trim())
                     {
-                        expectedSalesNo = string.Concat("SO-", (currSalesNo + 1).ToString().PadLeft(6, '0'));
-                        queryResult = _uow.Repository.GetAll().Where(s => s.SalesNo == expectedSalesNo).FirstOrDefault();
+                        queryResult = _uow.Repository.GetAll()
+                            .Where(s => string.Compare(s.SalesNo, txtRealSalesNo.Text.Trim()) > 0)
+                            .OrderBy(s => s.SalesNo)
+                            .FirstOrDefault();
                     }
                     break;
                 case RecordNavigation.Last:
-                    queryResult = _uow.Repository.GetAll().OrderByDescending(s => s.SalesNo).FirstOrDefault();
+                    queryResult = lastRec;
                     break;
                 default:
                     CommonMessageHelper.ContactAdminError();
@@ -246,16 +254,26 @@ namespace CisWindowsFormsApp
             btnDel.Enabled = isEditable;
             btnReload.Enabled = isEditable;
         }
-        
+
         private string CreateSalesOrderNo()
         {
-            var result = string.Empty;
-            var queryResult = _uow.Repository.GetAll().OrderByDescending(s => s.SalesNo).FirstOrDefault();
-            if (queryResult == null)
-                return "SO-000001";
+            var salesOrder = _uow.Repository.GetAll()
+                .Where(e => e.SalesDate.Month == dtpSalesOrderDate.Value.Month && e.SalesDate.Year == dtpSalesOrderDate.Value.Year)
+                .OrderByDescending(s => s.SalesNo).FirstOrDefault();
 
-            var lastSalesNo = Convert.ToInt64(queryResult.SalesNo.Substring(queryResult.SalesNo.Length - 6));
-            return string.Concat("SO-", (lastSalesNo + 1).ToString().PadLeft(6,'0'));
+            var soPrefix = new UnitOfWork<CompanyInfo>(dbContext)
+                .Repository.GetAll()
+                .FirstOrDefault(e => e.Key == nameof(Properties.Settings.Default.SalesOrderPrefix))?.Value 
+                ?? Properties.Settings.Default.SalesOrderPrefix;
+
+            var soYear= dtpSalesOrderDate.Value.Year.ToString().Substring(2);
+            var soMonth = dtpSalesOrderDate.Value.Month.ToString().PadLeft(2, '0');
+
+            if (salesOrder == null)
+                return $"{soYear}{soPrefix}-{soMonth}0001";
+
+            var lastSalesNo = Convert.ToInt64(salesOrder.SalesNo.Substring(salesOrder.SalesNo.Length - 4));
+            return $"{soYear}{soPrefix}-{soMonth}{(lastSalesNo + 1).ToString().PadLeft(4, '0')}";
         }
 
         private string GetLocationName(string locationId)
@@ -270,7 +288,7 @@ namespace CisWindowsFormsApp
             if (parentResult.Status == Constant.RecordStatus.Inactive)
                 lblMark.Visible = true;
 
-            lblSalesNo.Text = parentResult.SalesNo;
+            lblSalesNo.Text = parentResult.SalesNo.Substring(2);
             cbCustomer.SelectedValue = parentResult.CustomerId;
             cbSalesman.SelectedValue = parentResult.SalesmanId;
             cbTermOfPayment.SelectedValue = parentResult.TermOfPaymentId;
@@ -285,6 +303,7 @@ namespace CisWindowsFormsApp
             // hidden fields
             txtSalesOrderId.Text = parentResult.Id;
             txtModifiedAt.Text = parentResult.ModifiedAt.ToString();
+            txtRealSalesNo.Text = parentResult.SalesNo;
 
             IQueryable<SalesOrderItem> childItems;
             UnitOfWork<SalesOrderItem> uowSalesOrderItem = new UnitOfWork<SalesOrderItem>(dbContext);
@@ -716,6 +735,9 @@ namespace CisWindowsFormsApp
 
             using (var dbContextTransaction = dbContext.Database.BeginTransaction())
             {
+                bool expectedError = false;
+                bool unexpectedError = false;
+
                 var customer = new UnitOfWork<Customer>(dbContext).Repository.GetById(cbCustomer.SelectedValue.ToString());
                 var salesman = new UnitOfWork<Salesman>(dbContext).Repository.GetById(cbSalesman.SelectedValue.ToString());
                 var top = new UnitOfWork<TermOfPayment>(dbContext).Repository.GetById(cbTermOfPayment.SelectedValue.ToString());
@@ -766,8 +788,25 @@ namespace CisWindowsFormsApp
                 soToAdd.ModifiedAt = DateTime.Now;
 
                 uwSalesOrder.Repository.Add(soToAdd);
-                uwSalesOrder.Commit();
+                var res = uwSalesOrder.Commit();
+                
+                if (!res.Item1 && res.Item2 == "Expected")
+                {
+                    expectedError = true;
+                    CommonMessageHelper.ContactAdminError();
+                }
 
+                if (!res.Item1 && res.Item2 == "Unexpected")
+                {
+                    unexpectedError = true;
+                    CommonMessageHelper.ContactAdminError();
+                }
+
+                if (expectedError || unexpectedError)
+                {
+                    dbContextTransaction.Rollback();
+                }
+                
                 #endregion parent 
 
                 #region child 
@@ -809,16 +848,33 @@ namespace CisWindowsFormsApp
                     };
                     uwSoItem.Repository.Add(soiToAdd);
                 }
-                var res = uwSoItem.Commit();
+                res = uwSoItem.Commit();
+                if (!res.Item1 && res.Item2 == "Expected")
+                {
+                    expectedError = true;
+                    CommonMessageHelper.ContactAdminError();
+                }
 
+                if (!res.Item1 && res.Item2 == "Unexpected")
+                {
+                    unexpectedError = true;
+                    CommonMessageHelper.ContactAdminError();
+                }
+
+                if (expectedError || unexpectedError)
+                {
+                    dbContextTransaction.Rollback();
+                }
                 #endregion child 
 
                 dbContextTransaction.Commit();
 
                 // when commit succeed, update the key fields
-                lblSalesNo.Text = soToAdd.SalesNo;
+                lblSalesNo.Text = soToAdd.SalesNo.Substring(2);
+
                 txtSalesOrderId.Text = soToAdd.Id;
                 txtModifiedAt.Text = soToAdd.ModifiedAt.ToString();
+                txtRealSalesNo.Text = soToAdd.SalesNo;
                 isAdd = false;
 
             }
@@ -964,22 +1020,36 @@ namespace CisWindowsFormsApp
             {
                 if (DialogResult.Yes == CommonMessageHelper.ConfirmDelete())
                 {
-
-                    // delete the sales order
-                    soToDel.Status = Constant.RecordStatus.Inactive;
-                    _uow.Repository.Update(soToDel);
-                    var res = _uow.Commit();
-
-                    if (!res.Item1 && res.Item2 == "Expected")
+                    using (var dbContextTransaction = dbContext.Database.BeginTransaction())
                     {
-                        CommonMessageHelper.ReferredDataCannotBeDeleted();
-                    }
+                        bool expectedError = false;
+                        bool unexpectedError = false;
+                        // delete the sales order
+                        soToDel.Status = Constant.RecordStatus.Inactive;
+                        _uow.Repository.Update(soToDel);
+                        var res = _uow.Commit();
 
-                    if (!res.Item1 && res.Item2 == "Unexpected")
-                    {
-                        CommonMessageHelper.ContactAdminError();
-                    }
+                        if (!res.Item1 && res.Item2 == "Expected")
+                        {
+                            expectedError = true;
+                            CommonMessageHelper.ReferredDataCannotBeDeleted();
+                        }
 
+                        if (!res.Item1 && res.Item2 == "Unexpected")
+                        {
+                            unexpectedError = true;
+                            CommonMessageHelper.ContactAdminError();
+                        }
+
+                        if (expectedError || unexpectedError)
+                        {
+                            dbContextTransaction.Rollback();
+                        }
+                        else
+                        {
+                            dbContextTransaction.Commit();
+                        }
+                    }
                     LoadSalesOrderData(soToDel.SalesNo);
                 }
             }
@@ -1035,6 +1105,11 @@ namespace CisWindowsFormsApp
                 e.Handled = true;
                 btnSearch.PerformClick();
             }
+        }
+
+        private string GetSalesNoToDisplay(string salesNo)
+        {
+            return salesNo.Substring(2);
         }
     }
 }

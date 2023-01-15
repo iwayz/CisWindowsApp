@@ -128,21 +128,37 @@ namespace CisWindowsFormsApp
 
         private void btnDel_Click(object sender, EventArgs e)
         {
-            var roleToDel = uowPrincipal.Repository.GetAll().Where(u => u.PrincipalCode== txtPrincipalCode.Text.Trim()).FirstOrDefault();
+            var roleToDel = uowPrincipal.Repository.GetAll().Where(u => u.PrincipalCode == txtPrincipalCode.Text.Trim()).FirstOrDefault();
             if (roleToDel != null)
             {
                 if (DialogResult.Yes == CommonMessageHelper.ConfirmDelete())
                 {
-                    uowPrincipal.Repository.Delete(roleToDel);
-                    var res = uowPrincipal.Commit();
-                    if (!res.Item1 && res.Item2 == "Expected")
+                    using (var dbContextTransaction = dbContext.Database.BeginTransaction())
                     {
-                        CommonMessageHelper.ReferredDataCannotBeDeleted();
-                    }
+                        bool expectedError = false;
+                        bool unexpectedError = false;
+                        uowPrincipal.Repository.Delete(roleToDel);
+                        var res = uowPrincipal.Commit();
+                        if (!res.Item1 && res.Item2 == "Expected")
+                        {
+                            expectedError = true;
+                            CommonMessageHelper.ReferredDataCannotBeDeleted();
+                        }
 
-                    if (!res.Item1 && res.Item2 == "Unexpected")
-                    {
-                        CommonMessageHelper.ContactAdminError();
+                        if (!res.Item1 && res.Item2 == "Unexpected")
+                        {
+                            expectedError = true;
+                            CommonMessageHelper.ContactAdminError();
+                        }
+
+                        if (expectedError || unexpectedError)
+                        {
+                            dbContextTransaction.Rollback();
+                        }
+                        else
+                        {
+                            dbContextTransaction.Commit();
+                        }
                     }
                     btnReload.PerformClick();
                 }
