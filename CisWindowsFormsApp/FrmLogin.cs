@@ -87,25 +87,25 @@ namespace CisWindowsFormsApp
             var compInfo = uowCompInfo.Repository.GetAll();
             if (compInfo.Any())
             {
-                var compName = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.CompName)).FirstOrDefault().Value;
-                var compAddress = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.CompAddress)).FirstOrDefault().Value;
-                var compPhone = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.CompPhone)).FirstOrDefault().Value;
-                var compEmail = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.CompEmail)).FirstOrDefault().Value;
-                var compWeb = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.CompWebsite)).FirstOrDefault().Value;
-                var compPbf = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.CompLicenseNo)).FirstOrDefault().Value;
-                var compNpwp = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.CompNpwp)).FirstOrDefault().Value;
-                var picName = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.PicName)).FirstOrDefault().Value;
-                var picSipaNo = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.PicLicenseNo)).FirstOrDefault().Value;
+                var compName = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.CompName)).FirstOrDefault()?.Value ?? string.Empty;
+                var compAddress = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.CompAddress)).FirstOrDefault()?.Value ?? string.Empty;
+                var compPhone = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.CompPhone)).FirstOrDefault()?.Value ?? string.Empty;
+                var compEmail = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.CompEmail)).FirstOrDefault()?.Value ?? string.Empty;
+                var compWeb = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.CompWebsite)).FirstOrDefault()?.Value ?? string.Empty;
+                var compPbf = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.CompLicenseNo)).FirstOrDefault()?.Value ?? string.Empty;
+                var compNpwp = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.CompNpwp)).FirstOrDefault()?.Value ?? string.Empty;
+                var picName = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.PicName)).FirstOrDefault()?.Value ?? string.Empty;
+                var picLicenseNo = compInfo.Where(e => e.Key == nameof(Properties.Settings.Default.PicLicenseNo)).FirstOrDefault()?.Value ?? string.Empty;
 
-                Properties.Settings.Default[nameof(Properties.Settings.Default.CompName)] = compName;
-                Properties.Settings.Default[nameof(Properties.Settings.Default.CompAddress)] = compAddress;
-                Properties.Settings.Default[nameof(Properties.Settings.Default.CompPhone)] = compPhone;
-                Properties.Settings.Default[nameof(Properties.Settings.Default.CompEmail)] = compEmail;
-                Properties.Settings.Default[nameof(Properties.Settings.Default.CompWebsite)] = compWeb;
-                Properties.Settings.Default[nameof(Properties.Settings.Default.CompLicenseNo)] = compPbf;
-                Properties.Settings.Default[nameof(Properties.Settings.Default.CompNpwp)] = compNpwp;
-                Properties.Settings.Default[nameof(Properties.Settings.Default.PicName)] = picName;
-                Properties.Settings.Default[nameof(Properties.Settings.Default.PicLicenseNo)] = picSipaNo;
+                if (!string.IsNullOrEmpty(compName)) Properties.Settings.Default[nameof(Properties.Settings.Default.CompName)] = compName;
+                if (!string.IsNullOrEmpty(compAddress)) Properties.Settings.Default[nameof(Properties.Settings.Default.CompAddress)] = compAddress;
+                if (!string.IsNullOrEmpty(compPhone)) Properties.Settings.Default[nameof(Properties.Settings.Default.CompPhone)] = compPhone;
+                if (!string.IsNullOrEmpty(compEmail)) Properties.Settings.Default[nameof(Properties.Settings.Default.CompEmail)] = compEmail;
+                if (!string.IsNullOrEmpty(compWeb)) Properties.Settings.Default[nameof(Properties.Settings.Default.CompWebsite)] = compWeb;
+                if (!string.IsNullOrEmpty(compPbf)) Properties.Settings.Default[nameof(Properties.Settings.Default.CompLicenseNo)] = compPbf;
+                if (!string.IsNullOrEmpty(compNpwp)) Properties.Settings.Default[nameof(Properties.Settings.Default.CompNpwp)] = compNpwp;
+                if (!string.IsNullOrEmpty(picName)) Properties.Settings.Default[nameof(Properties.Settings.Default.PicName)] = picName;
+                if (!string.IsNullOrEmpty(picLicenseNo)) Properties.Settings.Default[nameof(Properties.Settings.Default.PicLicenseNo)] = picLicenseNo;
                 Properties.Settings.Default.Save();
             }
         }

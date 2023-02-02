@@ -417,6 +417,21 @@ namespace CisWindowsFormsApp
             return true;
         }
 
+        private bool ValidateTransactionMonthToSalesNo()
+        {
+            var salesOrderNoMonthCode = lblSalesNo.Text.Substring(3, 2);
+            var salesOrderMonth = dtpSalesOrderDate.Value.Month.ToString().PadLeft(2, '0');
+
+            if (salesOrderNoMonthCode != salesOrderMonth)
+            {
+                MessageBox.Show($"Pengubahan data tanggal transaksi ke bulan yang berbeda tidak boleh dilakukan. Jika anda yakin tanggal transaksi ini salah, silakan hapus data ini dan buat data baru dengan data transaksi yang benar"
+                    , "Perhatian", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                return false;
+            }
+            return true;
+        }
+
         private float ValidateDiscount(string discount)
         {
             var numberDecimalSeparator = Convert.ToChar(Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator);
@@ -887,6 +902,11 @@ namespace CisWindowsFormsApp
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (!ValidateMandatoryFields()) return;
+            if (!ValidateTransactionMonthToSalesNo())
+            {
+                btnReload.PerformClick();
+                return;
+            }
 
             var repoLastUpdated = _uow.Repository.GetById(txtSalesOrderId.Text.Trim()).ModifiedAt;
             var lastUpdated = DateTime.Parse(txtModifiedAt.Text.Trim());

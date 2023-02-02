@@ -216,7 +216,7 @@ namespace CisWindowsFormsApp
                     var propotionalExtraDiscount = (grossValue / sumOfGrossValue) * extraDiscount;
                     var totalDiscount = Math.Round(Convert.ToDecimal(grossValue * discountPercent), 4, MidpointRounding.AwayFromZero) + propotionalExtraDiscount;
 
-                    var taxBaseAmount = salesOrderHelper.CalculateTaxBaseAmount(qty, nettPrice, discountPercent, extraDiscount);
+                    var taxBaseAmount = salesOrderHelper.CalculateTaxBaseAmount(qty, nettPrice, discountPercent, propotionalExtraDiscount);
                     var valueAddedAmount = salesOrderHelper.CalculateValueAddedAmount(taxBaseAmount, item.SalesDate);
                     var netValue = salesOrderHelper.CalculateNettValueAmount(taxBaseAmount, valueAddedAmount);
 
@@ -520,7 +520,7 @@ namespace CisWindowsFormsApp
                         .Sum(rc => (rc.Field<int>("Quantity") * rc.Field<Decimal>("Price")));
                     var propotionalExtraDiscount = (grossValue / sumOfGrossValue) * extraDiscount;
 
-                    var taxBaseAmount = salesOrderHelper.CalculateTaxBaseAmount(qty, nettPrice, discountPercent, extraDiscount);
+                    var taxBaseAmount = salesOrderHelper.CalculateTaxBaseAmount(qty, nettPrice, discountPercent, propotionalExtraDiscount);
                     var valueAddedAmount = salesOrderHelper.CalculateValueAddedAmount(taxBaseAmount, DateTime.Parse(item["SalesDate"].ToString()));
                     var netValue = salesOrderHelper.CalculateNettValueAmount(taxBaseAmount, valueAddedAmount);
 
