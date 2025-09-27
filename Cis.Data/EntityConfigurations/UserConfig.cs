@@ -17,8 +17,6 @@ namespace Cis.Data.EntityConfigurations
             Property(e => e.FullName)
                 .IsRequired();
 
-            Property(e => e.Description);
-
             HasIndex(e => e.Username)
                .IsUnique();
         }
