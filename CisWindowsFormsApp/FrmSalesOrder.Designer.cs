@@ -77,6 +77,8 @@
             this.txtDiscount = new System.Windows.Forms.TextBox();
             this.btnAddItem = new System.Windows.Forms.Button();
             this.gbSalesOrderDetail = new System.Windows.Forms.GroupBox();
+            this.cbPic = new System.Windows.Forms.ComboBox();
+            this.label23 = new System.Windows.Forms.Label();
             this.txtSubTotal = new System.Windows.Forms.TextBox();
             this.lblTotal = new System.Windows.Forms.Label();
             this.txtValueAddedTaxAmount = new System.Windows.Forms.TextBox();
@@ -634,6 +636,8 @@
             // 
             // gbSalesOrderDetail
             // 
+            this.gbSalesOrderDetail.Controls.Add(this.cbPic);
+            this.gbSalesOrderDetail.Controls.Add(this.label23);
             this.gbSalesOrderDetail.Controls.Add(this.dgvSalesOrderItem);
             this.gbSalesOrderDetail.Controls.Add(this.btnAddItem);
             this.gbSalesOrderDetail.Controls.Add(this.dtpExpiredDate);
@@ -665,6 +669,29 @@
             this.gbSalesOrderDetail.TabIndex = 6;
             this.gbSalesOrderDetail.TabStop = false;
             this.gbSalesOrderDetail.Text = "FAKTUR DETAIL";
+            // 
+            // cbPic
+            // 
+            this.cbPic.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbPic.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cbPic.Font = new System.Drawing.Font("Calibri", 12F);
+            this.cbPic.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.cbPic.FormattingEnabled = true;
+            this.cbPic.Location = new System.Drawing.Point(499, 270);
+            this.cbPic.Name = "cbPic";
+            this.cbPic.Size = new System.Drawing.Size(158, 27);
+            this.cbPic.TabIndex = 39;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label23.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label23.Location = new System.Drawing.Point(499, 251);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(109, 15);
+            this.label23.TabIndex = 38;
+            this.label23.Text = "Penanggung Jawab";
             // 
             // txtSubTotal
             // 
@@ -1323,5 +1350,7 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox txtRealSalesNo;
         private System.Windows.Forms.ToolTip toolTipSales;
+        private System.Windows.Forms.ComboBox cbPic;
+        private System.Windows.Forms.Label label23;
     }
 }

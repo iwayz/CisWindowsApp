@@ -5,6 +5,7 @@
 	  <TargetFramework>net47</TargetFramework>
 	<GenerateRuntimeConfigurationFiles>True</GenerateRuntimeConfigurationFiles>
 	<FileVersion>1.0.2109.2</FileVersion>
+	  <EmbeddedResourceUseDependentUponConvention>true</EmbeddedResourceUseDependentUponConvention>
   </PropertyGroup>
 
   <ItemGroup>

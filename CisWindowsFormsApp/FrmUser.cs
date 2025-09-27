@@ -47,6 +47,7 @@ namespace CisWindowsFormsApp
             txtUsername.Text = string.Empty;
             txtPassword.Text = string.Empty;
             txtFullName.Text = string.Empty;
+            txtDescription.Text = string.Empty;
             txtRetypePassword.Text = string.Empty;
             chkChangePassword.Checked = false;
             chkChangePassword.Visible = true;
@@ -73,6 +74,7 @@ namespace CisWindowsFormsApp
                         Username = txtUsername.Text.Trim(),
                         Password = new UserHelper().HashPassword(txtPassword.Text.Trim()),
                         FullName = txtFullName.Text.Trim(),
+                        Description = txtDescription.Text.Trim(),
 
                         // Audit Fields 
                         CreatedBy = Properties.Settings.Default.CurrentUserId,
@@ -151,10 +153,10 @@ namespace CisWindowsFormsApp
                     SetUIGridView();
                     dgvUser.CurrentCell = this.dgvUser[1, 0];
                 }
-                gvSelectedIndex = dgvUser.CurrentRow!=null ? dgvUser.CurrentRow.Index : 0;
+                gvSelectedIndex = dgvUser.CurrentRow != null ? dgvUser.CurrentRow.Index : 0;
                 BindUserGridView();
                 SetUIGridView();
-                dgvUser.CurrentCell = this.dgvUser[1, isAdd ? dgvUser.RowCount-1 : (gvSelectedIndex < dgvUser.RowCount ? gvSelectedIndex : gvSelectedIndex - 1)];
+                dgvUser.CurrentCell = this.dgvUser[1, isAdd ? dgvUser.RowCount - 1 : (gvSelectedIndex < dgvUser.RowCount ? gvSelectedIndex : gvSelectedIndex - 1)];
                 SetUIbySelectedGridItem();
                 txtUserModifiedAt.Text = dgvUser.CurrentRow.Cells["UModifiedAt"].Value.ToString();
             }
@@ -167,7 +169,7 @@ namespace CisWindowsFormsApp
         private void btnDel_Click(object sender, EventArgs e)
         {
             var checkUser = uowUser.Repository.GetAll().Where(u => u.Username == txtUsername.Text.Trim()).FirstOrDefault();
-            
+
             if (checkUser != null)
             {
                 if (DialogResult.Yes == CommonMessageHelper.ConfirmDelete())
@@ -228,7 +230,7 @@ namespace CisWindowsFormsApp
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (!ValidateMandatoryFields()) return;
-            
+
             if (chkChangePassword.Checked && !txtPassword.Text.Trim().Equals(txtRetypePassword.Text.Trim()))
             {
                 MessageBox.Show("Pastikan password yang anda masukkan sama."
@@ -256,6 +258,7 @@ namespace CisWindowsFormsApp
                         userToUpdate.Password = new UserHelper().HashPassword(txtPassword.Text.Trim());
 
                     userToUpdate.FullName = txtFullName.Text.Trim();
+                    userToUpdate.Description = txtDescription.Text.Trim();
                     userToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUserId;
                     userToUpdate.ModifiedAt = DateTime.Now;
                     uowUsr.Repository.Update(userToUpdate);
@@ -327,11 +330,11 @@ namespace CisWindowsFormsApp
 
             if (!chkChangePassword.Checked)
             {
-                pnlButtons.Location = new Point(14, 254);
+                pnlButtons.Location = new Point(14, 362);
             }
             else
             {
-                pnlButtons.Location = new Point(14, 315);
+                pnlButtons.Location = new Point(12, 315);
             }
         }
 
@@ -367,16 +370,16 @@ namespace CisWindowsFormsApp
                 .Join(roles, uUr => uUr.ur.RoleId, r => r.Id, (uUr, r) => new { uUr, r })
                 .Select(res => new
                 {
-                    UserId      = res.uUr.u.Id,
-                    Username    = res.uUr.u.Username,
-                    Password    = res.uUr.u.Password,
-                    Fullname    = res.uUr.u.FullName,
-                    UserRoleId  = res.uUr.ur.Id,
-                    RoleId      = res.r.Id,
-                    RoleCode    = res.r.RoleCode,
+                    UserId = res.uUr.u.Id,
+                    Username = res.uUr.u.Username,
+                    Password = res.uUr.u.Password,
+                    Fullname = res.uUr.u.FullName,
+                    UserRoleId = res.uUr.ur.Id,
+                    RoleId = res.r.Id,
+                    RoleCode = res.r.RoleCode,
                     Description = res.r.Description,
                     UModifiedAt = res.uUr.u.ModifiedAt,
-                    URModifiedAt= res.uUr.ur.ModifiedAt,
+                    URModifiedAt = res.uUr.ur.ModifiedAt,
                 });
 
             dgvUser.DataSource = userRoleDetail.OrderBy(e => e.Username).ToList();
@@ -406,6 +409,7 @@ namespace CisWindowsFormsApp
             txtUsername.Text = currentRow.Cells[nameof(User.Username)].Value.ToString();
             txtPassword.Text = currentRow.Cells[nameof(User.Password)].Value.ToString();
             txtFullName.Text = currentRow.Cells[nameof(User.FullName)].Value.ToString();
+            txtDescription.Text = currentRow.Cells[nameof(User.Description)].Value.ToString();
 
             cbRole.SelectedValue = currentRow.Cells[nameof(UserRole.RoleId)].Value.ToString();
             chkChangePassword.Visible = true;

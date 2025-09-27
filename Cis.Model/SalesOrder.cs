@@ -34,6 +34,7 @@ namespace Cis.Model
         public string TermOfPaymentId { get; set; }
         public string TermOfPaymentCode { get; set; }
         public DateTime DueDate{ get; set; }
+        public Guid PersonInChargeId { get; set; }
         public string PersonInCharge { get; set; }
         public string SipaNo { get; set; }
         public decimal SubTotalAmount { get; set; }

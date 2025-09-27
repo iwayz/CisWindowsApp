@@ -2,13 +2,10 @@
 using Cis.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CisWindowsFormsApp
@@ -130,6 +127,28 @@ namespace CisWindowsFormsApp
             cbProduct.AutoCompleteCustomSource = autoCompleteCollection;
         }
 
+        private void BindComboBoxPic()
+        {
+            var uow = new UnitOfWork<User>(dbContext);
+            var queryResult = uow.Repository.GetAll()
+                .Where(u => u.UserRoles.Any(ur => ur.Role.RoleCode == "PIC"))
+                .OrderByDescending(e => e.CreatedAt);
+
+            AutoCompleteStringCollection autoCompleteCollection = new AutoCompleteStringCollection();
+            Dictionary<string, string> dataSource = new Dictionary<string, string>();
+            dataSource.Add("0", "--Pilih--");
+            foreach (var res in queryResult)
+            {
+                dataSource.Add(res.Id, res.FullName);
+                autoCompleteCollection.Add(res.FullName);
+            }
+
+            cbPic.DataSource = new BindingSource(dataSource, null);
+            cbPic.DisplayMember = "Value";
+            cbPic.ValueMember = "Key";
+            cbPic.AutoCompleteCustomSource = autoCompleteCollection;
+        }
+
         private void SetUIButtonGroup()
         {
             var disable = String.IsNullOrEmpty(lblSalesNo.Text);
@@ -154,6 +173,7 @@ namespace CisWindowsFormsApp
             if (cbTermOfPayment.Items.Count <= 1) refData.Add("Term of Payment");
             if (cbSalesArea.Items.Count <= 1) refData.Add("Sales Area");
             if (cbProduct.Items.Count <= 1) refData.Add("Barang");
+            if (cbPic.Items.Count <= 1) refData.Add("Penanggung Jawab");
 
             lblNoteDetail.Text = "Data referensi (" + string.Join(", ", refData) + ") belum tersedia. ";
             if (refData.Count > 0) pnlNote.Visible = true;
@@ -299,6 +319,7 @@ namespace CisWindowsFormsApp
             cbProvince.SelectedValue = parentResult.DeliveryProvinceId;
             cbDistrict.SelectedValue = parentResult.DeliveryDistrictId;
             txtExtraDiscount.Text = string.Format("{0:n0}", parentResult.ExtraDiscountAmount);
+            cbPic.SelectedValue = parentResult.PersonInChargeId.ToString().ToUpper();
 
             // hidden fields
             txtSalesOrderId.Text = parentResult.Id;
@@ -414,6 +435,12 @@ namespace CisWindowsFormsApp
                 return false;
             }
 
+            if (cbPic.SelectedValue.ToString() == "0")
+            {
+                CommonMessageHelper.DataCannotBeEmpty("Penanggung Jawab");
+                return false;
+            }
+
             return true;
         }
 
@@ -460,6 +487,7 @@ namespace CisWindowsFormsApp
             BindComboBoxTermOfPayment();
             BindComboBoxSalesArea();
             BindComboBoxProduct();
+            BindComboBoxPic();
             commonHelper.BindLocationComboBox(dbContext, cbProvince, Constant.LocationType.Province);
 
             //isAdd = true;
@@ -552,10 +580,13 @@ namespace CisWindowsFormsApp
 
             UnitOfWork<Product> uowProduct = new UnitOfWork<Product>(dbContext);
             var product = uowProduct.Repository.GetById(cbProduct.SelectedValue.ToString());
+
             UnitOfWork<Batch> uowBatch = new UnitOfWork<Batch>(dbContext);
             var batch = uowBatch.Repository.GetAll().Where(b => b.BatchCode.Equals(txtBatch.Text.Trim())).FirstOrDefault();
+           
             UnitOfWork<UnitOfMeasurement> uowUom = new UnitOfWork<UnitOfMeasurement>(dbContext);
             var uom = uowUom.Repository.GetById(product.UnitId);
+            
             int rowId = dgvSalesOrderItem.Rows.Count;
             bool duplicateItem = false;
             
@@ -605,6 +636,7 @@ namespace CisWindowsFormsApp
 
             // reset back the add item 
             cbProduct.SelectedValue = "0";
+            cbPic.SelectedValue = "0";
             txtBatch.Text = string.Empty;
             dtpExpiredDate.Value = DateTime.Today;
             txtQty.Text = "0";
@@ -743,6 +775,9 @@ namespace CisWindowsFormsApp
             lblTotal.Text = "0";
             lblMark.Visible = false;
 
+
+            cbPic.SelectedValue = "0";
+
             SetUI();
             isAdd = true;
             SetUIButtonGroup();
@@ -764,6 +799,8 @@ namespace CisWindowsFormsApp
                 var top = new UnitOfWork<TermOfPayment>(dbContext).Repository.GetById(cbTermOfPayment.SelectedValue.ToString());
                 var salesArea = new UnitOfWork<SalesArea>(dbContext).Repository.GetById(cbSalesArea.SelectedValue.ToString());
                 var district = new UnitOfWork<Location>(dbContext).Repository.GetById(cbDistrict.SelectedValue.ToString());
+                var user = new UnitOfWork<User>(dbContext).Repository.GetAll()
+                    .Where(u => u.UserRoles.Any(ur => ur.UserId == cbPic.SelectedValue.ToString())).FirstOrDefault();
 
                 #region parent 
                 var uwSalesOrder = new UnitOfWork<SalesOrder>(dbContext);
@@ -791,8 +828,9 @@ namespace CisWindowsFormsApp
                 soToAdd.TermOfPaymentId = cbTermOfPayment.SelectedValue.ToString();
                 soToAdd.TermOfPaymentCode = top.TermCode;
                 soToAdd.DueDate = dtpDueDate.Value;
-                soToAdd.PersonInCharge = Properties.Settings.Default.PicName;
-                soToAdd.SipaNo = Properties.Settings.Default.PicLicenseNo;
+                soToAdd.PersonInChargeId = Guid.Parse(cbPic.SelectedValue.ToString());
+                soToAdd.PersonInCharge = user.FullName;
+                soToAdd.SipaNo = user.Description;
                 soToAdd.SalesmanId = cbSalesman.SelectedValue.ToString();
                 soToAdd.SalesmanCode = salesman.SalesmanCode;
                 soToAdd.SubTotalAmount = decimal.Parse(txtSubTotal.Text.Trim(), System.Globalization.NumberStyles.Currency);

@@ -88,6 +88,9 @@ namespace Cis.Data
             Property(e => e.DueDate)
                 .IsRequired();
 
+            Property(e => e.PersonInChargeId)
+                .IsRequired();
+
             Property(e => e.PersonInCharge)
                 .IsRequired();
 

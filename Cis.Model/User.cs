@@ -7,6 +7,7 @@ namespace Cis.Model
         public string Username { get; set; }
         public string Password { get; set; }
         public string FullName { get; set; }
+        public string Description { get; set; }
 
         public ICollection<UserRole> UserRoles { get; set; }
         public ICollection<SalesOrder> SalesOrders { get; set; }
