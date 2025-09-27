@@ -101,6 +101,8 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.pnlHiddenFields = new System.Windows.Forms.Panel();
+            this.label22 = new System.Windows.Forms.Label();
+            this.txtRealSalesNo = new System.Windows.Forms.TextBox();
             this.txtModifiedAt = new System.Windows.Forms.TextBox();
             this.txtSalesOrderId = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
@@ -114,8 +116,6 @@
             this.label24 = new System.Windows.Forms.Label();
             this.lblSalesNo = new System.Windows.Forms.Label();
             this.lblMark = new System.Windows.Forms.Label();
-            this.txtRealSalesNo = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
             this.toolTipSales = new System.Windows.Forms.ToolTip(this.components);
             this.gbShippingAddress.SuspendLayout();
             this.gbCustomerDetail.SuspendLayout();
@@ -992,6 +992,27 @@
             this.pnlHiddenFields.TabIndex = 43;
             this.pnlHiddenFields.Visible = false;
             // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label22.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label22.Location = new System.Drawing.Point(342, 13);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(79, 15);
+            this.label22.TabIndex = 6;
+            this.label22.Text = "Real Sales No";
+            // 
+            // txtRealSalesNo
+            // 
+            this.txtRealSalesNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtRealSalesNo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRealSalesNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtRealSalesNo.Location = new System.Drawing.Point(342, 31);
+            this.txtRealSalesNo.Name = "txtRealSalesNo";
+            this.txtRealSalesNo.Size = new System.Drawing.Size(175, 27);
+            this.txtRealSalesNo.TabIndex = 5;
+            // 
             // txtModifiedAt
             // 
             this.txtModifiedAt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -1164,27 +1185,6 @@
             this.lblMark.TabIndex = 30;
             this.lblMark.Text = "DELETED";
             this.lblMark.Visible = false;
-            // 
-            // txtRealSalesNo
-            // 
-            this.txtRealSalesNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtRealSalesNo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRealSalesNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtRealSalesNo.Location = new System.Drawing.Point(342, 31);
-            this.txtRealSalesNo.Name = "txtRealSalesNo";
-            this.txtRealSalesNo.Size = new System.Drawing.Size(175, 27);
-            this.txtRealSalesNo.TabIndex = 5;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label22.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label22.Location = new System.Drawing.Point(342, 13);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(79, 15);
-            this.label22.TabIndex = 6;
-            this.label22.Text = "Real Sales No";
             // 
             // toolTipSales
             // 

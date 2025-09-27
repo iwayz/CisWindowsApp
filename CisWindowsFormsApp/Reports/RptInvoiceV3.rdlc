@@ -1981,7 +1981,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>="FAKTUR" &amp; System.Environment.NewLine 
+                      <Value>=(Iif(Fields!GrandTotalAmount.Value &lt; 0 , "RETUR PENJUALAN", "FAKTUR")) &amp; System.Environment.NewLine 
 &amp; "NOMOR: " + First(Mid(Fields!SalesNo.Value,3,Len(Fields!SalesNo.Value)), "DataSetInvoice")</Value>
                       <Style>
                         <FontFamily>NeueHaasGroteskText Pro</FontFamily>
@@ -2447,6 +2447,8 @@
     </GridLayoutDefinition>
   </ReportParametersLayout>
   <Code>Public Function Spell(ByVal number As Integer) As String
+		Dim isMinus As Boolean = number &lt; 0
+		number = Math.Abs(number)
 		If number &gt; 999999999 Then Return "### Nominal terlalu besar. Maksimal nominal adalah 999.999.999 ###"
 		Dim n, m As Integer
 		Dim result As String = String.Empty
@@ -2457,6 +2459,7 @@
 		m = m Mod 1000
 		If n &gt; 0 Then result += SpellHundreds(n) &amp; If(n = 1, " Seribu ", " Ribu")
 		result += SpellHundreds(m) &amp; "Rupiah"
+		result = IIf(isMinus, "(Minus) ", "") &amp; result
 		Return System.Text.RegularExpressions.Regex.Replace(result, "\s+", " ").Trim()
 	End Function
 

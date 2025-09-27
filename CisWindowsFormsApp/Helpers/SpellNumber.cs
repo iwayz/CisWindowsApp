@@ -11,6 +11,9 @@ namespace CisWindowsFormsApp
     {
         public static string Spell(int number)
         {
+            bool isMinus = number < 0;
+            number = Math.Abs(number);
+
             if (number > 999999999)
                 return "### Nominal terlalu besar. Maksimal nominal adalah 999.999.999 ###";
 
@@ -28,6 +31,8 @@ namespace CisWindowsFormsApp
                 result += SpellHundreds(n) + (n == 1 ? " Seribu " : " Ribu");
            
             result += SpellHundreds(m) + "Rupiah";
+
+            result = isMinus ? $"(Minus) {result}" : result;
             return Regex.Replace(result, @"\s+", " ").Trim();
         }
 

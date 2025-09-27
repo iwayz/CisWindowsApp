@@ -486,7 +486,13 @@ namespace CisWindowsFormsApp
 
         private void txtQty_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            // Check if the character is a digit, a control character, or the negative sign
+            bool isValidInput = char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar) || (e.KeyChar == '-' && ((TextBox)sender).SelectionStart == 0 && !((TextBox)sender).Text.Contains("-"));
+
+            // Set Handled to false if the input is valid
+            e.Handled = !isValidInput;
+
+            //e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
         private void txtPrice_KeyPress(object sender, KeyPressEventArgs e)
