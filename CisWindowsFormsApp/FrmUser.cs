@@ -375,9 +375,10 @@ namespace CisWindowsFormsApp
                     Password = res.uUr.u.Password,
                     Fullname = res.uUr.u.FullName,
                     UserRoleId = res.uUr.ur.Id,
+                    UserDescription = res.uUr.u.Description,
                     RoleId = res.r.Id,
                     RoleCode = res.r.RoleCode,
-                    Description = res.r.Description,
+                    RoleDescription = res.r.Description,
                     UModifiedAt = res.uUr.u.ModifiedAt,
                     URModifiedAt = res.uUr.ur.ModifiedAt,
                 });
@@ -390,8 +391,10 @@ namespace CisWindowsFormsApp
             dgvUser.Columns[nameof(User.Username)].HeaderText = "USERNAME";
             dgvUser.Columns[nameof(User.FullName)].HeaderText = "NAMA LENGKAP";
             dgvUser.Columns[nameof(User.FullName)].Width = 220;
-            dgvUser.Columns[nameof(Role.Description)].HeaderText = "ROLE";
-            dgvUser.Columns[nameof(Role.Description)].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgvUser.Columns["RoleDescription"].HeaderText = "ROLE";
+            dgvUser.Columns["RoleDescription"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgvUser.Columns["UserDescription"].HeaderText = "KET";
+            dgvUser.Columns["UserDescription"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             // hidden fields
             dgvUser.Columns["UserId"].Visible = false;
@@ -409,7 +412,7 @@ namespace CisWindowsFormsApp
             txtUsername.Text = currentRow.Cells[nameof(User.Username)].Value.ToString();
             txtPassword.Text = currentRow.Cells[nameof(User.Password)].Value.ToString();
             txtFullName.Text = currentRow.Cells[nameof(User.FullName)].Value.ToString();
-            txtDescription.Text = currentRow.Cells[nameof(User.Description)].Value.ToString();
+            txtDescription.Text = currentRow.Cells["UserDescription"].Value?.ToString() ?? string.Empty;
 
             cbRole.SelectedValue = currentRow.Cells[nameof(UserRole.RoleId)].Value.ToString();
             chkChangePassword.Visible = true;

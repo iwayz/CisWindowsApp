@@ -5,8 +5,8 @@
 	  <!--<TargetFramework>netcoreapp3.1</TargetFramework>-->
 	  <TargetFramework>net47</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <FileVersion>2.1.2402.3</FileVersion>
-    <AssemblyVersion>2.1.0.0</AssemblyVersion>
+    <FileVersion>2.2.2510.2</FileVersion>
+    <AssemblyVersion>2.2.0.0</AssemblyVersion>
     <Version>2.0.0</Version>
     <PackageReleaseNotes>New look, New company name
 PT. Capung Indah Sentosa</PackageReleaseNotes>
