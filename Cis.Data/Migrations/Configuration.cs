@@ -7,12 +7,12 @@
     using System.Data.Entity.Migrations.Model;
     using System.Data.Entity.SqlServer;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Cis.Data.CisDbContext>
+    public class Configuration : DbMigrationsConfiguration<Cis.Data.CisDbContext>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = true;
+            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationDataLossAllowed = false;
             SetSqlGenerator("System.Data.SqlClient", new CustomSqlServerMigrationSqlGenerator());
         }
 

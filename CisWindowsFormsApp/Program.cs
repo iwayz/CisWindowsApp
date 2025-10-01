@@ -1,7 +1,7 @@
+using Cis.Data;
+using Cis.Data.Migrations;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Data.Entity;
 using System.Windows.Forms;
 
 namespace CisWindowsFormsApp
@@ -15,6 +15,10 @@ namespace CisWindowsFormsApp
         static void Main()
         {
             //var s = new UserHelper().HashPassword("T77Qqxhc");
+
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<CisDbContext, Configuration>());
+            using (var context = new CisDbContext())
+                context.Database.Initialize(force: false);
             
             //Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
