@@ -1007,6 +1007,7 @@ namespace CisWindowsFormsApp
                     soToUpdate.GrandTotalAmount = decimal.Parse(lblTotal.Text.Trim(), System.Globalization.NumberStyles.Currency);
                     soToUpdate.UserId = Properties.Settings.Default.CurrentUserId;
                     soToUpdate.Username = Properties.Settings.Default.CurrentUser;
+                    soToUpdate.PersonInChargeId = Guid.Parse(cbPic.SelectedValue.ToString());
 
                     // Audit fields
                     soToUpdate.ModifiedBy = Properties.Settings.Default.CurrentUserId;
