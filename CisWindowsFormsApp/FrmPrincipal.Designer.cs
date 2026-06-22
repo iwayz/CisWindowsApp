@@ -33,6 +33,10 @@
             this.cbProvince = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtContactPerson = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtNpwp = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtModifiedAt = new System.Windows.Forms.TextBox();
             this.txtPrincipalId = new System.Windows.Forms.TextBox();
@@ -64,6 +68,51 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrincipal)).BeginInit();
             this.panel2.SuspendLayout();
+            //
+            // label11
+            //
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label11.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label11.Location = new System.Drawing.Point(9, 400);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(91, 15);
+            this.label11.TabIndex = 30;
+            this.label11.Text = "Contact Person";
+            //
+            // txtContactPerson
+            //
+            this.txtContactPerson.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtContactPerson.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.txtContactPerson.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtContactPerson.Location = new System.Drawing.Point(9, 416);
+            this.txtContactPerson.MaxLength = 100;
+            this.txtContactPerson.Name = "txtContactPerson";
+            this.txtContactPerson.Size = new System.Drawing.Size(283, 31);
+            this.txtContactPerson.TabIndex = 10;
+            //
+            // label12
+            //
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label12.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label12.Location = new System.Drawing.Point(9, 455);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(35, 15);
+            this.label12.TabIndex = 31;
+            this.label12.Text = "NPWP";
+            //
+            // txtNpwp
+            //
+            this.txtNpwp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtNpwp.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.txtNpwp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtNpwp.Location = new System.Drawing.Point(9, 471);
+            this.txtNpwp.MaxLength = 30;
+            this.txtNpwp.Name = "txtNpwp";
+            this.txtNpwp.Size = new System.Drawing.Size(175, 31);
+            this.txtNpwp.TabIndex = 11;
+
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
@@ -444,9 +493,13 @@
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.txtEmail);
             this.panel2.Controls.Add(this.label7);
+            this.panel2.Controls.Add(this.label11);
+            this.panel2.Controls.Add(this.txtContactPerson);
+            this.panel2.Controls.Add(this.label12);
+            this.panel2.Controls.Add(this.txtNpwp);
             this.panel2.Location = new System.Drawing.Point(13, 12);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(305, 491);
+            this.panel2.Size = new System.Drawing.Size(305, 515);
             this.panel2.TabIndex = 1;
             // 
             // panel3
@@ -458,7 +511,7 @@
             this.panel3.Controls.Add(this.btnAdd);
             this.panel3.Location = new System.Drawing.Point(324, 12);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(104, 491);
+            this.panel3.Size = new System.Drawing.Size(104, 515);
             this.panel3.TabIndex = 2;
             // 
             // panel4
@@ -468,7 +521,7 @@
             this.panel4.Controls.Add(this.dgvPrincipal);
             this.panel4.Location = new System.Drawing.Point(434, 12);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(526, 491);
+            this.panel4.Size = new System.Drawing.Size(526, 515);
             this.panel4.TabIndex = 3;
             // 
             // FrmPrincipal
@@ -476,7 +529,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(972, 707);
+            this.ClientSize = new System.Drawing.Size(972, 740);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -530,5 +583,9 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtContactPerson;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtNpwp;
     }
 }

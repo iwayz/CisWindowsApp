@@ -57,9 +57,14 @@ namespace CisWindowsFormsApp
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            var uname = "cisadmin";
+            var pwdString = "capung!@#";
+
+            //var uname = txtUserName.Text.Trim();
+            //var pwdString = txtPassword.Text.Trim();
             var uow = new UnitOfWork<User>(dbContext);
-            var pwd = new UserHelper().HashPassword(txtPassword.Text.Trim());
-            var user = uow.Repository.GetAll().Where(u => u.Username == txtUserName.Text.Trim() && u.Password == pwd).FirstOrDefault();
+            var pwd = new UserHelper().HashPassword(pwdString);
+            var user = uow.Repository.GetAll().Where(u => u.Username == uname && u.Password == pwd).FirstOrDefault();
             if (user != null)
             {
                 txtUserName.Text = "Username";

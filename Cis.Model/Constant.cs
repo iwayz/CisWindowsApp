@@ -56,16 +56,86 @@ namespace Cis.Model
             public enum Transaction
             {
                 Sales = 200,
-                Order = 201
+                Purchase = 201,
+                PurchaseReturn = 203,
+                SalesReturn = 204,
+                StockTransfer = 205,
+                StockOpname = 206,
+                StockAdjustment = 207
             }
 
             public enum Reporting
             {
                 Sales = 300,
-                Order = 301 // TODO: add other reporting form
+                Purchase = 301,
+                StockMovement = 302
             }
+
+
         }
+    }
 
+    public enum SalesOrderStatus
+    {
+        Draft = 0,
+        Invoice = 1,
+        Posted = 2,
+        Cancelled = 3
+    }
 
+    public enum PurchaseOrderStatus
+    {
+        Draft = 0,
+        Confirmed = 1,
+        Received = 2,
+        Cancelled = 3
+    }
+
+    public enum PostingStatus
+    {
+        Draft = 0,
+        Posted = 1,
+        Cancelled = 2
+    }
+
+    public enum StockMovementType
+    {
+        OpeningStock = 1,
+        PurchaseReceipt = 2,
+        SalesOut = 3,
+        SalesReturn = 4,
+        PurchaseReturn = 5,
+        TransferOut = 6,
+        TransferIn = 7,
+        AdjustmentIn = 8,
+        AdjustmentOut = 9
+    }
+
+    public enum MovementDirection
+    {
+        In = 1,
+        Out = 2
+    }
+
+    public enum StockOpnameType
+    {
+        OpeningStock = 1,
+        PhysicalCount = 2
+    }
+
+    public enum AdjustmentReason
+    {
+        StockOpname = 1,
+        Damage = 2,
+        Loss = 3,
+        Expired = 4,
+        Correction = 5,
+        Other = 6
+    }
+
+    public enum StockTransferType
+    {
+        Out = 1,
+        In = 2
     }
 }

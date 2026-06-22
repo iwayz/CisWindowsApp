@@ -22,7 +22,7 @@ namespace CisWindowsFormsApp
 
         enum ActiveMenu
         {
-            Master = 1, Transaction = 2, Reporting = 3
+            Master = 1, Transaction = 2, Reporting = 3, Inventory = 4
         }
 
         public FrmMain()
@@ -65,6 +65,17 @@ namespace CisWindowsFormsApp
             
             var usableArea = GetUsableArea();
             var form = new FrmTransactionDashboard();
+            form.AreaWidth = usableArea.Item1;
+            form.AreaHeight = usableArea.Item2;
+            OpenChildForm(form, sender);
+        }
+
+        private void btnInventory_Click(object sender, EventArgs e)
+        {
+            activeMenu = (int)ActiveMenu.Inventory;
+
+            var usableArea = GetUsableArea();
+            var form = new FrmInventoryDashboard();
             form.AreaWidth = usableArea.Item1;
             form.AreaHeight = usableArea.Item2;
             OpenChildForm(form, sender);
@@ -219,6 +230,9 @@ namespace CisWindowsFormsApp
                     break;
                 case (int)ActiveMenu.Reporting:
                     btnReporting.PerformClick();
+                    break;
+                case (int)ActiveMenu.Inventory:
+                    btnInventory.PerformClick();
                     break;
                 default:
                     btnMasterData.PerformClick();

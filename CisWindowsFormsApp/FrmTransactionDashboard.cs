@@ -36,16 +36,39 @@ namespace CisWindowsFormsApp
 
         private void buttonPurchase_Click(object sender, EventArgs e)
         {
-            if (!(new CommonFunctionHelper().ValidateAccess((int)Constant.Permission.Transaction.Order)))
+            if (!(new CommonFunctionHelper().ValidateAccess((int)Constant.Permission.Transaction.Purchase)))
             {
                 CommonMessageHelper.NoAccess();
                 return;
 
             }
             pnlMenuTransaction.Hide();
-            OpenChildForm(new FormTest(), sender);
+            OpenChildForm(new FrmPurchaseOrder(), sender);
 
         }
+
+        private void btnPurchaseReturn_Click(object sender, EventArgs e)
+        {
+            if (!(new CommonFunctionHelper().ValidateAccess((int)Constant.Permission.Transaction.PurchaseReturn)))
+            {
+                CommonMessageHelper.NoAccess();
+                return;
+            }
+            pnlMenuTransaction.Hide();
+            OpenChildForm(new FrmPurchaseReturn(), sender);
+        }
+
+        private void btnSalesReturn_Click(object sender, EventArgs e)
+        {
+            if (!(new CommonFunctionHelper().ValidateAccess((int)Constant.Permission.Transaction.SalesReturn)))
+            {
+                CommonMessageHelper.NoAccess();
+                return;
+            }
+            pnlMenuTransaction.Hide();
+            OpenChildForm(new FrmSalesReturn(), sender);
+        }
+
 
         private void OpenChildForm(Form childForm, object btnSender)
         {

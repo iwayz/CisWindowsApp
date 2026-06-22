@@ -32,6 +32,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTransactionDashboard));
             this.buttonPurchase = new System.Windows.Forms.Button();
             this.btnSales = new System.Windows.Forms.Button();
+            this.btnPurchaseReturn = new System.Windows.Forms.Button();
+            this.btnSalesReturn = new System.Windows.Forms.Button();
+
             this.pnlChildHeader = new System.Windows.Forms.Panel();
             this.lblTransactionChildHeader = new System.Windows.Forms.Label();
             this.pnlTransactionChildren = new System.Windows.Forms.Panel();
@@ -43,110 +46,142 @@
             this.pnlMenuTransaction.SuspendLayout();
             this.gbMenuTransaction.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // buttonPurchase
-            // 
-            this.buttonPurchase.BackColor = System.Drawing.Color.SlateBlue;
-            this.buttonPurchase.FlatAppearance.BorderSize = 0;
-            this.buttonPurchase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonPurchase.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
-            this.buttonPurchase.ForeColor = System.Drawing.Color.White;
-            this.buttonPurchase.Image = ((System.Drawing.Image)(resources.GetObject("buttonPurchase.Image")));
-            this.buttonPurchase.Location = new System.Drawing.Point(135, 125);
-            this.buttonPurchase.Name = "buttonPurchase";
-            this.buttonPurchase.Size = new System.Drawing.Size(237, 60);
-            this.buttonPurchase.TabIndex = 0;
-            this.buttonPurchase.Text = "Pembelian";
-            this.buttonPurchase.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolTipTransactionMenu.SetToolTip(this.buttonPurchase, "Transaksi Pembelian - Saat ini belum aktif. Silakan hubungi Admin untuk mengaktif" +
-        "kan.");
-            this.buttonPurchase.UseVisualStyleBackColor = false;
-            this.buttonPurchase.Click += new System.EventHandler(this.buttonPurchase_Click);
-            // 
-            // btnSales
-            // 
+            //
+            // btnSales  — Row 1, Col 1
+            //
             this.btnSales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(166)))), ((int)(((byte)(237)))));
             this.btnSales.FlatAppearance.BorderSize = 0;
             this.btnSales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSales.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.btnSales.ForeColor = System.Drawing.Color.White;
             this.btnSales.Image = ((System.Drawing.Image)(resources.GetObject("btnSales.Image")));
-            this.btnSales.Location = new System.Drawing.Point(135, 57);
+            this.btnSales.Location = new System.Drawing.Point(44, 52);
             this.btnSales.Name = "btnSales";
-            this.btnSales.Size = new System.Drawing.Size(237, 60);
+            this.btnSales.Size = new System.Drawing.Size(129, 60);
             this.btnSales.TabIndex = 0;
             this.btnSales.Text = "Penjualan";
             this.btnSales.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolTipTransactionMenu.SetToolTip(this.btnSales, "Transaksi Penjualan/ Faktur");
+            this.toolTipTransactionMenu.SetToolTip(this.btnSales, "Transaksi Penjualan / Faktur");
             this.btnSales.UseVisualStyleBackColor = false;
             this.btnSales.Click += new System.EventHandler(this.btnSales_Click);
-            // 
+            //
+            // buttonPurchase  — Row 1, Col 2
+            //
+            this.buttonPurchase.BackColor = System.Drawing.Color.SlateBlue;
+            this.buttonPurchase.FlatAppearance.BorderSize = 0;
+            this.buttonPurchase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPurchase.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.buttonPurchase.ForeColor = System.Drawing.Color.White;
+            this.buttonPurchase.Image = ((System.Drawing.Image)(resources.GetObject("buttonPurchase.Image")));
+            this.buttonPurchase.Location = new System.Drawing.Point(181, 52);
+            this.buttonPurchase.Name = "buttonPurchase";
+            this.buttonPurchase.Size = new System.Drawing.Size(129, 60);
+            this.buttonPurchase.TabIndex = 1;
+            this.buttonPurchase.Text = "Pembelian";
+            this.buttonPurchase.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolTipTransactionMenu.SetToolTip(this.buttonPurchase, "Transaksi Pembelian");
+            this.buttonPurchase.UseVisualStyleBackColor = false;
+            this.buttonPurchase.Click += new System.EventHandler(this.buttonPurchase_Click);
+            //
+            // btnSalesReturn  — Row 2, Col 1
+            //
+            this.btnSalesReturn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(56)))), ((int)(((byte)(89)))));
+            this.btnSalesReturn.FlatAppearance.BorderSize = 0;
+            this.btnSalesReturn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalesReturn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.btnSalesReturn.ForeColor = System.Drawing.Color.White;
+            this.btnSalesReturn.Location = new System.Drawing.Point(44, 128);
+            this.btnSalesReturn.Name = "btnSalesReturn";
+            this.btnSalesReturn.Size = new System.Drawing.Size(129, 60);
+            this.btnSalesReturn.TabIndex = 2;
+            this.btnSalesReturn.Text = "Return Jual";
+            this.btnSalesReturn.UseVisualStyleBackColor = false;
+            this.btnSalesReturn.Click += new System.EventHandler(this.btnSalesReturn_Click);
+            //
+            // btnPurchaseReturn  — Row 2, Col 2
+            //
+            this.btnPurchaseReturn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(113)))), ((int)(((byte)(99)))));
+            this.btnPurchaseReturn.FlatAppearance.BorderSize = 0;
+            this.btnPurchaseReturn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPurchaseReturn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.btnPurchaseReturn.ForeColor = System.Drawing.Color.White;
+            this.btnPurchaseReturn.Location = new System.Drawing.Point(181, 128);
+            this.btnPurchaseReturn.Name = "btnPurchaseReturn";
+            this.btnPurchaseReturn.Size = new System.Drawing.Size(129, 60);
+            this.btnPurchaseReturn.TabIndex = 3;
+            this.btnPurchaseReturn.Text = "Return Beli";
+            this.btnPurchaseReturn.UseVisualStyleBackColor = false;
+            this.btnPurchaseReturn.Click += new System.EventHandler(this.btnPurchaseReturn_Click);
+            //
             // pnlChildHeader
-            // 
+            //
             this.pnlChildHeader.Controls.Add(this.lblTransactionChildHeader);
             this.pnlChildHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlChildHeader.Location = new System.Drawing.Point(0, 0);
             this.pnlChildHeader.Name = "pnlChildHeader";
             this.pnlChildHeader.Size = new System.Drawing.Size(1064, 40);
             this.pnlChildHeader.TabIndex = 1;
-            // 
+            //
             // lblTransactionChildHeader
-            // 
+            //
             this.lblTransactionChildHeader.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblTransactionChildHeader.AutoSize = true;
             this.lblTransactionChildHeader.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold);
             this.lblTransactionChildHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
-            this.lblTransactionChildHeader.Location = new System.Drawing.Point(12, 11);
+            this.lblTransactionChildHeader.Location = new System.Drawing.Point(12, 15);
             this.lblTransactionChildHeader.Name = "lblTransactionChildHeader";
             this.lblTransactionChildHeader.Size = new System.Drawing.Size(61, 23);
             this.lblTransactionChildHeader.TabIndex = 0;
             this.lblTransactionChildHeader.Text = "MENU";
-            // 
+            //
             // pnlTransactionChildren
-            // 
+            //
+            this.pnlTransactionChildren.AutoScroll = true;
             this.pnlTransactionChildren.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlTransactionChildren.Location = new System.Drawing.Point(0, 40);
+            this.pnlTransactionChildren.Location = new System.Drawing.Point(0, 42);
             this.pnlTransactionChildren.Name = "pnlTransactionChildren";
-            this.pnlTransactionChildren.Size = new System.Drawing.Size(1064, 562);
+            this.pnlTransactionChildren.Size = new System.Drawing.Size(1064, 516);
             this.pnlTransactionChildren.TabIndex = 2;
-            // 
+            //
             // pnlSeparator
-            // 
+            //
             this.pnlSeparator.BackColor = System.Drawing.Color.Silver;
             this.pnlSeparator.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlSeparator.Location = new System.Drawing.Point(0, 40);
             this.pnlSeparator.Name = "pnlSeparator";
             this.pnlSeparator.Size = new System.Drawing.Size(1064, 2);
             this.pnlSeparator.TabIndex = 2;
-            // 
+            //
             // pnlMenuTransaction
-            // 
+            //
             this.pnlMenuTransaction.Controls.Add(this.gbMenuTransaction);
-            this.pnlMenuTransaction.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlMenuTransaction.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMenuTransaction.Location = new System.Drawing.Point(0, 42);
             this.pnlMenuTransaction.Name = "pnlMenuTransaction";
-            this.pnlMenuTransaction.Size = new System.Drawing.Size(1064, 505);
+            this.pnlMenuTransaction.Size = new System.Drawing.Size(1064, 516);
             this.pnlMenuTransaction.TabIndex = 3;
-            // 
+            //
             // gbMenuTransaction
-            // 
-            this.gbMenuTransaction.Controls.Add(this.buttonPurchase);
+            //
             this.gbMenuTransaction.Controls.Add(this.btnSales);
-            this.gbMenuTransaction.Location = new System.Drawing.Point(258, 94);
+            this.gbMenuTransaction.Controls.Add(this.buttonPurchase);
+            this.gbMenuTransaction.Controls.Add(this.btnSalesReturn);
+            this.gbMenuTransaction.Controls.Add(this.btnPurchaseReturn);
+            this.gbMenuTransaction.Location = new System.Drawing.Point(179, 49);
             this.gbMenuTransaction.Name = "gbMenuTransaction";
-            this.gbMenuTransaction.Size = new System.Drawing.Size(505, 252);
+            this.gbMenuTransaction.Size = new System.Drawing.Size(360, 230);
             this.gbMenuTransaction.TabIndex = 0;
             this.gbMenuTransaction.TabStop = false;
-            // 
+            //
             // FrmTransactionDashboard
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1064, 602);
+            this.ClientSize = new System.Drawing.Size(1064, 558);
             this.Controls.Add(this.pnlMenuTransaction);
-            this.Controls.Add(this.pnlSeparator);
             this.Controls.Add(this.pnlTransactionChildren);
+            this.Controls.Add(this.pnlSeparator);
             this.Controls.Add(this.pnlChildHeader);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmTransactionDashboard";
@@ -166,6 +201,9 @@
         private System.Windows.Forms.Label lblTransactionChildHeader;
         private System.Windows.Forms.Button btnSales;
         private System.Windows.Forms.Button buttonPurchase;
+        private System.Windows.Forms.Button btnPurchaseReturn;
+        private System.Windows.Forms.Button btnSalesReturn;
+
         private System.Windows.Forms.Panel pnlSeparator;
         private System.Windows.Forms.Panel pnlMenuTransaction;
         private System.Windows.Forms.GroupBox gbMenuTransaction;

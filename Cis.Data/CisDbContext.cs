@@ -34,6 +34,22 @@ namespace Cis.Data
         public DbSet<User> Users { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
 
+        // Stock Management
+        public DbSet<PurchaseOrder> PurchaseOrders { get; set; }
+        public DbSet<PurchaseOrderItem> PurchaseOrderItems { get; set; }
+        public DbSet<PurchaseReturn> PurchaseReturns { get; set; }
+        public DbSet<PurchaseReturnItem> PurchaseReturnItems { get; set; }
+        public DbSet<SalesReturn> SalesReturns { get; set; }
+        public DbSet<SalesReturnItem> SalesReturnItems { get; set; }
+        public DbSet<StockCard> StockCards { get; set; }
+        public DbSet<StockMovement> StockMovements { get; set; }
+        public DbSet<StockTransfer> StockTransfers { get; set; }
+        public DbSet<StockTransferItem> StockTransferItems { get; set; }
+        public DbSet<StockOpname> StockOpnames { get; set; }
+        public DbSet<StockOpnameItem> StockOpnameItems { get; set; }
+        public DbSet<StockAdjustment> StockAdjustments { get; set; }
+        public DbSet<StockAdjustmentItem> StockAdjustmentItems { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             // Properties configurations
@@ -174,6 +190,212 @@ namespace Cis.Data
                 .HasRequired(sa => sa.Representative)
                 .WithMany(r => r.SalesAreas)
                 .HasForeignKey(sa => sa.RepresentativeId)
+                .WillCascadeOnDelete(false);
+
+            // SalesReturn to SalesOrder, Customer, User
+            modelBuilder.Entity<SalesReturn>()
+                .HasRequired(sr => sr.SalesOrder)
+                .WithMany(so => so.SalesReturns)
+                .HasForeignKey(sr => sr.SalesOrderId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<SalesReturn>()
+                .HasRequired(sr => sr.Customer)
+                .WithMany()
+                .HasForeignKey(sr => sr.CustomerId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<SalesReturn>()
+                .HasRequired(sr => sr.User)
+                .WithMany()
+                .HasForeignKey(sr => sr.UserId)
+                .WillCascadeOnDelete(false);
+
+            // SalesReturnItem to SalesReturn, Product, UnitOfMeasurement
+            modelBuilder.Entity<SalesReturnItem>()
+                .HasRequired(i => i.SalesReturn)
+                .WithMany(sr => sr.SalesReturnItems)
+                .HasForeignKey(i => i.SalesReturnId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<SalesReturnItem>()
+                .HasRequired(i => i.Product)
+                .WithMany()
+                .HasForeignKey(i => i.ProductId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<SalesReturnItem>()
+                .HasRequired(i => i.UnitOfMeasurement)
+                .WithMany()
+                .HasForeignKey(i => i.UomId)
+                .WillCascadeOnDelete(false);
+
+            // PurchaseOrder to Principal (supplier), User
+            modelBuilder.Entity<PurchaseOrder>()
+                .HasRequired(po => po.Supplier)
+                .WithMany(s => s.PurchaseOrders)
+                .HasForeignKey(po => po.SupplierId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<PurchaseOrder>()
+                .HasRequired(po => po.User)
+                .WithMany()
+                .HasForeignKey(po => po.UserId)
+                .WillCascadeOnDelete(false);
+
+            // PurchaseOrderItem to PurchaseOrder, Product, UnitOfMeasurement
+            modelBuilder.Entity<PurchaseOrderItem>()
+                .HasRequired(i => i.PurchaseOrder)
+                .WithMany(po => po.PurchaseOrderItems)
+                .HasForeignKey(i => i.PurchaseOrderId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<PurchaseOrderItem>()
+                .HasRequired(i => i.Product)
+                .WithMany()
+                .HasForeignKey(i => i.ProductId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<PurchaseOrderItem>()
+                .HasRequired(i => i.UnitOfMeasurement)
+                .WithMany()
+                .HasForeignKey(i => i.UomId)
+                .WillCascadeOnDelete(false);
+
+            // PurchaseReturn to PurchaseOrder, Principal (supplier), User
+            modelBuilder.Entity<PurchaseReturn>()
+                .HasRequired(pr => pr.PurchaseOrder)
+                .WithMany(po => po.PurchaseReturns)
+                .HasForeignKey(pr => pr.PurchaseOrderId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<PurchaseReturn>()
+                .HasRequired(pr => pr.Supplier)
+                .WithMany(s => s.PurchaseReturns)
+                .HasForeignKey(pr => pr.SupplierId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<PurchaseReturn>()
+                .HasRequired(pr => pr.User)
+                .WithMany()
+                .HasForeignKey(pr => pr.UserId)
+                .WillCascadeOnDelete(false);
+
+            // PurchaseReturnItem to PurchaseReturn, Product, UnitOfMeasurement
+            modelBuilder.Entity<PurchaseReturnItem>()
+                .HasRequired(i => i.PurchaseReturn)
+                .WithMany(pr => pr.PurchaseReturnItems)
+                .HasForeignKey(i => i.PurchaseReturnId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<PurchaseReturnItem>()
+                .HasRequired(i => i.Product)
+                .WithMany()
+                .HasForeignKey(i => i.ProductId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<PurchaseReturnItem>()
+                .HasRequired(i => i.UnitOfMeasurement)
+                .WithMany()
+                .HasForeignKey(i => i.UomId)
+                .WillCascadeOnDelete(false);
+
+            // StockCard to Product
+            modelBuilder.Entity<StockCard>()
+                .HasRequired(sc => sc.Product)
+                .WithMany()
+                .HasForeignKey(sc => sc.ProductId)
+                .WillCascadeOnDelete(false);
+
+            // StockMovement to Product
+            modelBuilder.Entity<StockMovement>()
+                .HasRequired(sm => sm.Product)
+                .WithMany()
+                .HasForeignKey(sm => sm.ProductId)
+                .WillCascadeOnDelete(false);
+
+            // StockTransfer to User
+            modelBuilder.Entity<StockTransfer>()
+                .HasRequired(st => st.User)
+                .WithMany()
+                .HasForeignKey(st => st.UserId)
+                .WillCascadeOnDelete(false);
+
+            // StockTransferItem to StockTransfer, Product, UnitOfMeasurement
+            modelBuilder.Entity<StockTransferItem>()
+                .HasRequired(i => i.StockTransfer)
+                .WithMany(st => st.StockTransferItems)
+                .HasForeignKey(i => i.StockTransferId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<StockTransferItem>()
+                .HasRequired(i => i.Product)
+                .WithMany()
+                .HasForeignKey(i => i.ProductId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<StockTransferItem>()
+                .HasRequired(i => i.UnitOfMeasurement)
+                .WithMany()
+                .HasForeignKey(i => i.UomId)
+                .WillCascadeOnDelete(false);
+
+            // StockOpname to User
+            modelBuilder.Entity<StockOpname>()
+                .HasRequired(so => so.User)
+                .WithMany()
+                .HasForeignKey(so => so.UserId)
+                .WillCascadeOnDelete(false);
+
+            // StockOpnameItem to StockOpname, Product, UnitOfMeasurement
+            modelBuilder.Entity<StockOpnameItem>()
+                .HasRequired(i => i.StockOpname)
+                .WithMany(so => so.StockOpnameItems)
+                .HasForeignKey(i => i.StockOpnameId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<StockOpnameItem>()
+                .HasRequired(i => i.Product)
+                .WithMany()
+                .HasForeignKey(i => i.ProductId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<StockOpnameItem>()
+                .HasRequired(i => i.UnitOfMeasurement)
+                .WithMany()
+                .HasForeignKey(i => i.UomId)
+                .WillCascadeOnDelete(false);
+
+            // StockAdjustment to User, StockOpname
+            modelBuilder.Entity<StockAdjustment>()
+                .HasRequired(sa => sa.User)
+                .WithMany()
+                .HasForeignKey(sa => sa.UserId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<StockAdjustment>()
+                .HasOptional(sa => sa.StockOpname)
+                .WithMany()
+                .HasForeignKey(sa => sa.StockOpnameId)
+                .WillCascadeOnDelete(false);
+
+            // StockAdjustmentItem to StockAdjustment, Product, UnitOfMeasurement
+            modelBuilder.Entity<StockAdjustmentItem>()
+                .HasRequired(i => i.StockAdjustment)
+                .WithMany(sa => sa.StockAdjustmentItems)
+                .HasForeignKey(i => i.StockAdjustmentId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<StockAdjustmentItem>()
+                .HasRequired(i => i.Product)
+                .WithMany()
+                .HasForeignKey(i => i.ProductId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<StockAdjustmentItem>()
+                .HasRequired(i => i.UnitOfMeasurement)
+                .WithMany()
+                .HasForeignKey(i => i.UomId)
                 .WillCascadeOnDelete(false);
         }
     }

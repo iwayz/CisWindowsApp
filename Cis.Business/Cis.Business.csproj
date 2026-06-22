@@ -4,4 +4,9 @@
     <TargetFramework>net47</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Cis.Model\Cis.Model.csproj" />
+    <ProjectReference Include="..\Cis.Data\Cis.Data.csproj" />
+  </ItemGroup>
+
 </Project>

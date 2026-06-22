@@ -55,13 +55,35 @@ namespace CisWindowsFormsApp
             frmCustomerRecap.ShowDialog();
         }
 
-        private void FrmReportingDashboard_Load(object sender, EventArgs e)
+        private void btnStockMovement_Click(object sender, EventArgs e)
         {
-            gbMenuReporting.Left = (AreaWidth - gbMenuReporting.Width) / 2;
-            gbMenuReporting.Top = (AreaHeight - gbMenuReporting.Height) / 5;
-
-            lblReportingChildHeader.Left = (this.pnlChildHeader.Width - lblReportingChildHeader.Width) / 2;
-            lblReportingChildHeader.Top = (this.pnlChildHeader.Height - lblReportingChildHeader.Height) / 2;
+            if (!(new CommonFunctionHelper().ValidateAccess((int)Constant.Permission.Reporting.StockMovement)))
+            {
+                CommonMessageHelper.NoAccess();
+                return;
+            }
+            new FrmStockMovement().ShowDialog();
         }
+
+        private void btnStockCard_Click(object sender, EventArgs e)
+        {
+            if (!(new CommonFunctionHelper().ValidateAccess((int)Constant.Permission.Reporting.StockMovement)))
+            {
+                CommonMessageHelper.NoAccess();
+                return;
+            }
+            new FrmStockCard().ShowDialog();
+        }
+
+        private void CenterControls()
+        {
+            gbMenuReporting.Left = (pnlMenuReporting.Width - gbMenuReporting.Width) / 2;
+            gbMenuReporting.Top = (pnlMenuReporting.Height - gbMenuReporting.Height) / 5;
+            lblReportingChildHeader.Left = (pnlChildHeader.Width - lblReportingChildHeader.Width) / 2;
+            lblReportingChildHeader.Top = (pnlChildHeader.Height - lblReportingChildHeader.Height) / 2;
+        }
+
+        private void FrmReportingDashboard_Load(object sender, EventArgs e) => CenterControls();
+        private void FrmReportingDashboard_Resize(object sender, EventArgs e) => CenterControls();
     }
 }

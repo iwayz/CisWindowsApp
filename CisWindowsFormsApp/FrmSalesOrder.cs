@@ -1,4 +1,5 @@
-﻿using Cis.Data;
+﻿using Cis.Business;
+using Cis.Data;
 using Cis.Model;
 using System;
 using System.Collections.Generic;
@@ -151,18 +152,55 @@ namespace CisWindowsFormsApp
 
         private void SetUIButtonGroup()
         {
-            var disable = String.IsNullOrEmpty(lblSalesNo.Text);
-            btnSave.Enabled = !disable;
-            btnDel.Enabled = !disable;
-            btnPrint.Enabled = !disable;
-            btnReload.Enabled = !disable;
-            btnAdd.Enabled = disable;
+            var hasRecord = !string.IsNullOrEmpty(lblSalesNo.Text);
+            btnAdd.Enabled = !hasRecord;
+            btnSave.Enabled = hasRecord;
+            btnDel.Enabled = hasRecord;
+            btnPrint.Enabled = hasRecord;
+            btnReload.Enabled = hasRecord;
+            btnInvoice.Enabled = hasRecord;
+            btnPost.Enabled = hasRecord;
+            btnCancel.Enabled = hasRecord;
 
-            btnSave.BackColor = !disable ? Color.FromArgb(36, 141, 193) : Color.Gray;
-            btnDel.BackColor = !disable ? Color.FromArgb(36, 141, 193) : Color.Gray;
-            btnPrint.BackColor = !disable ? Color.FromArgb(36, 141, 193) : Color.Gray;
-            btnReload.BackColor = !disable ? Color.FromArgb(36, 141, 193) : Color.Gray;
-            btnAdd.BackColor = disable ? Color.FromArgb(36, 141, 193) : Color.Gray;
+            btnAdd.BackColor = !hasRecord ? Color.FromArgb(36, 141, 193) : Color.Gray;
+            btnSave.BackColor = hasRecord ? Color.FromArgb(36, 141, 193) : Color.Gray;
+            btnDel.BackColor = hasRecord ? Color.FromArgb(36, 141, 193) : Color.Gray;
+            btnPrint.BackColor = hasRecord ? Color.FromArgb(36, 141, 193) : Color.Gray;
+            btnReload.BackColor = hasRecord ? Color.FromArgb(36, 141, 193) : Color.Gray;
+        }
+
+        private void SetUIByStatus(SalesOrderStatus status)
+        {
+            bool isDraft = status == SalesOrderStatus.Draft;
+            bool isInvoice = status == SalesOrderStatus.Invoice;
+
+            gbCustomerDetail.Enabled = isDraft;
+            gbShippingAddress.Enabled = isDraft;
+            gbSalesOrderDetail.Enabled = isDraft;
+
+            btnSave.Enabled = isDraft;
+            btnDel.Enabled = isDraft;
+            btnInvoice.Enabled = isDraft;
+            btnPost.Enabled = isInvoice;
+            btnCancel.Enabled = isDraft || isInvoice;
+
+            btnSave.BackColor = isDraft ? Color.FromArgb(36, 141, 193) : Color.Gray;
+            btnDel.BackColor = isDraft ? Color.FromArgb(36, 141, 193) : Color.Gray;
+            btnInvoice.BackColor = isDraft ? Color.FromArgb(0, 120, 215) : Color.Gray;
+            btnPost.BackColor = isInvoice ? Color.FromArgb(16, 124, 16) : Color.Gray;
+            btnCancel.BackColor = (isDraft || isInvoice) ? Color.FromArgb(196, 43, 28) : Color.Gray;
+
+            switch (status)
+            {
+                case SalesOrderStatus.Draft:
+                    lblStatus.Text = "DRAFT"; lblStatus.ForeColor = Color.FromArgb(64, 64, 64); break;
+                case SalesOrderStatus.Invoice:
+                    lblStatus.Text = "INVOICE"; lblStatus.ForeColor = Color.FromArgb(0, 120, 215); break;
+                case SalesOrderStatus.Posted:
+                    lblStatus.Text = "POSTED"; lblStatus.ForeColor = Color.FromArgb(16, 124, 16); break;
+                case SalesOrderStatus.Cancelled:
+                    lblStatus.Text = "CANCELLED"; lblStatus.ForeColor = Color.Gray; break;
+            }
         }
 
         private void CheckSourceRefData()
@@ -304,10 +342,7 @@ namespace CisWindowsFormsApp
 
         private void LoadDataItem(SalesOrder parentResult)
         {
-            lblMark.Visible = false;
-            if (parentResult.Status == Constant.RecordStatus.Inactive)
-                lblMark.Visible = true;
-
+            lblMark.Visible = parentResult.Status == Constant.RecordStatus.Inactive;
             lblSalesNo.Text = parentResult.SalesNo.Substring(2);
             cbCustomer.SelectedValue = parentResult.CustomerId;
             cbSalesman.SelectedValue = parentResult.SalesmanId;
@@ -359,6 +394,7 @@ namespace CisWindowsFormsApp
 
             SetTotalSalesOrder();
             SetUI();
+            SetUIByStatus(parentResult.PostingStatus);
         }
 
         private void SetDataGridViewUI()
@@ -774,7 +810,7 @@ namespace CisWindowsFormsApp
             txtValueAddedTaxAmount.Text = "0";
             lblTotal.Text = "0";
             lblMark.Visible = false;
-
+            lblStatus.Text = string.Empty;
 
             cbPic.SelectedValue = "0";
 
@@ -841,6 +877,7 @@ namespace CisWindowsFormsApp
                 soToAdd.UserId = Properties.Settings.Default.CurrentUserId;
                 soToAdd.Username = Properties.Settings.Default.CurrentUser;
                 soToAdd.Status = Constant.RecordStatus.Active;
+                soToAdd.PostingStatus = SalesOrderStatus.Draft;
                 soToAdd.CreatedBy = Properties.Settings.Default.CurrentUserId;
                 soToAdd.CreatedAt = DateTime.Now;
                 soToAdd.ModifiedBy = Properties.Settings.Default.CurrentUserId;
@@ -946,13 +983,16 @@ namespace CisWindowsFormsApp
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (!ValidateMandatoryFields()) return;
-            if (!ValidateTransactionMonthToSalesNo())
+            if (!ValidateTransactionMonthToSalesNo()) { btnReload.PerformClick(); return; }
+
+            var so = _uow.Repository.GetById(txtSalesOrderId.Text.Trim());
+            if (so.PostingStatus != SalesOrderStatus.Draft)
             {
-                btnReload.PerformClick();
+                MessageBox.Show("Hanya Sales Order dengan status Draft yang dapat diubah.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
-            var repoLastUpdated = _uow.Repository.GetById(txtSalesOrderId.Text.Trim()).ModifiedAt;
+            var repoLastUpdated = so.ModifiedAt;
             var lastUpdated = DateTime.Parse(txtModifiedAt.Text.Trim());
 
             var commonHelper = new CommonFunctionHelper();
@@ -1080,48 +1120,25 @@ namespace CisWindowsFormsApp
         private void btnDel_Click(object sender, EventArgs e)
         {
             var soToDel = _uow.Repository.GetById(txtSalesOrderId.Text.Trim());
+            if (soToDel == null) { CommonMessageHelper.DataNotFound(lblSalesNo.Text.Trim()); return; }
 
-            if (soToDel != null)
+            if (soToDel.PostingStatus != SalesOrderStatus.Draft)
             {
-                if (DialogResult.Yes == CommonMessageHelper.ConfirmDelete())
-                {
-                    using (var dbContextTransaction = dbContext.Database.BeginTransaction())
-                    {
-                        bool expectedError = false;
-                        bool unexpectedError = false;
-                        // delete the sales order
-                        soToDel.Status = Constant.RecordStatus.Inactive;
-                        _uow.Repository.Update(soToDel);
-                        var res = _uow.Commit();
-
-                        if (!res.Item1 && res.Item2 == "Expected")
-                        {
-                            expectedError = true;
-                            CommonMessageHelper.ReferredDataCannotBeDeleted();
-                        }
-
-                        if (!res.Item1 && res.Item2 == "Unexpected")
-                        {
-                            unexpectedError = true;
-                            CommonMessageHelper.ContactAdminError();
-                        }
-
-                        if (expectedError || unexpectedError)
-                        {
-                            dbContextTransaction.Rollback();
-                        }
-                        else
-                        {
-                            dbContextTransaction.Commit();
-                        }
-                    }
-                    LoadSalesOrderData(soToDel.SalesNo);
-                }
+                MessageBox.Show("Hanya Sales Order dengan status Draft yang dapat dihapus.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
             }
-            else
+
+            if (DialogResult.Yes != CommonMessageHelper.ConfirmDelete()) return;
+
+            using (var tx = dbContext.Database.BeginTransaction())
             {
-                CommonMessageHelper.DataNotFound(lblSalesNo.Text.Trim());
+                soToDel.Status = Constant.RecordStatus.Inactive;
+                _uow.Repository.Update(soToDel);
+                var res = _uow.Commit();
+                if (!res.Item1) { tx.Rollback(); CommonMessageHelper.ContactAdminError(); return; }
+                tx.Commit();
             }
+            LoadSalesOrderData(soToDel.SalesNo);
         }
 
         private void btnReload_Click(object sender, EventArgs e)
@@ -1175,6 +1192,48 @@ namespace CisWindowsFormsApp
         private string GetSalesNoToDisplay(string salesNo)
         {
             return salesNo.Substring(2);
+        }
+
+        private void btnInvoice_Click(object sender, EventArgs e)
+        {
+            var so = _uow.Repository.GetById(txtSalesOrderId.Text.Trim());
+            if (so == null) { CommonMessageHelper.DataNotFound(lblSalesNo.Text); return; }
+            if (so.PostingStatus != SalesOrderStatus.Draft)
+            { MessageBox.Show("Hanya Sales Order Draft yang bisa dijadikan Invoice.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information); return; }
+
+            var confirm = MessageBox.Show($"Jadikan SO {lblSalesNo.Text} sebagai INVOICE?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirm != DialogResult.Yes) return;
+
+            so.PostingStatus = SalesOrderStatus.Invoice;
+            so.ModifiedBy = Properties.Settings.Default.CurrentUserId;
+            so.ModifiedAt = DateTime.Now;
+            _uow.Repository.Update(so);
+            _uow.Commit();
+
+            NavigateRecord(RecordNavigation.Last);
+            MessageBox.Show("Sales Order berhasil dijadikan Invoice.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnPost_Click(object sender, EventArgs e)
+        {
+            var confirm = MessageBox.Show($"Post SO {lblSalesNo.Text}?\nStok akan dikurangi.", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirm != DialogResult.Yes) return;
+
+            var svc = new SalesOrderService(dbContext);
+            var (ok, msg) = svc.Post(txtSalesOrderId.Text.Trim(), Properties.Settings.Default.CurrentUserId);
+            if (ok) { NavigateRecord(RecordNavigation.Last); MessageBox.Show("Sales Order berhasil diposting. Stok telah dikurangi.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+            else MessageBox.Show(msg, "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            var confirm = MessageBox.Show($"Batalkan SO {lblSalesNo.Text}?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirm != DialogResult.Yes) return;
+
+            var svc = new SalesOrderService(dbContext);
+            var (ok, msg) = svc.Cancel(txtSalesOrderId.Text.Trim(), Properties.Settings.Default.CurrentUserId);
+            if (ok) { NavigateRecord(RecordNavigation.Last); MessageBox.Show("Sales Order dibatalkan.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+            else MessageBox.Show(msg, "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
     }
 }

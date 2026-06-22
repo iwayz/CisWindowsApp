@@ -56,6 +56,8 @@ namespace CisWindowsFormsApp
             txtPostCode.Text = string.Empty;
             txtPhone.Text = string.Empty;
             txtEmail.Text = string.Empty;
+            txtContactPerson.Text = string.Empty;
+            txtNpwp.Text = string.Empty;
 
             txtPrincipalId.Text = string.Empty;
             txtModifiedAt.Text = string.Empty;
@@ -79,9 +81,11 @@ namespace CisWindowsFormsApp
                     PostalCode = txtPostCode.Text.Trim(),
                     Phone = txtPhone.Text.Trim(),
                     Email = txtEmail.Text.Trim(),
+                    ContactPerson = txtContactPerson.Text.Trim(),
+                    Npwp = txtNpwp.Text.Trim(),
                     ProvinceId = cbProvince.SelectedValue.ToString(),
                     DistrictId = cbDistrict.SelectedValue.ToString(),
-                     					 // Audit Fields 					CreatedBy = Properties.Settings.Default.CurrentUserId,
+                    CreatedBy = Properties.Settings.Default.CurrentUserId,
                     CreatedAt = DateTime.Now,
                     ModifiedBy = Properties.Settings.Default.CurrentUserId,
                     ModifiedAt = DateTime.Now
@@ -113,6 +117,8 @@ namespace CisWindowsFormsApp
                 PrincipalToUpdate.PostalCode = txtPostCode.Text.Trim();
                 PrincipalToUpdate.Phone = txtPhone.Text.Trim();
                 PrincipalToUpdate.Email = txtEmail.Text.Trim();
+                PrincipalToUpdate.ContactPerson = txtContactPerson.Text.Trim();
+                PrincipalToUpdate.Npwp = txtNpwp.Text.Trim();
                 PrincipalToUpdate.ProvinceId = cbProvince.SelectedValue.ToString();
                 PrincipalToUpdate.DistrictId = cbDistrict.SelectedValue.ToString();
 
@@ -233,6 +239,8 @@ namespace CisWindowsFormsApp
                 Principal.PostalCode,
                 Principal.Phone,
                 Principal.Email,
+                Principal.ContactPerson,
+                Principal.Npwp,
                 Principal.ModifiedAt
             });
 
@@ -256,6 +264,8 @@ namespace CisWindowsFormsApp
             dgvPrincipal.Columns[nameof(Principal.ProvinceId)].Visible = false;
             dgvPrincipal.Columns[nameof(Principal.DistrictId)].Visible = false;
             dgvPrincipal.Columns[nameof(Principal.PostalCode)].Visible = false;
+            dgvPrincipal.Columns[nameof(Principal.ContactPerson)].Visible = false;
+            dgvPrincipal.Columns[nameof(Principal.Npwp)].Visible = false;
             dgvPrincipal.Columns[nameof(Principal.ModifiedAt)].Visible = false;
         }
 
@@ -270,6 +280,8 @@ namespace CisWindowsFormsApp
             txtPostCode.Text = currentRow.Cells[nameof(Principal.PostalCode)].Value.ToString();
             txtPhone.Text = currentRow.Cells[nameof(Principal.Phone)].Value.ToString();
             txtEmail.Text = currentRow.Cells[nameof(Principal.Email)].Value.ToString();
+            txtContactPerson.Text = currentRow.Cells[nameof(Principal.ContactPerson)].Value?.ToString() ?? string.Empty;
+            txtNpwp.Text = currentRow.Cells[nameof(Principal.Npwp)].Value?.ToString() ?? string.Empty;
 
             // hidden fields
             txtPrincipalId.Text = currentRow.Cells[nameof(Principal.Id)].Value.ToString();

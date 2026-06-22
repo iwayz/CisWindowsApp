@@ -17,6 +17,8 @@ PT. Capung Indah Sentosa</PackageReleaseNotes>
     <None Remove="Reports\RptInvoice.rdlc" />
     <None Remove="Reports\RptInvoiceV2.rdlc" />
     <None Remove="Reports\RptInvoiceV3.rdlc" />
+    <None Remove="Reports\RptStockCard.rdlc" />
+    <None Remove="Reports\RptStockMovement.rdlc" />
     <None Remove="Resources\CisPosManual.pdf" />
   </ItemGroup>
 
@@ -38,6 +40,8 @@ PT. Capung Indah Sentosa</PackageReleaseNotes>
     <EmbeddedResource Include="Reports\RptInvoice.rdlc" />
     <EmbeddedResource Include="Reports\RptInvoiceV2.rdlc" />
     <EmbeddedResource Include="Reports\RptInvoiceV3.rdlc" />
+    <EmbeddedResource Include="Reports\RptStockCard.rdlc" />
+    <EmbeddedResource Include="Reports\RptStockMovement.rdlc" />
     <EmbeddedResource Include="Resources\CisPosManual.pdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>

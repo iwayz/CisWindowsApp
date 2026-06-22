@@ -45,6 +45,7 @@ namespace Cis.Model
         public string UserId { get; set; }
         public string Username { get; set; }
         public Constant.RecordStatus Status { get; set; }
+        public SalesOrderStatus PostingStatus { get; set; }
 
         public Customer Customer { get; set; }
         public Salesman Salesman { get; set; }
@@ -53,6 +54,6 @@ namespace Cis.Model
         public TermOfPayment TermOfPayment { get; set; }
 
         public ICollection<SalesOrderItem> SalesOrderItems { get; set; }
-
+        public ICollection<SalesReturn> SalesReturns { get; set; }
     }
 }

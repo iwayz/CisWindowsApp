@@ -32,6 +32,8 @@
             this.btnExportPelanggan = new System.Windows.Forms.Button();
             this.btnExportProduct = new System.Windows.Forms.Button();
             this.btnExportExcel = new System.Windows.Forms.Button();
+            this.btnStockCard = new System.Windows.Forms.Button();
+            this.btnStockMovement = new System.Windows.Forms.Button();
             this.pnlChildHeader = new System.Windows.Forms.Panel();
             this.lblReportingChildHeader = new System.Windows.Forms.Label();
             this.pnlSeparator = new System.Windows.Forms.Panel();
@@ -41,60 +43,84 @@
             this.pnlMenuReporting.SuspendLayout();
             this.gbMenuReporting.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnExportPelanggan
-            // 
-            this.btnExportPelanggan.BackColor = System.Drawing.Color.DarkOrange;
-            this.btnExportPelanggan.FlatAppearance.BorderSize = 0;
-            this.btnExportPelanggan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExportPelanggan.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
-            this.btnExportPelanggan.ForeColor = System.Drawing.Color.White;
-            this.btnExportPelanggan.Image = ((System.Drawing.Image)(resources.GetObject("btnExportPelanggan.Image")));
-            this.btnExportPelanggan.Location = new System.Drawing.Point(133, 169);
-            this.btnExportPelanggan.Name = "btnExportPelanggan";
-            this.btnExportPelanggan.Size = new System.Drawing.Size(237, 60);
-            this.btnExportPelanggan.TabIndex = 2;
-            this.btnExportPelanggan.Text = " Exp. Pelanggan";
-            this.btnExportPelanggan.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnExportPelanggan.UseVisualStyleBackColor = false;
-            this.btnExportPelanggan.Click += new System.EventHandler(this.btnExportPelanggan_Click);
-            // 
-            // btnExportProduct
-            // 
-            this.btnExportProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(151)))), ((int)(((byte)(143)))));
-            this.btnExportProduct.FlatAppearance.BorderSize = 0;
-            this.btnExportProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExportProduct.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
-            this.btnExportProduct.ForeColor = System.Drawing.Color.White;
-            this.btnExportProduct.Image = ((System.Drawing.Image)(resources.GetObject("btnExportProduct.Image")));
-            this.btnExportProduct.Location = new System.Drawing.Point(133, 103);
-            this.btnExportProduct.Name = "btnExportProduct";
-            this.btnExportProduct.Size = new System.Drawing.Size(237, 60);
-            this.btnExportProduct.TabIndex = 1;
-            this.btnExportProduct.Text = " Exp. Produk";
-            this.btnExportProduct.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnExportProduct.UseVisualStyleBackColor = false;
-            this.btnExportProduct.Click += new System.EventHandler(this.btnExportProduct_Click);
-            // 
-            // btnExportExcel
-            // 
-            this.btnExportExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(95)))), ((int)(((byte)(139)))));
+            //
+            // btnStockCard  (row 1, col 1)
+            //
+            this.btnStockCard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(188)))), ((int)(((byte)(156)))));
+            this.btnStockCard.FlatAppearance.BorderSize = 0;
+            this.btnStockCard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStockCard.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.btnStockCard.ForeColor = System.Drawing.Color.White;
+            this.btnStockCard.Location = new System.Drawing.Point(114, 36);
+            this.btnStockCard.Name = "btnStockCard";
+            this.btnStockCard.Size = new System.Drawing.Size(172, 74);
+            this.btnStockCard.TabIndex = 0;
+            this.btnStockCard.Text = "Stock Card";
+            this.btnStockCard.UseVisualStyleBackColor = false;
+            this.btnStockCard.Click += new System.EventHandler(this.btnStockCard_Click);
+            //
+            // btnStockMovement  (row 1, col 2)
+            //
+            this.btnStockMovement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.btnStockMovement.FlatAppearance.BorderSize = 0;
+            this.btnStockMovement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStockMovement.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.btnStockMovement.ForeColor = System.Drawing.Color.White;
+            this.btnStockMovement.Location = new System.Drawing.Point(302, 36);
+            this.btnStockMovement.Name = "btnStockMovement";
+            this.btnStockMovement.Size = new System.Drawing.Size(172, 74);
+            this.btnStockMovement.TabIndex = 1;
+            this.btnStockMovement.Text = "Stock Movement";
+            this.btnStockMovement.UseVisualStyleBackColor = false;
+            this.btnStockMovement.Click += new System.EventHandler(this.btnStockMovement_Click);
+            //
+            // btnExportExcel  (row 2, col 1)
+            //
+            this.btnExportExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(68)))), ((int)(((byte)(173)))));
             this.btnExportExcel.FlatAppearance.BorderSize = 0;
             this.btnExportExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExportExcel.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.btnExportExcel.ForeColor = System.Drawing.Color.White;
-            this.btnExportExcel.Image = ((System.Drawing.Image)(resources.GetObject("btnExportExcel.Image")));
-            this.btnExportExcel.Location = new System.Drawing.Point(133, 37);
+            this.btnExportExcel.Location = new System.Drawing.Point(20, 126);
             this.btnExportExcel.Name = "btnExportExcel";
-            this.btnExportExcel.Size = new System.Drawing.Size(237, 60);
-            this.btnExportExcel.TabIndex = 0;
-            this.btnExportExcel.Text = " Exp. Faktur";
-            this.btnExportExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnExportExcel.Size = new System.Drawing.Size(172, 74);
+            this.btnExportExcel.TabIndex = 2;
+            this.btnExportExcel.Text = "Export Faktur";
             this.btnExportExcel.UseVisualStyleBackColor = false;
             this.btnExportExcel.Click += new System.EventHandler(this.btnExportExcel_Click);
-            // 
+            //
+            // btnExportProduct  (row 2, col 2)
+            //
+            this.btnExportProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
+            this.btnExportProduct.FlatAppearance.BorderSize = 0;
+            this.btnExportProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportProduct.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.btnExportProduct.ForeColor = System.Drawing.Color.White;
+            this.btnExportProduct.Location = new System.Drawing.Point(208, 126);
+            this.btnExportProduct.Name = "btnExportProduct";
+            this.btnExportProduct.Size = new System.Drawing.Size(172, 74);
+            this.btnExportProduct.TabIndex = 3;
+            this.btnExportProduct.Text = "Export Produk";
+            this.btnExportProduct.UseVisualStyleBackColor = false;
+            this.btnExportProduct.Click += new System.EventHandler(this.btnExportProduct_Click);
+            //
+            // btnExportPelanggan  (row 2, col 3)
+            //
+            this.btnExportPelanggan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(126)))), ((int)(((byte)(34)))));
+            this.btnExportPelanggan.FlatAppearance.BorderSize = 0;
+            this.btnExportPelanggan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportPelanggan.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.btnExportPelanggan.ForeColor = System.Drawing.Color.White;
+            this.btnExportPelanggan.Location = new System.Drawing.Point(396, 126);
+            this.btnExportPelanggan.Name = "btnExportPelanggan";
+            this.btnExportPelanggan.Size = new System.Drawing.Size(172, 74);
+            this.btnExportPelanggan.TabIndex = 4;
+            this.btnExportPelanggan.Text = "Export Pelanggan";
+            this.btnExportPelanggan.UseVisualStyleBackColor = false;
+            this.btnExportPelanggan.Click += new System.EventHandler(this.btnExportPelanggan_Click);
+            //
             // pnlChildHeader
-            // 
+            //
             this.pnlChildHeader.Controls.Add(this.lblReportingChildHeader);
             this.pnlChildHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlChildHeader.Location = new System.Drawing.Point(0, 0);
@@ -137,15 +163,17 @@
             this.gbMenuReporting.Controls.Add(this.btnExportPelanggan);
             this.gbMenuReporting.Controls.Add(this.btnExportProduct);
             this.gbMenuReporting.Controls.Add(this.btnExportExcel);
+            this.gbMenuReporting.Controls.Add(this.btnStockCard);
+            this.gbMenuReporting.Controls.Add(this.btnStockMovement);
             this.gbMenuReporting.Location = new System.Drawing.Point(183, 92);
             this.gbMenuReporting.Name = "gbMenuReporting";
-            this.gbMenuReporting.Size = new System.Drawing.Size(506, 266);
+            this.gbMenuReporting.Size = new System.Drawing.Size(588, 230);
             this.gbMenuReporting.TabIndex = 0;
             this.gbMenuReporting.TabStop = false;
             // 
             // FrmReportingDashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1002, 679);
@@ -156,6 +184,7 @@
             this.Name = "FrmReportingDashboard";
             this.Text = "REPORTING";
             this.Load += new System.EventHandler(this.FrmReportingDashboard_Load);
+            this.Resize += new System.EventHandler(this.FrmReportingDashboard_Resize);
             this.pnlChildHeader.ResumeLayout(false);
             this.pnlChildHeader.PerformLayout();
             this.pnlMenuReporting.ResumeLayout(false);
@@ -172,6 +201,8 @@
         private System.Windows.Forms.Panel pnlMenuReporting;
         private System.Windows.Forms.Button btnExportPelanggan;
         private System.Windows.Forms.Button btnExportProduct;
+        private System.Windows.Forms.Button btnStockCard;
+        private System.Windows.Forms.Button btnStockMovement;
         private System.Windows.Forms.GroupBox gbMenuReporting;
     }
 }

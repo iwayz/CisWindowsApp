@@ -12,6 +12,7 @@ namespace Cis.Model
         public DateTime PriceDecreeDate { get; set; } // Tanggal SK Harga
         public float Discount { get; set; }
         public int RestockLevel { get; set; }
+        public bool IsBatchTracked { get; set; }
 
         public string UnitId { get; set; } // Unit of Measurement (pcs, sch, doz, etc.)
         public UnitOfMeasurement Unit { get; set; }

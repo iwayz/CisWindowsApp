@@ -30,9 +30,19 @@ namespace Cis.Data.EntityConfigurations
                 .IsRequired();
 
             Property(e => e.Phone)
+                .HasMaxLength(20)
                 .IsOptional();
 
             Property(e => e.Email)
+                .HasMaxLength(100)
+                .IsOptional();
+
+            Property(e => e.ContactPerson)
+                .HasMaxLength(100)
+                .IsOptional();
+
+            Property(e => e.Npwp)
+                .HasMaxLength(30)
                 .IsOptional();
 
             HasIndex(e => e.PrincipalCode);
