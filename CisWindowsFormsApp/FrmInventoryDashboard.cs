@@ -37,21 +37,21 @@ namespace CisWindowsFormsApp
 
         private void btnStockAdjustment_Click(object sender, EventArgs e)
         {
-            if (!(new CommonFunctionHelper().ValidateAccess((int)Constant.Permission.Transaction.StockAdjustment)))
+            if (!(new CommonFunctionHelper().ValidateAccess((int)Constant.Permission.Inventory.AdjustStock)))
             { CommonMessageHelper.NoAccess(); return; }
             OpenChildForm(new FrmStockAdjustment(), sender);
         }
 
         private void btnStockTransfer_Click(object sender, EventArgs e)
         {
-            if (!(new CommonFunctionHelper().ValidateAccess((int)Constant.Permission.Transaction.StockTransfer)))
+            if (!(new CommonFunctionHelper().ValidateAccess((int)Constant.Permission.Inventory.TransferStock)))
             { CommonMessageHelper.NoAccess(); return; }
             OpenChildForm(new FrmStockTransfer(), sender);
         }
 
         private void btnStockOpname_Click(object sender, EventArgs e)
         {
-            if (!(new CommonFunctionHelper().ValidateAccess((int)Constant.Permission.Transaction.StockOpname)))
+            if (!(new CommonFunctionHelper().ValidateAccess((int)Constant.Permission.Inventory.StockOpname)))
             { CommonMessageHelper.NoAccess(); return; }
             OpenChildForm(new FrmStockOpname(), sender);
         }

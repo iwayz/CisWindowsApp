@@ -54,11 +54,14 @@
             this.cblTransaksi = new System.Windows.Forms.CheckedListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cblReporting = new System.Windows.Forms.CheckedListBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.cblInventory = new System.Windows.Forms.CheckedListBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRole)).BeginInit();
             this.panel1.SuspendLayout();
             this.gbMaster.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtModifiedAt
@@ -66,9 +69,10 @@
             this.txtModifiedAt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtModifiedAt.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtModifiedAt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtModifiedAt.Location = new System.Drawing.Point(9, 80);
+            this.txtModifiedAt.Location = new System.Drawing.Point(12, 98);
+            this.txtModifiedAt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtModifiedAt.Name = "txtModifiedAt";
-            this.txtModifiedAt.Size = new System.Drawing.Size(195, 31);
+            this.txtModifiedAt.Size = new System.Drawing.Size(259, 31);
             this.txtModifiedAt.TabIndex = 1;
             // 
             // txtRoleId
@@ -76,9 +80,10 @@
             this.txtRoleId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtRoleId.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtRoleId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtRoleId.Location = new System.Drawing.Point(9, 31);
+            this.txtRoleId.Location = new System.Drawing.Point(12, 38);
+            this.txtRoleId.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtRoleId.Name = "txtRoleId";
-            this.txtRoleId.Size = new System.Drawing.Size(195, 31);
+            this.txtRoleId.Size = new System.Drawing.Size(259, 31);
             this.txtRoleId.TabIndex = 1;
             // 
             // label1
@@ -86,7 +91,8 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(9, 65);
+            this.label1.Location = new System.Drawing.Point(12, 80);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 15);
             this.label1.TabIndex = 4;
@@ -97,7 +103,8 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(9, 16);
+            this.label2.Location = new System.Drawing.Point(12, 20);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(17, 15);
             this.label2.TabIndex = 4;
@@ -107,10 +114,10 @@
             // 
             this.dgvRole.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRole.GridColor = System.Drawing.Color.White;
-            this.dgvRole.Location = new System.Drawing.Point(24, 245);
-            this.dgvRole.Margin = new System.Windows.Forms.Padding(9, 3, 3, 3);
+            this.dgvRole.Location = new System.Drawing.Point(32, 302);
+            this.dgvRole.Margin = new System.Windows.Forms.Padding(12, 4, 4, 4);
             this.dgvRole.Name = "dgvRole";
-            this.dgvRole.Size = new System.Drawing.Size(375, 193);
+            this.dgvRole.Size = new System.Drawing.Size(500, 238);
             this.dgvRole.TabIndex = 0;
             this.dgvRole.Text = "dataGridView1";
             this.dgvRole.Click += new System.EventHandler(this.dgvRole_Click);
@@ -123,9 +130,10 @@
             this.btnClear.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnClear.ForeColor = System.Drawing.Color.White;
             this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
-            this.btnClear.Location = new System.Drawing.Point(24, 111);
+            this.btnClear.Location = new System.Drawing.Point(32, 137);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(71, 52);
+            this.btnClear.Size = new System.Drawing.Size(95, 64);
             this.btnClear.TabIndex = 3;
             this.btnClear.Text = "CLEAR";
             this.btnClear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -140,9 +148,10 @@
             this.btnAdd.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnAdd.ForeColor = System.Drawing.Color.White;
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(100, 111);
+            this.btnAdd.Location = new System.Drawing.Point(133, 137);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(71, 52);
+            this.btnAdd.Size = new System.Drawing.Size(95, 64);
             this.btnAdd.TabIndex = 4;
             this.btnAdd.Text = "ADD";
             this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -157,9 +166,10 @@
             this.btnSave.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(176, 111);
+            this.btnSave.Location = new System.Drawing.Point(235, 137);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(71, 52);
+            this.btnSave.Size = new System.Drawing.Size(95, 64);
             this.btnSave.TabIndex = 7;
             this.btnSave.Text = "SAVE";
             this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -174,9 +184,10 @@
             this.btnDel.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnDel.ForeColor = System.Drawing.Color.White;
             this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
-            this.btnDel.Location = new System.Drawing.Point(252, 111);
+            this.btnDel.Location = new System.Drawing.Point(336, 137);
+            this.btnDel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(71, 52);
+            this.btnDel.Size = new System.Drawing.Size(95, 64);
             this.btnDel.TabIndex = 6;
             this.btnDel.Text = "DELETE";
             this.btnDel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -191,9 +202,10 @@
             this.btnReload.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnReload.ForeColor = System.Drawing.Color.White;
             this.btnReload.Image = ((System.Drawing.Image)(resources.GetObject("btnReload.Image")));
-            this.btnReload.Location = new System.Drawing.Point(328, 111);
+            this.btnReload.Location = new System.Drawing.Point(437, 137);
+            this.btnReload.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnReload.Name = "btnReload";
-            this.btnReload.Size = new System.Drawing.Size(71, 52);
+            this.btnReload.Size = new System.Drawing.Size(95, 64);
             this.btnReload.TabIndex = 5;
             this.btnReload.Text = "RELOAD";
             this.btnReload.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -205,7 +217,8 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(178, 21);
+            this.label3.Location = new System.Drawing.Point(237, 26);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(70, 15);
             this.label3.TabIndex = 4;
@@ -216,9 +229,10 @@
             this.txtDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDescription.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtDescription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtDescription.Location = new System.Drawing.Point(178, 36);
+            this.txtDescription.Location = new System.Drawing.Point(237, 44);
+            this.txtDescription.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(221, 31);
+            this.txtDescription.Size = new System.Drawing.Size(294, 31);
             this.txtDescription.TabIndex = 2;
             // 
             // label4
@@ -226,7 +240,8 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label4.Location = new System.Drawing.Point(24, 21);
+            this.label4.Location = new System.Drawing.Point(32, 26);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(62, 15);
             this.label4.TabIndex = 4;
@@ -237,9 +252,10 @@
             this.txtRoleCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtRoleCode.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtRoleCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtRoleCode.Location = new System.Drawing.Point(24, 36);
+            this.txtRoleCode.Location = new System.Drawing.Point(32, 44);
+            this.txtRoleCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtRoleCode.Name = "txtRoleCode";
-            this.txtRoleCode.Size = new System.Drawing.Size(148, 31);
+            this.txtRoleCode.Size = new System.Drawing.Size(197, 31);
             this.txtRoleCode.TabIndex = 1;
             // 
             // panel1
@@ -250,9 +266,10 @@
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(27, 480);
+            this.panel1.Location = new System.Drawing.Point(36, 591);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1004, 147);
+            this.panel1.Size = new System.Drawing.Size(1339, 181);
             this.panel1.TabIndex = 8;
             this.panel1.Visible = false;
             // 
@@ -261,9 +278,10 @@
             this.txtPermissionId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPermissionId.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtPermissionId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtPermissionId.Location = new System.Drawing.Point(210, 31);
+            this.txtPermissionId.Location = new System.Drawing.Point(280, 38);
+            this.txtPermissionId.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPermissionId.Name = "txtPermissionId";
-            this.txtPermissionId.Size = new System.Drawing.Size(195, 31);
+            this.txtPermissionId.Size = new System.Drawing.Size(259, 31);
             this.txtPermissionId.TabIndex = 1;
             // 
             // label5
@@ -271,7 +289,8 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label5.Location = new System.Drawing.Point(210, 16);
+            this.label5.Location = new System.Drawing.Point(280, 20);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(80, 15);
             this.label5.TabIndex = 4;
@@ -285,9 +304,10 @@
             this.btnSearch.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnSearch.ForeColor = System.Drawing.Color.White;
             this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
-            this.btnSearch.Location = new System.Drawing.Point(368, 208);
+            this.btnSearch.Location = new System.Drawing.Point(491, 256);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(31, 31);
+            this.btnSearch.Size = new System.Drawing.Size(41, 38);
             this.btnSearch.TabIndex = 39;
             this.btnSearch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnSearch.UseVisualStyleBackColor = false;
@@ -298,9 +318,10 @@
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSearch.Font = new System.Drawing.Font("Calibri", 14.25F);
             this.txtSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtSearch.Location = new System.Drawing.Point(24, 208);
+            this.txtSearch.Location = new System.Drawing.Point(32, 256);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(338, 31);
+            this.txtSearch.Size = new System.Drawing.Size(450, 31);
             this.txtSearch.TabIndex = 38;
             this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
             // 
@@ -308,9 +329,11 @@
             // 
             this.gbMaster.Controls.Add(this.cblMasterData);
             this.gbMaster.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.gbMaster.Location = new System.Drawing.Point(425, 36);
+            this.gbMaster.Location = new System.Drawing.Point(567, 44);
+            this.gbMaster.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gbMaster.Name = "gbMaster";
-            this.gbMaster.Size = new System.Drawing.Size(200, 402);
+            this.gbMaster.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbMaster.Size = new System.Drawing.Size(267, 495);
             this.gbMaster.TabIndex = 40;
             this.gbMaster.TabStop = false;
             this.gbMaster.Text = "Master Data";
@@ -321,18 +344,21 @@
             this.cblMasterData.CheckOnClick = true;
             this.cblMasterData.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cblMasterData.FormattingEnabled = true;
-            this.cblMasterData.Location = new System.Drawing.Point(12, 22);
+            this.cblMasterData.Location = new System.Drawing.Point(16, 27);
+            this.cblMasterData.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cblMasterData.Name = "cblMasterData";
-            this.cblMasterData.Size = new System.Drawing.Size(182, 357);
+            this.cblMasterData.Size = new System.Drawing.Size(243, 420);
             this.cblMasterData.TabIndex = 41;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.cblTransaksi);
             this.groupBox1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.groupBox1.Location = new System.Drawing.Point(631, 36);
+            this.groupBox1.Location = new System.Drawing.Point(841, 44);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 402);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(267, 495);
             this.groupBox1.TabIndex = 40;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Transaksi";
@@ -343,18 +369,21 @@
             this.cblTransaksi.CheckOnClick = true;
             this.cblTransaksi.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cblTransaksi.FormattingEnabled = true;
-            this.cblTransaksi.Location = new System.Drawing.Point(12, 22);
+            this.cblTransaksi.Location = new System.Drawing.Point(16, 27);
+            this.cblTransaksi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cblTransaksi.Name = "cblTransaksi";
-            this.cblTransaksi.Size = new System.Drawing.Size(182, 357);
+            this.cblTransaksi.Size = new System.Drawing.Size(243, 420);
             this.cblTransaksi.TabIndex = 41;
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.cblReporting);
             this.groupBox2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.groupBox2.Location = new System.Drawing.Point(837, 36);
+            this.groupBox2.Location = new System.Drawing.Point(1116, 44);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(200, 402);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Size = new System.Drawing.Size(267, 495);
             this.groupBox2.TabIndex = 40;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Pelaporan";
@@ -365,17 +394,44 @@
             this.cblReporting.CheckOnClick = true;
             this.cblReporting.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cblReporting.FormattingEnabled = true;
-            this.cblReporting.Location = new System.Drawing.Point(12, 22);
+            this.cblReporting.Location = new System.Drawing.Point(16, 27);
+            this.cblReporting.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cblReporting.Name = "cblReporting";
-            this.cblReporting.Size = new System.Drawing.Size(182, 357);
+            this.cblReporting.Size = new System.Drawing.Size(243, 420);
             this.cblReporting.TabIndex = 41;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.cblInventory);
+            this.groupBox3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.groupBox3.Location = new System.Drawing.Point(1391, 44);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Size = new System.Drawing.Size(267, 495);
+            this.groupBox3.TabIndex = 40;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Inventory";
+            // 
+            // cblInventory
+            // 
+            this.cblInventory.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.cblInventory.CheckOnClick = true;
+            this.cblInventory.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cblInventory.FormattingEnabled = true;
+            this.cblInventory.Location = new System.Drawing.Point(16, 27);
+            this.cblInventory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cblInventory.Name = "cblInventory";
+            this.cblInventory.Size = new System.Drawing.Size(243, 420);
+            this.cblInventory.TabIndex = 41;
             // 
             // FrmRole
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1064, 678);
+            this.ClientSize = new System.Drawing.Size(1350, 834);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbMaster);
@@ -393,6 +449,7 @@
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.dgvRole);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmRole";
             this.Text = "ROLE";
             this.Load += new System.EventHandler(this.FrmRole_Load);
@@ -402,6 +459,7 @@
             this.gbMaster.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -429,9 +487,11 @@
         private System.Windows.Forms.GroupBox gbMaster;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.CheckedListBox cblMasterData;
         private System.Windows.Forms.CheckedListBox cblTransaksi;
         private System.Windows.Forms.CheckedListBox cblReporting;
+        private System.Windows.Forms.CheckedListBox cblInventory;
         private System.Windows.Forms.TextBox txtPermissionId;
         private System.Windows.Forms.Label label5;
     }

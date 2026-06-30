@@ -43,6 +43,7 @@
             this.pnlSeparatorLeftPane = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.pnlLogo = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblYear = new System.Windows.Forms.Label();
@@ -68,7 +69,6 @@
             this.manualBookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.label3 = new System.Windows.Forms.Label();
             this.pnlLeftPane.SuspendLayout();
             this.pnlDateTime.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDate)).BeginInit();
@@ -94,10 +94,10 @@
             this.pnlLeftPane.Controls.Add(this.pnlSeparatorLeftPane);
             this.pnlLeftPane.Controls.Add(this.pnlLogo);
             this.pnlLeftPane.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlLeftPane.Location = new System.Drawing.Point(0, 28);
-            this.pnlLeftPane.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlLeftPane.Location = new System.Drawing.Point(0, 24);
+            this.pnlLeftPane.Margin = new System.Windows.Forms.Padding(4);
             this.pnlLeftPane.Name = "pnlLeftPane";
-            this.pnlLeftPane.Size = new System.Drawing.Size(229, 869);
+            this.pnlLeftPane.Size = new System.Drawing.Size(200, 812);
             this.pnlLeftPane.TabIndex = 0;
             // 
             // btnLogout
@@ -111,10 +111,10 @@
             this.btnLogout.Image = ((System.Drawing.Image)(resources.GetObject("btnLogout.Image")));
             this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLogout.Location = new System.Drawing.Point(0, 447);
-            this.btnLogout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(4);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.btnLogout.Size = new System.Drawing.Size(229, 37);
+            this.btnLogout.Size = new System.Drawing.Size(200, 37);
             this.btnLogout.TabIndex = 4;
             this.btnLogout.Text = "  Logout";
             this.btnLogout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -129,18 +129,18 @@
             this.pnlDateTime.Controls.Add(this.pictureBoxDate);
             this.pnlDateTime.Controls.Add(this.lblToday);
             this.pnlDateTime.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlDateTime.Location = new System.Drawing.Point(0, 731);
-            this.pnlDateTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlDateTime.Location = new System.Drawing.Point(0, 674);
+            this.pnlDateTime.Margin = new System.Windows.Forms.Padding(4);
             this.pnlDateTime.Name = "pnlDateTime";
-            this.pnlDateTime.Size = new System.Drawing.Size(229, 138);
+            this.pnlDateTime.Size = new System.Drawing.Size(200, 138);
             this.pnlDateTime.TabIndex = 3;
             this.toolTip.SetToolTip(this.pnlDateTime, "Such a beautiful day");
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel3.Location = new System.Drawing.Point(73, 5);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Location = new System.Drawing.Point(55, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(92, 2);
             this.panel3.TabIndex = 2;
@@ -148,8 +148,8 @@
             // pictureBoxDate
             // 
             this.pictureBoxDate.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxDate.Image")));
-            this.pictureBoxDate.Location = new System.Drawing.Point(108, 20);
-            this.pictureBoxDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBoxDate.Location = new System.Drawing.Point(91, 15);
+            this.pictureBoxDate.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxDate.Name = "pictureBoxDate";
             this.pictureBoxDate.Size = new System.Drawing.Size(16, 16);
             this.pictureBoxDate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -159,12 +159,12 @@
             // lblToday
             // 
             this.lblToday.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.lblToday.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Italic);
+            this.lblToday.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Italic);
             this.lblToday.ForeColor = System.Drawing.Color.White;
-            this.lblToday.Location = new System.Drawing.Point(-4, 53);
+            this.lblToday.Location = new System.Drawing.Point(4, 53);
             this.lblToday.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblToday.Name = "lblToday";
-            this.lblToday.Size = new System.Drawing.Size(237, 36);
+            this.lblToday.Size = new System.Drawing.Size(191, 36);
             this.lblToday.TabIndex = 0;
             this.lblToday.Text = "Beautiful Day";
             this.lblToday.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -180,10 +180,10 @@
             this.btnReporting.Image = ((System.Drawing.Image)(resources.GetObject("btnReporting.Image")));
             this.btnReporting.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnReporting.Location = new System.Drawing.Point(0, 410);
-            this.btnReporting.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnReporting.Margin = new System.Windows.Forms.Padding(4);
             this.btnReporting.Name = "btnReporting";
             this.btnReporting.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.btnReporting.Size = new System.Drawing.Size(229, 37);
+            this.btnReporting.Size = new System.Drawing.Size(200, 37);
             this.btnReporting.TabIndex = 2;
             this.btnReporting.Text = "  Reporting";
             this.btnReporting.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -202,10 +202,10 @@
             this.btnInventory.Image = ((System.Drawing.Image)(resources.GetObject("btnInventory.Image")));
             this.btnInventory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnInventory.Location = new System.Drawing.Point(0, 373);
-            this.btnInventory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnInventory.Margin = new System.Windows.Forms.Padding(4);
             this.btnInventory.Name = "btnInventory";
             this.btnInventory.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.btnInventory.Size = new System.Drawing.Size(229, 37);
+            this.btnInventory.Size = new System.Drawing.Size(200, 37);
             this.btnInventory.TabIndex = 2;
             this.btnInventory.Text = "  Inventory";
             this.btnInventory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -224,10 +224,10 @@
             this.btnTransaksi.Image = ((System.Drawing.Image)(resources.GetObject("btnTransaksi.Image")));
             this.btnTransaksi.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTransaksi.Location = new System.Drawing.Point(0, 336);
-            this.btnTransaksi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnTransaksi.Margin = new System.Windows.Forms.Padding(4);
             this.btnTransaksi.Name = "btnTransaksi";
             this.btnTransaksi.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.btnTransaksi.Size = new System.Drawing.Size(229, 37);
+            this.btnTransaksi.Size = new System.Drawing.Size(200, 37);
             this.btnTransaksi.TabIndex = 2;
             this.btnTransaksi.Text = "  Transaksi";
             this.btnTransaksi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -246,10 +246,10 @@
             this.btnMasterData.Image = ((System.Drawing.Image)(resources.GetObject("btnMasterData.Image")));
             this.btnMasterData.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMasterData.Location = new System.Drawing.Point(0, 299);
-            this.btnMasterData.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMasterData.Margin = new System.Windows.Forms.Padding(4);
             this.btnMasterData.Name = "btnMasterData";
             this.btnMasterData.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.btnMasterData.Size = new System.Drawing.Size(229, 37);
+            this.btnMasterData.Size = new System.Drawing.Size(200, 37);
             this.btnMasterData.TabIndex = 2;
             this.btnMasterData.Text = "  Master Data";
             this.btnMasterData.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -263,18 +263,18 @@
             this.pnlSeparatorLeftPane.Controls.Add(this.panel5);
             this.pnlSeparatorLeftPane.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlSeparatorLeftPane.Location = new System.Drawing.Point(0, 257);
-            this.pnlSeparatorLeftPane.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlSeparatorLeftPane.Margin = new System.Windows.Forms.Padding(4);
             this.pnlSeparatorLeftPane.Name = "pnlSeparatorLeftPane";
-            this.pnlSeparatorLeftPane.Size = new System.Drawing.Size(229, 42);
+            this.pnlSeparatorLeftPane.Size = new System.Drawing.Size(200, 42);
             this.pnlSeparatorLeftPane.TabIndex = 1;
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel5.Location = new System.Drawing.Point(52, 20);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel5.Location = new System.Drawing.Point(55, 8);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(133, 2);
+            this.panel5.Size = new System.Drawing.Size(92, 2);
             this.panel5.TabIndex = 2;
             // 
             // pnlLogo
@@ -286,17 +286,30 @@
             this.pnlLogo.Controls.Add(this.lblYear);
             this.pnlLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlLogo.Location = new System.Drawing.Point(0, 0);
-            this.pnlLogo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlLogo.Margin = new System.Windows.Forms.Padding(4);
             this.pnlLogo.Name = "pnlLogo";
-            this.pnlLogo.Size = new System.Drawing.Size(229, 257);
+            this.pnlLogo.Size = new System.Drawing.Size(200, 257);
             this.pnlLogo.TabIndex = 0;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label3.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(-10, 116);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(237, 28);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Management System";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label1
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label1.Font = new System.Drawing.Font("Calibri", 48F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(-3, 0);
+            this.label1.Location = new System.Drawing.Point(-17, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(237, 86);
@@ -309,7 +322,7 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label2.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(-3, 86);
+            this.label2.Location = new System.Drawing.Point(-17, 86);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(237, 30);
@@ -322,7 +335,7 @@
             this.lblYear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.lblYear.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold);
             this.lblYear.ForeColor = System.Drawing.Color.White;
-            this.lblYear.Location = new System.Drawing.Point(-5, 144);
+            this.lblYear.Location = new System.Drawing.Point(-19, 144);
             this.lblYear.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblYear.Name = "lblYear";
             this.lblYear.Size = new System.Drawing.Size(237, 28);
@@ -334,10 +347,10 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.Silver;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(229, 28);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Location = new System.Drawing.Point(200, 24);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(3, 869);
+            this.panel2.Size = new System.Drawing.Size(3, 812);
             this.panel2.TabIndex = 1;
             // 
             // pnlHeader
@@ -346,10 +359,10 @@
             this.pnlHeader.Controls.Add(this.panel7);
             this.pnlHeader.Controls.Add(this.panel6);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlHeader.Location = new System.Drawing.Point(232, 28);
-            this.pnlHeader.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlHeader.Location = new System.Drawing.Point(203, 24);
+            this.pnlHeader.Margin = new System.Windows.Forms.Padding(4);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(1568, 37);
+            this.pnlHeader.Size = new System.Drawing.Size(1482, 37);
             this.pnlHeader.TabIndex = 2;
             // 
             // panel7
@@ -357,7 +370,7 @@
             this.panel7.Controls.Add(this.lblHeader);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel7.Location = new System.Drawing.Point(0, 0);
-            this.panel7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel7.Margin = new System.Windows.Forms.Padding(4);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(644, 37);
             this.panel7.TabIndex = 1;
@@ -380,8 +393,8 @@
             this.panel6.Controls.Add(this.pictureBox2);
             this.panel6.Controls.Add(this.lblCurrentUser);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel6.Location = new System.Drawing.Point(1260, 0);
-            this.panel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel6.Location = new System.Drawing.Point(1174, 0);
+            this.panel6.Margin = new System.Windows.Forms.Padding(4);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(308, 37);
             this.panel6.TabIndex = 0;
@@ -390,7 +403,7 @@
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(239, 0);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(44, 41);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -414,20 +427,20 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.LightGray;
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(232, 65);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Location = new System.Drawing.Point(203, 61);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1568, 4);
+            this.panel4.Size = new System.Drawing.Size(1482, 4);
             this.panel4.TabIndex = 3;
             // 
             // pnlChildren
             // 
             this.pnlChildren.BackColor = System.Drawing.Color.White;
             this.pnlChildren.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlChildren.Location = new System.Drawing.Point(232, 69);
-            this.pnlChildren.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlChildren.Location = new System.Drawing.Point(203, 65);
+            this.pnlChildren.Margin = new System.Windows.Forms.Padding(4);
             this.pnlChildren.Name = "pnlChildren";
-            this.pnlChildren.Size = new System.Drawing.Size(1568, 828);
+            this.pnlChildren.Size = new System.Drawing.Size(1482, 771);
             this.pnlChildren.TabIndex = 4;
             // 
             // panel8
@@ -435,10 +448,10 @@
             this.panel8.Controls.Add(this.lblCompanyWeb);
             this.panel8.Controls.Add(this.lblCompanyName);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel8.Location = new System.Drawing.Point(232, 848);
-            this.panel8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel8.Location = new System.Drawing.Point(203, 787);
+            this.panel8.Margin = new System.Windows.Forms.Padding(4);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(1568, 49);
+            this.panel8.Size = new System.Drawing.Size(1482, 49);
             this.panel8.TabIndex = 5;
             // 
             // lblCompanyWeb
@@ -448,7 +461,7 @@
             this.lblCompanyWeb.Location = new System.Drawing.Point(0, 22);
             this.lblCompanyWeb.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCompanyWeb.Name = "lblCompanyWeb";
-            this.lblCompanyWeb.Size = new System.Drawing.Size(1568, 21);
+            this.lblCompanyWeb.Size = new System.Drawing.Size(1482, 21);
             this.lblCompanyWeb.TabIndex = 1;
             this.lblCompanyWeb.Text = "Website";
             this.lblCompanyWeb.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -461,7 +474,7 @@
             this.lblCompanyName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCompanyName.Name = "lblCompanyName";
             this.lblCompanyName.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            this.lblCompanyName.Size = new System.Drawing.Size(1568, 22);
+            this.lblCompanyName.Size = new System.Drawing.Size(1482, 22);
             this.lblCompanyName.TabIndex = 0;
             this.lblCompanyName.Text = "Company Name";
             this.lblCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -474,7 +487,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1800, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1685, 24);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -486,32 +499,32 @@
             this.toolStripMenuItem1,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // settingToolStripMenuItem
             // 
             this.settingToolStripMenuItem.Name = "settingToolStripMenuItem";
-            this.settingToolStripMenuItem.Size = new System.Drawing.Size(207, 26);
+            this.settingToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.settingToolStripMenuItem.Text = "Setting";
             this.settingToolStripMenuItem.Click += new System.EventHandler(this.settingToolStripMenuItem_Click);
             // 
             // backupDatabaseToolStripMenuItem
             // 
             this.backupDatabaseToolStripMenuItem.Name = "backupDatabaseToolStripMenuItem";
-            this.backupDatabaseToolStripMenuItem.Size = new System.Drawing.Size(207, 26);
+            this.backupDatabaseToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.backupDatabaseToolStripMenuItem.Text = "Backup Database";
             this.backupDatabaseToolStripMenuItem.Click += new System.EventHandler(this.backupDatabaseToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(204, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(161, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(207, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -521,20 +534,20 @@
             this.manualBookToolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // manualBookToolStripMenuItem
             // 
             this.manualBookToolStripMenuItem.Name = "manualBookToolStripMenuItem";
-            this.manualBookToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
+            this.manualBookToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.manualBookToolStripMenuItem.Text = "Manual Book";
             this.manualBookToolStripMenuItem.Click += new System.EventHandler(this.manualBookToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -545,25 +558,12 @@
             this.toolTip.InitialDelay = 200;
             this.toolTip.ReshowDelay = 40;
             // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.label3.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(4, 116);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(237, 28);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Management System";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1800, 897);
+            this.ClientSize = new System.Drawing.Size(1685, 836);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.pnlChildren);
             this.Controls.Add(this.panel4);
@@ -573,7 +573,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1701, 875);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

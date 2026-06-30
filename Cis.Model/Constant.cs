@@ -31,7 +31,8 @@ namespace Cis.Model
             {
                 Master = 1,
                 Transaction = 2,
-                Reporting =3
+                Reporting = 3,
+                Inventory = 4
             }
 
             public enum MasterData
@@ -57,18 +58,23 @@ namespace Cis.Model
             {
                 Sales = 200,
                 Purchase = 201,
-                PurchaseReturn = 203,
-                SalesReturn = 204,
-                StockTransfer = 205,
-                StockOpname = 206,
-                StockAdjustment = 207
+                PurchaseReturn = 202,
+                SalesReturn = 203
             }
 
             public enum Reporting
             {
                 Sales = 300,
                 Purchase = 301,
-                StockMovement = 302
+                StockMovement = 302,
+                StockCard = 303
+            }
+
+            public enum Inventory
+            {
+                StockOpname = 400,
+                TransferStock = 401,
+                AdjustStock = 402
             }
 
 

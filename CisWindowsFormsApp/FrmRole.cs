@@ -40,6 +40,7 @@ namespace CisWindowsFormsApp
             BindCheckBoxList(cblMasterData, Constant.Permission.PermissionType.Master);
             BindCheckBoxList(cblTransaksi, Constant.Permission.PermissionType.Transaction);
             BindCheckBoxList(cblReporting, Constant.Permission.PermissionType.Reporting);
+            BindCheckBoxList(cblInventory, Constant.Permission.PermissionType.Inventory);
 
             txtRoleCode.Focus();
         }
@@ -54,6 +55,7 @@ namespace CisWindowsFormsApp
             ClearCheckedItems(cblMasterData);
             ClearCheckedItems(cblTransaksi);
             ClearCheckedItems(cblReporting);
+            ClearCheckedItems(cblInventory);
 
             txtRoleCode.Focus();
         }
@@ -286,7 +288,37 @@ namespace CisWindowsFormsApp
                                 RoleId = roleToUpdate.Id,
                                 PermisionId = permission.Id,
 
-                                // Audit Fields 
+                                // Audit Fields
+                                CreatedBy = Properties.Settings.Default.CurrentUserId,
+                                CreatedAt = DateTime.Now,
+                                ModifiedBy = Properties.Settings.Default.CurrentUserId,
+                                ModifiedAt = DateTime.Now
+                            };
+                            uwPermRole.Repository.Add(permRoleToAdd);
+                        }
+
+                        uwPermRole.Commit();
+                    }
+
+                    for (int i = 0; i < cblInventory.Items.Count; i++)
+                    {
+                        var permissionCode = existingAccessCodes.Where(a => cblInventory.Items[i].ToString().Contains(a.ToString())).FirstOrDefault().ToString();
+                        var permission = new UnitOfWork<Permission>(dbContext).Repository.GetAll()
+                            .Where(perm => perm.PermissionCode == permissionCode).FirstOrDefault();
+                        var permRole = uwPermRole.Repository.GetAll().Where(pr => pr.PermisionId == permission.Id && pr.RoleId == roleToUpdate.Id).FirstOrDefault();
+
+                        if (cblInventory.GetItemCheckState(i) == CheckState.Unchecked && permRole != null)
+                        {
+                            uwPermRole.Repository.Delete(permRole);
+                        }
+                        else if (cblInventory.GetItemCheckState(i) == CheckState.Checked && permRole == null)
+                        {
+                            var permRoleToAdd = new PermissionRole
+                            {
+                                RoleId = roleToUpdate.Id,
+                                PermisionId = permission.Id,
+
+                                // Audit Fields
                                 CreatedBy = Properties.Settings.Default.CurrentUserId,
                                 CreatedAt = DateTime.Now,
                                 ModifiedBy = Properties.Settings.Default.CurrentUserId,
@@ -406,6 +438,7 @@ namespace CisWindowsFormsApp
             var checkedItems = cblMasterData.CheckedItems.OfType<object>().ToList();
             checkedItems.AddRange(cblTransaksi.CheckedItems.OfType<object>().ToList());
             checkedItems.AddRange(cblReporting.CheckedItems.OfType<object>().ToList());
+            checkedItems.AddRange(cblInventory.CheckedItems.OfType<object>().ToList());
 
             foreach (var checkedItem in checkedItems)
             {
@@ -434,6 +467,7 @@ namespace CisWindowsFormsApp
             var existingAccessCodes = Enum.GetValues(typeof(Constant.Permission.MasterData)).Cast<int>().ToList();
             existingAccessCodes.AddRange(Enum.GetValues(typeof(Constant.Permission.Transaction)).Cast<int>().ToList());
             existingAccessCodes.AddRange(Enum.GetValues(typeof(Constant.Permission.Reporting)).Cast<int>().ToList());
+            existingAccessCodes.AddRange(Enum.GetValues(typeof(Constant.Permission.Inventory)).Cast<int>().ToList());
 
             return existingAccessCodes;
         }
@@ -452,6 +486,7 @@ namespace CisWindowsFormsApp
             SetItemChecked(cblMasterData, permissionCodes);
             SetItemChecked(cblTransaksi, permissionCodes);
             SetItemChecked(cblReporting, permissionCodes);
+            SetItemChecked(cblInventory, permissionCodes);
         }
 
         private void SetItemChecked(CheckedListBox checkedListBox, List<string> permissionCodes)

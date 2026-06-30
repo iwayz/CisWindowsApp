@@ -49,7 +49,7 @@
             //
             // btnSales  — Row 1, Col 1
             //
-            this.btnSales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(166)))), ((int)(((byte)(237)))));
+            this.btnSales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
             this.btnSales.FlatAppearance.BorderSize = 0;
             this.btnSales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSales.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
@@ -67,7 +67,7 @@
             //
             // buttonPurchase  — Row 1, Col 2
             //
-            this.buttonPurchase.BackColor = System.Drawing.Color.SlateBlue;
+            this.buttonPurchase.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(89)))), ((int)(((byte)(182)))));
             this.buttonPurchase.FlatAppearance.BorderSize = 0;
             this.buttonPurchase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPurchase.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
@@ -85,7 +85,7 @@
             //
             // btnSalesReturn  — Row 2, Col 1
             //
-            this.btnSalesReturn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(56)))), ((int)(((byte)(89)))));
+            this.btnSalesReturn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
             this.btnSalesReturn.FlatAppearance.BorderSize = 0;
             this.btnSalesReturn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalesReturn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
@@ -100,7 +100,7 @@
             //
             // btnPurchaseReturn  — Row 2, Col 2
             //
-            this.btnPurchaseReturn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(113)))), ((int)(((byte)(99)))));
+            this.btnPurchaseReturn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(126)))), ((int)(((byte)(34)))));
             this.btnPurchaseReturn.FlatAppearance.BorderSize = 0;
             this.btnPurchaseReturn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPurchaseReturn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
