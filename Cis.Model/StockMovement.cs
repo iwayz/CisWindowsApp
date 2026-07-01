@@ -12,7 +12,7 @@ namespace Cis.Model
         public string ProductName { get; set; }
         public string BatchId { get; set; }
         public string BatchCode { get; set; }
-        public decimal Qty { get; set; }
+        public int Qty { get; set; }
         public string ReferenceType { get; set; }
         public string ReferenceId { get; set; }
         public string Remarks { get; set; }

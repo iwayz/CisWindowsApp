@@ -76,7 +76,7 @@ namespace CisWindowsFormsApp
             cbTransferType.SelectedValue = (int)st.TransferType;
             txtBranchName.Text = st.BranchName ?? string.Empty;
             txtNotes.Text = st.Notes ?? string.Empty;
-            lblStatus.Text = st.PostingStatus.ToString();
+            lblStatus.Text = st.PostingStatus.ToString().ToUpper();
             lblStatus.ForeColor = StatusColor(st.PostingStatus);
 
             txtTransferId.Text = st.Id;
@@ -117,18 +117,18 @@ namespace CisWindowsFormsApp
         {
             bool isDraft = status == PostingStatus.Draft;
 
-            gbHeader.Enabled = isDraft;
-            gbItems.Enabled = isDraft;
+            pnlHeader.Enabled = isDraft;
+            pnlItems.Enabled = isDraft;
 
             btnSave.Enabled = isDraft;
             btnDel.Enabled = isDraft;
             btnPost.Enabled = isDraft;
             btnVoid.Enabled = status == PostingStatus.Posted;
 
-            btnSave.BackColor = isDraft ? Color.FromArgb(36, 141, 193) : Color.Gray;
-            btnDel.BackColor = isDraft ? Color.FromArgb(36, 141, 193) : Color.Gray;
-            btnPost.BackColor = isDraft ? Color.FromArgb(16, 124, 16) : Color.Gray;
-            btnVoid.BackColor = status == PostingStatus.Posted ? Color.FromArgb(196, 43, 28) : Color.Gray;
+            btnSave.BackColor = isDraft ? Color.FromArgb(16, 124, 16) : Color.Gray;
+            btnDel.BackColor = isDraft ? Color.FromArgb(196, 43, 28) : Color.Gray;
+            btnPost.BackColor = isDraft ? Color.FromArgb(202, 80, 16) : Color.Gray;
+            btnVoid.BackColor = status == PostingStatus.Posted ? Color.FromArgb(100, 20, 20) : Color.Gray;
         }
 
         private void SetUIButtonGroup()
@@ -140,10 +140,10 @@ namespace CisWindowsFormsApp
             btnPost.Enabled = hasRecord;
             btnVoid.Enabled = false;
 
-            btnAdd.BackColor = !hasRecord ? Color.FromArgb(36, 141, 193) : Color.Gray;
-            btnSave.BackColor = hasRecord ? Color.FromArgb(36, 141, 193) : Color.Gray;
-            btnDel.BackColor = hasRecord ? Color.FromArgb(36, 141, 193) : Color.Gray;
-            btnPost.BackColor = hasRecord ? Color.FromArgb(16, 124, 16) : Color.Gray;
+            btnAdd.BackColor = !hasRecord ? Color.FromArgb(0, 120, 215) : Color.Gray;
+            btnSave.BackColor = hasRecord ? Color.FromArgb(16, 124, 16) : Color.Gray;
+            btnDel.BackColor = hasRecord ? Color.FromArgb(196, 43, 28) : Color.Gray;
+            btnPost.BackColor = hasRecord ? Color.FromArgb(202, 80, 16) : Color.Gray;
             btnVoid.BackColor = Color.Gray;
         }
 
@@ -177,8 +177,12 @@ namespace CisWindowsFormsApp
                 default: return;
             }
 
-            if (result != null) LoadDataItem(result);
-            SetUIButtonGroup();
+            if (result != null)
+            {
+                LoadDataItem(result);
+                SetUIButtonGroup();
+                SetUIByStatus(result.PostingStatus);
+            }
         }
 
         private List<StockTransferItem> GetItemsFromGrid()
@@ -196,7 +200,7 @@ namespace CisWindowsFormsApp
                     BatchCode = dgvItems.Rows[i].Cells["colBatchCode"].Value?.ToString() ?? string.Empty,
                     UomId = dgvItems.Rows[i].Cells["colUomId"].Value.ToString(),
                     UomCode = dgvItems.Rows[i].Cells["colUomCode"].Value.ToString(),
-                    Quantity = decimal.Parse(dgvItems.Rows[i].Cells["colQty"].Value.ToString(), System.Globalization.NumberStyles.Currency),
+                    Quantity = int.Parse(dgvItems.Rows[i].Cells["colQty"].Value.ToString(), System.Globalization.NumberStyles.Currency),
                     CreatedBy = Properties.Settings.Default.CurrentUserId,
                     CreatedAt = DateTime.Now,
                     ModifiedBy = Properties.Settings.Default.CurrentUserId,
@@ -255,7 +259,7 @@ namespace CisWindowsFormsApp
             var batch = new UnitOfWork<Batch>(dbContext).Repository.GetAll()
                 .Where(b => b.Id == batchId).FirstOrDefault();
 
-            var qty = decimal.Parse(txtQty.Text, System.Globalization.NumberStyles.Currency);
+            var qty = int.Parse(txtQty.Text, System.Globalization.NumberStyles.Currency);
 
             // update row if same product+batch already in grid
             int rowId = -1;

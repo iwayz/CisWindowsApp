@@ -56,7 +56,6 @@
             this.lblCurrentUser = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pnlChildren = new System.Windows.Forms.Panel();
-            this.panel8 = new System.Windows.Forms.Panel();
             this.lblCompanyWeb = new System.Windows.Forms.Label();
             this.lblCompanyName = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -78,7 +77,6 @@
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.panel8.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -280,6 +278,8 @@
             // pnlLogo
             // 
             this.pnlLogo.BackColor = System.Drawing.Color.Transparent;
+            this.pnlLogo.Controls.Add(this.lblCompanyWeb);
+            this.pnlLogo.Controls.Add(this.lblCompanyName);
             this.pnlLogo.Controls.Add(this.label3);
             this.pnlLogo.Controls.Add(this.label1);
             this.pnlLogo.Controls.Add(this.label2);
@@ -443,38 +443,27 @@
             this.pnlChildren.Size = new System.Drawing.Size(1482, 771);
             this.pnlChildren.TabIndex = 4;
             // 
-            // panel8
-            // 
-            this.panel8.Controls.Add(this.lblCompanyWeb);
-            this.panel8.Controls.Add(this.lblCompanyName);
-            this.panel8.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel8.Location = new System.Drawing.Point(203, 787);
-            this.panel8.Margin = new System.Windows.Forms.Padding(4);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(1482, 49);
-            this.panel8.TabIndex = 5;
-            // 
             // lblCompanyWeb
             // 
-            this.lblCompanyWeb.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblCompanyWeb.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCompanyWeb.Location = new System.Drawing.Point(0, 22);
+            this.lblCompanyWeb.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCompanyWeb.ForeColor = System.Drawing.Color.White;
+            this.lblCompanyWeb.Location = new System.Drawing.Point(7, 236);
             this.lblCompanyWeb.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCompanyWeb.Name = "lblCompanyWeb";
-            this.lblCompanyWeb.Size = new System.Drawing.Size(1482, 21);
+            this.lblCompanyWeb.Size = new System.Drawing.Size(188, 22);
             this.lblCompanyWeb.TabIndex = 1;
             this.lblCompanyWeb.Text = "Website";
             this.lblCompanyWeb.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblCompanyName
             // 
-            this.lblCompanyName.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblCompanyName.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCompanyName.Location = new System.Drawing.Point(0, 0);
+            this.lblCompanyName.Font = new System.Drawing.Font("Arial Narrow", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCompanyName.ForeColor = System.Drawing.Color.White;
+            this.lblCompanyName.Location = new System.Drawing.Point(7, 214);
             this.lblCompanyName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCompanyName.Name = "lblCompanyName";
             this.lblCompanyName.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            this.lblCompanyName.Size = new System.Drawing.Size(1482, 22);
+            this.lblCompanyName.Size = new System.Drawing.Size(188, 22);
             this.lblCompanyName.TabIndex = 0;
             this.lblCompanyName.Text = "Company Name";
             this.lblCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -564,7 +553,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1685, 836);
-            this.Controls.Add(this.panel8);
             this.Controls.Add(this.pnlChildren);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.pnlHeader);
@@ -592,7 +580,6 @@
             this.panel7.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.panel8.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -627,7 +614,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblYear;
-        private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Label lblCompanyName;
         private System.Windows.Forms.Label lblCompanyWeb;
         private System.Windows.Forms.MenuStrip menuStrip1;

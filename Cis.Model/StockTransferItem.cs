@@ -8,7 +8,7 @@ namespace Cis.Model
         public string ProductName { get; set; }
         public string BatchId { get; set; }
         public string BatchCode { get; set; }
-        public decimal Quantity { get; set; }
+        public int Quantity { get; set; }
         public string UomId { get; set; }
         public string UomCode { get; set; }
 

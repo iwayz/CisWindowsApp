@@ -32,7 +32,6 @@ namespace Cis.Data
                 .IsOptional();
 
             Property(e => e.Quantity)
-                .HasPrecision(15, 5)
                 .IsRequired();
 
             Property(e => e.UomId)

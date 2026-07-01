@@ -72,7 +72,7 @@ namespace CisWindowsFormsApp
             return $"{yy}{prefix}-{mm}{(seq + 1).ToString().PadLeft(4, '0')}";
         }
 
-        private decimal GetCurrentStock(string productId, string batchId)
+        private int GetCurrentStock(string productId, string batchId)
         {
             var card = new UnitOfWork<StockCard>(dbContext).Repository.GetAll()
                 .Where(s => s.ProductId == productId && s.BatchId == batchId)
@@ -86,7 +86,7 @@ namespace CisWindowsFormsApp
             dtpAdjDate.Value = adj.AdjustmentDate;
             cbReason.SelectedValue = (int)adj.Reason;
             txtNotes.Text = adj.Notes ?? string.Empty;
-            lblStatus.Text = adj.PostingStatus.ToString();
+            lblStatus.Text = adj.PostingStatus.ToString().ToUpper();
             lblStatus.ForeColor = StatusColor(adj.PostingStatus);
 
             txtAdjId.Text = adj.Id;
@@ -130,18 +130,18 @@ namespace CisWindowsFormsApp
         {
             bool isDraft = status == PostingStatus.Draft;
 
-            gbHeader.Enabled = isDraft;
-            gbItems.Enabled = isDraft;
+            pnlHeader.Enabled = isDraft;
+            pnlItems.Enabled = isDraft;
 
             btnSave.Enabled = isDraft;
             btnDel.Enabled = isDraft;
             btnPost.Enabled = isDraft;
             btnVoid.Enabled = status == PostingStatus.Posted;
 
-            btnSave.BackColor = isDraft ? Color.FromArgb(36, 141, 193) : Color.Gray;
-            btnDel.BackColor = isDraft ? Color.FromArgb(36, 141, 193) : Color.Gray;
-            btnPost.BackColor = isDraft ? Color.FromArgb(16, 124, 16) : Color.Gray;
-            btnVoid.BackColor = status == PostingStatus.Posted ? Color.FromArgb(196, 43, 28) : Color.Gray;
+            btnSave.BackColor = isDraft ? Color.FromArgb(16, 124, 16) : Color.Gray;
+            btnDel.BackColor = isDraft ? Color.FromArgb(196, 43, 28) : Color.Gray;
+            btnPost.BackColor = isDraft ? Color.FromArgb(202, 80, 16) : Color.Gray;
+            btnVoid.BackColor = status == PostingStatus.Posted ? Color.FromArgb(100, 20, 20) : Color.Gray;
         }
 
         private void SetUIButtonGroup()
@@ -153,10 +153,10 @@ namespace CisWindowsFormsApp
             btnPost.Enabled = hasRecord;
             btnVoid.Enabled = false;
 
-            btnAdd.BackColor = !hasRecord ? Color.FromArgb(36, 141, 193) : Color.Gray;
-            btnSave.BackColor = hasRecord ? Color.FromArgb(36, 141, 193) : Color.Gray;
-            btnDel.BackColor = hasRecord ? Color.FromArgb(36, 141, 193) : Color.Gray;
-            btnPost.BackColor = hasRecord ? Color.FromArgb(16, 124, 16) : Color.Gray;
+            btnAdd.BackColor = !hasRecord ? Color.FromArgb(0, 120, 215) : Color.Gray;
+            btnSave.BackColor = hasRecord ? Color.FromArgb(16, 124, 16) : Color.Gray;
+            btnDel.BackColor = hasRecord ? Color.FromArgb(196, 43, 28) : Color.Gray;
+            btnPost.BackColor = hasRecord ? Color.FromArgb(202, 80, 16) : Color.Gray;
             btnVoid.BackColor = Color.Gray;
         }
 
@@ -188,8 +188,12 @@ namespace CisWindowsFormsApp
                 default: return;
             }
 
-            if (result != null) LoadDataItem(result);
-            SetUIButtonGroup();
+            if (result != null)
+            {
+                LoadDataItem(result);
+                SetUIButtonGroup();
+                SetUIByStatus(result.PostingStatus);
+            }
         }
 
         #endregion
@@ -260,8 +264,8 @@ namespace CisWindowsFormsApp
             var batch = new UnitOfWork<Batch>(dbContext).Repository.GetAll()
                 .Where(b => b.Id == batchId).FirstOrDefault();
 
-            var qtyBefore = decimal.Parse(txtQtyBefore.Text, System.Globalization.NumberStyles.Currency);
-            var qtyAdj = decimal.Parse(txtQtyAdj.Text, System.Globalization.NumberStyles.Currency);
+            var qtyBefore = int.Parse(txtQtyBefore.Text, System.Globalization.NumberStyles.Currency);
+            var qtyAdj = int.Parse(txtQtyAdj.Text, System.Globalization.NumberStyles.Currency);
             var direction = cbDirection.SelectedItem.ToString() == "In" ? MovementDirection.In : MovementDirection.Out;
             var qtyAfter = direction == MovementDirection.In ? qtyBefore + qtyAdj : qtyBefore - qtyAdj;
 
@@ -339,9 +343,9 @@ namespace CisWindowsFormsApp
                         BatchCode = dgvItems.Rows[i].Cells["colBatchCode"].Value?.ToString() ?? string.Empty,
                         UomId = dgvItems.Rows[i].Cells["colUomId"].Value.ToString(),
                         UomCode = dgvItems.Rows[i].Cells["colUomCode"].Value.ToString(),
-                        QtyBefore = decimal.Parse(dgvItems.Rows[i].Cells["colQtyBefore"].Value.ToString(), System.Globalization.NumberStyles.Currency),
-                        QtyAdjustment = decimal.Parse(dgvItems.Rows[i].Cells["colQtyAdj"].Value.ToString(), System.Globalization.NumberStyles.Currency),
-                        QtyAfter = decimal.Parse(dgvItems.Rows[i].Cells["colQtyAfter"].Value.ToString(), System.Globalization.NumberStyles.Currency),
+                        QtyBefore = int.Parse(dgvItems.Rows[i].Cells["colQtyBefore"].Value.ToString(), System.Globalization.NumberStyles.Currency),
+                        QtyAdjustment = int.Parse(dgvItems.Rows[i].Cells["colQtyAdj"].Value.ToString(), System.Globalization.NumberStyles.Currency),
+                        QtyAfter = int.Parse(dgvItems.Rows[i].Cells["colQtyAfter"].Value.ToString(), System.Globalization.NumberStyles.Currency),
                         Direction = dir,
                         CreatedBy = Properties.Settings.Default.CurrentUserId,
                         CreatedAt = DateTime.Now,
@@ -402,9 +406,9 @@ namespace CisWindowsFormsApp
                         BatchCode = dgvItems.Rows[i].Cells["colBatchCode"].Value?.ToString() ?? string.Empty,
                         UomId = dgvItems.Rows[i].Cells["colUomId"].Value.ToString(),
                         UomCode = dgvItems.Rows[i].Cells["colUomCode"].Value.ToString(),
-                        QtyBefore = decimal.Parse(dgvItems.Rows[i].Cells["colQtyBefore"].Value.ToString(), System.Globalization.NumberStyles.Currency),
-                        QtyAdjustment = decimal.Parse(dgvItems.Rows[i].Cells["colQtyAdj"].Value.ToString(), System.Globalization.NumberStyles.Currency),
-                        QtyAfter = decimal.Parse(dgvItems.Rows[i].Cells["colQtyAfter"].Value.ToString(), System.Globalization.NumberStyles.Currency),
+                        QtyBefore = int.Parse(dgvItems.Rows[i].Cells["colQtyBefore"].Value.ToString(), System.Globalization.NumberStyles.Currency),
+                        QtyAdjustment = int.Parse(dgvItems.Rows[i].Cells["colQtyAdj"].Value.ToString(), System.Globalization.NumberStyles.Currency),
+                        QtyAfter = int.Parse(dgvItems.Rows[i].Cells["colQtyAfter"].Value.ToString(), System.Globalization.NumberStyles.Currency),
                         Direction = dir,
                         CreatedBy = Properties.Settings.Default.CurrentUserId,
                         CreatedAt = DateTime.Now,
@@ -478,6 +482,7 @@ namespace CisWindowsFormsApp
             cbDirection.SelectedIndex = 1;
             dgvItems.Rows.Clear();
             SetUIButtonGroup();
+            pnlHeader.Enabled = true;
         }
 
         private void btnReload_Click(object sender, EventArgs e)

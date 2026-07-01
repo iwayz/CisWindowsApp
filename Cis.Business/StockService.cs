@@ -20,9 +20,12 @@ namespace Cis.Business
         private StockCard GetOrCreateCard(string productId, string productCode, string productName,
                                           string batchId, string batchCode, string userId)
         {
-            var card = _db.StockCards.FirstOrDefault(sc =>
-                sc.ProductId == productId &&
-                (batchId == null ? sc.BatchId == null : sc.BatchId == batchId));
+            var card = _db.StockCards.Local.FirstOrDefault(sc =>
+                           sc.ProductId == productId &&
+                           (batchId == null ? sc.BatchId == null : sc.BatchId == batchId))
+                       ?? _db.StockCards.FirstOrDefault(sc =>
+                           sc.ProductId == productId &&
+                           (batchId == null ? sc.BatchId == null : sc.BatchId == batchId));
 
             if (card == null)
             {
@@ -47,7 +50,7 @@ namespace Cis.Business
 
         private StockMovement CreateMovement(DateTime date, StockMovementType type, MovementDirection direction,
                                              string productId, string productCode, string productName,
-                                             string batchId, string batchCode, decimal qty,
+                                             string batchId, string batchCode, int qty,
                                              string referenceType, string referenceId, string remarks,
                                              string userId)
         {
@@ -519,8 +522,8 @@ namespace Cis.Business
             {
                 var card      = GetOrCreateCard(item.ProductId, item.ProductCode, item.ProductName,
                                                 item.BatchId, item.BatchCode, userId);
-                bool isIn     = item.Difference > 0;
-                decimal delta = Math.Abs(item.Difference);
+                bool isIn = item.Difference > 0;
+                int delta = Math.Abs(item.Difference);
 
                 _db.StockAdjustmentItems.Add(new StockAdjustmentItem
                 {

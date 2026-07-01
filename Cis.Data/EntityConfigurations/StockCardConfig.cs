@@ -28,11 +28,9 @@ namespace Cis.Data
                 .IsOptional();
 
             Property(e => e.QtyOnHand)
-                .HasPrecision(15, 5)
                 .IsRequired();
 
             Property(e => e.QtyReserved)
-                .HasPrecision(15, 5)
                 .IsRequired();
 
             HasIndex(e => new { e.ProductId, e.BatchId })

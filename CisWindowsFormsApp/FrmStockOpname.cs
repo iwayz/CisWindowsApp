@@ -55,7 +55,7 @@ namespace CisWindowsFormsApp
             dtpOpnameDate.Value = op.OpnameDate;
             cbOpnameType.SelectedValue = (int)op.OpnameType;
             txtNotes.Text = op.Notes ?? string.Empty;
-            lblStatus.Text = op.PostingStatus.ToString();
+            lblStatus.Text = op.PostingStatus.ToString().ToUpper();
             lblStatus.ForeColor = StatusColor(op.PostingStatus);
 
             txtOpnameId.Text = op.Id;
@@ -85,7 +85,7 @@ namespace CisWindowsFormsApp
             SetUIByStatus(op.PostingStatus);
         }
 
-        private void SetDifferenceColor(DataGridViewRow row, decimal difference)
+        private void SetDifferenceColor(DataGridViewRow row, int difference)
         {
             var cell = row.Cells["colDifference"];
             if (difference > 0) cell.Style.ForeColor = Color.FromArgb(16, 124, 16);
@@ -106,7 +106,7 @@ namespace CisWindowsFormsApp
         {
             bool isDraft = status == PostingStatus.Draft;
 
-            gbHeader.Enabled = isDraft;
+            pnlHeader.Enabled = isDraft;
             btnLoadProducts.Enabled = isDraft;
             dgvItems.ReadOnly = !isDraft;
             dgvItems.DefaultCellStyle.BackColor = isDraft ? Color.White : Color.FromArgb(240, 240, 240);
@@ -115,9 +115,9 @@ namespace CisWindowsFormsApp
             btnDel.Enabled = isDraft;
             btnPost.Enabled = isDraft;
 
-            btnSave.BackColor = isDraft ? Color.FromArgb(36, 141, 193) : Color.Gray;
-            btnDel.BackColor = isDraft ? Color.FromArgb(36, 141, 193) : Color.Gray;
-            btnPost.BackColor = isDraft ? Color.FromArgb(16, 124, 16) : Color.Gray;
+            btnSave.BackColor = isDraft ? Color.FromArgb(16, 124, 16) : Color.Gray;
+            btnDel.BackColor = isDraft ? Color.FromArgb(196, 43, 28) : Color.Gray;
+            btnPost.BackColor = isDraft ? Color.FromArgb(202, 80, 16) : Color.Gray;
         }
 
         private void SetUIButtonGroup()
@@ -127,12 +127,12 @@ namespace CisWindowsFormsApp
             btnSave.Enabled = hasRecord;
             btnDel.Enabled = hasRecord;
             btnPost.Enabled = hasRecord;
-            btnLoadProducts.Enabled = hasRecord;
+            btnLoadProducts.Enabled = true;
 
-            btnAdd.BackColor = !hasRecord ? Color.FromArgb(36, 141, 193) : Color.Gray;
-            btnSave.BackColor = hasRecord ? Color.FromArgb(36, 141, 193) : Color.Gray;
-            btnDel.BackColor = hasRecord ? Color.FromArgb(36, 141, 193) : Color.Gray;
-            btnPost.BackColor = hasRecord ? Color.FromArgb(16, 124, 16) : Color.Gray;
+            btnAdd.BackColor = !hasRecord ? Color.FromArgb(0, 120, 215) : Color.Gray;
+            btnSave.BackColor = hasRecord ? Color.FromArgb(16, 124, 16) : Color.Gray;
+            btnDel.BackColor = hasRecord ? Color.FromArgb(196, 43, 28) : Color.Gray;
+            btnPost.BackColor = hasRecord ? Color.FromArgb(202, 80, 16) : Color.Gray;
         }
 
         private void NavigateRecord(RecordNavigation nav)
@@ -156,8 +156,12 @@ namespace CisWindowsFormsApp
                 default: return;
             }
 
-            if (result != null) LoadDataItem(result);
-            SetUIButtonGroup();
+            if (result != null)
+            {
+                LoadDataItem(result);
+                SetUIButtonGroup();
+                SetUIByStatus(result.PostingStatus);
+            }
         }
 
         private List<StockOpnameItem> GetItemsFromGrid(string opnameId)
@@ -167,10 +171,10 @@ namespace CisWindowsFormsApp
             {
                 if (dgvItems.Rows[i].Cells["colProductCode"].Value == null) continue;
 
-                decimal qtyPhysical = 0;
-                decimal.TryParse(dgvItems.Rows[i].Cells["colQtyPhysical"].Value?.ToString(), out qtyPhysical);
-                decimal qtySystem = 0;
-                decimal.TryParse(dgvItems.Rows[i].Cells["colQtySystem"].Value?.ToString(), out qtySystem);
+                int qtyPhysical = 0;
+                int.TryParse(dgvItems.Rows[i].Cells["colQtyPhysical"].Value?.ToString(), out qtyPhysical);
+                int qtySystem = 0;
+                int.TryParse(dgvItems.Rows[i].Cells["colQtySystem"].Value?.ToString(), out qtySystem);
 
                 items.Add(new StockOpnameItem
                 {
@@ -221,9 +225,6 @@ namespace CisWindowsFormsApp
 
         private void btnLoadProducts_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtOpnameId.Text))
-            { MessageBox.Show("Simpan header opname terlebih dahulu.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information); return; }
-
             var opnameType = (StockOpnameType)(int)cbOpnameType.SelectedValue;
             var confirmMsg = opnameType == StockOpnameType.OpeningStock
                 ? "Load semua produk aktif sebagai Opening Stock?\nQty System akan 0. Isi Qty Fisik sesuai stok awal.\nData item yang sudah ada akan di-reset."
@@ -243,7 +244,7 @@ namespace CisWindowsFormsApp
             {
                 var uom = uoms.FirstOrDefault(u => u.Id == prod.UnitId);
                 var card = cards.FirstOrDefault(c => c.ProductId == prod.Id && string.IsNullOrEmpty(c.BatchId));
-                var qtySystem = opnameType == StockOpnameType.OpeningStock ? 0m : (card?.QtyOnHand ?? 0m);
+                var qtySystem = opnameType == StockOpnameType.OpeningStock ? 0 : (card?.QtyOnHand ?? 0);
 
                 int r = dgvItems.Rows.Add();
                 var row = dgvItems.Rows[r];
@@ -255,7 +256,7 @@ namespace CisWindowsFormsApp
                 row.Cells["colBatchCode"].Value = string.Empty;
                 row.Cells["colUomCode"].Value = uom?.UomCode ?? string.Empty;
                 row.Cells["colQtySystem"].Value = qtySystem;
-                row.Cells["colQtyPhysical"].Value = 0m;
+                row.Cells["colQtyPhysical"].Value = 0;
                 row.Cells["colDifference"].Value = -qtySystem;
                 SetDifferenceColor(row, -qtySystem);
             }
@@ -268,10 +269,10 @@ namespace CisWindowsFormsApp
             if (e.RowIndex < 0 || dgvItems.Columns[e.ColumnIndex].Name != "colQtyPhysical") return;
 
             var row = dgvItems.Rows[e.RowIndex];
-            decimal qtySystem = 0;
-            decimal.TryParse(row.Cells["colQtySystem"].Value?.ToString(), out qtySystem);
-            decimal qtyPhysical = 0;
-            decimal.TryParse(row.Cells["colQtyPhysical"].Value?.ToString(), out qtyPhysical);
+            int qtySystem = 0;
+            int.TryParse(row.Cells["colQtySystem"].Value?.ToString(), out qtySystem);
+            int qtyPhysical = 0;
+            int.TryParse(row.Cells["colQtyPhysical"].Value?.ToString(), out qtyPhysical);
 
             var diff = qtyPhysical - qtySystem;
             row.Cells["colDifference"].Value = diff;
@@ -280,6 +281,22 @@ namespace CisWindowsFormsApp
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            if (cbOpnameType.SelectedValue == null) return;
+            var opnameType = (StockOpnameType)(int)cbOpnameType.SelectedValue;
+            if (opnameType == StockOpnameType.OpeningStock)
+            {
+                int openingStockInt = (int)StockOpnameType.OpeningStock;
+                bool existing = _uow.Repository.GetAll()
+                    .Any(x => (int)x.OpnameType == openingStockInt);
+                if (existing)
+                {
+                    MessageBox.Show(
+                        "Opening Stock hanya dapat dibuat satu kali.\nSudah ada data Opening Stock sebelumnya.",
+                        "Validasi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+
             using (var tx = dbContext.Database.BeginTransaction())
             {
                 var op = new StockOpname
@@ -314,6 +331,25 @@ namespace CisWindowsFormsApp
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (cbOpnameType.SelectedValue != null)
+            {
+                var opnameType = (StockOpnameType)(int)cbOpnameType.SelectedValue;
+                if (opnameType == StockOpnameType.OpeningStock)
+                {
+                    int openingStockInt = (int)StockOpnameType.OpeningStock;
+                    string currentId = txtOpnameId.Text.Trim();
+                    bool existsOther = _uow.Repository.GetAll()
+                        .Any(x => (int)x.OpnameType == openingStockInt && x.Id != currentId);
+                    if (existsOther)
+                    {
+                        MessageBox.Show(
+                            "Opening Stock hanya dapat dibuat satu kali.\nSudah ada data Opening Stock lainnya.",
+                            "Validasi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+            }
+
             if (dgvItems.Rows.Count == 0)
             { MessageBox.Show("Load produk terlebih dahulu sebelum menyimpan.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information); return; }
 
@@ -378,8 +414,8 @@ namespace CisWindowsFormsApp
             var diffCount = 0;
             for (int i = 0; i < dgvItems.Rows.Count; i++)
             {
-                decimal diff = 0;
-                decimal.TryParse(dgvItems.Rows[i].Cells["colDifference"].Value?.ToString(), out diff);
+                int diff = 0;
+                int.TryParse(dgvItems.Rows[i].Cells["colDifference"].Value?.ToString(), out diff);
                 if (diff != 0) diffCount++;
             }
 
@@ -417,6 +453,7 @@ namespace CisWindowsFormsApp
             txtModifiedAt.Text = string.Empty;
             dgvItems.Rows.Clear();
             SetUIButtonGroup();
+            pnlHeader.Enabled = true;
         }
 
         private void btnReload_Click(object sender, EventArgs e)

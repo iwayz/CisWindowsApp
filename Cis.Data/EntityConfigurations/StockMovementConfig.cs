@@ -37,7 +37,6 @@ namespace Cis.Data
                 .IsOptional();
 
             Property(e => e.Qty)
-                .HasPrecision(15, 5)
                 .IsRequired();
 
             Property(e => e.ReferenceType)

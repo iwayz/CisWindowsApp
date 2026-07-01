@@ -18,7 +18,7 @@
 param(
     [string]$Target     = "",
     [string]$Server     = ".",
-    [string]$Database   = "CIS_POS",
+    [string]$Database   = "CIS",
     [string]$DbUser     = "capung",
     [string]$DbPassword = "admin"
 )
@@ -65,6 +65,16 @@ class MigrationRunner
 
             var migrator = new DbMigrator(config);
 
+            string target = $targetArg;
+
+            if (target != null)
+            {
+                // Explicit target: migrate up or down to it unconditionally
+                migrator.Update(target);
+                Console.WriteLine("  Migrated to: " + target);
+                return 0;
+            }
+
             var pending = migrator.GetPendingMigrations();
             bool hasPending = false;
             foreach (var m in pending)
@@ -79,8 +89,7 @@ class MigrationRunner
                 return 0;
             }
 
-            string target = $targetArg;
-            migrator.Update(target);
+            migrator.Update(null);
             Console.WriteLine("  Migrations applied successfully.");
             return 0;
         }

@@ -10,9 +10,9 @@ namespace Cis.Model
         public string BatchCode { get; set; }
         public string UomId { get; set; }
         public string UomCode { get; set; }
-        public decimal QtyBefore { get; set; }
-        public decimal QtyAdjustment { get; set; }
-        public decimal QtyAfter { get; set; }
+        public int QtyBefore { get; set; }
+        public int QtyAdjustment { get; set; }
+        public int QtyAfter { get; set; }
         public MovementDirection Direction { get; set; }
 
         public StockAdjustment StockAdjustment { get; set; }

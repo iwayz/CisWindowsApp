@@ -40,15 +40,12 @@ namespace Cis.Data
                 .IsRequired();
 
             Property(e => e.QtyBefore)
-                .HasPrecision(15, 5)
                 .IsRequired();
 
             Property(e => e.QtyAdjustment)
-                .HasPrecision(15, 5)
                 .IsRequired();
 
             Property(e => e.QtyAfter)
-                .HasPrecision(15, 5)
                 .IsRequired();
 
             Property(e => e.Direction)
