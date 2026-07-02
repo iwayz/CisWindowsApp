@@ -11,6 +11,8 @@ namespace CisWindowsFormsApp
 {
     public partial class FrmReportingDashboard : Form
     {
+        private Form activeForm;
+
         public int AreaWidth { get; set; } = 1024;
         public int AreaHeight { get; set; } = 800;
 
@@ -62,7 +64,7 @@ namespace CisWindowsFormsApp
                 CommonMessageHelper.NoAccess();
                 return;
             }
-            new FrmStockMovement().ShowDialog();
+            OpenChildForm(new FrmStockMovement(), sender);
         }
 
         private void btnStockCard_Click(object sender, EventArgs e)
@@ -72,7 +74,23 @@ namespace CisWindowsFormsApp
                 CommonMessageHelper.NoAccess();
                 return;
             }
-            new FrmStockCard().ShowDialog();
+            OpenChildForm(new FrmStockCard(), sender);
+        }
+
+        private void OpenChildForm(Form childForm, object btnSender)
+        {
+            if (activeForm != null) activeForm.Close();
+
+            activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            pnlReportingChildren.Controls.Add(childForm);
+            pnlReportingChildren.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+            lblReportingChildHeader.Text = childForm.Text;
+            pnlMenuReporting.Visible = false;
         }
 
         private void CenterControls()

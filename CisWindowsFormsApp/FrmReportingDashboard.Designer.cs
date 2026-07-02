@@ -37,6 +37,7 @@
             this.pnlChildHeader = new System.Windows.Forms.Panel();
             this.lblReportingChildHeader = new System.Windows.Forms.Label();
             this.pnlSeparator = new System.Windows.Forms.Panel();
+            this.pnlReportingChildren = new System.Windows.Forms.Panel();
             this.pnlMenuReporting = new System.Windows.Forms.Panel();
             this.gbMenuReporting = new System.Windows.Forms.GroupBox();
             this.pnlChildHeader.SuspendLayout();
@@ -148,9 +149,18 @@
             this.pnlSeparator.Name = "pnlSeparator";
             this.pnlSeparator.Size = new System.Drawing.Size(1002, 2);
             this.pnlSeparator.TabIndex = 2;
-            // 
+            //
+            // pnlReportingChildren
+            //
+            this.pnlReportingChildren.AutoScroll = true;
+            this.pnlReportingChildren.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlReportingChildren.Location = new System.Drawing.Point(0, 42);
+            this.pnlReportingChildren.Name = "pnlReportingChildren";
+            this.pnlReportingChildren.Size = new System.Drawing.Size(1002, 637);
+            this.pnlReportingChildren.TabIndex = 4;
+            //
             // pnlMenuReporting
-            // 
+            //
             this.pnlMenuReporting.Controls.Add(this.gbMenuReporting);
             this.pnlMenuReporting.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMenuReporting.Location = new System.Drawing.Point(0, 42);
@@ -178,6 +188,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1002, 679);
             this.Controls.Add(this.pnlMenuReporting);
+            this.Controls.Add(this.pnlReportingChildren);
             this.Controls.Add(this.pnlSeparator);
             this.Controls.Add(this.pnlChildHeader);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -196,6 +207,7 @@
         #endregion
         private System.Windows.Forms.Panel pnlChildHeader;
         private System.Windows.Forms.Panel pnlSeparator;
+        private System.Windows.Forms.Panel pnlReportingChildren;
         private System.Windows.Forms.Label lblReportingChildHeader;
         private System.Windows.Forms.Button btnExportExcel;
         private System.Windows.Forms.Panel pnlMenuReporting;
