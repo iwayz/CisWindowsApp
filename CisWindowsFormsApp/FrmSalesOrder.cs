@@ -162,11 +162,16 @@ namespace CisWindowsFormsApp
             btnPost.Enabled = hasRecord;
             btnCancel.Enabled = hasRecord;
 
-            btnAdd.BackColor = !hasRecord ? Color.FromArgb(36, 141, 193) : Color.Gray;
-            btnSave.BackColor = hasRecord ? Color.FromArgb(36, 141, 193) : Color.Gray;
-            btnDel.BackColor = hasRecord ? Color.FromArgb(36, 141, 193) : Color.Gray;
-            btnPrint.BackColor = hasRecord ? Color.FromArgb(36, 141, 193) : Color.Gray;
-            btnReload.BackColor = hasRecord ? Color.FromArgb(36, 141, 193) : Color.Gray;
+            btnAdd.BackColor = !hasRecord ? Color.FromArgb(0, 120, 215) : Color.Gray;
+            btnAdd.ForeColor = Color.White;
+            btnSave.BackColor = hasRecord ? Color.FromArgb(16, 124, 16) : Color.Gray;
+            btnSave.ForeColor = Color.White;
+            btnDel.BackColor = hasRecord ? Color.FromArgb(196, 43, 28) : Color.Gray;
+            btnDel.ForeColor = Color.White;
+            btnPrint.BackColor = hasRecord ? Color.FromArgb(0, 107, 107) : Color.Gray;
+            btnPrint.ForeColor = Color.White;
+            btnReload.BackColor = Color.FromArgb(100, 100, 100);
+            btnReload.ForeColor = Color.White;
         }
 
         private void SetUIByStatus(SalesOrderStatus status)
@@ -174,9 +179,8 @@ namespace CisWindowsFormsApp
             bool isDraft = status == SalesOrderStatus.Draft;
             bool isInvoice = status == SalesOrderStatus.Invoice;
 
-            gbCustomerDetail.Enabled = isDraft;
-            gbShippingAddress.Enabled = isDraft;
-            gbSalesOrderDetail.Enabled = isDraft;
+            pnlHeader.Enabled = isDraft;
+            pnlItems.Enabled = isDraft;
 
             btnSave.Enabled = isDraft;
             btnDel.Enabled = isDraft;
@@ -184,11 +188,16 @@ namespace CisWindowsFormsApp
             btnPost.Enabled = isInvoice;
             btnCancel.Enabled = isDraft || isInvoice;
 
-            btnSave.BackColor = isDraft ? Color.FromArgb(36, 141, 193) : Color.Gray;
-            btnDel.BackColor = isDraft ? Color.FromArgb(36, 141, 193) : Color.Gray;
+            btnSave.BackColor = isDraft ? Color.FromArgb(16, 124, 16) : Color.Gray;
+            btnSave.ForeColor = Color.White;
+            btnDel.BackColor = isDraft ? Color.FromArgb(196, 43, 28) : Color.Gray;
+            btnDel.ForeColor = Color.White;
             btnInvoice.BackColor = isDraft ? Color.FromArgb(0, 120, 215) : Color.Gray;
-            btnPost.BackColor = isInvoice ? Color.FromArgb(16, 124, 16) : Color.Gray;
-            btnCancel.BackColor = (isDraft || isInvoice) ? Color.FromArgb(196, 43, 28) : Color.Gray;
+            btnInvoice.ForeColor = Color.White;
+            btnPost.BackColor = isInvoice ? Color.FromArgb(202, 80, 16) : Color.Gray;
+            btnPost.ForeColor = Color.White;
+            btnCancel.BackColor = (isDraft || isInvoice) ? Color.FromArgb(100, 20, 20) : Color.Gray;
+            btnCancel.ForeColor = Color.White;
 
             switch (status)
             {
@@ -271,19 +280,12 @@ namespace CisWindowsFormsApp
             }
 
             if (queryResult != null)
+            {
                 LoadDataItem(queryResult);
+                SetUIButtonGroup();
+                SetUIByStatus(queryResult.PostingStatus);
 
-            SetUIButtonGroup();
-
-            // set tax label to 11% for any transaction from 1 April 2022
-            if (dtpSalesOrderDate.Value >= new DateTime(2022,4,1))
-            {
-                lblTax.Text = "PPN 11%";
-            }
-            else
-            {
-                lblTax.Text = "PPN 10%";
-
+                lblTax.Text = dtpSalesOrderDate.Value >= new DateTime(2022, 4, 1) ? "PPN 11%" : "PPN 10%";
             }
         }
 
@@ -303,9 +305,8 @@ namespace CisWindowsFormsApp
         {
             var isEditable = !lblMark.Visible;
 
-            gbCustomerDetail.Enabled = isEditable;
-            gbShippingAddress.Enabled = isEditable;
-            gbSalesOrderDetail.Enabled = isEditable;
+            pnlHeader.Enabled = isEditable;
+            pnlItems.Enabled = isEditable;
 
             btnAdd.Enabled = isEditable;
             btnSave.Enabled = isEditable;
@@ -758,7 +759,12 @@ namespace CisWindowsFormsApp
                 return;
 
             LoadSalesOrderData(txtSalesNo.Text.Trim());
-            SetUIButtonGroup();
+            if (!string.IsNullOrEmpty(txtSalesOrderId.Text))
+            {
+                SetUIButtonGroup();
+                var so = _uow.Repository.GetById(txtSalesOrderId.Text.Trim());
+                if (so != null) SetUIByStatus(so.PostingStatus);
+            }
         }
 
         private void dgvSalesOrderItem_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
@@ -817,6 +823,7 @@ namespace CisWindowsFormsApp
             SetUI();
             isAdd = true;
             SetUIButtonGroup();
+            pnlHeader.Enabled = true;
             dgvSalesOrderItem.Rows.Clear();
             dgvSalesOrderItem.Refresh();
         }
@@ -1234,6 +1241,13 @@ namespace CisWindowsFormsApp
             var (ok, msg) = svc.Cancel(txtSalesOrderId.Text.Trim(), Properties.Settings.Default.CurrentUserId);
             if (ok) { NavigateRecord(RecordNavigation.Last); MessageBox.Show("Sales Order dibatalkan.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information); }
             else MessageBox.Show(msg, "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void btnRemoveItem_Click(object sender, EventArgs e)
+        {
+            if (dgvSalesOrderItem.SelectedRows.Count == 0) return;
+            dgvSalesOrderItem.Rows.Remove(dgvSalesOrderItem.SelectedRows[0]);
+            SetTotalSalesOrder();
         }
     }
 }

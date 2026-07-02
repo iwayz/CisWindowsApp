@@ -92,7 +92,7 @@ namespace CisWindowsFormsApp
             if (sr.SalesOrderId != null) BindComboBoxProduct(sr.SalesOrderId);
             dtpReturnDate.Value = sr.ReturnDate;
             txtReason.Text = sr.Reason ?? string.Empty;
-            lblStatus.Text = sr.PostingStatus.ToString();
+            lblStatus.Text = sr.PostingStatus.ToString().ToUpper();
             lblStatus.ForeColor = StatusColor(sr.PostingStatus);
 
             txtReturnId.Text = sr.Id;
@@ -149,18 +149,22 @@ namespace CisWindowsFormsApp
         {
             bool isDraft = status == PostingStatus.Draft;
 
-            gbHeader.Enabled = isDraft;
-            gbItems.Enabled = isDraft;
+            pnlHeader.Enabled = isDraft;
+            pnlItems.Enabled = isDraft;
 
             btnSave.Enabled = isDraft;
             btnDel.Enabled = isDraft;
             btnPost.Enabled = isDraft;
             btnVoid.Enabled = status == PostingStatus.Posted;
 
-            btnSave.BackColor = isDraft ? Color.FromArgb(36, 141, 193) : Color.Gray;
-            btnDel.BackColor = isDraft ? Color.FromArgb(36, 141, 193) : Color.Gray;
+            btnSave.BackColor = isDraft ? Color.FromArgb(16, 124, 16) : Color.Gray;
+            btnSave.ForeColor = Color.White;
+            btnDel.BackColor = isDraft ? Color.FromArgb(196, 43, 28) : Color.Gray;
+            btnDel.ForeColor = Color.White;
             btnPost.BackColor = isDraft ? Color.FromArgb(16, 124, 16) : Color.Gray;
-            btnVoid.BackColor = status == PostingStatus.Posted ? Color.FromArgb(196, 43, 28) : Color.Gray;
+            btnPost.ForeColor = Color.White;
+            btnVoid.BackColor = status == PostingStatus.Posted ? Color.FromArgb(100, 20, 20) : Color.Gray;
+            btnVoid.ForeColor = Color.White;
         }
 
         private void SetUIButtonGroup()
@@ -172,11 +176,18 @@ namespace CisWindowsFormsApp
             btnPost.Enabled = hasRecord;
             btnVoid.Enabled = false;
 
-            btnAdd.BackColor = !hasRecord ? Color.FromArgb(36, 141, 193) : Color.Gray;
-            btnSave.BackColor = hasRecord ? Color.FromArgb(36, 141, 193) : Color.Gray;
-            btnDel.BackColor = hasRecord ? Color.FromArgb(36, 141, 193) : Color.Gray;
+            btnAdd.BackColor = !hasRecord ? Color.FromArgb(0, 120, 215) : Color.Gray;
+            btnAdd.ForeColor = Color.White;
+            btnSave.BackColor = hasRecord ? Color.FromArgb(16, 124, 16) : Color.Gray;
+            btnSave.ForeColor = Color.White;
+            btnDel.BackColor = hasRecord ? Color.FromArgb(196, 43, 28) : Color.Gray;
+            btnDel.ForeColor = Color.White;
             btnPost.BackColor = hasRecord ? Color.FromArgb(16, 124, 16) : Color.Gray;
+            btnPost.ForeColor = Color.White;
             btnVoid.BackColor = Color.Gray;
+            btnVoid.ForeColor = Color.White;
+            btnReload.BackColor = Color.FromArgb(100, 100, 100);
+            btnReload.ForeColor = Color.White;
         }
 
         private bool ValidateMandatoryFields()
@@ -209,8 +220,12 @@ namespace CisWindowsFormsApp
                 default: return;
             }
 
-            if (result != null) LoadDataItem(result);
-            SetUIButtonGroup();
+            if (result != null)
+            {
+                LoadDataItem(result);
+                SetUIButtonGroup();
+                SetUIByStatus(result.PostingStatus);
+            }
         }
 
         #endregion
@@ -256,8 +271,10 @@ namespace CisWindowsFormsApp
             var soId = cbSO.SelectedValue?.ToString();
             if (string.IsNullOrEmpty(soId) || soId == "0") return;
 
+            var productId = parts[0];
+            var batchId = parts[1];
             var item = new UnitOfWork<SalesOrderItem>(dbContext).Repository.GetAll()
-                .Where(i => i.SalesOrderId == soId && i.ProductId == parts[0] && i.BatchId == parts[1])
+                .Where(i => i.SalesOrderId == soId && i.ProductId == productId && i.BatchId == batchId)
                 .FirstOrDefault();
             if (item == null) return;
 
@@ -315,11 +332,6 @@ namespace CisWindowsFormsApp
             txtQty.Text = "0";
             txtPrice.Text = "0";
             cbProduct.Focus();
-        }
-
-        private void dgvItems_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
-        {
-            RecalcTotal();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -519,6 +531,14 @@ namespace CisWindowsFormsApp
             lblTotal.Text = "0";
             dgvItems.Rows.Clear();
             SetUIButtonGroup();
+            pnlHeader.Enabled = true;
+        }
+
+        private void btnRemoveItem_Click(object sender, EventArgs e)
+        {
+            if (dgvItems.SelectedRows.Count == 0) return;
+            dgvItems.Rows.Remove(dgvItems.SelectedRows[0]);
+            RecalcTotal();
         }
 
         private void btnReload_Click(object sender, EventArgs e)
@@ -538,7 +558,12 @@ namespace CisWindowsFormsApp
             var q = txtSearch.Text.Trim();
             if (string.IsNullOrEmpty(q)) return;
             var sr = _uow.Repository.GetAll().Where(p => p.ReturnNumber == q).FirstOrDefault();
-            if (sr != null) LoadDataItem(sr);
+            if (sr != null)
+            {
+                LoadDataItem(sr);
+                SetUIButtonGroup();
+                SetUIByStatus(sr.PostingStatus);
+            }
             else CommonMessageHelper.DataNotFound(q);
         }
 

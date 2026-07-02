@@ -88,7 +88,7 @@ namespace CisWindowsFormsApp
             dtpExpectedDate.Value = po.ExpectedDate;
             if (po.ReceivedDate.HasValue) dtpReceivedDate.Value = po.ReceivedDate.Value;
             txtNotes.Text = po.Notes ?? string.Empty;
-            lblStatus.Text = po.PostingStatus.ToString();
+            lblStatus.Text = po.PostingStatus.ToString().ToUpper();
             lblStatus.ForeColor = StatusColor(po.PostingStatus);
 
             txtPOId.Text = po.Id;
@@ -157,8 +157,8 @@ namespace CisWindowsFormsApp
             bool isConfirmed = status == PurchaseOrderStatus.Confirmed;
             bool isEditable = isDraft;
 
-            gbHeader.Enabled = isEditable;
-            gbItems.Enabled = isEditable;
+            pnlHeader.Enabled = isEditable;
+            pnlItems.Enabled = isEditable;
 
             btnSave.Enabled = isEditable;
             btnDel.Enabled = isDraft;
@@ -166,11 +166,16 @@ namespace CisWindowsFormsApp
             btnReceive.Enabled = isConfirmed;
             btnCancel.Enabled = isDraft || isConfirmed;
 
-            btnSave.BackColor = isEditable ? Color.FromArgb(36, 141, 193) : Color.Gray;
-            btnDel.BackColor = isDraft ? Color.FromArgb(36, 141, 193) : Color.Gray;
-            btnConfirm.BackColor = isDraft ? Color.FromArgb(36, 141, 193) : Color.Gray;
+            btnSave.BackColor = isEditable ? Color.FromArgb(16, 124, 16) : Color.Gray;
+            btnSave.ForeColor = Color.White;
+            btnDel.BackColor = isDraft ? Color.FromArgb(196, 43, 28) : Color.Gray;
+            btnDel.ForeColor = Color.White;
+            btnConfirm.BackColor = isDraft ? Color.FromArgb(0, 120, 215) : Color.Gray;
+            btnConfirm.ForeColor = Color.White;
             btnReceive.BackColor = isConfirmed ? Color.FromArgb(16, 124, 16) : Color.Gray;
-            btnCancel.BackColor = (isDraft || isConfirmed) ? Color.FromArgb(196, 43, 28) : Color.Gray;
+            btnReceive.ForeColor = Color.White;
+            btnCancel.BackColor = (isDraft || isConfirmed) ? Color.FromArgb(100, 20, 20) : Color.Gray;
+            btnCancel.ForeColor = Color.White;
         }
 
         private void SetUIButtonGroup()
@@ -183,9 +188,14 @@ namespace CisWindowsFormsApp
             btnReceive.Enabled = hasRecord;
             btnCancel.Enabled = hasRecord;
 
-            btnAdd.BackColor = !hasRecord ? Color.FromArgb(36, 141, 193) : Color.Gray;
-            btnSave.BackColor = hasRecord ? Color.FromArgb(36, 141, 193) : Color.Gray;
-            btnDel.BackColor = hasRecord ? Color.FromArgb(36, 141, 193) : Color.Gray;
+            btnAdd.BackColor = !hasRecord ? Color.FromArgb(0, 120, 215) : Color.Gray;
+            btnAdd.ForeColor = Color.White;
+            btnSave.BackColor = hasRecord ? Color.FromArgb(16, 124, 16) : Color.Gray;
+            btnSave.ForeColor = Color.White;
+            btnDel.BackColor = hasRecord ? Color.FromArgb(196, 43, 28) : Color.Gray;
+            btnDel.ForeColor = Color.White;
+            btnReload.BackColor = Color.FromArgb(100, 100, 100);
+            btnReload.ForeColor = Color.White;
         }
 
         private bool ValidateMandatoryFields()
@@ -230,8 +240,12 @@ namespace CisWindowsFormsApp
                 default: return;
             }
 
-            if (result != null) LoadDataItem(result);
-            SetUIButtonGroup();
+            if (result != null)
+            {
+                LoadDataItem(result);
+                SetUIButtonGroup();
+                SetUIByStatus(result.PostingStatus);
+            }
         }
 
         private float ParseDiscount(string s)
@@ -582,6 +596,7 @@ namespace CisWindowsFormsApp
             lblTotal.Text = "0";
             dgvItems.Rows.Clear();
             SetUIButtonGroup();
+            pnlHeader.Enabled = true;
         }
 
         private void btnReload_Click(object sender, EventArgs e)
@@ -601,7 +616,12 @@ namespace CisWindowsFormsApp
             var q = txtSearch.Text.Trim();
             if (string.IsNullOrEmpty(q)) return;
             var po = _uow.Repository.GetAll().Where(p => p.PONumber == q).FirstOrDefault();
-            if (po != null) LoadDataItem(po);
+            if (po != null)
+            {
+                LoadDataItem(po);
+                SetUIButtonGroup();
+                SetUIByStatus(po.PostingStatus);
+            }
             else CommonMessageHelper.DataNotFound(q);
         }
 
@@ -632,6 +652,13 @@ namespace CisWindowsFormsApp
             var disc = ParseDiscount(txtDiscount.Text);
             if (disc > 100) { MessageBox.Show("Discount tidak boleh lebih dari 100.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information); txtDiscount.Text = "0"; }
             commonHelper.SetTextBoxToZeroWhenEmpty(sender);
+        }
+
+        private void btnRemoveItem_Click(object sender, EventArgs e)
+        {
+            if (dgvItems.SelectedRows.Count == 0) return;
+            dgvItems.Rows.Remove(dgvItems.SelectedRows[0]);
+            RecalcTotals();
         }
     }
 }

@@ -1,55 +1,46 @@
-﻿namespace CisWindowsFormsApp
+namespace CisWindowsFormsApp
 {
     partial class FrmSalesOrder
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
+            if (disposing && (components != null)) components.Dispose();
             base.Dispose(disposing);
         }
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSalesOrder));
-            this.txtDeliveryAddress = new System.Windows.Forms.TextBox();
-            this.cbDistrict = new System.Windows.Forms.ComboBox();
-            this.cbProvince = new System.Windows.Forms.ComboBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.cbCustomer = new System.Windows.Forms.ComboBox();
-            this.gbShippingAddress = new System.Windows.Forms.GroupBox();
-            this.cbSalesArea = new System.Windows.Forms.ComboBox();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.gbCustomerDetail = new System.Windows.Forms.GroupBox();
-            this.cbSalesman = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cbTermOfPayment = new System.Windows.Forms.ComboBox();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dtpDueDate = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dtpSalesOrderDate = new System.Windows.Forms.DateTimePicker();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.pnlTop = new System.Windows.Forms.Panel();
+            this.lblSalesNo = new System.Windows.Forms.Label();
+            this.lblStatus = new System.Windows.Forms.Label();
+            this.lblMark = new System.Windows.Forms.Label();
+            this.txtSalesNo = new System.Windows.Forms.TextBox();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.btnFirst = new System.Windows.Forms.Button();
+            this.btnPrev = new System.Windows.Forms.Button();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.btnLast = new System.Windows.Forms.Button();
+            this.pnlTopSep = new System.Windows.Forms.Panel();
+            this.pnlActionBar = new System.Windows.Forms.Panel();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnDel = new System.Windows.Forms.Button();
+            this.btnReload = new System.Windows.Forms.Button();
+            this.btnInvoice = new System.Windows.Forms.Button();
+            this.btnPost = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.pnlContent = new System.Windows.Forms.Panel();
+            this.pnlItems = new System.Windows.Forms.Panel();
             this.dgvSalesOrderItem = new System.Windows.Forms.DataGridView();
             this.productId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,342 +55,444 @@
             this.discPercent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priceReal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cbProduct = new System.Windows.Forms.ComboBox();
+            this.pnlFooter = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtSubTotal = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtExtraDiscount = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtTaxBaseAmount = new System.Windows.Forms.TextBox();
+            this.lblTax = new System.Windows.Forms.Label();
+            this.txtValueAddedTaxAmount = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.cbPic = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.pnlGridTop = new System.Windows.Forms.Panel();
+            this.lblGridTitle = new System.Windows.Forms.Label();
+            this.lblItemCount = new System.Windows.Forms.Label();
+            this.pnlItemInput = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
+            this.cbProduct = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtBatch = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.dtpExpiredDate = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
             this.txtQty = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtDiscount = new System.Windows.Forms.TextBox();
             this.btnAddItem = new System.Windows.Forms.Button();
-            this.gbSalesOrderDetail = new System.Windows.Forms.GroupBox();
-            this.cbPic = new System.Windows.Forms.ComboBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.txtSubTotal = new System.Windows.Forms.TextBox();
-            this.lblTotal = new System.Windows.Forms.Label();
-            this.txtValueAddedTaxAmount = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtTaxBaseAmount = new System.Windows.Forms.TextBox();
-            this.txtExtraDiscount = new System.Windows.Forms.TextBox();
-            this.txtBatch = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.lblTax = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
+            this.btnRemoveItem = new System.Windows.Forms.Button();
             this.pnlNote = new System.Windows.Forms.Panel();
-            this.lblNoteDetail = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtSalesNo = new System.Windows.Forms.TextBox();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.pnlButtonGroup = new System.Windows.Forms.Panel();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnReload = new System.Windows.Forms.Button();
-            this.btnDel = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.btnInvoice = new System.Windows.Forms.Button();
-            this.btnPost = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnPrint = new System.Windows.Forms.Button();
-            this.lblStatus = new System.Windows.Forms.Label();
+            this.lblNoteDetail = new System.Windows.Forms.Label();
+            this.pnlHeaderSpacer = new System.Windows.Forms.Panel();
+            this.pnlHeader = new System.Windows.Forms.Panel();
+            this.lblHeaderTitle = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cbCustomer = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbSalesman = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbTermOfPayment = new System.Windows.Forms.ComboBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.dtpSalesOrderDate = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dtpDueDate = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtDeliveryAddress = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.cbProvince = new System.Windows.Forms.ComboBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.cbDistrict = new System.Windows.Forms.ComboBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.cbSalesArea = new System.Windows.Forms.ComboBox();
             this.pnlHiddenFields = new System.Windows.Forms.Panel();
-            this.label22 = new System.Windows.Forms.Label();
-            this.txtRealSalesNo = new System.Windows.Forms.TextBox();
-            this.txtModifiedAt = new System.Windows.Forms.TextBox();
             this.txtSalesOrderId = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.pnlNavigation = new System.Windows.Forms.Panel();
-            this.btnPrev = new System.Windows.Forms.Button();
-            this.btnLast = new System.Windows.Forms.Button();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.btnFirst = new System.Windows.Forms.Button();
-            this.label24 = new System.Windows.Forms.Label();
-            this.lblSalesNo = new System.Windows.Forms.Label();
-            this.lblMark = new System.Windows.Forms.Label();
+            this.txtModifiedAt = new System.Windows.Forms.TextBox();
+            this.txtRealSalesNo = new System.Windows.Forms.TextBox();
             this.toolTipSales = new System.Windows.Forms.ToolTip(this.components);
-            this.gbShippingAddress.SuspendLayout();
-            this.gbCustomerDetail.SuspendLayout();
+            this.pnlTop.SuspendLayout();
+            this.pnlActionBar.SuspendLayout();
+            this.pnlContent.SuspendLayout();
+            this.pnlItems.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesOrderItem)).BeginInit();
-            this.gbSalesOrderDetail.SuspendLayout();
+            this.pnlFooter.SuspendLayout();
+            this.pnlGridTop.SuspendLayout();
+            this.pnlItemInput.SuspendLayout();
             this.pnlNote.SuspendLayout();
-            this.pnlButtonGroup.SuspendLayout();
+            this.pnlHeader.SuspendLayout();
             this.pnlHiddenFields.SuspendLayout();
-            this.pnlNavigation.SuspendLayout();
             this.SuspendLayout();
             // 
-            // txtDeliveryAddress
+            // pnlTop
             // 
-            this.txtDeliveryAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDeliveryAddress.Font = new System.Drawing.Font("Calibri", 12F);
-            this.txtDeliveryAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtDeliveryAddress.Location = new System.Drawing.Point(20, 46);
-            this.txtDeliveryAddress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txtDeliveryAddress.Multiline = true;
-            this.txtDeliveryAddress.Name = "txtDeliveryAddress";
-            this.txtDeliveryAddress.Size = new System.Drawing.Size(319, 144);
-            this.txtDeliveryAddress.TabIndex = 20;
+            this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
+            this.pnlTop.Controls.Add(this.lblSalesNo);
+            this.pnlTop.Controls.Add(this.lblStatus);
+            this.pnlTop.Controls.Add(this.lblMark);
+            this.pnlTop.Controls.Add(this.txtSalesNo);
+            this.pnlTop.Controls.Add(this.btnSearch);
+            this.pnlTop.Controls.Add(this.btnFirst);
+            this.pnlTop.Controls.Add(this.btnPrev);
+            this.pnlTop.Controls.Add(this.btnNext);
+            this.pnlTop.Controls.Add(this.btnLast);
+            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTop.Location = new System.Drawing.Point(0, 0);
+            this.pnlTop.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlTop.Name = "pnlTop";
+            this.pnlTop.Size = new System.Drawing.Size(1467, 54);
+            this.pnlTop.TabIndex = 0;
             // 
-            // cbDistrict
+            // lblSalesNo
             // 
-            this.cbDistrict.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cbDistrict.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.cbDistrict.Font = new System.Drawing.Font("Calibri", 12F);
-            this.cbDistrict.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cbDistrict.FormattingEnabled = true;
-            this.cbDistrict.Location = new System.Drawing.Point(348, 101);
-            this.cbDistrict.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.cbDistrict.Name = "cbDistrict";
-            this.cbDistrict.Size = new System.Drawing.Size(312, 32);
-            this.cbDistrict.TabIndex = 22;
-            this.cbDistrict.SelectedIndexChanged += new System.EventHandler(this.cbDistrict_SelectedIndexChanged);
+            this.lblSalesNo.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
+            this.lblSalesNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
+            this.lblSalesNo.Location = new System.Drawing.Point(16, 12);
+            this.lblSalesNo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSalesNo.Name = "lblSalesNo";
+            this.lblSalesNo.Size = new System.Drawing.Size(427, 32);
+            this.lblSalesNo.TabIndex = 0;
             // 
-            // cbProvince
+            // lblStatus
             // 
-            this.cbProvince.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cbProvince.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.cbProvince.Font = new System.Drawing.Font("Calibri", 12F);
-            this.cbProvince.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cbProvince.FormattingEnabled = true;
-            this.cbProvince.Location = new System.Drawing.Point(348, 46);
-            this.cbProvince.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.cbProvince.Name = "cbProvince";
-            this.cbProvince.Size = new System.Drawing.Size(312, 32);
-            this.cbProvince.TabIndex = 21;
-            this.cbProvince.SelectedIndexChanged += new System.EventHandler(this.cbProvince_SelectedIndexChanged);
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblStatus.Location = new System.Drawing.Point(456, 16);
+            this.lblStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(0, 19);
+            this.lblStatus.TabIndex = 1;
             // 
-            // label21
+            // lblMark
             // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label21.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label21.Location = new System.Drawing.Point(348, 81);
-            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(129, 21);
-            this.label21.TabIndex = 16;
-            this.label21.Text = "Kabupaten/ Kota";
+            this.lblMark.AutoSize = true;
+            this.lblMark.BackColor = System.Drawing.Color.Red;
+            this.lblMark.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.lblMark.ForeColor = System.Drawing.Color.White;
+            this.lblMark.Location = new System.Drawing.Point(707, 12);
+            this.lblMark.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblMark.Name = "lblMark";
+            this.lblMark.Padding = new System.Windows.Forms.Padding(5, 2, 5, 2);
+            this.lblMark.Size = new System.Drawing.Size(82, 24);
+            this.lblMark.TabIndex = 2;
+            this.lblMark.Text = "DELETED";
+            this.lblMark.Visible = false;
             // 
-            // label20
+            // txtSalesNo
             // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label20.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label20.Location = new System.Drawing.Point(348, 26);
-            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(66, 21);
-            this.label20.TabIndex = 17;
-            this.label20.Text = "Provinsi";
+            this.txtSalesNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSalesNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtSalesNo.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtSalesNo.Location = new System.Drawing.Point(941, 12);
+            this.txtSalesNo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSalesNo.Name = "txtSalesNo";
+            this.txtSalesNo.Size = new System.Drawing.Size(245, 23);
+            this.txtSalesNo.TabIndex = 3;
+            this.toolTipSales.SetToolTip(this.txtSalesNo, "Tambahkan digit tahun pada awal No. Faktur. Contoh: 23S1-090015");
+            this.txtSalesNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSalesNo_KeyPress);
             // 
-            // label9
+            // btnSearch
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label9.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label9.Location = new System.Drawing.Point(21, 23);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(122, 21);
-            this.label9.TabIndex = 25;
-            this.label9.Text = "Kode Pelanggan";
+            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
+            this.btnSearch.FlatAppearance.BorderSize = 0;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnSearch.ForeColor = System.Drawing.Color.White;
+            this.btnSearch.Location = new System.Drawing.Point(1196, 12);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(77, 30);
+            this.btnSearch.TabIndex = 4;
+            this.btnSearch.Text = "Cari";
+            this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // cbCustomer
+            // btnFirst
             // 
-            this.cbCustomer.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cbCustomer.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.cbCustomer.Font = new System.Drawing.Font("Calibri", 12F);
-            this.cbCustomer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cbCustomer.FormattingEnabled = true;
-            this.cbCustomer.Location = new System.Drawing.Point(23, 44);
-            this.cbCustomer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.cbCustomer.Name = "cbCustomer";
-            this.cbCustomer.Size = new System.Drawing.Size(299, 32);
-            this.cbCustomer.TabIndex = 11;
-            this.cbCustomer.SelectedIndexChanged += new System.EventHandler(this.cbCustomer_SelectedIndexChanged);
+            this.btnFirst.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnFirst.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(173)))), ((int)(((byte)(173)))));
+            this.btnFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFirst.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnFirst.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
+            this.btnFirst.Location = new System.Drawing.Point(1284, 12);
+            this.btnFirst.Margin = new System.Windows.Forms.Padding(4);
+            this.btnFirst.Name = "btnFirst";
+            this.btnFirst.Size = new System.Drawing.Size(40, 30);
+            this.btnFirst.TabIndex = 5;
+            this.btnFirst.Text = "|<";
+            this.btnFirst.UseVisualStyleBackColor = false;
+            this.btnFirst.Click += new System.EventHandler(this.btnFirst_Click);
             // 
-            // gbShippingAddress
+            // btnPrev
             // 
-            this.gbShippingAddress.Controls.Add(this.cbSalesArea);
-            this.gbShippingAddress.Controls.Add(this.txtDeliveryAddress);
-            this.gbShippingAddress.Controls.Add(this.label29);
-            this.gbShippingAddress.Controls.Add(this.cbProvince);
-            this.gbShippingAddress.Controls.Add(this.label2);
-            this.gbShippingAddress.Controls.Add(this.label20);
-            this.gbShippingAddress.Controls.Add(this.label21);
-            this.gbShippingAddress.Controls.Add(this.cbDistrict);
-            this.gbShippingAddress.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.gbShippingAddress.Location = new System.Drawing.Point(619, 80);
-            this.gbShippingAddress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.gbShippingAddress.Name = "gbShippingAddress";
-            this.gbShippingAddress.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.gbShippingAddress.Size = new System.Drawing.Size(679, 202);
-            this.gbShippingAddress.TabIndex = 5;
-            this.gbShippingAddress.TabStop = false;
-            this.gbShippingAddress.Text = "ALAMAT KIRIM";
+            this.btnPrev.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnPrev.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(173)))), ((int)(((byte)(173)))));
+            this.btnPrev.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrev.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnPrev.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
+            this.btnPrev.Location = new System.Drawing.Point(1329, 12);
+            this.btnPrev.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPrev.Name = "btnPrev";
+            this.btnPrev.Size = new System.Drawing.Size(40, 30);
+            this.btnPrev.TabIndex = 6;
+            this.btnPrev.Text = "<";
+            this.btnPrev.UseVisualStyleBackColor = false;
+            this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
             // 
-            // cbSalesArea
+            // btnNext
             // 
-            this.cbSalesArea.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cbSalesArea.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.cbSalesArea.Font = new System.Drawing.Font("Calibri", 12F);
-            this.cbSalesArea.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cbSalesArea.FormattingEnabled = true;
-            this.cbSalesArea.Location = new System.Drawing.Point(348, 159);
-            this.cbSalesArea.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.cbSalesArea.Name = "cbSalesArea";
-            this.cbSalesArea.Size = new System.Drawing.Size(319, 32);
-            this.cbSalesArea.TabIndex = 24;
+            this.btnNext.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnNext.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(173)))), ((int)(((byte)(173)))));
+            this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNext.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnNext.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
+            this.btnNext.Location = new System.Drawing.Point(1375, 12);
+            this.btnNext.Margin = new System.Windows.Forms.Padding(4);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(40, 30);
+            this.btnNext.TabIndex = 7;
+            this.btnNext.Text = ">";
+            this.btnNext.UseVisualStyleBackColor = false;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
-            // label29
+            // btnLast
             // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label29.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label29.Location = new System.Drawing.Point(348, 138);
-            this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(83, 21);
-            this.label29.TabIndex = 30;
-            this.label29.Text = "Sales Area";
+            this.btnLast.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnLast.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(173)))), ((int)(((byte)(173)))));
+            this.btnLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLast.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnLast.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
+            this.btnLast.Location = new System.Drawing.Point(1420, 12);
+            this.btnLast.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLast.Name = "btnLast";
+            this.btnLast.Size = new System.Drawing.Size(40, 30);
+            this.btnLast.TabIndex = 8;
+            this.btnLast.Text = ">|";
+            this.btnLast.UseVisualStyleBackColor = false;
+            this.btnLast.Click += new System.EventHandler(this.btnLast_Click);
             // 
-            // label2
+            // pnlTopSep
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(20, 23);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 21);
-            this.label2.TabIndex = 17;
-            this.label2.Text = "Alamat";
+            this.pnlTopSep.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(212)))), ((int)(((byte)(218)))));
+            this.pnlTopSep.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTopSep.Location = new System.Drawing.Point(0, 106);
+            this.pnlTopSep.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlTopSep.Name = "pnlTopSep";
+            this.pnlTopSep.Size = new System.Drawing.Size(1467, 1);
+            this.pnlTopSep.TabIndex = 99;
             // 
-            // gbCustomerDetail
+            // pnlActionBar
             // 
-            this.gbCustomerDetail.Controls.Add(this.cbSalesman);
-            this.gbCustomerDetail.Controls.Add(this.label9);
-            this.gbCustomerDetail.Controls.Add(this.label4);
-            this.gbCustomerDetail.Controls.Add(this.cbTermOfPayment);
-            this.gbCustomerDetail.Controls.Add(this.label27);
-            this.gbCustomerDetail.Controls.Add(this.label1);
-            this.gbCustomerDetail.Controls.Add(this.dtpDueDate);
-            this.gbCustomerDetail.Controls.Add(this.label3);
-            this.gbCustomerDetail.Controls.Add(this.cbCustomer);
-            this.gbCustomerDetail.Controls.Add(this.dtpSalesOrderDate);
-            this.gbCustomerDetail.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.gbCustomerDetail.Location = new System.Drawing.Point(31, 80);
-            this.gbCustomerDetail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.gbCustomerDetail.Name = "gbCustomerDetail";
-            this.gbCustomerDetail.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.gbCustomerDetail.Size = new System.Drawing.Size(568, 202);
-            this.gbCustomerDetail.TabIndex = 4;
-            this.gbCustomerDetail.TabStop = false;
-            this.gbCustomerDetail.Text = "FAKTUR";
+            this.pnlActionBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(230)))), ((int)(((byte)(233)))));
+            this.pnlActionBar.Controls.Add(this.btnClear);
+            this.pnlActionBar.Controls.Add(this.btnAdd);
+            this.pnlActionBar.Controls.Add(this.btnSave);
+            this.pnlActionBar.Controls.Add(this.btnDel);
+            this.pnlActionBar.Controls.Add(this.btnReload);
+            this.pnlActionBar.Controls.Add(this.btnInvoice);
+            this.pnlActionBar.Controls.Add(this.btnPost);
+            this.pnlActionBar.Controls.Add(this.btnCancel);
+            this.pnlActionBar.Controls.Add(this.btnPrint);
+            this.pnlActionBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlActionBar.Location = new System.Drawing.Point(0, 54);
+            this.pnlActionBar.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlActionBar.Name = "pnlActionBar";
+            this.pnlActionBar.Size = new System.Drawing.Size(1467, 52);
+            this.pnlActionBar.TabIndex = 1;
             // 
-            // cbSalesman
+            // btnClear
             // 
-            this.cbSalesman.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cbSalesman.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.cbSalesman.Font = new System.Drawing.Font("Calibri", 12F);
-            this.cbSalesman.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cbSalesman.FormattingEnabled = true;
-            this.cbSalesman.Location = new System.Drawing.Point(21, 98);
-            this.cbSalesman.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.cbSalesman.Name = "cbSalesman";
-            this.cbSalesman.Size = new System.Drawing.Size(299, 32);
-            this.cbSalesman.TabIndex = 12;
+            this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.btnClear.FlatAppearance.BorderSize = 0;
+            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClear.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnClear.ForeColor = System.Drawing.Color.White;
+            this.btnClear.Location = new System.Drawing.Point(11, 9);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(4);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(109, 34);
+            this.btnClear.TabIndex = 0;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
-            // label4
+            // btnAdd
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label4.Location = new System.Drawing.Point(21, 81);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(77, 21);
-            this.label4.TabIndex = 30;
-            this.label4.Text = "Salesman";
+            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
+            this.btnAdd.FlatAppearance.BorderSize = 0;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnAdd.ForeColor = System.Drawing.Color.White;
+            this.btnAdd.Location = new System.Drawing.Point(141, 9);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(109, 34);
+            this.btnAdd.TabIndex = 1;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // cbTermOfPayment
+            // btnSave
             // 
-            this.cbTermOfPayment.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cbTermOfPayment.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.cbTermOfPayment.Font = new System.Drawing.Font("Calibri", 12F);
-            this.cbTermOfPayment.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cbTermOfPayment.FormattingEnabled = true;
-            this.cbTermOfPayment.Location = new System.Drawing.Point(24, 156);
-            this.cbTermOfPayment.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.cbTermOfPayment.Name = "cbTermOfPayment";
-            this.cbTermOfPayment.Size = new System.Drawing.Size(299, 32);
-            this.cbTermOfPayment.TabIndex = 14;
-            this.cbTermOfPayment.SelectedIndexChanged += new System.EventHandler(this.cbTermOfPayment_SelectedIndexChanged);
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(124)))), ((int)(((byte)(16)))));
+            this.btnSave.FlatAppearance.BorderSize = 0;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.Location = new System.Drawing.Point(261, 9);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(109, 34);
+            this.btnSave.TabIndex = 2;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // label27
+            // btnDel
             // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label27.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label27.Location = new System.Drawing.Point(333, 76);
-            this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(83, 21);
-            this.label27.TabIndex = 28;
-            this.label27.Text = "Tgl. Faktur";
+            this.btnDel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(43)))), ((int)(((byte)(28)))));
+            this.btnDel.FlatAppearance.BorderSize = 0;
+            this.btnDel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnDel.ForeColor = System.Drawing.Color.White;
+            this.btnDel.Location = new System.Drawing.Point(381, 9);
+            this.btnDel.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDel.Name = "btnDel";
+            this.btnDel.Size = new System.Drawing.Size(109, 34);
+            this.btnDel.TabIndex = 3;
+            this.btnDel.Text = "Delete";
+            this.btnDel.UseVisualStyleBackColor = false;
+            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
             // 
-            // label1
+            // btnReload
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(20, 135);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(131, 21);
-            this.label1.TabIndex = 30;
-            this.label1.Text = "Term of Payment";
+            this.btnReload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.btnReload.FlatAppearance.BorderSize = 0;
+            this.btnReload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReload.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnReload.ForeColor = System.Drawing.Color.White;
+            this.btnReload.Location = new System.Drawing.Point(501, 9);
+            this.btnReload.Margin = new System.Windows.Forms.Padding(4);
+            this.btnReload.Name = "btnReload";
+            this.btnReload.Size = new System.Drawing.Size(109, 34);
+            this.btnReload.TabIndex = 4;
+            this.btnReload.Text = "Reload";
+            this.btnReload.UseVisualStyleBackColor = false;
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
-            // dtpDueDate
+            // btnInvoice
             // 
-            this.dtpDueDate.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dtpDueDate.Font = new System.Drawing.Font("Calibri", 12F);
-            this.dtpDueDate.Location = new System.Drawing.Point(333, 156);
-            this.dtpDueDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.dtpDueDate.Name = "dtpDueDate";
-            this.dtpDueDate.Size = new System.Drawing.Size(217, 32);
-            this.dtpDueDate.TabIndex = 15;
+            this.btnInvoice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
+            this.btnInvoice.FlatAppearance.BorderSize = 0;
+            this.btnInvoice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInvoice.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnInvoice.ForeColor = System.Drawing.Color.White;
+            this.btnInvoice.Location = new System.Drawing.Point(621, 9);
+            this.btnInvoice.Margin = new System.Windows.Forms.Padding(4);
+            this.btnInvoice.Name = "btnInvoice";
+            this.btnInvoice.Size = new System.Drawing.Size(109, 34);
+            this.btnInvoice.TabIndex = 5;
+            this.btnInvoice.Text = "Invoice";
+            this.btnInvoice.UseVisualStyleBackColor = false;
+            this.btnInvoice.Click += new System.EventHandler(this.btnInvoice_Click);
             // 
-            // label3
+            // btnPost
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(333, 135);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(128, 21);
-            this.label3.TabIndex = 28;
-            this.label3.Text = "Tgl. Jatuh Tempo";
+            this.btnPost.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(80)))), ((int)(((byte)(16)))));
+            this.btnPost.FlatAppearance.BorderSize = 0;
+            this.btnPost.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPost.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnPost.ForeColor = System.Drawing.Color.White;
+            this.btnPost.Location = new System.Drawing.Point(741, 9);
+            this.btnPost.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPost.Name = "btnPost";
+            this.btnPost.Size = new System.Drawing.Size(109, 34);
+            this.btnPost.TabIndex = 6;
+            this.btnPost.Text = "Post";
+            this.btnPost.UseVisualStyleBackColor = false;
+            this.btnPost.Click += new System.EventHandler(this.btnPost_Click);
             // 
-            // dtpSalesOrderDate
+            // btnCancel
             // 
-            this.dtpSalesOrderDate.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dtpSalesOrderDate.Font = new System.Drawing.Font("Calibri", 12F);
-            this.dtpSalesOrderDate.Location = new System.Drawing.Point(333, 98);
-            this.dtpSalesOrderDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.dtpSalesOrderDate.Name = "dtpSalesOrderDate";
-            this.dtpSalesOrderDate.Size = new System.Drawing.Size(217, 32);
-            this.dtpSalesOrderDate.TabIndex = 13;
+            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.btnCancel.FlatAppearance.BorderSize = 0;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnCancel.ForeColor = System.Drawing.Color.White;
+            this.btnCancel.Location = new System.Drawing.Point(861, 9);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(109, 34);
+            this.btnCancel.TabIndex = 7;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(107)))), ((int)(((byte)(107)))));
+            this.btnPrint.FlatAppearance.BorderSize = 0;
+            this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrint.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnPrint.ForeColor = System.Drawing.Color.White;
+            this.btnPrint.Location = new System.Drawing.Point(981, 9);
+            this.btnPrint.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(109, 34);
+            this.btnPrint.TabIndex = 8;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.UseVisualStyleBackColor = false;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
+            // pnlContent
+            // 
+            this.pnlContent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
+            this.pnlContent.Controls.Add(this.pnlItems);
+            this.pnlContent.Controls.Add(this.pnlNote);
+            this.pnlContent.Controls.Add(this.pnlHeaderSpacer);
+            this.pnlContent.Controls.Add(this.pnlHeader);
+            this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlContent.Location = new System.Drawing.Point(0, 107);
+            this.pnlContent.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlContent.Name = "pnlContent";
+            this.pnlContent.Padding = new System.Windows.Forms.Padding(11, 10, 11, 10);
+            this.pnlContent.Size = new System.Drawing.Size(1467, 773);
+            this.pnlContent.TabIndex = 2;
+            // 
+            // pnlItems
+            // 
+            this.pnlItems.BackColor = System.Drawing.Color.White;
+            this.pnlItems.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlItems.Controls.Add(this.dgvSalesOrderItem);
+            this.pnlItems.Controls.Add(this.pnlFooter);
+            this.pnlItems.Controls.Add(this.pnlGridTop);
+            this.pnlItems.Controls.Add(this.pnlItemInput);
+            this.pnlItems.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlItems.Location = new System.Drawing.Point(11, 191);
+            this.pnlItems.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlItems.Name = "pnlItems";
+            this.pnlItems.Size = new System.Drawing.Size(1445, 572);
+            this.pnlItems.TabIndex = 2;
             // 
             // dgvSalesOrderItem
             // 
-            this.dgvSalesOrderItem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSalesOrderItem.AllowUserToAddRows = false;
+            this.dgvSalesOrderItem.AllowUserToDeleteRows = false;
+            this.dgvSalesOrderItem.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvSalesOrderItem.BackgroundColor = System.Drawing.Color.White;
+            this.dgvSalesOrderItem.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvSalesOrderItem.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(241)))), ((int)(((byte)(245)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.dgvSalesOrderItem.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvSalesOrderItem.ColumnHeadersHeight = 30;
+            this.dgvSalesOrderItem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvSalesOrderItem.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.productId,
             this.productCode,
@@ -414,234 +507,478 @@
             this.discPercent,
             this.subTotal,
             this.priceReal});
-            this.dgvSalesOrderItem.Location = new System.Drawing.Point(21, 87);
-            this.dgvSalesOrderItem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(228)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(59)))), ((int)(((byte)(110)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSalesOrderItem.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvSalesOrderItem.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvSalesOrderItem.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(240)))), ((int)(((byte)(243)))));
+            this.dgvSalesOrderItem.Location = new System.Drawing.Point(0, 91);
+            this.dgvSalesOrderItem.Margin = new System.Windows.Forms.Padding(4);
             this.dgvSalesOrderItem.Name = "dgvSalesOrderItem";
             this.dgvSalesOrderItem.ReadOnly = true;
-            this.dgvSalesOrderItem.RowHeadersWidth = 51;
-            this.dgvSalesOrderItem.Size = new System.Drawing.Size(1228, 209);
-            this.dgvSalesOrderItem.TabIndex = 37;
+            this.dgvSalesOrderItem.RowHeadersWidth = 20;
+            this.dgvSalesOrderItem.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvSalesOrderItem.Size = new System.Drawing.Size(1443, 415);
+            this.dgvSalesOrderItem.TabIndex = 2;
             this.dgvSalesOrderItem.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgvSalesOrderItem_UserDeletedRow);
             // 
             // productId
             // 
             this.productId.HeaderText = "PRODUCT ID";
-            this.productId.MinimumWidth = 6;
             this.productId.Name = "productId";
             this.productId.ReadOnly = true;
             this.productId.Visible = false;
-            this.productId.Width = 125;
             // 
             // productCode
             // 
+            this.productCode.FillWeight = 80F;
             this.productCode.HeaderText = "KODE BRG";
-            this.productCode.MinimumWidth = 6;
             this.productCode.Name = "productCode";
             this.productCode.ReadOnly = true;
-            this.productCode.Width = 90;
             // 
             // productName
             // 
+            this.productName.FillWeight = 210F;
             this.productName.HeaderText = "NAMA BARANG";
-            this.productName.MinimumWidth = 6;
             this.productName.Name = "productName";
             this.productName.ReadOnly = true;
-            this.productName.Width = 290;
             // 
             // batchId
             // 
             this.batchId.HeaderText = "BATCH ID";
-            this.batchId.MinimumWidth = 6;
             this.batchId.Name = "batchId";
             this.batchId.ReadOnly = true;
             this.batchId.Visible = false;
-            this.batchId.Width = 125;
             // 
             // batchCode
             // 
+            this.batchCode.FillWeight = 75F;
             this.batchCode.HeaderText = "BATCH";
-            this.batchCode.MinimumWidth = 6;
             this.batchCode.Name = "batchCode";
             this.batchCode.ReadOnly = true;
-            this.batchCode.Width = 75;
             // 
             // expDate
             // 
+            this.expDate.FillWeight = 80F;
             this.expDate.HeaderText = "EXP. DATE";
-            this.expDate.MinimumWidth = 6;
             this.expDate.Name = "expDate";
             this.expDate.ReadOnly = true;
-            this.expDate.Width = 125;
             // 
             // qty
             // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.qty.DefaultCellStyle = dataGridViewCellStyle5;
+            this.qty.FillWeight = 50F;
             this.qty.HeaderText = "QTY";
-            this.qty.MinimumWidth = 6;
             this.qty.Name = "qty";
             this.qty.ReadOnly = true;
-            this.qty.Width = 50;
             // 
             // uomId
             // 
             this.uomId.HeaderText = "UOM ID";
-            this.uomId.MinimumWidth = 6;
             this.uomId.Name = "uomId";
             this.uomId.ReadOnly = true;
             this.uomId.Visible = false;
-            this.uomId.Width = 125;
             // 
             // uomCode
             // 
+            this.uomCode.FillWeight = 50F;
             this.uomCode.HeaderText = "SAT";
-            this.uomCode.MinimumWidth = 6;
             this.uomCode.Name = "uomCode";
             this.uomCode.ReadOnly = true;
-            this.uomCode.Width = 50;
             // 
             // price
             // 
+            this.price.DefaultCellStyle = dataGridViewCellStyle5;
+            this.price.FillWeight = 75F;
             this.price.HeaderText = "HARGA";
-            this.price.MinimumWidth = 6;
             this.price.Name = "price";
             this.price.ReadOnly = true;
-            this.price.Width = 70;
             // 
             // discPercent
             // 
+            this.discPercent.FillWeight = 55F;
             this.discPercent.HeaderText = "DISKON";
-            this.discPercent.MinimumWidth = 6;
             this.discPercent.Name = "discPercent";
             this.discPercent.ReadOnly = true;
-            this.discPercent.Width = 55;
             // 
             // subTotal
             // 
+            this.subTotal.DefaultCellStyle = dataGridViewCellStyle5;
+            this.subTotal.FillWeight = 90F;
             this.subTotal.HeaderText = "JML. HARGA";
-            this.subTotal.MinimumWidth = 6;
             this.subTotal.Name = "subTotal";
             this.subTotal.ReadOnly = true;
-            this.subTotal.Width = 125;
             // 
             // priceReal
             // 
             this.priceReal.HeaderText = "PRICEREAL";
-            this.priceReal.MinimumWidth = 6;
             this.priceReal.Name = "priceReal";
             this.priceReal.ReadOnly = true;
             this.priceReal.Visible = false;
-            this.priceReal.Width = 125;
+            // 
+            // pnlFooter
+            // 
+            this.pnlFooter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(249)))), ((int)(((byte)(250)))));
+            this.pnlFooter.Controls.Add(this.label14);
+            this.pnlFooter.Controls.Add(this.txtSubTotal);
+            this.pnlFooter.Controls.Add(this.label16);
+            this.pnlFooter.Controls.Add(this.txtExtraDiscount);
+            this.pnlFooter.Controls.Add(this.label17);
+            this.pnlFooter.Controls.Add(this.txtTaxBaseAmount);
+            this.pnlFooter.Controls.Add(this.lblTax);
+            this.pnlFooter.Controls.Add(this.txtValueAddedTaxAmount);
+            this.pnlFooter.Controls.Add(this.label23);
+            this.pnlFooter.Controls.Add(this.cbPic);
+            this.pnlFooter.Controls.Add(this.label13);
+            this.pnlFooter.Controls.Add(this.lblTotal);
+            this.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlFooter.Location = new System.Drawing.Point(0, 506);
+            this.pnlFooter.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlFooter.Name = "pnlFooter";
+            this.pnlFooter.Size = new System.Drawing.Size(1443, 64);
+            this.pnlFooter.TabIndex = 3;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.label14.Location = new System.Drawing.Point(13, 7);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(65, 13);
+            this.label14.TabIndex = 0;
+            this.label14.Text = "Total Harga";
+            // 
+            // txtSubTotal
+            // 
+            this.txtSubTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSubTotal.Enabled = false;
+            this.txtSubTotal.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtSubTotal.Location = new System.Drawing.Point(13, 27);
+            this.txtSubTotal.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSubTotal.Name = "txtSubTotal";
+            this.txtSubTotal.Size = new System.Drawing.Size(157, 23);
+            this.txtSubTotal.TabIndex = 1;
+            this.txtSubTotal.Text = "0";
+            this.txtSubTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtSubTotal.Enter += new System.EventHandler(this.txtExtraDiscount_Enter);
+            this.txtSubTotal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtExtraDiscount_KeyPress);
+            this.txtSubTotal.Leave += new System.EventHandler(this.txtExtraDiscount_Leave);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.label16.Location = new System.Drawing.Point(187, 7);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(77, 13);
+            this.label16.TabIndex = 2;
+            this.label16.Text = "Ekstra Diskon";
+            // 
+            // txtExtraDiscount
+            // 
+            this.txtExtraDiscount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtExtraDiscount.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtExtraDiscount.Location = new System.Drawing.Point(187, 27);
+            this.txtExtraDiscount.Margin = new System.Windows.Forms.Padding(4);
+            this.txtExtraDiscount.Name = "txtExtraDiscount";
+            this.txtExtraDiscount.Size = new System.Drawing.Size(133, 23);
+            this.txtExtraDiscount.TabIndex = 3;
+            this.txtExtraDiscount.Text = "0";
+            this.txtExtraDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtExtraDiscount.Enter += new System.EventHandler(this.txtExtraDiscount_Enter);
+            this.txtExtraDiscount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtExtraDiscount_KeyPress);
+            this.txtExtraDiscount.Leave += new System.EventHandler(this.txtExtraDiscount_Leave);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.label17.Location = new System.Drawing.Point(336, 7);
+            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(54, 13);
+            this.label17.TabIndex = 4;
+            this.label17.Text = "Total DPP";
+            // 
+            // txtTaxBaseAmount
+            // 
+            this.txtTaxBaseAmount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTaxBaseAmount.Enabled = false;
+            this.txtTaxBaseAmount.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtTaxBaseAmount.Location = new System.Drawing.Point(336, 27);
+            this.txtTaxBaseAmount.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTaxBaseAmount.Name = "txtTaxBaseAmount";
+            this.txtTaxBaseAmount.Size = new System.Drawing.Size(133, 23);
+            this.txtTaxBaseAmount.TabIndex = 5;
+            this.txtTaxBaseAmount.Text = "0";
+            this.txtTaxBaseAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTaxBaseAmount.Enter += new System.EventHandler(this.txtExtraDiscount_Enter);
+            this.txtTaxBaseAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtExtraDiscount_KeyPress);
+            this.txtTaxBaseAmount.Leave += new System.EventHandler(this.txtExtraDiscount_Leave);
+            // 
+            // lblTax
+            // 
+            this.lblTax.AutoSize = true;
+            this.lblTax.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.lblTax.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.lblTax.Location = new System.Drawing.Point(485, 7);
+            this.lblTax.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTax.Name = "lblTax";
+            this.lblTax.Size = new System.Drawing.Size(51, 13);
+            this.lblTax.TabIndex = 6;
+            this.lblTax.Text = "PPN 11%";
+            // 
+            // txtValueAddedTaxAmount
+            // 
+            this.txtValueAddedTaxAmount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtValueAddedTaxAmount.Enabled = false;
+            this.txtValueAddedTaxAmount.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtValueAddedTaxAmount.Location = new System.Drawing.Point(485, 27);
+            this.txtValueAddedTaxAmount.Margin = new System.Windows.Forms.Padding(4);
+            this.txtValueAddedTaxAmount.Name = "txtValueAddedTaxAmount";
+            this.txtValueAddedTaxAmount.Size = new System.Drawing.Size(133, 23);
+            this.txtValueAddedTaxAmount.TabIndex = 7;
+            this.txtValueAddedTaxAmount.Text = "0";
+            this.txtValueAddedTaxAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtValueAddedTaxAmount.Enter += new System.EventHandler(this.txtExtraDiscount_Enter);
+            this.txtValueAddedTaxAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtExtraDiscount_KeyPress);
+            this.txtValueAddedTaxAmount.Leave += new System.EventHandler(this.txtExtraDiscount_Leave);
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.label23.Location = new System.Drawing.Point(635, 7);
+            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(109, 13);
+            this.label23.TabIndex = 8;
+            this.label23.Text = "Penanggung Jawab";
+            // 
+            // cbPic
+            // 
+            this.cbPic.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbPic.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cbPic.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cbPic.Location = new System.Drawing.Point(635, 27);
+            this.cbPic.Margin = new System.Windows.Forms.Padding(4);
+            this.cbPic.Name = "cbPic";
+            this.cbPic.Size = new System.Drawing.Size(245, 23);
+            this.cbPic.TabIndex = 9;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.label13.Location = new System.Drawing.Point(1000, 7);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(95, 13);
+            this.label13.TabIndex = 10;
+            this.label13.Text = "TOTAL TAGIHAN:";
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
+            this.lblTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
+            this.lblTotal.Location = new System.Drawing.Point(1103, 7);
+            this.lblTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(209, 43);
+            this.lblTotal.TabIndex = 11;
+            this.lblTotal.Text = "999.999.999";
+            this.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // pnlGridTop
+            // 
+            this.pnlGridTop.BackColor = System.Drawing.Color.White;
+            this.pnlGridTop.Controls.Add(this.lblGridTitle);
+            this.pnlGridTop.Controls.Add(this.lblItemCount);
+            this.pnlGridTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlGridTop.Location = new System.Drawing.Point(0, 52);
+            this.pnlGridTop.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlGridTop.Name = "pnlGridTop";
+            this.pnlGridTop.Size = new System.Drawing.Size(1443, 39);
+            this.pnlGridTop.TabIndex = 1;
+            // 
+            // lblGridTitle
+            // 
+            this.lblGridTitle.AutoSize = true;
+            this.lblGridTitle.Font = new System.Drawing.Font("Segoe UI", 8.5F, System.Drawing.FontStyle.Bold);
+            this.lblGridTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.lblGridTitle.Location = new System.Drawing.Point(13, 11);
+            this.lblGridTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblGridTitle.Name = "lblGridTitle";
+            this.lblGridTitle.Size = new System.Drawing.Size(131, 15);
+            this.lblGridTitle.TabIndex = 0;
+            this.lblGridTitle.Text = "DAFTAR ITEM FAKTUR";
+            // 
+            // lblItemCount
+            // 
+            this.lblItemCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblItemCount.AutoSize = true;
+            this.lblItemCount.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.lblItemCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            this.lblItemCount.Location = new System.Drawing.Point(1197, 11);
+            this.lblItemCount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblItemCount.Name = "lblItemCount";
+            this.lblItemCount.Size = new System.Drawing.Size(0, 15);
+            this.lblItemCount.TabIndex = 1;
+            // 
+            // pnlItemInput
+            // 
+            this.pnlItemInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(249)))), ((int)(((byte)(250)))));
+            this.pnlItemInput.Controls.Add(this.label5);
+            this.pnlItemInput.Controls.Add(this.cbProduct);
+            this.pnlItemInput.Controls.Add(this.label10);
+            this.pnlItemInput.Controls.Add(this.txtBatch);
+            this.pnlItemInput.Controls.Add(this.label7);
+            this.pnlItemInput.Controls.Add(this.dtpExpiredDate);
+            this.pnlItemInput.Controls.Add(this.label8);
+            this.pnlItemInput.Controls.Add(this.txtQty);
+            this.pnlItemInput.Controls.Add(this.label6);
+            this.pnlItemInput.Controls.Add(this.txtPrice);
+            this.pnlItemInput.Controls.Add(this.label11);
+            this.pnlItemInput.Controls.Add(this.txtDiscount);
+            this.pnlItemInput.Controls.Add(this.btnAddItem);
+            this.pnlItemInput.Controls.Add(this.btnRemoveItem);
+            this.pnlItemInput.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlItemInput.Location = new System.Drawing.Point(0, 0);
+            this.pnlItemInput.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlItemInput.Name = "pnlItemInput";
+            this.pnlItemInput.Size = new System.Drawing.Size(1443, 52);
+            this.pnlItemInput.TabIndex = 0;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.label5.Location = new System.Drawing.Point(13, 16);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(44, 15);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Barang";
             // 
             // cbProduct
             // 
             this.cbProduct.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cbProduct.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.cbProduct.Font = new System.Drawing.Font("Calibri", 12F);
-            this.cbProduct.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cbProduct.FormattingEnabled = true;
-            this.cbProduct.Location = new System.Drawing.Point(21, 42);
-            this.cbProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbProduct.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cbProduct.Location = new System.Drawing.Point(75, 11);
+            this.cbProduct.Margin = new System.Windows.Forms.Padding(4);
             this.cbProduct.Name = "cbProduct";
-            this.cbProduct.Size = new System.Drawing.Size(301, 32);
-            this.cbProduct.TabIndex = 30;
+            this.cbProduct.Size = new System.Drawing.Size(252, 23);
+            this.cbProduct.TabIndex = 1;
             this.cbProduct.SelectedIndexChanged += new System.EventHandler(this.cbProduct_SelectedIndexChanged);
             // 
-            // label5
+            // label10
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label5.Location = new System.Drawing.Point(21, 18);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(99, 21);
-            this.label5.TabIndex = 25;
-            this.label5.Text = "Kode Barang";
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.label10.Location = new System.Drawing.Point(347, 16);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(37, 15);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "Batch";
+            // 
+            // txtBatch
+            // 
+            this.txtBatch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBatch.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtBatch.Location = new System.Drawing.Point(395, 11);
+            this.txtBatch.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBatch.Name = "txtBatch";
+            this.txtBatch.Size = new System.Drawing.Size(106, 23);
+            this.txtBatch.TabIndex = 3;
+            this.txtBatch.Leave += new System.EventHandler(this.txtBatch_Leave);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label7.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label7.Location = new System.Drawing.Point(488, 20);
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.label7.Location = new System.Drawing.Point(515, 16);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(128, 21);
-            this.label7.TabIndex = 28;
-            this.label7.Text = "Tgl. Kedaluwarsa";
+            this.label7.Size = new System.Drawing.Size(52, 15);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "Tgl. Ked.";
             // 
             // dtpExpiredDate
             // 
-            this.dtpExpiredDate.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dtpExpiredDate.Font = new System.Drawing.Font("Calibri", 12F);
+            this.dtpExpiredDate.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpExpiredDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpExpiredDate.Location = new System.Drawing.Point(488, 43);
-            this.dtpExpiredDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpExpiredDate.Location = new System.Drawing.Point(584, 11);
+            this.dtpExpiredDate.Margin = new System.Windows.Forms.Padding(4);
             this.dtpExpiredDate.Name = "dtpExpiredDate";
-            this.dtpExpiredDate.Size = new System.Drawing.Size(151, 32);
-            this.dtpExpiredDate.TabIndex = 32;
+            this.dtpExpiredDate.Size = new System.Drawing.Size(132, 23);
+            this.dtpExpiredDate.TabIndex = 5;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label8.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label8.Location = new System.Drawing.Point(645, 20);
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.label8.Location = new System.Drawing.Point(731, 16);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(36, 21);
-            this.label8.TabIndex = 17;
+            this.label8.Size = new System.Drawing.Size(26, 15);
+            this.label8.TabIndex = 6;
             this.label8.Text = "Qty";
             // 
             // txtQty
             // 
             this.txtQty.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtQty.Font = new System.Drawing.Font("Calibri", 12F);
-            this.txtQty.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtQty.Location = new System.Drawing.Point(645, 43);
-            this.txtQty.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtQty.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtQty.Location = new System.Drawing.Point(760, 11);
+            this.txtQty.Margin = new System.Windows.Forms.Padding(4);
             this.txtQty.MaxLength = 6;
             this.txtQty.Name = "txtQty";
-            this.txtQty.Size = new System.Drawing.Size(75, 32);
-            this.txtQty.TabIndex = 33;
+            this.txtQty.Size = new System.Drawing.Size(73, 23);
+            this.txtQty.TabIndex = 7;
             this.txtQty.Text = "0";
             this.txtQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtQty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQty_KeyPress);
             this.txtQty.Leave += new System.EventHandler(this.txtQty_Leave);
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label10.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label10.Location = new System.Drawing.Point(333, 20);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(50, 21);
-            this.label10.TabIndex = 25;
-            this.label10.Text = "Batch";
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label6.Location = new System.Drawing.Point(731, 20);
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.label6.Location = new System.Drawing.Point(848, 16);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(97, 21);
-            this.label6.TabIndex = 17;
+            this.label6.Size = new System.Drawing.Size(76, 15);
+            this.label6.TabIndex = 8;
             this.label6.Text = "Harga (HNA)";
             // 
             // txtPrice
             // 
             this.txtPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPrice.Font = new System.Drawing.Font("Calibri", 12F);
-            this.txtPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtPrice.Location = new System.Drawing.Point(731, 43);
-            this.txtPrice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPrice.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtPrice.Location = new System.Drawing.Point(949, 11);
+            this.txtPrice.Margin = new System.Windows.Forms.Padding(4);
             this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(145, 32);
-            this.txtPrice.TabIndex = 34;
+            this.txtPrice.Size = new System.Drawing.Size(119, 23);
+            this.txtPrice.TabIndex = 9;
             this.txtPrice.Text = "0";
             this.txtPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrice_KeyPress);
@@ -650,26 +987,25 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label11.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label11.Location = new System.Drawing.Point(884, 20);
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.label11.Location = new System.Drawing.Point(1085, 16);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(70, 21);
-            this.label11.TabIndex = 17;
-            this.label11.Text = "Disc. (%)";
+            this.label11.Size = new System.Drawing.Size(50, 15);
+            this.label11.TabIndex = 10;
+            this.label11.Text = "Disc.(%)";
             // 
             // txtDiscount
             // 
             this.txtDiscount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDiscount.Font = new System.Drawing.Font("Calibri", 12F);
-            this.txtDiscount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtDiscount.Location = new System.Drawing.Point(884, 43);
-            this.txtDiscount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDiscount.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtDiscount.Location = new System.Drawing.Point(1141, 11);
+            this.txtDiscount.Margin = new System.Windows.Forms.Padding(4);
             this.txtDiscount.MaxLength = 5;
             this.txtDiscount.Name = "txtDiscount";
-            this.txtDiscount.Size = new System.Drawing.Size(67, 32);
-            this.txtDiscount.TabIndex = 35;
+            this.txtDiscount.Size = new System.Drawing.Size(63, 23);
+            this.txtDiscount.TabIndex = 11;
             this.txtDiscount.Text = "0";
             this.txtDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtDiscount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDiscount_KeyPress);
@@ -677,704 +1013,369 @@
             // 
             // btnAddItem
             // 
-            this.btnAddItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
+            this.btnAddItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
             this.btnAddItem.FlatAppearance.BorderSize = 0;
             this.btnAddItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddItem.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnAddItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnAddItem.ForeColor = System.Drawing.Color.White;
-            this.btnAddItem.Location = new System.Drawing.Point(971, 38);
-            this.btnAddItem.Margin = new System.Windows.Forms.Padding(0);
+            this.btnAddItem.Location = new System.Drawing.Point(1216, 8);
+            this.btnAddItem.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddItem.Name = "btnAddItem";
-            this.btnAddItem.Size = new System.Drawing.Size(95, 38);
-            this.btnAddItem.TabIndex = 36;
-            this.btnAddItem.Text = "ADD ITEM";
-            this.btnAddItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAddItem.Size = new System.Drawing.Size(96, 28);
+            this.btnAddItem.TabIndex = 12;
+            this.btnAddItem.Text = "+ Tambah";
             this.btnAddItem.UseVisualStyleBackColor = false;
             this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
             // 
-            // gbSalesOrderDetail
+            // btnRemoveItem
             // 
-            this.gbSalesOrderDetail.Controls.Add(this.cbPic);
-            this.gbSalesOrderDetail.Controls.Add(this.label23);
-            this.gbSalesOrderDetail.Controls.Add(this.dgvSalesOrderItem);
-            this.gbSalesOrderDetail.Controls.Add(this.btnAddItem);
-            this.gbSalesOrderDetail.Controls.Add(this.dtpExpiredDate);
-            this.gbSalesOrderDetail.Controls.Add(this.cbProduct);
-            this.gbSalesOrderDetail.Controls.Add(this.txtDiscount);
-            this.gbSalesOrderDetail.Controls.Add(this.label7);
-            this.gbSalesOrderDetail.Controls.Add(this.txtSubTotal);
-            this.gbSalesOrderDetail.Controls.Add(this.lblTotal);
-            this.gbSalesOrderDetail.Controls.Add(this.txtValueAddedTaxAmount);
-            this.gbSalesOrderDetail.Controls.Add(this.label13);
-            this.gbSalesOrderDetail.Controls.Add(this.txtTaxBaseAmount);
-            this.gbSalesOrderDetail.Controls.Add(this.txtExtraDiscount);
-            this.gbSalesOrderDetail.Controls.Add(this.txtPrice);
-            this.gbSalesOrderDetail.Controls.Add(this.txtQty);
-            this.gbSalesOrderDetail.Controls.Add(this.txtBatch);
-            this.gbSalesOrderDetail.Controls.Add(this.label8);
-            this.gbSalesOrderDetail.Controls.Add(this.label14);
-            this.gbSalesOrderDetail.Controls.Add(this.lblTax);
-            this.gbSalesOrderDetail.Controls.Add(this.label17);
-            this.gbSalesOrderDetail.Controls.Add(this.label16);
-            this.gbSalesOrderDetail.Controls.Add(this.label10);
-            this.gbSalesOrderDetail.Controls.Add(this.label6);
-            this.gbSalesOrderDetail.Controls.Add(this.label5);
-            this.gbSalesOrderDetail.Controls.Add(this.label11);
-            this.gbSalesOrderDetail.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.gbSalesOrderDetail.Location = new System.Drawing.Point(31, 289);
-            this.gbSalesOrderDetail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.gbSalesOrderDetail.Name = "gbSalesOrderDetail";
-            this.gbSalesOrderDetail.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.gbSalesOrderDetail.Size = new System.Drawing.Size(1267, 379);
-            this.gbSalesOrderDetail.TabIndex = 6;
-            this.gbSalesOrderDetail.TabStop = false;
-            this.gbSalesOrderDetail.Text = "FAKTUR DETAIL";
-            // 
-            // cbPic
-            // 
-            this.cbPic.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cbPic.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.cbPic.Font = new System.Drawing.Font("Calibri", 12F);
-            this.cbPic.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cbPic.FormattingEnabled = true;
-            this.cbPic.Location = new System.Drawing.Point(665, 332);
-            this.cbPic.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.cbPic.Name = "cbPic";
-            this.cbPic.Size = new System.Drawing.Size(209, 32);
-            this.cbPic.TabIndex = 39;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label23.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label23.Location = new System.Drawing.Point(665, 309);
-            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(144, 21);
-            this.label23.TabIndex = 38;
-            this.label23.Text = "Penanggung Jawab";
-            // 
-            // txtSubTotal
-            // 
-            this.txtSubTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSubTotal.Enabled = false;
-            this.txtSubTotal.Font = new System.Drawing.Font("Calibri", 12F);
-            this.txtSubTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtSubTotal.Location = new System.Drawing.Point(23, 332);
-            this.txtSubTotal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txtSubTotal.Name = "txtSubTotal";
-            this.txtSubTotal.Size = new System.Drawing.Size(174, 32);
-            this.txtSubTotal.TabIndex = 37;
-            this.txtSubTotal.Text = "0";
-            this.txtSubTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtSubTotal.Enter += new System.EventHandler(this.txtExtraDiscount_Enter);
-            this.txtSubTotal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtExtraDiscount_KeyPress);
-            this.txtSubTotal.Leave += new System.EventHandler(this.txtExtraDiscount_Leave);
-            // 
-            // lblTotal
-            // 
-            this.lblTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTotal.Font = new System.Drawing.Font("Calibri", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblTotal.Location = new System.Drawing.Point(911, 320);
-            this.lblTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(339, 52);
-            this.lblTotal.TabIndex = 30;
-            this.lblTotal.Text = "0";
-            this.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // txtValueAddedTaxAmount
-            // 
-            this.txtValueAddedTaxAmount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtValueAddedTaxAmount.Enabled = false;
-            this.txtValueAddedTaxAmount.Font = new System.Drawing.Font("Calibri", 12F);
-            this.txtValueAddedTaxAmount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtValueAddedTaxAmount.Location = new System.Drawing.Point(512, 332);
-            this.txtValueAddedTaxAmount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txtValueAddedTaxAmount.Name = "txtValueAddedTaxAmount";
-            this.txtValueAddedTaxAmount.Size = new System.Drawing.Size(145, 32);
-            this.txtValueAddedTaxAmount.TabIndex = 37;
-            this.txtValueAddedTaxAmount.Text = "0";
-            this.txtValueAddedTaxAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtValueAddedTaxAmount.Enter += new System.EventHandler(this.txtExtraDiscount_Enter);
-            this.txtValueAddedTaxAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtExtraDiscount_KeyPress);
-            this.txtValueAddedTaxAmount.Leave += new System.EventHandler(this.txtExtraDiscount_Leave);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label13.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label13.Location = new System.Drawing.Point(1120, 300);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(128, 21);
-            this.label13.TabIndex = 30;
-            this.label13.Text = "TOTAL TAGIHAN:";
-            // 
-            // txtTaxBaseAmount
-            // 
-            this.txtTaxBaseAmount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTaxBaseAmount.Enabled = false;
-            this.txtTaxBaseAmount.Font = new System.Drawing.Font("Calibri", 12F);
-            this.txtTaxBaseAmount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtTaxBaseAmount.Location = new System.Drawing.Point(359, 332);
-            this.txtTaxBaseAmount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txtTaxBaseAmount.Name = "txtTaxBaseAmount";
-            this.txtTaxBaseAmount.Size = new System.Drawing.Size(145, 32);
-            this.txtTaxBaseAmount.TabIndex = 37;
-            this.txtTaxBaseAmount.Text = "0";
-            this.txtTaxBaseAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtTaxBaseAmount.Enter += new System.EventHandler(this.txtExtraDiscount_Enter);
-            this.txtTaxBaseAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtExtraDiscount_KeyPress);
-            this.txtTaxBaseAmount.Leave += new System.EventHandler(this.txtExtraDiscount_Leave);
-            // 
-            // txtExtraDiscount
-            // 
-            this.txtExtraDiscount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtExtraDiscount.Font = new System.Drawing.Font("Calibri", 12F);
-            this.txtExtraDiscount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtExtraDiscount.Location = new System.Drawing.Point(205, 332);
-            this.txtExtraDiscount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txtExtraDiscount.Name = "txtExtraDiscount";
-            this.txtExtraDiscount.Size = new System.Drawing.Size(145, 32);
-            this.txtExtraDiscount.TabIndex = 37;
-            this.txtExtraDiscount.Text = "0";
-            this.txtExtraDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtExtraDiscount.Enter += new System.EventHandler(this.txtExtraDiscount_Enter);
-            this.txtExtraDiscount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtExtraDiscount_KeyPress);
-            this.txtExtraDiscount.Leave += new System.EventHandler(this.txtExtraDiscount_Leave);
-            // 
-            // txtBatch
-            // 
-            this.txtBatch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBatch.Font = new System.Drawing.Font("Calibri", 12F);
-            this.txtBatch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtBatch.Location = new System.Drawing.Point(332, 43);
-            this.txtBatch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txtBatch.Name = "txtBatch";
-            this.txtBatch.Size = new System.Drawing.Size(147, 32);
-            this.txtBatch.TabIndex = 31;
-            this.txtBatch.Leave += new System.EventHandler(this.txtBatch_Leave);
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label14.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label14.Location = new System.Drawing.Point(20, 310);
-            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(89, 21);
-            this.label14.TabIndex = 17;
-            this.label14.Text = "Total Harga";
-            // 
-            // lblTax
-            // 
-            this.lblTax.AutoSize = true;
-            this.lblTax.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.lblTax.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblTax.Location = new System.Drawing.Point(508, 310);
-            this.lblTax.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblTax.Name = "lblTax";
-            this.lblTax.Size = new System.Drawing.Size(73, 21);
-            this.lblTax.TabIndex = 17;
-            this.lblTax.Text = "PPN 10%";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label17.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label17.Location = new System.Drawing.Point(359, 310);
-            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(77, 21);
-            this.label17.TabIndex = 17;
-            this.label17.Text = "Total DPP";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label16.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label16.Location = new System.Drawing.Point(205, 310);
-            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(105, 21);
-            this.label16.TabIndex = 17;
-            this.label16.Text = "Ekstra Diskon";
+            this.btnRemoveItem.BackColor = System.Drawing.Color.White;
+            this.btnRemoveItem.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(43)))), ((int)(((byte)(28)))));
+            this.btnRemoveItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoveItem.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnRemoveItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(43)))), ((int)(((byte)(28)))));
+            this.btnRemoveItem.Location = new System.Drawing.Point(1320, 8);
+            this.btnRemoveItem.Margin = new System.Windows.Forms.Padding(4);
+            this.btnRemoveItem.Name = "btnRemoveItem";
+            this.btnRemoveItem.Size = new System.Drawing.Size(96, 28);
+            this.btnRemoveItem.TabIndex = 13;
+            this.btnRemoveItem.Text = "- Hapus";
+            this.btnRemoveItem.UseVisualStyleBackColor = false;
+            this.btnRemoveItem.Click += new System.EventHandler(this.btnRemoveItem_Click);
             // 
             // pnlNote
             // 
-            this.pnlNote.Controls.Add(this.lblNoteDetail);
+            this.pnlNote.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(252)))), ((int)(((byte)(220)))));
             this.pnlNote.Controls.Add(this.label15);
-            this.pnlNote.Location = new System.Drawing.Point(31, 676);
-            this.pnlNote.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlNote.Controls.Add(this.lblNoteDetail);
+            this.pnlNote.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlNote.Location = new System.Drawing.Point(11, 152);
+            this.pnlNote.Margin = new System.Windows.Forms.Padding(4);
             this.pnlNote.Name = "pnlNote";
-            this.pnlNote.Size = new System.Drawing.Size(1267, 60);
-            this.pnlNote.TabIndex = 42;
+            this.pnlNote.Size = new System.Drawing.Size(1445, 39);
+            this.pnlNote.TabIndex = 97;
             this.pnlNote.Visible = false;
-            // 
-            // lblNoteDetail
-            // 
-            this.lblNoteDetail.AutoSize = true;
-            this.lblNoteDetail.BackColor = System.Drawing.Color.Gold;
-            this.lblNoteDetail.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.lblNoteDetail.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblNoteDetail.Location = new System.Drawing.Point(12, 30);
-            this.lblNoteDetail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblNoteDetail.Name = "lblNoteDetail";
-            this.lblNoteDetail.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.lblNoteDetail.Size = new System.Drawing.Size(99, 29);
-            this.lblNoteDetail.TabIndex = 4;
-            this.lblNoteDetail.Text = "Note Detail";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label15.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label15.Location = new System.Drawing.Point(12, 6);
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 8.5F, System.Drawing.FontStyle.Bold);
+            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(80)))), ((int)(((byte)(0)))));
+            this.label15.Location = new System.Drawing.Point(11, 10);
             this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(97, 21);
-            this.label15.TabIndex = 4;
+            this.label15.Size = new System.Drawing.Size(76, 15);
+            this.label15.TabIndex = 0;
             this.label15.Text = "PERHATIAN!";
             // 
-            // label12
+            // lblNoteDetail
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label12.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label12.Location = new System.Drawing.Point(48, 11);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(115, 21);
-            this.label12.TabIndex = 17;
-            this.label12.Text = "Cari No. Faktur";
+            this.lblNoteDetail.AutoSize = true;
+            this.lblNoteDetail.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.lblNoteDetail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(80)))), ((int)(((byte)(0)))));
+            this.lblNoteDetail.Location = new System.Drawing.Point(107, 10);
+            this.lblNoteDetail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNoteDetail.Name = "lblNoteDetail";
+            this.lblNoteDetail.Size = new System.Drawing.Size(66, 15);
+            this.lblNoteDetail.TabIndex = 1;
+            this.lblNoteDetail.Text = "Note Detail";
             // 
-            // txtSalesNo
+            // pnlHeaderSpacer
             // 
-            this.txtSalesNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSalesNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtSalesNo.Font = new System.Drawing.Font("Calibri", 12F);
-            this.txtSalesNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtSalesNo.Location = new System.Drawing.Point(48, 34);
-            this.txtSalesNo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txtSalesNo.Name = "txtSalesNo";
-            this.txtSalesNo.Size = new System.Drawing.Size(223, 32);
-            this.txtSalesNo.TabIndex = 1;
-            this.toolTipSales.SetToolTip(this.txtSalesNo, "Tambahkan digit tahun pada awal No. Faktur. Contoh: 23S1-090015");
-            this.txtSalesNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSalesNo_KeyPress);
+            this.pnlHeaderSpacer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
+            this.pnlHeaderSpacer.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlHeaderSpacer.Location = new System.Drawing.Point(11, 142);
+            this.pnlHeaderSpacer.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlHeaderSpacer.Name = "pnlHeaderSpacer";
+            this.pnlHeaderSpacer.Size = new System.Drawing.Size(1445, 10);
+            this.pnlHeaderSpacer.TabIndex = 98;
             // 
-            // btnSearch
+            // pnlHeader
             // 
-            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
-            this.btnSearch.FlatAppearance.BorderSize = 0;
-            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
-            this.btnSearch.Location = new System.Drawing.Point(280, 34);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(47, 33);
-            this.btnSearch.TabIndex = 2;
-            this.btnSearch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnSearch.UseVisualStyleBackColor = false;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            this.pnlHeader.BackColor = System.Drawing.Color.White;
+            this.pnlHeader.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlHeader.Controls.Add(this.lblHeaderTitle);
+            this.pnlHeader.Controls.Add(this.label9);
+            this.pnlHeader.Controls.Add(this.cbCustomer);
+            this.pnlHeader.Controls.Add(this.label4);
+            this.pnlHeader.Controls.Add(this.cbSalesman);
+            this.pnlHeader.Controls.Add(this.label1);
+            this.pnlHeader.Controls.Add(this.cbTermOfPayment);
+            this.pnlHeader.Controls.Add(this.label27);
+            this.pnlHeader.Controls.Add(this.dtpSalesOrderDate);
+            this.pnlHeader.Controls.Add(this.label3);
+            this.pnlHeader.Controls.Add(this.dtpDueDate);
+            this.pnlHeader.Controls.Add(this.label2);
+            this.pnlHeader.Controls.Add(this.txtDeliveryAddress);
+            this.pnlHeader.Controls.Add(this.label20);
+            this.pnlHeader.Controls.Add(this.cbProvince);
+            this.pnlHeader.Controls.Add(this.label21);
+            this.pnlHeader.Controls.Add(this.cbDistrict);
+            this.pnlHeader.Controls.Add(this.label29);
+            this.pnlHeader.Controls.Add(this.cbSalesArea);
+            this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlHeader.Location = new System.Drawing.Point(11, 10);
+            this.pnlHeader.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlHeader.Name = "pnlHeader";
+            this.pnlHeader.Size = new System.Drawing.Size(1445, 132);
+            this.pnlHeader.TabIndex = 0;
             // 
-            // pnlButtonGroup
+            // lblHeaderTitle
             // 
-            this.pnlButtonGroup.Controls.Add(this.btnAdd);
-            this.pnlButtonGroup.Controls.Add(this.btnReload);
-            this.pnlButtonGroup.Controls.Add(this.btnDel);
-            this.pnlButtonGroup.Controls.Add(this.btnSave);
-            this.pnlButtonGroup.Controls.Add(this.btnClear);
-            this.pnlButtonGroup.Controls.Add(this.btnInvoice);
-            this.pnlButtonGroup.Controls.Add(this.btnPost);
-            this.pnlButtonGroup.Controls.Add(this.btnCancel);
-            this.pnlButtonGroup.Controls.Add(this.btnPrint);
-            this.pnlButtonGroup.Location = new System.Drawing.Point(1305, 289);
-            this.pnlButtonGroup.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.pnlButtonGroup.Name = "pnlButtonGroup";
-            this.pnlButtonGroup.Size = new System.Drawing.Size(120, 480);
-            this.pnlButtonGroup.TabIndex = 41;
+            this.lblHeaderTitle.AutoSize = true;
+            this.lblHeaderTitle.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Bold);
+            this.lblHeaderTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            this.lblHeaderTitle.Location = new System.Drawing.Point(13, 7);
+            this.lblHeaderTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblHeaderTitle.Name = "lblHeaderTitle";
+            this.lblHeaderTitle.Size = new System.Drawing.Size(98, 12);
+            this.lblHeaderTitle.TabIndex = 0;
+            this.lblHeaderTitle.Text = "HEADER DOKUMEN";
             // 
-            // btnAdd
+            // label9
             // 
-            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
-            this.btnAdd.FlatAppearance.BorderSize = 0;
-            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(12, 57);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(95, 37);
-            this.btnAdd.TabIndex = 12;
-            this.btnAdd.Text = "ADD";
-            this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAdd.UseVisualStyleBackColor = false;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.label9.Location = new System.Drawing.Point(13, 25);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(93, 15);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "Kode Pelanggan";
             // 
-            // btnReload
+            // cbCustomer
             // 
-            this.btnReload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
-            this.btnReload.FlatAppearance.BorderSize = 0;
-            this.btnReload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReload.Font = new System.Drawing.Font("Calibri", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReload.ForeColor = System.Drawing.Color.White;
-            this.btnReload.Image = ((System.Drawing.Image)(resources.GetObject("btnReload.Image")));
-            this.btnReload.Location = new System.Drawing.Point(12, 190);
-            this.btnReload.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnReload.Name = "btnReload";
-            this.btnReload.Size = new System.Drawing.Size(95, 37);
-            this.btnReload.TabIndex = 15;
-            this.btnReload.Text = "RELOAD";
-            this.btnReload.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnReload.UseVisualStyleBackColor = false;
-            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
+            this.cbCustomer.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbCustomer.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cbCustomer.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cbCustomer.Location = new System.Drawing.Point(13, 44);
+            this.cbCustomer.Margin = new System.Windows.Forms.Padding(4);
+            this.cbCustomer.Name = "cbCustomer";
+            this.cbCustomer.Size = new System.Drawing.Size(252, 23);
+            this.cbCustomer.TabIndex = 2;
+            this.cbCustomer.SelectedIndexChanged += new System.EventHandler(this.cbCustomer_SelectedIndexChanged);
             // 
-            // btnDel
+            // label4
             // 
-            this.btnDel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
-            this.btnDel.FlatAppearance.BorderSize = 0;
-            this.btnDel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDel.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnDel.ForeColor = System.Drawing.Color.White;
-            this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
-            this.btnDel.Location = new System.Drawing.Point(12, 145);
-            this.btnDel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(95, 37);
-            this.btnDel.TabIndex = 14;
-            this.btnDel.Text = "DELETE";
-            this.btnDel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnDel.UseVisualStyleBackColor = false;
-            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.label4.Location = new System.Drawing.Point(285, 25);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(57, 15);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Salesman";
             // 
-            // btnSave
+            // cbSalesman
             // 
-            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
-            this.btnSave.FlatAppearance.BorderSize = 0;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(12, 101);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(95, 37);
-            this.btnSave.TabIndex = 13;
-            this.btnSave.Text = "SAVE";
-            this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.cbSalesman.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbSalesman.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cbSalesman.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cbSalesman.Location = new System.Drawing.Point(285, 44);
+            this.cbSalesman.Margin = new System.Windows.Forms.Padding(4);
+            this.cbSalesman.Name = "cbSalesman";
+            this.cbSalesman.Size = new System.Drawing.Size(205, 23);
+            this.cbSalesman.TabIndex = 4;
             // 
-            // btnClear
+            // label1
             // 
-            this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
-            this.btnClear.FlatAppearance.BorderSize = 0;
-            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClear.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnClear.ForeColor = System.Drawing.Color.White;
-            this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
-            this.btnClear.Location = new System.Drawing.Point(12, 14);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(95, 37);
-            this.btnClear.TabIndex = 11;
-            this.btnClear.Text = "CLEAR";
-            this.btnClear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnClear.UseVisualStyleBackColor = false;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.label1.Location = new System.Drawing.Point(511, 25);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(98, 15);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Term of Payment";
             // 
-            // btnInvoice
+            // cbTermOfPayment
             // 
-            this.btnInvoice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
-            this.btnInvoice.FlatAppearance.BorderSize = 0;
-            this.btnInvoice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInvoice.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnInvoice.ForeColor = System.Drawing.Color.White;
-            this.btnInvoice.Location = new System.Drawing.Point(12, 241);
-            this.btnInvoice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnInvoice.Name = "btnInvoice";
-            this.btnInvoice.Size = new System.Drawing.Size(95, 47);
-            this.btnInvoice.TabIndex = 16;
-            this.btnInvoice.Text = "INVOICE";
-            this.btnInvoice.UseVisualStyleBackColor = false;
-            this.btnInvoice.Click += new System.EventHandler(this.btnInvoice_Click);
+            this.cbTermOfPayment.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbTermOfPayment.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cbTermOfPayment.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cbTermOfPayment.Location = new System.Drawing.Point(511, 44);
+            this.cbTermOfPayment.Margin = new System.Windows.Forms.Padding(4);
+            this.cbTermOfPayment.Name = "cbTermOfPayment";
+            this.cbTermOfPayment.Size = new System.Drawing.Size(185, 23);
+            this.cbTermOfPayment.TabIndex = 6;
+            this.cbTermOfPayment.SelectedIndexChanged += new System.EventHandler(this.cbTermOfPayment_SelectedIndexChanged);
             // 
-            // btnPost
+            // label27
             // 
-            this.btnPost.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(124)))), ((int)(((byte)(16)))));
-            this.btnPost.FlatAppearance.BorderSize = 0;
-            this.btnPost.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPost.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnPost.ForeColor = System.Drawing.Color.White;
-            this.btnPost.Location = new System.Drawing.Point(12, 295);
-            this.btnPost.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnPost.Name = "btnPost";
-            this.btnPost.Size = new System.Drawing.Size(95, 47);
-            this.btnPost.TabIndex = 17;
-            this.btnPost.Text = "POST";
-            this.btnPost.UseVisualStyleBackColor = false;
-            this.btnPost.Click += new System.EventHandler(this.btnPost_Click);
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.label27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.label27.Location = new System.Drawing.Point(13, 79);
+            this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(62, 15);
+            this.label27.TabIndex = 13;
+            this.label27.Text = "Tgl. Faktur";
             // 
-            // btnCancel
+            // dtpSalesOrderDate
             // 
-            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(43)))), ((int)(((byte)(28)))));
-            this.btnCancel.FlatAppearance.BorderSize = 0;
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(12, 350);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(95, 47);
-            this.btnCancel.TabIndex = 18;
-            this.btnCancel.Text = "CANCEL";
-            this.btnCancel.UseVisualStyleBackColor = false;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.dtpSalesOrderDate.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dtpSalesOrderDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpSalesOrderDate.Location = new System.Drawing.Point(13, 98);
+            this.dtpSalesOrderDate.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpSalesOrderDate.Name = "dtpSalesOrderDate";
+            this.dtpSalesOrderDate.Size = new System.Drawing.Size(159, 23);
+            this.dtpSalesOrderDate.TabIndex = 14;
             // 
-            // btnPrint
+            // label3
             // 
-            this.btnPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
-            this.btnPrint.FlatAppearance.BorderSize = 0;
-            this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPrint.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnPrint.ForeColor = System.Drawing.Color.White;
-            this.btnPrint.Location = new System.Drawing.Point(12, 406);
-            this.btnPrint.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(95, 47);
-            this.btnPrint.TabIndex = 14;
-            this.btnPrint.Text = "PRINT";
-            this.btnPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnPrint.UseVisualStyleBackColor = false;
-            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.label3.Location = new System.Drawing.Point(192, 79);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(97, 15);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Tgl. Jatuh Tempo";
             // 
-            // lblStatus
+            // dtpDueDate
             // 
-            this.lblStatus.AutoSize = true;
-            this.lblStatus.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Bold);
-            this.lblStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblStatus.Location = new System.Drawing.Point(1080, 74);
-            this.lblStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(0, 29);
-            this.lblStatus.TabIndex = 50;
+            this.dtpDueDate.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dtpDueDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDueDate.Location = new System.Drawing.Point(192, 98);
+            this.dtpDueDate.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpDueDate.Name = "dtpDueDate";
+            this.dtpDueDate.Size = new System.Drawing.Size(159, 23);
+            this.dtpDueDate.TabIndex = 16;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.label2.Location = new System.Drawing.Point(723, 25);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(76, 15);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Alamat Kirim";
+            // 
+            // txtDeliveryAddress
+            // 
+            this.txtDeliveryAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDeliveryAddress.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtDeliveryAddress.Location = new System.Drawing.Point(723, 44);
+            this.txtDeliveryAddress.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDeliveryAddress.Multiline = true;
+            this.txtDeliveryAddress.Name = "txtDeliveryAddress";
+            this.txtDeliveryAddress.Size = new System.Drawing.Size(235, 76);
+            this.txtDeliveryAddress.TabIndex = 8;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.label20.Location = new System.Drawing.Point(969, 24);
+            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(49, 15);
+            this.label20.TabIndex = 9;
+            this.label20.Text = "Provinsi";
+            // 
+            // cbProvince
+            // 
+            this.cbProvince.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbProvince.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cbProvince.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cbProvince.Location = new System.Drawing.Point(969, 43);
+            this.cbProvince.Margin = new System.Windows.Forms.Padding(4);
+            this.cbProvince.Name = "cbProvince";
+            this.cbProvince.Size = new System.Drawing.Size(205, 23);
+            this.cbProvince.TabIndex = 10;
+            this.cbProvince.SelectedIndexChanged += new System.EventHandler(this.cbProvince_SelectedIndexChanged);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.label21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.label21.Location = new System.Drawing.Point(1195, 24);
+            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(99, 15);
+            this.label21.TabIndex = 11;
+            this.label21.Text = "Kabupaten / Kota";
+            // 
+            // cbDistrict
+            // 
+            this.cbDistrict.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbDistrict.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cbDistrict.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cbDistrict.Location = new System.Drawing.Point(1195, 43);
+            this.cbDistrict.Margin = new System.Windows.Forms.Padding(4);
+            this.cbDistrict.Name = "cbDistrict";
+            this.cbDistrict.Size = new System.Drawing.Size(205, 23);
+            this.cbDistrict.TabIndex = 12;
+            this.cbDistrict.SelectedIndexChanged += new System.EventHandler(this.cbDistrict_SelectedIndexChanged);
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.label29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.label29.Location = new System.Drawing.Point(969, 78);
+            this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(60, 15);
+            this.label29.TabIndex = 17;
+            this.label29.Text = "Sales Area";
+            // 
+            // cbSalesArea
+            // 
+            this.cbSalesArea.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbSalesArea.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cbSalesArea.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cbSalesArea.Location = new System.Drawing.Point(969, 97);
+            this.cbSalesArea.Margin = new System.Windows.Forms.Padding(4);
+            this.cbSalesArea.Name = "cbSalesArea";
+            this.cbSalesArea.Size = new System.Drawing.Size(205, 23);
+            this.cbSalesArea.TabIndex = 18;
             // 
             // pnlHiddenFields
             // 
-            this.pnlHiddenFields.Controls.Add(this.label22);
-            this.pnlHiddenFields.Controls.Add(this.txtRealSalesNo);
-            this.pnlHiddenFields.Controls.Add(this.txtModifiedAt);
             this.pnlHiddenFields.Controls.Add(this.txtSalesOrderId);
-            this.pnlHiddenFields.Controls.Add(this.label18);
-            this.pnlHiddenFields.Controls.Add(this.label19);
-            this.pnlHiddenFields.Location = new System.Drawing.Point(31, 1115);
-            this.pnlHiddenFields.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlHiddenFields.Controls.Add(this.txtModifiedAt);
+            this.pnlHiddenFields.Controls.Add(this.txtRealSalesNo);
+            this.pnlHiddenFields.Location = new System.Drawing.Point(0, 0);
+            this.pnlHiddenFields.Margin = new System.Windows.Forms.Padding(4);
             this.pnlHiddenFields.Name = "pnlHiddenFields";
-            this.pnlHiddenFields.Size = new System.Drawing.Size(1468, 89);
-            this.pnlHiddenFields.TabIndex = 43;
+            this.pnlHiddenFields.Size = new System.Drawing.Size(0, 0);
+            this.pnlHiddenFields.TabIndex = 99;
             this.pnlHiddenFields.Visible = false;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label22.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label22.Location = new System.Drawing.Point(456, 16);
-            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(105, 21);
-            this.label22.TabIndex = 6;
-            this.label22.Text = "Real Sales No";
-            // 
-            // txtRealSalesNo
-            // 
-            this.txtRealSalesNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtRealSalesNo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRealSalesNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtRealSalesNo.Location = new System.Drawing.Point(456, 38);
-            this.txtRealSalesNo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txtRealSalesNo.Name = "txtRealSalesNo";
-            this.txtRealSalesNo.Size = new System.Drawing.Size(233, 32);
-            this.txtRealSalesNo.TabIndex = 5;
-            // 
-            // txtModifiedAt
-            // 
-            this.txtModifiedAt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtModifiedAt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtModifiedAt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtModifiedAt.Location = new System.Drawing.Point(215, 38);
-            this.txtModifiedAt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txtModifiedAt.Name = "txtModifiedAt";
-            this.txtModifiedAt.Size = new System.Drawing.Size(233, 32);
-            this.txtModifiedAt.TabIndex = 1;
             // 
             // txtSalesOrderId
             // 
-            this.txtSalesOrderId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSalesOrderId.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSalesOrderId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtSalesOrderId.Location = new System.Drawing.Point(12, 38);
-            this.txtSalesOrderId.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSalesOrderId.Location = new System.Drawing.Point(0, 0);
+            this.txtSalesOrderId.Margin = new System.Windows.Forms.Padding(4);
             this.txtSalesOrderId.Name = "txtSalesOrderId";
-            this.txtSalesOrderId.Size = new System.Drawing.Size(185, 32);
-            this.txtSalesOrderId.TabIndex = 1;
+            this.txtSalesOrderId.Size = new System.Drawing.Size(245, 22);
+            this.txtSalesOrderId.TabIndex = 0;
             // 
-            // label18
+            // txtModifiedAt
             // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label18.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label18.Location = new System.Drawing.Point(215, 20);
-            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(93, 21);
-            this.label18.TabIndex = 4;
-            this.label18.Text = "Modified At";
+            this.txtModifiedAt.Location = new System.Drawing.Point(260, 0);
+            this.txtModifiedAt.Margin = new System.Windows.Forms.Padding(4);
+            this.txtModifiedAt.Name = "txtModifiedAt";
+            this.txtModifiedAt.Size = new System.Drawing.Size(309, 22);
+            this.txtModifiedAt.TabIndex = 1;
             // 
-            // label19
+            // txtRealSalesNo
             // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label19.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label19.Location = new System.Drawing.Point(12, 20);
-            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(24, 21);
-            this.label19.TabIndex = 4;
-            this.label19.Text = "Id";
-            // 
-            // pnlNavigation
-            // 
-            this.pnlNavigation.Controls.Add(this.btnPrev);
-            this.pnlNavigation.Controls.Add(this.btnLast);
-            this.pnlNavigation.Controls.Add(this.btnNext);
-            this.pnlNavigation.Controls.Add(this.btnFirst);
-            this.pnlNavigation.Location = new System.Drawing.Point(1305, 90);
-            this.pnlNavigation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.pnlNavigation.Name = "pnlNavigation";
-            this.pnlNavigation.Size = new System.Drawing.Size(119, 192);
-            this.pnlNavigation.TabIndex = 41;
-            // 
-            // btnPrev
-            // 
-            this.btnPrev.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
-            this.btnPrev.FlatAppearance.BorderSize = 0;
-            this.btnPrev.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPrev.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnPrev.ForeColor = System.Drawing.Color.White;
-            this.btnPrev.Image = ((System.Drawing.Image)(resources.GetObject("btnPrev.Image")));
-            this.btnPrev.Location = new System.Drawing.Point(11, 55);
-            this.btnPrev.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnPrev.Name = "btnPrev";
-            this.btnPrev.Size = new System.Drawing.Size(95, 37);
-            this.btnPrev.TabIndex = 12;
-            this.btnPrev.Text = "PREV";
-            this.btnPrev.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnPrev.UseVisualStyleBackColor = false;
-            this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
-            // 
-            // btnLast
-            // 
-            this.btnLast.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
-            this.btnLast.FlatAppearance.BorderSize = 0;
-            this.btnLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLast.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnLast.ForeColor = System.Drawing.Color.White;
-            this.btnLast.Image = ((System.Drawing.Image)(resources.GetObject("btnLast.Image")));
-            this.btnLast.Location = new System.Drawing.Point(11, 144);
-            this.btnLast.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnLast.Name = "btnLast";
-            this.btnLast.Size = new System.Drawing.Size(95, 37);
-            this.btnLast.TabIndex = 14;
-            this.btnLast.Text = "LAST";
-            this.btnLast.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnLast.UseVisualStyleBackColor = false;
-            this.btnLast.Click += new System.EventHandler(this.btnLast_Click);
-            // 
-            // btnNext
-            // 
-            this.btnNext.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
-            this.btnNext.FlatAppearance.BorderSize = 0;
-            this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNext.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnNext.ForeColor = System.Drawing.Color.White;
-            this.btnNext.Image = ((System.Drawing.Image)(resources.GetObject("btnNext.Image")));
-            this.btnNext.Location = new System.Drawing.Point(11, 100);
-            this.btnNext.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(95, 37);
-            this.btnNext.TabIndex = 13;
-            this.btnNext.Text = "NEXT";
-            this.btnNext.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnNext.UseVisualStyleBackColor = false;
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
-            // 
-            // btnFirst
-            // 
-            this.btnFirst.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
-            this.btnFirst.FlatAppearance.BorderSize = 0;
-            this.btnFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFirst.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnFirst.ForeColor = System.Drawing.Color.White;
-            this.btnFirst.Image = ((System.Drawing.Image)(resources.GetObject("btnFirst.Image")));
-            this.btnFirst.Location = new System.Drawing.Point(11, 11);
-            this.btnFirst.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnFirst.Name = "btnFirst";
-            this.btnFirst.Size = new System.Drawing.Size(95, 37);
-            this.btnFirst.TabIndex = 11;
-            this.btnFirst.Text = "FIRST";
-            this.btnFirst.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnFirst.UseVisualStyleBackColor = false;
-            this.btnFirst.Click += new System.EventHandler(this.btnFirst_Click);
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label24.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label24.Location = new System.Drawing.Point(643, 23);
-            this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(102, 21);
-            this.label24.TabIndex = 30;
-            this.label24.Text = "NO. FAKTUR:";
-            // 
-            // lblSalesNo
-            // 
-            this.lblSalesNo.AutoSize = true;
-            this.lblSalesNo.Font = new System.Drawing.Font("Calibri", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSalesNo.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblSalesNo.Location = new System.Drawing.Point(752, 11);
-            this.lblSalesNo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSalesNo.Name = "lblSalesNo";
-            this.lblSalesNo.Size = new System.Drawing.Size(0, 54);
-            this.lblSalesNo.TabIndex = 30;
-            this.lblSalesNo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lblMark
-            // 
-            this.lblMark.AutoSize = true;
-            this.lblMark.BackColor = System.Drawing.Color.Red;
-            this.lblMark.Font = new System.Drawing.Font("Calibri", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMark.ForeColor = System.Drawing.Color.White;
-            this.lblMark.Location = new System.Drawing.Point(1080, 23);
-            this.lblMark.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblMark.Name = "lblMark";
-            this.lblMark.Size = new System.Drawing.Size(197, 58);
-            this.lblMark.TabIndex = 30;
-            this.lblMark.Text = "DELETED";
-            this.lblMark.Visible = false;
+            this.txtRealSalesNo.Location = new System.Drawing.Point(584, 0);
+            this.txtRealSalesNo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtRealSalesNo.Name = "txtRealSalesNo";
+            this.txtRealSalesNo.Size = new System.Drawing.Size(309, 22);
+            this.txtRealSalesNo.TabIndex = 2;
             // 
             // toolTipSales
             // 
@@ -1387,121 +1388,107 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1443, 1055);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
+            this.ClientSize = new System.Drawing.Size(1467, 880);
+            this.Controls.Add(this.pnlContent);
+            this.Controls.Add(this.pnlTopSep);
+            this.Controls.Add(this.pnlActionBar);
+            this.Controls.Add(this.pnlTop);
             this.Controls.Add(this.pnlHiddenFields);
-            this.Controls.Add(this.pnlNote);
-            this.Controls.Add(this.pnlNavigation);
-            this.Controls.Add(this.pnlButtonGroup);
-            this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.lblSalesNo);
-            this.Controls.Add(this.gbSalesOrderDetail);
-            this.Controls.Add(this.gbCustomerDetail);
-            this.Controls.Add(this.lblMark);
-            this.Controls.Add(this.lblStatus);
-            this.Controls.Add(this.label24);
-            this.Controls.Add(this.gbShippingAddress);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.txtSalesNo);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmSalesOrder";
             this.Text = "PENJUALAN";
             this.Load += new System.EventHandler(this.FrmSalesOrder_Load);
-            this.gbShippingAddress.ResumeLayout(false);
-            this.gbShippingAddress.PerformLayout();
-            this.gbCustomerDetail.ResumeLayout(false);
-            this.gbCustomerDetail.PerformLayout();
+            this.pnlTop.ResumeLayout(false);
+            this.pnlTop.PerformLayout();
+            this.pnlActionBar.ResumeLayout(false);
+            this.pnlContent.ResumeLayout(false);
+            this.pnlItems.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesOrderItem)).EndInit();
-            this.gbSalesOrderDetail.ResumeLayout(false);
-            this.gbSalesOrderDetail.PerformLayout();
+            this.pnlFooter.ResumeLayout(false);
+            this.pnlFooter.PerformLayout();
+            this.pnlGridTop.ResumeLayout(false);
+            this.pnlGridTop.PerformLayout();
+            this.pnlItemInput.ResumeLayout(false);
+            this.pnlItemInput.PerformLayout();
             this.pnlNote.ResumeLayout(false);
             this.pnlNote.PerformLayout();
-            this.pnlButtonGroup.ResumeLayout(false);
+            this.pnlHeader.ResumeLayout(false);
+            this.pnlHeader.PerformLayout();
             this.pnlHiddenFields.ResumeLayout(false);
             this.pnlHiddenFields.PerformLayout();
-            this.pnlNavigation.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.TextBox txtDeliveryAddress;
-        private System.Windows.Forms.ComboBox cbDistrict;
-        private System.Windows.Forms.ComboBox cbProvince;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label20;
+
+        private System.Windows.Forms.Panel pnlTop;
+        private System.Windows.Forms.Label lblSalesNo;
+        private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.Label lblMark;
+        private System.Windows.Forms.TextBox txtSalesNo;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnFirst;
+        private System.Windows.Forms.Button btnPrev;
+        private System.Windows.Forms.Button btnNext;
+        private System.Windows.Forms.Button btnLast;
+        private System.Windows.Forms.Panel pnlTopSep;
+        private System.Windows.Forms.Panel pnlActionBar;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnDel;
+        private System.Windows.Forms.Button btnReload;
+        private System.Windows.Forms.Button btnInvoice;
+        private System.Windows.Forms.Button btnPost;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.Panel pnlContent;
+        private System.Windows.Forms.Panel pnlHeader;
+        private System.Windows.Forms.Label lblHeaderTitle;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cbCustomer;
-        private System.Windows.Forms.GroupBox gbShippingAddress;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.GroupBox gbCustomerDetail;
-        private System.Windows.Forms.DateTimePicker dtpSalesOrderDate;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.ComboBox cbSalesArea;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.ComboBox cbSalesman;
-        private System.Windows.Forms.ComboBox cbTermOfPayment;
-        private System.Windows.Forms.DateTimePicker dtpDueDate;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cbSalesman;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dgvSalesOrderItem;
-        private System.Windows.Forms.ComboBox cbProduct;
+        private System.Windows.Forms.ComboBox cbTermOfPayment;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.DateTimePicker dtpSalesOrderDate;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DateTimePicker dtpDueDate;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtDeliveryAddress;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.ComboBox cbProvince;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.ComboBox cbDistrict;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.ComboBox cbSalesArea;
+        private System.Windows.Forms.Panel pnlHeaderSpacer;
+        private System.Windows.Forms.Panel pnlNote;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label lblNoteDetail;
+        private System.Windows.Forms.Panel pnlItems;
+        private System.Windows.Forms.Panel pnlItemInput;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cbProduct;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtBatch;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DateTimePicker dtpExpiredDate;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtQty;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtPrice;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtDiscount;
         private System.Windows.Forms.Button btnAddItem;
-        private System.Windows.Forms.GroupBox gbSalesOrderDetail;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox txtSalesNo;
-        private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label lblTotal;
-        private System.Windows.Forms.Panel pnlButtonGroup;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnReload;
-        private System.Windows.Forms.Button btnDel;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.Panel pnlNote;
-        private System.Windows.Forms.Label lblNoteDetail;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Panel pnlHiddenFields;
-        private System.Windows.Forms.TextBox txtModifiedAt;
-        private System.Windows.Forms.TextBox txtSalesOrderId;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Panel pnlNavigation;
-        private System.Windows.Forms.Button btnPrev;
-        private System.Windows.Forms.Button btnLast;
-        private System.Windows.Forms.Button btnNext;
-        private System.Windows.Forms.Button btnFirst;
-        private System.Windows.Forms.Button btnPrint;
-        private System.Windows.Forms.TextBox txtExtraDiscount;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox txtSubTotal;
-        private System.Windows.Forms.TextBox txtValueAddedTaxAmount;
-        private System.Windows.Forms.TextBox txtTaxBaseAmount;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label lblTax;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label lblSalesNo;
-        private System.Windows.Forms.Label lblMark;
-        private System.Windows.Forms.Label lblStatus;
-        private System.Windows.Forms.Button btnInvoice;
-        private System.Windows.Forms.Button btnPost;
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.TextBox txtBatch;
+        private System.Windows.Forms.Button btnRemoveItem;
+        private System.Windows.Forms.Panel pnlGridTop;
+        private System.Windows.Forms.Label lblGridTitle;
+        private System.Windows.Forms.Label lblItemCount;
+        private System.Windows.Forms.DataGridView dgvSalesOrderItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn productId;
         private System.Windows.Forms.DataGridViewTextBoxColumn productCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn productName;
@@ -1515,10 +1502,23 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn discPercent;
         private System.Windows.Forms.DataGridViewTextBoxColumn subTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn priceReal;
-        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Panel pnlFooter;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtSubTotal;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txtExtraDiscount;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox txtTaxBaseAmount;
+        private System.Windows.Forms.Label lblTax;
+        private System.Windows.Forms.TextBox txtValueAddedTaxAmount;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.ComboBox cbPic;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lblTotal;
+        private System.Windows.Forms.Panel pnlHiddenFields;
+        private System.Windows.Forms.TextBox txtSalesOrderId;
+        private System.Windows.Forms.TextBox txtModifiedAt;
         private System.Windows.Forms.TextBox txtRealSalesNo;
         private System.Windows.Forms.ToolTip toolTipSales;
-        private System.Windows.Forms.ComboBox cbPic;
-        private System.Windows.Forms.Label label23;
     }
 }
