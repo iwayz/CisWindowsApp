@@ -1,4 +1,4 @@
-﻿namespace CisWindowsFormsApp
+namespace CisWindowsFormsApp
 {
     partial class FrmLocation
     {
@@ -38,311 +38,423 @@
             this.lvSubDistrict = new System.Windows.Forms.ListView();
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.lblTotalProvince = new System.Windows.Forms.Label();
             this.lblTotalDistrict = new System.Windows.Forms.Label();
             this.lblTotalSubDistrict = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.lblProvince = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.lblDistrict = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
+            System.Windows.Forms.Panel pnlActionBar = new System.Windows.Forms.Panel();
+            System.Windows.Forms.Panel pnlContent = new System.Windows.Forms.Panel();
+            System.Windows.Forms.Panel pnlMain = new System.Windows.Forms.Panel();
+            System.Windows.Forms.Panel pnlProvince = new System.Windows.Forms.Panel();
+            System.Windows.Forms.Panel pnlSpacer1 = new System.Windows.Forms.Panel();
+            System.Windows.Forms.Panel pnlDistrict = new System.Windows.Forms.Panel();
+            System.Windows.Forms.Panel pnlSpacer2 = new System.Windows.Forms.Panel();
+            System.Windows.Forms.Panel pnlSubDistrict = new System.Windows.Forms.Panel();
+            System.Windows.Forms.Panel panel1 = new System.Windows.Forms.Panel();
+            System.Windows.Forms.Panel panel2 = new System.Windows.Forms.Panel();
+            System.Windows.Forms.Panel panel3 = new System.Windows.Forms.Panel();
+            System.Windows.Forms.Label lblProvinceTitle = new System.Windows.Forms.Label();
+            System.Windows.Forms.Label lblDistrictTitle = new System.Windows.Forms.Label();
+            System.Windows.Forms.Label lblSubDistrictTitle = new System.Windows.Forms.Label();
+            System.Windows.Forms.Label lblStatProvinceHeader = new System.Windows.Forms.Label();
+            System.Windows.Forms.Label lblStatProvinceSubHeader = new System.Windows.Forms.Label();
+            System.Windows.Forms.Label lblStatDistrictHeader = new System.Windows.Forms.Label();
+            System.Windows.Forms.Label lblStatSubDistrictHeader = new System.Windows.Forms.Label();
+            pnlContent.SuspendLayout();
+            pnlMain.SuspendLayout();
+            pnlProvince.SuspendLayout();
+            panel1.SuspendLayout();
+            pnlDistrict.SuspendLayout();
+            panel2.SuspendLayout();
+            pnlSubDistrict.SuspendLayout();
+            panel3.SuspendLayout();
             this.SuspendLayout();
-            // 
+            //
+            // pnlActionBar
+            //
+            pnlActionBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(230)))), ((int)(((byte)(233)))));
+            pnlActionBar.Dock = System.Windows.Forms.DockStyle.Top;
+            pnlActionBar.Location = new System.Drawing.Point(0, 0);
+            pnlActionBar.Name = "pnlActionBar";
+            pnlActionBar.Size = new System.Drawing.Size(1360, 52);
+            pnlActionBar.TabIndex = 0;
+            //
+            // pnlContent
+            //
+            pnlContent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
+            pnlContent.Controls.Add(pnlMain);
+            pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            pnlContent.Location = new System.Drawing.Point(0, 52);
+            pnlContent.Name = "pnlContent";
+            pnlContent.Padding = new System.Windows.Forms.Padding(8);
+            pnlContent.Size = new System.Drawing.Size(1360, 668);
+            pnlContent.TabIndex = 1;
+            //
+            // pnlMain
+            //
+            pnlMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(230)))), ((int)(((byte)(233)))));
+            pnlMain.Controls.Add(pnlSubDistrict);
+            pnlMain.Controls.Add(pnlSpacer2);
+            pnlMain.Controls.Add(pnlDistrict);
+            pnlMain.Controls.Add(pnlSpacer1);
+            pnlMain.Controls.Add(pnlProvince);
+            pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            pnlMain.Location = new System.Drawing.Point(8, 8);
+            pnlMain.Name = "pnlMain";
+            pnlMain.Padding = new System.Windows.Forms.Padding(12);
+            pnlMain.Size = new System.Drawing.Size(1344, 652);
+            pnlMain.TabIndex = 0;
+            //
+            // pnlProvince
+            //
+            pnlProvince.BackColor = System.Drawing.Color.White;
+            pnlProvince.Controls.Add(this.lvProvince);
+            pnlProvince.Controls.Add(panel1);
+            pnlProvince.Controls.Add(lblProvinceTitle);
+            pnlProvince.Dock = System.Windows.Forms.DockStyle.Left;
+            pnlProvince.Location = new System.Drawing.Point(12, 12);
+            pnlProvince.Name = "pnlProvince";
+            pnlProvince.Size = new System.Drawing.Size(424, 628);
+            pnlProvince.TabIndex = 0;
+            //
+            // pnlSpacer1
+            //
+            pnlSpacer1.Dock = System.Windows.Forms.DockStyle.Left;
+            pnlSpacer1.Location = new System.Drawing.Point(436, 12);
+            pnlSpacer1.Name = "pnlSpacer1";
+            pnlSpacer1.Size = new System.Drawing.Size(8, 628);
+            pnlSpacer1.TabIndex = 1;
+            //
+            // pnlDistrict
+            //
+            pnlDistrict.BackColor = System.Drawing.Color.White;
+            pnlDistrict.Controls.Add(this.lvDistrict);
+            pnlDistrict.Controls.Add(panel2);
+            pnlDistrict.Controls.Add(lblDistrictTitle);
+            pnlDistrict.Dock = System.Windows.Forms.DockStyle.Left;
+            pnlDistrict.Location = new System.Drawing.Point(444, 12);
+            pnlDistrict.Name = "pnlDistrict";
+            pnlDistrict.Size = new System.Drawing.Size(424, 628);
+            pnlDistrict.TabIndex = 2;
+            //
+            // pnlSpacer2
+            //
+            pnlSpacer2.Dock = System.Windows.Forms.DockStyle.Left;
+            pnlSpacer2.Location = new System.Drawing.Point(868, 12);
+            pnlSpacer2.Name = "pnlSpacer2";
+            pnlSpacer2.Size = new System.Drawing.Size(8, 628);
+            pnlSpacer2.TabIndex = 3;
+            //
+            // pnlSubDistrict
+            //
+            pnlSubDistrict.BackColor = System.Drawing.Color.White;
+            pnlSubDistrict.Controls.Add(this.lvSubDistrict);
+            pnlSubDistrict.Controls.Add(panel3);
+            pnlSubDistrict.Controls.Add(lblSubDistrictTitle);
+            pnlSubDistrict.Dock = System.Windows.Forms.DockStyle.Fill;
+            pnlSubDistrict.Location = new System.Drawing.Point(876, 12);
+            pnlSubDistrict.Name = "pnlSubDistrict";
+            pnlSubDistrict.Size = new System.Drawing.Size(456, 628);
+            pnlSubDistrict.TabIndex = 4;
+            //
+            // lblProvinceTitle
+            //
+            lblProvinceTitle.AutoSize = false;
+            lblProvinceTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            lblProvinceTitle.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            lblProvinceTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            lblProvinceTitle.Location = new System.Drawing.Point(0, 0);
+            lblProvinceTitle.Name = "lblProvinceTitle";
+            lblProvinceTitle.Size = new System.Drawing.Size(424, 28);
+            lblProvinceTitle.TabIndex = 0;
+            lblProvinceTitle.Text = "Provinsi";
+            lblProvinceTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            //
+            // lblDistrictTitle
+            //
+            lblDistrictTitle.AutoSize = false;
+            lblDistrictTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            lblDistrictTitle.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            lblDistrictTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            lblDistrictTitle.Location = new System.Drawing.Point(0, 0);
+            lblDistrictTitle.Name = "lblDistrictTitle";
+            lblDistrictTitle.Size = new System.Drawing.Size(424, 28);
+            lblDistrictTitle.TabIndex = 0;
+            lblDistrictTitle.Text = "Kabupaten / Kota";
+            lblDistrictTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            //
+            // lblSubDistrictTitle
+            //
+            lblSubDistrictTitle.AutoSize = false;
+            lblSubDistrictTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            lblSubDistrictTitle.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            lblSubDistrictTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            lblSubDistrictTitle.Location = new System.Drawing.Point(0, 0);
+            lblSubDistrictTitle.Name = "lblSubDistrictTitle";
+            lblSubDistrictTitle.Size = new System.Drawing.Size(456, 28);
+            lblSubDistrictTitle.TabIndex = 0;
+            lblSubDistrictTitle.Text = "Kecamatan";
+            lblSubDistrictTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            //
+            // panel1 (Province stat)
+            //
+            panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(80)))));
+            panel1.Controls.Add(this.lblTotalProvince);
+            panel1.Controls.Add(lblStatProvinceSubHeader);
+            panel1.Controls.Add(lblStatProvinceHeader);
+            panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            panel1.Location = new System.Drawing.Point(0, 508);
+            panel1.Name = "panel1";
+            panel1.Size = new System.Drawing.Size(424, 120);
+            panel1.TabIndex = 2;
+            //
+            // lblStatProvinceHeader
+            //
+            lblStatProvinceHeader.BackColor = System.Drawing.Color.Transparent;
+            lblStatProvinceHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            lblStatProvinceHeader.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            lblStatProvinceHeader.ForeColor = System.Drawing.Color.White;
+            lblStatProvinceHeader.Location = new System.Drawing.Point(0, 0);
+            lblStatProvinceHeader.Name = "lblStatProvinceHeader";
+            lblStatProvinceHeader.Size = new System.Drawing.Size(424, 20);
+            lblStatProvinceHeader.TabIndex = 0;
+            lblStatProvinceHeader.Text = "Total Provinsi di";
+            lblStatProvinceHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            //
+            // lblStatProvinceSubHeader
+            //
+            lblStatProvinceSubHeader.BackColor = System.Drawing.Color.Transparent;
+            lblStatProvinceSubHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            lblStatProvinceSubHeader.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            lblStatProvinceSubHeader.ForeColor = System.Drawing.Color.White;
+            lblStatProvinceSubHeader.Location = new System.Drawing.Point(0, 20);
+            lblStatProvinceSubHeader.Name = "lblStatProvinceSubHeader";
+            lblStatProvinceSubHeader.Size = new System.Drawing.Size(424, 20);
+            lblStatProvinceSubHeader.TabIndex = 1;
+            lblStatProvinceSubHeader.Text = "INDONESIA";
+            lblStatProvinceSubHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            //
+            // lblTotalProvince
+            //
+            this.lblTotalProvince.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold);
+            this.lblTotalProvince.ForeColor = System.Drawing.Color.White;
+            this.lblTotalProvince.Location = new System.Drawing.Point(0, 44);
+            this.lblTotalProvince.Margin = new System.Windows.Forms.Padding(0);
+            this.lblTotalProvince.Name = "lblTotalProvince";
+            this.lblTotalProvince.Size = new System.Drawing.Size(424, 72);
+            this.lblTotalProvince.TabIndex = 2;
+            this.lblTotalProvince.Text = "0";
+            this.lblTotalProvince.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            //
+            // panel2 (District stat)
+            //
+            panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(190)))));
+            panel2.Controls.Add(this.lblTotalDistrict);
+            panel2.Controls.Add(this.lblProvince);
+            panel2.Controls.Add(lblStatDistrictHeader);
+            panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            panel2.Location = new System.Drawing.Point(0, 508);
+            panel2.Name = "panel2";
+            panel2.Size = new System.Drawing.Size(424, 120);
+            panel2.TabIndex = 2;
+            //
+            // lblStatDistrictHeader
+            //
+            lblStatDistrictHeader.BackColor = System.Drawing.Color.Transparent;
+            lblStatDistrictHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            lblStatDistrictHeader.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            lblStatDistrictHeader.ForeColor = System.Drawing.Color.White;
+            lblStatDistrictHeader.Location = new System.Drawing.Point(0, 0);
+            lblStatDistrictHeader.Name = "lblStatDistrictHeader";
+            lblStatDistrictHeader.Size = new System.Drawing.Size(424, 20);
+            lblStatDistrictHeader.TabIndex = 0;
+            lblStatDistrictHeader.Text = "Total Kab./Kota di";
+            lblStatDistrictHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            //
+            // lblProvince
+            //
+            this.lblProvince.BackColor = System.Drawing.Color.Transparent;
+            this.lblProvince.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblProvince.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.lblProvince.ForeColor = System.Drawing.Color.White;
+            this.lblProvince.Location = new System.Drawing.Point(0, 20);
+            this.lblProvince.Name = "lblProvince";
+            this.lblProvince.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.lblProvince.Size = new System.Drawing.Size(424, 24);
+            this.lblProvince.TabIndex = 1;
+            this.lblProvince.Text = "Provinsi";
+            this.lblProvince.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            //
+            // lblTotalDistrict
+            //
+            this.lblTotalDistrict.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold);
+            this.lblTotalDistrict.ForeColor = System.Drawing.Color.White;
+            this.lblTotalDistrict.Location = new System.Drawing.Point(0, 44);
+            this.lblTotalDistrict.Name = "lblTotalDistrict";
+            this.lblTotalDistrict.Size = new System.Drawing.Size(424, 72);
+            this.lblTotalDistrict.TabIndex = 2;
+            this.lblTotalDistrict.Text = "0";
+            this.lblTotalDistrict.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            //
+            // panel3 (SubDistrict stat)
+            //
+            panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(60)))), ((int)(((byte)(180)))));
+            panel3.Controls.Add(this.lblTotalSubDistrict);
+            panel3.Controls.Add(this.lblDistrict);
+            panel3.Controls.Add(lblStatSubDistrictHeader);
+            panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            panel3.Location = new System.Drawing.Point(0, 508);
+            panel3.Name = "panel3";
+            panel3.Size = new System.Drawing.Size(456, 120);
+            panel3.TabIndex = 2;
+            //
+            // lblStatSubDistrictHeader
+            //
+            lblStatSubDistrictHeader.BackColor = System.Drawing.Color.Transparent;
+            lblStatSubDistrictHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            lblStatSubDistrictHeader.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            lblStatSubDistrictHeader.ForeColor = System.Drawing.Color.White;
+            lblStatSubDistrictHeader.Location = new System.Drawing.Point(0, 0);
+            lblStatSubDistrictHeader.Name = "lblStatSubDistrictHeader";
+            lblStatSubDistrictHeader.Size = new System.Drawing.Size(456, 20);
+            lblStatSubDistrictHeader.TabIndex = 0;
+            lblStatSubDistrictHeader.Text = "Total Kecamatan di";
+            lblStatSubDistrictHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            //
+            // lblDistrict
+            //
+            this.lblDistrict.BackColor = System.Drawing.Color.Transparent;
+            this.lblDistrict.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblDistrict.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.lblDistrict.ForeColor = System.Drawing.Color.White;
+            this.lblDistrict.Location = new System.Drawing.Point(0, 20);
+            this.lblDistrict.Name = "lblDistrict";
+            this.lblDistrict.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.lblDistrict.Size = new System.Drawing.Size(456, 24);
+            this.lblDistrict.TabIndex = 1;
+            this.lblDistrict.Text = "Kabupaten";
+            this.lblDistrict.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            //
+            // lblTotalSubDistrict
+            //
+            this.lblTotalSubDistrict.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold);
+            this.lblTotalSubDistrict.ForeColor = System.Drawing.Color.White;
+            this.lblTotalSubDistrict.Location = new System.Drawing.Point(0, 44);
+            this.lblTotalSubDistrict.Name = "lblTotalSubDistrict";
+            this.lblTotalSubDistrict.Size = new System.Drawing.Size(456, 72);
+            this.lblTotalSubDistrict.TabIndex = 2;
+            this.lblTotalSubDistrict.Text = "0";
+            this.lblTotalSubDistrict.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            //
             // lvProvince
-            // 
-            this.lvProvince.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            //
+            this.lvProvince.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lvProvince.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.ID,
             this.NAME});
-            this.lvProvince.Font = new System.Drawing.Font("Calibri", 9.75F);
+            this.lvProvince.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvProvince.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lvProvince.FullRowSelect = true;
             this.lvProvince.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.lvProvince.HideSelection = false;
-            this.lvProvince.Location = new System.Drawing.Point(30, 36);
+            this.lvProvince.Location = new System.Drawing.Point(0, 28);
             this.lvProvince.Name = "lvProvince";
-            this.lvProvince.Size = new System.Drawing.Size(250, 322);
+            this.lvProvince.Size = new System.Drawing.Size(424, 480);
             this.lvProvince.TabIndex = 1;
             this.lvProvince.UseCompatibleStateImageBehavior = false;
             this.lvProvince.View = System.Windows.Forms.View.Details;
             this.lvProvince.SelectedIndexChanged += new System.EventHandler(this.lvProvince_SelectedIndexChanged);
-            // 
+            //
             // ID
-            // 
+            //
             this.ID.Text = "ID";
-            // 
+            this.ID.Width = 0;
+            //
             // NAME
-            // 
+            //
             this.NAME.Text = "Provinsi";
-            this.NAME.Width = 200;
-            // 
+            this.NAME.Width = 400;
+            //
             // lvDistrict
-            // 
-            this.lvDistrict.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            //
+            this.lvDistrict.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lvDistrict.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2});
-            this.lvDistrict.Font = new System.Drawing.Font("Calibri", 9.75F);
+            this.lvDistrict.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvDistrict.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lvDistrict.FullRowSelect = true;
             this.lvDistrict.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.lvDistrict.HideSelection = false;
             this.lvDistrict.LabelWrap = false;
-            this.lvDistrict.Location = new System.Drawing.Point(327, 36);
+            this.lvDistrict.Location = new System.Drawing.Point(0, 28);
             this.lvDistrict.Name = "lvDistrict";
-            this.lvDistrict.Size = new System.Drawing.Size(250, 322);
-            this.lvDistrict.TabIndex = 2;
+            this.lvDistrict.Size = new System.Drawing.Size(424, 480);
+            this.lvDistrict.TabIndex = 1;
             this.lvDistrict.UseCompatibleStateImageBehavior = false;
             this.lvDistrict.View = System.Windows.Forms.View.Details;
             this.lvDistrict.SelectedIndexChanged += new System.EventHandler(this.lvDistrict_SelectedIndexChanged);
-            // 
+            //
             // columnHeader1
-            // 
+            //
             this.columnHeader1.Text = "ID";
-            // 
+            this.columnHeader1.Width = 0;
+            //
             // columnHeader2
-            // 
-            this.columnHeader2.Text = "Provinsi";
-            this.columnHeader2.Width = 200;
-            // 
+            //
+            this.columnHeader2.Text = "Kabupaten / Kota";
+            this.columnHeader2.Width = 400;
+            //
             // lvSubDistrict
-            // 
-            this.lvSubDistrict.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            //
+            this.lvSubDistrict.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lvSubDistrict.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader3,
             this.columnHeader4});
-            this.lvSubDistrict.Font = new System.Drawing.Font("Calibri", 9.75F);
+            this.lvSubDistrict.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvSubDistrict.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lvSubDistrict.FullRowSelect = true;
             this.lvSubDistrict.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.lvSubDistrict.HideSelection = false;
-            this.lvSubDistrict.Location = new System.Drawing.Point(624, 36);
+            this.lvSubDistrict.Location = new System.Drawing.Point(0, 28);
             this.lvSubDistrict.Name = "lvSubDistrict";
-            this.lvSubDistrict.Size = new System.Drawing.Size(250, 322);
-            this.lvSubDistrict.TabIndex = 3;
+            this.lvSubDistrict.Size = new System.Drawing.Size(456, 480);
+            this.lvSubDistrict.TabIndex = 1;
             this.lvSubDistrict.UseCompatibleStateImageBehavior = false;
             this.lvSubDistrict.View = System.Windows.Forms.View.Details;
-            // 
+            //
             // columnHeader3
-            // 
+            //
             this.columnHeader3.Text = "ID";
-            // 
+            this.columnHeader3.Width = 0;
+            //
             // columnHeader4
-            // 
-            this.columnHeader4.Text = "Provinsi";
-            this.columnHeader4.Width = 200;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(30, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 15);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Provinsi";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(324, 18);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 15);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Kabupaten/ Kota";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(621, 18);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 15);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Kecamatan";
-            // 
-            // label4
-            // 
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(0, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(249, 16);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Total Provinsi di";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblTotalProvince
-            // 
-            this.lblTotalProvince.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold);
-            this.lblTotalProvince.ForeColor = System.Drawing.Color.White;
-            this.lblTotalProvince.Location = new System.Drawing.Point(0, 43);
-            this.lblTotalProvince.Margin = new System.Windows.Forms.Padding(0);
-            this.lblTotalProvince.Name = "lblTotalProvince";
-            this.lblTotalProvince.Size = new System.Drawing.Size(249, 72);
-            this.lblTotalProvince.TabIndex = 1;
-            this.lblTotalProvince.Text = "0";
-            this.lblTotalProvince.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // lblTotalDistrict
-            // 
-            this.lblTotalDistrict.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold);
-            this.lblTotalDistrict.ForeColor = System.Drawing.Color.White;
-            this.lblTotalDistrict.Location = new System.Drawing.Point(3, 43);
-            this.lblTotalDistrict.Name = "lblTotalDistrict";
-            this.lblTotalDistrict.Size = new System.Drawing.Size(243, 72);
-            this.lblTotalDistrict.TabIndex = 1;
-            this.lblTotalDistrict.Text = "0";
-            this.lblTotalDistrict.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // lblTotalSubDistrict
-            // 
-            this.lblTotalSubDistrict.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold);
-            this.lblTotalSubDistrict.ForeColor = System.Drawing.Color.White;
-            this.lblTotalSubDistrict.Location = new System.Drawing.Point(0, 43);
-            this.lblTotalSubDistrict.Name = "lblTotalSubDistrict";
-            this.lblTotalSubDistrict.Size = new System.Drawing.Size(249, 72);
-            this.lblTotalSubDistrict.TabIndex = 1;
-            this.lblTotalSubDistrict.Text = "0";
-            this.lblTotalSubDistrict.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.lblTotalProvince);
-            this.panel1.Location = new System.Drawing.Point(31, 364);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(249, 115);
-            this.panel1.TabIndex = 4;
-            // 
-            // label5
-            // 
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(0, 16);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(249, 16);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "INDONESIA";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.panel2.Controls.Add(this.lblProvince);
-            this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.lblTotalDistrict);
-            this.panel2.Location = new System.Drawing.Point(327, 364);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(249, 115);
-            this.panel2.TabIndex = 4;
-            // 
-            // lblProvince
-            // 
-            this.lblProvince.BackColor = System.Drawing.Color.Transparent;
-            this.lblProvince.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblProvince.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.lblProvince.ForeColor = System.Drawing.Color.White;
-            this.lblProvince.Location = new System.Drawing.Point(0, 16);
-            this.lblProvince.Name = "lblProvince";
-            this.lblProvince.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.lblProvince.Size = new System.Drawing.Size(249, 27);
-            this.lblProvince.TabIndex = 1;
-            this.lblProvince.Text = "Provinsi";
-            this.lblProvince.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label7
-            // 
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label7.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(0, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(249, 16);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "Total Kab./Kota di";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.panel3.Controls.Add(this.lblDistrict);
-            this.panel3.Controls.Add(this.label6);
-            this.panel3.Controls.Add(this.lblTotalSubDistrict);
-            this.panel3.Location = new System.Drawing.Point(625, 364);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(249, 115);
-            this.panel3.TabIndex = 4;
-            // 
-            // lblDistrict
-            // 
-            this.lblDistrict.BackColor = System.Drawing.Color.Transparent;
-            this.lblDistrict.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblDistrict.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.lblDistrict.ForeColor = System.Drawing.Color.White;
-            this.lblDistrict.Location = new System.Drawing.Point(0, 16);
-            this.lblDistrict.Name = "lblDistrict";
-            this.lblDistrict.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.lblDistrict.Size = new System.Drawing.Size(249, 27);
-            this.lblDistrict.TabIndex = 1;
-            this.lblDistrict.Text = "Kabupaten";
-            this.lblDistrict.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label6
-            // 
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label6.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(0, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(249, 16);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Total Kecamatan di";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
+            //
+            this.columnHeader4.Text = "Kecamatan";
+            this.columnHeader4.Width = 420;
+            //
             // FrmLocation
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(993, 700);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.lvSubDistrict);
-            this.Controls.Add(this.lvDistrict);
-            this.Controls.Add(this.lvProvince);
+            this.ClientSize = new System.Drawing.Size(1360, 720);
+            this.Controls.Add(pnlContent);
+            this.Controls.Add(pnlActionBar);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmLocation";
             this.Text = "DATA KOTA";
             this.Load += new System.EventHandler(this.FrmLocation_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
+            pnlContent.ResumeLayout(false);
+            pnlMain.ResumeLayout(false);
+            pnlProvince.ResumeLayout(false);
+            panel1.ResumeLayout(false);
+            pnlDistrict.ResumeLayout(false);
+            panel2.ResumeLayout(false);
+            pnlSubDistrict.ResumeLayout(false);
+            panel3.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -357,20 +469,10 @@
         private System.Windows.Forms.ListView lvSubDistrict;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblTotalProvince;
         private System.Windows.Forms.Label lblTotalDistrict;
         private System.Windows.Forms.Label lblTotalSubDistrict;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lblProvince;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label lblDistrict;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
     }
 }

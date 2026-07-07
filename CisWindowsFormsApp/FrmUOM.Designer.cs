@@ -1,325 +1,328 @@
-﻿namespace CisWindowsFormsApp
+namespace CisWindowsFormsApp
 {
     partial class FrmUOM
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
+            if (disposing && (components != null)) components.Dispose();
             base.Dispose(disposing);
         }
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmUOM));
-            this.txtUomCode = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtUomDesc = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+
+            // panels
+            this.pnlActionBar    = new System.Windows.Forms.Panel();
+            this.pnlContent      = new System.Windows.Forms.Panel();
+            this.pnlLeft         = new System.Windows.Forms.Panel();
+            this.pnlLeftSpacer   = new System.Windows.Forms.Panel();
+            this.pnlRight        = new System.Windows.Forms.Panel();
+            this.pnlSearch       = new System.Windows.Forms.Panel();
+            this.pnlHiddenFields = new System.Windows.Forms.Panel();
+
+            // action bar buttons
+            this.btnClear  = new System.Windows.Forms.Button();
+            this.btnAdd    = new System.Windows.Forms.Button();
+            this.btnSave   = new System.Windows.Forms.Button();
+            this.btnDel    = new System.Windows.Forms.Button();
             this.btnReload = new System.Windows.Forms.Button();
-            this.btnDel = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.dgvUom = new System.Windows.Forms.DataGridView();
-            this.txtModifiedAt = new System.Windows.Forms.TextBox();
-            this.txtUomId = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnSearch = new System.Windows.Forms.Button();
+
+            // search
             this.txtSearch = new System.Windows.Forms.TextBox();
+            this.btnSearch = new System.Windows.Forms.Button();
+
+            // form fields
+            this.txtUomCode = new System.Windows.Forms.TextBox();
+            this.txtUomDesc = new System.Windows.Forms.TextBox();
+
+            // grid
+            this.dgvUom = new System.Windows.Forms.DataGridView();
+
+            // hidden
+            this.txtUomId      = new System.Windows.Forms.TextBox();
+            this.txtModifiedAt = new System.Windows.Forms.TextBox();
+
+            this.pnlActionBar.SuspendLayout();
+            this.pnlContent.SuspendLayout();
+            this.pnlLeft.SuspendLayout();
+            this.pnlRight.SuspendLayout();
+            this.pnlSearch.SuspendLayout();
+            this.pnlHiddenFields.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUom)).BeginInit();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // txtUomCode
-            // 
-            this.txtUomCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtUomCode.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.txtUomCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtUomCode.Location = new System.Drawing.Point(26, 39);
-            this.txtUomCode.Name = "txtUomCode";
-            this.txtUomCode.Size = new System.Drawing.Size(90, 31);
-            this.txtUomCode.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(26, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 15);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Kode Unit";
-            // 
-            // txtUomDesc
-            // 
-            this.txtUomDesc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtUomDesc.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.txtUomDesc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtUomDesc.Location = new System.Drawing.Point(26, 89);
-            this.txtUomDesc.Name = "txtUomDesc";
-            this.txtUomDesc.Size = new System.Drawing.Size(221, 31);
-            this.txtUomDesc.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(26, 73);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 15);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Keterangan";
-            // 
-            // btnReload
-            // 
-            this.btnReload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
-            this.btnReload.FlatAppearance.BorderSize = 0;
-            this.btnReload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReload.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnReload.ForeColor = System.Drawing.Color.White;
-            this.btnReload.Image = ((System.Drawing.Image)(resources.GetObject("btnReload.Image")));
-            this.btnReload.Location = new System.Drawing.Point(178, 174);
-            this.btnReload.Name = "btnReload";
-            this.btnReload.Padding = new System.Windows.Forms.Padding(0, 17, 0, 0);
-            this.btnReload.Size = new System.Drawing.Size(71, 109);
-            this.btnReload.TabIndex = 15;
-            this.btnReload.Text = "RELOAD";
-            this.btnReload.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnReload.UseVisualStyleBackColor = false;
-            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
-            // 
-            // btnDel
-            // 
-            this.btnDel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
-            this.btnDel.FlatAppearance.BorderSize = 0;
-            this.btnDel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDel.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnDel.ForeColor = System.Drawing.Color.White;
-            this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
-            this.btnDel.Location = new System.Drawing.Point(102, 231);
-            this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(71, 52);
-            this.btnDel.TabIndex = 14;
-            this.btnDel.Text = "DELETE";
-            this.btnDel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnDel.UseVisualStyleBackColor = false;
-            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
-            this.btnSave.FlatAppearance.BorderSize = 0;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(26, 231);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(71, 52);
-            this.btnSave.TabIndex = 13;
-            this.btnSave.Text = "SAVE";
-            this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
-            this.btnAdd.FlatAppearance.BorderSize = 0;
-            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(102, 174);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(71, 52);
-            this.btnAdd.TabIndex = 12;
-            this.btnAdd.Text = "ADD";
-            this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnAdd.UseVisualStyleBackColor = false;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnClear
-            // 
-            this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
+
+            // ── pnlActionBar ──────────────────────────
+            this.pnlActionBar.BackColor = System.Drawing.Color.FromArgb(228, 230, 233);
+            this.pnlActionBar.Controls.Add(this.btnReload);
+            this.pnlActionBar.Controls.Add(this.btnDel);
+            this.pnlActionBar.Controls.Add(this.btnSave);
+            this.pnlActionBar.Controls.Add(this.btnAdd);
+            this.pnlActionBar.Controls.Add(this.btnClear);
+            this.pnlActionBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlActionBar.Name = "pnlActionBar";
+            this.pnlActionBar.Size = new System.Drawing.Size(1360, 52);
+            this.pnlActionBar.TabIndex = 0;
+
+            this.btnClear.BackColor = System.Drawing.Color.FromArgb(100, 100, 100);
             this.btnClear.FlatAppearance.BorderSize = 0;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClear.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnClear.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnClear.ForeColor = System.Drawing.Color.White;
-            this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
-            this.btnClear.Location = new System.Drawing.Point(26, 174);
+            this.btnClear.Location = new System.Drawing.Point(11, 9);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(71, 52);
-            this.btnClear.TabIndex = 11;
-            this.btnClear.Text = "CLEAR";
-            this.btnClear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnClear.Size = new System.Drawing.Size(109, 34);
+            this.btnClear.TabIndex = 0;
+            this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = false;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
-            // dgvUom
-            // 
-            this.dgvUom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvUom.GridColor = System.Drawing.Color.White;
-            this.dgvUom.Location = new System.Drawing.Point(261, 89);
-            this.dgvUom.Margin = new System.Windows.Forms.Padding(9, 3, 3, 3);
-            this.dgvUom.Name = "dgvUom";
-            this.dgvUom.Size = new System.Drawing.Size(344, 194);
-            this.dgvUom.TabIndex = 0;
-            this.dgvUom.Text = "dataGridView1";
-            this.dgvUom.Click += new System.EventHandler(this.dgvUom_Click);
-            // 
-            // txtModifiedAt
-            // 
-            this.txtModifiedAt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtModifiedAt.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.txtModifiedAt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtModifiedAt.Location = new System.Drawing.Point(161, 31);
-            this.txtModifiedAt.Name = "txtModifiedAt";
-            this.txtModifiedAt.Size = new System.Drawing.Size(167, 31);
-            this.txtModifiedAt.TabIndex = 1;
-            // 
-            // txtUomId
-            // 
-            this.txtUomId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtUomId.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.txtUomId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtUomId.Location = new System.Drawing.Point(9, 31);
-            this.txtUomId.Name = "txtUomId";
-            this.txtUomId.Size = new System.Drawing.Size(139, 31);
-            this.txtUomId.TabIndex = 1;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(161, 16);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 15);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Modified At";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label4.Location = new System.Drawing.Point(9, 16);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(17, 15);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Id";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.txtModifiedAt);
-            this.panel1.Controls.Add(this.txtUomId);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Location = new System.Drawing.Point(26, 410);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(353, 72);
-            this.panel1.TabIndex = 8;
-            this.panel1.Visible = false;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
+
+            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(0, 120, 215);
+            this.btnAdd.FlatAppearance.BorderSize = 0;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnAdd.ForeColor = System.Drawing.Color.White;
+            this.btnAdd.Location = new System.Drawing.Point(141, 9);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(109, 34);
+            this.btnAdd.TabIndex = 1;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(16, 124, 16);
+            this.btnSave.FlatAppearance.BorderSize = 0;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.Location = new System.Drawing.Point(261, 9);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(109, 34);
+            this.btnSave.TabIndex = 2;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+
+            this.btnDel.BackColor = System.Drawing.Color.FromArgb(196, 43, 28);
+            this.btnDel.FlatAppearance.BorderSize = 0;
+            this.btnDel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnDel.ForeColor = System.Drawing.Color.White;
+            this.btnDel.Location = new System.Drawing.Point(381, 9);
+            this.btnDel.Name = "btnDel";
+            this.btnDel.Size = new System.Drawing.Size(109, 34);
+            this.btnDel.TabIndex = 3;
+            this.btnDel.Text = "Delete";
+            this.btnDel.UseVisualStyleBackColor = false;
+            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
+
+            this.btnReload.BackColor = System.Drawing.Color.FromArgb(100, 100, 100);
+            this.btnReload.FlatAppearance.BorderSize = 0;
+            this.btnReload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReload.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnReload.ForeColor = System.Drawing.Color.White;
+            this.btnReload.Location = new System.Drawing.Point(501, 9);
+            this.btnReload.Name = "btnReload";
+            this.btnReload.Size = new System.Drawing.Size(109, 34);
+            this.btnReload.TabIndex = 4;
+            this.btnReload.Text = "Reload";
+            this.btnReload.UseVisualStyleBackColor = false;
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
+
+            // ── pnlContent ────────────────────────────
+            this.pnlContent.BackColor = System.Drawing.Color.FromArgb(245, 245, 245);
+            this.pnlContent.Controls.Add(this.pnlRight);
+            this.pnlContent.Controls.Add(this.pnlLeftSpacer);
+            this.pnlContent.Controls.Add(this.pnlLeft);
+            this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlContent.Name = "pnlContent";
+            this.pnlContent.Padding = new System.Windows.Forms.Padding(8);
+            this.pnlContent.TabIndex = 1;
+
+            // ── pnlLeft ───────────────────────────────
+            this.pnlLeft.BackColor = System.Drawing.Color.White;
+            this.pnlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlLeft.Name = "pnlLeft";
+            this.pnlLeft.Padding = new System.Windows.Forms.Padding(8);
+            this.pnlLeft.Size = new System.Drawing.Size(340, 600);
+            this.pnlLeft.TabIndex = 0;
+
+            // ── pnlLeftSpacer ─────────────────────────
+            this.pnlLeftSpacer.BackColor = System.Drawing.Color.Transparent;
+            this.pnlLeftSpacer.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlLeftSpacer.Name = "pnlLeftSpacer";
+            this.pnlLeftSpacer.Size = new System.Drawing.Size(8, 600);
+            this.pnlLeftSpacer.TabIndex = 1;
+
+            // ── pnlRight ──────────────────────────────
+            this.pnlRight.BackColor = System.Drawing.Color.White;
+            this.pnlRight.Controls.Add(this.dgvUom);
+            this.pnlRight.Controls.Add(this.pnlSearch);
+            this.pnlRight.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlRight.Name = "pnlRight";
+            this.pnlRight.Padding = new System.Windows.Forms.Padding(4);
+            this.pnlRight.TabIndex = 2;
+
+            // ── pnlSearch ─────────────────────────────
+            this.pnlSearch.BackColor = System.Drawing.Color.White;
+            this.pnlSearch.Controls.Add(this.txtSearch);
+            this.pnlSearch.Controls.Add(this.btnSearch);
+            this.pnlSearch.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlSearch.Name = "pnlSearch";
+            this.pnlSearch.Size = new System.Drawing.Size(900, 42);
+            this.pnlSearch.TabIndex = 0;
+
+            this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtSearch.Location = new System.Drawing.Point(4, 10);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(300, 23);
+            this.txtSearch.TabIndex = 20;
+            this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
+
+            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(0, 120, 215);
             this.btnSearch.FlatAppearance.BorderSize = 0;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
-            this.btnSearch.Location = new System.Drawing.Point(571, 39);
+            this.btnSearch.Location = new System.Drawing.Point(312, 7);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(31, 31);
-            this.btnSearch.TabIndex = 39;
-            this.btnSearch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnSearch.Size = new System.Drawing.Size(60, 28);
+            this.btnSearch.TabIndex = 21;
+            this.btnSearch.Text = "Cari";
             this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSearch.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.txtSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtSearch.Location = new System.Drawing.Point(261, 39);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(304, 31);
-            this.txtSearch.TabIndex = 38;
-            this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
-            // 
-            // FrmUOM
-            // 
+
+            // ── Form fields inside pnlLeft ────────────
+
+            // --- Row 1: Kode Unit ---
+            var lblUomCode = new System.Windows.Forms.Label();
+            lblUomCode.AutoSize = true;
+            lblUomCode.Font = new System.Drawing.Font("Segoe UI", 8F);
+            lblUomCode.ForeColor = System.Drawing.Color.FromArgb(96, 96, 96);
+            lblUomCode.Location = new System.Drawing.Point(8, 8);
+            lblUomCode.Text = "Kode Unit";
+            this.pnlLeft.Controls.Add(lblUomCode);
+
+            this.txtUomCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtUomCode.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtUomCode.Location = new System.Drawing.Point(8, 24);
+            this.txtUomCode.Name = "txtUomCode";
+            this.txtUomCode.Size = new System.Drawing.Size(120, 23);
+            this.txtUomCode.TabIndex = 1;
+            this.pnlLeft.Controls.Add(this.txtUomCode);
+
+            // --- Row 2: Keterangan ---
+            var lblUomDesc = new System.Windows.Forms.Label();
+            lblUomDesc.AutoSize = true;
+            lblUomDesc.Font = new System.Drawing.Font("Segoe UI", 8F);
+            lblUomDesc.ForeColor = System.Drawing.Color.FromArgb(96, 96, 96);
+            lblUomDesc.Location = new System.Drawing.Point(8, 56);
+            lblUomDesc.Text = "Keterangan";
+            this.pnlLeft.Controls.Add(lblUomDesc);
+
+            this.txtUomDesc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtUomDesc.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtUomDesc.Location = new System.Drawing.Point(8, 72);
+            this.txtUomDesc.Name = "txtUomDesc";
+            this.txtUomDesc.Size = new System.Drawing.Size(316, 23);
+            this.txtUomDesc.TabIndex = 2;
+            this.pnlLeft.Controls.Add(this.txtUomDesc);
+
+            // ── pnlHiddenFields ───────────────────────
+            this.txtUomId.Location = new System.Drawing.Point(0, 0);
+            this.txtUomId.Name = "txtUomId";
+            this.txtUomId.Size = new System.Drawing.Size(175, 23);
+            this.txtUomId.TabIndex = 0;
+
+            this.txtModifiedAt.Location = new System.Drawing.Point(185, 0);
+            this.txtModifiedAt.Name = "txtModifiedAt";
+            this.txtModifiedAt.Size = new System.Drawing.Size(175, 23);
+            this.txtModifiedAt.TabIndex = 1;
+
+            this.pnlHiddenFields.Controls.Add(this.txtUomId);
+            this.pnlHiddenFields.Controls.Add(this.txtModifiedAt);
+            this.pnlHiddenFields.Location = new System.Drawing.Point(0, 900);
+            this.pnlHiddenFields.Name = "pnlHiddenFields";
+            this.pnlHiddenFields.Size = new System.Drawing.Size(400, 30);
+            this.pnlHiddenFields.TabIndex = 99;
+            this.pnlHiddenFields.Visible = false;
+
+            // ── dgvUom ────────────────────────────────
+            var dgvHeaderStyle = new System.Windows.Forms.DataGridViewCellStyle();
+            dgvHeaderStyle.BackColor = System.Drawing.Color.FromArgb(245, 245, 245);
+            dgvHeaderStyle.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            dgvHeaderStyle.ForeColor = System.Drawing.Color.FromArgb(51, 51, 51);
+
+            var dgvDefaultStyle = new System.Windows.Forms.DataGridViewCellStyle();
+            dgvDefaultStyle.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dgvDefaultStyle.SelectionBackColor = System.Drawing.Color.FromArgb(204, 228, 247);
+            dgvDefaultStyle.SelectionForeColor = System.Drawing.Color.Black;
+
+            this.dgvUom.AllowUserToAddRows = false;
+            this.dgvUom.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvUom.ColumnHeadersDefaultCellStyle = dgvHeaderStyle;
+            this.dgvUom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUom.DefaultCellStyle = dgvDefaultStyle;
+            this.dgvUom.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvUom.GridColor = System.Drawing.Color.FromArgb(224, 224, 224);
+            this.dgvUom.Name = "dgvUom";
+            this.dgvUom.ReadOnly = true;
+            this.dgvUom.RowHeadersVisible = false;
+            this.dgvUom.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvUom.TabIndex = 0;
+            this.dgvUom.Click += new System.EventHandler(this.dgvUom_Click);
+
+            // ── FrmUOM ────────────────────────────────
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(619, 594);
-            this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.txtSearch);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.dgvUom);
-            this.Controls.Add(this.btnClear);
-            this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnDel);
-            this.Controls.Add(this.btnReload);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtUomDesc);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtUomCode);
+            this.ClientSize = new System.Drawing.Size(1360, 720);
+            this.Controls.Add(this.pnlContent);
+            this.Controls.Add(this.pnlActionBar);
+            this.Controls.Add(this.pnlHiddenFields);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmUOM";
-            this.Text = "SATUAN UNIT";
+            this.Text = "Satuan Unit";
             this.Load += new System.EventHandler(this.FrmUOM_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUom)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
 
+            this.pnlActionBar.ResumeLayout(false);
+            this.pnlContent.ResumeLayout(false);
+            this.pnlLeft.ResumeLayout(false);
+            this.pnlLeft.PerformLayout();
+            this.pnlRight.ResumeLayout(false);
+            this.pnlSearch.ResumeLayout(false);
+            this.pnlSearch.PerformLayout();
+            this.pnlHiddenFields.ResumeLayout(false);
+            this.pnlHiddenFields.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUom)).EndInit();
+            this.ResumeLayout(false);
         }
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtUomCode;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtUomDesc;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnReload;
-        private System.Windows.Forms.Button btnDel;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Panel pnlActionBar;
+        private System.Windows.Forms.Panel pnlContent;
+        private System.Windows.Forms.Panel pnlLeft;
+        private System.Windows.Forms.Panel pnlLeftSpacer;
+        private System.Windows.Forms.Panel pnlRight;
+        private System.Windows.Forms.Panel pnlSearch;
+        private System.Windows.Forms.Panel pnlHiddenFields;
         private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.DataGridView dgvUom;
-        private System.Windows.Forms.TextBox txtModifiedAt;
-        private System.Windows.Forms.TextBox txtUomId;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnDel;
+        private System.Windows.Forms.Button btnReload;
         private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.TextBox txtUomCode;
+        private System.Windows.Forms.TextBox txtUomDesc;
+        private System.Windows.Forms.DataGridView dgvUom;
+        private System.Windows.Forms.TextBox txtUomId;
+        private System.Windows.Forms.TextBox txtModifiedAt;
     }
 }

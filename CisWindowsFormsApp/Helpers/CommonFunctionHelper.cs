@@ -13,27 +13,40 @@ namespace CisWindowsFormsApp
     {
         public int SearchGridViewFirstTwoColumn(string searchValue, ref DataGridView dataGridView, ref List<int> foundIndices)
         {
-            bool isEnd = false;
-            int index = 0;
+            var q = searchValue.ToUpper();
+            int index = -1;
+
             foreach (DataGridViewRow row in dataGridView.Rows)
             {
-                if ((row.Cells[1].Value.ToString().ToUpper().Contains(searchValue.ToUpper()) || row.Cells[2].Value.ToString().ToUpper().Contains(searchValue.ToUpper()))
-                    && !foundIndices.Any(f => f == row.Index))
+                var c1 = row.Cells[1].Value?.ToString().ToUpper() ?? string.Empty;
+                var c2 = row.Cells[2].Value?.ToString().ToUpper() ?? string.Empty;
+                if ((c1.Contains(q) || c2.Contains(q)) && !foundIndices.Contains(row.Index))
                 {
                     foundIndices.Add(row.Index);
                     index = row.Index;
                     break;
                 }
-                if (row.Index == dataGridView.Rows.Count - 1) isEnd = true;
             }
 
-            if (isEnd)
+            if (index == -1)
             {
+                // wrap around: clear history and find the first match again
                 foundIndices.Clear();
-                CommonMessageHelper.NoMoreResultFound();
+                foreach (DataGridViewRow row in dataGridView.Rows)
+                {
+                    var c1 = row.Cells[1].Value?.ToString().ToUpper() ?? string.Empty;
+                    var c2 = row.Cells[2].Value?.ToString().ToUpper() ?? string.Empty;
+                    if (c1.Contains(q) || c2.Contains(q))
+                    {
+                        foundIndices.Add(row.Index);
+                        index = row.Index;
+                        break;
+                    }
+                }
+                if (index == -1) CommonMessageHelper.DataNotFound(searchValue);
             }
 
-            return index;
+            return index == -1 ? 0 : index;
         }
 
         public bool ValidateAccess(int permissionCode)

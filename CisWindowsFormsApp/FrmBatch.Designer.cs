@@ -1,454 +1,425 @@
-﻿namespace CisWindowsFormsApp
+namespace CisWindowsFormsApp
 {
     partial class FrmBatch
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
+            if (disposing && (components != null)) components.Dispose();
             base.Dispose(disposing);
         }
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmBatch));
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.txtModifiedAt = new System.Windows.Forms.TextBox();
-            this.txtBatchId = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dgvBatch = new System.Windows.Forms.DataGridView();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnDel = new System.Windows.Forms.Button();
+
+            // panels
+            this.pnlActionBar    = new System.Windows.Forms.Panel();
+            this.pnlContent      = new System.Windows.Forms.Panel();
+            this.pnlLeft         = new System.Windows.Forms.Panel();
+            this.pnlLeftSpacer   = new System.Windows.Forms.Panel();
+            this.pnlRight        = new System.Windows.Forms.Panel();
+            this.pnlSearch       = new System.Windows.Forms.Panel();
+            this.pnlNote         = new System.Windows.Forms.Panel();
+            this.pnlHiddenFields = new System.Windows.Forms.Panel();
+
+            // action bar buttons
+            this.btnClear  = new System.Windows.Forms.Button();
+            this.btnAdd    = new System.Windows.Forms.Button();
+            this.btnSave   = new System.Windows.Forms.Button();
+            this.btnDel    = new System.Windows.Forms.Button();
             this.btnReload = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtBatchCode = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtQuantity = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.cbProductCode = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.dtpEntryDate = new System.Windows.Forms.DateTimePicker();
-            this.label6 = new System.Windows.Forms.Label();
-            this.dtpExpiredDate = new System.Windows.Forms.DateTimePicker();
-            this.pnlNote = new System.Windows.Forms.Panel();
-            this.lblNoteDetail = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.btnSearch = new System.Windows.Forms.Button();
+
+            // search
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBatch)).BeginInit();
+            this.btnSearch = new System.Windows.Forms.Button();
+
+            // form fields
+            this.txtBatchCode   = new System.Windows.Forms.TextBox();
+            this.cbProductCode  = new System.Windows.Forms.ComboBox();
+            this.txtQuantity    = new System.Windows.Forms.TextBox();
+            this.dtpEntryDate   = new System.Windows.Forms.DateTimePicker();
+            this.dtpExpiredDate = new System.Windows.Forms.DateTimePicker();
+
+            // note
+            this.lblNoteDetail = new System.Windows.Forms.Label();
+
+            // grid
+            this.dgvBatch = new System.Windows.Forms.DataGridView();
+
+            // hidden
+            this.txtBatchId   = new System.Windows.Forms.TextBox();
+            this.txtModifiedAt = new System.Windows.Forms.TextBox();
+
+            this.pnlActionBar.SuspendLayout();
+            this.pnlContent.SuspendLayout();
+            this.pnlLeft.SuspendLayout();
+            this.pnlRight.SuspendLayout();
+            this.pnlSearch.SuspendLayout();
             this.pnlNote.SuspendLayout();
+            this.pnlHiddenFields.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBatch)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.txtModifiedAt);
-            this.panel1.Controls.Add(this.txtBatchId);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(23, 571);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(441, 72);
-            this.panel1.TabIndex = 21;
-            this.panel1.Visible = false;
-            // 
-            // txtModifiedAt
-            // 
-            this.txtModifiedAt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtModifiedAt.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.txtModifiedAt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtModifiedAt.Location = new System.Drawing.Point(161, 31);
-            this.txtModifiedAt.Name = "txtModifiedAt";
-            this.txtModifiedAt.Size = new System.Drawing.Size(208, 31);
-            this.txtModifiedAt.TabIndex = 1;
-            // 
-            // txtBatchId
-            // 
-            this.txtBatchId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBatchId.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.txtBatchId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtBatchId.Location = new System.Drawing.Point(9, 31);
-            this.txtBatchId.Name = "txtBatchId";
-            this.txtBatchId.Size = new System.Drawing.Size(139, 31);
-            this.txtBatchId.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(161, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 15);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Modified At";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(9, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(17, 15);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Id";
-            // 
-            // dgvBatch
-            // 
-            this.dgvBatch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBatch.GridColor = System.Drawing.Color.White;
-            this.dgvBatch.Location = new System.Drawing.Point(351, 85);
-            this.dgvBatch.Margin = new System.Windows.Forms.Padding(9, 3, 3, 3);
-            this.dgvBatch.Name = "dgvBatch";
-            this.dgvBatch.Size = new System.Drawing.Size(409, 276);
-            this.dgvBatch.TabIndex = 16;
-            this.dgvBatch.Text = "dataGridView1";
-            this.dgvBatch.Click += new System.EventHandler(this.dgvBatch_Click);
-            // 
-            // btnClear
-            // 
-            this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
+
+            // ── pnlActionBar ──────────────────────────
+            this.pnlActionBar.BackColor = System.Drawing.Color.FromArgb(228, 230, 233);
+            this.pnlActionBar.Controls.Add(this.btnReload);
+            this.pnlActionBar.Controls.Add(this.btnDel);
+            this.pnlActionBar.Controls.Add(this.btnSave);
+            this.pnlActionBar.Controls.Add(this.btnAdd);
+            this.pnlActionBar.Controls.Add(this.btnClear);
+            this.pnlActionBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlActionBar.Name = "pnlActionBar";
+            this.pnlActionBar.Size = new System.Drawing.Size(1360, 52);
+            this.pnlActionBar.TabIndex = 0;
+
+            this.btnClear.BackColor = System.Drawing.Color.FromArgb(100, 100, 100);
             this.btnClear.FlatAppearance.BorderSize = 0;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClear.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnClear.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnClear.ForeColor = System.Drawing.Color.White;
-            this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
-            this.btnClear.Location = new System.Drawing.Point(17, 252);
+            this.btnClear.Location = new System.Drawing.Point(11, 9);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(71, 52);
-            this.btnClear.TabIndex = 22;
-            this.btnClear.Text = "CLEAR";
-            this.btnClear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnClear.Size = new System.Drawing.Size(109, 34);
+            this.btnClear.TabIndex = 0;
+            this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = false;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
+
+            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(0, 120, 215);
             this.btnAdd.FlatAppearance.BorderSize = 0;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(93, 252);
+            this.btnAdd.Location = new System.Drawing.Point(141, 9);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(71, 52);
-            this.btnAdd.TabIndex = 23;
-            this.btnAdd.Text = "ADD";
-            this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAdd.Size = new System.Drawing.Size(109, 34);
+            this.btnAdd.TabIndex = 1;
+            this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
+
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(16, 124, 16);
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(17, 309);
+            this.btnSave.Location = new System.Drawing.Point(261, 9);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(71, 52);
-            this.btnSave.TabIndex = 24;
-            this.btnSave.Text = "SAVE";
-            this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnSave.Size = new System.Drawing.Size(109, 34);
+            this.btnSave.TabIndex = 2;
+            this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnDel
-            // 
-            this.btnDel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
+
+            this.btnDel.BackColor = System.Drawing.Color.FromArgb(196, 43, 28);
             this.btnDel.FlatAppearance.BorderSize = 0;
             this.btnDel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDel.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnDel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnDel.ForeColor = System.Drawing.Color.White;
-            this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
-            this.btnDel.Location = new System.Drawing.Point(93, 309);
+            this.btnDel.Location = new System.Drawing.Point(381, 9);
             this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(71, 52);
-            this.btnDel.TabIndex = 25;
-            this.btnDel.Text = "DELETE";
-            this.btnDel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnDel.Size = new System.Drawing.Size(109, 34);
+            this.btnDel.TabIndex = 3;
+            this.btnDel.Text = "Delete";
             this.btnDel.UseVisualStyleBackColor = false;
             this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
-            // 
-            // btnReload
-            // 
-            this.btnReload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
+
+            this.btnReload.BackColor = System.Drawing.Color.FromArgb(100, 100, 100);
             this.btnReload.FlatAppearance.BorderSize = 0;
             this.btnReload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReload.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnReload.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnReload.ForeColor = System.Drawing.Color.White;
-            this.btnReload.Image = ((System.Drawing.Image)(resources.GetObject("btnReload.Image")));
-            this.btnReload.Location = new System.Drawing.Point(170, 252);
+            this.btnReload.Location = new System.Drawing.Point(501, 9);
             this.btnReload.Name = "btnReload";
-            this.btnReload.Padding = new System.Windows.Forms.Padding(0, 17, 0, 0);
-            this.btnReload.Size = new System.Drawing.Size(71, 109);
-            this.btnReload.TabIndex = 26;
-            this.btnReload.Text = "RELOAD";
-            this.btnReload.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnReload.Size = new System.Drawing.Size(109, 34);
+            this.btnReload.TabIndex = 4;
+            this.btnReload.Text = "Reload";
             this.btnReload.UseVisualStyleBackColor = false;
             this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label4.Location = new System.Drawing.Point(20, 33);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 15);
-            this.label4.TabIndex = 19;
-            this.label4.Text = "Kode Batch";
-            // 
-            // txtBatchCode
-            // 
+
+            // ── pnlContent ────────────────────────────
+            this.pnlContent.BackColor = System.Drawing.Color.FromArgb(245, 245, 245);
+            this.pnlContent.Controls.Add(this.pnlRight);
+            this.pnlContent.Controls.Add(this.pnlLeftSpacer);
+            this.pnlContent.Controls.Add(this.pnlLeft);
+            this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlContent.Name = "pnlContent";
+            this.pnlContent.Padding = new System.Windows.Forms.Padding(8);
+            this.pnlContent.TabIndex = 1;
+
+            // ── pnlLeft (white card) ──────────────────
+            this.pnlLeft.BackColor = System.Drawing.Color.White;
+            this.pnlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlLeft.Name = "pnlLeft";
+            this.pnlLeft.Padding = new System.Windows.Forms.Padding(8);
+            this.pnlLeft.Size = new System.Drawing.Size(380, 600);
+            this.pnlLeft.TabIndex = 0;
+
+            // ── pnlLeftSpacer ─────────────────────────
+            this.pnlLeftSpacer.BackColor = System.Drawing.Color.Transparent;
+            this.pnlLeftSpacer.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlLeftSpacer.Name = "pnlLeftSpacer";
+            this.pnlLeftSpacer.Size = new System.Drawing.Size(8, 600);
+            this.pnlLeftSpacer.TabIndex = 1;
+
+            // ── pnlRight (Fill) ───────────────────────
+            this.pnlRight.BackColor = System.Drawing.Color.White;
+            this.pnlRight.Controls.Add(this.dgvBatch);
+            this.pnlRight.Controls.Add(this.pnlSearch);
+            this.pnlRight.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlRight.Name = "pnlRight";
+            this.pnlRight.Padding = new System.Windows.Forms.Padding(4);
+            this.pnlRight.TabIndex = 2;
+
+            // ── pnlSearch (Top, 42px) ─────────────────
+            this.pnlSearch.BackColor = System.Drawing.Color.White;
+            this.pnlSearch.Controls.Add(this.txtSearch);
+            this.pnlSearch.Controls.Add(this.btnSearch);
+            this.pnlSearch.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlSearch.Name = "pnlSearch";
+            this.pnlSearch.Size = new System.Drawing.Size(900, 42);
+            this.pnlSearch.TabIndex = 0;
+
+            this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtSearch.Location = new System.Drawing.Point(4, 10);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(300, 23);
+            this.txtSearch.TabIndex = 20;
+            this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
+
+            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(0, 120, 215);
+            this.btnSearch.FlatAppearance.BorderSize = 0;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnSearch.ForeColor = System.Drawing.Color.White;
+            this.btnSearch.Location = new System.Drawing.Point(312, 7);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(60, 28);
+            this.btnSearch.TabIndex = 21;
+            this.btnSearch.Text = "Cari";
+            this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+
+            // ── Form fields inside pnlLeft ────────────
+
+            // --- Row 1: Kode Batch ---
+            var lblBatchCode = new System.Windows.Forms.Label();
+            lblBatchCode.AutoSize = true;
+            lblBatchCode.Font = new System.Drawing.Font("Segoe UI", 8F);
+            lblBatchCode.ForeColor = System.Drawing.Color.FromArgb(96, 96, 96);
+            lblBatchCode.Location = new System.Drawing.Point(8, 8);
+            lblBatchCode.Text = "Kode Batch";
+            this.pnlLeft.Controls.Add(lblBatchCode);
+
             this.txtBatchCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBatchCode.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.txtBatchCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtBatchCode.Location = new System.Drawing.Point(20, 48);
+            this.txtBatchCode.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtBatchCode.Location = new System.Drawing.Point(8, 24);
             this.txtBatchCode.Name = "txtBatchCode";
-            this.txtBatchCode.Size = new System.Drawing.Size(221, 31);
-            this.txtBatchCode.TabIndex = 17;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(20, 131);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 15);
-            this.label3.TabIndex = 20;
-            this.label3.Text = "Jumlah";
-            // 
-            // txtQuantity
-            // 
+            this.txtBatchCode.Size = new System.Drawing.Size(200, 23);
+            this.txtBatchCode.TabIndex = 1;
+            this.pnlLeft.Controls.Add(this.txtBatchCode);
+
+            // --- Row 2: Kode Produk ---
+            var lblProductCode = new System.Windows.Forms.Label();
+            lblProductCode.AutoSize = true;
+            lblProductCode.Font = new System.Drawing.Font("Segoe UI", 8F);
+            lblProductCode.ForeColor = System.Drawing.Color.FromArgb(96, 96, 96);
+            lblProductCode.Location = new System.Drawing.Point(8, 56);
+            lblProductCode.Text = "Kode Produk";
+            this.pnlLeft.Controls.Add(lblProductCode);
+
+            this.cbProductCode.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbProductCode.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cbProductCode.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cbProductCode.FormattingEnabled = true;
+            this.cbProductCode.Location = new System.Drawing.Point(8, 72);
+            this.cbProductCode.Name = "cbProductCode";
+            this.cbProductCode.Size = new System.Drawing.Size(356, 23);
+            this.cbProductCode.TabIndex = 2;
+            this.pnlLeft.Controls.Add(this.cbProductCode);
+
+            // --- Row 3: Jumlah ---
+            var lblQuantity = new System.Windows.Forms.Label();
+            lblQuantity.AutoSize = true;
+            lblQuantity.Font = new System.Drawing.Font("Segoe UI", 8F);
+            lblQuantity.ForeColor = System.Drawing.Color.FromArgb(96, 96, 96);
+            lblQuantity.Location = new System.Drawing.Point(8, 104);
+            lblQuantity.Text = "Jumlah";
+            this.pnlLeft.Controls.Add(lblQuantity);
+
             this.txtQuantity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtQuantity.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.txtQuantity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtQuantity.Location = new System.Drawing.Point(20, 146);
+            this.txtQuantity.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtQuantity.Location = new System.Drawing.Point(8, 120);
             this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.Size = new System.Drawing.Size(145, 31);
-            this.txtQuantity.TabIndex = 18;
+            this.txtQuantity.Size = new System.Drawing.Size(120, 23);
+            this.txtQuantity.TabIndex = 3;
             this.txtQuantity.Text = "0";
             this.txtQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantity_KeyPress);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label10.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label10.Location = new System.Drawing.Point(20, 82);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(77, 15);
-            this.label10.TabIndex = 27;
-            this.label10.Text = "Kode Produk";
-            // 
-            // cbProductCode
-            // 
-            this.cbProductCode.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cbProductCode.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.cbProductCode.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.cbProductCode.FormattingEnabled = true;
-            this.cbProductCode.Location = new System.Drawing.Point(20, 97);
-            this.cbProductCode.Name = "cbProductCode";
-            this.cbProductCode.Size = new System.Drawing.Size(221, 31);
-            this.cbProductCode.TabIndex = 28;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label5.Location = new System.Drawing.Point(20, 180);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(62, 15);
-            this.label5.TabIndex = 29;
-            this.label5.Text = "Tgl. Masuk";
-            // 
-            // dtpEntryDate
-            // 
-            this.dtpEntryDate.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dtpEntryDate.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.pnlLeft.Controls.Add(this.txtQuantity);
+
+            // --- Row 4: Tgl. Masuk / Tgl. Kedaluwarsa ---
+            var lblEntryDate = new System.Windows.Forms.Label();
+            lblEntryDate.AutoSize = true;
+            lblEntryDate.Font = new System.Drawing.Font("Segoe UI", 8F);
+            lblEntryDate.ForeColor = System.Drawing.Color.FromArgb(96, 96, 96);
+            lblEntryDate.Location = new System.Drawing.Point(8, 152);
+            lblEntryDate.Text = "Tgl. Masuk";
+            this.pnlLeft.Controls.Add(lblEntryDate);
+
+            this.dtpEntryDate.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpEntryDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpEntryDate.Location = new System.Drawing.Point(20, 195);
+            this.dtpEntryDate.Location = new System.Drawing.Point(8, 168);
             this.dtpEntryDate.Name = "dtpEntryDate";
-            this.dtpEntryDate.Size = new System.Drawing.Size(148, 31);
-            this.dtpEntryDate.TabIndex = 30;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label6.Location = new System.Drawing.Point(178, 180);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(96, 15);
-            this.label6.TabIndex = 31;
-            this.label6.Text = "Tgl. Kedaluwarsa";
-            // 
-            // dtpExpiredDate
-            // 
-            this.dtpExpiredDate.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dtpExpiredDate.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.dtpEntryDate.Size = new System.Drawing.Size(140, 23);
+            this.dtpEntryDate.TabIndex = 4;
+            this.pnlLeft.Controls.Add(this.dtpEntryDate);
+
+            var lblExpiredDate = new System.Windows.Forms.Label();
+            lblExpiredDate.AutoSize = true;
+            lblExpiredDate.Font = new System.Drawing.Font("Segoe UI", 8F);
+            lblExpiredDate.ForeColor = System.Drawing.Color.FromArgb(96, 96, 96);
+            lblExpiredDate.Location = new System.Drawing.Point(156, 152);
+            lblExpiredDate.Text = "Tgl. Kedaluwarsa";
+            this.pnlLeft.Controls.Add(lblExpiredDate);
+
+            this.dtpExpiredDate.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpExpiredDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpExpiredDate.Location = new System.Drawing.Point(178, 195);
+            this.dtpExpiredDate.Location = new System.Drawing.Point(156, 168);
             this.dtpExpiredDate.Name = "dtpExpiredDate";
-            this.dtpExpiredDate.Size = new System.Drawing.Size(148, 31);
-            this.dtpExpiredDate.TabIndex = 32;
-            // 
-            // pnlNote
-            // 
-            this.pnlNote.Controls.Add(this.lblNoteDetail);
-            this.pnlNote.Controls.Add(this.label13);
-            this.pnlNote.Location = new System.Drawing.Point(3, 386);
-            this.pnlNote.Name = "pnlNote";
-            this.pnlNote.Size = new System.Drawing.Size(757, 125);
-            this.pnlNote.TabIndex = 33;
-            this.pnlNote.Visible = false;
-            // 
-            // lblNoteDetail
-            // 
+            this.dtpExpiredDate.Size = new System.Drawing.Size(140, 23);
+            this.dtpExpiredDate.TabIndex = 5;
+            this.pnlLeft.Controls.Add(this.dtpExpiredDate);
+
+            // ── pnlNote ───────────────────────────────
+            var lblPerhatian = new System.Windows.Forms.Label();
+            lblPerhatian.AutoSize = true;
+            lblPerhatian.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            lblPerhatian.ForeColor = System.Drawing.Color.FromArgb(26, 26, 26);
+            lblPerhatian.Location = new System.Drawing.Point(4, 4);
+            lblPerhatian.Text = "PERHATIAN!";
+
             this.lblNoteDetail.AutoSize = true;
             this.lblNoteDetail.BackColor = System.Drawing.Color.Gold;
-            this.lblNoteDetail.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.lblNoteDetail.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblNoteDetail.Location = new System.Drawing.Point(13, 27);
+            this.lblNoteDetail.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.lblNoteDetail.ForeColor = System.Drawing.Color.FromArgb(26, 26, 26);
+            this.lblNoteDetail.Location = new System.Drawing.Point(4, 20);
             this.lblNoteDetail.Name = "lblNoteDetail";
             this.lblNoteDetail.Padding = new System.Windows.Forms.Padding(3);
             this.lblNoteDetail.Size = new System.Drawing.Size(76, 21);
-            this.lblNoteDetail.TabIndex = 4;
             this.lblNoteDetail.Text = "Note Detail";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label13.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label13.Location = new System.Drawing.Point(11, 12);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(72, 15);
-            this.label13.TabIndex = 4;
-            this.label13.Text = "PERHATIAN!";
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(141)))), ((int)(((byte)(193)))));
-            this.btnSearch.FlatAppearance.BorderSize = 0;
-            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
-            this.btnSearch.Location = new System.Drawing.Point(725, 48);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(31, 31);
-            this.btnSearch.TabIndex = 39;
-            this.btnSearch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnSearch.UseVisualStyleBackColor = false;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSearch.Font = new System.Drawing.Font("Calibri", 14.25F);
-            this.txtSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtSearch.Location = new System.Drawing.Point(351, 48);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(368, 31);
-            this.txtSearch.TabIndex = 38;
-            this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
-            // 
-            // FrmBatch
-            // 
+
+            this.pnlNote.Controls.Add(this.lblNoteDetail);
+            this.pnlNote.Controls.Add(lblPerhatian);
+            this.pnlNote.Location = new System.Drawing.Point(8, 204);
+            this.pnlNote.Name = "pnlNote";
+            this.pnlNote.Size = new System.Drawing.Size(356, 52);
+            this.pnlNote.TabIndex = 10;
+            this.pnlNote.Visible = false;
+            this.pnlLeft.Controls.Add(this.pnlNote);
+
+            // ── pnlHiddenFields ───────────────────────
+            this.txtBatchId.Location = new System.Drawing.Point(0, 0);
+            this.txtBatchId.Name = "txtBatchId";
+            this.txtBatchId.Size = new System.Drawing.Size(175, 23);
+            this.txtBatchId.TabIndex = 0;
+
+            this.txtModifiedAt.Location = new System.Drawing.Point(185, 0);
+            this.txtModifiedAt.Name = "txtModifiedAt";
+            this.txtModifiedAt.Size = new System.Drawing.Size(175, 23);
+            this.txtModifiedAt.TabIndex = 1;
+
+            this.pnlHiddenFields.Controls.Add(this.txtBatchId);
+            this.pnlHiddenFields.Controls.Add(this.txtModifiedAt);
+            this.pnlHiddenFields.Location = new System.Drawing.Point(0, 900);
+            this.pnlHiddenFields.Name = "pnlHiddenFields";
+            this.pnlHiddenFields.Size = new System.Drawing.Size(400, 30);
+            this.pnlHiddenFields.TabIndex = 99;
+            this.pnlHiddenFields.Visible = false;
+
+            // ── dgvBatch ──────────────────────────────
+            var dgvHeaderStyle = new System.Windows.Forms.DataGridViewCellStyle();
+            dgvHeaderStyle.BackColor = System.Drawing.Color.FromArgb(245, 245, 245);
+            dgvHeaderStyle.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            dgvHeaderStyle.ForeColor = System.Drawing.Color.FromArgb(51, 51, 51);
+
+            var dgvDefaultStyle = new System.Windows.Forms.DataGridViewCellStyle();
+            dgvDefaultStyle.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dgvDefaultStyle.SelectionBackColor = System.Drawing.Color.FromArgb(204, 228, 247);
+            dgvDefaultStyle.SelectionForeColor = System.Drawing.Color.Black;
+
+            this.dgvBatch.AllowUserToAddRows = false;
+            this.dgvBatch.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvBatch.ColumnHeadersDefaultCellStyle = dgvHeaderStyle;
+            this.dgvBatch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBatch.DefaultCellStyle = dgvDefaultStyle;
+            this.dgvBatch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvBatch.GridColor = System.Drawing.Color.FromArgb(224, 224, 224);
+            this.dgvBatch.Name = "dgvBatch";
+            this.dgvBatch.ReadOnly = true;
+            this.dgvBatch.RowHeadersVisible = false;
+            this.dgvBatch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvBatch.TabIndex = 0;
+            this.dgvBatch.Click += new System.EventHandler(this.dgvBatch_Click);
+
+            // ── FrmBatch ──────────────────────────────
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(784, 729);
-            this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.txtSearch);
-            this.Controls.Add(this.pnlNote);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.dtpExpiredDate);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.dtpEntryDate);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.cbProductCode);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.dgvBatch);
-            this.Controls.Add(this.btnClear);
-            this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnDel);
-            this.Controls.Add(this.btnReload);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtBatchCode);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtQuantity);
+            this.ClientSize = new System.Drawing.Size(1360, 720);
+            this.Controls.Add(this.pnlContent);
+            this.Controls.Add(this.pnlActionBar);
+            this.Controls.Add(this.pnlHiddenFields);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmBatch";
-            this.Text = "BATCH";
+            this.Text = "Batch";
             this.Load += new System.EventHandler(this.FrmBatch_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBatch)).EndInit();
+
+            this.pnlActionBar.ResumeLayout(false);
+            this.pnlContent.ResumeLayout(false);
+            this.pnlLeft.ResumeLayout(false);
+            this.pnlLeft.PerformLayout();
+            this.pnlRight.ResumeLayout(false);
+            this.pnlSearch.ResumeLayout(false);
+            this.pnlSearch.PerformLayout();
             this.pnlNote.ResumeLayout(false);
             this.pnlNote.PerformLayout();
+            this.pnlHiddenFields.ResumeLayout(false);
+            this.pnlHiddenFields.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBatch)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
-
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox txtModifiedAt;
-        private System.Windows.Forms.TextBox txtBatchId;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dgvBatch;
+        private System.Windows.Forms.Panel pnlActionBar;
+        private System.Windows.Forms.Panel pnlContent;
+        private System.Windows.Forms.Panel pnlLeft;
+        private System.Windows.Forms.Panel pnlLeftSpacer;
+        private System.Windows.Forms.Panel pnlRight;
+        private System.Windows.Forms.Panel pnlSearch;
+        private System.Windows.Forms.Panel pnlNote;
+        private System.Windows.Forms.Panel pnlHiddenFields;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnDel;
         private System.Windows.Forms.Button btnReload;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtBatchCode;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtQuantity;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox cbProductCode;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DateTimePicker dtpEntryDate;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DateTimePicker dtpExpiredDate;
-        private System.Windows.Forms.Panel pnlNote;
-        private System.Windows.Forms.Label lblNoteDetail;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.TextBox txtBatchCode;
+        private System.Windows.Forms.ComboBox cbProductCode;
+        private System.Windows.Forms.TextBox txtQuantity;
+        private System.Windows.Forms.DateTimePicker dtpEntryDate;
+        private System.Windows.Forms.DateTimePicker dtpExpiredDate;
+        private System.Windows.Forms.Label lblNoteDetail;
+        private System.Windows.Forms.DataGridView dgvBatch;
+        private System.Windows.Forms.TextBox txtBatchId;
+        private System.Windows.Forms.TextBox txtModifiedAt;
     }
 }

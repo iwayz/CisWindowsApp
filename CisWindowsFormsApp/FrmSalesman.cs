@@ -302,8 +302,16 @@ namespace CisWindowsFormsApp
             btnSave.Enabled = !isAdd;
             btnDel.Enabled = !isAdd;
 
-            btnSave.BackColor = !isAdd ? Color.FromArgb(36, 141, 193) : Color.Gray;
-            btnDel.BackColor = !isAdd ? Color.FromArgb(36, 141, 193) : Color.Gray;
+            btnAdd.BackColor = isAdd ? Color.FromArgb(0, 120, 215) : Color.Gray;
+            btnAdd.ForeColor = Color.White;
+            btnSave.BackColor = !isAdd ? Color.FromArgb(16, 124, 16) : Color.Gray;
+            btnSave.ForeColor = Color.White;
+            btnDel.BackColor = !isAdd ? Color.FromArgb(196, 43, 28) : Color.Gray;
+            btnDel.ForeColor = Color.White;
+            btnClear.BackColor = Color.FromArgb(100, 100, 100);
+            btnClear.ForeColor = Color.White;
+            btnReload.BackColor = Color.FromArgb(100, 100, 100);
+            btnReload.ForeColor = Color.White;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
