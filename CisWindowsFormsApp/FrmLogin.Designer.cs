@@ -149,7 +149,7 @@ namespace CisWindowsFormsApp
             this.lblTagline.Name = "lblTagline";
             this.lblTagline.Size = new System.Drawing.Size(427, 30);
             this.lblTagline.TabIndex = 1;
-            this.lblTagline.Text = "reach the market";
+            this.lblTagline.Text = "Capung Inventory and Sales Management System";
             this.lblTagline.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pnlDivider

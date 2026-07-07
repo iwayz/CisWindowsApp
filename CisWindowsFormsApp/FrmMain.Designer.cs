@@ -43,6 +43,8 @@
             this.pnlSeparatorLeftPane = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.pnlLogo = new System.Windows.Forms.Panel();
+            this.lblCompanyWeb = new System.Windows.Forms.Label();
+            this.lblCompanyName = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -56,8 +58,6 @@
             this.lblCurrentUser = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pnlChildren = new System.Windows.Forms.Panel();
-            this.lblCompanyWeb = new System.Windows.Forms.Label();
-            this.lblCompanyName = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -82,7 +82,7 @@
             // 
             // pnlLeftPane
             // 
-            this.pnlLeftPane.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(50)))), ((int)(((byte)(77)))));
+            this.pnlLeftPane.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(37)))), ((int)(((byte)(53)))));
             this.pnlLeftPane.Controls.Add(this.btnLogout);
             this.pnlLeftPane.Controls.Add(this.pnlDateTime);
             this.pnlLeftPane.Controls.Add(this.btnReporting);
@@ -92,10 +92,10 @@
             this.pnlLeftPane.Controls.Add(this.pnlSeparatorLeftPane);
             this.pnlLeftPane.Controls.Add(this.pnlLogo);
             this.pnlLeftPane.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlLeftPane.Location = new System.Drawing.Point(0, 24);
+            this.pnlLeftPane.Location = new System.Drawing.Point(0, 30);
             this.pnlLeftPane.Margin = new System.Windows.Forms.Padding(4);
             this.pnlLeftPane.Name = "pnlLeftPane";
-            this.pnlLeftPane.Size = new System.Drawing.Size(200, 812);
+            this.pnlLeftPane.Size = new System.Drawing.Size(200, 806);
             this.pnlLeftPane.TabIndex = 0;
             // 
             // btnLogout
@@ -122,12 +122,12 @@
             // 
             // pnlDateTime
             // 
-            this.pnlDateTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(50)))), ((int)(((byte)(77)))));
+            this.pnlDateTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(37)))), ((int)(((byte)(53)))));
             this.pnlDateTime.Controls.Add(this.panel3);
             this.pnlDateTime.Controls.Add(this.pictureBoxDate);
             this.pnlDateTime.Controls.Add(this.lblToday);
             this.pnlDateTime.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlDateTime.Location = new System.Drawing.Point(0, 674);
+            this.pnlDateTime.Location = new System.Drawing.Point(0, 668);
             this.pnlDateTime.Margin = new System.Windows.Forms.Padding(4);
             this.pnlDateTime.Name = "pnlDateTime";
             this.pnlDateTime.Size = new System.Drawing.Size(200, 138);
@@ -291,6 +291,31 @@
             this.pnlLogo.Size = new System.Drawing.Size(200, 257);
             this.pnlLogo.TabIndex = 0;
             // 
+            // lblCompanyWeb
+            // 
+            this.lblCompanyWeb.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCompanyWeb.ForeColor = System.Drawing.Color.White;
+            this.lblCompanyWeb.Location = new System.Drawing.Point(7, 236);
+            this.lblCompanyWeb.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCompanyWeb.Name = "lblCompanyWeb";
+            this.lblCompanyWeb.Size = new System.Drawing.Size(188, 22);
+            this.lblCompanyWeb.TabIndex = 1;
+            this.lblCompanyWeb.Text = "Website";
+            this.lblCompanyWeb.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblCompanyName
+            // 
+            this.lblCompanyName.Font = new System.Drawing.Font("Arial Narrow", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCompanyName.ForeColor = System.Drawing.Color.White;
+            this.lblCompanyName.Location = new System.Drawing.Point(7, 214);
+            this.lblCompanyName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCompanyName.Name = "lblCompanyName";
+            this.lblCompanyName.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            this.lblCompanyName.Size = new System.Drawing.Size(188, 22);
+            this.lblCompanyName.TabIndex = 0;
+            this.lblCompanyName.Text = "Company Name";
+            this.lblCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // label3
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
@@ -307,14 +332,14 @@
             // label1
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.label1.Font = new System.Drawing.Font("Calibri", 48F, System.Drawing.FontStyle.Bold);
+            this.label1.Font = new System.Drawing.Font("Arial", 48F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(-17, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(237, 86);
             this.label1.TabIndex = 0;
-            this.label1.Text = "C I S";
+            this.label1.Text = "CIS";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
@@ -347,10 +372,10 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.Silver;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(200, 24);
+            this.panel2.Location = new System.Drawing.Point(200, 30);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(3, 812);
+            this.panel2.Size = new System.Drawing.Size(3, 806);
             this.panel2.TabIndex = 1;
             // 
             // pnlHeader
@@ -359,7 +384,7 @@
             this.pnlHeader.Controls.Add(this.panel7);
             this.pnlHeader.Controls.Add(this.panel6);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlHeader.Location = new System.Drawing.Point(203, 24);
+            this.pnlHeader.Location = new System.Drawing.Point(203, 30);
             this.pnlHeader.Margin = new System.Windows.Forms.Padding(4);
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.Size = new System.Drawing.Size(1482, 37);
@@ -427,7 +452,7 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.LightGray;
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(203, 61);
+            this.panel4.Location = new System.Drawing.Point(203, 67);
             this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1482, 4);
@@ -437,36 +462,11 @@
             // 
             this.pnlChildren.BackColor = System.Drawing.Color.White;
             this.pnlChildren.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlChildren.Location = new System.Drawing.Point(203, 65);
+            this.pnlChildren.Location = new System.Drawing.Point(203, 71);
             this.pnlChildren.Margin = new System.Windows.Forms.Padding(4);
             this.pnlChildren.Name = "pnlChildren";
-            this.pnlChildren.Size = new System.Drawing.Size(1482, 771);
+            this.pnlChildren.Size = new System.Drawing.Size(1482, 765);
             this.pnlChildren.TabIndex = 4;
-            // 
-            // lblCompanyWeb
-            // 
-            this.lblCompanyWeb.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCompanyWeb.ForeColor = System.Drawing.Color.White;
-            this.lblCompanyWeb.Location = new System.Drawing.Point(7, 236);
-            this.lblCompanyWeb.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblCompanyWeb.Name = "lblCompanyWeb";
-            this.lblCompanyWeb.Size = new System.Drawing.Size(188, 22);
-            this.lblCompanyWeb.TabIndex = 1;
-            this.lblCompanyWeb.Text = "Website";
-            this.lblCompanyWeb.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblCompanyName
-            // 
-            this.lblCompanyName.Font = new System.Drawing.Font("Arial Narrow", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCompanyName.ForeColor = System.Drawing.Color.White;
-            this.lblCompanyName.Location = new System.Drawing.Point(7, 214);
-            this.lblCompanyName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblCompanyName.Name = "lblCompanyName";
-            this.lblCompanyName.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            this.lblCompanyName.Size = new System.Drawing.Size(188, 22);
-            this.lblCompanyName.TabIndex = 0;
-            this.lblCompanyName.Text = "Company Name";
-            this.lblCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // menuStrip1
             // 
@@ -476,7 +476,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1685, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1685, 30);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -488,32 +488,32 @@
             this.toolStripMenuItem1,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // settingToolStripMenuItem
             // 
             this.settingToolStripMenuItem.Name = "settingToolStripMenuItem";
-            this.settingToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.settingToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.settingToolStripMenuItem.Text = "Setting";
             this.settingToolStripMenuItem.Click += new System.EventHandler(this.settingToolStripMenuItem_Click);
             // 
             // backupDatabaseToolStripMenuItem
             // 
             this.backupDatabaseToolStripMenuItem.Name = "backupDatabaseToolStripMenuItem";
-            this.backupDatabaseToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.backupDatabaseToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.backupDatabaseToolStripMenuItem.Text = "Backup Database";
             this.backupDatabaseToolStripMenuItem.Click += new System.EventHandler(this.backupDatabaseToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(161, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(221, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -523,20 +523,20 @@
             this.manualBookToolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // manualBookToolStripMenuItem
             // 
             this.manualBookToolStripMenuItem.Name = "manualBookToolStripMenuItem";
-            this.manualBookToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.manualBookToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.manualBookToolStripMenuItem.Text = "Manual Book";
             this.manualBookToolStripMenuItem.Click += new System.EventHandler(this.manualBookToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
