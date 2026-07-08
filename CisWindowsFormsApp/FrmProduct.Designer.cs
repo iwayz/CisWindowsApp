@@ -53,6 +53,9 @@ namespace CisWindowsFormsApp
             // note panel
             this.lblNoteDetail = new System.Windows.Forms.Label();
 
+            // packaging conversion
+            this.btnPackaging = new System.Windows.Forms.Button();
+
             // grid
             this.dgvProduct = new System.Windows.Forms.DataGridView();
 
@@ -417,6 +420,21 @@ namespace CisWindowsFormsApp
             this.cbPrincipal.SelectedIndexChanged += new System.EventHandler(this.cbPrincipal_SelectedIndexChanged);
             this.pnlLeft.Controls.Add(this.cbPrincipal);
 
+            // --- Row 8: Konversi Kemasan ---
+            this.btnPackaging.BackColor = System.Drawing.Color.White;
+            this.btnPackaging.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(0, 120, 215);
+            this.btnPackaging.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPackaging.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnPackaging.ForeColor = System.Drawing.Color.FromArgb(0, 120, 215);
+            this.btnPackaging.Location = new System.Drawing.Point(8, 344);
+            this.btnPackaging.Name = "btnPackaging";
+            this.btnPackaging.Size = new System.Drawing.Size(364, 32);
+            this.btnPackaging.TabIndex = 11;
+            this.btnPackaging.Text = "Kelola Konversi Kemasan (Box/Karton)";
+            this.btnPackaging.UseVisualStyleBackColor = false;
+            this.btnPackaging.Click += new System.EventHandler(this.btnPackaging_Click);
+            this.pnlLeft.Controls.Add(this.btnPackaging);
+
             // ── pnlNote (warning, hidden by default) ──
             var lblPerhatian = new System.Windows.Forms.Label();
             lblPerhatian.AutoSize = true;
@@ -437,7 +455,7 @@ namespace CisWindowsFormsApp
 
             this.pnlNote.Controls.Add(this.lblNoteDetail);
             this.pnlNote.Controls.Add(lblPerhatian);
-            this.pnlNote.Location = new System.Drawing.Point(8, 348);
+            this.pnlNote.Location = new System.Drawing.Point(8, 384);
             this.pnlNote.Name = "pnlNote";
             this.pnlNote.Size = new System.Drawing.Size(364, 60);
             this.pnlNote.TabIndex = 20;
@@ -545,6 +563,7 @@ namespace CisWindowsFormsApp
         private System.Windows.Forms.ComboBox cbUsageType;
         private System.Windows.Forms.ComboBox cbPrincipal;
         private System.Windows.Forms.Label lblNoteDetail;
+        private System.Windows.Forms.Button btnPackaging;
         private System.Windows.Forms.DataGridView dgvProduct;
         private System.Windows.Forms.TextBox txtProductId;
         private System.Windows.Forms.TextBox txtModifiedAt;

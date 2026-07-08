@@ -22,6 +22,7 @@ namespace Cis.Data
         public DbSet<PermissionRole> PermissionRoles { get; set; }
         public DbSet<Principal> Principals { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<ProductPackaging> ProductPackagings { get; set; }
         public DbSet<Representative> Representatives { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<SalesArea> SalesAreas { get; set; }
@@ -113,6 +114,19 @@ namespace Cis.Data
                 .HasRequired(pd => pd.Principal)
                 .WithMany(pc => pc.Products)
                 .HasForeignKey(pd => pd.PrincipalId)
+                .WillCascadeOnDelete(false);
+
+            // ProductPackaging to Product, UnitOfMeasurement
+            modelBuilder.Entity<ProductPackaging>()
+                .HasRequired(pp => pp.Product)
+                .WithMany()
+                .HasForeignKey(pp => pp.ProductId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<ProductPackaging>()
+                .HasRequired(pp => pp.Unit)
+                .WithMany()
+                .HasForeignKey(pp => pp.UnitId)
                 .WillCascadeOnDelete(false);
 
             // User Role to Role and User

@@ -648,7 +648,11 @@ namespace CisWindowsFormsApp
             DataGridViewRow row = dgvSalesOrderItem.Rows[rowId];
 
             // Add the data
-            var qty = Convert.ToDecimal(txtQty.Text.Trim());
+            var enteredQty = Convert.ToInt32(txtQty.Text.Trim());
+            var unitId = cboUnit.SelectedValue?.ToString();
+            var qty = string.IsNullOrEmpty(unitId)
+                ? enteredQty
+                : new UnitConversionService(dbContext).ToBaseQty(product.Id, unitId, enteredQty);
             var nettPrice = Convert.ToDecimal(txtPrice.Text.Trim());
             var discountPercentage = Math.Round(Convert.ToDecimal(ValidateDiscount(txtDiscount.Text.Trim())) / 100, 5, MidpointRounding.AwayFromZero);
             var taxBaseAmount = salesOrderHelper.CalculateTaxBaseAmount(qty, nettPrice, discountPercentage);
@@ -679,6 +683,8 @@ namespace CisWindowsFormsApp
             txtQty.Text = "0";
             txtPrice.Text = "0";
             txtDiscount.Text = "0";
+            cboUnit.DataSource = null;
+            lblQtyPreview.Text = string.Empty;
             cbProduct.Focus();
         }
 
@@ -748,10 +754,48 @@ namespace CisWindowsFormsApp
             var uow = new UnitOfWork<Product>(dbContext);
             var queryResult = uow.Repository.GetById(prodId);
             if (queryResult == null) return;
-            
+
             txtPrice.Text = queryResult.Price.ToString("G29");
             txtDiscount.Text = queryResult.Discount.ToString().Replace('.',',');
+            BindComboBoxUnit(prodId);
         }
+
+        private void BindComboBoxUnit(string productId)
+        {
+            var units = new UnitConversionService(dbContext).GetAvailableUnits(productId);
+
+            var ds = new Dictionary<string, string>();
+            foreach (var u in units)
+                ds.Add(u.UnitId, u.ConversionQty == 1 ? u.UomCode : $"{u.UomCode} (1 = {u.ConversionQty} {units[0].UomCode})");
+
+            cboUnit.DataSource = new BindingSource(ds, null);
+            cboUnit.DisplayMember = "Value";
+            cboUnit.ValueMember = "Key";
+            if (cboUnit.Items.Count > 0) cboUnit.SelectedIndex = 0;
+
+            UpdateQtyPreview();
+        }
+
+        private void UpdateQtyPreview()
+        {
+            var productId = cbProduct.SelectedValue?.ToString();
+            var unitId = cboUnit.SelectedValue?.ToString();
+            if (string.IsNullOrEmpty(productId) || productId == "0" || string.IsNullOrEmpty(unitId)
+                || !int.TryParse(txtQty.Text.Trim(), out var qty))
+            {
+                lblQtyPreview.Text = string.Empty;
+                return;
+            }
+
+            var svc = new UnitConversionService(dbContext);
+            var baseQty = svc.ToBaseQty(productId, unitId, qty);
+            var baseUomCode = svc.GetAvailableUnits(productId).FirstOrDefault()?.UomCode;
+            lblQtyPreview.Text = baseUomCode == null ? string.Empty : $"= {baseQty:n0} {baseUomCode}";
+        }
+
+        private void cboUnit_SelectedIndexChanged(object sender, EventArgs e) => UpdateQtyPreview();
+
+        private void txtQty_TextChanged(object sender, EventArgs e) => UpdateQtyPreview();
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -1248,6 +1292,26 @@ namespace CisWindowsFormsApp
             if (dgvSalesOrderItem.SelectedRows.Count == 0) return;
             dgvSalesOrderItem.Rows.Remove(dgvSalesOrderItem.SelectedRows[0]);
             SetTotalSalesOrder();
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPrice_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDiscount_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

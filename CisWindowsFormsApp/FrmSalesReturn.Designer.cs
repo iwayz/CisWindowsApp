@@ -16,8 +16,14 @@ namespace CisWindowsFormsApp
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyleProductCode = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyleProductName = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyleBatchCode = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyleExpDate = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyleUomCode = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyleQty = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStylePrice = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyleSubTotal = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlTop = new System.Windows.Forms.Panel();
             this.lblReturnNumber = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
@@ -458,71 +464,91 @@ namespace CisWindowsFormsApp
             this.colUomId.Visible = false;
             // 
             // colProductCode
-            // 
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(228)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            this.colProductCode.DefaultCellStyle = dataGridViewCellStyle2;
+            //
+            dataGridViewCellStyleProductCode.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyleProductCode.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(228)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyleProductCode.SelectionForeColor = System.Drawing.Color.Black;
+            this.colProductCode.DefaultCellStyle = dataGridViewCellStyleProductCode;
             this.colProductCode.FillWeight = 60F;
             this.colProductCode.HeaderText = "Kode";
             this.colProductCode.MinimumWidth = 6;
             this.colProductCode.Name = "colProductCode";
-            // 
+            //
             // colProductName
-            // 
-            this.colProductName.DefaultCellStyle = dataGridViewCellStyle2;
+            //
+            dataGridViewCellStyleProductName.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyleProductName.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(228)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyleProductName.SelectionForeColor = System.Drawing.Color.Black;
+            this.colProductName.DefaultCellStyle = dataGridViewCellStyleProductName;
             this.colProductName.FillWeight = 200F;
             this.colProductName.HeaderText = "Nama Barang";
             this.colProductName.MinimumWidth = 6;
             this.colProductName.Name = "colProductName";
-            // 
+            //
             // colBatchCode
-            // 
-            this.colBatchCode.DefaultCellStyle = dataGridViewCellStyle2;
+            //
+            dataGridViewCellStyleBatchCode.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyleBatchCode.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(228)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyleBatchCode.SelectionForeColor = System.Drawing.Color.Black;
+            this.colBatchCode.DefaultCellStyle = dataGridViewCellStyleBatchCode;
             this.colBatchCode.FillWeight = 60F;
             this.colBatchCode.HeaderText = "Batch";
             this.colBatchCode.MinimumWidth = 6;
             this.colBatchCode.Name = "colBatchCode";
-            // 
+            //
             // colExpDate
-            // 
-            this.colExpDate.DefaultCellStyle = dataGridViewCellStyle2;
+            //
+            dataGridViewCellStyleExpDate.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyleExpDate.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(228)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyleExpDate.SelectionForeColor = System.Drawing.Color.Black;
+            this.colExpDate.DefaultCellStyle = dataGridViewCellStyleExpDate;
             this.colExpDate.FillWeight = 50F;
             this.colExpDate.HeaderText = "Exp.";
             this.colExpDate.MinimumWidth = 6;
             this.colExpDate.Name = "colExpDate";
-            // 
+            //
             // colQty
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(228)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            this.colQty.DefaultCellStyle = dataGridViewCellStyle3;
+            //
+            dataGridViewCellStyleQty.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyleQty.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyleQty.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(228)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyleQty.SelectionForeColor = System.Drawing.Color.Black;
+            this.colQty.DefaultCellStyle = dataGridViewCellStyleQty;
             this.colQty.FillWeight = 40F;
             this.colQty.HeaderText = "Qty";
             this.colQty.MinimumWidth = 6;
             this.colQty.Name = "colQty";
-            // 
+            //
             // colUomCode
-            // 
-            this.colUomCode.DefaultCellStyle = dataGridViewCellStyle2;
+            //
+            dataGridViewCellStyleUomCode.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyleUomCode.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(228)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyleUomCode.SelectionForeColor = System.Drawing.Color.Black;
+            this.colUomCode.DefaultCellStyle = dataGridViewCellStyleUomCode;
             this.colUomCode.FillWeight = 40F;
             this.colUomCode.HeaderText = "UOM";
             this.colUomCode.MinimumWidth = 6;
             this.colUomCode.Name = "colUomCode";
-            // 
+            //
             // colPrice
-            // 
-            this.colPrice.DefaultCellStyle = dataGridViewCellStyle3;
+            //
+            dataGridViewCellStylePrice.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStylePrice.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStylePrice.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(228)))), ((int)(((byte)(247)))));
+            dataGridViewCellStylePrice.SelectionForeColor = System.Drawing.Color.Black;
+            this.colPrice.DefaultCellStyle = dataGridViewCellStylePrice;
             this.colPrice.FillWeight = 80F;
             this.colPrice.HeaderText = "Harga";
             this.colPrice.MinimumWidth = 6;
             this.colPrice.Name = "colPrice";
-            // 
+            //
             // colSubTotal
-            // 
-            this.colSubTotal.DefaultCellStyle = dataGridViewCellStyle3;
+            //
+            dataGridViewCellStyleSubTotal.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyleSubTotal.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyleSubTotal.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(228)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyleSubTotal.SelectionForeColor = System.Drawing.Color.Black;
+            this.colSubTotal.DefaultCellStyle = dataGridViewCellStyleSubTotal;
             this.colSubTotal.FillWeight = 90F;
             this.colSubTotal.HeaderText = "Subtotal";
             this.colSubTotal.MinimumWidth = 6;

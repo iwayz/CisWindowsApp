@@ -15,9 +15,9 @@ namespace CisWindowsFormsApp
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlTop = new System.Windows.Forms.Panel();
             this.lblSalesNo = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
@@ -80,6 +80,9 @@ namespace CisWindowsFormsApp
             this.dtpExpiredDate = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
             this.txtQty = new System.Windows.Forms.TextBox();
+            this.lblUnit = new System.Windows.Forms.Label();
+            this.cboUnit = new System.Windows.Forms.ComboBox();
+            this.lblQtyPreview = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -144,7 +147,7 @@ namespace CisWindowsFormsApp
             this.pnlTop.Location = new System.Drawing.Point(0, 0);
             this.pnlTop.Margin = new System.Windows.Forms.Padding(4);
             this.pnlTop.Name = "pnlTop";
-            this.pnlTop.Size = new System.Drawing.Size(1467, 54);
+            this.pnlTop.Size = new System.Drawing.Size(1502, 54);
             this.pnlTop.TabIndex = 0;
             // 
             // lblSalesNo
@@ -283,7 +286,7 @@ namespace CisWindowsFormsApp
             this.pnlTopSep.Location = new System.Drawing.Point(0, 106);
             this.pnlTopSep.Margin = new System.Windows.Forms.Padding(4);
             this.pnlTopSep.Name = "pnlTopSep";
-            this.pnlTopSep.Size = new System.Drawing.Size(1467, 1);
+            this.pnlTopSep.Size = new System.Drawing.Size(1502, 1);
             this.pnlTopSep.TabIndex = 99;
             // 
             // pnlActionBar
@@ -302,7 +305,7 @@ namespace CisWindowsFormsApp
             this.pnlActionBar.Location = new System.Drawing.Point(0, 54);
             this.pnlActionBar.Margin = new System.Windows.Forms.Padding(4);
             this.pnlActionBar.Name = "pnlActionBar";
-            this.pnlActionBar.Size = new System.Drawing.Size(1467, 52);
+            this.pnlActionBar.Size = new System.Drawing.Size(1502, 52);
             this.pnlActionBar.TabIndex = 1;
             // 
             // btnClear
@@ -461,7 +464,7 @@ namespace CisWindowsFormsApp
             this.pnlContent.Margin = new System.Windows.Forms.Padding(4);
             this.pnlContent.Name = "pnlContent";
             this.pnlContent.Padding = new System.Windows.Forms.Padding(11, 10, 11, 10);
-            this.pnlContent.Size = new System.Drawing.Size(1467, 773);
+            this.pnlContent.Size = new System.Drawing.Size(1502, 773);
             this.pnlContent.TabIndex = 2;
             // 
             // pnlItems
@@ -476,7 +479,7 @@ namespace CisWindowsFormsApp
             this.pnlItems.Location = new System.Drawing.Point(11, 191);
             this.pnlItems.Margin = new System.Windows.Forms.Padding(4);
             this.pnlItems.Name = "pnlItems";
-            this.pnlItems.Size = new System.Drawing.Size(1445, 572);
+            this.pnlItems.Size = new System.Drawing.Size(1480, 572);
             this.pnlItems.TabIndex = 2;
             // 
             // dgvSalesOrderItem
@@ -487,10 +490,10 @@ namespace CisWindowsFormsApp
             this.dgvSalesOrderItem.BackgroundColor = System.Drawing.Color.White;
             this.dgvSalesOrderItem.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvSalesOrderItem.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(241)))), ((int)(((byte)(245)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.dgvSalesOrderItem.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(241)))), ((int)(((byte)(245)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.dgvSalesOrderItem.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvSalesOrderItem.ColumnHeadersHeight = 30;
             this.dgvSalesOrderItem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvSalesOrderItem.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -507,23 +510,23 @@ namespace CisWindowsFormsApp
             this.discPercent,
             this.subTotal,
             this.priceReal});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(228)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(59)))), ((int)(((byte)(110)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSalesOrderItem.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(228)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(59)))), ((int)(((byte)(110)))));
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSalesOrderItem.DefaultCellStyle = dataGridViewCellStyle9;
             this.dgvSalesOrderItem.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvSalesOrderItem.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(240)))), ((int)(((byte)(243)))));
-            this.dgvSalesOrderItem.Location = new System.Drawing.Point(0, 91);
+            this.dgvSalesOrderItem.Location = new System.Drawing.Point(0, 127);
             this.dgvSalesOrderItem.Margin = new System.Windows.Forms.Padding(4);
             this.dgvSalesOrderItem.Name = "dgvSalesOrderItem";
             this.dgvSalesOrderItem.ReadOnly = true;
             this.dgvSalesOrderItem.RowHeadersWidth = 20;
             this.dgvSalesOrderItem.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSalesOrderItem.Size = new System.Drawing.Size(1443, 415);
+            this.dgvSalesOrderItem.Size = new System.Drawing.Size(1478, 379);
             this.dgvSalesOrderItem.TabIndex = 2;
             this.dgvSalesOrderItem.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgvSalesOrderItem_UserDeletedRow);
             // 
@@ -571,8 +574,8 @@ namespace CisWindowsFormsApp
             // 
             // qty
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.qty.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.qty.DefaultCellStyle = dataGridViewCellStyle8;
             this.qty.FillWeight = 50F;
             this.qty.HeaderText = "QTY";
             this.qty.Name = "qty";
@@ -594,7 +597,6 @@ namespace CisWindowsFormsApp
             // 
             // price
             // 
-            this.price.DefaultCellStyle = dataGridViewCellStyle5;
             this.price.FillWeight = 75F;
             this.price.HeaderText = "HARGA";
             this.price.Name = "price";
@@ -609,7 +611,6 @@ namespace CisWindowsFormsApp
             // 
             // subTotal
             // 
-            this.subTotal.DefaultCellStyle = dataGridViewCellStyle5;
             this.subTotal.FillWeight = 90F;
             this.subTotal.HeaderText = "JML. HARGA";
             this.subTotal.Name = "subTotal";
@@ -641,7 +642,7 @@ namespace CisWindowsFormsApp
             this.pnlFooter.Location = new System.Drawing.Point(0, 506);
             this.pnlFooter.Margin = new System.Windows.Forms.Padding(4);
             this.pnlFooter.Name = "pnlFooter";
-            this.pnlFooter.Size = new System.Drawing.Size(1443, 64);
+            this.pnlFooter.Size = new System.Drawing.Size(1478, 64);
             this.pnlFooter.TabIndex = 3;
             // 
             // label14
@@ -808,10 +809,10 @@ namespace CisWindowsFormsApp
             this.pnlGridTop.Controls.Add(this.lblGridTitle);
             this.pnlGridTop.Controls.Add(this.lblItemCount);
             this.pnlGridTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlGridTop.Location = new System.Drawing.Point(0, 52);
+            this.pnlGridTop.Location = new System.Drawing.Point(0, 88);
             this.pnlGridTop.Margin = new System.Windows.Forms.Padding(4);
             this.pnlGridTop.Name = "pnlGridTop";
-            this.pnlGridTop.Size = new System.Drawing.Size(1443, 39);
+            this.pnlGridTop.Size = new System.Drawing.Size(1478, 39);
             this.pnlGridTop.TabIndex = 1;
             // 
             // lblGridTitle
@@ -832,7 +833,7 @@ namespace CisWindowsFormsApp
             this.lblItemCount.AutoSize = true;
             this.lblItemCount.Font = new System.Drawing.Font("Segoe UI", 8.5F);
             this.lblItemCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            this.lblItemCount.Location = new System.Drawing.Point(1197, 11);
+            this.lblItemCount.Location = new System.Drawing.Point(1232, 11);
             this.lblItemCount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblItemCount.Name = "lblItemCount";
             this.lblItemCount.Size = new System.Drawing.Size(0, 15);
@@ -849,6 +850,9 @@ namespace CisWindowsFormsApp
             this.pnlItemInput.Controls.Add(this.dtpExpiredDate);
             this.pnlItemInput.Controls.Add(this.label8);
             this.pnlItemInput.Controls.Add(this.txtQty);
+            this.pnlItemInput.Controls.Add(this.lblUnit);
+            this.pnlItemInput.Controls.Add(this.cboUnit);
+            this.pnlItemInput.Controls.Add(this.lblQtyPreview);
             this.pnlItemInput.Controls.Add(this.label6);
             this.pnlItemInput.Controls.Add(this.txtPrice);
             this.pnlItemInput.Controls.Add(this.label11);
@@ -859,7 +863,7 @@ namespace CisWindowsFormsApp
             this.pnlItemInput.Location = new System.Drawing.Point(0, 0);
             this.pnlItemInput.Margin = new System.Windows.Forms.Padding(4);
             this.pnlItemInput.Name = "pnlItemInput";
-            this.pnlItemInput.Size = new System.Drawing.Size(1443, 52);
+            this.pnlItemInput.Size = new System.Drawing.Size(1478, 88);
             this.pnlItemInput.TabIndex = 0;
             // 
             // label5
@@ -891,7 +895,7 @@ namespace CisWindowsFormsApp
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 8.5F);
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.label10.Location = new System.Drawing.Point(347, 16);
+            this.label10.Location = new System.Drawing.Point(27, 46);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(37, 15);
@@ -902,10 +906,10 @@ namespace CisWindowsFormsApp
             // 
             this.txtBatch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBatch.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtBatch.Location = new System.Drawing.Point(395, 11);
+            this.txtBatch.Location = new System.Drawing.Point(75, 41);
             this.txtBatch.Margin = new System.Windows.Forms.Padding(4);
             this.txtBatch.Name = "txtBatch";
-            this.txtBatch.Size = new System.Drawing.Size(106, 23);
+            this.txtBatch.Size = new System.Drawing.Size(252, 23);
             this.txtBatch.TabIndex = 3;
             this.txtBatch.Leave += new System.EventHandler(this.txtBatch_Leave);
             // 
@@ -914,18 +918,18 @@ namespace CisWindowsFormsApp
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 8.5F);
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.label7.Location = new System.Drawing.Point(515, 16);
+            this.label7.Location = new System.Drawing.Point(335, 13);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(52, 15);
+            this.label7.Size = new System.Drawing.Size(55, 15);
             this.label7.TabIndex = 4;
-            this.label7.Text = "Tgl. Ked.";
+            this.label7.Text = "Exp. Date";
             // 
             // dtpExpiredDate
             // 
             this.dtpExpiredDate.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpExpiredDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpExpiredDate.Location = new System.Drawing.Point(584, 11);
+            this.dtpExpiredDate.Location = new System.Drawing.Point(404, 11);
             this.dtpExpiredDate.Margin = new System.Windows.Forms.Padding(4);
             this.dtpExpiredDate.Name = "dtpExpiredDate";
             this.dtpExpiredDate.Size = new System.Drawing.Size(132, 23);
@@ -936,7 +940,7 @@ namespace CisWindowsFormsApp
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 8.5F);
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.label8.Location = new System.Drawing.Point(731, 16);
+            this.label8.Location = new System.Drawing.Point(543, 12);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(26, 15);
@@ -947,7 +951,7 @@ namespace CisWindowsFormsApp
             // 
             this.txtQty.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtQty.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtQty.Location = new System.Drawing.Point(760, 11);
+            this.txtQty.Location = new System.Drawing.Point(572, 11);
             this.txtQty.Margin = new System.Windows.Forms.Padding(4);
             this.txtQty.MaxLength = 6;
             this.txtQty.Name = "txtQty";
@@ -955,32 +959,69 @@ namespace CisWindowsFormsApp
             this.txtQty.TabIndex = 7;
             this.txtQty.Text = "0";
             this.txtQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtQty.TextChanged += new System.EventHandler(this.txtQty_TextChanged);
             this.txtQty.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQty_KeyPress);
             this.txtQty.Leave += new System.EventHandler(this.txtQty_Leave);
+            // 
+            // lblUnit
+            // 
+            this.lblUnit.AutoSize = true;
+            this.lblUnit.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.lblUnit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.lblUnit.Location = new System.Drawing.Point(649, 13);
+            this.lblUnit.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblUnit.Name = "lblUnit";
+            this.lblUnit.Size = new System.Drawing.Size(55, 15);
+            this.lblUnit.TabIndex = 20;
+            this.lblUnit.Text = "Kemasan";
+            // 
+            // cboUnit
+            // 
+            this.cboUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboUnit.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cboUnit.Location = new System.Drawing.Point(734, 11);
+            this.cboUnit.Margin = new System.Windows.Forms.Padding(4);
+            this.cboUnit.Name = "cboUnit";
+            this.cboUnit.Size = new System.Drawing.Size(140, 23);
+            this.cboUnit.TabIndex = 8;
+            this.cboUnit.SelectedIndexChanged += new System.EventHandler(this.cboUnit_SelectedIndexChanged);
+            // 
+            // lblQtyPreview
+            // 
+            this.lblQtyPreview.AutoSize = true;
+            this.lblQtyPreview.Font = new System.Drawing.Font("Segoe UI", 8.5F, System.Drawing.FontStyle.Italic);
+            this.lblQtyPreview.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
+            this.lblQtyPreview.Location = new System.Drawing.Point(744, 46);
+            this.lblQtyPreview.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblQtyPreview.Name = "lblQtyPreview";
+            this.lblQtyPreview.Size = new System.Drawing.Size(0, 15);
+            this.lblQtyPreview.TabIndex = 22;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 8.5F);
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.label6.Location = new System.Drawing.Point(848, 16);
+            this.label6.Location = new System.Drawing.Point(882, 15);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(76, 15);
             this.label6.TabIndex = 8;
             this.label6.Text = "Harga (HNA)";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // txtPrice
             // 
             this.txtPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPrice.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtPrice.Location = new System.Drawing.Point(949, 11);
+            this.txtPrice.Location = new System.Drawing.Point(976, 11);
             this.txtPrice.Margin = new System.Windows.Forms.Padding(4);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(119, 23);
             this.txtPrice.TabIndex = 9;
             this.txtPrice.Text = "0";
             this.txtPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtPrice.TextChanged += new System.EventHandler(this.txtPrice_TextChanged);
             this.txtPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrice_KeyPress);
             this.txtPrice.Leave += new System.EventHandler(this.txtPrice_Leave);
             // 
@@ -989,18 +1030,19 @@ namespace CisWindowsFormsApp
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 8.5F);
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.label11.Location = new System.Drawing.Point(1085, 16);
+            this.label11.Location = new System.Drawing.Point(1107, 15);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(50, 15);
             this.label11.TabIndex = 10;
             this.label11.Text = "Disc.(%)";
+            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // txtDiscount
             // 
             this.txtDiscount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDiscount.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtDiscount.Location = new System.Drawing.Point(1141, 11);
+            this.txtDiscount.Location = new System.Drawing.Point(1163, 11);
             this.txtDiscount.Margin = new System.Windows.Forms.Padding(4);
             this.txtDiscount.MaxLength = 5;
             this.txtDiscount.Name = "txtDiscount";
@@ -1008,6 +1050,7 @@ namespace CisWindowsFormsApp
             this.txtDiscount.TabIndex = 11;
             this.txtDiscount.Text = "0";
             this.txtDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtDiscount.TextChanged += new System.EventHandler(this.txtDiscount_TextChanged);
             this.txtDiscount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDiscount_KeyPress);
             this.txtDiscount.Leave += new System.EventHandler(this.txtDiscount_Leave);
             // 
@@ -1018,7 +1061,7 @@ namespace CisWindowsFormsApp
             this.btnAddItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnAddItem.ForeColor = System.Drawing.Color.White;
-            this.btnAddItem.Location = new System.Drawing.Point(1216, 8);
+            this.btnAddItem.Location = new System.Drawing.Point(1238, 11);
             this.btnAddItem.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddItem.Name = "btnAddItem";
             this.btnAddItem.Size = new System.Drawing.Size(96, 28);
@@ -1034,7 +1077,7 @@ namespace CisWindowsFormsApp
             this.btnRemoveItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRemoveItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnRemoveItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(43)))), ((int)(((byte)(28)))));
-            this.btnRemoveItem.Location = new System.Drawing.Point(1320, 8);
+            this.btnRemoveItem.Location = new System.Drawing.Point(1342, 11);
             this.btnRemoveItem.Margin = new System.Windows.Forms.Padding(4);
             this.btnRemoveItem.Name = "btnRemoveItem";
             this.btnRemoveItem.Size = new System.Drawing.Size(96, 28);
@@ -1052,7 +1095,7 @@ namespace CisWindowsFormsApp
             this.pnlNote.Location = new System.Drawing.Point(11, 152);
             this.pnlNote.Margin = new System.Windows.Forms.Padding(4);
             this.pnlNote.Name = "pnlNote";
-            this.pnlNote.Size = new System.Drawing.Size(1445, 39);
+            this.pnlNote.Size = new System.Drawing.Size(1480, 39);
             this.pnlNote.TabIndex = 97;
             this.pnlNote.Visible = false;
             // 
@@ -1087,7 +1130,7 @@ namespace CisWindowsFormsApp
             this.pnlHeaderSpacer.Location = new System.Drawing.Point(11, 142);
             this.pnlHeaderSpacer.Margin = new System.Windows.Forms.Padding(4);
             this.pnlHeaderSpacer.Name = "pnlHeaderSpacer";
-            this.pnlHeaderSpacer.Size = new System.Drawing.Size(1445, 10);
+            this.pnlHeaderSpacer.Size = new System.Drawing.Size(1480, 10);
             this.pnlHeaderSpacer.TabIndex = 98;
             // 
             // pnlHeader
@@ -1117,7 +1160,7 @@ namespace CisWindowsFormsApp
             this.pnlHeader.Location = new System.Drawing.Point(11, 10);
             this.pnlHeader.Margin = new System.Windows.Forms.Padding(4);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(1445, 132);
+            this.pnlHeader.Size = new System.Drawing.Size(1480, 132);
             this.pnlHeader.TabIndex = 0;
             // 
             // lblHeaderTitle
@@ -1252,7 +1295,7 @@ namespace CisWindowsFormsApp
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 8.5F);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.label2.Location = new System.Drawing.Point(723, 25);
+            this.label2.Location = new System.Drawing.Point(771, 26);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 15);
@@ -1263,7 +1306,7 @@ namespace CisWindowsFormsApp
             // 
             this.txtDeliveryAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDeliveryAddress.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtDeliveryAddress.Location = new System.Drawing.Point(723, 44);
+            this.txtDeliveryAddress.Location = new System.Drawing.Point(771, 45);
             this.txtDeliveryAddress.Margin = new System.Windows.Forms.Padding(4);
             this.txtDeliveryAddress.Multiline = true;
             this.txtDeliveryAddress.Name = "txtDeliveryAddress";
@@ -1275,7 +1318,7 @@ namespace CisWindowsFormsApp
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Segoe UI", 8.5F);
             this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.label20.Location = new System.Drawing.Point(969, 24);
+            this.label20.Location = new System.Drawing.Point(1017, 25);
             this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(49, 15);
@@ -1287,7 +1330,7 @@ namespace CisWindowsFormsApp
             this.cbProvince.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cbProvince.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.cbProvince.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.cbProvince.Location = new System.Drawing.Point(969, 43);
+            this.cbProvince.Location = new System.Drawing.Point(1017, 44);
             this.cbProvince.Margin = new System.Windows.Forms.Padding(4);
             this.cbProvince.Name = "cbProvince";
             this.cbProvince.Size = new System.Drawing.Size(205, 23);
@@ -1299,7 +1342,7 @@ namespace CisWindowsFormsApp
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Segoe UI", 8.5F);
             this.label21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.label21.Location = new System.Drawing.Point(1195, 24);
+            this.label21.Location = new System.Drawing.Point(1243, 25);
             this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(99, 15);
@@ -1311,7 +1354,7 @@ namespace CisWindowsFormsApp
             this.cbDistrict.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cbDistrict.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.cbDistrict.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.cbDistrict.Location = new System.Drawing.Point(1195, 43);
+            this.cbDistrict.Location = new System.Drawing.Point(1243, 44);
             this.cbDistrict.Margin = new System.Windows.Forms.Padding(4);
             this.cbDistrict.Name = "cbDistrict";
             this.cbDistrict.Size = new System.Drawing.Size(205, 23);
@@ -1323,7 +1366,7 @@ namespace CisWindowsFormsApp
             this.label29.AutoSize = true;
             this.label29.Font = new System.Drawing.Font("Segoe UI", 8.5F);
             this.label29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.label29.Location = new System.Drawing.Point(969, 78);
+            this.label29.Location = new System.Drawing.Point(1017, 79);
             this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(60, 15);
@@ -1335,7 +1378,7 @@ namespace CisWindowsFormsApp
             this.cbSalesArea.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cbSalesArea.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.cbSalesArea.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.cbSalesArea.Location = new System.Drawing.Point(969, 97);
+            this.cbSalesArea.Location = new System.Drawing.Point(1017, 98);
             this.cbSalesArea.Margin = new System.Windows.Forms.Padding(4);
             this.cbSalesArea.Name = "cbSalesArea";
             this.cbSalesArea.Size = new System.Drawing.Size(205, 23);
@@ -1389,7 +1432,7 @@ namespace CisWindowsFormsApp
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
-            this.ClientSize = new System.Drawing.Size(1467, 880);
+            this.ClientSize = new System.Drawing.Size(1502, 880);
             this.Controls.Add(this.pnlContent);
             this.Controls.Add(this.pnlTopSep);
             this.Controls.Add(this.pnlActionBar);
@@ -1479,6 +1522,9 @@ namespace CisWindowsFormsApp
         private System.Windows.Forms.DateTimePicker dtpExpiredDate;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtQty;
+        private System.Windows.Forms.Label lblUnit;
+        private System.Windows.Forms.ComboBox cboUnit;
+        private System.Windows.Forms.Label lblQtyPreview;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtPrice;
         private System.Windows.Forms.Label label11;

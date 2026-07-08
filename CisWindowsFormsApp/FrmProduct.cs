@@ -436,10 +436,28 @@ namespace CisWindowsFormsApp
             return true;
         }
 
+        private void btnPackaging_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtProductId.Text))
+            {
+                MessageBox.Show("Simpan produk terlebih dahulu sebelum mengatur konversi kemasan.", "Informasi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            var product = uowProduct.Repository.GetById(txtProductId.Text.Trim());
+            var baseUnit = new UnitOfWork<UnitOfMeasurement>(dbContext).Repository.GetById(product.UnitId);
+            using (var frm = new FrmProductPackaging(product.Id, product.ProductName, product.UnitId, baseUnit.UomCode))
+            {
+                frm.ShowDialog();
+            }
+        }
+
         private void SetUIButtonGroup()
         {
             btnSave.Enabled = !isAdd;
             btnDel.Enabled = !isAdd;
+            btnPackaging.Enabled = !isAdd;
 
             btnAdd.BackColor = isAdd ? Color.FromArgb(0, 120, 215) : Color.Gray;
             btnAdd.ForeColor = Color.White;
