@@ -14,10 +14,10 @@ namespace CisWindowsFormsApp
 
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlTop = new System.Windows.Forms.Panel();
             this.lblReturnNumber = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
@@ -106,7 +106,7 @@ namespace CisWindowsFormsApp
             this.pnlTop.Controls.Add(this.btnFirst);
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTop.Location = new System.Drawing.Point(0, 0);
-            this.pnlTop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlTop.Margin = new System.Windows.Forms.Padding(4);
             this.pnlTop.Name = "pnlTop";
             this.pnlTop.Size = new System.Drawing.Size(1813, 66);
             this.pnlTop.TabIndex = 0;
@@ -129,7 +129,7 @@ namespace CisWindowsFormsApp
             this.lblStatus.Location = new System.Drawing.Point(325, 20);
             this.lblStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(0, 19);
+            this.lblStatus.Size = new System.Drawing.Size(0, 23);
             this.lblStatus.TabIndex = 1;
             // 
             // txtSearch
@@ -137,9 +137,9 @@ namespace CisWindowsFormsApp
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtSearch.Location = new System.Drawing.Point(1173, 18);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(5);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(293, 23);
+            this.txtSearch.Size = new System.Drawing.Size(293, 27);
             this.txtSearch.TabIndex = 10;
             this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
             // 
@@ -151,7 +151,7 @@ namespace CisWindowsFormsApp
             this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnSearch.ForeColor = System.Drawing.Color.White;
             this.btnSearch.Location = new System.Drawing.Point(1477, 15);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(5);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(80, 37);
             this.btnSearch.TabIndex = 11;
@@ -167,7 +167,7 @@ namespace CisWindowsFormsApp
             this.btnLast.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnLast.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
             this.btnLast.Location = new System.Drawing.Point(1744, 15);
-            this.btnLast.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnLast.Margin = new System.Windows.Forms.Padding(5);
             this.btnLast.Name = "btnLast";
             this.btnLast.Size = new System.Drawing.Size(53, 37);
             this.btnLast.TabIndex = 15;
@@ -183,7 +183,7 @@ namespace CisWindowsFormsApp
             this.btnNext.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnNext.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
             this.btnNext.Location = new System.Drawing.Point(1685, 15);
-            this.btnNext.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnNext.Margin = new System.Windows.Forms.Padding(5);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(53, 37);
             this.btnNext.TabIndex = 14;
@@ -199,7 +199,7 @@ namespace CisWindowsFormsApp
             this.btnPrev.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnPrev.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
             this.btnPrev.Location = new System.Drawing.Point(1627, 15);
-            this.btnPrev.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnPrev.Margin = new System.Windows.Forms.Padding(5);
             this.btnPrev.Name = "btnPrev";
             this.btnPrev.Size = new System.Drawing.Size(53, 37);
             this.btnPrev.TabIndex = 13;
@@ -215,7 +215,7 @@ namespace CisWindowsFormsApp
             this.btnFirst.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnFirst.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
             this.btnFirst.Location = new System.Drawing.Point(1568, 15);
-            this.btnFirst.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnFirst.Margin = new System.Windows.Forms.Padding(5);
             this.btnFirst.Name = "btnFirst";
             this.btnFirst.Size = new System.Drawing.Size(53, 37);
             this.btnFirst.TabIndex = 12;
@@ -228,7 +228,7 @@ namespace CisWindowsFormsApp
             this.pnlTopSep.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(212)))), ((int)(((byte)(218)))));
             this.pnlTopSep.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTopSep.Location = new System.Drawing.Point(0, 66);
-            this.pnlTopSep.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlTopSep.Margin = new System.Windows.Forms.Padding(4);
             this.pnlTopSep.Name = "pnlTopSep";
             this.pnlTopSep.Size = new System.Drawing.Size(1813, 1);
             this.pnlTopSep.TabIndex = 1;
@@ -245,7 +245,7 @@ namespace CisWindowsFormsApp
             this.pnlActionBar.Controls.Add(this.btnClear);
             this.pnlActionBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlActionBar.Location = new System.Drawing.Point(0, 67);
-            this.pnlActionBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlActionBar.Margin = new System.Windows.Forms.Padding(4);
             this.pnlActionBar.Name = "pnlActionBar";
             this.pnlActionBar.Size = new System.Drawing.Size(1813, 64);
             this.pnlActionBar.TabIndex = 2;
@@ -258,7 +258,7 @@ namespace CisWindowsFormsApp
             this.btnVoid.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnVoid.ForeColor = System.Drawing.Color.White;
             this.btnVoid.Location = new System.Drawing.Point(729, 11);
-            this.btnVoid.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnVoid.Margin = new System.Windows.Forms.Padding(5);
             this.btnVoid.Name = "btnVoid";
             this.btnVoid.Size = new System.Drawing.Size(109, 34);
             this.btnVoid.TabIndex = 6;
@@ -274,7 +274,7 @@ namespace CisWindowsFormsApp
             this.btnPost.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnPost.ForeColor = System.Drawing.Color.White;
             this.btnPost.Location = new System.Drawing.Point(610, 11);
-            this.btnPost.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnPost.Margin = new System.Windows.Forms.Padding(5);
             this.btnPost.Name = "btnPost";
             this.btnPost.Size = new System.Drawing.Size(109, 34);
             this.btnPost.TabIndex = 5;
@@ -290,7 +290,7 @@ namespace CisWindowsFormsApp
             this.btnReload.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnReload.ForeColor = System.Drawing.Color.White;
             this.btnReload.Location = new System.Drawing.Point(491, 11);
-            this.btnReload.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnReload.Margin = new System.Windows.Forms.Padding(5);
             this.btnReload.Name = "btnReload";
             this.btnReload.Size = new System.Drawing.Size(109, 34);
             this.btnReload.TabIndex = 4;
@@ -306,7 +306,7 @@ namespace CisWindowsFormsApp
             this.btnDel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnDel.ForeColor = System.Drawing.Color.White;
             this.btnDel.Location = new System.Drawing.Point(372, 11);
-            this.btnDel.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnDel.Margin = new System.Windows.Forms.Padding(5);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(109, 34);
             this.btnDel.TabIndex = 3;
@@ -322,7 +322,7 @@ namespace CisWindowsFormsApp
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Location = new System.Drawing.Point(253, 11);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(5);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(109, 34);
             this.btnSave.TabIndex = 2;
@@ -338,7 +338,7 @@ namespace CisWindowsFormsApp
             this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnAdd.ForeColor = System.Drawing.Color.White;
             this.btnAdd.Location = new System.Drawing.Point(135, 11);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(5);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(109, 34);
             this.btnAdd.TabIndex = 1;
@@ -354,7 +354,7 @@ namespace CisWindowsFormsApp
             this.btnClear.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnClear.ForeColor = System.Drawing.Color.White;
             this.btnClear.Location = new System.Drawing.Point(15, 11);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(5);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(109, 34);
             this.btnClear.TabIndex = 0;
@@ -370,7 +370,7 @@ namespace CisWindowsFormsApp
             this.pnlContent.Controls.Add(this.pnlHeader);
             this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContent.Location = new System.Drawing.Point(0, 131);
-            this.pnlContent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlContent.Margin = new System.Windows.Forms.Padding(4);
             this.pnlContent.Name = "pnlContent";
             this.pnlContent.Padding = new System.Windows.Forms.Padding(11, 10, 11, 10);
             this.pnlContent.Size = new System.Drawing.Size(1813, 755);
@@ -385,7 +385,7 @@ namespace CisWindowsFormsApp
             this.pnlItems.Controls.Add(this.pnlItemInput);
             this.pnlItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlItems.Location = new System.Drawing.Point(11, 153);
-            this.pnlItems.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlItems.Margin = new System.Windows.Forms.Padding(4);
             this.pnlItems.Name = "pnlItems";
             this.pnlItems.Padding = new System.Windows.Forms.Padding(11, 10, 11, 10);
             this.pnlItems.Size = new System.Drawing.Size(1791, 592);
@@ -397,10 +397,10 @@ namespace CisWindowsFormsApp
             this.dgvItems.AllowUserToDeleteRows = false;
             this.dgvItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvItems.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.dgvItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.dgvItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colProductId,
@@ -414,20 +414,21 @@ namespace CisWindowsFormsApp
             this.colUomCode,
             this.colPrice,
             this.colSubTotal});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(228)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvItems.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(228)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvItems.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvItems.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgvItems.Location = new System.Drawing.Point(11, 101);
-            this.dgvItems.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvItems.Margin = new System.Windows.Forms.Padding(4);
             this.dgvItems.Name = "dgvItems";
             this.dgvItems.RowHeadersVisible = false;
+            this.dgvItems.RowHeadersWidth = 51;
             this.dgvItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvItems.Size = new System.Drawing.Size(1769, 417);
             this.dgvItems.TabIndex = 2;
@@ -436,6 +437,7 @@ namespace CisWindowsFormsApp
             // 
             this.colProductId.FillWeight = 1F;
             this.colProductId.HeaderText = "colProductId";
+            this.colProductId.MinimumWidth = 6;
             this.colProductId.Name = "colProductId";
             this.colProductId.Visible = false;
             // 
@@ -443,6 +445,7 @@ namespace CisWindowsFormsApp
             // 
             this.colBatchId.FillWeight = 1F;
             this.colBatchId.HeaderText = "colBatchId";
+            this.colBatchId.MinimumWidth = 6;
             this.colBatchId.Name = "colBatchId";
             this.colBatchId.Visible = false;
             // 
@@ -450,70 +453,79 @@ namespace CisWindowsFormsApp
             // 
             this.colUomId.FillWeight = 1F;
             this.colUomId.HeaderText = "colUomId";
+            this.colUomId.MinimumWidth = 6;
             this.colUomId.Name = "colUomId";
             this.colUomId.Visible = false;
             // 
             // colProductCode
             // 
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(228)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            this.colProductCode.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(228)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            this.colProductCode.DefaultCellStyle = dataGridViewCellStyle2;
             this.colProductCode.FillWeight = 60F;
             this.colProductCode.HeaderText = "Kode";
+            this.colProductCode.MinimumWidth = 6;
             this.colProductCode.Name = "colProductCode";
             // 
             // colProductName
             // 
-            this.colProductName.DefaultCellStyle = dataGridViewCellStyle6;
+            this.colProductName.DefaultCellStyle = dataGridViewCellStyle2;
             this.colProductName.FillWeight = 200F;
             this.colProductName.HeaderText = "Nama Barang";
+            this.colProductName.MinimumWidth = 6;
             this.colProductName.Name = "colProductName";
             // 
             // colBatchCode
             // 
-            this.colBatchCode.DefaultCellStyle = dataGridViewCellStyle6;
+            this.colBatchCode.DefaultCellStyle = dataGridViewCellStyle2;
             this.colBatchCode.FillWeight = 60F;
             this.colBatchCode.HeaderText = "Batch";
+            this.colBatchCode.MinimumWidth = 6;
             this.colBatchCode.Name = "colBatchCode";
             // 
             // colExpDate
             // 
-            this.colExpDate.DefaultCellStyle = dataGridViewCellStyle6;
+            this.colExpDate.DefaultCellStyle = dataGridViewCellStyle2;
             this.colExpDate.FillWeight = 50F;
             this.colExpDate.HeaderText = "Exp.";
+            this.colExpDate.MinimumWidth = 6;
             this.colExpDate.Name = "colExpDate";
             // 
             // colQty
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(228)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
-            this.colQty.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(228)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            this.colQty.DefaultCellStyle = dataGridViewCellStyle3;
             this.colQty.FillWeight = 40F;
             this.colQty.HeaderText = "Qty";
+            this.colQty.MinimumWidth = 6;
             this.colQty.Name = "colQty";
             // 
             // colUomCode
             // 
-            this.colUomCode.DefaultCellStyle = dataGridViewCellStyle6;
+            this.colUomCode.DefaultCellStyle = dataGridViewCellStyle2;
             this.colUomCode.FillWeight = 40F;
             this.colUomCode.HeaderText = "UOM";
+            this.colUomCode.MinimumWidth = 6;
             this.colUomCode.Name = "colUomCode";
             // 
             // colPrice
             // 
-            this.colPrice.DefaultCellStyle = dataGridViewCellStyle7;
+            this.colPrice.DefaultCellStyle = dataGridViewCellStyle3;
             this.colPrice.FillWeight = 80F;
             this.colPrice.HeaderText = "Harga";
+            this.colPrice.MinimumWidth = 6;
             this.colPrice.Name = "colPrice";
             // 
             // colSubTotal
             // 
-            this.colSubTotal.DefaultCellStyle = dataGridViewCellStyle7;
+            this.colSubTotal.DefaultCellStyle = dataGridViewCellStyle3;
             this.colSubTotal.FillWeight = 90F;
             this.colSubTotal.HeaderText = "Subtotal";
+            this.colSubTotal.MinimumWidth = 6;
             this.colSubTotal.Name = "colSubTotal";
             // 
             // pnlFooter
@@ -522,7 +534,7 @@ namespace CisWindowsFormsApp
             this.pnlFooter.Controls.Add(this.lblTotalLabel);
             this.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlFooter.Location = new System.Drawing.Point(11, 518);
-            this.pnlFooter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlFooter.Margin = new System.Windows.Forms.Padding(4);
             this.pnlFooter.Name = "pnlFooter";
             this.pnlFooter.Size = new System.Drawing.Size(1769, 64);
             this.pnlFooter.TabIndex = 3;
@@ -547,7 +559,7 @@ namespace CisWindowsFormsApp
             this.lblTotalLabel.Location = new System.Drawing.Point(11, 17);
             this.lblTotalLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTotalLabel.Name = "lblTotalLabel";
-            this.lblTotalLabel.Size = new System.Drawing.Size(50, 19);
+            this.lblTotalLabel.Size = new System.Drawing.Size(61, 23);
             this.lblTotalLabel.TabIndex = 1;
             this.lblTotalLabel.Text = "TOTAL";
             // 
@@ -556,7 +568,7 @@ namespace CisWindowsFormsApp
             this.pnlGridTop.Controls.Add(this.lblItemsTitle);
             this.pnlGridTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlGridTop.Location = new System.Drawing.Point(11, 62);
-            this.pnlGridTop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlGridTop.Margin = new System.Windows.Forms.Padding(4);
             this.pnlGridTop.Name = "pnlGridTop";
             this.pnlGridTop.Size = new System.Drawing.Size(1769, 39);
             this.pnlGridTop.TabIndex = 1;
@@ -569,7 +581,7 @@ namespace CisWindowsFormsApp
             this.lblItemsTitle.Location = new System.Drawing.Point(5, 10);
             this.lblItemsTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblItemsTitle.Name = "lblItemsTitle";
-            this.lblItemsTitle.Size = new System.Drawing.Size(68, 13);
+            this.lblItemsTitle.Size = new System.Drawing.Size(87, 19);
             this.lblItemsTitle.TabIndex = 0;
             this.lblItemsTitle.Text = "Item Return";
             // 
@@ -589,7 +601,7 @@ namespace CisWindowsFormsApp
             this.pnlItemInput.Controls.Add(this.lblPrice);
             this.pnlItemInput.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlItemInput.Location = new System.Drawing.Point(11, 10);
-            this.pnlItemInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlItemInput.Margin = new System.Windows.Forms.Padding(4);
             this.pnlItemInput.Name = "pnlItemInput";
             this.pnlItemInput.Size = new System.Drawing.Size(1769, 52);
             this.pnlItemInput.TabIndex = 0;
@@ -601,9 +613,9 @@ namespace CisWindowsFormsApp
             this.cbProduct.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cbProduct.FormattingEnabled = true;
             this.cbProduct.Location = new System.Drawing.Point(5, 17);
-            this.cbProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbProduct.Margin = new System.Windows.Forms.Padding(4);
             this.cbProduct.Name = "cbProduct";
-            this.cbProduct.Size = new System.Drawing.Size(372, 23);
+            this.cbProduct.Size = new System.Drawing.Size(372, 28);
             this.cbProduct.TabIndex = 5;
             this.cbProduct.SelectedIndexChanged += new System.EventHandler(this.cbProduct_SelectedIndexChanged);
             // 
@@ -613,10 +625,10 @@ namespace CisWindowsFormsApp
             this.txtBatch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBatch.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtBatch.Location = new System.Drawing.Point(389, 17);
-            this.txtBatch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBatch.Margin = new System.Windows.Forms.Padding(4);
             this.txtBatch.Name = "txtBatch";
             this.txtBatch.ReadOnly = true;
-            this.txtBatch.Size = new System.Drawing.Size(119, 23);
+            this.txtBatch.Size = new System.Drawing.Size(119, 27);
             this.txtBatch.TabIndex = 99;
             // 
             // dtpExpiredDate
@@ -625,9 +637,9 @@ namespace CisWindowsFormsApp
             this.dtpExpiredDate.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpExpiredDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpExpiredDate.Location = new System.Drawing.Point(520, 17);
-            this.dtpExpiredDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpExpiredDate.Margin = new System.Windows.Forms.Padding(4);
             this.dtpExpiredDate.Name = "dtpExpiredDate";
-            this.dtpExpiredDate.Size = new System.Drawing.Size(145, 23);
+            this.dtpExpiredDate.Size = new System.Drawing.Size(145, 27);
             this.dtpExpiredDate.TabIndex = 99;
             // 
             // txtQty
@@ -635,9 +647,9 @@ namespace CisWindowsFormsApp
             this.txtQty.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtQty.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtQty.Location = new System.Drawing.Point(677, 17);
-            this.txtQty.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtQty.Margin = new System.Windows.Forms.Padding(4);
             this.txtQty.Name = "txtQty";
-            this.txtQty.Size = new System.Drawing.Size(79, 23);
+            this.txtQty.Size = new System.Drawing.Size(79, 27);
             this.txtQty.TabIndex = 6;
             this.txtQty.Text = "0";
             this.txtQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -649,10 +661,10 @@ namespace CisWindowsFormsApp
             this.txtPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPrice.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtPrice.Location = new System.Drawing.Point(768, 17);
-            this.txtPrice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPrice.Margin = new System.Windows.Forms.Padding(4);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.ReadOnly = true;
-            this.txtPrice.Size = new System.Drawing.Size(133, 23);
+            this.txtPrice.Size = new System.Drawing.Size(133, 27);
             this.txtPrice.TabIndex = 99;
             this.txtPrice.Text = "0";
             this.txtPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -666,7 +678,7 @@ namespace CisWindowsFormsApp
             this.btnAddItem.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
             this.btnAddItem.ForeColor = System.Drawing.Color.White;
             this.btnAddItem.Location = new System.Drawing.Point(912, 17);
-            this.btnAddItem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddItem.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddItem.Name = "btnAddItem";
             this.btnAddItem.Size = new System.Drawing.Size(96, 28);
             this.btnAddItem.TabIndex = 7;
@@ -682,7 +694,7 @@ namespace CisWindowsFormsApp
             this.btnRemoveItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnRemoveItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(43)))), ((int)(((byte)(28)))));
             this.btnRemoveItem.Location = new System.Drawing.Point(1016, 17);
-            this.btnRemoveItem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRemoveItem.Margin = new System.Windows.Forms.Padding(4);
             this.btnRemoveItem.Name = "btnRemoveItem";
             this.btnRemoveItem.Size = new System.Drawing.Size(96, 28);
             this.btnRemoveItem.TabIndex = 8;
@@ -698,7 +710,7 @@ namespace CisWindowsFormsApp
             this.lblProduct.Location = new System.Drawing.Point(5, 2);
             this.lblProduct.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblProduct.Name = "lblProduct";
-            this.lblProduct.Size = new System.Drawing.Size(36, 12);
+            this.lblProduct.Size = new System.Drawing.Size(44, 15);
             this.lblProduct.TabIndex = 100;
             this.lblProduct.Text = "Barang";
             // 
@@ -710,7 +722,7 @@ namespace CisWindowsFormsApp
             this.lblBatch.Location = new System.Drawing.Point(389, 2);
             this.lblBatch.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBatch.Name = "lblBatch";
-            this.lblBatch.Size = new System.Drawing.Size(30, 12);
+            this.lblBatch.Size = new System.Drawing.Size(37, 15);
             this.lblBatch.TabIndex = 101;
             this.lblBatch.Text = "Batch";
             // 
@@ -722,7 +734,7 @@ namespace CisWindowsFormsApp
             this.lblExpDate.Location = new System.Drawing.Point(520, 2);
             this.lblExpDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblExpDate.Name = "lblExpDate";
-            this.lblExpDate.Size = new System.Drawing.Size(46, 12);
+            this.lblExpDate.Size = new System.Drawing.Size(55, 15);
             this.lblExpDate.TabIndex = 102;
             this.lblExpDate.Text = "Exp. Date";
             // 
@@ -734,7 +746,7 @@ namespace CisWindowsFormsApp
             this.lblQty.Location = new System.Drawing.Point(677, 2);
             this.lblQty.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblQty.Name = "lblQty";
-            this.lblQty.Size = new System.Drawing.Size(21, 12);
+            this.lblQty.Size = new System.Drawing.Size(26, 15);
             this.lblQty.TabIndex = 103;
             this.lblQty.Text = "Qty";
             // 
@@ -746,7 +758,7 @@ namespace CisWindowsFormsApp
             this.lblPrice.Location = new System.Drawing.Point(768, 2);
             this.lblPrice.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPrice.Name = "lblPrice";
-            this.lblPrice.Size = new System.Drawing.Size(31, 12);
+            this.lblPrice.Size = new System.Drawing.Size(39, 15);
             this.lblPrice.TabIndex = 104;
             this.lblPrice.Text = "Harga";
             // 
@@ -755,7 +767,7 @@ namespace CisWindowsFormsApp
             this.pnlHeaderSpacer.BackColor = System.Drawing.Color.Transparent;
             this.pnlHeaderSpacer.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHeaderSpacer.Location = new System.Drawing.Point(11, 143);
-            this.pnlHeaderSpacer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlHeaderSpacer.Margin = new System.Windows.Forms.Padding(4);
             this.pnlHeaderSpacer.Name = "pnlHeaderSpacer";
             this.pnlHeaderSpacer.Size = new System.Drawing.Size(1791, 10);
             this.pnlHeaderSpacer.TabIndex = 1;
@@ -773,7 +785,7 @@ namespace CisWindowsFormsApp
             this.pnlHeader.Controls.Add(this.lblReason);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHeader.Location = new System.Drawing.Point(11, 10);
-            this.pnlHeader.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlHeader.Margin = new System.Windows.Forms.Padding(4);
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.Padding = new System.Windows.Forms.Padding(11, 10, 11, 10);
             this.pnlHeader.Size = new System.Drawing.Size(1791, 133);
@@ -786,9 +798,9 @@ namespace CisWindowsFormsApp
             this.cbCustomer.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cbCustomer.FormattingEnabled = true;
             this.cbCustomer.Location = new System.Drawing.Point(11, 30);
-            this.cbCustomer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbCustomer.Margin = new System.Windows.Forms.Padding(4);
             this.cbCustomer.Name = "cbCustomer";
-            this.cbCustomer.Size = new System.Drawing.Size(385, 23);
+            this.cbCustomer.Size = new System.Drawing.Size(385, 28);
             this.cbCustomer.TabIndex = 1;
             this.cbCustomer.SelectedIndexChanged += new System.EventHandler(this.cbCustomer_SelectedIndexChanged);
             // 
@@ -799,9 +811,9 @@ namespace CisWindowsFormsApp
             this.cbSO.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cbSO.FormattingEnabled = true;
             this.cbSO.Location = new System.Drawing.Point(408, 30);
-            this.cbSO.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbSO.Margin = new System.Windows.Forms.Padding(4);
             this.cbSO.Name = "cbSO";
-            this.cbSO.Size = new System.Drawing.Size(265, 23);
+            this.cbSO.Size = new System.Drawing.Size(265, 28);
             this.cbSO.TabIndex = 2;
             this.cbSO.SelectedIndexChanged += new System.EventHandler(this.cbSO_SelectedIndexChanged);
             // 
@@ -810,9 +822,9 @@ namespace CisWindowsFormsApp
             this.dtpReturnDate.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpReturnDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpReturnDate.Location = new System.Drawing.Point(685, 30);
-            this.dtpReturnDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpReturnDate.Margin = new System.Windows.Forms.Padding(4);
             this.dtpReturnDate.Name = "dtpReturnDate";
-            this.dtpReturnDate.Size = new System.Drawing.Size(185, 23);
+            this.dtpReturnDate.Size = new System.Drawing.Size(185, 27);
             this.dtpReturnDate.TabIndex = 3;
             // 
             // txtReason
@@ -820,9 +832,9 @@ namespace CisWindowsFormsApp
             this.txtReason.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtReason.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtReason.Location = new System.Drawing.Point(11, 89);
-            this.txtReason.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtReason.Margin = new System.Windows.Forms.Padding(4);
             this.txtReason.Name = "txtReason";
-            this.txtReason.Size = new System.Drawing.Size(1066, 23);
+            this.txtReason.Size = new System.Drawing.Size(1066, 27);
             this.txtReason.TabIndex = 4;
             // 
             // lblCustomer
@@ -833,7 +845,7 @@ namespace CisWindowsFormsApp
             this.lblCustomer.Location = new System.Drawing.Point(11, 10);
             this.lblCustomer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCustomer.Name = "lblCustomer";
-            this.lblCustomer.Size = new System.Drawing.Size(62, 13);
+            this.lblCustomer.Size = new System.Drawing.Size(72, 19);
             this.lblCustomer.TabIndex = 5;
             this.lblCustomer.Text = "Pelanggan";
             // 
@@ -845,7 +857,7 @@ namespace CisWindowsFormsApp
             this.lblSO.Location = new System.Drawing.Point(408, 10);
             this.lblSO.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSO.Name = "lblSO";
-            this.lblSO.Size = new System.Drawing.Size(100, 13);
+            this.lblSO.Size = new System.Drawing.Size(119, 19);
             this.lblSO.TabIndex = 6;
             this.lblSO.Text = "No. SO (Referensi)";
             // 
@@ -857,7 +869,7 @@ namespace CisWindowsFormsApp
             this.lblReturnDate.Location = new System.Drawing.Point(685, 10);
             this.lblReturnDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblReturnDate.Name = "lblReturnDate";
-            this.lblReturnDate.Size = new System.Drawing.Size(62, 13);
+            this.lblReturnDate.Size = new System.Drawing.Size(74, 19);
             this.lblReturnDate.TabIndex = 7;
             this.lblReturnDate.Text = "Tgl. Return";
             // 
@@ -869,7 +881,7 @@ namespace CisWindowsFormsApp
             this.lblReason.Location = new System.Drawing.Point(11, 69);
             this.lblReason.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblReason.Name = "lblReason";
-            this.lblReason.Size = new System.Drawing.Size(79, 13);
+            this.lblReason.Size = new System.Drawing.Size(94, 19);
             this.lblReason.TabIndex = 8;
             this.lblReason.Text = "Alasan Return";
             // 
@@ -878,7 +890,7 @@ namespace CisWindowsFormsApp
             this.pnlHidden.Controls.Add(this.txtReturnId);
             this.pnlHidden.Controls.Add(this.txtModifiedAt);
             this.pnlHidden.Location = new System.Drawing.Point(0, 985);
-            this.pnlHidden.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlHidden.Margin = new System.Windows.Forms.Padding(4);
             this.pnlHidden.Name = "pnlHidden";
             this.pnlHidden.Size = new System.Drawing.Size(533, 37);
             this.pnlHidden.TabIndex = 99;
@@ -887,7 +899,7 @@ namespace CisWindowsFormsApp
             // txtReturnId
             // 
             this.txtReturnId.Location = new System.Drawing.Point(0, 0);
-            this.txtReturnId.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtReturnId.Margin = new System.Windows.Forms.Padding(4);
             this.txtReturnId.Name = "txtReturnId";
             this.txtReturnId.Size = new System.Drawing.Size(239, 22);
             this.txtReturnId.TabIndex = 0;
@@ -895,7 +907,7 @@ namespace CisWindowsFormsApp
             // txtModifiedAt
             // 
             this.txtModifiedAt.Location = new System.Drawing.Point(253, 0);
-            this.txtModifiedAt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtModifiedAt.Margin = new System.Windows.Forms.Padding(4);
             this.txtModifiedAt.Name = "txtModifiedAt";
             this.txtModifiedAt.Size = new System.Drawing.Size(239, 22);
             this.txtModifiedAt.TabIndex = 1;
@@ -911,9 +923,9 @@ namespace CisWindowsFormsApp
             this.Controls.Add(this.pnlTopSep);
             this.Controls.Add(this.pnlTop);
             this.Controls.Add(this.pnlHidden);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmSalesReturn";
-            this.Text = "Sales Return";
+            this.Text = "RETUR JUAL";
             this.Load += new System.EventHandler(this.FrmSalesReturn_Load);
             this.pnlTop.ResumeLayout(false);
             this.pnlTop.PerformLayout();
