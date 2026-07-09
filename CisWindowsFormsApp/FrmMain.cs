@@ -130,7 +130,7 @@ namespace CisWindowsFormsApp
             try
             {
                 var path = Directory.GetCurrentDirectory();
-                System.Diagnostics.Process.Start(Path.Combine(path, @"Resources\CisPosManual.pdf"));
+                System.Diagnostics.Process.Start(Path.Combine(path, @"Resources\Manual-Modul-Stok-CIS.pdf"));
             }
             catch (Exception ex)
             {

@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><style>
+@page {
+    size: A4;
+    margin: 2.2cm 2cm 2.2cm 2cm;
+    @frame footer_frame {
+        -pdf-frame-content: footer_content;
+        bottom: 1cm; margin-left: 2cm; margin-right: 2cm; height: 1cm;
+    }
+}
+body {
+    font-family: Helvetica, sans-serif;
+    font-size: 10pt;
+    line-height: 1.45;
+    color: #1a1a1a;
+}
+h1 {
+    font-size: 20pt;
+    color: #14532d;
+    border-bottom: 2pt solid #14532d;
+    padding-bottom: 6pt;
+    margin-top: 0;
+}
+h2 {
+    font-size: 15pt;
+    color: #14532d;
+    margin-top: 22pt;
+    padding-top: 8pt;
+    border-top: 0.75pt solid #cbd5c8;
+}
+h3 {
+    font-size: 12pt;
+    color: #1f2937;
+    margin-top: 14pt;
+}
+p { margin: 6pt 0; text-align: justify; }
+ul, ol { margin: 4pt 0 8pt 0; padding-left: 16pt; }
+li { margin: 2pt 0; }
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 8pt 0 12pt 0;
+    font-size: 9pt;
+}
+th {
+    background-color: #14532d;
+    color: #ffffff;
+    padding: 5pt 6pt;
+    text-align: left;
+    border: 0.5pt solid #14532d;
+}
+td {
+    padding: 5pt 6pt;
+    border: 0.5pt solid #cbd5c8;
+    vertical-align: top;
+}
+tr:nth-child(even) td { background-color: #f4f7f3; }
+strong { color: #14532d; }
+img { width: 320pt; display: block; margin: 10pt auto; }
+code {
+    background-color: #eef2ee;
+    padding: 1pt 3pt;
+    font-family: Courier, monospace;
+    font-size: 9pt;
+}
+pre {
+    background-color: #eef2ee;
+    padding: 8pt;
+    margin: 8pt 0;
+    font-family: Courier, monospace;
+    font-size: 9pt;
+    white-space: pre-wrap;
+}
+blockquote {
+    background-color: #fff8e6;
+    border-left: 3pt solid #d4a017;
+    padding: 6pt 10pt;
+    margin: 8pt 0;
+    font-size: 9.5pt;
+}
+hr {
+    border: none;
+    border-top: 0.75pt solid #cbd5c8;
+    margin: 14pt 0;
+}
+.toc {
+    background-color: #f4f7f3;
+    padding: 10pt 16pt;
+    margin-bottom: 10pt;
+}
+.toc ul { list-style-type: none; padding-left: 10pt; }
+.toc > ul { padding-left: 0; }
+.toc a { color: #14532d; text-decoration: none; }
+#footer_content {
+    font-size: 8pt;
+    color: #6b7280;
+    text-align: center;
+    border-top: 0.5pt solid #cbd5c8;
+    padding-top: 4pt;
+}
+.cover {
+    text-align: center;
+    margin-top: 140pt;
+}
+.cover h1 {
+    border: none;
+    font-size: 26pt;
+}
+.cover .subtitle {
+    font-size: 13pt;
+    color: #374151;
+    margin-top: 10pt;
+}
+.cover .meta {
+    margin-top: 60pt;
+    font-size: 10pt;
+    color: #6b7280;
+}
+</style></head>
+<body>
+<div id="footer_content">CIS &mdash; Manual Modul Manajemen Stok &middot; PT. Capung Indah Sentosa</div>
+
+<div class="cover">
+<h1>Manual Penggunaan<br/>Modul Manajemen Stok</h1>
+<div class="subtitle">Capung Inventory and Sales (CIS)<br/>PT. Capung Indah Sentosa</div>
+<div class="meta">Dokumen internal &mdash; untuk staf gudang, pembelian, dan admin cabang</div>
+</div>
+<pdf:nextpage />
+
+<h3 id="daftar-isi">Daftar Isi</h3>
+<div class="toc">
+<ul>
+<li><a href="#1-gambaran-umum-sistem">1. Gambaran Umum Sistem</a></li>
+<li><a href="#2-pendahuluan">2. Pendahuluan</a></li>
+<li><a href="#3-konsep-dasar-status-dokumen">3. Konsep Dasar: Status Dokumen</a></li>
+<li><a href="#4-menyiapkan-kemasan-produk-product-packaging">4. Menyiapkan Kemasan Produk (Product Packaging)</a></li>
+<li><a href="#5-pembelian-purchase-order">5. Pembelian (Purchase Order)</a></li>
+<li><a href="#6-penjualan-sales-order">6. Penjualan (Sales Order)</a></li>
+<li><a href="#7-retur-pembelian-purchase-return">7. Retur Pembelian (Purchase Return)</a></li>
+<li><a href="#8-retur-penjualan-sales-return">8. Retur Penjualan (Sales Return)</a></li>
+<li><a href="#9-pindah-stok-stock-transfer">9. Pindah Stok (Stock Transfer)</a></li>
+<li><a href="#10-stok-opname">10. Stok Opname</a></li>
+<li><a href="#11-penyesuaian-stok-stock-adjustment">11. Penyesuaian Stok (Stock Adjustment)</a></li>
+<li><a href="#12-kartu-stok-stock-card">12. Kartu Stok (Stock Card)</a></li>
+<li><a href="#13-riwayat-pergerakan-stok-stock-movement">13. Riwayat Pergerakan Stok (Stock Movement)</a></li>
+<li><a href="#14-tanya-jawab-pemecahan-masalah">14. Tanya Jawab &amp; Pemecahan Masalah</a></li>
+</ul>
+</div>
+<hr />
+<h2 id="1-gambaran-umum-sistem">1. Gambaran Umum Sistem</h2>
+<p>Sebelum masuk ke masing-masing layar, bab ini memberi gambaran besar terlebih dahulu: bagaimana semua bagian dari modul Manajemen Stok saling terhubung, dari data produk sampai laporan yang Anda lihat setiap hari.</p>
+<div style="page-break-before: always;"></div>
+
+<h3 id="alur-besar">Alur Besar</h3>
+<p>Setiap transaksi stok — apa pun jenisnya — selalu mengikuti jalur yang sama: data produk disiapkan lebih dulu, transaksi diposting, tercatat sebagai jejak audit, memperbarui posisi stok, lalu bisa dilihat kembali lewat laporan.</p>
+<p><img alt="Gambaran umum alur sistem CIS, dari master data produk hingga laporan" src="C:/Projects/CisWindowsApp/docs/manual/media/00-overview-pipeline.png" /></p>
+<ol>
+<li><strong>Master data produk</strong> — setiap produk didaftarkan beserta kemasannya (mis. Box = 100 tablet). Data ini dipakai setiap kali ada transaksi yang melibatkan produk tersebut (lihat Bab 4).</li>
+<li><strong>Transaksi stok</strong> — dokumen seperti Pembelian, Penjualan, Retur, Transfer, atau Penyesuaian dibuat dan diposting oleh staf.</li>
+<li><strong>Stock movement</strong> — begitu diposting/dikonfirmasi, sistem otomatis mencatat setiap perubahan (masuk/keluar) sebagai satu baris jejak audit yang tidak bisa diubah.</li>
+<li><strong>Stock card</strong> — dari kumpulan jejak audit itu, sistem menghitung posisi stok terkini (QtyOnHand) untuk setiap produk dan batch.</li>
+<li><strong>Laporan &amp; kartu stok</strong> — posisi dan riwayat stok ini yang ditampilkan kembali ke pengguna untuk pengecekan sehari-hari maupun audit.</li>
+</ol>
+<blockquote>
+<p><strong>Intinya:</strong> Anda tidak pernah mengubah angka stok secara langsung. Stok selalu berubah sebagai <strong>akibat</strong> dari sebuah dokumen yang diposting — itulah mengapa setiap dokumen yang salah harus dibatalkan (Void/Cancel), bukan dihapus atau diedit, agar jejak audit tetap benar.</p>
+</blockquote>
+<h3 id="empat-kelompok-transaksi">Empat Kelompok Transaksi</h3>
+<p>Bagian "Transaksi stok" di atas sebenarnya terdiri dari empat kelompok, dibedakan berdasarkan efeknya terhadap stok:</p>
+<p><img alt="Rincian kelompok transaksi stok: Pembelian, Penjualan, Retur &amp; Transfer, Opname &amp; Penyesuaian" src="C:/Projects/CisWindowsApp/docs/manual/media/00-transaction-categories.png" /></p>
+<table>
+<thead>
+<tr>
+<th>Kelompok</th>
+<th>Efek ke Stok</th>
+<th>Bab</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pembelian</strong></td>
+<td>Menambah stok (barang masuk dari supplier)</td>
+<td>Bab 5</td>
+</tr>
+<tr>
+<td><strong>Penjualan</strong></td>
+<td>Mengurangi stok (barang keluar ke pelanggan), hanya pada tahap Post</td>
+<td>Bab 6</td>
+</tr>
+<tr>
+<td><strong>Retur &amp; Transfer</strong></td>
+<td>Retur Pembelian mengurangi, Retur Penjualan menambah, Transfer bisa menambah/mengurangi tergantung arah</td>
+<td>Bab 7, 8, 9</td>
+</tr>
+<tr>
+<td><strong>Opname &amp; Penyesuaian</strong></td>
+<td>Mengoreksi stok agar sesuai kondisi fisik atau alasan tertentu (rusak, hilang, dll) — Opname selalu menghasilkan Penyesuaian secara otomatis</td>
+<td>Bab 10, 11</td>
+</tr>
+</tbody>
+</table>
+<p>Keempat kelompok ini semuanya bermuara ke <strong>Stock Movement</strong> yang sama — sehingga siapa pun bisa menelusuri riwayat stok suatu produk dari satu tempat, apa pun jenis transaksinya (lihat Bab 13).</p>
+<hr />
+<h2 id="2-pendahuluan">2. Pendahuluan</h2>
+<p>Manual ini menjelaskan cara menggunakan <strong>Modul Manajemen Stok</strong> pada aplikasi CIS (Capung Inventory and Sales), yaitu bagian dari sistem yang mengatur pembelian barang dari supplier, retur barang, pindah stok antar cabang, opname fisik, dan penyesuaian stok.</p>
+<p>Manual ini ditujukan untuk staf gudang, staf pembelian, dan admin cabang yang menggunakan aplikasi sehari-hari. Setiap bab menjelaskan satu layar (form), lengkap dengan penjelasan field, langkah-langkah penggunaan, dan dampaknya terhadap stok.</p>
+<blockquote>
+<p><strong>Catatan:</strong> Setiap cabang memiliki basis data sendiri-sendiri. Transaksi stok yang dilakukan di satu cabang tidak memengaruhi stok cabang lain, kecuali melalui transaksi <strong>Pindah Stok</strong> yang dicatat secara terpisah di kedua sisi (lihat Bab 9).</p>
+</blockquote>
+<p><code>[SCREENSHOT: Tampilan Dashboard utama aplikasi CIS]</code></p>
+<h3 id="struktur-menu">Struktur Menu</h3>
+<p>Modul manajemen stok dapat diakses dari dua dashboard utama:</p>
+<table>
+<thead>
+<tr>
+<th>Dashboard</th>
+<th>Menu di dalamnya</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Transaksi</strong></td>
+<td>Pembelian, Penjualan, Retur Pembelian, Retur Penjualan</td>
+</tr>
+<tr>
+<td><strong>Inventory</strong></td>
+<td>Stok Opname, Pindah Stok, Penyesuaian Stok</td>
+</tr>
+</tbody>
+</table>
+<p>Layar <strong>Kartu Stok</strong> dan <strong>Riwayat Pergerakan Stok</strong> untuk melihat posisi dan histori stok dapat diakses dari menu <strong>Inventory</strong> atau <strong>Reporting</strong>.</p>
+<p><code>[SCREENSHOT: Dashboard Transaksi dan Dashboard Inventory berdampingan]</code></p>
+<hr />
+<h2 id="3-konsep-dasar-status-dokumen">3. Konsep Dasar: Status Dokumen</h2>
+<p>Semua dokumen stok (Pembelian, Retur, Pindah Stok, Opname, Penyesuaian) mengikuti konsep status yang sama. Memahami konsep ini penting agar tidak bingung mengapa sebuah tombol tidak bisa diklik.</p>
+<h3 id="status-umum">Status Umum</h3>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Arti</th>
+<th>Bisa diedit/dihapus?</th>
+<th>Sudah memengaruhi stok?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Draft</strong></td>
+<td>Dokumen baru dibuat, belum final</td>
+<td>Ya</td>
+<td>Tidak</td>
+</tr>
+<tr>
+<td><strong>Posted / Confirmed / Received</strong></td>
+<td>Dokumen sudah difinalisasi</td>
+<td>Tidak</td>
+<td>Ya, stok sudah berubah</td>
+</tr>
+<tr>
+<td><strong>Cancelled</strong></td>
+<td>Dokumen dibatalkan setelah Posted</td>
+<td>Tidak</td>
+<td>Sudah dibalik (reversed)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="alur-umum">Alur Umum</h3>
+<pre><code>Draft  -&gt;  Posted/Confirmed/Received  -&gt;  (boleh) Cancelled
+</code></pre>
+<ul>
+<li>Selama <strong>Draft</strong>, Anda bebas mengubah header dan baris barang, menyimpan (Save), atau menghapus (Delete) dokumen.</li>
+<li>Setelah <strong>Posted/Confirmed/Received</strong>, dokumen terkunci — semua isian menjadi tampilan saja (read-only). Ini adalah titik dimana stok benar-benar berubah.</li>
+<li>Jika terjadi kesalahan setelah dokumen di-Posting, <strong>jangan</strong> mengedit dokumen secara manual. Gunakan tombol <strong>Void / Cancel</strong> untuk membatalkan — sistem akan otomatis membalik (reverse) perubahan stok yang sudah terjadi.</li>
+<li>Tidak ada cara untuk mengembalikan dokumen yang sudah Cancelled menjadi Draft kembali. Jika transaksi masih diperlukan, buat dokumen baru.</li>
+</ul>
+<blockquote>
+<p><strong>Penting:</strong> Purchase Order memiliki tahapan status yang sedikit berbeda dan lebih panjang: <strong>Draft -&gt; Confirmed -&gt; Received -&gt; (boleh) Cancelled</strong>. Stok baru bertambah pada tahap <strong>Received</strong>, bukan saat Confirmed. Lihat Bab 5.</p>
+<p><strong>Penting:</strong> Sales Order (Penjualan) juga punya tahapan tiga langkah: <strong>Draft -&gt; Invoice -&gt; Posted -&gt; (boleh) Cancelled</strong>. Tombol <strong>Invoice</strong> hanya mengubah status (belum menyentuh stok sama sekali), sedangkan tombol <strong>Post</strong> adalah langkah yang benar-benar mengurangi stok. Lihat Bab 6.</p>
+</blockquote>
+<h3 id="tombol-aksi-yang-umum-ditemui">Tombol Aksi yang Umum Ditemui</h3>
+<table>
+<thead>
+<tr>
+<th>Tombol</th>
+<th>Fungsi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Add</strong></td>
+<td>Membuat dokumen baru (form dikosongkan, siap diisi)</td>
+</tr>
+<tr>
+<td><strong>Save</strong></td>
+<td>Menyimpan dokumen dalam status Draft</td>
+</tr>
+<tr>
+<td><strong>Delete</strong></td>
+<td>Menghapus dokumen (hanya jika masih Draft)</td>
+</tr>
+<tr>
+<td><strong>Post / Confirm / Receive</strong></td>
+<td>Memfinalisasi dokumen — stok berubah sesuai jenis transaksi</td>
+</tr>
+<tr>
+<td><strong>Void / Cancel</strong></td>
+<td>Membatalkan dokumen yang sudah Posted — stok dikembalikan otomatis</td>
+</tr>
+<tr>
+<td><strong>Reload</strong></td>
+<td>Memuat ulang data dari database</td>
+</tr>
+<tr>
+<td><strong>Cari (Search)</strong></td>
+<td>Mencari dokumen berdasarkan nomor/kata kunci</td>
+</tr>
+<tr>
+<td><strong>|&lt;  &lt;  &gt;  &gt;|</strong></td>
+<td>Navigasi ke dokumen pertama / sebelumnya / berikutnya / terakhir</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-menyiapkan-kemasan-produk-product-packaging">4. Menyiapkan Kemasan Produk (Product Packaging)</h2>
+<h3 id="tujuan">Tujuan</h3>
+<p>Barang farmasi biasanya diterima dari supplier dalam satuan besar (misalnya <strong>karton/box</strong>), tetapi stok dan penjualan dihitung dalam satuan kecil (misalnya <strong>tablet/pcs</strong>). Fitur <strong>Kemasan Produk</strong> memungkinkan Anda mendaftarkan faktor konversi antar satuan untuk setiap produk, sehingga saat entri barang masuk Anda cukup memasukkan jumlah dalam satuan besar — sistem otomatis menghitung jumlah dalam satuan dasar.</p>
+<h3 id="cara-mengakses">Cara Mengakses</h3>
+<p>Buka <strong>Master Data -&gt; Produk</strong>, pilih produk yang ingin diatur, lalu klik tombol untuk membuka layar <strong>Kemasan Produk</strong>. Tombol ini hanya aktif jika produk sudah tersimpan.</p>
+<p><code>[SCREENSHOT: Tombol Kemasan Produk pada form Produk]</code></p>
+<h3 id="penjelasan-layar">Penjelasan Layar</h3>
+<table>
+<thead>
+<tr>
+<th>Field/Elemen</th>
+<th>Keterangan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nama Produk</td>
+<td>Ditampilkan otomatis, hanya untuk informasi</td>
+</tr>
+<tr>
+<td>Satuan dasar</td>
+<td>Satuan terkecil produk (mis. "tablet"), ditampilkan otomatis, tidak bisa diubah di layar ini</td>
+</tr>
+<tr>
+<td><strong>Kemasan</strong> (dropdown satuan)</td>
+<td>Pilih satuan kemasan baru yang ingin didaftarkan. Satuan yang sudah terdaftar atau satuan dasar tidak akan muncul lagi di daftar ini</td>
+</tr>
+<tr>
+<td><strong>Isi (dlm satuan dasar)</strong></td>
+<td>Masukkan berapa banyak satuan dasar yang terkandung dalam 1 satuan kemasan ini. Contoh: 1 <strong>box</strong> = 100 <strong>tablet</strong> -&gt; isi angka <code>100</code></td>
+</tr>
+<tr>
+<td>Tabel daftar kemasan</td>
+<td>Menampilkan semua kemasan yang sudah didaftarkan untuk produk ini: Kode Kemasan, Isi, dan Satuan Dasar</td>
+</tr>
+</tbody>
+</table>
+<p><code>[SCREENSHOT: Layar Kemasan Produk dengan beberapa baris kemasan terisi]</code></p>
+<h3 id="langkah-langkah">Langkah-Langkah</h3>
+<ol>
+<li>Buka produk yang ingin diatur kemasannya dari <strong>Master Data -&gt; Produk</strong>.</li>
+<li>Klik tombol untuk membuka layar <strong>Kemasan Produk</strong>.</li>
+<li>Pilih satuan pada dropdown <strong>Kemasan</strong> (mis. "Box").</li>
+<li>Isi jumlah konversi pada <strong>Isi (dlm satuan dasar)</strong> (mis. <code>100</code> jika 1 box = 100 tablet).</li>
+<li>Klik <strong>+ Tambah</strong>. Baris baru akan langsung muncul di tabel.</li>
+<li>Ulangi langkah 3–5 jika produk memiliki lebih dari satu jenis kemasan (mis. Box dan Karton).</li>
+<li>Untuk menghapus kemasan yang salah, pilih baris di tabel lalu klik <strong>- Hapus</strong>, kemudian konfirmasi penghapusan.</li>
+</ol>
+<blockquote>
+<p><strong>Catatan:</strong> Data kemasan langsung tersimpan ke database begitu Anda klik <strong>+ Tambah</strong> atau <strong>- Hapus</strong> — tidak perlu tombol Save terpisah.</p>
+<p><strong>Perhatian:</strong> Aturlah kemasan produk <strong>sebelum</strong> membuat dokumen Pembelian (Purchase Order) untuk produk tersebut, agar pilihan satuan sudah tersedia saat entri barang.</p>
+</blockquote>
+<hr />
+<h2 id="5-pembelian-purchase-order">5. Pembelian (Purchase Order)</h2>
+<h3 id="tujuan_1">Tujuan</h3>
+<p>Mencatat pemesanan dan penerimaan barang dari supplier (Principal), termasuk kalkulator konversi kemasan agar staf tidak perlu menghitung manual dari karton ke satuan kecil.</p>
+<h3 id="cara-mengakses_1">Cara Mengakses</h3>
+<p><strong>Dashboard Transaksi -&gt; Pembelian</strong></p>
+<p><code>[SCREENSHOT: Form Pembelian (PEMBELIAN) kosong]</code></p>
+<h3 id="penjelasan-field-header">Penjelasan Field — Header</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Keterangan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Principal / Supplier</strong></td>
+<td>Pilih supplier dari dropdown pencarian. Wajib diisi</td>
+</tr>
+<tr>
+<td><strong>Tanggal PO</strong></td>
+<td>Tanggal pembuatan pesanan</td>
+</tr>
+<tr>
+<td><strong>Estimasi Tiba</strong></td>
+<td>Perkiraan tanggal barang akan tiba</td>
+</tr>
+<tr>
+<td><strong>Alamat Supplier</strong>, <strong>Telepon</strong></td>
+<td>Terisi otomatis dari data supplier, tidak bisa diubah</td>
+</tr>
+<tr>
+<td><strong>Catatan</strong></td>
+<td>Catatan bebas terkait pesanan</td>
+</tr>
+<tr>
+<td><strong>Tgl. Terima</strong></td>
+<td>Terisi otomatis saat barang diterima (status Received)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="penjelasan-field-entri-barang">Penjelasan Field — Entri Barang</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Keterangan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Barang</strong></td>
+<td>Pilih produk dari dropdown pencarian</td>
+</tr>
+<tr>
+<td><strong>Batch</strong></td>
+<td>Nomor batch/lot barang (isi manual sesuai kemasan fisik)</td>
+</tr>
+<tr>
+<td><strong>Exp. Date</strong></td>
+<td>Tanggal kadaluarsa barang</td>
+</tr>
+<tr>
+<td><strong>Qty</strong></td>
+<td>Jumlah barang <strong>dalam satuan kemasan yang dipilih</strong></td>
+</tr>
+<tr>
+<td><strong>Kemasan</strong></td>
+<td>Pilih satuan (mis. "Box" atau satuan dasar seperti "tablet")</td>
+</tr>
+<tr>
+<td><strong>Qty Preview</strong></td>
+<td>Menampilkan hasil konversi otomatis ke satuan dasar, contoh: <code>= 10 box -&gt; 1000 tablet</code></td>
+</tr>
+<tr>
+<td><strong>Harga</strong></td>
+<td>Harga beli per satuan kemasan yang dipilih</td>
+</tr>
+<tr>
+<td><strong>Disc %</strong></td>
+<td>Diskon dalam persen (opsional)</td>
+</tr>
+</tbody>
+</table>
+<p>Kolom pada tabel barang: <strong>Kode Barang, Nama Barang, Batch, Exp., Qty, Sat (satuan), Harga, Disc%, Subtotal</strong>.</p>
+<p>Bagian bawah form menampilkan <strong>Subtotal</strong>, <strong>PPN (11%)</strong>, dan <strong>TOTAL</strong>.</p>
+<h3 id="langkah-langkah_1">Langkah-Langkah</h3>
+<ol>
+<li>Klik <strong>Add</strong> untuk membuat PO baru.</li>
+<li>Pilih <strong>Principal / Supplier</strong>, isi <strong>Tanggal PO</strong> dan <strong>Estimasi Tiba</strong>.</li>
+<li>Pada bagian entri barang: pilih <strong>Barang</strong>, isi <strong>Batch</strong> dan <strong>Exp. Date</strong>, isi <strong>Qty</strong>.</li>
+<li>Pilih <strong>Kemasan</strong> — perhatikan <strong>Qty Preview</strong> untuk memastikan hasil konversi ke satuan dasar sudah benar.</li>
+<li>Isi <strong>Harga</strong> dan <strong>Disc %</strong> jika ada.</li>
+<li>Klik <strong>+ Tambah</strong> untuk memasukkan barang ke tabel. Ulangi untuk barang lainnya.</li>
+<li>Klik <strong>Save</strong> untuk menyimpan PO sebagai Draft.</li>
+<li>Setelah PO disetujui/dikirim ke supplier, klik <strong>Confirm</strong> (status berubah menjadi Confirmed). Pada tahap ini stok <strong>belum</strong> berubah.</li>
+<li>Saat barang fisik tiba di gudang, buka kembali PO tersebut dan klik <strong>Receive</strong>. Pada tahap ini <strong>stok bertambah</strong> sesuai qty (dalam satuan dasar) untuk setiap barang.</li>
+<li>Jika PO batal (sebelum atau sesudah diterima), klik <strong>Cancel</strong>. Jika PO sudah Received, sistem otomatis mengurangi kembali stok yang sudah bertambah.</li>
+</ol>
+<p><code>[SCREENSHOT: Contoh Qty Preview menampilkan hasil konversi]</code></p>
+<h3 id="dampak-terhadap-stok">Dampak terhadap Stok</h3>
+<table>
+<thead>
+<tr>
+<th>Aksi</th>
+<th>Status Berubah</th>
+<th>Efek Stok</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Confirm</td>
+<td>Draft -&gt; Confirmed</td>
+<td>Tidak ada</td>
+</tr>
+<tr>
+<td>Receive</td>
+<td>Confirmed -&gt; Received</td>
+<td><strong>Stok bertambah</strong> (masuk)</td>
+</tr>
+<tr>
+<td>Cancel (dari Received)</td>
+<td>Received -&gt; Cancelled</td>
+<td>Stok dikurangi kembali (dibalik)</td>
+</tr>
+<tr>
+<td>Cancel (dari Draft/Confirmed)</td>
+<td>-&gt; Cancelled</td>
+<td>Tidak ada efek stok (belum pernah bertambah)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="perhatian-kesalahan-umum">Perhatian / Kesalahan Umum</h3>
+<ul>
+<li>Barang tidak bisa ditambahkan ke tabel jika <strong>Supplier</strong> belum dipilih.</li>
+<li>Pastikan memilih <strong>Kemasan</strong> yang benar sebelum menambahkan baris — kesalahan satuan akan menyebabkan jumlah stok yang tercatat salah (walaupun sudah dibalik saat Cancel, akan lebih rapi jika benar sejak awal).</li>
+<li>Setelah status <strong>Confirmed</strong>, header dan barang tidak bisa lagi diubah. Jika ada revisi, batalkan (Cancel) dan buat PO baru.</li>
+</ul>
+<hr />
+<h2 id="6-penjualan-sales-order">6. Penjualan (Sales Order)</h2>
+<h3 id="tujuan_2">Tujuan</h3>
+<p>Mencatat penjualan barang ke pelanggan, mulai dari draft faktur, penerbitan invoice, hingga posting yang benar-benar mengurangi stok gudang.</p>
+<h3 id="cara-mengakses_2">Cara Mengakses</h3>
+<p><strong>Dashboard Transaksi -&gt; Penjualan</strong></p>
+<p><code>[SCREENSHOT: Form Penjualan (PENJUALAN) kosong]</code></p>
+<h3 id="penjelasan-field-header_1">Penjelasan Field — Header</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Keterangan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Kode Pelanggan</strong></td>
+<td>Pilih pelanggan dari dropdown pencarian. Wajib diisi</td>
+</tr>
+<tr>
+<td><strong>Salesman</strong></td>
+<td>Wajib diisi</td>
+</tr>
+<tr>
+<td><strong>Term of Payment</strong></td>
+<td>Wajib diisi</td>
+</tr>
+<tr>
+<td><strong>Tgl. Faktur</strong></td>
+<td>Tanggal transaksi penjualan</td>
+</tr>
+<tr>
+<td><strong>Tgl. Jatuh Tempo</strong></td>
+<td>Batas waktu pembayaran sesuai Term of Payment</td>
+</tr>
+<tr>
+<td><strong>Alamat Kirim</strong></td>
+<td>Alamat pengiriman barang. Wajib diisi</td>
+</tr>
+<tr>
+<td><strong>Provinsi</strong>, <strong>Kabupaten/Kota</strong></td>
+<td>Lokasi pengiriman. Provinsi wajib diisi</td>
+</tr>
+<tr>
+<td><strong>Sales Area</strong></td>
+<td>Wajib diisi</td>
+</tr>
+<tr>
+<td><strong>Penanggung Jawab</strong></td>
+<td>Wajib diisi — dipilih dari user dengan role PIC (Apoteker Penanggung Jawab); nomor SIPA-nya otomatis ikut tercatat di faktur</td>
+</tr>
+</tbody>
+</table>
+<h3 id="penjelasan-field-entri-barang_1">Penjelasan Field — Entri Barang</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Keterangan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Barang</strong></td>
+<td>Pilih produk dari dropdown pencarian</td>
+</tr>
+<tr>
+<td><strong>Batch</strong></td>
+<td>Nomor batch/lot barang</td>
+</tr>
+<tr>
+<td><strong>Exp. Date</strong></td>
+<td>Tanggal kadaluarsa barang</td>
+</tr>
+<tr>
+<td><strong>Qty</strong></td>
+<td>Jumlah barang <strong>dalam satuan kemasan yang dipilih</strong></td>
+</tr>
+<tr>
+<td><strong>Kemasan</strong></td>
+<td>Pilih satuan (sama seperti Pembelian — mis. "Box" atau satuan dasar seperti "tablet"), dikonversi otomatis ke satuan dasar</td>
+</tr>
+<tr>
+<td><strong>Qty Preview</strong></td>
+<td>Menampilkan hasil konversi ke satuan dasar, sama seperti pada Pembelian (lihat Bab 4)</td>
+</tr>
+<tr>
+<td><strong>Harga (HNA)</strong></td>
+<td>Harga jual per satuan kemasan yang dipilih</td>
+</tr>
+<tr>
+<td><strong>Disc.(%)</strong></td>
+<td>Diskon per item, maksimal 100%</td>
+</tr>
+</tbody>
+</table>
+<p>Kolom pada tabel barang ("DAFTAR ITEM FAKTUR"): <strong>Kode Brg, Nama Barang, Batch, Exp. Date, Qty, Sat, Harga, Diskon, Jml. Harga</strong>.</p>
+<p>Bagian bawah form menampilkan <strong>Total Harga</strong>, <strong>Ekstra Diskon</strong>, <strong>Total DPP</strong>, <strong>PPN 11%</strong>, dan <strong>TOTAL TAGIHAN</strong>.</p>
+<h3 id="langkah-langkah_2">Langkah-Langkah</h3>
+<ol>
+<li>Klik <strong>Add</strong> untuk membuat faktur penjualan baru.</li>
+<li>Isi <strong>Kode Pelanggan</strong>, <strong>Salesman</strong>, <strong>Term of Payment</strong>, <strong>Tgl. Faktur</strong>, dan <strong>Tgl. Jatuh Tempo</strong>.</li>
+<li>Isi <strong>Alamat Kirim</strong>, <strong>Provinsi</strong>, <strong>Kabupaten/Kota</strong>, dan <strong>Sales Area</strong>.</li>
+<li>Pilih <strong>Penanggung Jawab</strong>.</li>
+<li>Pada bagian entri barang: pilih <strong>Barang</strong>, isi <strong>Batch</strong>, <strong>Exp. Date</strong>, <strong>Qty</strong>, dan <strong>Kemasan</strong> — perhatikan <strong>Qty Preview</strong> untuk memastikan hasil konversi sudah benar.</li>
+<li>Isi <strong>Harga (HNA)</strong> dan <strong>Disc.(%)</strong> jika ada, klik <strong>+ Tambah</strong>. Ulangi untuk barang lain.</li>
+<li>Klik <strong>Save</strong> untuk menyimpan sebagai Draft.</li>
+<li>Klik <strong>Invoice</strong> untuk menerbitkan faktur (status berubah menjadi Invoice). <strong>Stok belum berubah</strong> pada tahap ini.</li>
+<li>Setelah barang benar-benar dikirim/diserahkan ke pelanggan, klik <strong>Post</strong>. Pada tahap inilah <strong>stok berkurang</strong> sesuai qty (dalam satuan dasar) untuk setiap barang.</li>
+<li>Jika faktur batal (sebelum atau sesudah stok berkurang), klik <strong>Cancel</strong>. Jika sudah Posted, sistem otomatis mengembalikan stok yang sudah berkurang.</li>
+</ol>
+<p><code>[SCREENSHOT: Form Penjualan dengan status INVOICE]</code></p>
+<h3 id="dampak-terhadap-stok_1">Dampak terhadap Stok</h3>
+<table>
+<thead>
+<tr>
+<th>Aksi</th>
+<th>Status Berubah</th>
+<th>Efek Stok</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Invoice</td>
+<td>Draft -&gt; Invoice</td>
+<td>Tidak ada</td>
+</tr>
+<tr>
+<td>Post</td>
+<td>Invoice -&gt; Posted</td>
+<td><strong>Stok berkurang</strong> (keluar ke pelanggan)</td>
+</tr>
+<tr>
+<td>Cancel (dari Posted)</td>
+<td>Posted -&gt; Cancelled</td>
+<td>Stok dikembalikan (dibalik)</td>
+</tr>
+<tr>
+<td>Cancel (dari Draft/Invoice)</td>
+<td>-&gt; Cancelled</td>
+<td>Tidak ada efek stok (belum pernah berkurang)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Catatan:</strong> Pola ini mirip dengan Purchase Order (Bab 5) — ada satu tahap administratif (<strong>Invoice</strong>/Confirm) sebelum tahap yang benar-benar menyentuh stok (<strong>Post</strong>/Receive). Bedanya, pada Penjualan stok <strong>berkurang</strong>, sedangkan pada Pembelian stok <strong>bertambah</strong>.</p>
+</blockquote>
+<h3 id="perhatian-kesalahan-umum_1">Perhatian / Kesalahan Umum</h3>
+<ul>
+<li>Barang tidak bisa ditambahkan ke tabel jika <strong>Pelanggan</strong> atau <strong>Barang</strong> belum dipilih, atau <strong>Qty</strong> masih kosong/nol.</li>
+<li>Tombol <strong>Post</strong> hanya aktif jika faktur berstatus <strong>Invoice</strong> — faktur yang masih Draft harus di-<strong>Invoice</strong> dulu sebelum bisa di-<strong>Post</strong>.</li>
+<li><strong>Post</strong> akan gagal jika stok yang tersedia lebih sedikit dari qty yang difakturkan untuk salah satu barang — cek dulu <strong>Kartu Stok</strong> (Bab 12) bila ragu.</li>
+<li><strong>Tgl. Faktur</strong> tidak boleh diubah ke bulan yang berbeda dari bulan saat faktur pertama kali dibuat (nomor faktur mengandung kode bulan) — jika tanggalnya salah, hapus dan buat faktur baru dengan tanggal yang benar.</li>
+<li>Faktur yang sudah <strong>Posted</strong> menjadi acuan untuk <strong>Retur Penjualan</strong> (Bab 8) — retur hanya bisa dibuat dari faktur yang sudah di-Post.</li>
+</ul>
+<hr />
+<h2 id="7-retur-pembelian-purchase-return">7. Retur Pembelian (Purchase Return)</h2>
+<h3 id="tujuan_3">Tujuan</h3>
+<p>Mencatat pengembalian barang ke supplier, misalnya karena barang rusak atau tidak sesuai pesanan.</p>
+<h3 id="cara-mengakses_3">Cara Mengakses</h3>
+<p><strong>Dashboard Transaksi -&gt; Retur Pembelian</strong></p>
+<p><code>[SCREENSHOT: Form Retur Pembelian]</code></p>
+<h3 id="penjelasan-field">Penjelasan Field</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Keterangan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Principal / Supplier</strong></td>
+<td>Wajib diisi</td>
+</tr>
+<tr>
+<td><strong>Pilih PO</strong></td>
+<td>Menampilkan daftar PO milik supplier tersebut yang <strong>sudah berstatus Received</strong>. PO yang belum diterima tidak akan muncul</td>
+</tr>
+<tr>
+<td><strong>Tgl. Return</strong></td>
+<td>Tanggal retur dibuat</td>
+</tr>
+<tr>
+<td><strong>Alasan</strong></td>
+<td>Alasan retur (teks bebas)</td>
+</tr>
+</tbody>
+</table>
+<p>Setelah memilih PO, dropdown <strong>Barang</strong> hanya menampilkan produk yang ada pada PO tersebut. Tabel barang menggunakan kolom yang sama seperti form Pembelian.</p>
+<h3 id="langkah-langkah_3">Langkah-Langkah</h3>
+<ol>
+<li>Klik <strong>Add</strong> untuk membuat retur baru.</li>
+<li>Pilih <strong>Principal / Supplier</strong>.</li>
+<li>Pilih <strong>PO</strong> yang menjadi acuan retur (hanya PO berstatus Received yang tersedia).</li>
+<li>Isi <strong>Tgl. Return</strong> dan <strong>Alasan</strong>.</li>
+<li>Pilih barang dan jumlah yang ingin diretur, klik <strong>+ Tambah</strong>.</li>
+<li>Klik <strong>Save</strong> untuk menyimpan sebagai Draft.</li>
+<li>Klik <strong>Post</strong> untuk memfinalisasi retur. <strong>Stok akan berkurang</strong> sejumlah barang yang diretur.</li>
+<li>Jika retur salah/dibatalkan, klik <strong>Void</strong> — stok akan dikembalikan (ditambahkan kembali).</li>
+</ol>
+<h3 id="dampak-terhadap-stok_2">Dampak terhadap Stok</h3>
+<table>
+<thead>
+<tr>
+<th>Aksi</th>
+<th>Efek Stok</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Post</td>
+<td><strong>Stok berkurang</strong> (keluar ke supplier)</td>
+</tr>
+<tr>
+<td>Void (setelah Posted)</td>
+<td>Stok dikembalikan (dibalik)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="perhatian">Perhatian</h3>
+<ul>
+<li>Retur tidak bisa di-Post jika stok yang tersedia lebih sedikit dari jumlah yang diretur — sistem akan menampilkan galat (error).</li>
+<li>Hanya PO dengan status <strong>Received</strong> yang bisa dijadikan acuan retur.</li>
+</ul>
+<hr />
+<h2 id="8-retur-penjualan-sales-return">8. Retur Penjualan (Sales Return)</h2>
+<h3 id="tujuan_4">Tujuan</h3>
+<p>Mencatat barang yang dikembalikan oleh pelanggan (customer) ke gudang. Retur hanya bisa dibuat dari faktur Penjualan yang sudah berstatus <strong>Posted</strong> (lihat Bab 6).</p>
+<h3 id="cara-mengakses_4">Cara Mengakses</h3>
+<p><strong>Dashboard Transaksi -&gt; Retur Penjualan</strong></p>
+<p><code>[SCREENSHOT: Form Retur Penjualan]</code></p>
+<h3 id="penjelasan-field_1">Penjelasan Field</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Keterangan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pelanggan</strong></td>
+<td>Wajib diisi</td>
+</tr>
+<tr>
+<td><strong>Pilih SO</strong></td>
+<td>Menampilkan daftar Sales Order milik pelanggan tersebut yang <strong>sudah berstatus Posted</strong>. SO yang belum di-posting tidak akan muncul</td>
+</tr>
+<tr>
+<td><strong>Tgl. Return</strong></td>
+<td>Tanggal retur dibuat</td>
+</tr>
+<tr>
+<td><strong>Alasan</strong></td>
+<td>Alasan retur (teks bebas)</td>
+</tr>
+</tbody>
+</table>
+<p>Setelah memilih SO, dropdown <strong>Barang</strong> hanya menampilkan produk yang ada pada SO tersebut.</p>
+<h3 id="langkah-langkah_4">Langkah-Langkah</h3>
+<ol>
+<li>Klik <strong>Add</strong> untuk membuat retur baru.</li>
+<li>Pilih <strong>Pelanggan</strong>.</li>
+<li>Pilih <strong>SO</strong> yang menjadi acuan retur (hanya SO berstatus Posted yang tersedia).</li>
+<li>Isi <strong>Tgl. Return</strong> dan <strong>Alasan</strong>.</li>
+<li>Pilih barang dan jumlah yang dikembalikan, klik <strong>+ Tambah</strong>.</li>
+<li>Klik <strong>Save</strong>, lalu <strong>Post</strong> untuk memfinalisasi. <strong>Stok akan bertambah</strong> kembali sejumlah barang yang diretur.</li>
+<li>Jika retur salah, klik <strong>Void</strong> — stok akan dikurangi kembali (dibalik).</li>
+</ol>
+<h3 id="dampak-terhadap-stok_3">Dampak terhadap Stok</h3>
+<table>
+<thead>
+<tr>
+<th>Aksi</th>
+<th>Efek Stok</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Post</td>
+<td><strong>Stok bertambah</strong> (barang kembali ke gudang)</td>
+</tr>
+<tr>
+<td>Void (setelah Posted)</td>
+<td>Stok dikurangi kembali (dibalik)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="9-pindah-stok-stock-transfer">9. Pindah Stok (Stock Transfer)</h2>
+<h3 id="tujuan_5">Tujuan</h3>
+<p>Mencatat perpindahan barang antar cabang. Karena setiap cabang memiliki database sendiri, pindah stok dicatat <strong>secara terpisah</strong> di masing-masing cabang: cabang pengirim membuat transfer <strong>Keluar (Out)</strong>, dan cabang penerima membuat transfer <strong>Masuk (In)</strong>.</p>
+<h3 id="cara-mengakses_5">Cara Mengakses</h3>
+<p><strong>Dashboard Inventory -&gt; Pindah Stok</strong></p>
+<p><code>[SCREENSHOT: Form Pindah Stok]</code></p>
+<h3 id="penjelasan-field_2">Penjelasan Field</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Keterangan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tipe Transfer</strong></td>
+<td>Pilih <strong>Transfer Keluar (Out)</strong> jika cabang ini mengirim barang, atau <strong>Transfer Masuk (In)</strong> jika cabang ini menerima barang</td>
+</tr>
+<tr>
+<td><strong>Nama Cabang</strong></td>
+<td>Nama cabang tujuan (jika Out) atau cabang asal (jika In). <strong>Wajib diisi</strong></td>
+</tr>
+<tr>
+<td><strong>Tgl. Transfer</strong></td>
+<td>Tanggal transfer</td>
+</tr>
+<tr>
+<td><strong>Catatan</strong></td>
+<td>Catatan bebas</td>
+</tr>
+<tr>
+<td><strong>Barang</strong></td>
+<td>Pilih produk</td>
+</tr>
+<tr>
+<td><strong>Batch</strong></td>
+<td>Hanya menampilkan batch yang memiliki stok tersedia</td>
+</tr>
+<tr>
+<td><strong>Qty</strong></td>
+<td>Jumlah yang dipindahkan</td>
+</tr>
+</tbody>
+</table>
+<h3 id="langkah-langkah_5">Langkah-Langkah</h3>
+<ol>
+<li>Klik <strong>Add</strong>.</li>
+<li>Pilih <strong>Tipe Transfer</strong> (Out atau In) sesuai peran cabang Anda dalam transaksi ini.</li>
+<li>Isi <strong>Nama Cabang</strong> lawan transaksi.</li>
+<li>Isi <strong>Tgl. Transfer</strong> dan <strong>Catatan</strong> jika perlu.</li>
+<li>Pilih <strong>Barang</strong>, <strong>Batch</strong>, dan <strong>Qty</strong>, klik <strong>+ Tambah</strong>. Ulangi untuk barang lain.</li>
+<li>Klik <strong>Save</strong>, lalu <strong>Post</strong>.
+   - Jika <strong>Transfer Keluar</strong>: stok di cabang ini <strong>berkurang</strong>.
+   - Jika <strong>Transfer Masuk</strong>: stok di cabang ini <strong>bertambah</strong>.</li>
+<li>Jika transfer salah, klik <strong>Void</strong> untuk membatalkan — stok dibalik sesuai tipe transfer aslinya.</li>
+</ol>
+<h3 id="dampak-terhadap-stok_4">Dampak terhadap Stok</h3>
+<table>
+<thead>
+<tr>
+<th>Tipe Transfer</th>
+<th>Efek Stok saat Post</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Keluar (Out)</td>
+<td>Stok cabang ini <strong>berkurang</strong></td>
+</tr>
+<tr>
+<td>Masuk (In)</td>
+<td>Stok cabang ini <strong>bertambah</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="perhatian_1">Perhatian</h3>
+<ul>
+<li><strong>Nama Cabang wajib diisi</strong> — dokumen tidak bisa disimpan/di-post tanpa ini, karena digunakan sebagai catatan asal/tujuan barang.</li>
+<li>Transfer Keluar tidak bisa di-Post jika stok tidak mencukupi.</li>
+<li>Pastikan kedua cabang (pengirim dan penerima) sama-sama mencatat transaksinya masing-masing — sistem tidak melakukan sinkronisasi otomatis antar database cabang.</li>
+</ul>
+<hr />
+<h2 id="10-stok-opname">10. Stok Opname</h2>
+<h3 id="tujuan_6">Tujuan</h3>
+<p>Mencocokkan catatan stok di sistem dengan jumlah fisik hasil hitung di gudang. Selisih yang ditemukan akan <strong>otomatis</strong> menghasilkan dokumen Penyesuaian Stok (Stock Adjustment).</p>
+<h3 id="cara-mengakses_6">Cara Mengakses</h3>
+<p><strong>Dashboard Inventory -&gt; Stok Opname</strong></p>
+<p><code>[SCREENSHOT: Form Stok Opname dengan tabel Qty Sistem vs Qty Fisik]</code></p>
+<h3 id="penjelasan-field_3">Penjelasan Field</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Keterangan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tipe Opname</strong></td>
+<td><strong>Physical Count</strong> (opname rutin, boleh berkali-kali) atau <strong>Opening Stock</strong> (stok awal saat pertama kali implementasi sistem — hanya boleh dibuat <strong>satu kali</strong>)</td>
+</tr>
+<tr>
+<td><strong>Tgl. Opname</strong></td>
+<td>Tanggal pelaksanaan opname</td>
+</tr>
+<tr>
+<td><strong>Catatan</strong></td>
+<td>Catatan bebas</td>
+</tr>
+<tr>
+<td><strong>Load Products</strong></td>
+<td>Tombol untuk memuat semua produk ke tabel sekaligus</td>
+</tr>
+</tbody>
+</table>
+<p>Kolom tabel: <strong>Kode Barang, Nama Barang, Batch, Satuan, Qty Sistem</strong> (otomatis, tidak bisa diubah), <strong>Qty Fisik</strong> (diisi manual sesuai hasil hitung), <strong>Selisih</strong> (dihitung otomatis = Qty Fisik - Qty Sistem, berwarna hijau jika lebih, merah jika kurang).</p>
+<h3 id="langkah-langkah_6">Langkah-Langkah</h3>
+<ol>
+<li>Klik <strong>Add</strong>, pilih <strong>Tipe Opname</strong>.</li>
+<li>Klik <strong>Load Products</strong> untuk memuat seluruh produk (akan muncul konfirmasi karena akan mengganti data yang sudah ada di tabel).</li>
+<li>Untuk setiap baris, isi <strong>Qty Fisik</strong> sesuai hasil hitung fisik di gudang. Kolom <strong>Selisih</strong> akan terisi otomatis.</li>
+<li>Klik <strong>Save</strong> untuk menyimpan sebagai Draft (bisa dilanjutkan nanti jika opname belum selesai dihitung).</li>
+<li>Setelah semua barang selesai dihitung, klik <strong>Post</strong>.
+   - Sistem otomatis membuat dokumen <strong>Penyesuaian Stok</strong> untuk setiap barang yang memiliki selisih.
+   - Stok langsung disesuaikan agar sama dengan <strong>Qty Fisik</strong>.</li>
+</ol>
+<p><code>[SCREENSHOT: Kolom Selisih berwarna hijau/merah]</code></p>
+<h3 id="dampak-terhadap-stok_5">Dampak terhadap Stok</h3>
+<p>Setiap barang dengan selisih != 0 akan menghasilkan penyesuaian otomatis:
+- Selisih <strong>positif</strong> (Qty Fisik &gt; Qty Sistem) -&gt; stok <strong>bertambah</strong>
+- Selisih <strong>negatif</strong> (Qty Fisik &lt; Qty Sistem) -&gt; stok <strong>berkurang</strong></p>
+<h3 id="perhatian_2">Perhatian</h3>
+<ul>
+<li><strong>Opening Stock</strong> hanya bisa dibuat satu kali — sistem akan menolak jika sudah pernah ada.</li>
+<li>Setelah di-<strong>Post</strong>, opname tidak bisa diedit. Dokumen Penyesuaian Stok yang dihasilkan juga otomatis berstatus Posted, tercatat dengan alasan "Stock Opname".</li>
+<li>Pastikan penghitungan fisik benar-benar akurat sebelum Post, karena ini akan langsung mengubah stok resmi di sistem.</li>
+</ul>
+<hr />
+<h2 id="11-penyesuaian-stok-stock-adjustment">11. Penyesuaian Stok (Stock Adjustment)</h2>
+<h3 id="tujuan_7">Tujuan</h3>
+<p>Menyesuaikan stok secara manual di luar proses opname, misalnya karena barang rusak, hilang, kadaluarsa, atau koreksi kesalahan input sebelumnya.</p>
+<h3 id="cara-mengakses_7">Cara Mengakses</h3>
+<p><strong>Dashboard Inventory -&gt; Penyesuaian Stok</strong></p>
+<p><code>[SCREENSHOT: Form Penyesuaian Stok]</code></p>
+<h3 id="penjelasan-field_4">Penjelasan Field</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Keterangan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Alasan</strong></td>
+<td>Pilih salah satu: <strong>Kerusakan</strong>, <strong>Kehilangan</strong>, <strong>Kadaluarsa</strong>, <strong>Koreksi</strong>, <strong>Lainnya</strong> (alasan "Stock Opname" khusus untuk penyesuaian otomatis dari Bab 10, tidak dipilih manual)</td>
+</tr>
+<tr>
+<td><strong>Tgl. Penyesuaian</strong></td>
+<td>Tanggal penyesuaian</td>
+</tr>
+<tr>
+<td><strong>Catatan</strong></td>
+<td>Catatan bebas</td>
+</tr>
+<tr>
+<td><strong>Barang</strong>, <strong>Batch</strong></td>
+<td>Pilih produk dan batch yang akan disesuaikan (hanya batch dengan stok yang tersedia)</td>
+</tr>
+<tr>
+<td><strong>Qty Sebelum</strong></td>
+<td>Terisi otomatis sesuai stok saat ini, tidak bisa diubah</td>
+</tr>
+<tr>
+<td><strong>Arah</strong></td>
+<td>Pilih <strong>In</strong> (menambah stok) atau <strong>Out</strong> (mengurangi stok)</td>
+</tr>
+<tr>
+<td><strong>Qty Penyesuaian</strong></td>
+<td>Jumlah yang ditambah/dikurangi</td>
+</tr>
+</tbody>
+</table>
+<p>Kolom tabel: <strong>Kode Barang, Nama Barang, Batch, Satuan, Qty Sebelum, Arah, Qty Adj, Qty Sesudah</strong> (dihitung otomatis).</p>
+<h3 id="langkah-langkah_7">Langkah-Langkah</h3>
+<ol>
+<li>Klik <strong>Add</strong>, pilih <strong>Alasan</strong> penyesuaian.</li>
+<li>Isi <strong>Tgl. Penyesuaian</strong> dan <strong>Catatan</strong>.</li>
+<li>Pilih <strong>Barang</strong> dan <strong>Batch</strong> — <strong>Qty Sebelum</strong> akan terisi otomatis.</li>
+<li>Pilih <strong>Arah</strong> (In/Out) dan isi <strong>Qty Penyesuaian</strong>.</li>
+<li>Klik <strong>+ Tambah</strong>. Ulangi untuk barang lain jika perlu.</li>
+<li>Klik <strong>Save</strong>, lalu <strong>Post</strong> untuk memfinalisasi. Stok berubah sesuai arah yang dipilih.</li>
+<li>Jika salah, klik <strong>Void</strong> untuk membatalkan — stok dibalik ke posisi semula.</li>
+</ol>
+<h3 id="dampak-terhadap-stok_6">Dampak terhadap Stok</h3>
+<table>
+<thead>
+<tr>
+<th>Arah</th>
+<th>Efek Stok saat Post</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>In</td>
+<td>Stok <strong>bertambah</strong></td>
+</tr>
+<tr>
+<td>Out</td>
+<td>Stok <strong>berkurang</strong> (ditolak jika stok tidak mencukupi)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="12-kartu-stok-stock-card">12. Kartu Stok (Stock Card)</h2>
+<h3 id="tujuan_8">Tujuan</h3>
+<p>Melihat posisi stok terkini per produk dan per batch — berapa yang ada di gudang, berapa yang sudah dialokasikan (reserved), dan berapa yang benar-benar tersedia untuk dijual.</p>
+<h3 id="cara-mengakses_8">Cara Mengakses</h3>
+<p>Menu <strong>Inventory</strong> atau <strong>Reporting -&gt; Kartu Stok</strong></p>
+<p><code>[SCREENSHOT: Layar Kartu Stok dengan daftar produk]</code></p>
+<h3 id="penjelasan-field_5">Penjelasan Field</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Keterangan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Search</strong></td>
+<td>Cari berdasarkan kode barang, nama barang, atau nomor batch</td>
+</tr>
+<tr>
+<td><strong>Hide Zero Stock</strong></td>
+<td>Centang untuk menyembunyikan barang yang stoknya kosong (0)</td>
+</tr>
+<tr>
+<td><strong>Qty Onhand</strong></td>
+<td>Jumlah fisik di gudang (merah jika minus, oranye jika nol)</td>
+</tr>
+<tr>
+<td><strong>Qty Reserved</strong></td>
+<td>Jumlah yang sudah dialokasikan untuk pesanan/pending</td>
+</tr>
+<tr>
+<td><strong>Qty Available</strong></td>
+<td>Sisa yang benar-benar bisa dijual (= Onhand - Reserved)</td>
+</tr>
+</tbody>
+</table>
+<p>Bagian bawah menampilkan ringkasan: total baris, jumlah stok negatif, dan jumlah barang habis.</p>
+<h3 id="langkah-langkah_8">Langkah-Langkah</h3>
+<ol>
+<li>Buka layar Kartu Stok.</li>
+<li>Gunakan kotak <strong>Search</strong> untuk mencari produk tertentu, atau centang <strong>Hide Zero Stock</strong> untuk fokus pada barang yang masih ada stoknya.</li>
+<li>Klik <strong>Refresh</strong> untuk memuat data terbaru.</li>
+<li>Klik <strong>Print</strong> untuk mencetak/preview laporan Kartu Stok dalam format PDF.</li>
+</ol>
+<hr />
+<h2 id="13-riwayat-pergerakan-stok-stock-movement">13. Riwayat Pergerakan Stok (Stock Movement)</h2>
+<h3 id="tujuan_9">Tujuan</h3>
+<p>Melihat jejak audit (audit trail) seluruh transaksi yang memengaruhi stok — berguna untuk menelusuri mengapa stok suatu produk berubah pada tanggal tertentu.</p>
+<h3 id="cara-mengakses_9">Cara Mengakses</h3>
+<p>Menu <strong>Inventory</strong> atau <strong>Reporting -&gt; Riwayat Pergerakan Stok</strong></p>
+<p><code>[SCREENSHOT: Layar Riwayat Pergerakan Stok dengan filter tanggal]</code></p>
+<h3 id="penjelasan-field_6">Penjelasan Field</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Keterangan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Dari Tanggal / Sampai Tanggal</strong></td>
+<td>Rentang tanggal yang ingin ditelusuri</td>
+</tr>
+<tr>
+<td><strong>Search</strong></td>
+<td>Cari berdasarkan kode/nama barang</td>
+</tr>
+<tr>
+<td>Kolom hasil</td>
+<td>Tanggal, Jenis Pergerakan, Arah (In/Out), Kode &amp; Nama Barang, Batch, Satuan, Qty, Jenis Dokumen Sumber, Nomor Dokumen, Catatan</td>
+</tr>
+</tbody>
+</table>
+<h3 id="jenis-pergerakan-stok">Jenis Pergerakan Stok</h3>
+<table>
+<thead>
+<tr>
+<th>Jenis</th>
+<th>Arah</th>
+<th>Sumber</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stok Awal (Opening Stock)</td>
+<td>Masuk</td>
+<td>Stok Opname (Opening Stock)</td>
+</tr>
+<tr>
+<td>Penerimaan Pembelian</td>
+<td>Masuk</td>
+<td>Pembelian (Receive)</td>
+</tr>
+<tr>
+<td>Penjualan</td>
+<td>Keluar</td>
+<td>Sales Order (Posted)</td>
+</tr>
+<tr>
+<td>Retur Penjualan</td>
+<td>Masuk</td>
+<td>Retur Penjualan (Post)</td>
+</tr>
+<tr>
+<td>Retur Pembelian</td>
+<td>Keluar</td>
+<td>Retur Pembelian (Post)</td>
+</tr>
+<tr>
+<td>Transfer Keluar</td>
+<td>Keluar</td>
+<td>Pindah Stok (Out, Post)</td>
+</tr>
+<tr>
+<td>Transfer Masuk</td>
+<td>Masuk</td>
+<td>Pindah Stok (In, Post)</td>
+</tr>
+<tr>
+<td>Penyesuaian Masuk</td>
+<td>Masuk</td>
+<td>Penyesuaian Stok (In, Post)</td>
+</tr>
+<tr>
+<td>Penyesuaian Keluar</td>
+<td>Keluar</td>
+<td>Penyesuaian Stok (Out, Post)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="langkah-langkah_9">Langkah-Langkah</h3>
+<ol>
+<li>Buka layar Riwayat Pergerakan Stok.</li>
+<li>Tentukan <strong>Dari Tanggal</strong> dan <strong>Sampai Tanggal</strong>.</li>
+<li>(Opsional) Ketik kata kunci di <strong>Search</strong> untuk fokus pada produk tertentu.</li>
+<li>Klik <strong>Refresh</strong> untuk memuat data.</li>
+<li>Klik <strong>Print</strong> untuk mencetak/preview laporan dalam format PDF.</li>
+</ol>
+<hr />
+<h2 id="14-tanya-jawab-pemecahan-masalah">14. Tanya Jawab &amp; Pemecahan Masalah</h2>
+<p><strong>T: Saya sudah klik Post tapi tombol Save/Delete tidak bisa diklik lagi. Kenapa?</strong>
+J: Ini normal. Setelah dokumen berstatus Posted/Confirmed/Received, dokumen terkunci agar riwayat stok tetap akurat. Gunakan tombol <strong>Void/Cancel</strong> jika perlu membatalkan.</p>
+<p><strong>T: Saya salah memasukkan jumlah barang setelah dokumen di-Post. Bagaimana cara memperbaikinya?</strong>
+J: Jangan mengedit dokumen lama. Klik <strong>Void/Cancel</strong> pada dokumen tersebut (stok akan otomatis dikembalikan ke posisi semula), lalu buat dokumen baru dengan data yang benar.</p>
+<p><strong>T: Kenapa dropdown Kemasan pada Pembelian tidak menampilkan satuan "Box"?</strong>
+J: Kemasan produk belum didaftarkan. Buka <strong>Master Data -&gt; Produk</strong>, pilih produk tersebut, lalu tambahkan kemasan "Box" beserta faktor konversinya di layar <strong>Kemasan Produk</strong> (lihat Bab 4).</p>
+<p><strong>T: Kenapa Retur Pembelian tidak menemukan PO yang saya cari di dropdown "Pilih PO"?</strong>
+J: Hanya PO dengan status <strong>Received</strong> yang muncul di daftar. Jika PO masih Draft atau Confirmed (barang belum diterima), retur belum bisa dibuat untuk PO tersebut.</p>
+<p><strong>T: Kenapa saat Post Transfer/Retur/Penyesuaian keluar, muncul pesan error terkait stok?</strong>
+J: Sistem menolak transaksi yang membuat stok menjadi negatif. Periksa kembali <strong>Kartu Stok</strong> (Bab 12) untuk melihat jumlah yang benar-benar tersedia sebelum mencoba Post ulang.</p>
+<p><strong>T: Apakah stok Opening Stock bisa dibuat ulang jika salah input?</strong>
+J: Tidak bisa dibuat dua kali dari menu Stok Opname. Jika Opening Stock yang sudah Posted salah, gunakan <strong>Penyesuaian Stok</strong> (Bab 11, alasan "Koreksi") untuk membetulkan selisihnya.</p>
+<p><strong>T: Apakah Pindah Stok otomatis tercatat di kedua cabang?</strong>
+J: Tidak. Karena tiap cabang punya database sendiri, kedua cabang harus <strong>masing-masing</strong> mencatat transaksinya sendiri — cabang pengirim membuat Transfer <strong>Out</strong>, cabang penerima membuat Transfer <strong>In</strong>.</p>
+<hr />
+<p><em>Dokumen ini adalah bagian dari manual penggunaan aplikasi CIS. Untuk pertanyaan lebih lanjut, hubungi tim IT PT. Capung Indah Sentosa.</em></p>
+</body>
+</html>
