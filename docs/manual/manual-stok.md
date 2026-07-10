@@ -91,7 +91,7 @@ Draft  ->  Posted/Confirmed/Received  ->  (boleh) Cancelled
 
 > **Penting:** Purchase Order memiliki tahapan status yang sedikit berbeda dan lebih panjang: **Draft -> Confirmed -> Received -> (boleh) Cancelled**. Stok baru bertambah pada tahap **Received**, bukan saat Confirmed. Lihat Bab 5.
 
-> **Penting:** Sales Order (Penjualan) juga punya tahapan tiga langkah: **Draft -> Invoice -> Posted -> (boleh) Cancelled**. Tombol **Invoice** hanya mengubah status (belum menyentuh stok sama sekali), sedangkan tombol **Post** adalah langkah yang benar-benar mengurangi stok. Lihat Bab 6.
+> **Penting:** Sales Order (Penjualan) juga punya tahapan tiga langkah: **Draft -> Invoice -> Posted -> (boleh) Cancelled**, tapi tidak seperti dokumen lain, tahap **Invoice** tetap menyentuh Stock Card — bukan mengurangi **Qty Onhand**, melainkan menambah **Qty Reserved** (lihat Bab 12). Baru pada tahap **Post**, barang benar-benar keluar: **Qty Onhand** berkurang dan reservasinya dilepas. Lihat Bab 6.
 
 ### Tombol Aksi yang Umum Ditemui
 
@@ -272,28 +272,29 @@ Bagian bawah form menampilkan **Total Harga**, **Ekstra Diskon**, **Total DPP**,
 5. Pada bagian entri barang: pilih **Barang**, isi **Batch**, **Exp. Date**, **Qty**, dan **Kemasan** — perhatikan **Qty Preview** untuk memastikan hasil konversi sudah benar.
 6. Isi **Harga (HNA)** dan **Disc.(%)** jika ada, klik **+ Tambah**. Ulangi untuk barang lain.
 7. Klik **Save** untuk menyimpan sebagai Draft.
-8. Klik **Invoice** untuk menerbitkan faktur (status berubah menjadi Invoice). **Stok belum berubah** pada tahap ini.
-9. Setelah barang benar-benar dikirim/diserahkan ke pelanggan, klik **Post**. Pada tahap inilah **stok berkurang** sesuai qty (dalam satuan dasar) untuk setiap barang.
-10. Jika faktur batal (sebelum atau sesudah stok berkurang), klik **Cancel**. Jika sudah Posted, sistem otomatis mengembalikan stok yang sudah berkurang.
+8. Klik **Invoice** untuk menerbitkan faktur (status berubah menjadi Invoice). Barang **belum keluar gudang**, tapi qty-nya langsung **direservasi** (lihat Bab 12) agar tidak bisa ikut dijual di faktur lain.
+9. Setelah barang benar-benar dikirim/diserahkan ke pelanggan, klik **Post**. Pada tahap inilah **Qty Onhand berkurang** sesuai qty (dalam satuan dasar) untuk setiap barang, dan reservasinya dilepas.
+10. Jika faktur batal, klik **Cancel**. Sistem otomatis melepas reservasi (jika masih status Invoice) atau mengembalikan stok (jika sudah Posted).
 
 `[SCREENSHOT: Form Penjualan dengan status INVOICE]`
 
 ### Dampak terhadap Stok
 
-| Aksi | Status Berubah | Efek Stok |
-|---|---|---|
-| Invoice | Draft -> Invoice | Tidak ada |
-| Post | Invoice -> Posted | **Stok berkurang** (keluar ke pelanggan) |
-| Cancel (dari Posted) | Posted -> Cancelled | Stok dikembalikan (dibalik) |
-| Cancel (dari Draft/Invoice) | -> Cancelled | Tidak ada efek stok (belum pernah berkurang) |
+| Aksi | Status Berubah | Qty Onhand | Qty Reserved |
+|---|---|---|---|
+| Invoice | Draft -> Invoice | Tidak berubah | **Bertambah** (direservasi) |
+| Post | Invoice -> Posted | **Berkurang** (keluar ke pelanggan) | Berkurang (reservasi dilepas) |
+| Cancel (dari Invoice) | -> Cancelled | Tidak berubah | Berkurang (reservasi dilepas) |
+| Cancel (dari Posted) | -> Cancelled | Bertambah (dikembalikan) | Tidak berubah |
 
-> **Catatan:** Pola ini mirip dengan Purchase Order (Bab 5) — ada satu tahap administratif (**Invoice**/Confirm) sebelum tahap yang benar-benar menyentuh stok (**Post**/Receive). Bedanya, pada Penjualan stok **berkurang**, sedangkan pada Pembelian stok **bertambah**.
+> **Catatan:** Pola ini mirip dengan Purchase Order (Bab 5) — ada satu tahap administratif (**Invoice**/Confirm) sebelum tahap yang benar-benar mengurangi **Qty Onhand** (**Post**/Receive). Bedanya, pada Penjualan tahap Invoice tidak sepenuhnya "tanpa efek" — ia memindahkan qty dari tersedia (**Qty Available**) ke tercadang (**Qty Reserved**), supaya barang yang sudah difakturkan tidak bisa ikut terjual ke pelanggan lain sebelum benar-benar dikirim.
 
 ### Perhatian / Kesalahan Umum
 
 - Barang tidak bisa ditambahkan ke tabel jika **Pelanggan** atau **Barang** belum dipilih, atau **Qty** masih kosong/nol.
 - Tombol **Post** hanya aktif jika faktur berstatus **Invoice** — faktur yang masih Draft harus di-**Invoice** dulu sebelum bisa di-**Post**.
-- **Post** akan gagal jika stok yang tersedia lebih sedikit dari qty yang difakturkan untuk salah satu barang — cek dulu **Kartu Stok** (Bab 12) bila ragu.
+- **Invoice** akan gagal jika **Qty Available** (Onhand dikurangi Reserved) lebih sedikit dari qty yang difakturkan — artinya barang sudah habis atau sudah direservasi faktur lain. Cek **Kartu Stok** (Bab 12) bila ragu.
+- **Post** akan gagal jika **Qty Onhand** fisik lebih sedikit dari qty yang difakturkan, meski sudah lolos tahap Invoice (mis. karena stok berkurang drastis akibat penyesuaian di antara waktu Invoice dan Post).
 - **Tgl. Faktur** tidak boleh diubah ke bulan yang berbeda dari bulan saat faktur pertama kali dibuat (nomor faktur mengandung kode bulan) — jika tanggalnya salah, hapus dan buat faktur baru dengan tanggal yang benar.
 - Faktur yang sudah **Posted** menjadi acuan untuk **Retur Penjualan** (Bab 8) — retur hanya bisa dibuat dari faktur yang sudah di-Post.
 
@@ -553,7 +554,7 @@ Menu **Inventory** atau **Reporting -> Kartu Stok**
 | **Search** | Cari berdasarkan kode barang, nama barang, atau nomor batch |
 | **Hide Zero Stock** | Centang untuk menyembunyikan barang yang stoknya kosong (0) |
 | **Qty Onhand** | Jumlah fisik di gudang (merah jika minus, oranye jika nol) |
-| **Qty Reserved** | Jumlah yang sudah dialokasikan untuk pesanan/pending |
+| **Qty Reserved** | Jumlah yang sudah dicadangkan oleh faktur Penjualan berstatus **Invoice** yang belum di-Post (lihat Bab 6) — barang belum keluar gudang, tapi sudah "dipesan" sehingga tidak bisa dijual dobel |
 | **Qty Available** | Sisa yang benar-benar bisa dijual (= Onhand - Reserved) |
 
 Bagian bawah menampilkan ringkasan: total baris, jumlah stok negatif, dan jumlah barang habis.

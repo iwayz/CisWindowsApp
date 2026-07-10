@@ -1252,17 +1252,13 @@ namespace CisWindowsFormsApp
             if (so.PostingStatus != SalesOrderStatus.Draft)
             { MessageBox.Show("Hanya Sales Order Draft yang bisa dijadikan Invoice.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information); return; }
 
-            var confirm = MessageBox.Show($"Jadikan SO {lblSalesNo.Text} sebagai INVOICE?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var confirm = MessageBox.Show($"Jadikan SO {lblSalesNo.Text} sebagai INVOICE?\nStok akan direservasi.", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (confirm != DialogResult.Yes) return;
 
-            so.PostingStatus = SalesOrderStatus.Invoice;
-            so.ModifiedBy = Properties.Settings.Default.CurrentUserId;
-            so.ModifiedAt = DateTime.Now;
-            _uow.Repository.Update(so);
-            _uow.Commit();
-
-            NavigateRecord(RecordNavigation.Last);
-            MessageBox.Show("Sales Order berhasil dijadikan Invoice.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            var svc = new SalesOrderService(dbContext);
+            var (ok, msg) = svc.Post(txtSalesOrderId.Text.Trim(), Properties.Settings.Default.CurrentUserId);
+            if (ok) { NavigateRecord(RecordNavigation.Last); MessageBox.Show("Sales Order berhasil dijadikan Invoice. Stok telah direservasi.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+            else MessageBox.Show(msg, "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void btnPost_Click(object sender, EventArgs e)

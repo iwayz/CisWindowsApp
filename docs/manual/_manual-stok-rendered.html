@@ -275,7 +275,7 @@ hr {
 </ul>
 <blockquote>
 <p><strong>Penting:</strong> Purchase Order memiliki tahapan status yang sedikit berbeda dan lebih panjang: <strong>Draft -&gt; Confirmed -&gt; Received -&gt; (boleh) Cancelled</strong>. Stok baru bertambah pada tahap <strong>Received</strong>, bukan saat Confirmed. Lihat Bab 5.</p>
-<p><strong>Penting:</strong> Sales Order (Penjualan) juga punya tahapan tiga langkah: <strong>Draft -&gt; Invoice -&gt; Posted -&gt; (boleh) Cancelled</strong>. Tombol <strong>Invoice</strong> hanya mengubah status (belum menyentuh stok sama sekali), sedangkan tombol <strong>Post</strong> adalah langkah yang benar-benar mengurangi stok. Lihat Bab 6.</p>
+<p><strong>Penting:</strong> Sales Order (Penjualan) juga punya tahapan tiga langkah: <strong>Draft -&gt; Invoice -&gt; Posted -&gt; (boleh) Cancelled</strong>, tapi tidak seperti dokumen lain, tahap <strong>Invoice</strong> tetap menyentuh Stock Card — bukan mengurangi <strong>Qty Onhand</strong>, melainkan menambah <strong>Qty Reserved</strong> (lihat Bab 12). Baru pada tahap <strong>Post</strong>, barang benar-benar keluar: <strong>Qty Onhand</strong> berkurang dan reservasinya dilepas. Lihat Bab 6.</p>
 </blockquote>
 <h3 id="tombol-aksi-yang-umum-ditemui">Tombol Aksi yang Umum Ditemui</h3>
 <table>
@@ -620,9 +620,9 @@ hr {
 <li>Pada bagian entri barang: pilih <strong>Barang</strong>, isi <strong>Batch</strong>, <strong>Exp. Date</strong>, <strong>Qty</strong>, dan <strong>Kemasan</strong> — perhatikan <strong>Qty Preview</strong> untuk memastikan hasil konversi sudah benar.</li>
 <li>Isi <strong>Harga (HNA)</strong> dan <strong>Disc.(%)</strong> jika ada, klik <strong>+ Tambah</strong>. Ulangi untuk barang lain.</li>
 <li>Klik <strong>Save</strong> untuk menyimpan sebagai Draft.</li>
-<li>Klik <strong>Invoice</strong> untuk menerbitkan faktur (status berubah menjadi Invoice). <strong>Stok belum berubah</strong> pada tahap ini.</li>
-<li>Setelah barang benar-benar dikirim/diserahkan ke pelanggan, klik <strong>Post</strong>. Pada tahap inilah <strong>stok berkurang</strong> sesuai qty (dalam satuan dasar) untuk setiap barang.</li>
-<li>Jika faktur batal (sebelum atau sesudah stok berkurang), klik <strong>Cancel</strong>. Jika sudah Posted, sistem otomatis mengembalikan stok yang sudah berkurang.</li>
+<li>Klik <strong>Invoice</strong> untuk menerbitkan faktur (status berubah menjadi Invoice). Barang <strong>belum keluar gudang</strong>, tapi qty-nya langsung <strong>direservasi</strong> (lihat Bab 12) agar tidak bisa ikut dijual di faktur lain.</li>
+<li>Setelah barang benar-benar dikirim/diserahkan ke pelanggan, klik <strong>Post</strong>. Pada tahap inilah <strong>Qty Onhand berkurang</strong> sesuai qty (dalam satuan dasar) untuk setiap barang, dan reservasinya dilepas.</li>
+<li>Jika faktur batal, klik <strong>Cancel</strong>. Sistem otomatis melepas reservasi (jika masih status Invoice) atau mengembalikan stok (jika sudah Posted).</li>
 </ol>
 <p><code>[SCREENSHOT: Form Penjualan dengan status INVOICE]</code></p>
 <h3 id="dampak-terhadap-stok_1">Dampak terhadap Stok</h3>
@@ -631,40 +631,46 @@ hr {
 <tr>
 <th>Aksi</th>
 <th>Status Berubah</th>
-<th>Efek Stok</th>
+<th>Qty Onhand</th>
+<th>Qty Reserved</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Invoice</td>
 <td>Draft -&gt; Invoice</td>
-<td>Tidak ada</td>
+<td>Tidak berubah</td>
+<td><strong>Bertambah</strong> (direservasi)</td>
 </tr>
 <tr>
 <td>Post</td>
 <td>Invoice -&gt; Posted</td>
-<td><strong>Stok berkurang</strong> (keluar ke pelanggan)</td>
+<td><strong>Berkurang</strong> (keluar ke pelanggan)</td>
+<td>Berkurang (reservasi dilepas)</td>
+</tr>
+<tr>
+<td>Cancel (dari Invoice)</td>
+<td>-&gt; Cancelled</td>
+<td>Tidak berubah</td>
+<td>Berkurang (reservasi dilepas)</td>
 </tr>
 <tr>
 <td>Cancel (dari Posted)</td>
-<td>Posted -&gt; Cancelled</td>
-<td>Stok dikembalikan (dibalik)</td>
-</tr>
-<tr>
-<td>Cancel (dari Draft/Invoice)</td>
 <td>-&gt; Cancelled</td>
-<td>Tidak ada efek stok (belum pernah berkurang)</td>
+<td>Bertambah (dikembalikan)</td>
+<td>Tidak berubah</td>
 </tr>
 </tbody>
 </table>
 <blockquote>
-<p><strong>Catatan:</strong> Pola ini mirip dengan Purchase Order (Bab 5) — ada satu tahap administratif (<strong>Invoice</strong>/Confirm) sebelum tahap yang benar-benar menyentuh stok (<strong>Post</strong>/Receive). Bedanya, pada Penjualan stok <strong>berkurang</strong>, sedangkan pada Pembelian stok <strong>bertambah</strong>.</p>
+<p><strong>Catatan:</strong> Pola ini mirip dengan Purchase Order (Bab 5) — ada satu tahap administratif (<strong>Invoice</strong>/Confirm) sebelum tahap yang benar-benar mengurangi <strong>Qty Onhand</strong> (<strong>Post</strong>/Receive). Bedanya, pada Penjualan tahap Invoice tidak sepenuhnya "tanpa efek" — ia memindahkan qty dari tersedia (<strong>Qty Available</strong>) ke tercadang (<strong>Qty Reserved</strong>), supaya barang yang sudah difakturkan tidak bisa ikut terjual ke pelanggan lain sebelum benar-benar dikirim.</p>
 </blockquote>
 <h3 id="perhatian-kesalahan-umum_1">Perhatian / Kesalahan Umum</h3>
 <ul>
 <li>Barang tidak bisa ditambahkan ke tabel jika <strong>Pelanggan</strong> atau <strong>Barang</strong> belum dipilih, atau <strong>Qty</strong> masih kosong/nol.</li>
 <li>Tombol <strong>Post</strong> hanya aktif jika faktur berstatus <strong>Invoice</strong> — faktur yang masih Draft harus di-<strong>Invoice</strong> dulu sebelum bisa di-<strong>Post</strong>.</li>
-<li><strong>Post</strong> akan gagal jika stok yang tersedia lebih sedikit dari qty yang difakturkan untuk salah satu barang — cek dulu <strong>Kartu Stok</strong> (Bab 12) bila ragu.</li>
+<li><strong>Invoice</strong> akan gagal jika <strong>Qty Available</strong> (Onhand dikurangi Reserved) lebih sedikit dari qty yang difakturkan — artinya barang sudah habis atau sudah direservasi faktur lain. Cek <strong>Kartu Stok</strong> (Bab 12) bila ragu.</li>
+<li><strong>Post</strong> akan gagal jika <strong>Qty Onhand</strong> fisik lebih sedikit dari qty yang difakturkan, meski sudah lolos tahap Invoice (mis. karena stok berkurang drastis akibat penyesuaian di antara waktu Invoice dan Post).</li>
 <li><strong>Tgl. Faktur</strong> tidak boleh diubah ke bulan yang berbeda dari bulan saat faktur pertama kali dibuat (nomor faktur mengandung kode bulan) — jika tanggalnya salah, hapus dan buat faktur baru dengan tanggal yang benar.</li>
 <li>Faktur yang sudah <strong>Posted</strong> menjadi acuan untuk <strong>Retur Penjualan</strong> (Bab 8) — retur hanya bisa dibuat dari faktur yang sudah di-Post.</li>
 </ul>
@@ -1047,7 +1053,7 @@ hr {
 </tr>
 <tr>
 <td><strong>Qty Reserved</strong></td>
-<td>Jumlah yang sudah dialokasikan untuk pesanan/pending</td>
+<td>Jumlah yang sudah dicadangkan oleh faktur Penjualan berstatus <strong>Invoice</strong> yang belum di-Post (lihat Bab 6) — barang belum keluar gudang, tapi sudah "dipesan" sehingga tidak bisa dijual dobel</td>
 </tr>
 <tr>
 <td><strong>Qty Available</strong></td>

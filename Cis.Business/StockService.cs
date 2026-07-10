@@ -90,14 +90,28 @@ namespace Cis.Business
                         .Include(x => x.SalesOrderItems)
                         .FirstOrDefault(x => x.Id == salesOrderId);
 
-            if (so == null) return (false, "Sales order not found.");
+            if (so == null) return (false, "Sales Order tidak ditemukan.");
 
             if (so.PostingStatus == SalesOrderStatus.Draft)
             {
+                foreach (var item in so.SalesOrderItems)
+                {
+                    var card = GetOrCreateCard(item.ProductId, item.ProductCode, item.ProductName,
+                                               item.BatchId, item.BatchCode, userId);
+
+                    var qtyAvailable = card.QtyOnHand - card.QtyReserved;
+                    if (qtyAvailable < item.Quantity)
+                        return (false, $"Stok tersedia tidak mencukupi untuk produk {item.ProductCode}. " +
+                                       $"Tersedia: {qtyAvailable}, Dibutuhkan: {item.Quantity}");
+
+                    card.QtyReserved += item.Quantity;
+                    Touch(card, userId);
+                }
+
                 so.PostingStatus = SalesOrderStatus.Invoice;
                 Touch(so, userId);
                 _db.SaveChanges();
-                return (true, "Sales order confirmed as Invoice.");
+                return (true, "Sales Order berhasil dijadikan Invoice. Stok telah direservasi.");
             }
 
             if (so.PostingStatus == SalesOrderStatus.Invoice)
@@ -108,26 +122,27 @@ namespace Cis.Business
                                                item.BatchId, item.BatchCode, userId);
 
                     if (card.QtyOnHand < item.Quantity)
-                        return (false, $"Insufficient stock for product {item.ProductCode}. " +
-                                       $"Available: {card.QtyOnHand}, Required: {item.Quantity}");
+                        return (false, $"Stok tidak mencukupi untuk produk {item.ProductCode}. " +
+                                       $"Tersedia: {card.QtyOnHand}, Dibutuhkan: {item.Quantity}");
 
                     card.QtyOnHand -= item.Quantity;
+                    card.QtyReserved = Math.Max(0, card.QtyReserved - item.Quantity);
                     Touch(card, userId);
 
                     _db.StockMovements.Add(CreateMovement(
                         so.SalesDate, StockMovementType.SalesOut, MovementDirection.Out,
                         item.ProductId, item.ProductCode, item.ProductName,
                         item.BatchId, item.BatchCode, item.Quantity,
-                        "SalesOrder", so.Id, $"Sales {so.SalesNo}", userId));
+                        "SalesOrder", so.Id, $"Penjualan {so.SalesNo}", userId));
                 }
 
                 so.PostingStatus = SalesOrderStatus.Posted;
                 Touch(so, userId);
                 _db.SaveChanges();
-                return (true, "Sales order posted. Stock reduced.");
+                return (true, "Sales Order berhasil diposting. Stok telah berkurang.");
             }
 
-            return (false, $"Cannot post sales order with status '{so.PostingStatus}'.");
+            return (false, $"Sales Order tidak bisa diposting dengan status '{so.PostingStatus}'.");
         }
 
         public (bool ok, string message) CancelSalesOrder(string salesOrderId, string userId)
@@ -136,11 +151,12 @@ namespace Cis.Business
                         .Include(x => x.SalesOrderItems)
                         .FirstOrDefault(x => x.Id == salesOrderId);
 
-            if (so == null) return (false, "Sales order not found.");
+            if (so == null) return (false, "Sales Order tidak ditemukan.");
             if (so.PostingStatus == SalesOrderStatus.Cancelled)
-                return (false, "Sales order is already cancelled.");
+                return (false, "Sales Order sudah dibatalkan.");
 
             bool stockWasPosted = so.PostingStatus == SalesOrderStatus.Posted;
+            bool stockWasReserved = so.PostingStatus == SalesOrderStatus.Invoice;
 
             if (stockWasPosted)
             {
@@ -155,14 +171,25 @@ namespace Cis.Business
                         DateTime.Now, StockMovementType.SalesOut, MovementDirection.In,
                         item.ProductId, item.ProductCode, item.ProductName,
                         item.BatchId, item.BatchCode, item.Quantity,
-                        "SalesOrder", so.Id, $"Cancel Sales {so.SalesNo}", userId));
+                        "SalesOrder", so.Id, $"Batal Penjualan {so.SalesNo}", userId));
+                }
+            }
+            else if (stockWasReserved)
+            {
+                foreach (var item in so.SalesOrderItems)
+                {
+                    var card = GetOrCreateCard(item.ProductId, item.ProductCode, item.ProductName,
+                                               item.BatchId, item.BatchCode, userId);
+                    card.QtyReserved = Math.Max(0, card.QtyReserved - item.Quantity);
+                    Touch(card, userId);
                 }
             }
 
             so.PostingStatus = SalesOrderStatus.Cancelled;
             Touch(so, userId);
             _db.SaveChanges();
-            return (true, "Sales order cancelled." + (stockWasPosted ? " Stock reversed." : ""));
+            return (true, "Sales Order dibatalkan." +
+                          (stockWasPosted ? " Stok telah dikembalikan." : stockWasReserved ? " Reservasi telah dilepas." : ""));
         }
 
         // ─── Purchase Order ───────────────────────────────────────────────────
@@ -171,14 +198,14 @@ namespace Cis.Business
         public (bool ok, string message) ConfirmPurchaseOrder(string poId, string userId)
         {
             var po = _db.PurchaseOrders.FirstOrDefault(x => x.Id == poId);
-            if (po == null) return (false, "Purchase order not found.");
+            if (po == null) return (false, "Purchase Order tidak ditemukan.");
             if (po.PostingStatus != PurchaseOrderStatus.Draft)
-                return (false, $"Purchase order status is '{po.PostingStatus}', expected Draft.");
+                return (false, $"Status Purchase Order adalah '{po.PostingStatus}', seharusnya Draft.");
 
             po.PostingStatus = PurchaseOrderStatus.Confirmed;
             Touch(po, userId);
             _db.SaveChanges();
-            return (true, "Purchase order confirmed.");
+            return (true, "Purchase Order berhasil dikonfirmasi.");
         }
 
         /// <summary>Receive goods for a confirmed PO (Confirmed→Received), increases stock.</summary>
@@ -188,9 +215,9 @@ namespace Cis.Business
                         .Include(x => x.PurchaseOrderItems)
                         .FirstOrDefault(x => x.Id == poId);
 
-            if (po == null) return (false, "Purchase order not found.");
+            if (po == null) return (false, "Purchase Order tidak ditemukan.");
             if (po.PostingStatus != PurchaseOrderStatus.Confirmed)
-                return (false, $"Purchase order must be Confirmed before receiving. Current: {po.PostingStatus}");
+                return (false, $"Purchase Order harus berstatus Confirmed sebelum bisa diterima. Status saat ini: {po.PostingStatus}");
 
             foreach (var item in po.PurchaseOrderItems)
             {
@@ -210,7 +237,7 @@ namespace Cis.Business
             po.ReceivedDate  = DateTime.Now;
             Touch(po, userId);
             _db.SaveChanges();
-            return (true, "Purchase order received. Stock increased.");
+            return (true, "Purchase Order berhasil diterima. Stok telah bertambah.");
         }
 
         public (bool ok, string message) CancelPurchaseOrder(string poId, string userId)
@@ -219,9 +246,9 @@ namespace Cis.Business
                         .Include(x => x.PurchaseOrderItems)
                         .FirstOrDefault(x => x.Id == poId);
 
-            if (po == null) return (false, "Purchase order not found.");
+            if (po == null) return (false, "Purchase Order tidak ditemukan.");
             if (po.PostingStatus == PurchaseOrderStatus.Cancelled)
-                return (false, "Purchase order is already cancelled.");
+                return (false, "Purchase Order sudah dibatalkan.");
 
             bool stockWasReceived = po.PostingStatus == PurchaseOrderStatus.Received;
 
@@ -232,7 +259,7 @@ namespace Cis.Business
                     var card = GetOrCreateCard(item.ProductId, item.ProductCode, item.ProductName,
                                                item.BatchId, item.BatchCode, userId);
                     if (card.QtyOnHand < item.Quantity)
-                        return (false, $"Cannot cancel: insufficient stock to reverse {item.ProductCode}.");
+                        return (false, $"Tidak bisa dibatalkan: stok tidak mencukupi untuk mengembalikan {item.ProductCode}.");
 
                     card.QtyOnHand -= item.Quantity;
                     Touch(card, userId);
@@ -241,14 +268,14 @@ namespace Cis.Business
                         DateTime.Now, StockMovementType.PurchaseReceipt, MovementDirection.Out,
                         item.ProductId, item.ProductCode, item.ProductName,
                         item.BatchId, item.BatchCode, item.Quantity,
-                        "PurchaseOrder", po.Id, $"Cancel PO {po.PONumber}", userId));
+                        "PurchaseOrder", po.Id, $"Batal PO {po.PONumber}", userId));
                 }
             }
 
             po.PostingStatus = PurchaseOrderStatus.Cancelled;
             Touch(po, userId);
             _db.SaveChanges();
-            return (true, "Purchase order cancelled." + (stockWasReceived ? " Stock reversed." : ""));
+            return (true, "Purchase Order dibatalkan." + (stockWasReceived ? " Stok telah dikembalikan." : ""));
         }
 
         // ─── Purchase Return ──────────────────────────────────────────────────
@@ -259,9 +286,9 @@ namespace Cis.Business
                         .Include(x => x.PurchaseReturnItems)
                         .FirstOrDefault(x => x.Id == returnId);
 
-            if (pr == null) return (false, "Purchase return not found.");
+            if (pr == null) return (false, "Retur Pembelian tidak ditemukan.");
             if (pr.PostingStatus != PostingStatus.Draft)
-                return (false, $"Purchase return status is '{pr.PostingStatus}', expected Draft.");
+                return (false, $"Status Retur Pembelian adalah '{pr.PostingStatus}', seharusnya Draft.");
 
             foreach (var item in pr.PurchaseReturnItems)
             {
@@ -269,8 +296,8 @@ namespace Cis.Business
                                            item.BatchId, item.BatchCode, userId);
 
                 if (card.QtyOnHand < item.Quantity)
-                    return (false, $"Insufficient stock to return {item.ProductCode}. " +
-                                   $"Available: {card.QtyOnHand}, Returning: {item.Quantity}");
+                    return (false, $"Stok tidak mencukupi untuk meretur {item.ProductCode}. " +
+                                   $"Tersedia: {card.QtyOnHand}, Diretur: {item.Quantity}");
 
                 card.QtyOnHand -= item.Quantity;
                 Touch(card, userId);
@@ -279,13 +306,13 @@ namespace Cis.Business
                     pr.ReturnDate, StockMovementType.PurchaseReturn, MovementDirection.Out,
                     item.ProductId, item.ProductCode, item.ProductName,
                     item.BatchId, item.BatchCode, item.Quantity,
-                    "PurchaseReturn", pr.Id, $"PR Return {pr.ReturnNumber}", userId));
+                    "PurchaseReturn", pr.Id, $"Retur Pembelian {pr.ReturnNumber}", userId));
             }
 
             pr.PostingStatus = PostingStatus.Posted;
             Touch(pr, userId);
             _db.SaveChanges();
-            return (true, "Purchase return posted. Stock reduced.");
+            return (true, "Retur Pembelian berhasil diposting. Stok telah berkurang.");
         }
 
         public (bool ok, string message) CancelPurchaseReturn(string returnId, string userId)
@@ -294,9 +321,9 @@ namespace Cis.Business
                         .Include(x => x.PurchaseReturnItems)
                         .FirstOrDefault(x => x.Id == returnId);
 
-            if (pr == null) return (false, "Purchase return not found.");
+            if (pr == null) return (false, "Retur Pembelian tidak ditemukan.");
             if (pr.PostingStatus != PostingStatus.Posted)
-                return (false, "Only posted purchase returns can be cancelled.");
+                return (false, "Hanya Retur Pembelian berstatus Posted yang bisa dibatalkan.");
 
             foreach (var item in pr.PurchaseReturnItems)
             {
@@ -309,13 +336,13 @@ namespace Cis.Business
                     DateTime.Now, StockMovementType.PurchaseReturn, MovementDirection.In,
                     item.ProductId, item.ProductCode, item.ProductName,
                     item.BatchId, item.BatchCode, item.Quantity,
-                    "PurchaseReturn", pr.Id, $"Cancel PR {pr.ReturnNumber}", userId));
+                    "PurchaseReturn", pr.Id, $"Batal Retur Pembelian {pr.ReturnNumber}", userId));
             }
 
             pr.PostingStatus = PostingStatus.Cancelled;
             Touch(pr, userId);
             _db.SaveChanges();
-            return (true, "Purchase return cancelled. Stock restored.");
+            return (true, "Retur Pembelian dibatalkan. Stok telah dikembalikan.");
         }
 
         // ─── Sales Return ─────────────────────────────────────────────────────
@@ -326,9 +353,9 @@ namespace Cis.Business
                         .Include(x => x.SalesReturnItems)
                         .FirstOrDefault(x => x.Id == returnId);
 
-            if (sr == null) return (false, "Sales return not found.");
+            if (sr == null) return (false, "Retur Penjualan tidak ditemukan.");
             if (sr.PostingStatus != PostingStatus.Draft)
-                return (false, $"Sales return status is '{sr.PostingStatus}', expected Draft.");
+                return (false, $"Status Retur Penjualan adalah '{sr.PostingStatus}', seharusnya Draft.");
 
             foreach (var item in sr.SalesReturnItems)
             {
@@ -341,13 +368,13 @@ namespace Cis.Business
                     sr.ReturnDate, StockMovementType.SalesReturn, MovementDirection.In,
                     item.ProductId, item.ProductCode, item.ProductName,
                     item.BatchId, item.BatchCode, item.Quantity,
-                    "SalesReturn", sr.Id, $"SR {sr.ReturnNumber}", userId));
+                    "SalesReturn", sr.Id, $"Retur Penjualan {sr.ReturnNumber}", userId));
             }
 
             sr.PostingStatus = PostingStatus.Posted;
             Touch(sr, userId);
             _db.SaveChanges();
-            return (true, "Sales return posted. Stock increased.");
+            return (true, "Retur Penjualan berhasil diposting. Stok telah bertambah.");
         }
 
         public (bool ok, string message) CancelSalesReturn(string returnId, string userId)
@@ -356,9 +383,9 @@ namespace Cis.Business
                         .Include(x => x.SalesReturnItems)
                         .FirstOrDefault(x => x.Id == returnId);
 
-            if (sr == null) return (false, "Sales return not found.");
+            if (sr == null) return (false, "Retur Penjualan tidak ditemukan.");
             if (sr.PostingStatus != PostingStatus.Posted)
-                return (false, "Only posted sales returns can be cancelled.");
+                return (false, "Hanya Retur Penjualan berstatus Posted yang bisa dibatalkan.");
 
             foreach (var item in sr.SalesReturnItems)
             {
@@ -366,7 +393,7 @@ namespace Cis.Business
                                            item.BatchId, item.BatchCode, userId);
 
                 if (card.QtyOnHand < item.Quantity)
-                    return (false, $"Cannot cancel: insufficient stock for {item.ProductCode}.");
+                    return (false, $"Tidak bisa dibatalkan: stok tidak mencukupi untuk {item.ProductCode}.");
 
                 card.QtyOnHand -= item.Quantity;
                 Touch(card, userId);
@@ -375,13 +402,13 @@ namespace Cis.Business
                     DateTime.Now, StockMovementType.SalesReturn, MovementDirection.Out,
                     item.ProductId, item.ProductCode, item.ProductName,
                     item.BatchId, item.BatchCode, item.Quantity,
-                    "SalesReturn", sr.Id, $"Cancel SR {sr.ReturnNumber}", userId));
+                    "SalesReturn", sr.Id, $"Batal Retur Penjualan {sr.ReturnNumber}", userId));
             }
 
             sr.PostingStatus = PostingStatus.Cancelled;
             Touch(sr, userId);
             _db.SaveChanges();
-            return (true, "Sales return cancelled. Stock reduced.");
+            return (true, "Retur Penjualan dibatalkan. Stok telah berkurang.");
         }
 
         // ─── Stock Transfer ───────────────────────────────────────────────────
@@ -392,14 +419,14 @@ namespace Cis.Business
                         .Include(x => x.StockTransferItems)
                         .FirstOrDefault(x => x.Id == transferId);
 
-            if (st == null) return (false, "Stock transfer not found.");
+            if (st == null) return (false, "Pindah Stok tidak ditemukan.");
             if (st.PostingStatus != PostingStatus.Draft)
-                return (false, $"Stock transfer status is '{st.PostingStatus}', expected Draft.");
+                return (false, $"Status Pindah Stok adalah '{st.PostingStatus}', seharusnya Draft.");
 
             bool isOut = st.TransferType == StockTransferType.Out;
             var movementType = isOut ? StockMovementType.TransferOut : StockMovementType.TransferIn;
             var direction    = isOut ? MovementDirection.Out          : MovementDirection.In;
-            string remarkPrefix = isOut ? $"Transfer Out to {st.BranchName}" : $"Transfer In from {st.BranchName}";
+            string remarkPrefix = isOut ? $"Transfer Keluar ke {st.BranchName}" : $"Transfer Masuk dari {st.BranchName}";
 
             foreach (var item in st.StockTransferItems)
             {
@@ -409,8 +436,8 @@ namespace Cis.Business
                 if (isOut)
                 {
                     if (card.QtyOnHand < item.Quantity)
-                        return (false, $"Insufficient stock to transfer {item.ProductCode}. " +
-                                       $"Available: {card.QtyOnHand}, Transfer: {item.Quantity}");
+                        return (false, $"Stok tidak mencukupi untuk memindahkan {item.ProductCode}. " +
+                                       $"Tersedia: {card.QtyOnHand}, Dipindahkan: {item.Quantity}");
                     card.QtyOnHand -= item.Quantity;
                 }
                 else
@@ -429,7 +456,7 @@ namespace Cis.Business
             st.PostingStatus = PostingStatus.Posted;
             Touch(st, userId);
             _db.SaveChanges();
-            return (true, $"Stock transfer posted. Stock {(isOut ? "reduced" : "increased")}.");
+            return (true, $"Pindah Stok berhasil diposting. Stok telah {(isOut ? "berkurang" : "bertambah")}.");
         }
 
         public (bool ok, string message) CancelStockTransfer(string transferId, string userId)
@@ -438,9 +465,9 @@ namespace Cis.Business
                         .Include(x => x.StockTransferItems)
                         .FirstOrDefault(x => x.Id == transferId);
 
-            if (st == null) return (false, "Stock transfer not found.");
+            if (st == null) return (false, "Pindah Stok tidak ditemukan.");
             if (st.PostingStatus != PostingStatus.Posted)
-                return (false, "Only posted stock transfers can be cancelled.");
+                return (false, "Hanya Pindah Stok berstatus Posted yang bisa dibatalkan.");
 
             bool wasOut = st.TransferType == StockTransferType.Out;
             var movementType = wasOut ? StockMovementType.TransferOut : StockMovementType.TransferIn;
@@ -456,7 +483,7 @@ namespace Cis.Business
                 else
                 {
                     if (card.QtyOnHand < item.Quantity)
-                        return (false, $"Cannot cancel: insufficient stock for {item.ProductCode}.");
+                        return (false, $"Tidak bisa dibatalkan: stok tidak mencukupi untuk {item.ProductCode}.");
                     card.QtyOnHand -= item.Quantity;
                 }
                 Touch(card, userId);
@@ -465,13 +492,13 @@ namespace Cis.Business
                     DateTime.Now, movementType, direction,
                     item.ProductId, item.ProductCode, item.ProductName,
                     item.BatchId, item.BatchCode, item.Quantity,
-                    "StockTransfer", st.Id, $"Cancel Transfer {st.TransferNumber}", userId));
+                    "StockTransfer", st.Id, $"Batal Transfer {st.TransferNumber}", userId));
             }
 
             st.PostingStatus = PostingStatus.Cancelled;
             Touch(st, userId);
             _db.SaveChanges();
-            return (true, "Stock transfer cancelled. Stock reversed.");
+            return (true, "Pindah Stok dibatalkan. Stok telah dikembalikan.");
         }
 
         // ─── Stock Opname ─────────────────────────────────────────────────────
@@ -486,9 +513,9 @@ namespace Cis.Business
                         .Include(x => x.StockOpnameItems)
                         .FirstOrDefault(x => x.Id == opnameId);
 
-            if (op == null) return (false, "Stock opname not found.");
+            if (op == null) return (false, "Stok Opname tidak ditemukan.");
             if (op.PostingStatus != PostingStatus.Draft)
-                return (false, $"Stock opname status is '{op.PostingStatus}', expected Draft.");
+                return (false, $"Status Stok Opname adalah '{op.PostingStatus}', seharusnya Draft.");
 
             // Snapshot current system qty and compute differences
             foreach (var item in op.StockOpnameItems)
@@ -506,7 +533,7 @@ namespace Cis.Business
                 AdjustmentNumber = adjustmentNumber,
                 AdjustmentDate   = now,
                 Reason           = AdjustmentReason.StockOpname,
-                Notes            = $"Auto-adjustment from Opname {op.OpnameNumber}",
+                Notes            = $"Penyesuaian otomatis dari Opname {op.OpnameNumber}",
                 PostingStatus    = PostingStatus.Draft,
                 UserId           = userId,
                 Username         = "",
@@ -562,9 +589,9 @@ namespace Cis.Business
                          .Include(x => x.StockAdjustmentItems)
                          .FirstOrDefault(x => x.Id == adjustmentId);
 
-            if (adj == null) return (false, "Stock adjustment not found.");
+            if (adj == null) return (false, "Penyesuaian Stok tidak ditemukan.");
             if (adj.PostingStatus != PostingStatus.Draft)
-                return (false, $"Stock adjustment status is '{adj.PostingStatus}', expected Draft.");
+                return (false, $"Status Penyesuaian Stok adalah '{adj.PostingStatus}', seharusnya Draft.");
 
             foreach (var item in adj.StockAdjustmentItems)
             {
@@ -578,8 +605,8 @@ namespace Cis.Business
                 else
                 {
                     if (card.QtyOnHand < item.QtyAdjustment)
-                        return (false, $"Insufficient stock for adjustment of {item.ProductCode}. " +
-                                       $"Available: {card.QtyOnHand}, Adjusting: {item.QtyAdjustment}");
+                        return (false, $"Stok tidak mencukupi untuk penyesuaian {item.ProductCode}. " +
+                                       $"Tersedia: {card.QtyOnHand}, Disesuaikan: {item.QtyAdjustment}");
                     card.QtyOnHand -= item.QtyAdjustment;
                 }
 
@@ -594,13 +621,13 @@ namespace Cis.Business
                     adj.AdjustmentDate, movType, item.Direction,
                     item.ProductId, item.ProductCode, item.ProductName,
                     item.BatchId, item.BatchCode, item.QtyAdjustment,
-                    "StockAdjustment", adj.Id, $"Adj {adj.AdjustmentNumber} - {adj.Reason}", userId));
+                    "StockAdjustment", adj.Id, $"Penyesuaian {adj.AdjustmentNumber} - {adj.Reason}", userId));
             }
 
             adj.PostingStatus = PostingStatus.Posted;
             Touch(adj, userId);
             _db.SaveChanges();
-            return (true, "Stock adjustment posted.");
+            return (true, "Penyesuaian Stok berhasil diposting.");
         }
 
         public (bool ok, string message) CancelStockAdjustment(string adjustmentId, string userId)
@@ -609,9 +636,9 @@ namespace Cis.Business
                          .Include(x => x.StockAdjustmentItems)
                          .FirstOrDefault(x => x.Id == adjustmentId);
 
-            if (adj == null) return (false, "Stock adjustment not found.");
+            if (adj == null) return (false, "Penyesuaian Stok tidak ditemukan.");
             if (adj.PostingStatus != PostingStatus.Posted)
-                return (false, "Only posted adjustments can be cancelled.");
+                return (false, "Hanya Penyesuaian Stok berstatus Posted yang bisa dibatalkan.");
 
             foreach (var item in adj.StockAdjustmentItems)
             {
@@ -622,7 +649,7 @@ namespace Cis.Business
                 if (item.Direction == MovementDirection.In)
                 {
                     if (card.QtyOnHand < item.QtyAdjustment)
-                        return (false, $"Cannot cancel: insufficient stock for {item.ProductCode}.");
+                        return (false, $"Tidak bisa dibatalkan: stok tidak mencukupi untuk {item.ProductCode}.");
                     card.QtyOnHand -= item.QtyAdjustment;
                 }
                 else
@@ -640,13 +667,13 @@ namespace Cis.Business
                     DateTime.Now, movType, reverseDir,
                     item.ProductId, item.ProductCode, item.ProductName,
                     item.BatchId, item.BatchCode, item.QtyAdjustment,
-                    "StockAdjustment", adj.Id, $"Cancel Adj {adj.AdjustmentNumber}", userId));
+                    "StockAdjustment", adj.Id, $"Batal Penyesuaian {adj.AdjustmentNumber}", userId));
             }
 
             adj.PostingStatus = PostingStatus.Cancelled;
             Touch(adj, userId);
             _db.SaveChanges();
-            return (true, "Stock adjustment cancelled. Stock reversed.");
+            return (true, "Penyesuaian Stok dibatalkan. Stok telah dikembalikan.");
         }
     }
 }
