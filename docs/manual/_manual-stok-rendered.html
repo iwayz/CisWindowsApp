@@ -28,6 +28,7 @@ h2 {
     margin-top: 22pt;
     padding-top: 8pt;
     border-top: 0.75pt solid #cbd5c8;
+    page-break-before: always;
 }
 h3 {
     font-size: 12pt;
@@ -57,7 +58,7 @@ td {
 }
 tr:nth-child(even) td { background-color: #f4f7f3; }
 strong { color: #14532d; }
-img { width: 320pt; display: block; margin: 10pt auto; }
+img { width: 440pt; display: block; margin: 10pt auto; }
 code {
     background-color: #eef2ee;
     padding: 1pt 3pt;
@@ -150,11 +151,11 @@ hr {
 <hr />
 <h2 id="1-gambaran-umum-sistem">1. Gambaran Umum Sistem</h2>
 <p>Sebelum masuk ke masing-masing layar, bab ini memberi gambaran besar terlebih dahulu: bagaimana semua bagian dari modul Manajemen Stok saling terhubung, dari data produk sampai laporan yang Anda lihat setiap hari.</p>
-<div style="page-break-before: always;"></div>
-
 <h3 id="alur-besar">Alur Besar</h3>
 <p>Setiap transaksi stok — apa pun jenisnya — selalu mengikuti jalur yang sama: data produk disiapkan lebih dulu, transaksi diposting, tercatat sebagai jejak audit, memperbarui posisi stok, lalu bisa dilihat kembali lewat laporan.</p>
-<p><img alt="Gambaran umum alur sistem CIS, dari master data produk hingga laporan" src="C:/Projects/CisWindowsApp/docs/manual/media/00-overview-pipeline.png" /></p>
+<p><img src="C:/Projects/CisWindowsApp/docs/manual/media/00-overview-pipeline.png" alt="Gambaran umum alur sistem CIS, dari master data produk hingga laporan" style="width:480pt;" /></p>
+<div style="page-break-before: always;"></div>
+
 <ol>
 <li><strong>Master data produk</strong> — setiap produk didaftarkan beserta kemasannya (mis. Box = 100 tablet). Data ini dipakai setiap kali ada transaksi yang melibatkan produk tersebut (lihat Bab 4).</li>
 <li><strong>Transaksi stok</strong> — dokumen seperti Pembelian, Penjualan, Retur, Transfer, atau Penyesuaian dibuat dan diposting oleh staf.</li>
@@ -207,29 +208,36 @@ hr {
 <blockquote>
 <p><strong>Catatan:</strong> Setiap cabang memiliki basis data sendiri-sendiri. Transaksi stok yang dilakukan di satu cabang tidak memengaruhi stok cabang lain, kecuali melalui transaksi <strong>Pindah Stok</strong> yang dicatat secara terpisah di kedua sisi (lihat Bab 9).</p>
 </blockquote>
-<p><code>[SCREENSHOT: Tampilan Dashboard utama aplikasi CIS]</code></p>
+<p><img alt="Tampilan Dashboard utama aplikasi CIS" src="C:/Projects/CisWindowsApp/docs/manual/media/01-dashboard-utama.png" /></p>
 <h3 id="struktur-menu">Struktur Menu</h3>
 <p>Modul manajemen stok dapat diakses dari dua dashboard utama:</p>
 <table>
 <thead>
 <tr>
 <th>Dashboard</th>
-<th>Menu di dalamnya</th>
+<th>Tombol di dalamnya</th>
+<th>Menu di manual ini</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>Transaksi</strong></td>
+<td>Pembelian, Penjualan, Return Beli, Return Jual</td>
 <td>Pembelian, Penjualan, Retur Pembelian, Retur Penjualan</td>
 </tr>
 <tr>
 <td><strong>Inventory</strong></td>
+<td>Stock Opname, Transfer Stok, Adj. Stok</td>
 <td>Stok Opname, Pindah Stok, Penyesuaian Stok</td>
 </tr>
 </tbody>
 </table>
+<blockquote>
+<p><strong>Catatan:</strong> Kolom "Tombol di dalamnya" adalah label persis yang tertulis di tombol aplikasi. Manual ini memakai istilah yang sedikit lebih panjang (mis. "Retur Pembelian" untuk tombol <strong>Return Beli</strong>) agar konsisten dengan nama dokumen dan judul bab.</p>
+</blockquote>
 <p>Layar <strong>Kartu Stok</strong> dan <strong>Riwayat Pergerakan Stok</strong> untuk melihat posisi dan histori stok dapat diakses dari menu <strong>Inventory</strong> atau <strong>Reporting</strong>.</p>
-<p><code>[SCREENSHOT: Dashboard Transaksi dan Dashboard Inventory berdampingan]</code></p>
+<p><img alt="Dashboard Transaksi" src="C:/Projects/CisWindowsApp/docs/manual/media/02a-dashboard-transaksi.png" /></p>
+<p><img alt="Dashboard Inventory" src="C:/Projects/CisWindowsApp/docs/manual/media/02b-dashboard-inventory.png" /></p>
 <hr />
 <h2 id="3-konsep-dasar-status-dokumen">3. Konsep Dasar: Status Dokumen</h2>
 <p>Semua dokumen stok (Pembelian, Retur, Pindah Stok, Opname, Penyesuaian) mengikuti konsep status yang sama. Memahami konsep ini penting agar tidak bingung mengapa sebuah tombol tidak bisa diklik.</p>
@@ -277,6 +285,8 @@ hr {
 <p><strong>Penting:</strong> Purchase Order memiliki tahapan status yang sedikit berbeda dan lebih panjang: <strong>Draft -&gt; Confirmed -&gt; Received -&gt; (boleh) Cancelled</strong>. Stok baru bertambah pada tahap <strong>Received</strong>, bukan saat Confirmed. Lihat Bab 5.</p>
 <p><strong>Penting:</strong> Sales Order (Penjualan) juga punya tahapan tiga langkah: <strong>Draft -&gt; Invoice -&gt; Posted -&gt; (boleh) Cancelled</strong>, tapi tidak seperti dokumen lain, tahap <strong>Invoice</strong> tetap menyentuh Stock Card — bukan mengurangi <strong>Qty Onhand</strong>, melainkan menambah <strong>Qty Reserved</strong> (lihat Bab 12). Baru pada tahap <strong>Post</strong>, barang benar-benar keluar: <strong>Qty Onhand</strong> berkurang dan reservasinya dilepas. Lihat Bab 6.</p>
 </blockquote>
+<div style="page-break-before: always;"></div>
+
 <h3 id="tombol-aksi-yang-umum-ditemui">Tombol Aksi yang Umum Ditemui</h3>
 <table>
 <thead>
@@ -326,7 +336,7 @@ hr {
 <p>Barang farmasi biasanya diterima dari supplier dalam satuan besar (misalnya <strong>karton/box</strong>), tetapi stok dan penjualan dihitung dalam satuan kecil (misalnya <strong>tablet/pcs</strong>). Fitur <strong>Kemasan Produk</strong> memungkinkan Anda mendaftarkan faktor konversi antar satuan untuk setiap produk, sehingga saat entri barang masuk Anda cukup memasukkan jumlah dalam satuan besar — sistem otomatis menghitung jumlah dalam satuan dasar.</p>
 <h3 id="cara-mengakses">Cara Mengakses</h3>
 <p>Buka <strong>Master Data -&gt; Produk</strong>, pilih produk yang ingin diatur, lalu klik tombol untuk membuka layar <strong>Kemasan Produk</strong>. Tombol ini hanya aktif jika produk sudah tersimpan.</p>
-<p><code>[SCREENSHOT: Tombol Kemasan Produk pada form Produk]</code></p>
+<p><img alt="Tombol Kemasan Produk pada form Produk" src="C:/Projects/CisWindowsApp/docs/manual/media/03-tombol-kemasan-produk.png" /></p>
 <h3 id="penjelasan-layar">Penjelasan Layar</h3>
 <table>
 <thead>
@@ -358,7 +368,7 @@ hr {
 </tr>
 </tbody>
 </table>
-<p><code>[SCREENSHOT: Layar Kemasan Produk dengan beberapa baris kemasan terisi]</code></p>
+<p><img alt="Layar Kemasan Produk dengan beberapa baris kemasan terisi" src="C:/Projects/CisWindowsApp/docs/manual/media/04-layar-kemasan-produk.png" /></p>
 <h3 id="langkah-langkah">Langkah-Langkah</h3>
 <ol>
 <li>Buka produk yang ingin diatur kemasannya dari <strong>Master Data -&gt; Produk</strong>.</li>
@@ -379,7 +389,7 @@ hr {
 <p>Mencatat pemesanan dan penerimaan barang dari supplier (Principal), termasuk kalkulator konversi kemasan agar staf tidak perlu menghitung manual dari karton ke satuan kecil.</p>
 <h3 id="cara-mengakses_1">Cara Mengakses</h3>
 <p><strong>Dashboard Transaksi -&gt; Pembelian</strong></p>
-<p><code>[SCREENSHOT: Form Pembelian (PEMBELIAN) kosong]</code></p>
+<p><img alt="Form Pembelian kosong" src="C:/Projects/CisWindowsApp/docs/manual/media/05-form-pembelian-kosong.png" /></p>
 <h3 id="penjelasan-field-header">Penjelasan Field — Header</h3>
 <table>
 <thead>
@@ -473,7 +483,7 @@ hr {
 <li>Saat barang fisik tiba di gudang, buka kembali PO tersebut dan klik <strong>Receive</strong>. Pada tahap ini <strong>stok bertambah</strong> sesuai qty (dalam satuan dasar) untuk setiap barang.</li>
 <li>Jika PO batal (sebelum atau sesudah diterima), klik <strong>Cancel</strong>. Jika PO sudah Received, sistem otomatis mengurangi kembali stok yang sudah bertambah.</li>
 </ol>
-<p><code>[SCREENSHOT: Contoh Qty Preview menampilkan hasil konversi]</code></p>
+<p><img alt="Contoh Qty Preview menampilkan hasil konversi" src="C:/Projects/CisWindowsApp/docs/manual/media/06-qty-preview.png" /></p>
 <h3 id="dampak-terhadap-stok">Dampak terhadap Stok</h3>
 <table>
 <thead>
@@ -518,7 +528,7 @@ hr {
 <p>Mencatat penjualan barang ke pelanggan, mulai dari draft faktur, penerbitan invoice, hingga posting yang benar-benar mengurangi stok gudang.</p>
 <h3 id="cara-mengakses_2">Cara Mengakses</h3>
 <p><strong>Dashboard Transaksi -&gt; Penjualan</strong></p>
-<p><code>[SCREENSHOT: Form Penjualan (PENJUALAN) kosong]</code></p>
+<p><img alt="Form Penjualan kosong" src="C:/Projects/CisWindowsApp/docs/manual/media/07-form-penjualan-kosong.png" /></p>
 <h3 id="penjelasan-field-header_1">Penjelasan Field — Header</h3>
 <table>
 <thead>
@@ -624,7 +634,7 @@ hr {
 <li>Setelah barang benar-benar dikirim/diserahkan ke pelanggan, klik <strong>Post</strong>. Pada tahap inilah <strong>Qty Onhand berkurang</strong> sesuai qty (dalam satuan dasar) untuk setiap barang, dan reservasinya dilepas.</li>
 <li>Jika faktur batal, klik <strong>Cancel</strong>. Sistem otomatis melepas reservasi (jika masih status Invoice) atau mengembalikan stok (jika sudah Posted).</li>
 </ol>
-<p><code>[SCREENSHOT: Form Penjualan dengan status INVOICE]</code></p>
+<p><img alt="Form Penjualan dengan status INVOICE" src="C:/Projects/CisWindowsApp/docs/manual/media/08-form-penjualan-invoice.png" /></p>
 <h3 id="dampak-terhadap-stok_1">Dampak terhadap Stok</h3>
 <table>
 <thead>
@@ -679,8 +689,8 @@ hr {
 <h3 id="tujuan_3">Tujuan</h3>
 <p>Mencatat pengembalian barang ke supplier, misalnya karena barang rusak atau tidak sesuai pesanan.</p>
 <h3 id="cara-mengakses_3">Cara Mengakses</h3>
-<p><strong>Dashboard Transaksi -&gt; Retur Pembelian</strong></p>
-<p><code>[SCREENSHOT: Form Retur Pembelian]</code></p>
+<p><strong>Dashboard Transaksi -&gt; Return Beli</strong></p>
+<p><img alt="Form Retur Pembelian" src="C:/Projects/CisWindowsApp/docs/manual/media/09-form-retur-pembelian.png" /></p>
 <h3 id="penjelasan-field">Penjelasan Field</h3>
 <table>
 <thead>
@@ -749,8 +759,8 @@ hr {
 <h3 id="tujuan_4">Tujuan</h3>
 <p>Mencatat barang yang dikembalikan oleh pelanggan (customer) ke gudang. Retur hanya bisa dibuat dari faktur Penjualan yang sudah berstatus <strong>Posted</strong> (lihat Bab 6).</p>
 <h3 id="cara-mengakses_4">Cara Mengakses</h3>
-<p><strong>Dashboard Transaksi -&gt; Retur Penjualan</strong></p>
-<p><code>[SCREENSHOT: Form Retur Penjualan]</code></p>
+<p><strong>Dashboard Transaksi -&gt; Return Jual</strong></p>
+<p><img alt="Form Retur Penjualan" src="C:/Projects/CisWindowsApp/docs/manual/media/10-form-retur-penjualan.png" /></p>
 <h3 id="penjelasan-field_1">Penjelasan Field</h3>
 <table>
 <thead>
@@ -813,8 +823,10 @@ hr {
 <h3 id="tujuan_5">Tujuan</h3>
 <p>Mencatat perpindahan barang antar cabang. Karena setiap cabang memiliki database sendiri, pindah stok dicatat <strong>secara terpisah</strong> di masing-masing cabang: cabang pengirim membuat transfer <strong>Keluar (Out)</strong>, dan cabang penerima membuat transfer <strong>Masuk (In)</strong>.</p>
 <h3 id="cara-mengakses_5">Cara Mengakses</h3>
-<p><strong>Dashboard Inventory -&gt; Pindah Stok</strong></p>
-<p><code>[SCREENSHOT: Form Pindah Stok]</code></p>
+<p><strong>Dashboard Inventory -&gt; Transfer Stok</strong></p>
+<p><img alt="Form Pindah Stok" src="C:/Projects/CisWindowsApp/docs/manual/media/11-form-pindah-stok.png" /></p>
+<div style="page-break-before: always;"></div>
+
 <h3 id="penjelasan-field_2">Penjelasan Field</h3>
 <table>
 <thead>
@@ -896,8 +908,8 @@ hr {
 <h3 id="tujuan_6">Tujuan</h3>
 <p>Mencocokkan catatan stok di sistem dengan jumlah fisik hasil hitung di gudang. Selisih yang ditemukan akan <strong>otomatis</strong> menghasilkan dokumen Penyesuaian Stok (Stock Adjustment).</p>
 <h3 id="cara-mengakses_6">Cara Mengakses</h3>
-<p><strong>Dashboard Inventory -&gt; Stok Opname</strong></p>
-<p><code>[SCREENSHOT: Form Stok Opname dengan tabel Qty Sistem vs Qty Fisik]</code></p>
+<p><strong>Dashboard Inventory -&gt; Stock Opname</strong></p>
+<p><img alt="Form Stok Opname dengan tabel Qty Sistem vs Qty Fisik" src="C:/Projects/CisWindowsApp/docs/manual/media/12-form-stok-opname.png" /></p>
 <h3 id="penjelasan-field_3">Penjelasan Field</h3>
 <table>
 <thead>
@@ -936,7 +948,7 @@ hr {
    - Sistem otomatis membuat dokumen <strong>Penyesuaian Stok</strong> untuk setiap barang yang memiliki selisih.
    - Stok langsung disesuaikan agar sama dengan <strong>Qty Fisik</strong>.</li>
 </ol>
-<p><code>[SCREENSHOT: Kolom Selisih berwarna hijau/merah]</code></p>
+<p><img alt="Kolom Selisih berwarna hijau/merah" src="C:/Projects/CisWindowsApp/docs/manual/media/13-kolom-selisih.png" /></p>
 <h3 id="dampak-terhadap-stok_5">Dampak terhadap Stok</h3>
 <p>Setiap barang dengan selisih != 0 akan menghasilkan penyesuaian otomatis:
 - Selisih <strong>positif</strong> (Qty Fisik &gt; Qty Sistem) -&gt; stok <strong>bertambah</strong>
@@ -952,8 +964,8 @@ hr {
 <h3 id="tujuan_7">Tujuan</h3>
 <p>Menyesuaikan stok secara manual di luar proses opname, misalnya karena barang rusak, hilang, kadaluarsa, atau koreksi kesalahan input sebelumnya.</p>
 <h3 id="cara-mengakses_7">Cara Mengakses</h3>
-<p><strong>Dashboard Inventory -&gt; Penyesuaian Stok</strong></p>
-<p><code>[SCREENSHOT: Form Penyesuaian Stok]</code></p>
+<p><strong>Dashboard Inventory -&gt; Adj. Stok</strong></p>
+<p><img alt="Form Penyesuaian Stok" src="C:/Projects/CisWindowsApp/docs/manual/media/14-form-penyesuaian-stok.png" /></p>
 <h3 id="penjelasan-field_4">Penjelasan Field</h3>
 <table>
 <thead>
@@ -1029,7 +1041,7 @@ hr {
 <p>Melihat posisi stok terkini per produk dan per batch — berapa yang ada di gudang, berapa yang sudah dialokasikan (reserved), dan berapa yang benar-benar tersedia untuk dijual.</p>
 <h3 id="cara-mengakses_8">Cara Mengakses</h3>
 <p>Menu <strong>Inventory</strong> atau <strong>Reporting -&gt; Kartu Stok</strong></p>
-<p><code>[SCREENSHOT: Layar Kartu Stok dengan daftar produk]</code></p>
+<p><img alt="Layar Kartu Stok dengan daftar produk" src="C:/Projects/CisWindowsApp/docs/manual/media/15-layar-kartu-stok.png" /></p>
 <h3 id="penjelasan-field_5">Penjelasan Field</h3>
 <table>
 <thead>
@@ -1075,7 +1087,7 @@ hr {
 <p>Melihat jejak audit (audit trail) seluruh transaksi yang memengaruhi stok — berguna untuk menelusuri mengapa stok suatu produk berubah pada tanggal tertentu.</p>
 <h3 id="cara-mengakses_9">Cara Mengakses</h3>
 <p>Menu <strong>Inventory</strong> atau <strong>Reporting -&gt; Riwayat Pergerakan Stok</strong></p>
-<p><code>[SCREENSHOT: Layar Riwayat Pergerakan Stok dengan filter tanggal]</code></p>
+<p><img alt="Layar Riwayat Pergerakan Stok dengan filter tanggal" src="C:/Projects/CisWindowsApp/docs/manual/media/16-layar-riwayat-pergerakan-stok.png" /></p>
 <h3 id="penjelasan-field_6">Penjelasan Field</h3>
 <table>
 <thead>
@@ -1099,6 +1111,8 @@ hr {
 </tr>
 </tbody>
 </table>
+<div style="page-break-before: always;"></div>
+
 <h3 id="jenis-pergerakan-stok">Jenis Pergerakan Stok</h3>
 <table>
 <thead>

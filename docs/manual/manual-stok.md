@@ -8,13 +8,13 @@
 
 Sebelum masuk ke masing-masing layar, bab ini memberi gambaran besar terlebih dahulu: bagaimana semua bagian dari modul Manajemen Stok saling terhubung, dari data produk sampai laporan yang Anda lihat setiap hari.
 
-<div style="page-break-before: always;"></div>
-
 ### Alur Besar
 
 Setiap transaksi stok — apa pun jenisnya — selalu mengikuti jalur yang sama: data produk disiapkan lebih dulu, transaksi diposting, tercatat sebagai jejak audit, memperbarui posisi stok, lalu bisa dilihat kembali lewat laporan.
 
-![Gambaran umum alur sistem CIS, dari master data produk hingga laporan](C:/Projects/CisWindowsApp/docs/manual/media/00-overview-pipeline.png)
+<img src="C:/Projects/CisWindowsApp/docs/manual/media/00-overview-pipeline.png" alt="Gambaran umum alur sistem CIS, dari master data produk hingga laporan" style="width:480pt;" />
+
+<div style="page-break-before: always;"></div>
 
 1. **Master data produk** — setiap produk didaftarkan beserta kemasannya (mis. Box = 100 tablet). Data ini dipakai setiap kali ada transaksi yang melibatkan produk tersebut (lihat Bab 4).
 2. **Transaksi stok** — dokumen seperti Pembelian, Penjualan, Retur, Transfer, atau Penyesuaian dibuat dan diposting oleh staf.
@@ -49,20 +49,24 @@ Manual ini ditujukan untuk staf gudang, staf pembelian, dan admin cabang yang me
 
 > **Catatan:** Setiap cabang memiliki basis data sendiri-sendiri. Transaksi stok yang dilakukan di satu cabang tidak memengaruhi stok cabang lain, kecuali melalui transaksi **Pindah Stok** yang dicatat secara terpisah di kedua sisi (lihat Bab 9).
 
-`[SCREENSHOT: Tampilan Dashboard utama aplikasi CIS]`
+![Tampilan Dashboard utama aplikasi CIS](C:/Projects/CisWindowsApp/docs/manual/media/01-dashboard-utama.png)
 
 ### Struktur Menu
 
 Modul manajemen stok dapat diakses dari dua dashboard utama:
 
-| Dashboard | Menu di dalamnya |
-|---|---|
-| **Transaksi** | Pembelian, Penjualan, Retur Pembelian, Retur Penjualan |
-| **Inventory** | Stok Opname, Pindah Stok, Penyesuaian Stok |
+| Dashboard | Tombol di dalamnya | Menu di manual ini |
+|---|---|---|
+| **Transaksi** | Pembelian, Penjualan, Return Beli, Return Jual | Pembelian, Penjualan, Retur Pembelian, Retur Penjualan |
+| **Inventory** | Stock Opname, Transfer Stok, Adj. Stok | Stok Opname, Pindah Stok, Penyesuaian Stok |
+
+> **Catatan:** Kolom "Tombol di dalamnya" adalah label persis yang tertulis di tombol aplikasi. Manual ini memakai istilah yang sedikit lebih panjang (mis. "Retur Pembelian" untuk tombol **Return Beli**) agar konsisten dengan nama dokumen dan judul bab.
 
 Layar **Kartu Stok** dan **Riwayat Pergerakan Stok** untuk melihat posisi dan histori stok dapat diakses dari menu **Inventory** atau **Reporting**.
 
-`[SCREENSHOT: Dashboard Transaksi dan Dashboard Inventory berdampingan]`
+![Dashboard Transaksi](C:/Projects/CisWindowsApp/docs/manual/media/02a-dashboard-transaksi.png)
+
+![Dashboard Inventory](C:/Projects/CisWindowsApp/docs/manual/media/02b-dashboard-inventory.png)
 
 ---
 
@@ -93,6 +97,8 @@ Draft  ->  Posted/Confirmed/Received  ->  (boleh) Cancelled
 
 > **Penting:** Sales Order (Penjualan) juga punya tahapan tiga langkah: **Draft -> Invoice -> Posted -> (boleh) Cancelled**, tapi tidak seperti dokumen lain, tahap **Invoice** tetap menyentuh Stock Card — bukan mengurangi **Qty Onhand**, melainkan menambah **Qty Reserved** (lihat Bab 12). Baru pada tahap **Post**, barang benar-benar keluar: **Qty Onhand** berkurang dan reservasinya dilepas. Lihat Bab 6.
 
+<div style="page-break-before: always;"></div>
+
 ### Tombol Aksi yang Umum Ditemui
 
 | Tombol | Fungsi |
@@ -118,7 +124,7 @@ Barang farmasi biasanya diterima dari supplier dalam satuan besar (misalnya **ka
 
 Buka **Master Data -> Produk**, pilih produk yang ingin diatur, lalu klik tombol untuk membuka layar **Kemasan Produk**. Tombol ini hanya aktif jika produk sudah tersimpan.
 
-`[SCREENSHOT: Tombol Kemasan Produk pada form Produk]`
+![Tombol Kemasan Produk pada form Produk](C:/Projects/CisWindowsApp/docs/manual/media/03-tombol-kemasan-produk.png)
 
 ### Penjelasan Layar
 
@@ -130,7 +136,7 @@ Buka **Master Data -> Produk**, pilih produk yang ingin diatur, lalu klik tombol
 | **Isi (dlm satuan dasar)** | Masukkan berapa banyak satuan dasar yang terkandung dalam 1 satuan kemasan ini. Contoh: 1 **box** = 100 **tablet** -> isi angka `100` |
 | Tabel daftar kemasan | Menampilkan semua kemasan yang sudah didaftarkan untuk produk ini: Kode Kemasan, Isi, dan Satuan Dasar |
 
-`[SCREENSHOT: Layar Kemasan Produk dengan beberapa baris kemasan terisi]`
+![Layar Kemasan Produk dengan beberapa baris kemasan terisi](C:/Projects/CisWindowsApp/docs/manual/media/04-layar-kemasan-produk.png)
 
 ### Langkah-Langkah
 
@@ -158,7 +164,7 @@ Mencatat pemesanan dan penerimaan barang dari supplier (Principal), termasuk kal
 
 **Dashboard Transaksi -> Pembelian**
 
-`[SCREENSHOT: Form Pembelian (PEMBELIAN) kosong]`
+![Form Pembelian kosong](C:/Projects/CisWindowsApp/docs/manual/media/05-form-pembelian-kosong.png)
 
 ### Penjelasan Field — Header
 
@@ -201,7 +207,7 @@ Bagian bawah form menampilkan **Subtotal**, **PPN (11%)**, dan **TOTAL**.
 9. Saat barang fisik tiba di gudang, buka kembali PO tersebut dan klik **Receive**. Pada tahap ini **stok bertambah** sesuai qty (dalam satuan dasar) untuk setiap barang.
 10. Jika PO batal (sebelum atau sesudah diterima), klik **Cancel**. Jika PO sudah Received, sistem otomatis mengurangi kembali stok yang sudah bertambah.
 
-`[SCREENSHOT: Contoh Qty Preview menampilkan hasil konversi]`
+![Contoh Qty Preview menampilkan hasil konversi](C:/Projects/CisWindowsApp/docs/manual/media/06-qty-preview.png)
 
 ### Dampak terhadap Stok
 
@@ -230,7 +236,7 @@ Mencatat penjualan barang ke pelanggan, mulai dari draft faktur, penerbitan invo
 
 **Dashboard Transaksi -> Penjualan**
 
-`[SCREENSHOT: Form Penjualan (PENJUALAN) kosong]`
+![Form Penjualan kosong](C:/Projects/CisWindowsApp/docs/manual/media/07-form-penjualan-kosong.png)
 
 ### Penjelasan Field — Header
 
@@ -276,7 +282,7 @@ Bagian bawah form menampilkan **Total Harga**, **Ekstra Diskon**, **Total DPP**,
 9. Setelah barang benar-benar dikirim/diserahkan ke pelanggan, klik **Post**. Pada tahap inilah **Qty Onhand berkurang** sesuai qty (dalam satuan dasar) untuk setiap barang, dan reservasinya dilepas.
 10. Jika faktur batal, klik **Cancel**. Sistem otomatis melepas reservasi (jika masih status Invoice) atau mengembalikan stok (jika sudah Posted).
 
-`[SCREENSHOT: Form Penjualan dengan status INVOICE]`
+![Form Penjualan dengan status INVOICE](C:/Projects/CisWindowsApp/docs/manual/media/08-form-penjualan-invoice.png)
 
 ### Dampak terhadap Stok
 
@@ -308,9 +314,9 @@ Mencatat pengembalian barang ke supplier, misalnya karena barang rusak atau tida
 
 ### Cara Mengakses
 
-**Dashboard Transaksi -> Retur Pembelian**
+**Dashboard Transaksi -> Return Beli**
 
-`[SCREENSHOT: Form Retur Pembelian]`
+![Form Retur Pembelian](C:/Projects/CisWindowsApp/docs/manual/media/09-form-retur-pembelian.png)
 
 ### Penjelasan Field
 
@@ -356,9 +362,9 @@ Mencatat barang yang dikembalikan oleh pelanggan (customer) ke gudang. Retur han
 
 ### Cara Mengakses
 
-**Dashboard Transaksi -> Retur Penjualan**
+**Dashboard Transaksi -> Return Jual**
 
-`[SCREENSHOT: Form Retur Penjualan]`
+![Form Retur Penjualan](C:/Projects/CisWindowsApp/docs/manual/media/10-form-retur-penjualan.png)
 
 ### Penjelasan Field
 
@@ -398,9 +404,11 @@ Mencatat perpindahan barang antar cabang. Karena setiap cabang memiliki database
 
 ### Cara Mengakses
 
-**Dashboard Inventory -> Pindah Stok**
+**Dashboard Inventory -> Transfer Stok**
 
-`[SCREENSHOT: Form Pindah Stok]`
+![Form Pindah Stok](C:/Projects/CisWindowsApp/docs/manual/media/11-form-pindah-stok.png)
+
+<div style="page-break-before: always;"></div>
 
 ### Penjelasan Field
 
@@ -449,9 +457,9 @@ Mencocokkan catatan stok di sistem dengan jumlah fisik hasil hitung di gudang. S
 
 ### Cara Mengakses
 
-**Dashboard Inventory -> Stok Opname**
+**Dashboard Inventory -> Stock Opname**
 
-`[SCREENSHOT: Form Stok Opname dengan tabel Qty Sistem vs Qty Fisik]`
+![Form Stok Opname dengan tabel Qty Sistem vs Qty Fisik](C:/Projects/CisWindowsApp/docs/manual/media/12-form-stok-opname.png)
 
 ### Penjelasan Field
 
@@ -474,7 +482,7 @@ Kolom tabel: **Kode Barang, Nama Barang, Batch, Satuan, Qty Sistem** (otomatis, 
    - Sistem otomatis membuat dokumen **Penyesuaian Stok** untuk setiap barang yang memiliki selisih.
    - Stok langsung disesuaikan agar sama dengan **Qty Fisik**.
 
-`[SCREENSHOT: Kolom Selisih berwarna hijau/merah]`
+![Kolom Selisih berwarna hijau/merah](C:/Projects/CisWindowsApp/docs/manual/media/13-kolom-selisih.png)
 
 ### Dampak terhadap Stok
 
@@ -498,9 +506,9 @@ Menyesuaikan stok secara manual di luar proses opname, misalnya karena barang ru
 
 ### Cara Mengakses
 
-**Dashboard Inventory -> Penyesuaian Stok**
+**Dashboard Inventory -> Adj. Stok**
 
-`[SCREENSHOT: Form Penyesuaian Stok]`
+![Form Penyesuaian Stok](C:/Projects/CisWindowsApp/docs/manual/media/14-form-penyesuaian-stok.png)
 
 ### Penjelasan Field
 
@@ -545,7 +553,7 @@ Melihat posisi stok terkini per produk dan per batch — berapa yang ada di guda
 
 Menu **Inventory** atau **Reporting -> Kartu Stok**
 
-`[SCREENSHOT: Layar Kartu Stok dengan daftar produk]`
+![Layar Kartu Stok dengan daftar produk](C:/Projects/CisWindowsApp/docs/manual/media/15-layar-kartu-stok.png)
 
 ### Penjelasan Field
 
@@ -578,7 +586,7 @@ Melihat jejak audit (audit trail) seluruh transaksi yang memengaruhi stok — be
 
 Menu **Inventory** atau **Reporting -> Riwayat Pergerakan Stok**
 
-`[SCREENSHOT: Layar Riwayat Pergerakan Stok dengan filter tanggal]`
+![Layar Riwayat Pergerakan Stok dengan filter tanggal](C:/Projects/CisWindowsApp/docs/manual/media/16-layar-riwayat-pergerakan-stok.png)
 
 ### Penjelasan Field
 
@@ -587,6 +595,8 @@ Menu **Inventory** atau **Reporting -> Riwayat Pergerakan Stok**
 | **Dari Tanggal / Sampai Tanggal** | Rentang tanggal yang ingin ditelusuri |
 | **Search** | Cari berdasarkan kode/nama barang |
 | Kolom hasil | Tanggal, Jenis Pergerakan, Arah (In/Out), Kode & Nama Barang, Batch, Satuan, Qty, Jenis Dokumen Sumber, Nomor Dokumen, Catatan |
+
+<div style="page-break-before: always;"></div>
 
 ### Jenis Pergerakan Stok
 
