@@ -16,10 +16,21 @@ namespace CisWindowsFormsApp
         {
             //var s = new UserHelper().HashPassword("T77Qqxhc");
 
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<CisDbContext, Configuration>());
-            using (var context = new CisDbContext())
-                context.Database.Initialize(force: false);
-            
+            try
+            {
+                Database.SetInitializer(new MigrateDatabaseToLatestVersion<CisDbContext, Configuration>());
+                using (var context = new CisDbContext())
+                    context.Database.Initialize(force: false);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Gagal memperbarui struktur database:\n\n" + ex.Message +
+                    "\n\nAplikasi tidak dapat dijalankan. Hubungi administrator sistem.",
+                    "Kesalahan Migrasi Database", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             //Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
