@@ -1,15 +1,9 @@
 ﻿using Cis.Data;
 using Cis.Model;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
 using System.Linq;
-using System.Configuration;
-using System.IO;
+using System.Windows.Forms;
 
 namespace CisWindowsFormsApp
 {
@@ -57,11 +51,8 @@ namespace CisWindowsFormsApp
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            var uname = "cisadmin";
-            var pwdString = "capung!@#";
-
-            //var uname = txtUserName.Text.Trim();
-            //var pwdString = txtPassword.Text.Trim();
+            var uname = txtUserName.Text.Trim();
+            var pwdString = txtPassword.Text.Trim();
             var uow = new UnitOfWork<User>(dbContext);
             var pwd = new UserHelper().HashPassword(pwdString);
             var user = uow.Repository.GetAll().Where(u => u.Username == uname && u.Password == pwd).FirstOrDefault();

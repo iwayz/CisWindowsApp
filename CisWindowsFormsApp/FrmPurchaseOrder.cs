@@ -641,6 +641,7 @@ namespace CisWindowsFormsApp
             dgvItems.Rows.Clear();
             SetUIButtonGroup();
             pnlHeader.Enabled = true;
+            pnlItems.Enabled = true;
         }
 
         private void btnReload_Click(object sender, EventArgs e)
