@@ -1,0 +1,56 @@
+<svg viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg" width="640" height="320">
+
+  <!-- Wings - upper pair -->
+  <ellipse cx="118" cy="68" rx="52" ry="22" fill="#e8f4ff" fill-opacity="0.75" stroke="#c8d8e8" stroke-width="0.8" transform="rotate(-25 118 68)"/>
+  <ellipse cx="202" cy="68" rx="52" ry="22" fill="#e8f4ff" fill-opacity="0.75" stroke="#c8d8e8" stroke-width="0.8" transform="rotate(25 202 68)"/>
+
+  <!-- Wings - lower pair -->
+  <ellipse cx="122" cy="90" rx="38" ry="16" fill="#e8f4ff" fill-opacity="0.65" stroke="#c8d8e8" stroke-width="0.8" transform="rotate(-15 122 90)"/>
+  <ellipse cx="198" cy="90" rx="38" ry="16" fill="#e8f4ff" fill-opacity="0.65" stroke="#c8d8e8" stroke-width="0.8" transform="rotate(15 198 90)"/>
+
+  <!-- Wing veins left upper -->
+  <line x1="160" y1="75" x2="80" y2="58" stroke="#a0b8cc" stroke-width="0.5" opacity="0.6"/>
+  <line x1="155" y1="75" x2="85" y2="72" stroke="#a0b8cc" stroke-width="0.5" opacity="0.6"/>
+  <line x1="158" y1="75" x2="100" y2="52" stroke="#a0b8cc" stroke-width="0.4" opacity="0.5"/>
+  <!-- Wing veins right upper -->
+  <line x1="160" y1="75" x2="240" y2="58" stroke="#a0b8cc" stroke-width="0.5" opacity="0.6"/>
+  <line x1="165" y1="75" x2="235" y2="72" stroke="#a0b8cc" stroke-width="0.5" opacity="0.6"/>
+  <line x1="162" y1="75" x2="220" y2="52" stroke="#a0b8cc" stroke-width="0.4" opacity="0.5"/>
+  <!-- Wing veins left lower -->
+  <line x1="157" y1="82" x2="98" y2="88" stroke="#a0b8cc" stroke-width="0.4" opacity="0.5"/>
+  <line x1="155" y1="84" x2="92" y2="96" stroke="#a0b8cc" stroke-width="0.4" opacity="0.5"/>
+  <!-- Wing veins right lower -->
+  <line x1="163" y1="82" x2="222" y2="88" stroke="#a0b8cc" stroke-width="0.4" opacity="0.5"/>
+  <line x1="165" y1="84" x2="228" y2="96" stroke="#a0b8cc" stroke-width="0.4" opacity="0.5"/>
+
+  <!-- Body segments -->
+  <ellipse cx="160" cy="108" rx="5.5" ry="9" fill="#cc1a1a"/>
+  <ellipse cx="160" cy="120" rx="4.5" ry="7" fill="#b51515"/>
+  <ellipse cx="160" cy="130" rx="3.5" ry="6" fill="#a01010"/>
+  <ellipse cx="160" cy="139" rx="2.5" ry="5" fill="#8b0e0e"/>
+  <ellipse cx="160" cy="146" rx="1.8" ry="4" fill="#780c0c"/>
+
+  <!-- Thorax -->
+  <ellipse cx="160" cy="90" rx="7" ry="12" fill="#d42020"/>
+
+  <!-- Head -->
+  <circle cx="160" cy="72" r="7" fill="#cc1a1a"/>
+
+  <!-- Eyes -->
+  <circle cx="156" cy="70" r="2.5" fill="#1a0000"/>
+  <circle cx="164" cy="70" r="2.5" fill="#1a0000"/>
+  <circle cx="155.5" cy="69.5" r="0.8" fill="#ff6666" fill-opacity="0.7"/>
+  <circle cx="163.5" cy="69.5" r="0.8" fill="#ff6666" fill-opacity="0.7"/>
+
+  <!-- Antennae -->
+  <line x1="157" y1="66" x2="149" y2="58" stroke="#990000" stroke-width="1" stroke-linecap="round"/>
+  <line x1="163" y1="66" x2="171" y2="58" stroke="#990000" stroke-width="1" stroke-linecap="round"/>
+  <circle cx="149" cy="58" r="1.2" fill="#990000"/>
+  <circle cx="171" cy="58" r="1.2" fill="#990000"/>
+
+  <!-- CIS text -->
+  <text x="88" y="152" font-family="'Segoe UI Black','Arial Black',sans-serif" font-size="42" font-weight="900" fill="#1a1a1a">C</text>
+  <text x="121" y="152" font-family="'Segoe UI Black','Arial Black',sans-serif" font-size="42" font-weight="900" fill="#1a1a1a">I</text>
+  <text x="136" y="152" font-family="'Segoe UI Black','Arial Black',sans-serif" font-size="42" font-weight="900" fill="#cc1a1a">S</text>
+
+</svg>

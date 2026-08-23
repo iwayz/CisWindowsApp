@@ -257,6 +257,12 @@ namespace Cis.Data
                 .HasForeignKey(po => po.UserId)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<PurchaseOrder>()
+                .HasOptional(po => po.Representative)
+                .WithMany()
+                .HasForeignKey(po => po.RepresentativeId)
+                .WillCascadeOnDelete(false);
+
             // PurchaseOrderItem to PurchaseOrder, Product, UnitOfMeasurement
             modelBuilder.Entity<PurchaseOrderItem>()
                 .HasRequired(i => i.PurchaseOrder)

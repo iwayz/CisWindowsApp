@@ -26,6 +26,14 @@ namespace Cis.Data
                 .HasMaxLength(20)
                 .IsOptional();
 
+            Property(e => e.RepresentativeId)
+                .HasMaxLength(36)
+                .IsOptional();
+
+            Property(e => e.RepresentativeCode)
+                .HasMaxLength(20)
+                .IsOptional();
+
             Property(e => e.OrderDate)
                 .IsRequired();
 
@@ -35,7 +43,22 @@ namespace Cis.Data
             Property(e => e.ReceivedDate)
                 .IsOptional();
 
+            Property(e => e.SupplierInvoiceNumber)
+                .HasMaxLength(50)
+                .IsOptional();
+
+            Property(e => e.SupplierInvoiceDate)
+                .IsOptional();
+
+            Property(e => e.TaxInvoiceNumber)
+                .HasMaxLength(50)
+                .IsOptional();
+
             Property(e => e.SubTotalAmount)
+                .HasPrecision(15, 5)
+                .IsRequired();
+
+            Property(e => e.ExtraDiscountAmount)
                 .HasPrecision(15, 5)
                 .IsRequired();
 

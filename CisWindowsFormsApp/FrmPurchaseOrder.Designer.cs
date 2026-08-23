@@ -57,6 +57,10 @@ namespace CisWindowsFormsApp
             this.pnlFooter = new System.Windows.Forms.Panel();
             this.lblSubTotalLbl = new System.Windows.Forms.Label();
             this.txtSubTotal = new System.Windows.Forms.TextBox();
+            this.lblExtraDiscLbl = new System.Windows.Forms.Label();
+            this.txtExtraDiscount = new System.Windows.Forms.TextBox();
+            this.lblTaxBaseLbl = new System.Windows.Forms.Label();
+            this.txtTaxBaseAmount = new System.Windows.Forms.TextBox();
             this.lblVATLbl = new System.Windows.Forms.Label();
             this.txtVAT = new System.Windows.Forms.TextBox();
             this.lblTotalLbl = new System.Windows.Forms.Label();
@@ -79,8 +83,18 @@ namespace CisWindowsFormsApp
             this.txtSupplierAddress = new System.Windows.Forms.TextBox();
             this.lblSupplierPhoneLbl = new System.Windows.Forms.Label();
             this.txtSupplierPhone = new System.Windows.Forms.TextBox();
+            this.lblRepresentativeLbl = new System.Windows.Forms.Label();
+            this.cbRepresentative = new System.Windows.Forms.ComboBox();
             this.lblReceivedDateLbl = new System.Windows.Forms.Label();
             this.dtpReceivedDate = new System.Windows.Forms.DateTimePicker();
+            this.pnlReceiving = new System.Windows.Forms.Panel();
+            this.lblReceivingTitle = new System.Windows.Forms.Label();
+            this.lblSupplierInvoiceNumberLbl = new System.Windows.Forms.Label();
+            this.txtSupplierInvoiceNumber = new System.Windows.Forms.TextBox();
+            this.lblSupplierInvoiceDateLbl = new System.Windows.Forms.Label();
+            this.dtpSupplierInvoiceDate = new System.Windows.Forms.DateTimePicker();
+            this.lblTaxInvoiceNumberLbl = new System.Windows.Forms.Label();
+            this.txtTaxInvoiceNumber = new System.Windows.Forms.TextBox();
             this.pnlHidden = new System.Windows.Forms.Panel();
             this.txtPOId = new System.Windows.Forms.TextBox();
             this.txtModifiedAt = new System.Windows.Forms.TextBox();
@@ -387,6 +401,7 @@ namespace CisWindowsFormsApp
             this.pnlContent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
             this.pnlContent.Controls.Add(this.pnlItems);
             this.pnlContent.Controls.Add(this.pnlHeaderSpacer);
+            this.pnlContent.Controls.Add(this.pnlReceiving);
             this.pnlContent.Controls.Add(this.pnlHeader);
             this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContent.Location = new System.Drawing.Point(0, 109);
@@ -566,6 +581,10 @@ namespace CisWindowsFormsApp
             this.pnlFooter.Controls.Add(this.txtSubTotal);
             this.pnlFooter.Controls.Add(this.lblVATLbl);
             this.pnlFooter.Controls.Add(this.txtVAT);
+            this.pnlFooter.Controls.Add(this.lblExtraDiscLbl);
+            this.pnlFooter.Controls.Add(this.txtExtraDiscount);
+            this.pnlFooter.Controls.Add(this.lblTaxBaseLbl);
+            this.pnlFooter.Controls.Add(this.txtTaxBaseAmount);
             this.pnlFooter.Controls.Add(this.lblTotalLbl);
             this.pnlFooter.Controls.Add(this.lblTotal);
             this.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -583,10 +602,10 @@ namespace CisWindowsFormsApp
             this.lblSubTotalLbl.Name = "lblSubTotalLbl";
             this.lblSubTotalLbl.Size = new System.Drawing.Size(51, 13);
             this.lblSubTotalLbl.TabIndex = 0;
-            this.lblSubTotalLbl.Text = "Subtotal";
-            // 
+            this.lblSubTotalLbl.Text = "Total Harga";
+            //
             // txtSubTotal
-            // 
+            //
             this.txtSubTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.txtSubTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSubTotal.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -597,31 +616,79 @@ namespace CisWindowsFormsApp
             this.txtSubTotal.TabIndex = 1;
             this.txtSubTotal.Text = "0";
             this.txtSubTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
+            //
+            // lblExtraDiscLbl
+            //
+            this.lblExtraDiscLbl.AutoSize = true;
+            this.lblExtraDiscLbl.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.lblExtraDiscLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.lblExtraDiscLbl.Location = new System.Drawing.Point(174, 6);
+            this.lblExtraDiscLbl.Name = "lblExtraDiscLbl";
+            this.lblExtraDiscLbl.Size = new System.Drawing.Size(70, 13);
+            this.lblExtraDiscLbl.TabIndex = 2;
+            this.lblExtraDiscLbl.Text = "Ekstra Diskon";
+            //
+            // txtExtraDiscount
+            //
+            this.txtExtraDiscount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtExtraDiscount.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtExtraDiscount.Location = new System.Drawing.Point(174, 22);
+            this.txtExtraDiscount.Name = "txtExtraDiscount";
+            this.txtExtraDiscount.Size = new System.Drawing.Size(130, 23);
+            this.txtExtraDiscount.TabIndex = 3;
+            this.txtExtraDiscount.Text = "0";
+            this.txtExtraDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtExtraDiscount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtExtraDiscount_KeyPress);
+            this.txtExtraDiscount.Leave += new System.EventHandler(this.txtExtraDiscount_Leave);
+            //
+            // lblTaxBaseLbl
+            //
+            this.lblTaxBaseLbl.AutoSize = true;
+            this.lblTaxBaseLbl.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.lblTaxBaseLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.lblTaxBaseLbl.Location = new System.Drawing.Point(318, 6);
+            this.lblTaxBaseLbl.Name = "lblTaxBaseLbl";
+            this.lblTaxBaseLbl.Size = new System.Drawing.Size(54, 13);
+            this.lblTaxBaseLbl.TabIndex = 20;
+            this.lblTaxBaseLbl.Text = "Total DPP";
+            //
+            // txtTaxBaseAmount
+            //
+            this.txtTaxBaseAmount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.txtTaxBaseAmount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTaxBaseAmount.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtTaxBaseAmount.Location = new System.Drawing.Point(318, 22);
+            this.txtTaxBaseAmount.Name = "txtTaxBaseAmount";
+            this.txtTaxBaseAmount.ReadOnly = true;
+            this.txtTaxBaseAmount.Size = new System.Drawing.Size(130, 23);
+            this.txtTaxBaseAmount.TabIndex = 21;
+            this.txtTaxBaseAmount.Text = "0";
+            this.txtTaxBaseAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            //
             // lblVATLbl
-            // 
+            //
             this.lblVATLbl.AutoSize = true;
             this.lblVATLbl.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.lblVATLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
-            this.lblVATLbl.Location = new System.Drawing.Point(174, 6);
+            this.lblVATLbl.Location = new System.Drawing.Point(462, 6);
             this.lblVATLbl.Name = "lblVATLbl";
             this.lblVATLbl.Size = new System.Drawing.Size(57, 13);
-            this.lblVATLbl.TabIndex = 2;
+            this.lblVATLbl.TabIndex = 4;
             this.lblVATLbl.Text = "PPN (11%)";
-            // 
+            //
             // txtVAT
-            // 
+            //
             this.txtVAT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.txtVAT.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtVAT.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtVAT.Location = new System.Drawing.Point(174, 22);
+            this.txtVAT.Location = new System.Drawing.Point(462, 22);
             this.txtVAT.Name = "txtVAT";
             this.txtVAT.ReadOnly = true;
             this.txtVAT.Size = new System.Drawing.Size(130, 23);
-            this.txtVAT.TabIndex = 3;
+            this.txtVAT.TabIndex = 5;
             this.txtVAT.Text = "0";
             this.txtVAT.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
+            //
             // lblTotalLbl
             // 
             this.lblTotalLbl.AutoSize = true;
@@ -703,8 +770,8 @@ namespace CisWindowsFormsApp
             this.pnlHeader.Controls.Add(this.txtSupplierAddress);
             this.pnlHeader.Controls.Add(this.lblSupplierPhoneLbl);
             this.pnlHeader.Controls.Add(this.txtSupplierPhone);
-            this.pnlHeader.Controls.Add(this.lblReceivedDateLbl);
-            this.pnlHeader.Controls.Add(this.dtpReceivedDate);
+            this.pnlHeader.Controls.Add(this.lblRepresentativeLbl);
+            this.pnlHeader.Controls.Add(this.cbRepresentative);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHeader.Location = new System.Drawing.Point(8, 8);
             this.pnlHeader.Name = "pnlHeader";
@@ -848,28 +915,141 @@ namespace CisWindowsFormsApp
             this.txtSupplierPhone.ReadOnly = true;
             this.txtSupplierPhone.Size = new System.Drawing.Size(120, 23);
             this.txtSupplierPhone.TabIndex = 99;
-            // 
+            //
+            // lblRepresentativeLbl
+            //
+            this.lblRepresentativeLbl.AutoSize = true;
+            this.lblRepresentativeLbl.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.lblRepresentativeLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.lblRepresentativeLbl.Location = new System.Drawing.Point(448, 64);
+            this.lblRepresentativeLbl.Name = "lblRepresentativeLbl";
+            this.lblRepresentativeLbl.Size = new System.Drawing.Size(63, 15);
+            this.lblRepresentativeLbl.TabIndex = 12;
+            this.lblRepresentativeLbl.Text = "Perwakilan";
+            //
+            // cbRepresentative
+            //
+            this.cbRepresentative.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbRepresentative.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cbRepresentative.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cbRepresentative.Location = new System.Drawing.Point(448, 80);
+            this.cbRepresentative.Name = "cbRepresentative";
+            this.cbRepresentative.Size = new System.Drawing.Size(220, 23);
+            this.cbRepresentative.TabIndex = 13;
+            //
+            // pnlReceiving
+            //
+            this.pnlReceiving.BackColor = System.Drawing.Color.White;
+            this.pnlReceiving.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlReceiving.Controls.Add(this.lblReceivingTitle);
+            this.pnlReceiving.Controls.Add(this.lblReceivedDateLbl);
+            this.pnlReceiving.Controls.Add(this.dtpReceivedDate);
+            this.pnlReceiving.Controls.Add(this.lblSupplierInvoiceNumberLbl);
+            this.pnlReceiving.Controls.Add(this.txtSupplierInvoiceNumber);
+            this.pnlReceiving.Controls.Add(this.lblSupplierInvoiceDateLbl);
+            this.pnlReceiving.Controls.Add(this.dtpSupplierInvoiceDate);
+            this.pnlReceiving.Controls.Add(this.lblTaxInvoiceNumberLbl);
+            this.pnlReceiving.Controls.Add(this.txtTaxInvoiceNumber);
+            this.pnlReceiving.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlReceiving.Enabled = false;
+            this.pnlReceiving.Location = new System.Drawing.Point(8, 116);
+            this.pnlReceiving.Name = "pnlReceiving";
+            this.pnlReceiving.Size = new System.Drawing.Size(1113, 64);
+            this.pnlReceiving.TabIndex = 1;
+            //
+            // lblReceivingTitle
+            //
+            this.lblReceivingTitle.AutoSize = true;
+            this.lblReceivingTitle.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Bold);
+            this.lblReceivingTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            this.lblReceivingTitle.Location = new System.Drawing.Point(10, 6);
+            this.lblReceivingTitle.Name = "lblReceivingTitle";
+            this.lblReceivingTitle.Size = new System.Drawing.Size(180, 12);
+            this.lblReceivingTitle.TabIndex = 0;
+            this.lblReceivingTitle.Text = "INFO PENERIMAAN / FAKTUR SUPPLIER";
+            //
             // lblReceivedDateLbl
-            // 
+            //
             this.lblReceivedDateLbl.AutoSize = true;
             this.lblReceivedDateLbl.Font = new System.Drawing.Font("Segoe UI", 8.5F);
             this.lblReceivedDateLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.lblReceivedDateLbl.Location = new System.Drawing.Point(448, 64);
+            this.lblReceivedDateLbl.Location = new System.Drawing.Point(10, 20);
             this.lblReceivedDateLbl.Name = "lblReceivedDateLbl";
             this.lblReceivedDateLbl.Size = new System.Drawing.Size(65, 15);
-            this.lblReceivedDateLbl.TabIndex = 11;
+            this.lblReceivedDateLbl.TabIndex = 1;
             this.lblReceivedDateLbl.Text = "Tgl. Terima";
-            // 
+            //
             // dtpReceivedDate
-            // 
-            this.dtpReceivedDate.Enabled = false;
+            //
             this.dtpReceivedDate.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpReceivedDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpReceivedDate.Location = new System.Drawing.Point(448, 80);
+            this.dtpReceivedDate.Location = new System.Drawing.Point(10, 36);
             this.dtpReceivedDate.Name = "dtpReceivedDate";
             this.dtpReceivedDate.Size = new System.Drawing.Size(120, 23);
-            this.dtpReceivedDate.TabIndex = 99;
-            // 
+            this.dtpReceivedDate.TabIndex = 2;
+            //
+            // lblSupplierInvoiceNumberLbl
+            //
+            this.lblSupplierInvoiceNumberLbl.AutoSize = true;
+            this.lblSupplierInvoiceNumberLbl.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.lblSupplierInvoiceNumberLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.lblSupplierInvoiceNumberLbl.Location = new System.Drawing.Point(146, 20);
+            this.lblSupplierInvoiceNumberLbl.Name = "lblSupplierInvoiceNumberLbl";
+            this.lblSupplierInvoiceNumberLbl.Size = new System.Drawing.Size(60, 15);
+            this.lblSupplierInvoiceNumberLbl.TabIndex = 3;
+            this.lblSupplierInvoiceNumberLbl.Text = "No. Faktur";
+            //
+            // txtSupplierInvoiceNumber
+            //
+            this.txtSupplierInvoiceNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSupplierInvoiceNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtSupplierInvoiceNumber.Location = new System.Drawing.Point(146, 36);
+            this.txtSupplierInvoiceNumber.MaxLength = 50;
+            this.txtSupplierInvoiceNumber.Name = "txtSupplierInvoiceNumber";
+            this.txtSupplierInvoiceNumber.Size = new System.Drawing.Size(150, 23);
+            this.txtSupplierInvoiceNumber.TabIndex = 4;
+            //
+            // lblSupplierInvoiceDateLbl
+            //
+            this.lblSupplierInvoiceDateLbl.AutoSize = true;
+            this.lblSupplierInvoiceDateLbl.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.lblSupplierInvoiceDateLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.lblSupplierInvoiceDateLbl.Location = new System.Drawing.Point(310, 20);
+            this.lblSupplierInvoiceDateLbl.Name = "lblSupplierInvoiceDateLbl";
+            this.lblSupplierInvoiceDateLbl.Size = new System.Drawing.Size(58, 15);
+            this.lblSupplierInvoiceDateLbl.TabIndex = 5;
+            this.lblSupplierInvoiceDateLbl.Text = "Tgl. Faktur";
+            //
+            // dtpSupplierInvoiceDate
+            //
+            this.dtpSupplierInvoiceDate.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dtpSupplierInvoiceDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpSupplierInvoiceDate.Location = new System.Drawing.Point(310, 36);
+            this.dtpSupplierInvoiceDate.Name = "dtpSupplierInvoiceDate";
+            this.dtpSupplierInvoiceDate.Size = new System.Drawing.Size(120, 23);
+            this.dtpSupplierInvoiceDate.TabIndex = 6;
+            //
+            // lblTaxInvoiceNumberLbl
+            //
+            this.lblTaxInvoiceNumberLbl.AutoSize = true;
+            this.lblTaxInvoiceNumberLbl.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.lblTaxInvoiceNumberLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.lblTaxInvoiceNumberLbl.Location = new System.Drawing.Point(444, 20);
+            this.lblTaxInvoiceNumberLbl.Name = "lblTaxInvoiceNumberLbl";
+            this.lblTaxInvoiceNumberLbl.Size = new System.Drawing.Size(94, 15);
+            this.lblTaxInvoiceNumberLbl.TabIndex = 7;
+            this.lblTaxInvoiceNumberLbl.Text = "No. Faktur Pajak";
+            //
+            // txtTaxInvoiceNumber
+            //
+            this.txtTaxInvoiceNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTaxInvoiceNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtTaxInvoiceNumber.Location = new System.Drawing.Point(444, 36);
+            this.txtTaxInvoiceNumber.MaxLength = 50;
+            this.txtTaxInvoiceNumber.Name = "txtTaxInvoiceNumber";
+            this.txtTaxInvoiceNumber.Size = new System.Drawing.Size(240, 23);
+            this.txtTaxInvoiceNumber.TabIndex = 8;
+            //
             // pnlHidden
             // 
             this.pnlHidden.Controls.Add(this.txtPOId);
@@ -1185,8 +1365,18 @@ namespace CisWindowsFormsApp
         private System.Windows.Forms.TextBox txtSupplierAddress;
         private System.Windows.Forms.Label lblSupplierPhoneLbl;
         private System.Windows.Forms.TextBox txtSupplierPhone;
+        private System.Windows.Forms.Label lblRepresentativeLbl;
+        private System.Windows.Forms.ComboBox cbRepresentative;
         private System.Windows.Forms.Label lblReceivedDateLbl;
         private System.Windows.Forms.DateTimePicker dtpReceivedDate;
+        private System.Windows.Forms.Panel pnlReceiving;
+        private System.Windows.Forms.Label lblReceivingTitle;
+        private System.Windows.Forms.Label lblSupplierInvoiceNumberLbl;
+        private System.Windows.Forms.TextBox txtSupplierInvoiceNumber;
+        private System.Windows.Forms.Label lblSupplierInvoiceDateLbl;
+        private System.Windows.Forms.DateTimePicker dtpSupplierInvoiceDate;
+        private System.Windows.Forms.Label lblTaxInvoiceNumberLbl;
+        private System.Windows.Forms.TextBox txtTaxInvoiceNumber;
         private System.Windows.Forms.Panel pnlHeaderSpacer;
         private System.Windows.Forms.Panel pnlItems;
         private System.Windows.Forms.Panel pnlGridTop;
@@ -1208,6 +1398,10 @@ namespace CisWindowsFormsApp
         private System.Windows.Forms.Panel pnlFooter;
         private System.Windows.Forms.Label lblSubTotalLbl;
         private System.Windows.Forms.TextBox txtSubTotal;
+        private System.Windows.Forms.Label lblExtraDiscLbl;
+        private System.Windows.Forms.TextBox txtExtraDiscount;
+        private System.Windows.Forms.Label lblTaxBaseLbl;
+        private System.Windows.Forms.TextBox txtTaxBaseAmount;
         private System.Windows.Forms.Label lblVATLbl;
         private System.Windows.Forms.TextBox txtVAT;
         private System.Windows.Forms.Label lblTotalLbl;

@@ -33,6 +33,18 @@ namespace CisWindowsFormsApp
             frmInvoiceRecap.ShowDialog();
         }
 
+        private void btnExportPembelian_Click(object sender, EventArgs e)
+        {
+            if (!(new CommonFunctionHelper().ValidateAccess((int)Constant.Permission.Reporting.Purchase)))
+            {
+                CommonMessageHelper.NoAccess();
+                return;
+            }
+
+            FrmPurchaseRecap frmPurchaseRecap = new FrmPurchaseRecap();
+            frmPurchaseRecap.ShowDialog();
+        }
+
         private void btnExportProduct_Click(object sender, EventArgs e)
         {
             if (!(new CommonFunctionHelper().ValidateAccess((int)Constant.Permission.MasterData.Product)))

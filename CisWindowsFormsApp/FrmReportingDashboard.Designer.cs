@@ -19,6 +19,7 @@ namespace CisWindowsFormsApp
             this.btnExportPelanggan   = new System.Windows.Forms.Button();
             this.btnExportProduct     = new System.Windows.Forms.Button();
             this.btnExportExcel       = new System.Windows.Forms.Button();
+            this.btnExportPembelian   = new System.Windows.Forms.Button();
             this.btnStockCard         = new System.Windows.Forms.Button();
             this.btnStockMovement     = new System.Windows.Forms.Button();
             this.pnlChildHeader       = new System.Windows.Forms.Panel();
@@ -34,12 +35,14 @@ namespace CisWindowsFormsApp
             System.Windows.Forms.Panel pnlTileStockCard     = new System.Windows.Forms.Panel();
             System.Windows.Forms.Panel pnlTileStockMovement = new System.Windows.Forms.Panel();
             System.Windows.Forms.Panel pnlTileExportFaktur  = new System.Windows.Forms.Panel();
+            System.Windows.Forms.Panel pnlTileExportPembelian = new System.Windows.Forms.Panel();
             System.Windows.Forms.Panel pnlTileExportProduk  = new System.Windows.Forms.Panel();
             System.Windows.Forms.Panel pnlTileExportPelanggan = new System.Windows.Forms.Panel();
 
             System.Windows.Forms.Panel pnlAccStockCard     = new System.Windows.Forms.Panel();
             System.Windows.Forms.Panel pnlAccStockMovement = new System.Windows.Forms.Panel();
             System.Windows.Forms.Panel pnlAccExportFaktur  = new System.Windows.Forms.Panel();
+            System.Windows.Forms.Panel pnlAccExportPembelian = new System.Windows.Forms.Panel();
             System.Windows.Forms.Panel pnlAccExportProduk  = new System.Windows.Forms.Panel();
             System.Windows.Forms.Panel pnlAccExportPelanggan = new System.Windows.Forms.Panel();
 
@@ -98,6 +101,18 @@ namespace CisWindowsFormsApp
             this.btnExportExcel.UseVisualStyleBackColor = false;
             this.btnExportExcel.Click += new System.EventHandler(this.btnExportExcel_Click);
 
+            // btnExportPembelian
+            this.btnExportPembelian.BackColor = navyBg;
+            this.btnExportPembelian.FlatAppearance.BorderSize = 0;
+            this.btnExportPembelian.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportPembelian.Font = tileFont;
+            this.btnExportPembelian.ForeColor = System.Drawing.Color.White;
+            this.btnExportPembelian.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnExportPembelian.Name = "btnExportPembelian";
+            this.btnExportPembelian.Text = "Export Pembelian";
+            this.btnExportPembelian.UseVisualStyleBackColor = false;
+            this.btnExportPembelian.Click += new System.EventHandler(this.btnExportPembelian_Click);
+
             // btnExportProduct
             this.btnExportProduct.BackColor = navyBg;
             this.btnExportProduct.FlatAppearance.BorderSize = 0;
@@ -126,6 +141,7 @@ namespace CisWindowsFormsApp
             pnlAccStockCard.BackColor      = catBlue;  pnlAccStockCard.Dock      = System.Windows.Forms.DockStyle.Left; pnlAccStockCard.Width      = 4;
             pnlAccStockMovement.BackColor  = catBlue;  pnlAccStockMovement.Dock  = System.Windows.Forms.DockStyle.Left; pnlAccStockMovement.Width  = 4;
             pnlAccExportFaktur.BackColor   = catAmber; pnlAccExportFaktur.Dock   = System.Windows.Forms.DockStyle.Left; pnlAccExportFaktur.Width   = 4;
+            pnlAccExportPembelian.BackColor = catAmber; pnlAccExportPembelian.Dock = System.Windows.Forms.DockStyle.Left; pnlAccExportPembelian.Width = 4;
             pnlAccExportProduk.BackColor   = catAmber; pnlAccExportProduk.Dock   = System.Windows.Forms.DockStyle.Left; pnlAccExportProduk.Width   = 4;
             pnlAccExportPelanggan.BackColor = catAmber; pnlAccExportPelanggan.Dock = System.Windows.Forms.DockStyle.Left; pnlAccExportPelanggan.Width = 4;
 
@@ -133,12 +149,14 @@ namespace CisWindowsFormsApp
             pnlTileStockCard.BackColor      = navyBg; pnlTileStockCard.Dock      = System.Windows.Forms.DockStyle.Fill; pnlTileStockCard.Margin      = tileMargin;
             pnlTileStockMovement.BackColor  = navyBg; pnlTileStockMovement.Dock  = System.Windows.Forms.DockStyle.Fill; pnlTileStockMovement.Margin  = tileMargin;
             pnlTileExportFaktur.BackColor   = navyBg; pnlTileExportFaktur.Dock   = System.Windows.Forms.DockStyle.Fill; pnlTileExportFaktur.Margin   = tileMargin;
+            pnlTileExportPembelian.BackColor = navyBg; pnlTileExportPembelian.Dock = System.Windows.Forms.DockStyle.Fill; pnlTileExportPembelian.Margin = tileMargin;
             pnlTileExportProduk.BackColor   = navyBg; pnlTileExportProduk.Dock   = System.Windows.Forms.DockStyle.Fill; pnlTileExportProduk.Margin   = tileMargin;
             pnlTileExportPelanggan.BackColor = navyBg; pnlTileExportPelanggan.Dock = System.Windows.Forms.DockStyle.Fill; pnlTileExportPelanggan.Margin = tileMargin;
 
             pnlTileStockCard.Controls.Add(this.btnStockCard);           pnlTileStockCard.Controls.Add(pnlAccStockCard);
             pnlTileStockMovement.Controls.Add(this.btnStockMovement);   pnlTileStockMovement.Controls.Add(pnlAccStockMovement);
             pnlTileExportFaktur.Controls.Add(this.btnExportExcel);      pnlTileExportFaktur.Controls.Add(pnlAccExportFaktur);
+            pnlTileExportPembelian.Controls.Add(this.btnExportPembelian); pnlTileExportPembelian.Controls.Add(pnlAccExportPembelian);
             pnlTileExportProduk.Controls.Add(this.btnExportProduct);    pnlTileExportProduk.Controls.Add(pnlAccExportProduk);
             pnlTileExportPelanggan.Controls.Add(this.btnExportPelanggan); pnlTileExportPelanggan.Controls.Add(pnlAccExportPelanggan);
 
@@ -155,6 +173,7 @@ namespace CisWindowsFormsApp
             tlpTiles.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             tlpTiles.Controls.Add(pnlTileStockCard,      0, 0);
             tlpTiles.Controls.Add(pnlTileStockMovement,  1, 0);
+            tlpTiles.Controls.Add(pnlTileExportPembelian, 2, 0);
             tlpTiles.Controls.Add(pnlTileExportFaktur,   0, 1);
             tlpTiles.Controls.Add(pnlTileExportProduk,   1, 1);
             tlpTiles.Controls.Add(pnlTileExportPelanggan, 2, 1);
@@ -261,6 +280,7 @@ namespace CisWindowsFormsApp
         private System.Windows.Forms.Panel pnlReportingChildren;
         private System.Windows.Forms.Label lblReportingChildHeader;
         private System.Windows.Forms.Button btnExportExcel;
+        private System.Windows.Forms.Button btnExportPembelian;
         private System.Windows.Forms.Panel pnlMenuReporting;
         private System.Windows.Forms.Button btnExportPelanggan;
         private System.Windows.Forms.Button btnExportProduct;

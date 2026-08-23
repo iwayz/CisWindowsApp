@@ -38,6 +38,24 @@ namespace CisWindowsFormsApp
             cbSupplier.AutoCompleteCustomSource = ac;
         }
 
+        private void BindComboBoxRepresentative()
+        {
+            var uow = new UnitOfWork<Representative>(dbContext);
+            var list = uow.Repository.GetAll().OrderBy(e => e.RepresentativeCode);
+
+            var ds = new Dictionary<string, string> { { "0", "--Pilih--" } };
+            var ac = new AutoCompleteStringCollection();
+            foreach (var r in list)
+            {
+                ds.Add(r.Id, r.RepresentativeCode + " - " + r.Description);
+                ac.Add(r.RepresentativeCode + " - " + r.Description);
+            }
+            cbRepresentative.DataSource = new System.Windows.Forms.BindingSource(ds, null);
+            cbRepresentative.DisplayMember = "Value";
+            cbRepresentative.ValueMember = "Key";
+            cbRepresentative.AutoCompleteCustomSource = ac;
+        }
+
         private void BindComboBoxProduct()
         {
             var uow = new UnitOfWork<Product>(dbContext);
@@ -84,9 +102,14 @@ namespace CisWindowsFormsApp
             cbSupplier.SelectedValue = po.SupplierId;
             txtSupplierAddress.Text = po.SupplierAddress;
             txtSupplierPhone.Text = po.SupplierPhone;
+            cbRepresentative.SelectedValue = string.IsNullOrEmpty(po.RepresentativeId) ? "0" : po.RepresentativeId;
             dtpOrderDate.Value = po.OrderDate;
             dtpExpectedDate.Value = po.ExpectedDate;
             if (po.ReceivedDate.HasValue) dtpReceivedDate.Value = po.ReceivedDate.Value;
+            txtExtraDiscount.Text = string.Format("{0:n0}", po.ExtraDiscountAmount);
+            txtSupplierInvoiceNumber.Text = po.SupplierInvoiceNumber ?? string.Empty;
+            if (po.SupplierInvoiceDate.HasValue) dtpSupplierInvoiceDate.Value = po.SupplierInvoiceDate.Value;
+            txtTaxInvoiceNumber.Text = po.TaxInvoiceNumber ?? string.Empty;
             txtNotes.Text = po.Notes ?? string.Empty;
             lblStatus.Text = po.PostingStatus.ToString().ToUpper();
             lblStatus.ForeColor = StatusColor(po.PostingStatus);
@@ -131,13 +154,28 @@ namespace CisWindowsFormsApp
                 sub += decimal.Parse(dgvItems.Rows[i].Cells["colSubTotal"].Value.ToString(),
                     System.Globalization.NumberStyles.Currency);
             }
+            var extraDisc = decimal.Parse(string.IsNullOrWhiteSpace(txtExtraDiscount.Text) ? "0" : txtExtraDiscount.Text,
+                System.Globalization.NumberStyles.Currency);
+            var taxBase = Math.Round(sub - extraDisc, 0, MidpointRounding.AwayFromZero);
             var taxPct = dtpOrderDate.Value >= new DateTime(2022, 4, 1) ? 0.11m : 0.10m;
-            var vat = Math.Round(sub * taxPct, 0, MidpointRounding.AwayFromZero);
-            var total = sub + vat;
+            var vat = Math.Round(taxBase * taxPct, 0, MidpointRounding.AwayFromZero);
+            var total = taxBase + vat;
 
             txtSubTotal.Text = string.Format("{0:n0}", sub);
+            txtTaxBaseAmount.Text = string.Format("{0:n0}", taxBase);
             txtVAT.Text = string.Format("{0:n0}", vat);
             lblTotal.Text = string.Format("{0:n0}", total);
+        }
+
+        private void txtExtraDiscount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void txtExtraDiscount_Leave(object sender, EventArgs e)
+        {
+            commonHelper.SetTextBoxToZeroWhenEmpty(sender);
+            RecalcTotals();
         }
 
         private Color StatusColor(PurchaseOrderStatus s)
@@ -159,6 +197,7 @@ namespace CisWindowsFormsApp
 
             pnlHeader.Enabled = isEditable;
             pnlItems.Enabled = isEditable;
+            pnlReceiving.Enabled = isConfirmed;
 
             btnSave.Enabled = isEditable;
             btnDel.Enabled = isDraft;
@@ -268,6 +307,7 @@ namespace CisWindowsFormsApp
         {
             _uow = new UnitOfWork<PurchaseOrder>(dbContext);
             BindComboBoxSupplier();
+            BindComboBoxRepresentative();
             BindComboBoxProduct();
 
             dtpExpiredDate.Format = DateTimePickerFormat.Custom;
@@ -416,6 +456,9 @@ namespace CisWindowsFormsApp
             using (var tx = dbContext.Database.BeginTransaction())
             {
                 var supplier = new UnitOfWork<Principal>(dbContext).Repository.GetById(cbSupplier.SelectedValue.ToString());
+                var repId = cbRepresentative.SelectedValue?.ToString();
+                var representative = string.IsNullOrEmpty(repId) || repId == "0" ? null
+                    : new UnitOfWork<Representative>(dbContext).Repository.GetById(repId);
 
                 var po = new PurchaseOrder
                 {
@@ -424,9 +467,13 @@ namespace CisWindowsFormsApp
                     SupplierName = supplier.PrincipalName,
                     SupplierAddress = supplier.Address,
                     SupplierPhone = supplier.Phone ?? string.Empty,
+                    RepresentativeId = representative?.Id,
+                    RepresentativeCode = representative?.RepresentativeCode,
                     OrderDate = dtpOrderDate.Value,
                     ExpectedDate = dtpExpectedDate.Value,
                     SubTotalAmount = decimal.Parse(txtSubTotal.Text, System.Globalization.NumberStyles.Currency),
+                    ExtraDiscountAmount = decimal.Parse(txtExtraDiscount.Text, System.Globalization.NumberStyles.Currency),
+                    TaxBaseAmount = decimal.Parse(txtTaxBaseAmount.Text, System.Globalization.NumberStyles.Currency),
                     ValueAddedTaxAmount = decimal.Parse(txtVAT.Text, System.Globalization.NumberStyles.Currency),
                     GrandTotalAmount = decimal.Parse(lblTotal.Text, System.Globalization.NumberStyles.Currency),
                     Notes = txtNotes.Text.Trim(),
@@ -502,15 +549,22 @@ namespace CisWindowsFormsApp
             using (var tx = dbContext.Database.BeginTransaction())
             {
                 var supplier = new UnitOfWork<Principal>(dbContext).Repository.GetById(cbSupplier.SelectedValue.ToString());
+                var repId = cbRepresentative.SelectedValue?.ToString();
+                var representative = string.IsNullOrEmpty(repId) || repId == "0" ? null
+                    : new UnitOfWork<Representative>(dbContext).Repository.GetById(repId);
                 var po = _uow.Repository.GetById(txtPOId.Text.Trim());
 
                 po.SupplierId = supplier.Id;
                 po.SupplierName = supplier.PrincipalName;
                 po.SupplierAddress = supplier.Address;
                 po.SupplierPhone = supplier.Phone ?? string.Empty;
+                po.RepresentativeId = representative?.Id;
+                po.RepresentativeCode = representative?.RepresentativeCode;
                 po.OrderDate = dtpOrderDate.Value;
                 po.ExpectedDate = dtpExpectedDate.Value;
                 po.SubTotalAmount = decimal.Parse(txtSubTotal.Text, System.Globalization.NumberStyles.Currency);
+                po.ExtraDiscountAmount = decimal.Parse(txtExtraDiscount.Text, System.Globalization.NumberStyles.Currency);
+                po.TaxBaseAmount = decimal.Parse(txtTaxBaseAmount.Text, System.Globalization.NumberStyles.Currency);
                 po.ValueAddedTaxAmount = decimal.Parse(txtVAT.Text, System.Globalization.NumberStyles.Currency);
                 po.GrandTotalAmount = decimal.Parse(lblTotal.Text, System.Globalization.NumberStyles.Currency);
                 po.Notes = txtNotes.Text.Trim();
@@ -600,13 +654,16 @@ namespace CisWindowsFormsApp
 
         private void btnReceive_Click(object sender, EventArgs e)
         {
-            dtpReceivedDate.Value = DateTime.Today;
-            var confirm = MessageBox.Show($"Tandai PO {lblPONumber.Text} sebagai DITERIMA?\nTanggal: {dtpReceivedDate.Value:dd/MM/yyyy}",
+            var confirm = MessageBox.Show($"Tandai PO {lblPONumber.Text} sebagai DITERIMA?\nTanggal Terima: {dtpReceivedDate.Value:dd/MM/yyyy}",
                 "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (confirm != DialogResult.Yes) return;
 
             var svc = new PurchaseOrderService(dbContext);
-            var (ok, msg) = svc.Receive(txtPOId.Text.Trim(), Properties.Settings.Default.CurrentUserId);
+            var (ok, msg) = svc.Receive(txtPOId.Text.Trim(), Properties.Settings.Default.CurrentUserId,
+                dtpReceivedDate.Value,
+                string.IsNullOrWhiteSpace(txtSupplierInvoiceNumber.Text) ? null : txtSupplierInvoiceNumber.Text.Trim(),
+                dtpSupplierInvoiceDate.Value,
+                string.IsNullOrWhiteSpace(txtTaxInvoiceNumber.Text) ? null : txtTaxInvoiceNumber.Text.Trim());
             if (ok) { NavigateRecord(RecordNavigation.Last); MessageBox.Show("PO berhasil diterima. Stok telah diperbarui.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information); }
             else MessageBox.Show(msg, "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
@@ -629,19 +686,27 @@ namespace CisWindowsFormsApp
             cbSupplier.SelectedValue = "0";
             txtSupplierAddress.Text = string.Empty;
             txtSupplierPhone.Text = string.Empty;
+            cbRepresentative.SelectedValue = "0";
             dtpOrderDate.Value = DateTime.Today;
             dtpExpectedDate.Value = DateTime.Today.AddDays(7);
             txtNotes.Text = string.Empty;
+            dtpReceivedDate.Value = DateTime.Today;
+            txtSupplierInvoiceNumber.Text = string.Empty;
+            dtpSupplierInvoiceDate.Value = DateTime.Today;
+            txtTaxInvoiceNumber.Text = string.Empty;
             lblStatus.Text = string.Empty;
             txtPOId.Text = string.Empty;
             txtModifiedAt.Text = string.Empty;
             txtSubTotal.Text = "0";
+            txtExtraDiscount.Text = "0";
+            txtTaxBaseAmount.Text = "0";
             txtVAT.Text = "0";
             lblTotal.Text = "0";
             dgvItems.Rows.Clear();
             SetUIButtonGroup();
             pnlHeader.Enabled = true;
             pnlItems.Enabled = true;
+            pnlReceiving.Enabled = false;
         }
 
         private void btnReload_Click(object sender, EventArgs e)

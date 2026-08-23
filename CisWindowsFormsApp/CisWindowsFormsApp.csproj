@@ -14,6 +14,12 @@ PT. Capung Indah Sentosa</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Dashboard\**" />
+    <EmbeddedResource Remove="Dashboard\**" />
+    <None Remove="Dashboard\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="C:\Users\Sudik_S419\.nuget\packages\nlog.config\4.7.5\contentFiles\any\any\NLog.config" />
     <None Remove="Reports\RptInvoice.rdlc" />
     <None Remove="Reports\RptInvoiceV2.rdlc" />
@@ -117,7 +123,6 @@ PT. Capung Indah Sentosa</PackageReleaseNotes>
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Dashboard\" />
     <Folder Include="Resources\Icons16\" />
     <Folder Include="Resources\Icons32\" />
   </ItemGroup>
