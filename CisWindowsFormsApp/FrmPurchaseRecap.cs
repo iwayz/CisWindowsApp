@@ -66,9 +66,8 @@ namespace CisWindowsFormsApp
 
                 var purchaseOrders = uowPo.Repository.GetAll()
                     .Where(po => po.PostingStatus == PurchaseOrderStatus.Received
-                              && po.ReceivedDate.HasValue
-                              && po.ReceivedDate.Value >= fromDate
-                              && po.ReceivedDate.Value <= toDate)
+                              && po.OrderDate >= fromDate
+                              && po.OrderDate <= toDate)
                     .ToList();
 
                 var poIds = purchaseOrders.Select(po => po.Id).ToList();

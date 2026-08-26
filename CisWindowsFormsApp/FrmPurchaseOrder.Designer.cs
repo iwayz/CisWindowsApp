@@ -983,6 +983,8 @@ namespace CisWindowsFormsApp
             //
             this.dtpReceivedDate.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpReceivedDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpReceivedDate.ShowCheckBox = true;
+            this.dtpReceivedDate.Checked = false;
             this.dtpReceivedDate.Location = new System.Drawing.Point(10, 36);
             this.dtpReceivedDate.Name = "dtpReceivedDate";
             this.dtpReceivedDate.Size = new System.Drawing.Size(120, 23);

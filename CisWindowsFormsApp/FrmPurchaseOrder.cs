@@ -23,19 +23,27 @@ namespace CisWindowsFormsApp
         private void BindComboBoxSupplier()
         {
             var uow = new UnitOfWork<Principal>(dbContext);
-            var list = uow.Repository.GetAll().OrderBy(e => e.PrincipalCode);
+            var list = uow.Repository.GetAll().OrderBy(e => e.PrincipalName);
 
             var ds = new Dictionary<string, string> { { "0", "--Pilih--" } };
             var ac = new AutoCompleteStringCollection();
             foreach (var p in list)
             {
-                ds.Add(p.Id, p.PrincipalCode + " - " + p.PrincipalName);
-                ac.Add(p.PrincipalCode + " - " + p.PrincipalName);
+                ds[p.PrincipalName] = p.PrincipalName; // indexer, not Add: tolerate duplicate supplier names
+                ac.Add(p.PrincipalName);
             }
             cbSupplier.DataSource = new System.Windows.Forms.BindingSource(ds, null);
             cbSupplier.DisplayMember = "Value";
             cbSupplier.ValueMember = "Key";
             cbSupplier.AutoCompleteCustomSource = ac;
+        }
+
+        private Principal GetSelectedSupplier()
+        {
+            var name = cbSupplier.SelectedValue?.ToString();
+            if (string.IsNullOrEmpty(name) || name == "0") return null;
+            return new UnitOfWork<Principal>(dbContext).Repository.GetAll()
+                .FirstOrDefault(p => p.PrincipalName == name);
         }
 
         private void BindComboBoxRepresentative()
@@ -99,12 +107,13 @@ namespace CisWindowsFormsApp
         private void LoadDataItem(PurchaseOrder po)
         {
             lblPONumber.Text = po.PONumber;
-            cbSupplier.SelectedValue = po.SupplierId;
+            cbSupplier.SelectedValue = po.SupplierName;
             txtSupplierAddress.Text = po.SupplierAddress;
             txtSupplierPhone.Text = po.SupplierPhone;
             cbRepresentative.SelectedValue = string.IsNullOrEmpty(po.RepresentativeId) ? "0" : po.RepresentativeId;
             dtpOrderDate.Value = po.OrderDate;
             dtpExpectedDate.Value = po.ExpectedDate;
+            dtpReceivedDate.Checked = po.ReceivedDate.HasValue;
             if (po.ReceivedDate.HasValue) dtpReceivedDate.Value = po.ReceivedDate.Value;
             txtExtraDiscount.Text = string.Format("{0:n0}", po.ExtraDiscountAmount);
             txtSupplierInvoiceNumber.Text = po.SupplierInvoiceNumber ?? string.Empty;
@@ -197,7 +206,7 @@ namespace CisWindowsFormsApp
 
             pnlHeader.Enabled = isEditable;
             pnlItems.Enabled = isEditable;
-            pnlReceiving.Enabled = isConfirmed;
+            pnlReceiving.Enabled = isDraft || isConfirmed ;
 
             btnSave.Enabled = isEditable;
             btnDel.Enabled = isDraft;
@@ -320,9 +329,7 @@ namespace CisWindowsFormsApp
 
         private void cbSupplier_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var id = cbSupplier.SelectedValue?.ToString();
-            if (string.IsNullOrEmpty(id) || id == "0") return;
-            var p = new UnitOfWork<Principal>(dbContext).Repository.GetById(id);
+            var p = GetSelectedSupplier();
             if (p == null) return;
             txtSupplierAddress.Text = p.Address;
             txtSupplierPhone.Text = p.Phone ?? string.Empty;
@@ -455,7 +462,7 @@ namespace CisWindowsFormsApp
 
             using (var tx = dbContext.Database.BeginTransaction())
             {
-                var supplier = new UnitOfWork<Principal>(dbContext).Repository.GetById(cbSupplier.SelectedValue.ToString());
+                var supplier = GetSelectedSupplier();
                 var repId = cbRepresentative.SelectedValue?.ToString();
                 var representative = string.IsNullOrEmpty(repId) || repId == "0" ? null
                     : new UnitOfWork<Representative>(dbContext).Repository.GetById(repId);
@@ -548,7 +555,7 @@ namespace CisWindowsFormsApp
 
             using (var tx = dbContext.Database.BeginTransaction())
             {
-                var supplier = new UnitOfWork<Principal>(dbContext).Repository.GetById(cbSupplier.SelectedValue.ToString());
+                var supplier = GetSelectedSupplier();
                 var repId = cbRepresentative.SelectedValue?.ToString();
                 var representative = string.IsNullOrEmpty(repId) || repId == "0" ? null
                     : new UnitOfWork<Representative>(dbContext).Repository.GetById(repId);
@@ -654,13 +661,16 @@ namespace CisWindowsFormsApp
 
         private void btnReceive_Click(object sender, EventArgs e)
         {
-            var confirm = MessageBox.Show($"Tandai PO {lblPONumber.Text} sebagai DITERIMA?\nTanggal Terima: {dtpReceivedDate.Value:dd/MM/yyyy}",
+            var receivedDateText = dtpReceivedDate.Checked
+                ? dtpReceivedDate.Value.ToString("dd/MM/yyyy")
+                : "(belum diisi, akan menggunakan tanggal hari ini)";
+            var confirm = MessageBox.Show($"Tandai PO {lblPONumber.Text} sebagai DITERIMA?\nTanggal Terima: {receivedDateText}",
                 "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (confirm != DialogResult.Yes) return;
 
             var svc = new PurchaseOrderService(dbContext);
             var (ok, msg) = svc.Receive(txtPOId.Text.Trim(), Properties.Settings.Default.CurrentUserId,
-                dtpReceivedDate.Value,
+                dtpReceivedDate.Checked ? dtpReceivedDate.Value : (DateTime?)null,
                 string.IsNullOrWhiteSpace(txtSupplierInvoiceNumber.Text) ? null : txtSupplierInvoiceNumber.Text.Trim(),
                 dtpSupplierInvoiceDate.Value,
                 string.IsNullOrWhiteSpace(txtTaxInvoiceNumber.Text) ? null : txtTaxInvoiceNumber.Text.Trim());
@@ -690,6 +700,7 @@ namespace CisWindowsFormsApp
             dtpOrderDate.Value = DateTime.Today;
             dtpExpectedDate.Value = DateTime.Today.AddDays(7);
             txtNotes.Text = string.Empty;
+            dtpReceivedDate.Checked = false;
             dtpReceivedDate.Value = DateTime.Today;
             txtSupplierInvoiceNumber.Text = string.Empty;
             dtpSupplierInvoiceDate.Value = DateTime.Today;
@@ -706,7 +717,7 @@ namespace CisWindowsFormsApp
             SetUIButtonGroup();
             pnlHeader.Enabled = true;
             pnlItems.Enabled = true;
-            pnlReceiving.Enabled = false;
+            pnlReceiving.Enabled = true;
         }
 
         private void btnReload_Click(object sender, EventArgs e)
