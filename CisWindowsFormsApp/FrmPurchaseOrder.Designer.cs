@@ -75,8 +75,6 @@ namespace CisWindowsFormsApp
             this.cbSupplier = new System.Windows.Forms.ComboBox();
             this.lblOrderDateLbl = new System.Windows.Forms.Label();
             this.dtpOrderDate = new System.Windows.Forms.DateTimePicker();
-            this.lblExpectedDateLbl = new System.Windows.Forms.Label();
-            this.dtpExpectedDate = new System.Windows.Forms.DateTimePicker();
             this.lblNotesLbl = new System.Windows.Forms.Label();
             this.txtNotes = new System.Windows.Forms.TextBox();
             this.lblSupplierAddressLbl = new System.Windows.Forms.Label();
@@ -95,6 +93,8 @@ namespace CisWindowsFormsApp
             this.dtpSupplierInvoiceDate = new System.Windows.Forms.DateTimePicker();
             this.lblTaxInvoiceNumberLbl = new System.Windows.Forms.Label();
             this.txtTaxInvoiceNumber = new System.Windows.Forms.TextBox();
+            this.lblTaxInvoiceDateLbl = new System.Windows.Forms.Label();
+            this.dtpTaxInvoiceDate = new System.Windows.Forms.DateTimePicker();
             this.pnlHidden = new System.Windows.Forms.Panel();
             this.txtPOId = new System.Windows.Forms.TextBox();
             this.txtModifiedAt = new System.Windows.Forms.TextBox();
@@ -105,6 +105,7 @@ namespace CisWindowsFormsApp
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.lblPrice = new System.Windows.Forms.Label();
             this.lblQtyPreview = new System.Windows.Forms.Label();
+            this.lblGrossPreview = new System.Windows.Forms.Label();
             this.cboUnit = new System.Windows.Forms.ComboBox();
             this.lblUnit = new System.Windows.Forms.Label();
             this.txtQty = new System.Windows.Forms.TextBox();
@@ -559,7 +560,7 @@ namespace CisWindowsFormsApp
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.colDisc.DefaultCellStyle = dataGridViewCellStyle4;
             this.colDisc.FillWeight = 55F;
-            this.colDisc.HeaderText = "DISC%";
+            this.colDisc.HeaderText = "DISKON";
             this.colDisc.MinimumWidth = 6;
             this.colDisc.Name = "colDisc";
             this.colDisc.ReadOnly = true;
@@ -762,8 +763,6 @@ namespace CisWindowsFormsApp
             this.pnlHeader.Controls.Add(this.cbSupplier);
             this.pnlHeader.Controls.Add(this.lblOrderDateLbl);
             this.pnlHeader.Controls.Add(this.dtpOrderDate);
-            this.pnlHeader.Controls.Add(this.lblExpectedDateLbl);
-            this.pnlHeader.Controls.Add(this.dtpExpectedDate);
             this.pnlHeader.Controls.Add(this.lblNotesLbl);
             this.pnlHeader.Controls.Add(this.txtNotes);
             this.pnlHeader.Controls.Add(this.lblSupplierAddressLbl);
@@ -831,46 +830,26 @@ namespace CisWindowsFormsApp
             this.dtpOrderDate.Size = new System.Drawing.Size(120, 23);
             this.dtpOrderDate.TabIndex = 4;
             // 
-            // lblExpectedDateLbl
-            // 
-            this.lblExpectedDateLbl.AutoSize = true;
-            this.lblExpectedDateLbl.Font = new System.Drawing.Font("Segoe UI", 8.5F);
-            this.lblExpectedDateLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.lblExpectedDateLbl.Location = new System.Drawing.Point(448, 20);
-            this.lblExpectedDateLbl.Name = "lblExpectedDateLbl";
-            this.lblExpectedDateLbl.Size = new System.Drawing.Size(76, 15);
-            this.lblExpectedDateLbl.TabIndex = 5;
-            this.lblExpectedDateLbl.Text = "Estimasi Tiba";
-            // 
-            // dtpExpectedDate
-            // 
-            this.dtpExpectedDate.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.dtpExpectedDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpExpectedDate.Location = new System.Drawing.Point(448, 36);
-            this.dtpExpectedDate.Name = "dtpExpectedDate";
-            this.dtpExpectedDate.Size = new System.Drawing.Size(120, 23);
-            this.dtpExpectedDate.TabIndex = 6;
-            // 
             // lblNotesLbl
-            // 
+            //
             this.lblNotesLbl.AutoSize = true;
             this.lblNotesLbl.Font = new System.Drawing.Font("Segoe UI", 8.5F);
             this.lblNotesLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.lblNotesLbl.Location = new System.Drawing.Point(582, 20);
+            this.lblNotesLbl.Location = new System.Drawing.Point(448, 20);
             this.lblNotesLbl.Name = "lblNotesLbl";
             this.lblNotesLbl.Size = new System.Drawing.Size(48, 15);
-            this.lblNotesLbl.TabIndex = 7;
+            this.lblNotesLbl.TabIndex = 5;
             this.lblNotesLbl.Text = "Catatan";
             // 
             // txtNotes
             // 
             this.txtNotes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNotes.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtNotes.Location = new System.Drawing.Point(582, 36);
+            this.txtNotes.Location = new System.Drawing.Point(448, 36);
             this.txtNotes.Multiline = true;
             this.txtNotes.Name = "txtNotes";
-            this.txtNotes.Size = new System.Drawing.Size(504, 22);
-            this.txtNotes.TabIndex = 8;
+            this.txtNotes.Size = new System.Drawing.Size(638, 22);
+            this.txtNotes.TabIndex = 6;
             // 
             // lblSupplierAddressLbl
             // 
@@ -950,6 +929,8 @@ namespace CisWindowsFormsApp
             this.pnlReceiving.Controls.Add(this.dtpSupplierInvoiceDate);
             this.pnlReceiving.Controls.Add(this.lblTaxInvoiceNumberLbl);
             this.pnlReceiving.Controls.Add(this.txtTaxInvoiceNumber);
+            this.pnlReceiving.Controls.Add(this.lblTaxInvoiceDateLbl);
+            this.pnlReceiving.Controls.Add(this.dtpTaxInvoiceDate);
             this.pnlReceiving.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlReceiving.Enabled = false;
             this.pnlReceiving.Location = new System.Drawing.Point(8, 116);
@@ -1026,6 +1007,8 @@ namespace CisWindowsFormsApp
             //
             this.dtpSupplierInvoiceDate.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpSupplierInvoiceDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpSupplierInvoiceDate.ShowCheckBox = true;
+            this.dtpSupplierInvoiceDate.Checked = false;
             this.dtpSupplierInvoiceDate.Location = new System.Drawing.Point(310, 36);
             this.dtpSupplierInvoiceDate.Name = "dtpSupplierInvoiceDate";
             this.dtpSupplierInvoiceDate.Size = new System.Drawing.Size(120, 23);
@@ -1051,6 +1034,28 @@ namespace CisWindowsFormsApp
             this.txtTaxInvoiceNumber.Name = "txtTaxInvoiceNumber";
             this.txtTaxInvoiceNumber.Size = new System.Drawing.Size(240, 23);
             this.txtTaxInvoiceNumber.TabIndex = 8;
+            //
+            // lblTaxInvoiceDateLbl
+            //
+            this.lblTaxInvoiceDateLbl.AutoSize = true;
+            this.lblTaxInvoiceDateLbl.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.lblTaxInvoiceDateLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.lblTaxInvoiceDateLbl.Location = new System.Drawing.Point(700, 20);
+            this.lblTaxInvoiceDateLbl.Name = "lblTaxInvoiceDateLbl";
+            this.lblTaxInvoiceDateLbl.Size = new System.Drawing.Size(94, 15);
+            this.lblTaxInvoiceDateLbl.TabIndex = 9;
+            this.lblTaxInvoiceDateLbl.Text = "Tgl. Faktur Pajak";
+            //
+            // dtpTaxInvoiceDate
+            //
+            this.dtpTaxInvoiceDate.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dtpTaxInvoiceDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpTaxInvoiceDate.ShowCheckBox = true;
+            this.dtpTaxInvoiceDate.Checked = false;
+            this.dtpTaxInvoiceDate.Location = new System.Drawing.Point(700, 36);
+            this.dtpTaxInvoiceDate.Name = "dtpTaxInvoiceDate";
+            this.dtpTaxInvoiceDate.Size = new System.Drawing.Size(130, 23);
+            this.dtpTaxInvoiceDate.TabIndex = 10;
             //
             // pnlHidden
             // 
@@ -1128,7 +1133,7 @@ namespace CisWindowsFormsApp
             this.lblDiscount.Name = "lblDiscount";
             this.lblDiscount.Size = new System.Drawing.Size(42, 15);
             this.lblDiscount.TabIndex = 10;
-            this.lblDiscount.Text = "Disc %";
+            this.lblDiscount.Text = "Diskon";
             // 
             // txtPrice
             // 
@@ -1141,7 +1146,8 @@ namespace CisWindowsFormsApp
             this.txtPrice.Text = "0";
             this.txtPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrice_KeyPress);
-            // 
+            this.txtPrice.TextChanged += new System.EventHandler(this.txtPrice_TextChanged);
+            //
             // lblPrice
             // 
             this.lblPrice.AutoSize = true;
@@ -1163,7 +1169,18 @@ namespace CisWindowsFormsApp
             this.lblQtyPreview.Size = new System.Drawing.Size(10, 15);
             this.lblQtyPreview.TabIndex = 16;
             this.lblQtyPreview.Text = " ";
-            // 
+            //
+            // lblGrossPreview
+            //
+            this.lblGrossPreview.AutoSize = true;
+            this.lblGrossPreview.Font = new System.Drawing.Font("Segoe UI", 8.5F, System.Drawing.FontStyle.Italic);
+            this.lblGrossPreview.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
+            this.lblGrossPreview.Location = new System.Drawing.Point(724, 36);
+            this.lblGrossPreview.Name = "lblGrossPreview";
+            this.lblGrossPreview.Size = new System.Drawing.Size(10, 15);
+            this.lblGrossPreview.TabIndex = 17;
+            this.lblGrossPreview.Text = " ";
+            //
             // cboUnit
             // 
             this.cboUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -1285,6 +1302,7 @@ namespace CisWindowsFormsApp
             this.pnlItemInput.Controls.Add(this.lblUnit);
             this.pnlItemInput.Controls.Add(this.cboUnit);
             this.pnlItemInput.Controls.Add(this.lblQtyPreview);
+            this.pnlItemInput.Controls.Add(this.lblGrossPreview);
             this.pnlItemInput.Controls.Add(this.lblPrice);
             this.pnlItemInput.Controls.Add(this.txtPrice);
             this.pnlItemInput.Controls.Add(this.lblDiscount);
@@ -1359,8 +1377,6 @@ namespace CisWindowsFormsApp
         private System.Windows.Forms.ComboBox cbSupplier;
         private System.Windows.Forms.Label lblOrderDateLbl;
         private System.Windows.Forms.DateTimePicker dtpOrderDate;
-        private System.Windows.Forms.Label lblExpectedDateLbl;
-        private System.Windows.Forms.DateTimePicker dtpExpectedDate;
         private System.Windows.Forms.Label lblNotesLbl;
         private System.Windows.Forms.TextBox txtNotes;
         private System.Windows.Forms.Label lblSupplierAddressLbl;
@@ -1378,6 +1394,8 @@ namespace CisWindowsFormsApp
         private System.Windows.Forms.Label lblSupplierInvoiceDateLbl;
         private System.Windows.Forms.DateTimePicker dtpSupplierInvoiceDate;
         private System.Windows.Forms.Label lblTaxInvoiceNumberLbl;
+        private System.Windows.Forms.Label lblTaxInvoiceDateLbl;
+        private System.Windows.Forms.DateTimePicker dtpTaxInvoiceDate;
         private System.Windows.Forms.TextBox txtTaxInvoiceNumber;
         private System.Windows.Forms.Panel pnlHeaderSpacer;
         private System.Windows.Forms.Panel pnlItems;
@@ -1423,6 +1441,7 @@ namespace CisWindowsFormsApp
         private System.Windows.Forms.Label lblUnit;
         private System.Windows.Forms.ComboBox cboUnit;
         private System.Windows.Forms.Label lblQtyPreview;
+        private System.Windows.Forms.Label lblGrossPreview;
         private System.Windows.Forms.Label lblPrice;
         private System.Windows.Forms.TextBox txtPrice;
         private System.Windows.Forms.Label lblDiscount;

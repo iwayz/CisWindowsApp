@@ -37,9 +37,6 @@ namespace Cis.Data
             Property(e => e.OrderDate)
                 .IsRequired();
 
-            Property(e => e.ExpectedDate)
-                .IsRequired();
-
             Property(e => e.ReceivedDate)
                 .IsOptional();
 
@@ -52,6 +49,9 @@ namespace Cis.Data
 
             Property(e => e.TaxInvoiceNumber)
                 .HasMaxLength(50)
+                .IsOptional();
+
+            Property(e => e.TaxInvoiceDate)
                 .IsOptional();
 
             Property(e => e.SubTotalAmount)

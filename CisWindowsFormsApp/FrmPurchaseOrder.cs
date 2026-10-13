@@ -112,13 +112,15 @@ namespace CisWindowsFormsApp
             txtSupplierPhone.Text = po.SupplierPhone;
             cbRepresentative.SelectedValue = string.IsNullOrEmpty(po.RepresentativeId) ? "0" : po.RepresentativeId;
             dtpOrderDate.Value = po.OrderDate;
-            dtpExpectedDate.Value = po.ExpectedDate;
             dtpReceivedDate.Checked = po.ReceivedDate.HasValue;
             if (po.ReceivedDate.HasValue) dtpReceivedDate.Value = po.ReceivedDate.Value;
             txtExtraDiscount.Text = string.Format("{0:n0}", po.ExtraDiscountAmount);
             txtSupplierInvoiceNumber.Text = po.SupplierInvoiceNumber ?? string.Empty;
+            dtpSupplierInvoiceDate.Checked = po.SupplierInvoiceDate.HasValue;
             if (po.SupplierInvoiceDate.HasValue) dtpSupplierInvoiceDate.Value = po.SupplierInvoiceDate.Value;
             txtTaxInvoiceNumber.Text = po.TaxInvoiceNumber ?? string.Empty;
+            dtpTaxInvoiceDate.Checked = po.TaxInvoiceDate.HasValue;
+            if (po.TaxInvoiceDate.HasValue) dtpTaxInvoiceDate.Value = po.TaxInvoiceDate.Value;
             txtNotes.Text = po.Notes ?? string.Empty;
             lblStatus.Text = po.PostingStatus.ToString().ToUpper();
             lblStatus.ForeColor = StatusColor(po.PostingStatus);
@@ -146,7 +148,7 @@ namespace CisWindowsFormsApp
                 row.Cells["colUomId"].Value = item.UomId;
                 row.Cells["colUomCode"].Value = item.UomCode;
                 row.Cells["colPrice"].Value = string.Format("{0:n0}", item.Price);
-                row.Cells["colDisc"].Value = string.Format("{0:n2}", item.DiscountPercentage) + "%";
+                row.Cells["colDisc"].Value = string.Format("{0:n0}", item.DiscountAmount);
                 row.Cells["colSubTotal"].Value = string.Format("{0:n0}", item.TotalAmount);
             }
 
@@ -206,15 +208,15 @@ namespace CisWindowsFormsApp
 
             pnlHeader.Enabled = isEditable;
             pnlItems.Enabled = isEditable;
-            pnlReceiving.Enabled = isDraft || isConfirmed ;
+            pnlReceiving.Enabled = true; // client requirement: receiving/invoice fields are editable at any status
 
-            btnSave.Enabled = isEditable;
+            btnSave.Enabled = true; // always available so the receiving/invoice fields can be saved at any status
             btnDel.Enabled = isDraft;
             btnConfirm.Enabled = isDraft;
             btnReceive.Enabled = isConfirmed;
             btnCancel.Enabled = isDraft || isConfirmed;
 
-            btnSave.BackColor = isEditable ? Color.FromArgb(16, 124, 16) : Color.Gray;
+            btnSave.BackColor = Color.FromArgb(16, 124, 16);
             btnSave.ForeColor = Color.White;
             btnDel.BackColor = isDraft ? Color.FromArgb(196, 43, 28) : Color.Gray;
             btnDel.ForeColor = Color.White;
@@ -296,14 +298,6 @@ namespace CisWindowsFormsApp
             }
         }
 
-        private float ParseDiscount(string s)
-        {
-            s = s.Replace("%", "").Trim();
-            var sep = Convert.ToChar(Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator);
-            return float.Parse(string.IsNullOrWhiteSpace(s) ? "0"
-                : (sep == ',' ? s.Replace('.', ',') : s.Replace(',', '.')));
-        }
-
         #endregion
 
         public FrmPurchaseOrder()
@@ -342,7 +336,7 @@ namespace CisWindowsFormsApp
             var p = new UnitOfWork<Product>(dbContext).Repository.GetById(id);
             if (p == null) return;
             txtPrice.Text = p.Price.ToString("G29");
-            txtDiscount.Text = p.Discount.ToString().Replace('.', ',');
+            txtDiscount.Text = "0"; // discount is now a Rupiah amount entered per line, not a % suggested from the product master
             BindComboBoxUnit(id);
         }
 
@@ -370,6 +364,7 @@ namespace CisWindowsFormsApp
                 || !int.TryParse(txtQty.Text.Trim(), out var qty))
             {
                 lblQtyPreview.Text = string.Empty;
+                lblGrossPreview.Text = string.Empty;
                 return;
             }
 
@@ -377,11 +372,17 @@ namespace CisWindowsFormsApp
             var baseQty = svc.ToBaseQty(productId, unitId, qty);
             var baseUomCode = svc.GetAvailableUnits(productId).FirstOrDefault()?.UomCode;
             lblQtyPreview.Text = baseUomCode == null ? string.Empty : $"= {baseQty:n0} {baseUomCode}";
+
+            lblGrossPreview.Text = decimal.TryParse(txtPrice.Text.Trim(), out var price)
+                ? $"= Rp {baseQty * price:n0}"
+                : string.Empty;
         }
 
         private void cboUnit_SelectedIndexChanged(object sender, EventArgs e) => UpdateQtyPreview();
 
         private void txtQty_TextChanged(object sender, EventArgs e) => UpdateQtyPreview();
+
+        private void txtPrice_TextChanged(object sender, EventArgs e) => UpdateQtyPreview();
 
         private void txtBatch_Leave(object sender, EventArgs e)
         {
@@ -409,8 +410,8 @@ namespace CisWindowsFormsApp
                 ? enteredQty
                 : new UnitConversionService(dbContext).ToBaseQty(prod.Id, unitId, enteredQty);
             var price = Math.Round(decimal.Parse(txtPrice.Text.Trim()), 5, MidpointRounding.AwayFromZero);
-            var discPct = Math.Round(Convert.ToDecimal(ParseDiscount(txtDiscount.Text)) / 100, 5, MidpointRounding.AwayFromZero);
-            var sub = Math.Round(qty * price * (1 - discPct), 0, MidpointRounding.AwayFromZero);
+            var discAmt = decimal.Parse(string.IsNullOrWhiteSpace(txtDiscount.Text) ? "0" : txtDiscount.Text, System.Globalization.NumberStyles.Currency);
+            var sub = Math.Round((qty * price) - discAmt, 0, MidpointRounding.AwayFromZero);
             var expEnd = commonHelper.GetEndOfMonth(dtpExpiredDate.Value);
 
             // update if same product+batch+month
@@ -435,7 +436,7 @@ namespace CisWindowsFormsApp
             row.Cells["colUomId"].Value = uom.Id;
             row.Cells["colUomCode"].Value = uom.UomCode;
             row.Cells["colPrice"].Value = string.Format("{0:n0}", price);
-            row.Cells["colDisc"].Value = string.Format("{0:n2}", ParseDiscount(txtDiscount.Text)) + "%";
+            row.Cells["colDisc"].Value = string.Format("{0:n0}", discAmt);
             row.Cells["colSubTotal"].Value = string.Format("{0:n0}", sub);
 
             RecalcTotals();
@@ -448,6 +449,7 @@ namespace CisWindowsFormsApp
             txtDiscount.Text = "0";
             cboUnit.DataSource = null;
             lblQtyPreview.Text = string.Empty;
+            lblGrossPreview.Text = string.Empty;
             cbProduct.Focus();
         }
 
@@ -477,7 +479,11 @@ namespace CisWindowsFormsApp
                     RepresentativeId = representative?.Id,
                     RepresentativeCode = representative?.RepresentativeCode,
                     OrderDate = dtpOrderDate.Value,
-                    ExpectedDate = dtpExpectedDate.Value,
+                    ReceivedDate = dtpReceivedDate.Checked ? dtpReceivedDate.Value : (DateTime?)null,
+                    SupplierInvoiceNumber = string.IsNullOrWhiteSpace(txtSupplierInvoiceNumber.Text) ? null : txtSupplierInvoiceNumber.Text.Trim(),
+                    SupplierInvoiceDate = dtpSupplierInvoiceDate.Checked ? dtpSupplierInvoiceDate.Value : (DateTime?)null,
+                    TaxInvoiceNumber = string.IsNullOrWhiteSpace(txtTaxInvoiceNumber.Text) ? null : txtTaxInvoiceNumber.Text.Trim(),
+                    TaxInvoiceDate = dtpTaxInvoiceDate.Checked ? dtpTaxInvoiceDate.Value : (DateTime?)null,
                     SubTotalAmount = decimal.Parse(txtSubTotal.Text, System.Globalization.NumberStyles.Currency),
                     ExtraDiscountAmount = decimal.Parse(txtExtraDiscount.Text, System.Globalization.NumberStyles.Currency),
                     TaxBaseAmount = decimal.Parse(txtTaxBaseAmount.Text, System.Globalization.NumberStyles.Currency),
@@ -504,8 +510,8 @@ namespace CisWindowsFormsApp
                     if (dgvItems.Rows[i].Cells["colProductCode"].Value == null) continue;
                     var qty = Convert.ToInt32(decimal.Parse(dgvItems.Rows[i].Cells["colQty"].Value.ToString(), System.Globalization.NumberStyles.Currency));
                     var price = Math.Round(decimal.Parse(dgvItems.Rows[i].Cells["colPrice"].Value.ToString(), System.Globalization.NumberStyles.Currency), 5, MidpointRounding.AwayFromZero);
-                    var discPct = ParseDiscount(dgvItems.Rows[i].Cells["colDisc"].Value.ToString());
-                    var subAmt = Math.Round(qty * price * (1 - (decimal)discPct / 100), 0, MidpointRounding.AwayFromZero);
+                    var discAmt = decimal.Parse(dgvItems.Rows[i].Cells["colDisc"].Value.ToString(), System.Globalization.NumberStyles.Currency);
+                    var subAmt = Math.Round((qty * price) - discAmt, 0, MidpointRounding.AwayFromZero);
                     var expDate = commonHelper.GetEndOfMonth(DateTime.Parse(dgvItems.Rows[i].Cells["colExpDate"].Value.ToString()));
 
                     uwItem.Repository.Add(new PurchaseOrderItem
@@ -521,7 +527,7 @@ namespace CisWindowsFormsApp
                         UomId = dgvItems.Rows[i].Cells["colUomId"].Value.ToString(),
                         UomCode = dgvItems.Rows[i].Cells["colUomCode"].Value.ToString(),
                         Price = price,
-                        DiscountPercentage = discPct,
+                        DiscountAmount = discAmt,
                         TotalAmount = subAmt,
                         CreatedBy = Properties.Settings.Default.CurrentUserId,
                         CreatedAt = DateTime.Now,
@@ -555,70 +561,87 @@ namespace CisWindowsFormsApp
 
             using (var tx = dbContext.Database.BeginTransaction())
             {
-                var supplier = GetSelectedSupplier();
-                var repId = cbRepresentative.SelectedValue?.ToString();
-                var representative = string.IsNullOrEmpty(repId) || repId == "0" ? null
-                    : new UnitOfWork<Representative>(dbContext).Repository.GetById(repId);
                 var po = _uow.Repository.GetById(txtPOId.Text.Trim());
+                var isDraft = po.PostingStatus == PurchaseOrderStatus.Draft;
 
-                po.SupplierId = supplier.Id;
-                po.SupplierName = supplier.PrincipalName;
-                po.SupplierAddress = supplier.Address;
-                po.SupplierPhone = supplier.Phone ?? string.Empty;
-                po.RepresentativeId = representative?.Id;
-                po.RepresentativeCode = representative?.RepresentativeCode;
-                po.OrderDate = dtpOrderDate.Value;
-                po.ExpectedDate = dtpExpectedDate.Value;
-                po.SubTotalAmount = decimal.Parse(txtSubTotal.Text, System.Globalization.NumberStyles.Currency);
-                po.ExtraDiscountAmount = decimal.Parse(txtExtraDiscount.Text, System.Globalization.NumberStyles.Currency);
-                po.TaxBaseAmount = decimal.Parse(txtTaxBaseAmount.Text, System.Globalization.NumberStyles.Currency);
-                po.ValueAddedTaxAmount = decimal.Parse(txtVAT.Text, System.Globalization.NumberStyles.Currency);
-                po.GrandTotalAmount = decimal.Parse(lblTotal.Text, System.Globalization.NumberStyles.Currency);
-                po.Notes = txtNotes.Text.Trim();
+                // Receiving/invoice fields: client wants these editable and savable at any status
+                po.ReceivedDate = dtpReceivedDate.Checked ? dtpReceivedDate.Value : (DateTime?)null;
+                po.SupplierInvoiceNumber = string.IsNullOrWhiteSpace(txtSupplierInvoiceNumber.Text) ? null : txtSupplierInvoiceNumber.Text.Trim();
+                po.SupplierInvoiceDate = dtpSupplierInvoiceDate.Checked ? dtpSupplierInvoiceDate.Value : (DateTime?)null;
+                po.TaxInvoiceNumber = string.IsNullOrWhiteSpace(txtTaxInvoiceNumber.Text) ? null : txtTaxInvoiceNumber.Text.Trim();
+                po.TaxInvoiceDate = dtpTaxInvoiceDate.Checked ? dtpTaxInvoiceDate.Value : (DateTime?)null;
+
+                // Header/items are only editable in Draft (pnlHeader/pnlItems are locked otherwise),
+                // so only re-save them then - avoids needlessly re-creating item rows on a finalized PO.
+                if (isDraft)
+                {
+                    var supplier = GetSelectedSupplier();
+                    var repId = cbRepresentative.SelectedValue?.ToString();
+                    var representative = string.IsNullOrEmpty(repId) || repId == "0" ? null
+                        : new UnitOfWork<Representative>(dbContext).Repository.GetById(repId);
+
+                    po.SupplierId = supplier.Id;
+                    po.SupplierName = supplier.PrincipalName;
+                    po.SupplierAddress = supplier.Address;
+                    po.SupplierPhone = supplier.Phone ?? string.Empty;
+                    po.RepresentativeId = representative?.Id;
+                    po.RepresentativeCode = representative?.RepresentativeCode;
+                    po.OrderDate = dtpOrderDate.Value;
+                    po.SubTotalAmount = decimal.Parse(txtSubTotal.Text, System.Globalization.NumberStyles.Currency);
+                    po.ExtraDiscountAmount = decimal.Parse(txtExtraDiscount.Text, System.Globalization.NumberStyles.Currency);
+                    po.TaxBaseAmount = decimal.Parse(txtTaxBaseAmount.Text, System.Globalization.NumberStyles.Currency);
+                    po.ValueAddedTaxAmount = decimal.Parse(txtVAT.Text, System.Globalization.NumberStyles.Currency);
+                    po.GrandTotalAmount = decimal.Parse(lblTotal.Text, System.Globalization.NumberStyles.Currency);
+                    po.Notes = txtNotes.Text.Trim();
+                }
+
                 po.ModifiedBy = Properties.Settings.Default.CurrentUserId;
                 po.ModifiedAt = DateTime.Now;
 
                 _uow.Repository.Update(po);
                 _uow.Commit();
 
-                var uwItem = new UnitOfWork<PurchaseOrderItem>(dbContext);
-                var existing = uwItem.Repository.GetAll().Where(i => i.PurchaseOrderId == po.Id);
-                uwItem.Repository.Delete(existing);
-                uwItem.Commit();
-
-                var newItems = new List<PurchaseOrderItem>();
-                for (int i = 0; i < dgvItems.Rows.Count; i++)
+                if (isDraft)
                 {
-                    if (dgvItems.Rows[i].Cells["colProductCode"].Value == null) continue;
-                    var qty = Convert.ToInt32(decimal.Parse(dgvItems.Rows[i].Cells["colQty"].Value.ToString(), System.Globalization.NumberStyles.Currency));
-                    var price = Math.Round(decimal.Parse(dgvItems.Rows[i].Cells["colPrice"].Value.ToString(), System.Globalization.NumberStyles.Currency), 5, MidpointRounding.AwayFromZero);
-                    var discPct = ParseDiscount(dgvItems.Rows[i].Cells["colDisc"].Value.ToString());
-                    var subAmt = Math.Round(qty * price * (1 - (decimal)discPct / 100), 0, MidpointRounding.AwayFromZero);
-                    var expDate = commonHelper.GetEndOfMonth(DateTime.Parse(dgvItems.Rows[i].Cells["colExpDate"].Value.ToString()));
+                    var uwItem = new UnitOfWork<PurchaseOrderItem>(dbContext);
+                    var existing = uwItem.Repository.GetAll().Where(i => i.PurchaseOrderId == po.Id);
+                    uwItem.Repository.Delete(existing);
+                    uwItem.Commit();
 
-                    newItems.Add(new PurchaseOrderItem
+                    var newItems = new List<PurchaseOrderItem>();
+                    for (int i = 0; i < dgvItems.Rows.Count; i++)
                     {
-                        PurchaseOrderId = po.Id,
-                        ProductId = dgvItems.Rows[i].Cells["colProductId"].Value.ToString(),
-                        ProductCode = dgvItems.Rows[i].Cells["colProductCode"].Value.ToString(),
-                        ProductName = dgvItems.Rows[i].Cells["colProductName"].Value.ToString(),
-                        BatchId = dgvItems.Rows[i].Cells["colBatchId"].Value?.ToString() ?? string.Empty,
-                        BatchCode = dgvItems.Rows[i].Cells["colBatchCode"].Value?.ToString() ?? string.Empty,
-                        ExpiredDate = commonHelper.StandardizeDate(expDate),
-                        Quantity = qty,
-                        UomId = dgvItems.Rows[i].Cells["colUomId"].Value.ToString(),
-                        UomCode = dgvItems.Rows[i].Cells["colUomCode"].Value.ToString(),
-                        Price = price,
-                        DiscountPercentage = discPct,
-                        TotalAmount = subAmt,
-                        CreatedBy = Properties.Settings.Default.CurrentUserId,
-                        CreatedAt = DateTime.Now,
-                        ModifiedBy = Properties.Settings.Default.CurrentUserId,
-                        ModifiedAt = DateTime.Now
-                    });
+                        if (dgvItems.Rows[i].Cells["colProductCode"].Value == null) continue;
+                        var qty = Convert.ToInt32(decimal.Parse(dgvItems.Rows[i].Cells["colQty"].Value.ToString(), System.Globalization.NumberStyles.Currency));
+                        var price = Math.Round(decimal.Parse(dgvItems.Rows[i].Cells["colPrice"].Value.ToString(), System.Globalization.NumberStyles.Currency), 5, MidpointRounding.AwayFromZero);
+                        var discAmt = decimal.Parse(dgvItems.Rows[i].Cells["colDisc"].Value.ToString(), System.Globalization.NumberStyles.Currency);
+                        var subAmt = Math.Round((qty * price) - discAmt, 0, MidpointRounding.AwayFromZero);
+                        var expDate = commonHelper.GetEndOfMonth(DateTime.Parse(dgvItems.Rows[i].Cells["colExpDate"].Value.ToString()));
+
+                        newItems.Add(new PurchaseOrderItem
+                        {
+                            PurchaseOrderId = po.Id,
+                            ProductId = dgvItems.Rows[i].Cells["colProductId"].Value.ToString(),
+                            ProductCode = dgvItems.Rows[i].Cells["colProductCode"].Value.ToString(),
+                            ProductName = dgvItems.Rows[i].Cells["colProductName"].Value.ToString(),
+                            BatchId = dgvItems.Rows[i].Cells["colBatchId"].Value?.ToString() ?? string.Empty,
+                            BatchCode = dgvItems.Rows[i].Cells["colBatchCode"].Value?.ToString() ?? string.Empty,
+                            ExpiredDate = commonHelper.StandardizeDate(expDate),
+                            Quantity = qty,
+                            UomId = dgvItems.Rows[i].Cells["colUomId"].Value.ToString(),
+                            UomCode = dgvItems.Rows[i].Cells["colUomCode"].Value.ToString(),
+                            Price = price,
+                            DiscountAmount = discAmt,
+                            TotalAmount = subAmt,
+                            CreatedBy = Properties.Settings.Default.CurrentUserId,
+                            CreatedAt = DateTime.Now,
+                            ModifiedBy = Properties.Settings.Default.CurrentUserId,
+                            ModifiedAt = DateTime.Now
+                        });
+                    }
+                    uwItem.Repository.Add(newItems);
+                    uwItem.Commit();
                 }
-                uwItem.Repository.Add(newItems);
-                uwItem.Commit();
 
                 tx.Commit();
             }
@@ -672,8 +695,9 @@ namespace CisWindowsFormsApp
             var (ok, msg) = svc.Receive(txtPOId.Text.Trim(), Properties.Settings.Default.CurrentUserId,
                 dtpReceivedDate.Checked ? dtpReceivedDate.Value : (DateTime?)null,
                 string.IsNullOrWhiteSpace(txtSupplierInvoiceNumber.Text) ? null : txtSupplierInvoiceNumber.Text.Trim(),
-                dtpSupplierInvoiceDate.Value,
-                string.IsNullOrWhiteSpace(txtTaxInvoiceNumber.Text) ? null : txtTaxInvoiceNumber.Text.Trim());
+                dtpSupplierInvoiceDate.Checked ? dtpSupplierInvoiceDate.Value : (DateTime?)null,
+                string.IsNullOrWhiteSpace(txtTaxInvoiceNumber.Text) ? null : txtTaxInvoiceNumber.Text.Trim(),
+                dtpTaxInvoiceDate.Checked ? dtpTaxInvoiceDate.Value : (DateTime?)null);
             if (ok) { NavigateRecord(RecordNavigation.Last); MessageBox.Show("PO berhasil diterima. Stok telah diperbarui.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information); }
             else MessageBox.Show(msg, "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
@@ -698,13 +722,15 @@ namespace CisWindowsFormsApp
             txtSupplierPhone.Text = string.Empty;
             cbRepresentative.SelectedValue = "0";
             dtpOrderDate.Value = DateTime.Today;
-            dtpExpectedDate.Value = DateTime.Today.AddDays(7);
             txtNotes.Text = string.Empty;
             dtpReceivedDate.Checked = false;
             dtpReceivedDate.Value = DateTime.Today;
             txtSupplierInvoiceNumber.Text = string.Empty;
+            dtpSupplierInvoiceDate.Checked = false;
             dtpSupplierInvoiceDate.Value = DateTime.Today;
             txtTaxInvoiceNumber.Text = string.Empty;
+            dtpTaxInvoiceDate.Checked = false;
+            dtpTaxInvoiceDate.Value = DateTime.Today;
             lblStatus.Text = string.Empty;
             txtPOId.Text = string.Empty;
             txtModifiedAt.Text = string.Empty;
@@ -763,16 +789,21 @@ namespace CisWindowsFormsApp
 
         private void txtDiscount_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != ',' && e.KeyChar != '.') { e.Handled = true; return; }
-            if (e.KeyChar == '.') e.KeyChar = ',';
-            if (e.KeyChar == ',' && ((TextBox)sender).Text.Contains(',')) e.Handled = true;
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
         private void txtDiscount_Leave(object sender, EventArgs e)
         {
-            var disc = ParseDiscount(txtDiscount.Text);
-            if (disc > 100) { MessageBox.Show("Discount tidak boleh lebih dari 100.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information); txtDiscount.Text = "0"; }
             commonHelper.SetTextBoxToZeroWhenEmpty(sender);
+
+            var discAmt = decimal.Parse(string.IsNullOrWhiteSpace(txtDiscount.Text) ? "0" : txtDiscount.Text, System.Globalization.NumberStyles.Currency);
+            var qty = decimal.TryParse(txtQty.Text.Trim(), out var q) ? q : 0;
+            var price = decimal.TryParse(txtPrice.Text.Trim(), out var pr) ? pr : 0;
+            if (discAmt > qty * price)
+            {
+                MessageBox.Show("Diskon tidak boleh lebih besar dari Qty x Harga.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtDiscount.Text = "0";
+            }
         }
 
         private void btnRemoveItem_Click(object sender, EventArgs e)

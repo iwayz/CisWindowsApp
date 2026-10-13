@@ -17,8 +17,9 @@ namespace Cis.Business
 
         public (bool ok, string message) Receive(string poId, string userId,
             DateTime? receivedDate = null, string supplierInvoiceNumber = null,
-            DateTime? supplierInvoiceDate = null, string taxInvoiceNumber = null)
-            => _stock.ReceivePurchaseOrder(poId, userId, receivedDate, supplierInvoiceNumber, supplierInvoiceDate, taxInvoiceNumber);
+            DateTime? supplierInvoiceDate = null, string taxInvoiceNumber = null,
+            DateTime? taxInvoiceDate = null)
+            => _stock.ReceivePurchaseOrder(poId, userId, receivedDate, supplierInvoiceNumber, supplierInvoiceDate, taxInvoiceNumber, taxInvoiceDate);
 
         public (bool ok, string message) Cancel(string poId, string userId)
             => _stock.CancelPurchaseOrder(poId, userId);

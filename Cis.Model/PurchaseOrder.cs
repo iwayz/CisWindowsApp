@@ -13,11 +13,11 @@ namespace Cis.Model
         public string RepresentativeId { get; set; }
         public string RepresentativeCode { get; set; }
         public DateTime OrderDate { get; set; }
-        public DateTime ExpectedDate { get; set; }
         public DateTime? ReceivedDate { get; set; }
         public string SupplierInvoiceNumber { get; set; }   // No. Faktur
         public DateTime? SupplierInvoiceDate { get; set; }  // Tanggal Faktur
         public string TaxInvoiceNumber { get; set; }        // No. Faktur Pajak
+        public DateTime? TaxInvoiceDate { get; set; }        // Tanggal Faktur Pajak
         public decimal SubTotalAmount { get; set; }
         public decimal ExtraDiscountAmount { get; set; }
         public decimal TaxBaseAmount { get; set; }

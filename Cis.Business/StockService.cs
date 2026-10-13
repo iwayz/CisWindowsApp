@@ -211,7 +211,8 @@ namespace Cis.Business
         /// <summary>Receive goods for a confirmed PO (Confirmed→Received), increases stock.</summary>
         public (bool ok, string message) ReceivePurchaseOrder(string poId, string userId,
             DateTime? receivedDate = null, string supplierInvoiceNumber = null,
-            DateTime? supplierInvoiceDate = null, string taxInvoiceNumber = null)
+            DateTime? supplierInvoiceDate = null, string taxInvoiceNumber = null,
+            DateTime? taxInvoiceDate = null)
         {
             var po = _db.PurchaseOrders
                         .Include(x => x.PurchaseOrderItems)
@@ -240,6 +241,7 @@ namespace Cis.Business
             po.SupplierInvoiceNumber = supplierInvoiceNumber;
             po.SupplierInvoiceDate = supplierInvoiceDate;
             po.TaxInvoiceNumber = taxInvoiceNumber;
+            po.TaxInvoiceDate = taxInvoiceDate;
             Touch(po, userId);
             _db.SaveChanges();
             return (true, "Purchase Order berhasil diterima. Stok telah bertambah.");

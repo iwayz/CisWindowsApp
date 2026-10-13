@@ -15,7 +15,7 @@ namespace Cis.Model
         public string UomId { get; set; }
         public string UomCode { get; set; }
         public decimal Price { get; set; }
-        public float DiscountPercentage { get; set; }
+        public decimal DiscountAmount { get; set; }
         public decimal TotalAmount { get; set; }
 
         public PurchaseOrder PurchaseOrder { get; set; }
