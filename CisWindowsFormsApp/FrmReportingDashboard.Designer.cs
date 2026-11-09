@@ -20,6 +20,7 @@ namespace CisWindowsFormsApp
             this.btnExportProduct     = new System.Windows.Forms.Button();
             this.btnExportExcel       = new System.Windows.Forms.Button();
             this.btnExportPembelian   = new System.Windows.Forms.Button();
+            this.btnStockMutation     = new System.Windows.Forms.Button();
             this.btnStockCard         = new System.Windows.Forms.Button();
             this.btnStockMovement     = new System.Windows.Forms.Button();
             this.pnlChildHeader       = new System.Windows.Forms.Panel();
@@ -34,6 +35,8 @@ namespace CisWindowsFormsApp
 
             System.Windows.Forms.Panel pnlTileStockCard     = new System.Windows.Forms.Panel();
             System.Windows.Forms.Panel pnlTileStockMovement = new System.Windows.Forms.Panel();
+            System.Windows.Forms.Panel pnlTileStockMutation = new System.Windows.Forms.Panel();
+            System.Windows.Forms.Panel pnlAccStockMutation  = new System.Windows.Forms.Panel();
             System.Windows.Forms.Panel pnlTileExportFaktur  = new System.Windows.Forms.Panel();
             System.Windows.Forms.Panel pnlTileExportPembelian = new System.Windows.Forms.Panel();
             System.Windows.Forms.Panel pnlTileExportProduk  = new System.Windows.Forms.Panel();
@@ -89,6 +92,18 @@ namespace CisWindowsFormsApp
             this.btnStockMovement.UseVisualStyleBackColor = false;
             this.btnStockMovement.Click += new System.EventHandler(this.btnStockMovement_Click);
 
+            // btnStockMutation
+            this.btnStockMutation.BackColor = navyBg;
+            this.btnStockMutation.FlatAppearance.BorderSize = 0;
+            this.btnStockMutation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStockMutation.Font = tileFont;
+            this.btnStockMutation.ForeColor = System.Drawing.Color.White;
+            this.btnStockMutation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnStockMutation.Name = "btnStockMutation";
+            this.btnStockMutation.Text = "Mutasi Stok";
+            this.btnStockMutation.UseVisualStyleBackColor = false;
+            this.btnStockMutation.Click += new System.EventHandler(this.btnStockMutation_Click);
+
             // btnExportExcel
             this.btnExportExcel.BackColor = navyBg;
             this.btnExportExcel.FlatAppearance.BorderSize = 0;
@@ -139,6 +154,9 @@ namespace CisWindowsFormsApp
 
             // accent panels
             pnlAccStockCard.BackColor      = catBlue;  pnlAccStockCard.Dock      = System.Windows.Forms.DockStyle.Left; pnlAccStockCard.Width      = 4;
+            pnlAccStockMutation.BackColor  = catBlue;  pnlAccStockMutation.Dock  = System.Windows.Forms.DockStyle.Left; pnlAccStockMutation.Width  = 4;
+            pnlTileStockMutation.BackColor = navyBg;   pnlTileStockMutation.Dock = System.Windows.Forms.DockStyle.Fill; pnlTileStockMutation.Margin = tileMargin;
+            pnlTileStockMutation.Controls.Add(this.btnStockMutation); pnlTileStockMutation.Controls.Add(pnlAccStockMutation);
             pnlAccStockMovement.BackColor  = catBlue;  pnlAccStockMovement.Dock  = System.Windows.Forms.DockStyle.Left; pnlAccStockMovement.Width  = 4;
             pnlAccExportFaktur.BackColor   = catAmber; pnlAccExportFaktur.Dock   = System.Windows.Forms.DockStyle.Left; pnlAccExportFaktur.Width   = 4;
             pnlAccExportPembelian.BackColor = catAmber; pnlAccExportPembelian.Dock = System.Windows.Forms.DockStyle.Left; pnlAccExportPembelian.Width = 4;
@@ -160,23 +178,25 @@ namespace CisWindowsFormsApp
             pnlTileExportProduk.Controls.Add(this.btnExportProduct);    pnlTileExportProduk.Controls.Add(pnlAccExportProduk);
             pnlTileExportPelanggan.Controls.Add(this.btnExportPelanggan); pnlTileExportPelanggan.Controls.Add(pnlAccExportPelanggan);
 
-            // tlpTiles — 3 cols x 2 rows
+            // tlpTiles — 3 cols x 3 rows
             tlpTiles.ColumnCount = 3;
-            tlpTiles.RowCount    = 2;
+            tlpTiles.RowCount    = 3;
             tlpTiles.Dock = System.Windows.Forms.DockStyle.Fill;
             tlpTiles.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.None;
             tlpTiles.Padding = new System.Windows.Forms.Padding(0);
             tlpTiles.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
             tlpTiles.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
             tlpTiles.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.34F));
-            tlpTiles.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            tlpTiles.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tlpTiles.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
+            tlpTiles.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
+            tlpTiles.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.34F));
             tlpTiles.Controls.Add(pnlTileStockCard,      0, 0);
             tlpTiles.Controls.Add(pnlTileStockMovement,  1, 0);
-            tlpTiles.Controls.Add(pnlTileExportPembelian, 2, 0);
+            tlpTiles.Controls.Add(pnlTileStockMutation,  2, 0);
             tlpTiles.Controls.Add(pnlTileExportFaktur,   0, 1);
-            tlpTiles.Controls.Add(pnlTileExportProduk,   1, 1);
-            tlpTiles.Controls.Add(pnlTileExportPelanggan, 2, 1);
+            tlpTiles.Controls.Add(pnlTileExportPembelian, 1, 1);
+            tlpTiles.Controls.Add(pnlTileExportProduk,   2, 1);
+            tlpTiles.Controls.Add(pnlTileExportPelanggan, 0, 2);
             tlpTiles.Name = "tlpTiles";
 
             // legend dots
@@ -204,7 +224,7 @@ namespace CisWindowsFormsApp
             this.gbMenuReporting.Controls.Add(flpLegend);
             this.gbMenuReporting.Location = new System.Drawing.Point(183, 92);
             this.gbMenuReporting.Name = "gbMenuReporting";
-            this.gbMenuReporting.Size = new System.Drawing.Size(560, 200);
+            this.gbMenuReporting.Size = new System.Drawing.Size(560, 290);
             this.gbMenuReporting.TabIndex = 0;
 
             // pnlMenuReporting
@@ -281,6 +301,7 @@ namespace CisWindowsFormsApp
         private System.Windows.Forms.Label lblReportingChildHeader;
         private System.Windows.Forms.Button btnExportExcel;
         private System.Windows.Forms.Button btnExportPembelian;
+        private System.Windows.Forms.Button btnStockMutation;
         private System.Windows.Forms.Panel pnlMenuReporting;
         private System.Windows.Forms.Button btnExportPelanggan;
         private System.Windows.Forms.Button btnExportProduct;

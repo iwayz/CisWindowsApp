@@ -79,6 +79,16 @@ namespace CisWindowsFormsApp
             OpenChildForm(new FrmStockMovement(), sender);
         }
 
+        private void btnStockMutation_Click(object sender, EventArgs e)
+        {
+            if (!(new CommonFunctionHelper().ValidateAccess((int)Constant.Permission.Reporting.StockMovement)))
+            {
+                CommonMessageHelper.NoAccess();
+                return;
+            }
+            OpenChildForm(new FrmStockMutation(), sender);
+        }
+
         private void btnStockCard_Click(object sender, EventArgs e)
         {
             if (!(new CommonFunctionHelper().ValidateAccess((int)Constant.Permission.Reporting.StockMovement)))
