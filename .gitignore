@@ -348,3 +348,18 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# Local migration tooling output (Add-Migration.ps1 / Update-Database.ps1)
+/TempBuild/
+/GetModelSnapshot.exe
+/RunMigration.exe
+/EntityFramework.dll
+/EntityFramework.SqlServer.dll
+/model_snapshot*.txt
+
+# Local database backups
+/*.bak
+/*.bacpac
+
+# Local Claude Code settings
+/.claude/
